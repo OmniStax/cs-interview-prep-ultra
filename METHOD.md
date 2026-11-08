@@ -62,12 +62,30 @@ AI-written code exercises in the book (those belong to the app's Exercises
 tab). Code exercises are pulled from open sources first (§6.3). Erickson's
 and ODS's printed exercises are unkeyed, so they need rule 13's choice.
 
-**Decided: the whole book is CC BY-SA 4.0, and NC material is out.**
-CC BY-NC-SA can't be adapted into a BY-SA work, so the finder's licence gate
-treats NC like any other incompatible licence: link-only. That covers MIT
-OCW notes, problem sets and transcripts, and Project Euler. OmniStax's own
-additions (figures, block labels, bridging sentences, the concept map,
-AI-written tests and reference solutions) are CC BY-SA 4.0 too.
+**Decided: CC BY-SA 4.0 for everything except NC exercise cards.**
+CC BY-SA and CC BY-NC-SA conflict on commercial use: one requires an
+adaptation to allow it, the other to forbid it. So the two never mix in one
+unit. The rules:
+
+- **Prose, figures and OmniStax's own additions are CC BY-SA 4.0.** That
+  covers figures, block labels, bridging sentences, the concept map, and
+  AI-written tests for BY-SA exercises. NC prose (MIT OCW notes,
+  transcripts) is link-only. The judge never weighs licence boundaries.
+- **NC material is allowed only as exercise cards** (MIT OCW problem sets
+  with their solutions, Project Euler). A card is a self-contained item
+  with its own licence line, and the book is a collection of units. AI
+  tests and hints written for an NC card are adaptations of it, so they
+  are CC BY-NC-SA too.
+- **The separation is mechanical:**
+  - NC cards live in their own file per section, `exercises-nc.json`.
+  - The content check refuses an NC locator anywhere else.
+  - The build can drop those files to give a clean BY-SA export for
+    commercial reuse.
+- **NC sources are tagged by licence.** Each NC row in `exercise_sources`
+  carries `license` and `license_url`, as Modern AMO II already does for
+  MIT 8.422.
+- **Attribution goes per block in each section's footer:** author, title,
+  URL, licence, "adapted". MIT-licensed code keeps its MIT notice.
 
 ---
 
@@ -517,7 +535,7 @@ because prerequisites force the order and each concept gets one home.
 4. Code exercises: pulled from open sources first. No exercise is
    AI-written. Tests and reference solutions may be AI-written, and are
    marked (§6.3).
-6. Licence: CC BY-SA 4.0 for everything. NC sources are link-only (§0).
+6. Licence: CC BY-SA 4.0, except NC exercise cards kept in separate files (§0).
 7. Judge: lucidity concept by concept, with continuity between neighbours
    deciding close calls. Only escalated verdicts go to you.
 8. Figures: code beside the visual by default, stepping by named block
