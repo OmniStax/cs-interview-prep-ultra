@@ -418,7 +418,13 @@ but they depend on the MIT ruling.
 
 ## Figures: Wikipedia and Wikibooks files, licence per file
 
-241 files are referenced from the first 67 Wikipedia articles and the 21 Wikibooks pages. Each licence was read from the Commons/en.wikipedia `imageinfo` extmetadata field `LicenseShortName`. 240 pass (84 'Public domain', 4 'PD', 30 CC0, 62 CC BY-SA 3.0 variants, 50 CC BY-SA 4.0, 2 CC BY-SA 2.5, 5 CC BY 4.0, 3 CC BY 3.0, 1 CC BY 2.0). One is tagged MIT and needs the same ruling as OpenDSA. Files in the 14 articles added late (Cycle detection, Prefix sum, Find first set, Mask, Bit array, Ones' complement, Word, K-ary tree, Selection sort, Quickselect, Graph traversal, Bubble sort, IDDFS, Bellman–Ford) were **not** checked, because the API kept returning 429. Check them before use. Files are not downloaded. Fetch them from upload.wikimedia.org when a figure is chosen, and keep the author line for attribution.
+297 distinct files are referenced from the 81 Wikipedia articles and 21 Wikibooks pages. Each licence was read from the en.wikipedia `imageinfo` extmetadata field `LicenseShortName`; Commons files resolve there too. Results:
+
+- **295 pass**: Public domain 96, PD 4, CC0 40, CC BY-SA 3.0 (incl. variants) 71, CC BY-SA 4.0 64, CC BY-SA 2.5 4, CC BY 4.0 10, CC BY 3.0 5, CC BY 2.0 1.
+- 1 `Octicons-terminal.svg` (MIT; a portal icon, not a DSA figure).
+- 1 `Karyapplication.png` (no file record; the link is dead).
+
+The files are not downloaded. Fetch a figure from upload.wikimedia.org once it is chosen, and keep its author line for the attribution footer.
 
 | file (Commons/en.wp) | licence (extmetadata LicenseShortName) | status | author | used in |
 |---|---|---|---|---|
@@ -459,8 +465,12 @@ but they depend on the MIT ruling.
 | BFS-Algorithm Search Way.gif | CC BY-SA 4.0 | pass | NeptoTech | wikipedia:Breadth-first_search |
 | BST node deletion.png | CC0 | pass | WikiLinuz | wikipedia:Binary_search_tree |
 | Bellman-Ford worst-case example.svg | CC0 | pass | User:Dcoetzee | wikipedia:Bellman–Ford_algorithm |
+| Bidirectional iterative deepening depth-first search search frontier pass through each other.png | CC BY-SA 4.0 | pass | Rodion.Efremov | wikipedia:Iterative_deepening_depth-first_search |
 | BigOnotationfunctionapprox popular.svg | CC BY-SA 4.0 | pass | User:Colourfulskier | wikipedia:Big_O_notation |
+| Binary Heap with Array Implementation.JPG | CC0 | pass | Chris857 (talk) | wikipedia:Binary_heap |
 | Binary Tree Rotation (animated).gif | CC BY-SA 3.0 de | pass | Nomen4Omen | wikipedia:Red–black_tree |
+| Binary guess number trick SMIL.svg | CC BY-SA 4.0 | pass | Cmglee | wikipedia:Mask_(computing) |
+| Binary heap bottomup vs topdown.svg | CC0 | pass | Explorer09 | wikipedia:Heapsort |
 | Binary search complexity.svg | CC0 | pass | Esquivalience | wikipedia:Binary_search |
 | Binary search example tree.svg | CC0 | pass | Esquivalience | wikipedia:Binary_search |
 | Binary search tree search 4.svg | Public domain | pass | Binary_search_tree.svg: Booyabazooka der | wikipedia:Binary_search |
@@ -472,6 +482,7 @@ but they depend on the MIT ruling.
 | Binary-search-work.gif | CC BY-SA 4.0 | pass | Mazen Embaby | wikipedia:Binary_search |
 | BinaryTreeRotations.svg | CC BY-SA 3.0 | pass | Josell7 | wikipedia:Binary_tree; wikipedia:Self-balancing_binary_search_tree |
 | BlackNode.svg | Public domain | pass | Nomen4Omen | wikipedia:Red–black_tree |
+| Blit dot.gif | Public domain | pass | Farcical (talk) (Uploads) | wikipedia:Mask_(computing) |
 | Bstreedeleteleafexample.jpg | Public domain | pass | - | wikibooks:Data_Structures/Trees |
 | Bstreedeletenotrightchildexample.jpg | Public domain | pass | - | wikibooks:Data_Structures/Trees |
 | Bstreedeleteonechildexample.jpg | Public domain | pass | - | wikibooks:Data_Structures/Trees |
@@ -479,6 +490,8 @@ but they depend on the MIT ruling.
 | Bstreefindsuccessorexample.jpg | Public domain | pass | Linuxdude at English Wikibooks | wikibooks:Data_Structures/Trees |
 | Bstreesample.jpg | Public domain | pass | - | wikibooks:Data_Structures/Trees |
 | Bstreesearchexample.jpg | Public domain | pass | - | wikibooks:Data_Structures/Trees |
+| Bubble sort animation.gif | CC BY-SA 2.5 | pass | The original uploader was Nmnogueira at  | wikipedia:Bubble_sort |
+| Bubble-sort-example-300px.gif | CC BY-SA 3.0 | pass | Swfung8 | wikipedia:Bubble_sort |
 | Bubblesort-edited-color.svg | CC0 | pass | Pmdumuid | wikipedia:Sorting_algorithm |
 | BulkDeletionPQ.svg | CC BY-SA 4.0 | pass | Bahodil | wikipedia:Priority_queue |
 | CAS insert.png | CC BY-SA 3.0 | pass | Spamduck | wikibooks:Algorithms/Randomization |
@@ -515,6 +528,7 @@ but they depend on the MIT ruling.
 | Depth-first-tree.svg | CC BY-SA 3.0 | pass | Alexander Drichel | wikipedia:Depth-first_search |
 | Deque-01.svg | CC BY-SA 4.0 | pass | Xavier-gl71 | wikipedia:Double-ended_queue |
 | Deque-railroad.svg | CC BY-SA 4.0 | pass | Xavier-gl71 | wikipedia:Double-ended_queue |
+| Dictionary.png | CC BY 4.0 | pass | - | wikipedia:M-ary_tree |
 | Dijkstra negative edge counterexample.gif | Public domain | pass | Author: ChatGPT | wikipedia:Dijkstra's_algorithm |
 | DijkstraDemo.gif | CC BY-SA 4.0 | pass | Shiyu Ji | wikipedia:Dijkstra's_algorithm |
 | Dijkstras progress animation.gif | CC BY 3.0 | pass | Subh83 | wikipedia:Dijkstra's_algorithm |
@@ -526,12 +540,19 @@ but they depend on the MIT ruling.
 | Edit-clear.svg | Public domain | pass | The people from the Tango! project. And  | wikipedia:AVL_tree; wikipedia:Double-ended_queue |
 | Eight-queens-animation.gif | Public domain | pass | Hsilgneymerej | wikipedia:Eight_queens_puzzle |
 | Exponential search.svg | CC0 | pass | Esquivalience | wikipedia:Binary_search |
+| ExtractingFromBinaryHeap.gif | CC0 | pass | Sanglee123 | wikipedia:Binary_heap |
+| Fibonacci dynamic programming.svg | Public domain | pass | en:User:Dcoatzee, traced by User:Stanner | wikipedia:Dynamic_programming |
+| File diff.svg | CC BY-SA 3.0 | pass | User:Retraza | wikipedia:Longest_common_subsequence |
+| Floyd-Warshall example.svg | CC0 | pass | Dcoetzee | wikipedia:Floyd–Warshall_algorithm |
 | Fractional cascading.svg | CC0 | pass | Esquivalience | wikipedia:Binary_search |
 | Full binary.svg | CC BY-SA 4.0 | pass | Tmigler | wikipedia:Binary_tree |
+| Functional graph.svg | Public domain | pass | David Eppstein | wikipedia:Cycle_detection |
 | GermanyBFS.svg | Public domain | pass | No machine-readable author provided. Reg | wikipedia:Breadth-first_search |
 | Global thinking.svg | Public domain | pass | Benjamin D. Esham (bdesham) | wikipedia:Analysis_of_algorithms |
 | Graph.traversal.example.svg | CC BY-SA 3.0 | pass | Miles | wikipedia:Depth-first_search; wikipedia:Iterative_deepening_depth-first_search |
+| HASHTB08.svg | Public domain | pass | - | wikibooks:Data_Structures/Hash_Tables |
 | HASHTB12.svg | Public domain | pass | - | wikipedia:Linear_probing; wikipedia:Open_addressing; wikibooks:Data_Structures/Hash_Tables |
+| HASHTB32.svg | Public domain | pass | - | wikibooks:Data_Structures/Hash_Tables |
 | Hamming weight plot.png | CC BY-SA 4.0 | pass | Laurence R. Ugalde URL: https://formulae | wikipedia:Hamming_weight |
 | Hardware circular buffer implementation patent us3979733 fig4.png | Public domain | pass | Alexander Gibson Fraser (Bell Telephone  | wikipedia:Circular_buffer |
 | Hash table 3 1 1 0 1 0 0 SP.svg | CC BY-SA 3.0 | pass | Jorge Stolfi | wikipedia:Hash_table |
@@ -539,13 +560,34 @@ but they depend on the MIT ruling.
 | Hash table 5 0 1 1 1 1 0 LL.svg | CC BY-SA 3.0 | pass | Jorge Stolfi | wikipedia:Hash_table |
 | Hash table 5 0 1 1 1 1 0 SP.svg | CC BY-SA 3.0 | pass | Jorge Stolfi | wikipedia:Hash_table |
 | Hash table 5 0 1 1 1 1 1 LL.svg | CC BY-SA 3.0 | pass | Jorge Stolfi | wikipedia:Hash_table |
+| Hash table average insertion time.png | Public domain | pass | Derrick Coetzee (User:Dcoetzee) | wikibooks:Data_Structures/Hash_Tables |
 | Heap-as-array.svg | CC BY-SA 4.0 | pass | Maxiantor | wikipedia:Heap_(data_structure) |
+| Heapsort-example.gif | CC BY-SA 3.0 | pass | Swfung8 | wikipedia:Heapsort |
 | Hewlett-Packard HP-42S, programmable calculator with RPN (combined from two images, cropped).jpg | CC BY 2.0 | pass | File:Programmable RPN calculator Hewlett | wikipedia:Stack_(abstract_data_type) |
+| Hillis-Steele Prefix Sum.svg | CC BY-SA 4.0 | pass | Scott Pakin | wikipedia:Prefix_sum |
 | Honeycomb Recursion.jpg | CC0 | pass | NectarLupine | wikipedia:Recursion_(computer_science) |
+| Huffman coding example.svg | CC BY-SA 3.0 | pass | Alessio Damato | wikipedia:Huffman_coding |
+| Huffman coding visualisation.svg | CC BY-SA 4.0 | pass | Cmglee | wikipedia:Huffman_coding |
+| Huffman huff demo.gif | CC BY-SA 3.0 | pass | Eeppeliteloop | wikipedia:Huffman_coding |
+| Huffman tree 2.svg | Public domain | pass | Meteficha | wikipedia:Huffman_coding |
+| HuffmanCodeAlg.png | CC BY-SA 3.0 | pass | Andreas.Roever at German Wikipedia (Orig | wikipedia:Huffman_coding |
+| Hypercube-construction-4d.svg | CC0 | pass | Д.Ильин: vectorization | wikipedia:Prefix_sum |
 | IBM 729 Tape Drives.nasa.jpg | Public domain | pass | NASA | wikipedia:Merge_sort |
 | If-then-else-control-flow-graph.svg | Public domain | pass | BenRG at English Wikipedia | wikipedia:Depth-first_search |
+| InsertingIntoBinaryHeap.gif | CC0 | pass | Sanglee123 | wikipedia:Binary_heap |
 | Insertion of binary tree node.svg | CC0 | pass | Chris857 | wikipedia:Binary_tree |
+| Insertion-sort-example-300px.gif | CC BY-SA 3.0 | pass | Swfung8 | wikipedia:Insertion_sort |
+| Insertionsort-after.png | Public domain | pass | Dcoetzee at English Wikipedia | wikipedia:Insertion_sort |
+| Insertionsort-before.png | Public domain | pass | Dcoetzee at English Wikipedia | wikipedia:Insertion_sort |
 | Interpolation search.svg | CC0 | pass | Esquivalience | wikipedia:Binary_search |
+| JenkinsOneAtATime-3.svg | Public domain | pass | Ralph Levien, traced Stannered | wikibooks:Data_Structures/Hash_Tables |
+| Kadane run −2,1,−3,4,−1,2,1,−5,4.gif | CC BY-SA 4.0 | pass | Jochen Burghardt | wikipedia:Maximum_subarray_problem |
+| Karyapplication.png | - | unclear (no licence field) | - | wikipedia:M-ary_tree |
+| Karyconversion.png | CC BY-SA 4.0 | pass | - | wikipedia:M-ary_tree |
+| Karytoarray.png | CC BY-SA 4.0 | pass | - | wikipedia:M-ary_tree |
+| Karytree.png | CC BY 4.0 | pass | - | wikipedia:M-ary_tree |
+| Knapsack Problem Illustration.svg | CC BY-SA 4.0 | pass | VectorVoyager | wikipedia:Knapsack_problem |
+| Knapsack problem dynamic programming.gif | CC BY-SA 4.0 | pass | RDSEED | wikipedia:Knapsack_problem |
 | Kruskal Algorithm 1.svg | Public domain | pass | - | wikipedia:Kruskal's_algorithm |
 | Kruskal Algorithm 2.svg | Public domain | pass | - | wikipedia:Kruskal's_algorithm |
 | Kruskal Algorithm 3.svg | Public domain | pass | - | wikipedia:Kruskal's_algorithm |
@@ -558,14 +600,21 @@ but they depend on the MIT ruling.
 | Linear Probing Deletion.png | CC BY-SA 4.0 | pass | Cryptic C62 | wikipedia:Linear_probing |
 | Linked-list-based Stack Pop Operation-en.gif | CC BY-SA 4.0 | pass | Michel Bakni | wikipedia:Stack_(abstract_data_type) |
 | Linked-list-based Stack Push operation-en.gif | CC BY-SA 4.0 | pass | Michel Bakni | wikipedia:Stack_(abstract_data_type) |
+| Ltrotation.png | CC BY-SA 4.0 | pass | - | wikipedia:M-ary_tree |
+| M-ary template generation.png | CC BY-SA 4.0 | pass | - | wikipedia:M-ary_tree |
+| M-ary template generation2.png | CC BY 4.0 | pass | - | wikipedia:M-ary_tree |
+| M-ary template next.png | CC BY 4.0 | pass | - | wikipedia:M-ary_tree |
 | MAZE 30x20 DFS.ogv | CC BY-SA 3.0 | pass | Purpy Pupple | wikipedia:Depth-first_search |
 | MAZE 30x20 Prim.ogv | CC BY-SA 3.0 | pass | Purpy Pupple | wikipedia:Prim's_algorithm |
 | Magicsquareexample.svg | Public domain | pass | User:Phidauex | wikipedia:Eight_queens_puzzle |
 | MapGermanyGraph.svg | Public domain | pass | No machine-readable author provided. Reg | wikipedia:Breadth-first_search |
 | Max-Heap-new.svg | CC BY-SA 4.0 | pass | Kelott | wikipedia:Heap_(data_structure) |
+| Max-Heap.svg | CC BY-SA 3.0 | pass | Ermishin | wikipedia:Binary_heap |
+| Maximum Subarray Visualization.svg | CC BY-SA 4.0 | pass | Snydergd | wikipedia:Maximum_subarray_problem |
 | Merge sort algorithm diagram.svg | Public domain | pass | VineetKumar at English Wikipedia | wikipedia:Divide-and-conquer_algorithm; wikipedia:Merge_sort |
 | Merge sort animation.gif | CC BY-SA 2.5 | pass | Nuno Nogueira (Nmnogueira) | wikipedia:Sorting_algorithm |
 | Merge sort animation2.gif | CC BY-SA 2.5 | pass | CobaltBlue | wikipedia:Merge_sort |
+| Min-heap.svg | Public domain | pass | Retraza | wikipedia:Binary_heap |
 | Minimum spanning tree.svg | Public domain | pass | No machine-readable author provided. Dco | wikipedia:Minimum_spanning_tree |
 | Msp-the-cut-correct.svg | CC BY-SA 3.0 | pass | King rhoton | wikipedia:Minimum_spanning_tree |
 | Multiple minimum spanning trees.svg | CC BY-SA 3.0 | pass | Ftiercel | wikipedia:Minimum_spanning_tree |
@@ -578,7 +627,10 @@ but they depend on the MIT ruling.
 | PD-icon.svg | PD | pass | - | wikipedia:Stack_(abstract_data_type); wikipedia:AVL_tree; wikipedia:Queue_(abstract_data_type) |
 | Parallel Topological Sorting.gif | CC BY-SA 4.0 | pass | Morris Kurz | wikipedia:Topological_sorting |
 | Parallel multiway mergesort process.svg | CC BY-SA 4.0 | pass | Prof. Dr. Peter Sanders | wikipedia:Merge_sort |
+| Pipelined Binary Tree Prefix Sum Communication.svg | CC0 | pass | Д.Ильин: vectorization | wikipedia:Prefix_sum |
 | Pointer implementation of a trie.svg | CC BY-SA 4.0 | pass | Qwertyus | wikipedia:Trie |
+| Pointermary.png | CC BY-SA 4.0 | pass | - | wikipedia:M-ary_tree |
+| Prefix sum 16.svg | CC0 | pass | David Eppstein | wikipedia:Prefix_sum |
 | Prim's algorithm proof.svg | CC0 | pass | User:Dcoetzee | wikipedia:Prim's_algorithm |
 | Prim's algorithm.svg | CC0 | pass | User:Dcoetzee | wikipedia:Prim's_algorithm |
 | PrimAlgDemo.gif | CC BY-SA 4.0 | pass | Shiyu Ji | wikipedia:Prim's_algorithm |
@@ -611,17 +663,23 @@ but they depend on the MIT ruling.
 | Rotate right.svg | CC BY-SA 3.0 | pass | en:User:Cburnett | wikipedia:Bitwise_operation |
 | Row and column major order.svg | CC BY-SA 4.0 | pass | Cmglee | wikipedia:Array_(data_structure) |
 | SEACComputer 038.jpg | Public domain | pass | National Institute of Standards and Tech | wikipedia:Radix_sort |
+| Selecting quickselect frames.gif | CC BY 3.0 | pass | Pashapanther | wikipedia:Quickselect |
+| Selection-Sort-Animation.gif | CC BY-SA 3.0 | pass | en:Joestape89 | wikipedia:Selection_sort |
 | Shell sorting algorithm color bars.svg | CC BY-SA 4.0 | pass | Balu Ertl | wikipedia:Sorting_algorithm |
+| Shortest path optimal substructure.svg | CC0 | pass | User:Dcoetzee | wikipedia:Dynamic_programming |
 | Shortest path with direct weights.svg | CC BY-SA 3.0 | pass | Artyom Kalinin | wikipedia:Shortest_path_problem |
 | Sierpinski triangle turtle.gif | CC0 | pass | Neuteche | wikipedia:Recursion_(computer_science) |
 | Simple cycle graph.svg | Public domain | pass | Booyabazooka at English Wikipedia | wikipedia:Adjacency_list |
 | SimpleArray.png | Public domain | pass | - | wikibooks:Data_Structures/Arrays |
+| SimpleLightningSimulation.webm | CC0 | pass | NectarLupine | wikipedia:Greedy_algorithm |
 | Singly-linked-list.svg | Public domain | pass | Vectorization: Lasindi | wikipedia:Linked_list |
 | Snowflake Recursion.jpg | CC0 | pass | NectarLupine | wikipedia:Recursion_(computer_science) |
 | Sorted binary tree ALL RGB.svg | Public domain | pass | user:Nomen4Omen | wikipedia:Tree_traversal |
 | Sorted binary tree breadth-first traversal.svg | CC0 | pass | Rory O'Kane | wikipedia:Tree_traversal |
+| Sorting heapsort anim.gif | CC BY-SA 3.0 | pass | de:User:RolandH | wikipedia:Heapsort |
 | Sorting playing cards using stable sort.svg | CC0 | pass | User:Dcoetzee, User:WDGraham | wikipedia:Sorting_algorithm |
 | Sorting stability playing cards.svg | CC0 | pass | Dcoetzee, WDGraham | wikipedia:Sorting_algorithm |
+| Sprite rendering by binary image mask.png | Public domain | pass | Ricardo Cancho Niemietz (talk) | wikipedia:Mask_(computing) |
 | Stack Pop Operation-en.gif | CC BY-SA 4.0 | pass | Michel Bakni | wikipedia:Stack_(abstract_data_type) |
 | Stack Push operation-en.gif | CC BY-SA 4.0 | pass | Michel Bakni | wikipedia:Stack_(abstract_data_type) |
 | Stack UML class diagram.svg | CC BY-SA 4.0 | pass | Michel Bakni | wikipedia:Stack_(abstract_data_type) |
@@ -636,8 +694,11 @@ but they depend on the MIT ruling.
 | Symmetric group 4; Cayley graph 4,9 (adjacency matrix).svg | Public domain | pass | WatchduckYou can name the author as "T.  | wikipedia:Adjacency_matrix |
 | Symmetric group 4; Cayley graph 4,9; numbers.svg | Public domain | pass | original: Fool (talk) derivative: Watchd | wikipedia:Adjacency_matrix |
 | Tallrik - Ystad-2018.jpg | CC BY 3.0 | pass | Foto: Jonn Leffmann | wikipedia:Stack_(abstract_data_type) |
+| Ternary tree 2.png | CC BY 4.0 | pass | - | wikipedia:M-ary_tree |
 | Text document with red question mark.svg | Public domain | pass | Benjamin D. Esham (bdesham) | wikipedia:Analysis_of_algorithms; wikipedia:Linked_list; wikipedia:Queue_(abstract_data_type) |
 | Tic-tac-toe-game-tree.svg | CC BY-SA 3.0 | pass | Traced by User:Stannered, original by en | wikipedia:Breadth-first_search |
+| Tortoise and hare algorithm.svg | CC BY 3.0 | pass | David Eppstein | wikipedia:Cycle_detection |
+| Tower of Hanoi 4.gif | CC BY-SA 2.5 | pass | André Karwath aka Aka | wikipedia:Dynamic_programming |
 | Tower of Hanoi.jpeg | CC BY-SA 3.0 | pass | - | wikipedia:Recursion_(computer_science); wikipedia:Dynamic_programming; wikibooks:Data_Structures/Stacks_and_Queues |
 | Towerofhanoi.jpg | CC BY-SA 3.0 | pass | PranavAmbhore | wikibooks:Data_Structures/Stacks_and_Queues |
 | Towersofhanoi1.pdf | CC BY-SA 3.0 | pass | Nipunbayas | wikibooks:Data_Structures/Stacks_and_Queues |
@@ -658,6 +719,7 @@ but they depend on the MIT ruling.
 | Undirected.svg | Public domain | pass | - | wikibooks:Data_Structures/Graphs |
 | Uniform binary search.svg | CC0 | pass | Esquivalience | wikipedia:Binary_search |
 | Waldburg Ahnentafel.jpg | Public domain | pass | AnonymousUnknown author | wikipedia:Binary_tree |
+| Weighted Interval Scheduling 2.jpg | CC BY-SA 4.0 | pass | ItalianLandscapeArchitect | wikipedia:Interval_scheduling |
 | Wikibooks-logo.svg | Public domain | pass | Bastique, Ramac et al. | wikipedia:Big_O_notation; wikipedia:Array_(data_structure); wikipedia:Stack_(abstract_data_type); wikipedia:Hash_table; wikipedia:AVL_tree;  |
 | Wikisource-logo.svg | CC BY-SA 3.0 | pass | Nicholas Moreau | wikipedia:Linked_list |
 | Wikiversity logo 2017.svg | CC BY-SA 3.0 | pass | Julian Herzog | wikipedia:Big_O_notation |
