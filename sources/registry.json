@@ -1656,6 +1656,141 @@
       "locator": "pythonds:BasicDS/<rst stem>[#exc-<n>], e.g. pythonds:BasicDS/Exercises#exc-19",
       "nc": true,
       "added_by": "ch03 finder 2026-11-08"
+    },
+    {
+      "id": "eh-dsa",
+      "title": "The Engineering Handbook: DSA Handbook (content/dsa)",
+      "authors": [
+        "Aayush Soni (handbook-academy)"
+      ],
+      "url": "https://github.com/handbook-academy/engineering-handbook",
+      "pin": "730007f6f254b2e180c952069f4a7cfd4d89a168 (12 chapters copied, sparse)",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/handbook-academy/engineering-handbook/blob/main/LICENSE",
+        "quote": "Attribution-ShareAlike 4.0 International",
+        "also": "README.md: \"Everything is licensed CC BY-SA 4.0, so the text stays free to read, share and adapt.\""
+      },
+      "use": "prose: interview-pattern chapters (two pointers opposite/same direction, fixed and variable sliding windows, prefix sums incl. 2D and difference arrays, prefix sum + hash, linked-list fundamentals with sentinel, cycle detection, merging lists, arrays, dynamic-array internals, array vs linked list). LeetCode statements and sample inputs it quotes stay link-only. Provenance note for the judge/user: no AI mark found in commits, front matter or README (so the current version is used per METHOD.md 6.1), but ~1,236 files appeared between 2026-05-11 and 2026-10-20 from one author.",
+      "format": "Markdown with YAML front matter; code tabs in Python, Java, C++, Go",
+      "locator": "eh-dsa:<part>/<chapter stem>#<heading>, e.g. eh-dsa:part-3-pointers-window-prefix/03-sliding-window-variable#The pattern",
+      "added_by": "ch02 finder 2026-11-08"
+    },
+    {
+      "id": "algowiki",
+      "title": "AlgoWiki (wiki dedicated to competitive programming)",
+      "authors": [
+        "Bjarki Ágúst Guðmundsson (GitHub: SuprDewd)",
+        "AlgoWiki contributors"
+      ],
+      "url": "https://github.com/AlgoWiki/AlgoWiki",
+      "pin": "per page: wiki/Sliding window technique.md at a3d8448 (last version before the AI-marked commits ab1a573 and a9aad3d, authored 'Claude <noreply@anthropic.com>'); repo HEAD 50e1f96",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/AlgoWiki/AlgoWiki/blob/master/LICENSE",
+        "quote": "Attribution-ShareAlike 4.0 International",
+        "also": "README.adoc badge: \"CC BY SA License\" linking https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "use": "prose: Sliding window technique (variable and fixed windows, sliding min/max, two pointers vs sliding window). Version rule applied per page: the current page is AI-marked, so a3d8448 is used. Note: a3d8448 was committed on 2026-06-06 by the human maintainer three days after the repo added an AI agent skill 'flesh-out-wiki-page' (52214e6); it is not itself marked. Problem links in it (CSES, Codeforces) are link-only.",
+      "format": "Markdown (GFM + KaTeX), one file per page under wiki/",
+      "locator": "algowiki:<page title>@<commit>#<heading>, e.g. algowiki:Sliding window technique@a3d8448#Variable-size windows",
+      "added_by": "ch02 finder 2026-11-08"
+    },
+    {
+      "id": "lt-morelli",
+      "title": "Java, Java, Java: Object-Oriented Programming (3rd ed., LibreTexts), chapters 9 and 16",
+      "authors": [
+        "Ralph Morelli",
+        "Ralph Walde"
+      ],
+      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_Languages/Java_Java_Java_-_Object-Oriented_Programming_(Morelli_and_Walde)",
+      "pin": "pages fetched 2026-11-08 (16.2 last modified 27 Sep 2021; 16.3 28 Sep 2021; 9.1 20 Sep 2021)",
+      "licence": "CC BY 4.0 (per page; some stub pages are 'not declared')",
+      "licence_evidence": {
+        "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_Languages/Java_Java_Java_-_Object-Oriented_Programming_(Morelli_and_Walde)/16%3A_Data_Structures-_Lists_Stacks_and_Queues/16.02%3A_The_Linked_List_Data_Structure",
+        "quote": "This page titled 16.2: The Linked List Data Structure was last modified on Mon, 27 Sep 2021 21:59:55 GMT and is shared under a CC BY 4.0 license and was authored, remixed, and/or curated by Ralph Morelli and Ralph Wade"
+      },
+      "use": "prose (Java): 9.1 (whole chapter 9: one-dimensional and two-dimensional arrays, java.util.Vector), 16.2 linked list data structure, 16.3 List ADT. 16.1, 16.9 (chapter summary and exercises), 9.2, 9.7, 9.10 say 'not declared': link-only. Screenshot figures carry no per-figure credit.",
+      "format": "LibreTexts HTML (text converted from the PDF edition; code shown inline)",
+      "locator": "lt-morelli:<page number>#<heading>, e.g. lt-morelli:16.2#Removing a Node from a List",
+      "added_by": "ch02 finder 2026-11-08"
+    },
+    {
+      "id": "lt-busbee",
+      "title": "Programming Fundamentals (LibreTexts), chapter 6 Arrays and Lists",
+      "authors": [
+        "Kenneth Leroy Busbee",
+        "Dave Braunschweig"
+      ],
+      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Programming_Fundamentals_(Busbee_and_Braunschweig)/06%3A_Arrays_and_Lists",
+      "pin": "pages fetched 2026-11-08",
+      "licence": "CC BY-SA 4.0 (per page)",
+      "licence_evidence": {
+        "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Programming_Fundamentals_(Busbee_and_Braunschweig)/06%3A_Arrays_and_Lists/6.01%3A_Arrays_and_Lists",
+        "quote": "6.1: Arrays and Lists is shared under a CC BY-SA 4.0 license and was authored, remixed, and/or curated by LibreTexts."
+      },
+      "use": "short prose on arrays, index notation, multidimensional and dynamic arrays (Overview paragraphs quote Wikipedia); 6.17 practice questions (true/false with answers, short answer) as written exercises",
+      "format": "LibreTexts HTML",
+      "locator": "lt-busbee:<page number>#<heading>, e.g. lt-busbee:6.02#Discussion",
+      "added_by": "ch02 finder 2026-11-08"
+    },
+    {
+      "id": "openintro-stats",
+      "title": "OpenIntro Statistics (4th ed. source), chapter 3 Probability",
+      "authors": [
+        "David M. Diez",
+        "Mine Çetinkaya-Rundel",
+        "Christopher D. Barr"
+      ],
+      "url": "https://github.com/OpenIntroStat/openintro-statistics",
+      "pin": "fee25091fb24e89c36296fd67c48c1fcf7a93b6e (2026-02-24); only LICENSE.md, README.md and ch_probability/TeX cached",
+      "licence": "CC BY-SA 3.0",
+      "licence_evidence": {
+        "url": "https://github.com/OpenIntroStat/openintro-statistics/blob/master/LICENSE.md",
+        "quote": "OpenIntro Statistics is available at http://www.openintro.org under a Creative Commons Attribution-ShareAlike 3.0 Unported license (CC BY-SA)",
+        "also": "LICENSE.md adds guidelines: derivatives must not use 'OpenIntro' in the title; photographs by third parties need their own attribution; the CC BY-SA licence supersedes the guidelines."
+      },
+      "use": "prose and written exercises (unkeyed in the source; 47 end-of-section \\eoce items) for basic probability, disjoint events, independence, conditional probability, random variables, expectation and linear combinations (ch. 3). Statistics framing; no code.",
+      "format": "LaTeX (ch_probability/TeX/ch_probability.tex holds the text; *_.tex files hold exercises)",
+      "locator": "openintro-stats:<section number>.<subsection number> as printed in ch. 3, e.g. openintro-stats:3.2.3 (Defining conditional probability); exercises openintro-stats:<tex stem>#<eoce label>, e.g. openintro-stats:random_variables#ace_of_clubs",
+      "added_by": "ch01 finder 2026-11-08"
+    },
+    {
+      "id": "aspnes-469",
+      "title": "Notes on Randomized Algorithms (CPSC 469/569)",
+      "authors": [
+        "James Aspnes"
+      ],
+      "url": "https://www.cs.yale.edu/homes/aspnes/classes/469/notes.pdf",
+      "pin": "PDF fetched 2026-11-08 (copyright line 2009–2026; assignments dated Fall 2026)",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://www.cs.yale.edu/homes/aspnes/classes/469/notes.pdf",
+        "quote": "Copyright © 2009–2026 by James Aspnes. Distributed under a Creative Commons Attribution-ShareAlike 4.0 International license: https://creativecommons.org/licenses/by-sa/4.0/."
+      },
+      "use": "prose: probability spaces (2.1), conditional probability and independence (2.3), random variables (3.1-3.3), expectation and linearity of expectation (3.4, 3.4.1), geometric random variables (3.6.2); later chapters (hashing, skip lists, treaps) for other chapters. Appendices A-B hold assignments with solutions (not yet classified). No AI mark found in the text.",
+      "format": "PDF (text via pdftotext -layout in notes469.txt)",
+      "locator": "aspnes-469:<section number>, e.g. aspnes-469:3.4.1",
+      "added_by": "ch01 finder 2026-11-08"
+    },
+    {
+      "id": "openstax-introcs-ex",
+      "title": "OpenStax Introduction to Computer Science, chapter 3 end-of-chapter exercises (openstax.org)",
+      "authors": [
+        "OpenStax (Rice University)"
+      ],
+      "url": "https://openstax.org/books/introduction-computer-science/pages/3-review-questions",
+      "pin": "pages fetched 2026-11-08 (book archive version 20260604.144757, content version 8440644, revised 2026-04-23)",
+      "licence": "unclear: openstax.org states CC BY-NC-SA 4.0 for the book, the LibreTexts copy (openstax-introcs) states CC BY 4.0, figure captions on both say CC BY 4.0; openstax.org also forbids ingestion into LLMs or generative AI offerings without written permission",
+      "licence_evidence": {
+        "url": "https://openstax.org/books/introduction-computer-science/pages/3-review-questions",
+        "quote": "Textbook content produced by OpenStax is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike License.",
+        "also": "Same page: \"This book may not be used in the training of large language models or otherwise be ingested into large language models or generative AI offerings without OpenStax's prior written permission.\" Archive JSON: \"license\":{\"url\":\"http://creativecommons.org/licenses/by-nc-sa/4.0/\"}."
+      },
+      "use": "link-only pending a ruling (licence conflict plus the AI-ingestion notice). Would otherwise be NC exercise cards: 18 review (multiple choice), 18 conceptual, 5 practice, 10 problem set A, 15 problem set B, 10 thought-provoker questions on algorithms, ADTs, analysis and Big O. The same conflict bears on the registered openstax-introcs prose row.",
+      "format": "HTML pages; tag-stripped text cached as 3-*.txt",
+      "locator": "openstax-introcs-ex:<page stem>#<question number>, e.g. openstax-introcs-ex:3-conceptual-questions#1",
+      "added_by": "ch01 finder 2026-11-08"
     }
   ]
 }
