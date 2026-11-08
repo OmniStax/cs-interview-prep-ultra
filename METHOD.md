@@ -1,0 +1,488 @@
+# Method proposal: one OmniBook from three CS sources
+
+Status: draft for iteration, 2026-11-08. Nothing has been built. This file
+comes before the book's `RULES.md` and `COLOR.md`, which the full-book pass
+(root rule 18) writes once we agree on what is below.
+
+Every OmniStax book so far is one open textbook, transformed with its words
+kept. This one is different in three ways, and each section below follows
+from them:
+
+1. **Several sources, overlapping.** BFS is taught by Coding Interview
+   University's links, by cp-algorithms, and by any textbook we bring in.
+   "Keep the book's words" has to become "keep each source's words, block by
+   block, and say which source each block came from".
+2. **The subject runs.** An algorithm is a procedure with a state that
+   changes over time. A physics figure has to simulate its world. A DSA figure
+   can run the actual code. So the figure, the code and the exercise should be
+   one object.
+3. **Each source is a different kind of material.** CIU is a syllabus of
+   links, cp-algorithms is a set of articles, and the Alex Xu book is a
+   copyrighted commercial book (see §0).
+
+---
+
+## 0. Licences first, because one source can't be used
+
+| Source | What it is | Licence | Usable? |
+|---|---|---|---|
+| jwasham/coding-interview-university | A study plan: topic checklist in interview order, each topic a list of links (mostly YouTube, Coursera, blogs) | CC BY-SA 4.0 (LICENSE.txt) | Yes, but there is little prose to keep. Its value is the **order** and the **link lists**. The linked videos are other people's work and can only be linked. |
+| cp-algorithms/cp-algorithms | ~163 Markdown articles under `src/`, 10 categories (Graphs 47, Algebra 29, Geometry 26, Misc 13, Strings 12, Data Structures 10, Combinatorics 10, DP 7, Numerical 5, Linear Algebra 4), C++ code, practice-problem links at the end | CC BY-SA 4.0 (LICENSE) | Yes, fully. This is the only source of real prose among the three. |
+| *System Design Interview* by Alex Xu (PDF in aasthas2022/SDE-Interview-and-Prep-Roadmap) | A commercial book (Byte Code LLC / ByteByteGo) | All rights reserved. The hosting repo has no LICENSE and says nothing about permission. | **No.** The PDF there is almost certainly an unauthorised copy. Transforming it and publishing to omnistax.org would distribute a copyrighted book. We shouldn't even use it as a private working source in this repo. |
+
+**What replaces Alex Xu.** Two options; I recommend doing both:
+
+- **Text spine: donnemartin/system-design-primer** (CC BY 4.0). It has the
+  same arc as Xu's chapter 1 (scaling from one server to millions of users:
+  DNS, CDN, load balancers, reverse proxies, application layer, SQL vs NoSQL,
+  caching, async and queues, communication, security, back-of-envelope
+  numbers). It also has worked designs that overlap with Xu's case studies:
+  Pastebin/bit.ly (the URL shortener), Twitter timeline (news feed), web
+  crawler, key-value cache, social graph, sales rank, scaling on AWS.
+- **Syllabus only from Xu.** A list of topics ("design a rate limiter",
+  "consistent hashing", "design a unique ID generator") is not protected
+  expression, so we can use Xu's table of contents as a checklist of what
+  interviews expect. For case studies the primer lacks (rate limiter,
+  consistent hashing, unique IDs, notification system, chat, search
+  autocomplete, YouTube, Google Drive), the prose would be AI-written and
+  AI-marked (root rule 13). That breaks the usual OmniStax guarantee that
+  the words are the source's. The user should decide this case by case
+  (§4.4). Never paraphrase Xu's pages; write from the general literature.
+
+**The DSA basics have the same gap.** CIU is links, and cp-algorithms is
+advanced (it barely explains a linked list or a hash table). The core topics
+need an open textbook. Candidates, licences to confirm in exploration:
+
+- *Open Data Structures*, Pat Morin (CC BY): arrays, lists, hash tables,
+  BSTs, heaps, sorting, graphs. It has exercises, unkeyed.
+- *Algorithms*, Jeff Erickson (CC BY 4.0): recursion, backtracking, DP,
+  greedy, graph algorithms, written for intuition. It has hundreds of
+  exercises, mostly unkeyed.
+- Wikipedia (CC BY-SA) as the fallback for small gaps (endianness, Unicode).
+
+**Combined licence:** CC BY-SA 4.0 for the whole book. BY content can be
+adapted into a BY-SA work, and BY-SA from CIU and cp-algorithms requires
+it. Every block names its source in the footer attribution.
+
+**Exercises can't be copied from the practice links.** LeetCode, Codeforces
+and SPOJ statements are copyrighted, so they stay links. Exercises come from
+Erickson and ODS (unkeyed, so they need rule 13's choice), and from
+AI-written code exercises whose tests are the key (§1.2).
+
+---
+
+## 1. Tools to unlock
+
+What the platform has today: exercise answers of types `number`, `multi`,
+`choice` and `open`; the figlib drawing layer; derivations; Pyodide already
+loaded in a worker for the CAS (`src/lib/cas/worker.ts`); CodeMirror already
+in the notes editor. So a code runner costs little. These are the additions,
+in priority order.
+
+### 1.1 The trace engine (the foundation for everything else)
+
+One mechanism that turns "run this algorithm on this input" into a list of
+states: `trace = [{line, vars, event}]`. Events are things like
+`compare(i,j)`, `swap(i,j)`, `push(v)`, `visit(u)` and `relax(u,v)`.
+
+- In **figures**, the figure's own JS implementation emits the events,
+  each tagged with the line number of the code shown on the page. Figures
+  stay deterministic and fast, and work offline before Pyodide loads.
+- In **exercises**, the reader's Python runs in Pyodide under
+  `sys.settrace`, which records the same `{line, vars}` states. So the
+  reader's own code can drive the same figure. "Run my solution and watch
+  it" is the moment where the exercise and the figure become one object.
+- A trace is a pure array, so the transport (play, scrub, step dots)
+  reaches exact states in both directions, as manim-style item 6 already
+  requires of derivations.
+
+### 1.2 A `code` answer type, checked against tests
+
+```
+{ type: "code", lang: "python", signature: "def search(a: list[int], x: int) -> int",
+  starter, tests: [{args, expect, visible}], reference, bound?: "n log n",
+  hint?, solution?, generated_by }
+```
+
+- **Visible tests** run on "Run", **hidden tests** on "Submit". Passing
+  every hidden test is the correct evidence of rule 20. Partial passes give
+  no evidence. They show which test failed and on what input.
+- **Complexity check, deterministic.** Timing in a browser is noisy, so
+  count executed lines instead: `sys.settrace` line events on inputs of
+  size n, 2n, 4n, 8n, then fit the exponent. The verdict reads like *"Correct.
+  Your solution makes ~n² steps; this problem wants n log n."* This catches
+  the most common interview failure, the correct but too-slow answer, with
+  no AI grader. One caveat: builtins (`sorted`, `in` on a list) count as a
+  single line. The check can patch the few that matter (`list.__contains__`,
+  `list.index`, `list.insert`) to count their real cost.
+- **The key is the reference solution.** Before a code exercise ships, the
+  build runs `reference` against every test and the complexity check.
+  That's the deterministic check root rule 13 asks of an AI solution.
+- **Language.** Python first, because Pyodide is already there and most
+  interview candidates use it. C++ needs a wasm clang (~30 MB) or a limited
+  interpreter. That's phase 2, and it matters for the cp-algorithms part.
+
+### 1.3 Checkable answer types that cost no code
+
+- **`sequence`**: an exact ordered answer, such as a BFS visit order, the
+  array after the second pass of insertion sort, or the order of pops from
+  a heap. The reader types it or clicks it out on a figure.
+- **`pick`**: click the thing on a figure in a given state, such as the
+  next node Dijkstra settles, the bucket key 17 lands in, the bottleneck in
+  an architecture. The answer is an id in the figure's scene, checked
+  exactly.
+- **`parsons`**: drag shuffled lines of a correct solution into order,
+  indentation included. It is well studied for novice programmers and
+  tests Understand without the friction of typing. The answer is the
+  permutation.
+- **`estimate`**: a `number` checked in log space, "within a factor of 2"
+  (or 10), for back-of-envelope system design questions ("how many TB a
+  year?"). The existing `tol` is relative and can't express this.
+- **`rubric`** (system design): an `open` answer with a checklist the
+  reader ticks against their own design ("named the read/write ratio",
+  "put a cache in front of the hot reads", "said what happens when a shard
+  dies"). It is self-graded like `open` and gives no evidence until we have
+  AI grading (README roadmap item 4).
+
+### 1.4 New figlib primitives
+
+DSA: `strip` (array cells with indices), `pointer` (a labelled arrow under
+a cell, coloured as its referent), `region` (a shaded span between two
+pointers: the invariant), `nodes`/`links` (linked list), `tree` (tidy
+layout, Reingold–Tilford, stable under insert so nodes don't jump),
+`graph` (fixed coordinates from the source, never force-directed at
+runtime, because a layout that moves while you read it is extraneous
+load), `grid` (DP table with dependency arrows), `stack`/`queue`/`heap`
+(the heap shown as tree and array together), `buckets` (hash table),
+`bits`, and a `code` panel with the current line marked.
+
+System design: `component(kind)` boxes (client, DNS, CDN, LB, server, cache,
+DB primary/replica, queue, worker, object store) with one icon per kind,
+`edge` with animated request packets, `meter` (utilisation on a component),
+and `ring` (consistent hashing).
+
+---
+
+## 2. Figures
+
+### 2.1 What lowers friction in a DSA figure
+
+Physics figures win by putting the equation, its symbols and the scene
+in one place. DSA has the same opportunity, and more of it, because the
+"equation" is code that literally runs. Seven commitments:
+
+1. **Code and state in lockstep.** The code panel sits beside the drawing
+   and one transport drives both. The current line is marked, and every
+   variable the drawing shows (`lo`, `mid`, `hi`) wears the same colour in
+   the code, the prose and the drawing. The reader never has to work out
+   which arrow is `j`.
+2. **Draw the invariant, not just the motion.** Animated sorting bars
+   show that things move. They don't show why the algorithm is correct.
+   Every loop figure shades its invariant regions: the sorted prefix in
+   insertion sort; the `[lo, hi]` window that must hold `x` if anything
+   does; Lomuto's `< p | ≥ p | unseen` bands; Dijkstra's settled set.
+   This is the DSA equivalent of the readout that states the relation
+   with live numbers (rule 24.7). The readout states the invariant:
+   *"a[0..i) is sorted · i = 4"*.
+3. **One change per step.** A step moves one thing (a swap, one pointer,
+   one relaxation). A swap morphs (manim transition). It doesn't jump.
+4. **A cost counter is always on.** It reads *"comparisons 3 ≤ ⌊log₂ n⌋ + 1 = 4"*
+   or *"comparisons 21 of n(n−1)/2 = 28"*, so the bound is checked against the
+   run in front of you.
+5. **Input is a choice, and the bad case is one of the choices.** Presets
+   are `random | sorted | reversed | adversarial`, plus an editable input.
+   The worst case is where most interview complexity questions come from,
+   so it is never more than one click away.
+6. **Pause at the decision, and let the reader predict it.** At each
+   branch the figure can stop and ask "which side does `mid` move to?" as
+   an inline Try It, a `pick` with no persisted evidence (rule 20). This is
+   retrieval practice inside the figure.
+7. **Connect one run to the growth curve.** An `n` slider replays the
+   count on a log–log plot beside the bound. That one figure ties a single
+   trace to asymptotic analysis.
+
+### 2.2 First example figures (DSA), as plan lines
+
+```
+sim-binary-search · Sim · binary-search, loop-invariant · invariant made visible; variation by input · arrows: kinematic (lo, mid, hi move) · moving: one pointer per step · choice: input (random sorted | x absent | x at edge), slider: x (key), n (size, 8..64) · headline: "x is in a[lo..hi] if it is anywhere" · graph: none; readout "lo=3 mid=5 hi=7 · comparisons 2 ≤ ⌊log₂ n⌋+1 = 4" · 2D
+```
+The window `[lo, hi]` is a shaded region in `index`'s tint, and the part
+discarded each step fades to ink. The classic off-by-one becomes visible
+in a variant toggle, `hi = mid` vs `hi = mid − 1` under `while lo < hi` vs
+`lo ≤ hi`. One wrong combination loops forever on the "x at edge" input,
+and the figure shows the pointers frozen. People memorise that bug. Here
+they can see it.
+
+```
+sim-partition · Sim · quicksort, partition-lomuto, partition-hoare · invariant made visible; variation by scheme and input · arrows: kinematic (i, j; swapped cells) · moving · choice: scheme (Lomuto | Hoare), input (random | sorted | all equal) · headline: the scheme's invariant · graph: beside, recursion-depth bar · 2D
+```
+"All equal" plus Lomuto shows the n² recursion depth. That's the real
+reason three-way partitioning exists, and it takes one click to see.
+
+```
+sim-dijkstra · Sim · dijkstra, priority-queue, relaxation · flow by animation; the heap and the graph side by side · arrows: kinematic (relax along an edge) · moving · choice: graph (book's example | negative edge) · headline: "settled nodes never change" · graph: none; heap drawn as tree+array beside the graph · 2D
+```
+On "negative edge", a settled node's distance is shown to be wrong,
+flagged in `PAL.bad`. The invariant breaks on screen.
+
+```
+sim-lcs-table · Sim · dynamic-programming, lcs · the table's dependency order made visible · arrows: symbolic (dependency arrows into a cell) · moving: one cell per step, then the traceback · choice: strings (book's | user's) · headline: "each cell needs only its three neighbours" · 2D
+```
+Hovering a cell shows its three dependencies and the subproblem it
+stands for (`LCS("ABC", "AB")`). That's the "what does dp[i][j] mean"
+sentence, the hardest part of DP to learn, attached to every cell.
+
+```
+sim-dsu · Sim · disjoint-set-union, path-compression, union-by-rank (cp-algorithms) · variation by choice · arrows: kinematic (parent pointers re-aimed) · moving · choice: heuristics (none | rank | compression | both) · readout: tree height and total find steps · 2D
+```
+
+### 2.3 System design: should we show it step by step? Yes, with one change
+
+Primer chapters and Xu-style case studies are incremental by nature:
+one server, then a load balancer, then a replica, then a cache, then a CDN,
+then stateless web tier, then a queue, then shards. Each step is a **diff to
+one architecture graph**. So the figure is that graph, pinned, and the steps
+are states of it:
+
+- **One pinned diagram per chapter, prose scrolls past it.** The diagram
+  stays on screen while the text scrolls (scrollytelling). Each prose block
+  maps to a step. Entering the block moves the diagram to that state: the
+  new component morphs in, a changed edge is drawn in emphasis, the rest
+  dims.
+- **The change from "show only this step's text":** don't hide the other
+  steps. Show them as one-line collapsed headers above and below the
+  current one. Fully hiding them cuts the reader off from review and
+  skimming, and system design is reread more than it's read. The friction
+  we want to remove is scrolling between a diagram and its paragraph, not
+  the existence of other paragraphs.
+- **Each step says what problem it solves.** The step header is the
+  failure that forced it ("the one database is a single point of
+  failure"). If the reader drags the step back, the figure shows that
+  failure (the request goes red at the dead DB). Interviews reward
+  reasoning about why a component is there, and this teaches it.
+
+Diagrams alone won't do it, though. System design has a few quantitative
+cores, and those get real sims:
+
+```
+sim-queueing · Sim · utilisation, latency, load-balancing · variation by slider · arrows: kinematic (requests) · moving · slider: arrival rate λ (traffic), servers k · headline: "latency explodes near full utilisation" · graph: beside, latency vs ρ with the live point · 2D
+```
+The 1/(1−ρ) curve is the reason for "don't run above 70%". Readout:
+*"ρ = λ/(kμ) = 0.86 · mean wait ≈ 6.1 × service time"* (one server,
+ρ/(1−ρ); with k servers the readout uses Erlang C).
+
+```
+sim-consistent-hashing · Sim · consistent-hashing, virtual-nodes · variation by choice · arrows: kinematic (keys moving to a new owner) · moving on add/remove · choice: add node | remove node, slider: virtual nodes per server (1..200) · readout: "keys moved 9% (ideal 1/N = 10%) · load spread max/mean 1.4" · 2D ring
+```
+Beside it, the same action under `hash mod N` moves ~90% of keys. That
+comparison is the lesson.
+
+Others worth building: token-bucket rate limiter (bucket level, burst
+slider); cache hit ratio vs mean latency; quorum N/R/W with a replica
+killed; replication lag with a read from a stale replica.
+
+**Back-of-envelope estimates are derivations** (root rule 29). Each one
+is a chain of facts ("300M DAU", "2 writes/user/day", "a tweet ≈ 300 B")
+joined into a result ("~180 GB/day"). The derivation graph is a good fit,
+and the facts can carry the primer's latency-numbers table as their
+source.
+
+---
+
+## 3. Colour
+
+Root rule 7's order (fact, convention, referent, category) still holds.
+What changes is where most of the colour goes.
+
+**Hue is for identity. Decoration is for status.** This is the one rule
+I'd make book-wide. In a DSA figure the reader's main question is which
+of two things a given mark is (`i` or `j`? this pointer or that?), and
+that is what hue answers. Status (unvisited, in frontier, settled;
+unsorted, sorted) is a variant of the same kind, so rule 7 already says it
+is decoration: hollow, dashed ring, filled. Most visualisers do the
+opposite (frontier yellow, visited green). With six statuses in six hues
+there is no hue left for identity, and the reader has to keep a legend in
+their head.
+
+**No syntax highlighting.** Keyword colouring is the extraneous colour a
+programmer is so used to that they stop seeing it. In this book's code
+panels, keywords are in ink at medium weight. Only the variables the
+figure draws are coloured, each as its referent, so colour in code means
+the same as colour in the figure. A reader who wants their editor theme
+can turn it on per book (a highlights flag, `syntax`).
+
+**Categories (types), DSA**, kept few:
+
+| type | what it covers | why it's a type |
+|---|---|---|
+| `index` | positions into a structure: i, j, lo, hi, a pointer, a node reference | it gets its own type in any typed language and is the most confused thing in the subject |
+| `key` | the values stored and compared | "compare keys, move indices": the two are confused constantly (`a[i]` vs `i`) |
+| `cost` | step counts, T(n), O(·), the counter | complexity is a kind of quantity with its own algebra |
+| `weight` | edge weights, distances, dist[] | graphs need distance kept apart from index and key |
+| `size` | n, m, capacity, height | the variable of every bound |
+
+The `index` vs `key` split lets the page colour `a[i]`: `i` in index colour,
+the cell's value in key colour. That one distinction resolves a large share
+of beginner bugs.
+
+**Referents.** In an algorithm figure the referents are the variables of
+that code (lo, mid, hi; slow and fast; u and v), each its own colour by
+rule 7's smart assignment and kept the same in code, prose and drawing. A
+variable's letter is its referent colour, so these follow the
+referent-wins order. Elements of an input array are usually unnamed
+(`F.cat`), unless the text points at one ("the pivot, 5").
+
+**Categories, system design:**
+
+| type | covers |
+|---|---|
+| `stateless` | web/app servers, workers: scale by adding copies |
+| `stateful` | databases, caches, object stores: where data lives and scaling is hard |
+| `async` | queues, streams, pub/sub |
+| `traffic` | requests, QPS, the packets on the wire |
+| `latency` | time per request, p99 |
+| `bytes` | storage, bandwidth |
+
+Stateless vs stateful is the central distinction of the subject. When the
+two are coloured apart in every diagram, the reader sees the difference
+before reading the explanation. In architecture diagrams, components are
+coloured by kind (category) and named by label. A specific component the
+text keeps pointing at ("the primary", "replica 2") is a referent.
+
+**Conventions and facts.** Few, but real: red-black tree nodes are
+literally red and black (a convention, painted as such, with the type hues
+kept away from that red); heatmaps of key load or cache hotness are one
+false-colour scale with a legend.
+
+**Highlights.** Words on for both halves: "invariant", "amortised",
+"sharding" and "quorum" are vocabulary the reader is here to learn.
+Symbols on. Underlines on.
+
+---
+
+## 4. Organisation and pipeline
+
+I agree with your order (ToC, then concept map, then fill chapters) with
+one change: **build the concept map before the ToC, and derive the ToC
+from it.** With three overlapping sources, a ToC made by merging three
+ToCs goes wrong in predictable ways: BFS ends up in three places, and the
+order follows whichever source was merged first. A DAG settles both,
+because prerequisites force the order and each concept gets one home.
+
+### 4.1 Phases
+
+0. **Corpus** (licences settled per §0). Clone cp-algorithms and the
+   primer, convert Erickson/ODS (LaTeX sources are public), snapshot CIU's
+   README. Each source gets a `sources/<id>/` folder, a converter in
+   `tools/`, and a stable locator scheme: `cpa:graph/dijkstra.md#h2-3`,
+   `erickson:ch08§3`, `ciu:#trees`.
+1. **Inventory per source.** For each source separately, list its
+   concepts (root rule 6's five kinds) with locators. A source's list is
+   facts about that source. No merging yet, which makes the merge
+   reviewable.
+2. **Align and merge into one DAG.** Cluster same-concept rows across
+   sources and pick a **home** for each concept with a rubric: open licence
+   OK → the treatment that states the idea most completely → the one with
+   exercises → the one closer to interview level. Other treatments become
+   candidates for §5. Hasse-reduce. **Checkpoint: you review the DAG.**
+3. **ToC from the DAG.** Parts, then chapters as connected clusters in
+   topological order, then sections as concept homes. Tag every section
+   by tier: `core` (CIU's required list), `stretch` (CIU's optional list,
+   common cp-algorithms topics like DSU, segment tree, KMP), `contest`
+   (most of cp-algorithms' Algebra, Geometry and Numerical). **Checkpoint.**
+4. **Per section** (root rules 2 to 29), with two new rules below.
+
+### 4.2 A first ToC to react to
+
+- **Part I · Foundations** (ODS/Erickson, ordered by CIU): complexity and
+  Big-O; arrays and dynamic arrays (amortised doubling); linked lists;
+  stacks and queues; hash tables; binary search; bit manipulation.
+- **Part II · Trees and graphs**: trees and traversals; BSTs; heaps and
+  priority queues; balanced trees (AVL/red-black, intuition level); tries;
+  graph representations; BFS/DFS; topological sort; shortest paths;
+  minimum spanning trees.
+- **Part III · Paradigms**: recursion and backtracking; divide and conquer
+  and sorting; greedy; dynamic programming; two pointers and sliding
+  window (CIU has no section for these, but they are core interview
+  patterns; cp-algorithms touches them).
+- **Part IV · Beyond the interview** (cp-algorithms, `stretch` then
+  `contest`): DSU, Fenwick and segment trees, sparse tables, string
+  algorithms (prefix function, Z, hashing, suffix structures), number
+  theory, advanced graphs (flows, SCC, bridges, LCA), geometry.
+- **Part V · System design** (primer spine): scaling step by step;
+  building blocks (DNS, CDN, LB, cache, DB, replication, sharding, queues,
+  consistent hashing); estimation; case studies.
+- **Appendix**: CIU's "Getting the Job" (interview process, what to
+  practise) as a reading page, and CIU's daily plan as a checklist driven
+  by the concept DAG's attainment, not a static list.
+
+### 4.3 Two root rules this book has to bend
+
+- **"Keep the book's words"** becomes **keep each block's source words, with
+  provenance**. Every `<section>` block in `text.html` carries
+  `data-source` and a locator. Bridging sentences between two sources'
+  blocks are OmniStax's, AI-marked. A section shouldn't quilt more than
+  two sources in its main flow (see §5).
+- **"Don't fold sections together"** (rule 11) assumes the source's
+  sections are the units. Here the unit is the concept home from §4.1.
+  A cp-algorithms article that is mostly a duplicate of a Part II home is
+  folded into that home as a depth block and isn't a page of its own. Fold
+  it only when the article really is a duplicate. Each fold is listed in
+  the chapter's `exploration.md`.
+
+### 4.4 Decisions for you
+
+1. Replace Alex Xu with the primer + AI-written case studies for the gaps,
+   or primer only (fewer case studies, all source prose)?
+2. Bring in Erickson and ODS for Part I–III prose? (Without them Parts I–III
+   are mostly AI-written, since CIU has no prose.)
+3. Code language: Python executable plus C++ shown verbatim where
+   cp-algorithms prints it, with an AI-translated Python twin marked as
+   such? Or C++ executable from the start (heavier)?
+4. Exercises: AI-written code exercises with tests as the key (the
+   reference passes every test before shipping) as the main practice
+   supply for Parts I–III?
+5. How far into cp-algorithms: all ~163 articles, or `core` + `stretch`
+   first with `contest` later?
+
+---
+
+## 5. Multiple explainers for one concept
+
+Be opinionated in the reading flow, and make the alternatives easy to
+reach when they help. Concretely:
+
+- **One home explanation per concept.** The main flow teaches it once, in
+  one voice. CIU lists six videos for heaps because it is a reference, and
+  the reader of a reference has to choose. We do the choosing.
+- **At most one "Another angle" block, and only when it changes the
+  representation.** The test: does the second treatment use a different
+  picture or model, or just different words? A different model qualifies:
+  recursion tree vs substitution for a recurrence; Hoare vs Lomuto;
+  memoised top-down vs tabulated bottom-up DP; Erickson's "recursion is
+  delegation to the Recursion Fairy" vs the call-stack view. A second
+  wording of the same model doesn't, and is dropped. The block starts
+  collapsed and is labelled by its model ("As a recursion tree"), not by
+  its source.
+- **The alternative shows up when it's needed.** When a reader misses an
+  exercise on concept C, its card offers C's "Another angle" block. A
+  second explanation helps most right after the first one failed. This
+  uses evidence the concept DAG already tracks, and needs no AI.
+- **External links in the side panel, at most three, with what each is
+  good for.** From CIU's lists, curated: one sentence per link saying when
+  to choose it ("12 min, whiteboard derivation of heapify's O(n)"). They
+  live in a References item in the shell, never in the text.
+
+Reasoning: the expert reversal effect cuts both ways. A novice
+overwhelmed by choice gets one path. A reader the path didn't work for
+gets a different model, not the same one again louder.
+
+---
+
+## Next step I'd propose
+
+Build two figures in figlib, `sim-binary-search` and the scaling diagram
+for primer chapter 1 (step-by-step), plus the `code` answer type with the
+line-count complexity check. They test the three new mechanisms (trace,
+invariant shading with referent-coloured code, step-diff diagrams) before
+any pipeline work starts.
