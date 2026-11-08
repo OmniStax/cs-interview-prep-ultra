@@ -52,7 +52,8 @@ need an open textbook. Candidates, licences to confirm in exploration:
   exercises, mostly unkeyed.
 - Wikipedia (CC BY-SA) as the fallback for small gaps (endianness, Unicode).
 
-**Combined licence:** CC BY-SA 4.0 for the whole book. BY content can be
+**Combined licence:** CC BY-SA 4.0 for every unit not built from NC
+sources (see the next paragraphs). BY content can be
 adapted into a BY-SA work, and BY-SA from CIU and cp-algorithms requires
 it. Every block names its source in the footer attribution.
 
@@ -62,9 +63,33 @@ AI-written code exercises in the book (those belong to the app's Exercises
 tab). Code exercises are pulled from open sources first (§6.3). Erickson's
 and ODS's printed exercises are unkeyed, so they need rule 13's choice.
 
-**NC licences are out.** A CC BY-SA book can't include CC BY-NC material.
-That excludes MIT OCW problem sets and lecture transcripts, and Project
-Euler, however good they are. They can still be linked.
+**NC material: licensed per unit, never mixed.** CC BY-SA and CC BY-NC-SA
+both make people keep sharing. They conflict on commercial use. BY-SA
+requires an adaptation to allow commercial use and forbids adding
+restrictions (§3(b) and §2(a)(5)(B) of the licence). NC requires an
+adaptation to forbid commercial use. So no single page can adapt both, and
+no licence satisfies both.
+
+What does work is licensing each **unit** separately: a section or an
+exercise card built only from NC sources is licensed CC BY-NC-SA, one built
+from BY-SA sources is CC BY-SA, and the book is a collection of the two.
+OmniStax is free, so it meets NC's terms as long as it stays
+non-commercial (donations are generally treated as fine). This brings in
+MIT OCW's problem sets **with their solutions**, which are keyed exercises
+and the most valuable thing NC opens up. It also brings in OCW lecture
+notes and Project Euler.
+
+The rules for NC units:
+- An NC source and a BY-SA source never share a page's prose or one
+  exercise.
+- Each unit wears its own licence in its footer and on its card. The
+  schema needs a `licence` field on sections and exercises, since today
+  the footer comes only from `book.json`.
+- OmniStax's own additions (concept map, ToC, figures) are licensed
+  however OmniStax licenses its own work.
+
+This is my reading of the licences, not legal advice. Before an NC unit
+goes onto `main`, the plan should name it and you approve it.
 
 ---
 
@@ -213,8 +238,9 @@ in one place. DSA has the same opportunity, and more of it, because the
    This is the DSA equivalent of the readout that states the relation
    with live numbers (rule 24.7). The readout states the invariant:
    *"a[0..i) is sorted · i = 4"*.
-3. **One change per step.** A step moves one thing (a swap, one pointer,
-   one relaxation). A swap morphs (manim transition). It doesn't jump.
+3. **One idea per step.** A step is one named block of code (§2.3), and
+   the drawing changes once, for that idea (a swap, a pointer advance, one
+   relaxation). A swap morphs (manim transition). It doesn't jump.
 4. **A cost counter is always on.** It reads *"comparisons 3 ≤ ⌊log₂ n⌋ + 1 = 4"*
    or *"comparisons 21 of n(n−1)/2 = 28"*, so the bound is checked against the
    run in front of you.
@@ -265,7 +291,51 @@ sentence, the hardest part of DP to learn, attached to every cell.
 sim-dsu · Sim · disjoint-set-union, path-compression, union-by-rank (cp-algorithms) · variation by choice · arrows: kinematic (parent pointers re-aimed) · moving · choice: heuristics (none | rank | compression | both) · readout: tree height and total find steps · 2D
 ```
 
-### 2.3 System design: should we show it step by step? Yes, with one change
+### 2.3 The figure as a debugger, stepping by block
+
+Whenever an algorithm has code, the default is **code beside the visual**,
+and one step highlights the code that ran and the part of the drawing it
+changed. The plan line has to argue against the pairing, never for it. But
+a line-by-line debugger is the wrong model: `i += 1` is not a thought
+anyone has. The unit of a step is a **block**: a few lines that do one
+thing, with a name for that thing.
+
+- **Blocks are named in the figure's row, not in the code.** The source's
+  code stays verbatim. The figure row lists
+  `blocks: [{id, lines: [a, b], label, touches: [...]}]`:
+  - `label` is the name of the step ("find the smallest remaining",
+    "swap it into place", "relax every edge out of u");
+  - `touches` lists the structures and referents the block reads or
+    writes.
+- **One step runs one block.** The block's lines are marked as one band
+  with its label. On the drawing, what the block touched lights up in the
+  same moment, and its label is the figure's note. Code and picture
+  change together, once per idea.
+- **The transport works like a debugger, by block.** Blocks nest (a loop
+  body is a block made of blocks), so the controls are the debugger's:
+  - *step* runs the next block at the current level;
+  - *step into* opens a block's sub-blocks;
+  - *step out* finishes the enclosing one.
+
+  The default level is the coarsest one that still changes the picture
+  every step. A reader who wants the detail steps into it.
+- **The rest of the debugger maps over too.** The *watch* panel is the
+  readout, with variables in their referent colours. The *call stack* is a
+  stack of frame cards for recursion, each with its own pointers on the
+  drawing. A *breakpoint* is a predict pause (§2.1.6), and *run to*
+  jumps to the next interesting moment (the next settle, the next merge).
+- **Long code is folded.** Over ~25 lines, the panel shows the block
+  outline (labels only) with the current block expanded, so the panel
+  never scrolls. On a narrow pane the code sits above the drawing and
+  shows only the current block.
+- **When code doesn't sit beside the figure:** when the idea is a
+  property, not a procedure (the BST order property, a heap's shape);
+  system design diagrams; and growth plots. The plan line names which
+  case applies.
+
+To be refined as we design the real figures.
+
+### 2.4 System design: should we show it step by step? Yes, with one change
 
 Primer chapters and Xu-style case studies are incremental by nature:
 one server, then a load balancer, then a replica, then a cache, then a CDN,
@@ -466,7 +536,15 @@ because prerequisites force the order and each concept gets one home.
    The judge (§6) picks per topic: lucidity first, then cohesive style,
    then comprehensiveness.
 3. Languages: proposed in §1.5, awaiting your answer.
-4. Code exercises: pulled from open sources first. None are AI-written.
+4. Code exercises: pulled from open sources first. No exercise is
+   AI-written. Tests and reference solutions may be AI-written, and are
+   marked (§6.3).
+6. NC sources: allowed as separately licensed units, never mixed with
+   BY-SA on one page or card (§0).
+7. Judge: lucidity concept by concept, with continuity between neighbours
+   deciding close calls. Only escalated verdicts go to you.
+8. Figures: code beside the visual by default, stepping by named block
+   like a debugger (§2.3).
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
@@ -569,18 +647,23 @@ judge honest:
   Correctness is checked, not assumed: the judge runs the passage's code on
   small inputs, works one example by hand, and checks the stated
   complexity. A clear passage that is wrong loses.
-- **Cohesive style (breaks near-ties).** Lucidity per passage alone would
-  produce a quilt of five voices in one chapter. So the judge works in two
-  rounds:
-  1. **Chapter round:** pick the **primary source** for the chapter, the
-     one that best covers the chapter as a whole.
-  2. **Concept round:** a concept switches to another source only when
-     that source beats the primary clearly on lucidity, or the primary
-     doesn't cover the concept.
+- **Cohesive style (counts when lucidity is close).** Lucidity is judged
+  concept by concept. Each pairwise verdict says "clearly better",
+  "slightly better" or "even".
+  - "Clearly better" decides outright.
+  - Otherwise continuity decides: the candidate whose source is also the
+    source for the concept's neighbours (its prerequisites and dependants
+    in the concept map, and the adjacent sections) wins.
 
-  Style also covers notation: 0- or 1-indexed arrays, pseudocode or real
-  code, "we" or "you". A switch that brings in a clashing notation counts
-  against the challenger.
+  Since neighbours depend on each other's choices, this runs in two
+  passes:
+  1. Pick by lucidity alone.
+  2. Revisit only the close calls, moving each toward its neighbours'
+     majority source. Repeat until nothing changes.
+
+  Notation is part of style: 0- or 1-indexed arrays, pseudocode or real
+  code, "we" or "you". A clash with the neighbours counts against a
+  candidate in a close call.
 - **Comprehensiveness (last).** Measured against the concept map, not the
   judge's taste: does the passage cover the concept's statement, its edge
   cases, its cost, and the sub-concepts the map hangs under it?
@@ -591,7 +674,7 @@ judge honest:
   orders, which removes position bias.
 - **Disagreement escalates.** If the two orders disagree, the pair is
   judged by a second independent judge. If the judges still disagree, it
-  goes to you.
+  goes to you. Only escalated verdicts come to you; the rest are on file.
 - **Verdicts are written down.** Each one goes to
   `judgements/<chapter>.md` with the winner, a ranked list, quoted
   passages for each reason, and the correctness checks it ran.
@@ -622,11 +705,15 @@ The finder's first stops for code exercises (licences to confirm):
   implementations with doctests, not exercises. Their doctests are a
   source of test cases for a printed book exercise.
 
-**Open question:** a book exercise (Erickson, ODS) whose tests come from
-an open source like the above is fully sourced. One whose tests would have
-to be written for it is half AI-written. Is that allowed (the statement
-is the book's, the tests are AI-written and marked), or does such an
-exercise stay a non-code `open` exercise?
+**Decided: tests may be AI-written, exercises may not.** Every exercise
+statement comes from a source. Where the source has no tests, the tests
+are AI-written: `tests_by: "ai"`, AI-marked on the card. The same goes for
+the reference solution, unless the source supplies one (OCW solutions,
+ICPC reference solutions). The reference must pass every test and the
+complexity check before the exercise ships. Tests should cover what the
+statement implies: the empty input, one element, duplicates, the worst
+case at the stated bound. A test may never add a requirement the
+statement doesn't make.
 
 ---
 
