@@ -567,6 +567,16 @@ because prerequisites force the order and each concept gets one home.
     from the owner's account (a person does that, not Claude). doocs/leetcode
     solution write-ups are usable, each paired with an open exercise that
     poses the same problem, since LeetCode's statements can't be copied.
+16. App changes (2026-11-08): the code exercises (runners, `code` answer
+    type, complexity check) and the debugger figures (trace engine, block
+    stepping) may change the app. Everything else (the `sequence`, `pick`,
+    `parsons` and `estimate` answer types, the new drawing primitives) goes
+    into a shared library where it can (figlib, or a library beside it),
+    with as little change to the content format as possible: prefer
+    reusing existing fields and answer types over adding new ones.
+17. Downloaded reference solutions and tests may be run (2026-11-08),
+    isolated: copied into a fresh scratch directory, run with `python -I`,
+    never from inside the cache.
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
