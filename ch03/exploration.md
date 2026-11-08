@@ -1,6 +1,6 @@
 # Chapter 3 exploration: Stacks, queues and deques
 
-Status: **draft for review**, 2026-11-08. Nothing is built. Written from `concept-map/toc.md` and `concepts.json` (chapter `ch-stacks-queues`), `dossiers/ch03.md`, `judgements/ch03.md`, `judgements/ch01-03-reconciled.md`, `judgements/ch01-03-references.md` and METHOD §4.4. Every locator is the reconciled winner's.
+Status: **agreed**, 2026-11-08 (METHOD §4.4 decision 19). Nothing is built. Written from `concept-map/toc.md` and `concepts.json` (chapter `ch-stacks-queues`), `dossiers/ch03.md`, `judgements/ch03.md`, `judgements/ch01-03-reconciled.md`, `judgements/ch01-03-references.md` and METHOD §4.4. Every locator is the reconciled winner's.
 
 ## What the chapter is
 
@@ -108,6 +108,7 @@ Source count: ODS 12, cpa 10, Wikipedia 2. 3.4's page order follows cpa's articl
 - Into 3.3 from chapter 2: ODS Exercise 2.7 (needs ArrayDeque).
 - Out of this chapter: Kattis guessthedatastructure (needs priority queues) → chapter 9; Kattis polish (prefix expressions, recursive) → chapter 4; ICPC NWERC 2024 flowingfountain (needs union-find) → chapter 16; keon heap/sliding_window_max (a heap) → chapter 9; Wikibooks' queue question on priority queues → chapter 9; ODS Exercise 2.8 (no `%`, power-of-two length) assumes bits → chapter 7, unless the plan judges its statement readable here.
 - MIT 6.046J S15 4-1 (NC) is ranked for 3.4 and goes with 1.5; MIT 6.006 S20 ps1 1-4 (NC) is ranked for 3.2 and goes with 2.6.
+- Into 3.1 and 3.3 from chapter 2: Exercism simple-linked-list (a linked stack) and Exercism linked-list (a doubly linked deque); into 3.3: MIT 6.006 S20 prob1 1-3 (NC, a double-ended sequence).
 
 ## The chapter's answer to root rule 23: what would make this stunning
 

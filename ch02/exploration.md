@@ -1,6 +1,6 @@
 # Chapter 2 exploration: Arrays and linked lists
 
-Status: **draft for review**, 2026-11-08. Nothing is built. Written from `concept-map/toc.md` and `concepts.json` (chapter `ch-arrays-lists`), `dossiers/ch02.md`, `judgements/ch02.md`, `judgements/ch01-03-reconciled.md`, `judgements/ch01-03-references.md` and METHOD §4.4. Every locator is the reconciled winner's.
+Status: **agreed**, 2026-11-08 (METHOD §4.4 decision 19). Nothing is built. Written from `concept-map/toc.md` and `concepts.json` (chapter `ch-arrays-lists`), `dossiers/ch02.md`, `judgements/ch02.md`, `judgements/ch01-03-reconciled.md`, `judgements/ch01-03-references.md` and METHOD §4.4. Every locator is the reconciled winner's.
 
 ## What the chapter is
 
@@ -71,7 +71,7 @@ Source count: Wikipedia 9, ODS 8, OI Wiki 6, cpa 3. No doocs explanation wins.
 | B16 | 2.3 lead, `fixed-window` | the example is a running mean; in the exercises the window holds a sum or a count |
 | B17 | 2.6 lead | DLList's Summary names Deque operations (3.3) |
 
-2.3's lead carries three things (B9, B16 and the mixed indexing); it may not fit 80 words. If not, that is a question for the user.
+2.3's lead carries three things (B9, B16 and the mixed indexing); it may not fit 80 words. If not, the bridge goes back to the user (decision 19), never into the text.
 
 ## Errata to attach as correction notes
 
@@ -115,6 +115,8 @@ The runnable code beside 2.3 and 2.4 (TheAlgorithms, doocs) is 0-based while the
 - keon and TheAlgorithms merge_two_lists (linked lists), ranked in 2.3 → 2.5.
 - MIT 6.006 S20 ps1 1-4 (NC, doubly linked list) is ranked in 2.5 and 2.6 → 2.6.
 - MIT 6.006 S20 ps0 0-6 (NC) is ranked for two-pointers and for 1.4's complexity-analysis; it goes with 2.3, and 1.4's notes say so.
+- Exercism simple-linked-list (ranked for 2.5) tests a linked stack → 3.1; Exercism linked-list (ranked for 2.6) tests a doubly linked deque → 3.3 (an item goes with the later section of the concepts it tests, decision 19's choice in `config.md`).
+- MIT 6.006 S20 prob1 1-3 (NC, ranked for 2.2's dynamic-array-cost) asks for a double-ended sequence → 3.3.
 
 ## The chapter's answer to root rule 23: what would make this stunning
 

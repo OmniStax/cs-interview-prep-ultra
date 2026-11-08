@@ -1,9 +1,9 @@
 {
  "about": "Merged concept map for cs-interview-prep-ultra: one row per concept, merged across the inventories in inventory/. Rows are in spec order (toc.json chapters, with appendix A's concepts where its chapters stood). A concept with an \"appendix\" field lives on that appendix's pages (curated links, not built as text); its chapter and section ids still name its group and page. treatments list every inventory row that teaches the concept; the judge picks a home later. dropped lists inventory rows that became no concept.",
  "counts": {
-  "concepts": 1023,
+  "concepts": 1022,
   "inventory_rows": 1353,
-  "dropped_rows": 5
+  "dropped_rows": 6
  },
  "concepts": [
   {
@@ -27,7 +27,7 @@
     "algorithm definition"
    ],
    "open_prose": true,
-   "notes": "Its worked example is jeffe:0.3 (ApportionCongress, the apportionment of Congress), carried whole with jeffe:0.1 (ruling 18, METHOD §4.4); errata 6 and bridge B2 apply."
+   "notes": "Its worked example is jeffe:0.3 (ApportionCongress, the apportionment of Congress), carried whole with jeffe:0.1 (ruling 18, METHOD §4.4) as the home of the apportionment concept in this section (ruling 19); errata 6 and bridge B2 apply."
   },
   {
    "id": "underspecified-algorithm",
@@ -76,7 +76,7 @@
     "pseudocode"
    ],
    "open_prose": true,
-   "notes": "jeffe:0.5 mentions the compass-and-straightedge multiplication of jeffe:0.2 \"Compass and Straightedge\". That subsection gets no concept row: it is an aside on Euclid's constructions as algorithms that no exercise would test on its own and no interview asks, so it stays context. Carry it with the 0.2 block of lattice-multiplication (same source, same section, kept whole) or bridge the one sentence in 0.5 (B1)."
+   "notes": "jeffe:0.5 mentions the compass-and-straightedge multiplication of jeffe:0.2 \"Compass and Straightedge\". That subsection gets no concept row: it is an aside on Euclid's constructions as algorithms that no exercise would test on its own and no interview asks, so it stays context. Ruling 19 (METHOD §4.4): it is carried whole with the 0.2 block of lattice-multiplication (same source, same section), so 0.5's mention needs no bridge (B1 settled)."
   },
   {
    "id": "need-for-efficiency",
@@ -175,6 +175,31 @@
    ],
    "open_prose": true,
    "notes": "Tier raised from stretch to core: it is a prerequisite of binary-exponentiation (core)."
+  },
+  {
+   "id": "apportionment",
+   "name": "Huntington-Hill apportionment",
+   "kind": "result",
+   "statement": "Seats can be apportioned by repeatedly giving the next seat to the state with the largest priority P/sqrt(r(r+1)), kept in a priority queue that the algorithm uses only through its operations (NewPriorityQueue, Insert, ExtractMax); the output, and so the algorithm's correctness, does not depend on how the queue is implemented.",
+   "tier": "stretch",
+   "chapter": "ch-cost",
+   "section": "what-is-an-algorithm",
+   "prereqs": [
+    "algorithm"
+   ],
+   "treatments": [
+    {
+     "source": "jeffe",
+     "row": "jeffe:huntington-hill-apportionment",
+     "locator": "jeffe:0.3",
+     "inventory": "jeffe"
+    }
+   ],
+   "aliases": [
+    "congressional apportionment"
+   ],
+   "open_prose": true,
+   "notes": "Home moved from 9.1 (priority queues) to 1.1 by ruling 19 (METHOD §4.4): jeffe:0.3 is carried whole there as the worked example for algorithm (ruling 18). The running times (O(Rn) with the Census Bureau's unsorted array, O(R log n) with a binary heap) are not in 0.3 but in jeffe:0.6, the complexity-analysis passage of 1.4, so the statement no longer carries the O(R log n) bound; the binary heap that gives it is 9.2. Edge to priority-queue dropped: jeffe:0.3 uses the priority queue as a black box: it names NewPriorityQueue, Insert and ExtractMax in place and says the output does not depend on how the queue is implemented. The implementations and the O(R log n) bound come later (jeffe:0.6 in 1.4; binary heaps in 9.2). Lets Huntington-Hill live in 1.1 (ruling 19)."
   },
   {
    "id": "logarithms",
@@ -566,29 +591,6 @@
    ],
    "open_prose": true,
    "notes": "Merged 3 rows (jeffe-notes:potential-method, ods:potential-method, oiwiki:basic/amortized-analysis#势能分析). OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. The ODS treatment (ods:arrays#lem:dualarraydeque-amortized) is the lemma that dual-array-deque's winning passage holds whole (3.3); a later run must not pick it for this concept too. Bridge B14a links the two uses of \"potential\". Edge to dynamic-array-cost dropped: ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it."
-  },
-  {
-   "id": "counter-increment-decrement",
-   "name": "Incrementing and decrementing counters",
-   "kind": "result",
-   "statement": "Alternating between 2^k and 2^k - 1 makes a standard binary counter cost Theta(k) per operation; representing the value as P - N with bit strings P AND N = 0 gives O(1) amortized increments and decrements.",
-   "tier": "contest",
-   "chapter": "ch-cost",
-   "section": "amortized-analysis",
-   "prereqs": [
-    "potential-method"
-   ],
-   "treatments": [
-    {
-     "source": "jeffe-notes",
-     "row": "jeffe-notes:inc-dec-counter",
-     "locator": "jeffe-notes:09-amortize.3",
-     "inventory": "jeffe-notes"
-    }
-   ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
   },
   {
    "id": "counting",
@@ -5068,32 +5070,6 @@
    ],
    "open_prose": true,
    "notes": "Merged 2 rows (ciu:priority-queue, ods:priority-queue-interface)."
-  },
-  {
-   "id": "apportionment",
-   "name": "Huntington-Hill apportionment",
-   "kind": "result",
-   "statement": "Seats can be apportioned by repeatedly giving the next seat to the state with the largest priority P/sqrt(r(r+1)), using a priority queue; n states and R seats take O(R log n) time.",
-   "tier": "stretch",
-   "chapter": "ch-heaps",
-   "section": "priority-queues",
-   "prereqs": [
-    "algorithm",
-    "priority-queue"
-   ],
-   "treatments": [
-    {
-     "source": "jeffe",
-     "row": "jeffe:huntington-hill-apportionment",
-     "locator": "jeffe:0.3",
-     "inventory": "jeffe"
-    }
-   ],
-   "aliases": [
-    "congressional apportionment"
-   ],
-   "open_prose": true,
-   "notes": ""
   },
   {
    "id": "implicit-tree-layout",
@@ -27288,6 +27264,12 @@
    "name": "System design practice problems",
    "locator": "ciu:#system-design-scalability-data-handling",
    "reason": "List of practice prompts (unique IDs, key-value store, picture sharing, recommender, URL shortener, cache); the URL shortener and cache are sdp worked designs, the rest are gaps."
+  },
+  {
+   "row": "jeffe-notes:inc-dec-counter",
+   "name": "Incrementing and decrementing counters",
+   "locator": "jeffe-notes:09-amortize.3",
+   "reason": "Ruling 19 (METHOD §4.4): removed from 1.5. No open prose (only jeffe-notes 9.3, CC BY-NC-SA, link only) and contest tier; the passage is a reference link in the notes of section 1.5."
   }
  ]
 }

@@ -1,17 +1,16 @@
 {
- "concepts": 1023,
+ "concepts": 1022,
  "rows": 1353,
- "drops": 5,
+ "drops": 6,
  "tier_count": {
   "core": 384,
   "stretch": 332,
-  "contest": 307
+  "contest": 306
  },
  "chapter_tier": {
   "ch-cost": {
    "core": 21,
-   "stretch": 5,
-   "contest": 1
+   "stretch": 6
   },
   "ch-arrays-lists": {
    "core": 23,
@@ -47,7 +46,7 @@
   },
   "ch-heaps": {
    "core": 8,
-   "stretch": 3
+   "stretch": 2
   },
   "ch-sorting": {
    "core": 18,
@@ -211,7 +210,7 @@
  "multi": 198,
  "cross": 194,
  "size_hist": {
-  "1": 825,
+  "1": 824,
   "2": 124,
   "3": 51,
   "4": 11,
@@ -237,7 +236,7 @@
   "holden-acs": 1,
   "icc": 8,
   "jeffe": 112,
-  "jeffe-notes": 102,
+  "jeffe-notes": 101,
   "lt-csbu": 1,
   "mcs2018": 4,
   "ods": 114,
@@ -251,7 +250,7 @@
   "wikipedia": 53,
   "wp-sysdesign": 10
  },
- "noprose": 146,
+ "noprose": 145,
  "inversions": [],
  "split_rows": {
   "wikipedia:Probability#Mathematical_treatment": [
@@ -289,14 +288,14 @@
  },
  "hasse_removed": 107,
  "secsizes": {
-  "1": 6,
-  "2": 39,
-  "3": 66,
-  "4": 58,
+  "1": 7,
+  "2": 38,
+  "3": 67,
+  "4": 57,
   "5": 50,
   "6": 21,
-  "7": 11,
-  "8": 7
+  "7": 10,
+  "8": 8
  },
  "inventories": [
   "ciu",
@@ -455,6 +454,10 @@
   [
    "random-walk-binary-tree",
    "meldable-heap"
+  ],
+  [
+   "apportionment",
+   "priority-queue"
   ]
  ],
  "assumed": {

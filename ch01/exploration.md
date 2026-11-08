@@ -1,21 +1,21 @@
 # Chapter 1 exploration: Algorithms and their cost
 
-Status: **draft for review**, 2026-11-08. Nothing is built. Written from `concept-map/toc.md` and `concepts.json` (chapter `ch-cost`), `dossiers/ch01.md`, `judgements/ch01.md` (with the second judge on `big-o`), `judgements/ch01-03-reconciled.md`, `judgements/ch01-03-references.md` and METHOD §4.4 decisions 13–18. No source text was re-read for this file; every locator is the reconciled winner's.
+Status: **agreed**, 2026-11-08, with the rulings of METHOD §4.4 decision 19 applied (Huntington–Hill's home in 1.1, the increment/decrement counter out of 1.5, Compass and Straightedge carried whole, one lead sentence on probability notation). Nothing is built. Written from `concept-map/toc.md` and `concepts.json` (chapter `ch-cost`), `dossiers/ch01.md`, `judgements/ch01.md` (with the second judge on `big-o`), `judgements/ch01-03-reconciled.md`, `judgements/ch01-03-references.md` and METHOD §4.4 decisions 13–19. No source text was re-read for this file; every locator is the reconciled winner's.
 
 ## What the chapter is
 
-Six sections, 27 concepts (21 Essential, 5 Advanced, 1 Beyond). It is the only chapter with no prerequisite chapter: every edge from it points into chapters 2–45. It is also the most mathematical of the first pass: 1.2, 1.3 and 1.6 are mathematics prose with proofs, 1.5 is analysis, and only 1.1 has algorithms to run.
+Six sections, 27 concepts (21 Essential, 6 Advanced). It is the only chapter with no prerequisite chapter: every edge from it points into chapters 2–45. It is also the most mathematical of the first pass: 1.2, 1.3 and 1.6 are mathematics prose with proofs, 1.5 is analysis, and only 1.1 has algorithms to run.
 
 | § | Title | Tier | Concepts (tier where it differs) |
 |---|---|---|---|
-| 1.1 | What an algorithm is | Essential | algorithm, underspecified-algorithm, describing-algorithms, need-for-efficiency, interface-vs-implementation, lattice-multiplication (Advanced), peasant-multiplication |
+| 1.1 | What an algorithm is | Essential | algorithm, underspecified-algorithm, describing-algorithms, need-for-efficiency, interface-vs-implementation, lattice-multiplication (Advanced), peasant-multiplication, apportionment (Huntington–Hill, Advanced) |
 | 1.2 | Logarithms, factorials and harmonic numbers | Essential | logarithms, factorials-stirling, harmonic-numbers (Advanced) |
 | 1.3 | Asymptotic notation | Essential | big-o, big-omega-theta, multivariate-big-o (Advanced) |
 | 1.4 | Analysing running time and space | Essential | word-ram, complexity-analysis, running-time-guarantees |
-| 1.5 | Amortized analysis | Essential | amortized-analysis, aggregate-accounting, potential-method (Advanced), counter-increment-decrement (Beyond) |
+| 1.5 | Amortized analysis | Essential | amortized-analysis, aggregate-accounting, potential-method (Advanced) |
 | 1.6 | Counting and expected value | Essential | counting, probability-basics, conditional-probability, random-variable, linearity-of-expectation, indicator-variables (Advanced), geometric-expectation |
 
-`random-variable` is new (decision 18); the map's 1.6 now names the linearity concept "Expected value and linearity of expectation".
+`random-variable` is new (decision 18); the map's 1.6 now names the linearity concept "Expected value and linearity of expectation". Decision 19 moved `apportionment` (Huntington–Hill, Erickson 0.3) from 9.1 to 1.1, where 0.3 is carried whole: 0.3 uses the priority queue as a black box (NewPriorityQueue, Insert, ExtractMax, and "the output … does not depend at all on how this priority queue is implemented"), so the map drops its edge to `priority-queue`; its running times are 0.6's (1.4). Decision 19 also removed `counter-increment-decrement` from the map (no open prose, Beyond); jeffe-notes 9.3 is a References link of 1.5.
 
 ## Provenance: every block and its source
 
@@ -25,8 +25,9 @@ The page order inside a section follows the winners' own order where one source 
 |---|---|---|---|---|---|---|
 | 1.1 | `algorithm` | algorithm | jeffe | `jeffe:0.1` | CC BY 4.0 | Bottles of Beer; ~400 words of etymology footnotes become book footnotes |
 | 1.1 | `lattice` | lattice-multiplication | jeffe | `jeffe:0.2` preamble + "Lattice Multiplication" | CC BY 4.0 | digit arrays 0-based |
+| 1.1 | `compass` | (none: context for describing-algorithms) | jeffe | `jeffe:0.2` "Compass and Straightedge" (whole, 609 words) | CC BY 4.0 | decision 19: carried whole with the 0.2 blocks, no concept row; 0.5 refers to it |
 | 1.1 | `peasant` | peasant-multiplication | jeffe | `jeffe:0.2` "Duplation and Mediation" | CC BY 4.0 | the duplation trace figure |
-| 1.1 | `apportionment` | algorithm (worked example) | jeffe | `jeffe:0.3` (whole) | CC BY 4.0 | decision 18: kept whole; 1-based Pop[1..n] |
+| 1.1 | `apportionment` | apportionment (Huntington–Hill), and algorithm's worked example | jeffe | `jeffe:0.3` (whole) | CC BY 4.0 | decisions 18 and 19: kept whole, the concept's home; 1-based Pop[1..n] |
 | 1.1 | `underspecified` | underspecified-algorithm | jeffe | `jeffe:0.4` | CC BY 4.0 | the only direct treatment |
 | 1.1 | `describing` | describing-algorithms | jeffe | `jeffe:0.5` (intro, Specifying the Problem, Describing the Algorithm) + `jeffe:0.6` opening and "Correctness" | CC BY 4.0 | two blocks, one per locator |
 | 1.1 | `efficiency` | need-for-efficiency | ods | `ods:intro#the-need-for-efficiency` | CC BY 2.5 CA | |
@@ -43,7 +44,6 @@ The page order inside a section follows the winners' own order where one source 
 | 1.5 | `amortized` | amortized-analysis | oiwiki | `oiwiki:basic/amortized-analysis` 引入 + 内容 + 聚合分析 | CC BY-SA 4.0 + SATA | **translated** (≈400 words) |
 | 1.5 | `aggregate-accounting` | aggregate-accounting | oiwiki | 记账分析 + 扩展示例：堆栈操作 (聚合分析法, 记账分析法) | CC BY-SA 4.0 + SATA | **translated** (≈480); its code-fenced credit trace is redrawn as a figure |
 | 1.5 | `potential` | potential-method | oiwiki | 势能分析 (原理, 示例：动态数组的扩容分析) + 堆栈 势能分析法 | CC BY-SA 4.0 + SATA | **translated** (≈540) |
-| 1.5 | — | counter-increment-decrement | none | — | — | no open prose (only jeffe-notes 9.3, NC); see open questions |
 | 1.6 | `counting` | counting | brisk | `brisk:counting#The Fundamental Theorem`, `#Permutations` (with Partial permutations), `#Combinations` | CC BY-SA 4.0 | |
 | 1.6 | `probability` | probability-basics | brisk | `brisk:probability#Outcomes and events`, `#Probability measures` | CC BY-SA 4.0 | writes Pr(A) |
 | 1.6 | `conditional` | conditional-probability | brisk | `brisk:probability#Conditional probability`, `#Independence` | CC BY-SA 4.0 | writes Pr(A\|B) |
@@ -52,7 +52,7 @@ The page order inside a section follows the winners' own order where one source 
 | 1.6 | `indicators` | indicator-variables | ods | `ods:intro#sec:randomization`, from "A useful trick…" to the end of the subsection | CC BY 2.5 CA | |
 | 1.6 | `coin-tosses` | geometric-expectation | ods | `ods:skiplists#lem:coin-tosses` (lemma and proof) | CC BY 2.5 CA | lifted out of skip lists (chapter 11) |
 
-Source count: ODS 11, Erickson 6 explanations in 7 blocks (with 0.3), OI Wiki 3, brisk 3, OpenDSA 2, MCS 1, none 1. No fold in this chapter. No doocs write-up wins, so no twin exercise is needed.
+Source count: ODS 11, Erickson 7 explanations in 8 blocks (0.3 now a concept's home; Compass and Straightedge carried as context), OI Wiki 3, brisk 3, OpenDSA 2, MCS 1. No fold in this chapter. No doocs write-up wins, so no twin exercise is needed.
 
 ## Apparatus
 
@@ -68,9 +68,9 @@ Source count: ODS 11, Erickson 6 explanations in 7 blocks (with 0.3), OI Wiki 3,
 
 | id | where | what it carries |
 |---|---|---|
-| B1 | 1.1 lead | 0.3 is carried, so the worked example is in place. Still open: Erickson 0.5 mentions the compass-and-straightedge algorithm of `jeffe:0.2` "Compass and Straightedge", which has no concept row. Either that subsection is carried with the 0.2 blocks (609 words, no concept), or the lead names it in one clause |
+| B1 | — | settled by decision 19: 0.3 is carried, and "Compass and Straightedge" is carried whole with the 0.2 blocks, so 0.5's mention of it has its passage on the page; no bridge |
 | B2 | 1.4 lead | the Running Time passage analyses BottlesOfBeer, the two multiplications and ApportionCongress from 1.1; its pseudocode counts from 1 |
-| B3 | 1.6 lead | three notations on one page now: brisk Pr(A), Pr(A\|B); MCS Pr[R = x]; ODS Pr{·} and E[·]. The lead says they mean the same |
+| B3 | 1.6 lead | three notations on one page now: brisk Pr(A), Pr(A\|B); MCS Pr[R = x]; ODS Pr{·} and E[·]. One lead sentence says they mean the same (decision 19) |
 | B4 | — | replaced by the `random-variable` block (decision 18) |
 | B5 | 1.1 | a reference fix, not prose: ODS's `\chapref{arrays}` and `\chapref{linkedlists}` become links to 2.2 and 2.5–2.6 |
 
@@ -98,7 +98,7 @@ From `judgements/ch01-03-reconciled.md`, numbered as there:
 
 | § | convention |
 |---|---|
-| 1.1 | mixed: Erickson's digit arrays are 0-based (X[0..m−1], digit i weighs 10ⁱ); Pop[1..n] and Rep[1..n] in 0.3 are 1-based |
+| 1.1 | mixed: Erickson's digit arrays are 0-based (X[0..m−1], digit i weighs 10ⁱ); Pop[1..n] and Rep[1..n] in 0.3 (Huntington–Hill) are 1-based |
 | 1.2 | none; log means log₂, ln is natural |
 | 1.3 | 0-based (ODS's loop examples) |
 | 1.4 | mixed: Erickson 1-based (for i ← 1 to n); ODS has no arrays |
@@ -118,9 +118,10 @@ From `judgements/ch01-03-reconciled.md`, numbered as there:
 
 ## Exercises that belong elsewhere
 
-- Held for chapter 4 (recursion): Erickson chapter 1's Factorial item (it tests lattice and peasant multiplication as subroutines and factorials, but needs recursion).
+- Held for chapter 4 (recursion): Erickson chapter 1's Factorial item (it tests lattice and peasant multiplication as subroutines and factorials, but needs recursion); Aspnes 202 B.1.1 (2ⁿ divides (2n)!, proved by induction).
 - Held for chapters 3, 5 and 8: ODS chapter 1 exercises 1, 5, 6 and 7 (they assume Stack, Queue, Deque, USet and SSet).
 - Held for chapter 22: MIT 6.856J homework (NC).
+- Held for chapter 2: MIT 6.006 S20 ps0 0-6 (`count_long_subarray`, NC) goes to 2.3; held for chapter 6: MIT 6.006 F11 ps1 1-3 to 1-6 (peak finding, binary search, NC); held for chapter 10: OpenDSA AnalProblemTF10–12 (they assume sorting).
 - From chapter 3 into 1.5: MIT 6.046J S15 4-1 "Extreme FIFO Queues" (NC) is also ranked for 3.4's queue-from-two-stacks; it goes with 1.5 (amortized analysis), and 3.4's notes say so.
 
 ## The chapter's answer to root rule 23: what would make this stunning
@@ -128,7 +129,7 @@ From `judgements/ch01-03-reconciled.md`, numbered as there:
 This chapter is usually taught as a wall of notation. The sources' own examples are concrete (a song, a multiplication by hand, Congress's seats, a dynamic array filling up, coin tosses), and each can run in front of the reader with the bound checked against the run.
 
 - **1.1, the multiplications run.** Peasant multiplication beside Erickson's PeasantMultiply, stepping by block ("halve x, double y", "if x is odd, add y"), the halving column revealing x's binary digits as the rows it keeps; the lattice grid filling one digit product per step, the diagonals carrying. One counter on each: rows ⌊log₂ x⌋ + 1, products m·n. Side by side on the same numbers, the reader sees why one is O(log x · log y) and the other O(mn).
-- **1.1, Congress apportioned.** ApportionCongress on a small set of states: each seat goes to the state with the largest Pop/√(r(r+1)), the priority queue drawn as a sorted column; the predict pause asks which state takes the next seat. It is the first time the reader meets a priority queue, as a thing that works, nine chapters before its theory.
+- **1.1, Congress apportioned.** ApportionCongress on a small set of states: each seat goes to the state with the largest Pop/√(r(r+1)), the priority queue drawn as a sorted column; the predict pause asks which state takes the next seat. It is the first time the reader meets a priority queue, as a black box that works, eight chapters before its theory (9.1).
 - **1.2, logarithms as halving.** ODS's "the number of times k can be divided by b before the result is at most 1": a bar halved (or thirded, or divided by e) until it fits, the count matching log_b k on the readout.
 - **1.2, the harmonic integral.** ODS's harmonic figure live: bars of height 1/i over 1/x, the two integrals' areas bounding H_k, a slider on k.
 - **1.3, Big-O as a witness.** ODS's own example drawn: f(n) = 5n log n + 8n − 200 against c·g(n), sliders on c and n₀, the region where f ≤ c·g shaded and the first n where it fails marked. Setting c below 5 shows that no n₀ works. A second figure: the growth race on log–log axes with OpenDSA's "a machine ten times faster" as a slider, the problem size each class gains printed per curve.
@@ -141,7 +142,7 @@ Plan lines (root format with the RULES extension):
 ```
 sim-peasant · Sim (original: Erickson's duplation trace) · peasant-multiplication · flow by animation; standardisation · arrows: kinematic (x halves, y doubles) · moving: one row per step · code: jeffe:0.2 PeasantMultiply, Erickson pseudocode · blocks: halve "halve x, double y"; add "if x is odd, add y to the product" · invariant: rows kept so far · readout "prod + x·y = 123 × 456" · cost: rows against ⌊log₂ x⌋ + 1 · inputs: 123 × 456 (Erickson's) | powers of two | editable · headline "x·y never changes" · graph: none · 2D
 sim-lattice · Sim (original: Erickson's lattice figure) · lattice-multiplication · flow by animation · arrows: symbolic (carries along a diagonal) · moving: one digit product per step, then the diagonal sums · code: jeffe:0.2 lattice pseudocode, 0-based digit arrays · cost: single-digit products against m·n · inputs: Erickson's numbers | editable · 2D
-sim-apportion · Sim · algorithm (worked example), describing-algorithms · variation by input · arrows: kinematic (a seat moving to a state) · moving: one seat per step · code: jeffe:0.3 ApportionCongress · blocks: init "one seat each, priorities Pop/√2"; seat "give the next seat to the largest priority, update its priority" · readout "seat 51 → state s, priority Pop[s]/√(r(r+1))" · inputs: three-state toy | Erickson's | editable · predict pause: which state takes the next seat · 2D
+sim-apportion · Sim · apportionment, algorithm (worked example) · variation by input · arrows: kinematic (a seat moving to a state) · moving: one seat per step · code: jeffe:0.3 ApportionCongress · blocks: init "one seat each, priorities Pop/√2"; seat "give the next seat to the largest priority, update its priority" · readout "seat 51 → state s, priority Pop[s]/√(r(r+1))" · inputs: three-state toy | Erickson's | editable · predict pause: which state takes the next seat · 2D
 sim-halving · Sim · logarithms · variation by slider · arrows: none · still · slider k (1..10⁶, log), choice base (2 | e | 10) · readout "log_b k = ln k / ln b" · 2D
 sim-harmonic · Sim (original: ODS harmonic-2, harmonic-3) · harmonic-numbers · variation by slider · still · slider k · readout "ln k < H_k ≤ ln k + 1" with live values · 2D
 sim-big-o-witness · Sim (original: ODS bigoh-1, bigoh-2) · big-o, big-omega-theta · variation by slider · still · sliders c, n₀ · special: c = 5 (below it no n₀ works) · readout "f(n) ≤ c·g(n) for all n ≥ n₀: holds | fails at n = …" · graph: alone · 2D

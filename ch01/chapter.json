@@ -1,0 +1,32 @@
+{
+ "id": "1",
+ "dir": "ch01",
+ "title": "Algorithms and their cost",
+ "sections": [
+  {
+   "id": "1.1",
+   "title": "What an algorithm is"
+  },
+  {
+   "id": "1.2",
+   "title": "Logarithms, factorials and harmonic numbers"
+  },
+  {
+   "id": "1.3",
+   "title": "Asymptotic notation"
+  },
+  {
+   "id": "1.4",
+   "title": "Analysing running time and space"
+  },
+  {
+   "id": "1.5",
+   "title": "Amortized analysis"
+  },
+  {
+   "id": "1.6",
+   "title": "Counting and expected value"
+  }
+ ],
+ "variables": []
+}

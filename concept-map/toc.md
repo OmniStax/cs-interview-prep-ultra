@@ -6,10 +6,10 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 ## 1. Algorithms and their cost · **first pass**
 
-*Concepts: 21 core · 5 stretch · 1 contest*
+*Concepts: 21 core · 6 stretch*
 
 - **1.1 What an algorithm is** [core] · jeffe, ods
-  What an algorithm is; What makes a description not an algorithm; Describing an algorithm: what, how, why, how fast; The need for efficiency; Interface versus implementation; Lattice (grade-school) multiplication [stretch]; Duplation and mediation (peasant multiplication)
+  What an algorithm is; What makes a description not an algorithm; Describing an algorithm: what, how, why, how fast; The need for efficiency; Interface versus implementation; Lattice (grade-school) multiplication [stretch]; Duplation and mediation (peasant multiplication); Huntington-Hill apportionment [stretch]
 - **1.2 Logarithms, factorials and harmonic numbers** [core] · ods
   Logarithms and exponentials; Factorials and Stirling's approximation; Harmonic numbers [stretch]
 - **1.3 Asymptotic notation** [core] · ciu, ods, wikipedia, opendsa
@@ -17,7 +17,8 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 - **1.4 Analysing running time and space** [core] · ciu, jeffe, ods
   The w-bit word-RAM model; Analysing an algorithm's running time and space; Worst-case, amortized and expected running times
 - **1.5 Amortized analysis** [core] · ciu, notes, ods, wikipedia, opendsa, oiwiki
-  Amortized analysis; Summation, taxation and charging methods; The potential method [stretch]; Incrementing and decrementing counters [contest] (no open prose)
+  Amortized analysis; Summation, taxation and charging methods; The potential method [stretch]
+  *Notes:* Reference link (References item, link only): jeffe-notes:09-amortize.3, Erickson's lecture notes on incrementing and decrementing counters (CC BY-NC-SA 4.0). The concept counter-increment-decrement was removed from the map by ruling 19 (METHOD §4.4): it had no open prose and contest tier; its inventory row is listed under dropped in concepts.json.
 - **1.6 Counting and expected value** [core] · ciu, notes, ods, wikipedia, wikibooks, oiwiki, mcs2018, aspnes-202, dmoi3, appcomb, brisk, aspnes-469, openintro
   Factorials, permutations and combinations; Basic probability; Conditional probability and independence; Random variable; Expected value and linearity of expectation; Indicator random variables [stretch]; Expected tosses until the first head
 
@@ -135,10 +136,10 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 ## 9. Heaps and priority queues
 
-*Concepts: 8 core · 3 stretch*
+*Concepts: 8 core · 2 stretch*
 
-- **9.1 Priority queues** [core] · ciu, jeffe, ods
-  Priority queue; Huntington-Hill apportionment [stretch]
+- **9.1 Priority queues** [core] · ciu, ods
+  Priority queue
 - **9.2 Binary heaps** [core] · ciu, ods, wikipedia
   Eytzinger layout (implicit binary tree in an array); Heap property; Binary heap; Sift up and sift down
 - **9.3 Heapify and heapsort** [core] · ciu, ods

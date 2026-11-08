@@ -1,0 +1,447 @@
+{
+ "id": "cs-interview-prep-ultra",
+ "title": "Data Structures, Algorithms and System Design",
+ "publisher": "OmniStax",
+ "authors": [
+  "Pat Morin (Open Data Structures)",
+  "cp-algorithms contributors (Algorithms for Competitive Programming)",
+  "Wikipedia contributors (Wikipedia)",
+  "OI Wiki Team (OI Wiki, translated from the Chinese)",
+  "Jeff Erickson (Algorithms)",
+  "Stephen Davies (A Cool Brisk Walk Through Discrete Mathematics)",
+  "Cliff Shaffer and the OpenDSA Project (OpenDSA eTextbook)",
+  "Eric Lehman, F. Thomson Leighton, Albert R. Meyer (Mathematics for Computer Science)",
+  "John Washam (Coding Interview University)",
+  "Donne Martin (The System Design Primer)"
+ ],
+ "source_url": "https://github.com/OmniStax/cs-interview-prep-ultra",
+ "sources": [
+  {
+   "title": "Open Data Structures",
+   "url": "https://github.com/patmorin/ods"
+  },
+  {
+   "title": "Algorithms for Competitive Programming (cp-algorithms)",
+   "url": "https://github.com/cp-algorithms/cp-algorithms"
+  },
+  {
+   "title": "Wikipedia",
+   "url": "https://en.wikipedia.org/"
+  },
+  {
+   "title": "OI Wiki",
+   "url": "https://github.com/OI-wiki/OI-wiki"
+  },
+  {
+   "title": "Algorithms (Jeff Erickson, 1st edition, June 2019)",
+   "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/"
+  },
+  {
+   "title": "A Cool Brisk Walk Through Discrete Mathematics",
+   "url": "https://github.com/divilian/cool-brisk-walk"
+  },
+  {
+   "title": "OpenDSA eTextbook",
+   "url": "https://github.com/OpenDSA/OpenDSA"
+  },
+  {
+   "title": "Mathematics for Computer Science (2018)",
+   "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf"
+  },
+  {
+   "title": "Coding Interview University",
+   "url": "https://github.com/jwasham/coding-interview-university"
+  },
+  {
+   "title": "The System Design Primer",
+   "url": "https://github.com/donnemartin/system-design-primer"
+  }
+ ],
+ "license": "CC BY-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+ "language": "en",
+ "highlights": {
+  "facts": true,
+  "refs": true,
+  "concepts": true,
+  "words": true,
+  "symbols": true,
+  "underlines": true
+ },
+ "chapters": [
+  "ch01",
+  "ch02",
+  "ch03"
+ ],
+ "types": [
+  {
+   "id": "index",
+   "label": "index"
+  },
+  {
+   "id": "key",
+   "label": "key"
+  },
+  {
+   "id": "cost",
+   "label": "cost"
+  },
+  {
+   "id": "size",
+   "label": "size"
+  },
+  {
+   "id": "weight",
+   "label": "weight"
+  },
+  {
+   "id": "stateless",
+   "label": "stateless component"
+  },
+  {
+   "id": "stateful",
+   "label": "stateful component"
+  },
+  {
+   "id": "async",
+   "label": "asynchronous channel"
+  },
+  {
+   "id": "traffic",
+   "label": "traffic",
+   "dimension": "requests/s"
+  },
+  {
+   "id": "latency",
+   "label": "latency",
+   "dimension": "ms"
+  },
+  {
+   "id": "bytes",
+   "label": "data size",
+   "dimension": "bytes"
+  }
+ ],
+ "symbols": [],
+ "exercise_kinds": [
+  {
+   "id": "check",
+   "label": "Check"
+  },
+  {
+   "id": "trace",
+   "label": "Trace"
+  },
+  {
+   "id": "exercise",
+   "label": "Exercise"
+  },
+  {
+   "id": "code",
+   "label": "Code"
+  },
+  {
+   "id": "estimate",
+   "label": "Estimate"
+  },
+  {
+   "id": "design",
+   "label": "Design"
+  }
+ ],
+ "exercise_sources": [
+  {
+   "id": "ods",
+   "title": "Open Data Structures",
+   "short": "ODS",
+   "author": "Pat Morin",
+   "url": "https://github.com/patmorin/ods",
+   "license": "CC BY 2.5 Canada",
+   "license_url": "https://creativecommons.org/licenses/by/2.5/ca/"
+  },
+  {
+   "id": "cpa",
+   "title": "Algorithms for Competitive Programming",
+   "short": "cp-algorithms",
+   "author": "cp-algorithms contributors",
+   "url": "https://github.com/cp-algorithms/cp-algorithms",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "jeffe",
+   "title": "Algorithms (1st edition, June 2019)",
+   "short": "Erickson",
+   "author": "Jeff Erickson",
+   "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+   "id": "mcs2018",
+   "title": "Mathematics for Computer Science (2018)",
+   "short": "MCS",
+   "author": "Eric Lehman, F. Thomson Leighton, Albert R. Meyer",
+   "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf",
+   "license": "CC BY-SA 3.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+   "id": "aspnes-202",
+   "title": "Notes on Discrete Mathematics (CPSC 202)",
+   "short": "Aspnes",
+   "author": "James Aspnes",
+   "url": "https://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "brisk",
+   "title": "A Cool Brisk Walk Through Discrete Mathematics",
+   "short": "Brisk Walk",
+   "author": "Stephen Davies",
+   "url": "https://github.com/divilian/cool-brisk-walk",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "appcomb",
+   "title": "Applied Combinatorics",
+   "short": "Applied Combinatorics",
+   "author": "Mitchel T. Keller, William T. Trotter",
+   "url": "https://github.com/mitchkeller/applied-combinatorics",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "dmoi3",
+   "title": "Discrete Mathematics: An Open Introduction, 3rd edition",
+   "short": "Levin",
+   "author": "Oscar Levin",
+   "url": "https://github.com/oscarlevin/discrete-book/tree/3rd-ed",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "openintro-stats",
+   "title": "OpenIntro Statistics, 4th edition",
+   "short": "OpenIntro",
+   "author": "David M. Diez, Mine Çetinkaya-Rundel, Christopher D. Barr",
+   "url": "https://github.com/OpenIntroStat/openintro-statistics",
+   "license": "CC BY-SA 3.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+   "id": "wikibooks",
+   "title": "Wikibooks (Probability; A-level Computing)",
+   "short": "Wikibooks",
+   "author": "Wikibooks contributors",
+   "url": "https://en.wikibooks.org/",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "opendsa-exercises",
+   "title": "OpenDSA exercises",
+   "short": "OpenDSA",
+   "author": "OpenDSA Project (Cliff Shaffer, Ville Karavirta and contributors)",
+   "url": "https://github.com/OpenDSA/OpenDSA",
+   "license": "MIT",
+   "license_url": "https://opensource.org/license/mit"
+  },
+  {
+   "id": "lt-busbee",
+   "title": "Programming Fundamentals (LibreTexts)",
+   "short": "Programming Fundamentals",
+   "author": "Kenneth Leroy Busbee, Dave Braunschweig",
+   "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Programming_Fundamentals_(Busbee_and_Braunschweig)",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "lt-njoroge",
+   "title": "Data Structure and Algorithms (African Virtual University)",
+   "short": "AVU",
+   "author": "Harrison Njoroge",
+   "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Databases_and_Data_Structures/Data_Structure_and_Algorithms_(Njoroge)",
+   "license": "CC BY-SA (version not stated)",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "sicp",
+   "title": "Structure and Interpretation of Computer Programs, 2nd ed.",
+   "short": "SICP",
+   "author": "Harold Abelson, Gerald Jay Sussman, Julie Sussman",
+   "url": "https://github.com/sarabander/sicp",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "ciu",
+   "title": "Coding Interview University",
+   "short": "CIU",
+   "author": "John Washam",
+   "url": "https://github.com/jwasham/coding-interview-university",
+   "license": "CC BY-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+   "id": "exercism",
+   "title": "Exercism problem specifications",
+   "short": "Exercism",
+   "author": "Exercism contributors",
+   "url": "https://github.com/exercism/problem-specifications",
+   "license": "MIT",
+   "license_url": "https://opensource.org/license/mit"
+  },
+  {
+   "id": "icc",
+   "title": "Interactive Coding Challenges",
+   "short": "Coding Challenges",
+   "author": "Donne Martin",
+   "url": "https://github.com/donnemartin/interactive-coding-challenges",
+   "license": "Apache-2.0",
+   "license_url": "https://www.apache.org/licenses/LICENSE-2.0"
+  },
+  {
+   "id": "kattis-by-sa",
+   "title": "Open Kattis (problems under CC BY-SA 3.0)",
+   "short": "Kattis",
+   "url": "https://open.kattis.com/problems",
+   "license": "CC BY-SA 3.0",
+   "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+   "id": "kattis-by",
+   "title": "Open Kattis (problems under CC BY 3.0)",
+   "short": "Kattis",
+   "url": "https://open.kattis.com/problems",
+   "license": "CC BY 3.0",
+   "license_url": "https://creativecommons.org/licenses/by/3.0/"
+  },
+  {
+   "id": "kattis-pd",
+   "title": "Open Kattis (public domain problems)",
+   "short": "Kattis",
+   "url": "https://open.kattis.com/problems",
+   "license": "Public Domain Mark 1.0",
+   "license_url": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  {
+   "id": "kattis-cc0",
+   "title": "Open Kattis (CC0 problems)",
+   "short": "Kattis",
+   "url": "https://open.kattis.com/problems",
+   "license": "CC0 1.0",
+   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+  },
+  {
+   "id": "icpc-kattis-export",
+   "title": "GCPC and NWERC problem packages",
+   "short": "GCPC/NWERC",
+   "author": "the GCPC and NWERC juries",
+   "url": "https://github.com/mzuenni/kattis-export",
+   "license": "CC BY-SA"
+  },
+  {
+   "id": "icpc-mzuenni",
+   "title": "ICPC-style problem packages (NWERC, GCPC, Winter Contest)",
+   "short": "ICPC",
+   "author": "Michael Zündorf and co-authors",
+   "url": "https://github.com/mzuenni/icpc-problems",
+   "license": "CC BY-SA"
+  },
+  {
+   "id": "icpc-rmc",
+   "title": "ICPC Rocky Mountain Regional problem sets",
+   "short": "RMRC",
+   "author": "Rocky Mountain Regional judges",
+   "url": "https://github.com/icpc/na-rocky-mountain-2020-public",
+   "license": "CC BY-SA"
+  },
+  {
+   "id": "jeffe-notes",
+   "title": "Algorithms: extra lecture notes",
+   "short": "Erickson notes",
+   "author": "Jeff Erickson",
+   "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "mitocw-6-006-spring2020",
+   "title": "6.006 Introduction to Algorithms, Spring 2020",
+   "short": "MIT 6.006",
+   "author": "Erik Demaine, Jason Ku, Justin Solomon",
+   "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "mitocw-6-006-fall2011",
+   "title": "6.006 Introduction to Algorithms, Fall 2011",
+   "short": "MIT 6.006",
+   "author": "Erik Demaine, Srini Devadas",
+   "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "mitocw-6-046j-spring2015",
+   "title": "6.046J Design and Analysis of Algorithms, Spring 2015",
+   "short": "MIT 6.046J",
+   "author": "Erik Demaine, Srini Devadas, Nancy Lynch",
+   "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "mitocw-6-046j-spring2012",
+   "title": "6.046J Design and Analysis of Algorithms, Spring 2012",
+   "short": "MIT 6.046J",
+   "author": "Dana Moshkovitz, Bruce Tidor",
+   "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2012/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "mitocw-6-046j-fall2005",
+   "title": "6.046J Introduction to Algorithms, Fall 2005",
+   "short": "MIT 6.046J",
+   "author": "Charles Leiserson, Erik Demaine",
+   "url": "https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "mitocw-6-042j-fall2005",
+   "title": "6.042J Mathematics for Computer Science, Fall 2005",
+   "short": "MIT 6.042J",
+   "author": "Albert Meyer, Adam Chlipala",
+   "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "projecteuler",
+   "title": "Project Euler",
+   "short": "Project Euler",
+   "author": "Colin Hughes and contributors",
+   "url": "https://projecteuler.net/archives",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  {
+   "id": "pythonds",
+   "title": "Problem Solving with Algorithms and Data Structures using Python",
+   "short": "pythonds",
+   "author": "Bradley N. Miller, David L. Ranum",
+   "url": "https://github.com/RunestoneInteractive/pythonds",
+   "license": "CC BY-NC-SA 4.0",
+   "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  }
+ ],
+ "concepts": [],
+ "concept_prereqs": [],
+ "sheets": []
+}

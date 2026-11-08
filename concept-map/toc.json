@@ -18,7 +18,8 @@
       "need-for-efficiency",
       "interface-vs-implementation",
       "lattice-multiplication",
-      "peasant-multiplication"
+      "peasant-multiplication",
+      "apportionment"
      ],
      "tier": "core",
      "candidate_sources": [
@@ -92,8 +93,7 @@
      "concepts": [
       "amortized-analysis",
       "aggregate-accounting",
-      "potential-method",
-      "counter-increment-decrement"
+      "potential-method"
      ],
      "tier": "core",
      "candidate_sources": [
@@ -105,10 +105,9 @@
       "oiwiki"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "counter-increment-decrement"
-     ],
-     "folds": ""
+     "no_open_prose": [],
+     "folds": "",
+     "notes": "Reference link (References item, link only): jeffe-notes:09-amortize.3, Erickson's lecture notes on incrementing and decrementing counters (CC BY-NC-SA 4.0). The concept counter-increment-decrement was removed from the map by ruling 19 (METHOD §4.4): it had no open prose and contest tier; its inventory row is listed under dropped in concepts.json."
     },
     {
      "id": "counting-expectation",
@@ -146,8 +145,7 @@
    ],
    "tier_counts": {
     "core": 21,
-    "stretch": 5,
-    "contest": 1
+    "stretch": 6
    }
   },
   {
@@ -994,13 +992,11 @@
      "number": "9.1",
      "title": "Priority queues",
      "concepts": [
-      "priority-queue",
-      "apportionment"
+      "priority-queue"
      ],
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "jeffe",
       "ods"
      ],
      "open_prose": true,
@@ -1067,7 +1063,7 @@
    ],
    "tier_counts": {
     "core": 8,
-    "stretch": 3
+    "stretch": 2
    }
   },
   {

@@ -1,6 +1,6 @@
 # CS Interview Prep Ultra: colour plan
 
-Status: **draft for review**, 2026-11-08. The rule is root `RULES.md` item 7: colour reaches a page in four ways, and where two apply the earlier wins (fact, then convention, then referent, then category). This file records what is particular to this book, from METHOD §3. A chapter's or section's `COLOR.md` may refine it, never inventing a hue.
+Status: **agreed**, 2026-11-08 (METHOD §4.4 decision 19). The rule is root `RULES.md` item 7: colour reaches a page in four ways, and where two apply the earlier wins (fact, then convention, then referent, then category). This file records what is particular to this book, from METHOD §3. A chapter's or section's `COLOR.md` may refine it, never inventing a hue.
 
 ## The book-wide rule: hue for identity, decoration for status
 
@@ -28,7 +28,7 @@ Few. A false-colour map of one scalar over a structure (key load per bucket, cac
 
 **In an algorithm figure the referents are the variables of its code**: `lo`, `mid`, `hi`; `l`, `r`; `slow`, `fast`; `head`, `tail`, `top`; `u`, `v`; `front`, `back`. Each is a referent of the section (`referents`), dealt its colour by root item 7.3's smart assignment, and it wears that one colour everywhere it appears in the scope: its token in the code panel, its pointer and label on the drawing, its value in the watch panel, and every mention in the prose (`<span data-ref="lo">`, pronouns included). A phrase naming two ("the two pointers") lists both and is banded.
 
-**A variable is the referent itself, not a quantity of one.** Root item 7.3 splits a symbol for a referent's quantity (F₁: the F in the category's colour, the 1 in the referent's). `lo` is not a quantity of something; it is the thing, so its whole name wears the referent's colour, and so does the pointer drawn for it. The type colour then goes to what is not named: the index labels under a strip, an unnamed position ("position 3"), the general word ("an index"). In `a[lo]`, `lo` wears its referent colour and the cell's value wears `key`. This settles a conflict in METHOD §3, which asks both for "`i` in index colour" and for "a variable's letter is its referent colour"; the draft takes the second for named variables and the first for every unnamed index. It needs the user's agreement.
+**A variable is the referent itself, not a quantity of one.** Root item 7.3 splits a symbol for a referent's quantity (F₁: the F in the category's colour, the 1 in the referent's). `lo` is not a quantity of something; it is the thing, so its whole name wears the referent's colour, and so does the pointer drawn for it. The type colour then goes to what is not named: the index labels under a strip, an unnamed position ("position 3"), the general word ("an index"). In `a[lo]`, `lo` wears its referent colour and the cell's value wears `key`. This settles a conflict in METHOD §3, which asks both for "`i` in index colour" and for "a variable's letter is its referent colour": named code variables are referents, and the `index` colour is for unnamed positions (decision 19).
 
 **Named elements.** An element of the input is unnamed (`F.cat`) unless the text points at it: "the pivot, 5", "the node where the cycle starts", "the first repeated character". Then it is a referent.
 
@@ -62,11 +62,11 @@ The types, in scheme order, are in `RULES.md` (Types): `index`, `key`, `cost`, `
 
 ## Code panels: no syntax highlighting
 
-Keyword colouring is extraneous colour a programmer has stopped seeing. In this book's code panels and code listings, keywords are ink at medium weight, comments muted, strings and literals ink. **Only the variables the figure draws are coloured**, each as its referent, so colour in code means what it means in the drawing. A token of a variable the figure does not draw stays ink. A reader who wants their editor theme turns on a `syntax` highlights flag for the book, which the schema does not have yet (an app change, open question).
+Keyword colouring is extraneous colour a programmer has stopped seeing. In this book's code panels and code listings, keywords are ink at medium weight, comments muted, strings and literals ink. **Only the variables the figure draws are coloured**, each as its referent, so colour in code means what it means in the drawing. A token of a variable the figure does not draw stays ink. There is no `syntax` highlights flag and no editor theme for code panels (decision 19).
 
 ## Highlights
 
-All six on (`book-json-proposal.md`): facts, referents, concepts, words, symbols and underlines. Words are on because the vocabulary is what the reader is here to learn: "invariant", "amortised", "sentinel", "monotonic", "sharding", "quorum" are the terms an interviewer listens for. Symbols are on: n, i and T(n) carry most of the analysis.
+All six on (`book.json`, from `book-json-proposal.md`): facts, referents, concepts, words, symbols and underlines. Words are on because the vocabulary is what the reader is here to learn: "invariant", "amortised", "sentinel", "monotonic", "sharding", "quorum" are the terms an interviewer listens for. Symbols are on: n, i and T(n) carry most of the analysis.
 
 ## Chapters 1–3
 

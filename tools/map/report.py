@@ -253,7 +253,7 @@ J = [
  (f'Prerequisite edges dropped ({len(S["used_noedge"])}) and added ({len(S["addedge"])}).',
   'Each is recorded in the concept\'s notes. Dropped, mostly where a source\'s presentation order posed as a dependency: stack → queue and list → deque (ODS defines them through each other), '
   'singly linked list → stack/queue (ODS\'s SLList implements them), potential method → array resizing, chaining → multiplicative hashing, BFS distances → Ford\'s relaxation, '
-  'Huffman → compression, database indexes → B-tree (ruling 6), and three that broke cycles (max-flow min-cut ↔ Ford-Fulkerson, two\'s complement ↔ bitwise operators, random-walk lemma ↔ meldable heap). '
+  'Huffman → compression, database indexes → B-tree (ruling 6), and three that broke cycles (max-flow min-cut ↔ Ford-Fulkerson, two\'s complement ↔ bitwise operators, random-walk lemma ↔ meldable heap), and Huntington-Hill apportionment → priority queue (ruling 19: Erickson 0.3 uses the queue as a black box, so the concept lives in 1.1). '
   'Added: binary tree → tree, Ford\'s relaxation → edge relaxation, sparse DP → LCS, three for the gap concepts (merge sort → merging two sorted lists, sliding-window minimum → fixed-size window, lattice paths avoiding obstacles → grid paths), '
   'and three onto the new random-variable concept (linearity of expectation, Las Vegas and Monte Carlo, linear-probing analysis; ruling 9 of section 3).'),
  ('Order of chapters 8 to 12: trees and BSTs, heaps, sorting, then balanced trees and tries.',
@@ -265,7 +265,7 @@ J = [
   f'Distributed hash tables (CIU: under Hash table, core) sit with consistent hashing in the databases chapter\'s partitioning section (chapter {chap["ch-sd-data"]["number"]}). The LRU cache stays in chapter 5 as an interview staple. '
   'Huffman is taught as greedy (chapter 20), not on Appendix A\'s compression page. Tries (CIU: Even More Knowledge) are in chapter 12 with the search trees, as METHOD proposes.'),
  (f'Single-concept sections ({len(single)}) and thin chapters.',
-  'The LRU cache, three worked designs (query cache, sales rank, scaling on AWS: each is one sdp solution page), Bloom filters and simhash are one concept each. '
+  'The LRU cache, three worked designs (query cache, sales rank, scaling on AWS: each is one sdp solution page), Bloom filters and simhash are one concept each, and so is priority queues (9.1) since Huntington-Hill apportionment moved to 1.1 (ruling 19). '
   f'They are pages because each is a separate thing a reader looks up; joining them would break rule 11\'s "a section is a page". {three} chapters have exactly three sections, the floor of the 3-to-8 range; '
   + ('none is outside it.' if not outside else f'{outside} are outside it.')),
  ('Where the gap concepts sit.',

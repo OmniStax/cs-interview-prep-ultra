@@ -1,17 +1,17 @@
-# book.json: the rows to create after review
+# book.json: the decided rows
 
-Status: **draft for review**, 2026-11-08. Nothing here is written to `book.json`. After review, the rows are created through `omnistax-content/tools/ost.py` (root item 19), never by hand. Two gaps in the tool: `ost` has no command that creates a new book's `book.json` (its identity fields, `highlights`, `chapters`), and it refuses writes to `exercise_kinds`. The first write therefore needs either a small `ost` addition (a `new` or `init` command) or a one-time scaffold script like `scaffold_translation.py`. Which one is a question for the user.
+Status: **decided**, 2026-11-08 (METHOD §4.4 decision 19: every recommendation of the full-book pass accepted). `tools/scaffold_book.py` reads the tables of this file once and writes `book.json` from them, with `ch01`–`ch03/chapter.json` from `concept-map/toc.json` (decision 19: a one-time scaffold script in this book's `tools/`; `ost` has no command that creates a book and refuses writes to `exercise_kinds`, and it is not changed). Every later write goes through `omnistax-content/tools/ost.py` (root item 19). Concept rows are not written here: they are written section by section during the build (root item 6).
 
-Field names and shapes follow `docs/content-format.md`. A field this book wants that the schema does not have is listed at the end, not invented in a row.
+Field names and shapes follow `docs/content-format.md`. A field this book wants that the schema does not have is listed at the end, not invented in a row. In the tables the script reads, a value in backticks is written as it stands; a row whose value is "absent" is not written.
 
 ## Identity
 
-| field | proposed value | why |
+| field | value | why |
 |---|---|---|
-| `id` | `cs-interview-prep-ultra` | the repository's name (OmniStax/cs-interview-prep-ultra) |
-| `title` | **to decide**. Candidates: "Data Structures, Algorithms and System Design"; "CS Interview Prep Ultra" | the title also names the folder (`omnistax-content/<Book Title>/`). It must not take a source's title ("Coding Interview University") |
+| `id` | `cs-interview-prep-ultra` | the repository's name (OmniStax/cs-interview-prep-ultra); decision 19 |
+| `title` | `Data Structures, Algorithms and System Design` | decision 19. It also names the folder (`omnistax-content/Data Structures, Algorithms and System Design/`) and takes no source's title |
 | `publisher` | `OmniStax` | no source publishes this compilation |
-| `authors` | see below | "compiled from" the sources, as asked |
+| `authors` | see below | "Author (Work)", decision 19 |
 | `source_url` | `https://github.com/OmniStax/cs-interview-prep-ultra` | the book's own page |
 | `sources` | see below | the schema's field for a book that joins several published works; the attribution credits each |
 | `copyright` | absent | no single holder; each source's holder is named in its attribution line (see the end) |
@@ -20,29 +20,27 @@ Field names and shapes follow `docs/content-format.md`. A field this book wants 
 | `language` | `en` | OI Wiki passages are translated into English |
 | `openstax` | absent | not an OpenStax book |
 | `translation_of` | absent | |
-| `chapters` | `ch01` … `ch45`, then `appA`, `appB` | `concept-map/toc.json`; only built chapters are listed at first (`ch01`, `ch02`, `ch03`) |
-| `intro` | `{}` | the book's introduction page (METHOD decision 13: the tiers and which chapters are which); OmniStax-written, so no `module` or `slug` |
+| `chapters` | `ch01`, `ch02`, `ch03` | the built chapters of `concept-map/toc.json`, in its order; `ch04` … `ch45`, `appA`, `appB` are added as each is built |
+| `intro` | absent for now | the book's introduction page (METHOD decision 13: the tiers and which chapters are which) is OmniStax-written; `{}` is set when its `intro/` page is built, since the app builds the page the record names |
 | `summary` | absent | no source prints one |
 | `colours` | absent until `npm run colours:default -- cs-interview-prep-ultra` writes it | root item 7.4 |
 
-### `authors`, as "compiled from"
+### `authors`, as "Author (Work)"
 
-The schema's `authors` is a list of names. To read as "compiled from", each entry names the author with the work in brackets. Order: by how many concept explanations each source supplies in chapters 1–3 (`judgements/ch01-03-reconciled.md`: ODS 31, cpa 13, Wikipedia 11, OI Wiki 9, Erickson 6, brisk 3, OpenDSA 2, MCS 1 under decision 18), then the two spine sources not yet used for an explanation. The list grows as chapters are built.
+Each entry names the author with the work in brackets, so the list reads as "compiled from" without a field the schema lacks (decision 19). Order: by how many concept explanations each source supplies in chapters 1–3 (`judgements/ch01-03-reconciled.md`: ODS 31, cpa 13, Wikipedia 11, OI Wiki 9, Erickson 6, brisk 3, OpenDSA 2, MCS 1 under decision 18), then the two spine sources not yet used for an explanation. The list grows as chapters are built.
 
 | # | entry |
 |---|---|
 | 1 | Pat Morin (Open Data Structures) |
 | 2 | cp-algorithms contributors (Algorithms for Competitive Programming) |
-| 3 | Wikipedia contributors |
+| 3 | Wikipedia contributors (Wikipedia) |
 | 4 | OI Wiki Team (OI Wiki, translated from the Chinese) |
 | 5 | Jeff Erickson (Algorithms) |
 | 6 | Stephen Davies (A Cool Brisk Walk Through Discrete Mathematics) |
-| 7 | Cliff Shaffer and the OpenDSA Project |
+| 7 | Cliff Shaffer and the OpenDSA Project (OpenDSA eTextbook) |
 | 8 | Eric Lehman, F. Thomson Leighton, Albert R. Meyer (Mathematics for Computer Science) |
 | 9 | John Washam (Coding Interview University) |
 | 10 | Donne Martin (The System Design Primer) |
-
-Whether the app should show these under a "Compiled from" heading rather than "by" is an open question; the schema has no field that says so.
 
 ### `sources`
 
@@ -67,18 +65,18 @@ All six on.
 
 | key | value | reason |
 |---|---|---|
-| `facts` | true | on for every book (root item 7); few facts here (heatmaps of load) |
-| `refs` | true | the code variables are referents: `lo`, `mid`, `hi` wear one colour in code, prose and drawing (`COLOR.md` §3) |
-| `concepts` | true | the types: `index` against `key`, `stateless` against `stateful` |
-| `words` | true | the vocabulary is what is learnt: "invariant", "amortised", "sentinel", "monotonic", "sharding", "quorum" are words the reader must recognise and use (METHOD §3) |
-| `symbols` | true | n, i, T(n), Φ carry the analysis |
-| `underlines` | true | on for every book |
+| `facts` | `true` | on for every book (root item 7); few facts here (heatmaps of load) |
+| `refs` | `true` | the code variables are referents: `lo`, `mid`, `hi` wear one colour in code, prose and drawing (`COLOR.md` §3, decision 19) |
+| `concepts` | `true` | the types: `index` against `key`, `stateless` against `stateful` |
+| `words` | `true` | the vocabulary is what is learnt: "invariant", "amortised", "sentinel", "monotonic", "sharding", "quorum" are words the reader must recognise and use (METHOD §3) |
+| `symbols` | `true` | n, i, T(n), Φ carry the analysis |
+| `underlines` | `true` | on for every book |
 
-A seventh flag, `syntax` (the reader's editor theme in code panels, off by default), is not in the schema: see the end.
+There is no `syntax` flag (decision 19): code panels colour only the variables the figure draws (`COLOR.md`).
 
 ## `types`, in order
 
-`label` is what the legend and the colour menu print. `dimension` only where the type is a quantity with a unit the sources write.
+All eleven, declared now (decision 19). `label` is what the legend and the colour menu print. `dimension` only where the type is a quantity with a unit the sources write. `size` is fourth so that the first pass's four types take the first four hues (METHOD §3 had `weight` there; the swap is accepted).
 
 | # | id | label | dimension |
 |---|---|---|---|
@@ -94,9 +92,9 @@ A seventh flag, `syntax` (the reader's editor theme in code panels, off by defau
 | 10 | `latency` | latency | ms |
 | 11 | `bytes` | data size | bytes |
 
-METHOD §3 orders `weight` before `size`; this proposal puts `size` fourth so that the first pass's four types take the first four hues. Rows 5–11 can wait until their chapters (13, 24–29) if the user prefers to add types as they are first used; the colour script is rerun after each addition either way.
-
 ## `exercise_kinds`
+
+All six, declared now: `ost` refuses writes to this table, so a kind added later would need another script. `estimate` and `design` are first used in chapter 24. What each kind is and which answer types it uses: `RULES.md`, Exercise kinds.
 
 | id | label |
 |---|---|
@@ -107,17 +105,20 @@ METHOD §3 orders `weight` before `size`; this proposal puts `size` fourth so th
 | `estimate` | Estimate |
 | `design` | Design |
 
-`estimate` and `design` are first used in chapter 24 and can be added then. What each kind is and which answer types it uses: `RULES.md`, Exercise kinds.
-
 ## `exercise_sources`
 
-Every exercise of this book has an origin, since the book itself sets none. One row per source whose exercise statements are used in chapters 1–3, plus the NC sources whose cards are available there. `short` is what the card's eyebrow prints before the number.
+Every exercise of this book has an origin, since the book itself sets none. One row per source whose exercise statements chapters 1–3 use or rank, plus the NC sources whose cards are available there. `short` is what the card's eyebrow prints before the number. Rows whose exercises the chapter 1–3 choice (decision 19, each chapter's `config.md`) does not ship yet stay, since their chapters or a later choice will use them; a row is added through `ost add … exercise_sources` when a new source is first used.
+
+Kattis has one row per licence (decision 19), because a row carries one `license` and Kattis licenses problem by problem; every Kattis problem chosen for chapters 1–3 is CC BY-SA 3.0. A Kattis problem's own author has no field on the exercise row (see the end); the row names no author. The ICPC packages' `problem.yaml` says `license: cc by-sa` with no version, so their rows say "CC BY-SA" with no licence URL; the version is checked per package before a card ships (decision 19), and a package whose version differs gets a row of its own, as Kattis does. No ICPC item ships in chapters 1–3.
+
+Test-case sources (TheAlgorithms/Python, keon/algorithms, trekhleb/javascript-algorithms, tryalgo, all MIT) are not origins of statements and get no row; their notices go in the attribution (see the end).
 
 ### Open (CC BY-SA 4.0 edition)
 
 | id | title | short | author | url | license | license_url |
 |---|---|---|---|---|---|---|
 | `ods` | Open Data Structures | ODS | Pat Morin | https://github.com/patmorin/ods | CC BY 2.5 Canada | https://creativecommons.org/licenses/by/2.5/ca/ |
+| `cpa` | Algorithms for Competitive Programming | cp-algorithms | cp-algorithms contributors | https://github.com/cp-algorithms/cp-algorithms | CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/ |
 | `jeffe` | Algorithms (1st edition, June 2019) | Erickson | Jeff Erickson | https://jeffe.cs.illinois.edu/teaching/algorithms/ | CC BY 4.0 | https://creativecommons.org/licenses/by/4.0/ |
 | `mcs2018` | Mathematics for Computer Science (2018) | MCS | Eric Lehman, F. Thomson Leighton, Albert R. Meyer | https://courses.csail.mit.edu/6.042/spring18/mcs.pdf | CC BY-SA 3.0 | https://creativecommons.org/licenses/by-sa/3.0/ |
 | `aspnes-202` | Notes on Discrete Mathematics (CPSC 202) | Aspnes | James Aspnes | https://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf | CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/ |
@@ -133,17 +134,15 @@ Every exercise of this book has an origin, since the book itself sets none. One 
 | `ciu` | Coding Interview University | CIU | John Washam | https://github.com/jwasham/coding-interview-university | CC BY-SA 4.0 | https://creativecommons.org/licenses/by-sa/4.0/ |
 | `exercism` | Exercism problem specifications | Exercism | Exercism contributors | https://github.com/exercism/problem-specifications | MIT | https://opensource.org/license/mit |
 | `icc` | Interactive Coding Challenges | Coding Challenges | Donne Martin | https://github.com/donnemartin/interactive-coding-challenges | Apache-2.0 | https://www.apache.org/licenses/LICENSE-2.0 |
-| `kattis-by-sa` | Open Kattis (problems under CC BY-SA 3.0) | Kattis | per problem (named in `changes`, see below) | https://open.kattis.com/problems | CC BY-SA 3.0 | https://creativecommons.org/licenses/by-sa/3.0/ |
-| `kattis-by` | Open Kattis (problems under CC BY 3.0) | Kattis | per problem | https://open.kattis.com/problems | CC BY 3.0 | https://creativecommons.org/licenses/by/3.0/ |
-| `kattis-pd` | Open Kattis (public domain problems) | Kattis | per problem | https://open.kattis.com/problems | Public Domain Mark 1.0 | https://creativecommons.org/publicdomain/mark/1.0/ |
-| `kattis-cc0` | Open Kattis (CC0 problems) | Kattis | per problem | https://open.kattis.com/problems | CC0 1.0 | https://creativecommons.org/publicdomain/zero/1.0/ |
-| `icpc-kattis-export` | GCPC and NWERC problem packages | GCPC/NWERC | the jury of each contest | https://github.com/mzuenni/kattis-export | CC BY-SA (per problem.yaml) | https://creativecommons.org/licenses/by-sa/4.0/ |
-| `icpc-mzuenni` | ICPC-style problem packages (NWERC, GCPC, Winter Contest) | ICPC | Michael Zündorf and co-authors | https://github.com/mzuenni/icpc-problems | CC BY-SA (per problem.yaml) | https://creativecommons.org/licenses/by-sa/4.0/ |
-| `icpc-rmc` | ICPC Rocky Mountain Regional problem sets | RMRC | Rocky Mountain Regional judges | https://github.com/icpc/na-rocky-mountain-2020-public | CC BY-SA (per problem.yaml) | https://creativecommons.org/licenses/by-sa/4.0/ |
+| `kattis-by-sa` | Open Kattis (problems under CC BY-SA 3.0) | Kattis | absent | https://open.kattis.com/problems | CC BY-SA 3.0 | https://creativecommons.org/licenses/by-sa/3.0/ |
+| `kattis-by` | Open Kattis (problems under CC BY 3.0) | Kattis | absent | https://open.kattis.com/problems | CC BY 3.0 | https://creativecommons.org/licenses/by/3.0/ |
+| `kattis-pd` | Open Kattis (public domain problems) | Kattis | absent | https://open.kattis.com/problems | Public Domain Mark 1.0 | https://creativecommons.org/publicdomain/mark/1.0/ |
+| `kattis-cc0` | Open Kattis (CC0 problems) | Kattis | absent | https://open.kattis.com/problems | CC0 1.0 | https://creativecommons.org/publicdomain/zero/1.0/ |
+| `icpc-kattis-export` | GCPC and NWERC problem packages | GCPC/NWERC | the GCPC and NWERC juries | https://github.com/mzuenni/kattis-export | CC BY-SA | absent |
+| `icpc-mzuenni` | ICPC-style problem packages (NWERC, GCPC, Winter Contest) | ICPC | Michael Zündorf and co-authors | https://github.com/mzuenni/icpc-problems | CC BY-SA | absent |
+| `icpc-rmc` | ICPC Rocky Mountain Regional problem sets | RMRC | Rocky Mountain Regional judges | https://github.com/icpc/na-rocky-mountain-2020-public | CC BY-SA | absent |
 
-Kattis needs one row per licence, because a row carries one `license` and Kattis licenses problem by problem; the problem's own author goes in the card's credit. ICPC packages say "cc by-sa" with no version: the URL above assumes 4.0 and should be checked per package.
-
-Test-case sources (TheAlgorithms/Python, keon/algorithms, trekhleb/javascript-algorithms, tryalgo, all MIT) are not origins of statements and get no row; their notices go in the attribution (see the end).
+`cpa` is new against the draft: 3.4's largest-zero-submatrix card takes cp-algorithms' own problem sentence as its statement (`ch03/config.md`).
 
 ### NC (`exercises-nc.json` only, CC BY-NC-SA 4.0)
 
@@ -159,15 +158,17 @@ Test-case sources (TheAlgorithms/Python, keon/algorithms, trekhleb/javascript-al
 | `projecteuler` | Project Euler | Project Euler | Colin Hughes and contributors | https://projecteuler.net/archives | CC BY-NC-SA 4.0 | https://creativecommons.org/licenses/by-nc-sa/4.0/ |
 | `pythonds` | Problem Solving with Algorithms and Data Structures using Python | pythonds | Bradley N. Miller, David L. Ranum | https://github.com/RunestoneInteractive/pythonds | CC BY-NC-SA 4.0 | https://creativecommons.org/licenses/by-nc-sa/4.0/ |
 
-(`mitocw-6-856j-fall2002` is held for chapter 22.)
+(`mitocw-6-856j-fall2002` is held for chapter 22.) Under decision 19 NC cards ship keyed only, so `jeffe-notes` (unkeyed exercises) and `projecteuler` (statements only, answers unpublished) have no card in chapters 1–3; jeffe-notes 9.3 is a References link of 1.5.
 
-## Not in the schema (needs an app change and a ruling)
+## Not in the schema
 
-| what | why this book needs it |
-|---|---|
-| per-source licence, licence URL, copyright line and notice on each `sources` row | the per-block attribution footer must print each source's licence; MIT and Apache sources require their copyright line and licence text |
-| a "compiled from" flag or heading | so the footer and the book's card say "compiled from" rather than "by" |
-| `highlights.syntax` | the reader's editor theme in code panels (`COLOR.md`) |
-| `exercise_sources` for test-case sources, or `tests_from` on an answer | to credit TheAlgorithms, keon, trekhleb and tryalgo where their test cases are used |
-| `tests_by: "ai"` and the `code`, `sequence`, `pick`, `parsons`, `estimate`, `rubric` answer types | METHOD §1.2, §1.3; the `code` type is covered by decision 16, the others by "shared library, as little format change as possible" |
-| reading `exercises-nc.json` | the NC separation (METHOD §0) |
+Decision 19 approved the app changes for per-block attribution, the NC card files (reading them, the check that refuses NC origins elsewhere, the BY-SA export) and the AI mark on translated blocks. Until the schema gains them, the scaffold writes none of these fields. Settled without a field: "Compiled from" is carried by the "Author (Work)" entries; there is no `syntax` flag; AI-written tests use the answer's existing `generated_by`.
+
+| what | why this book needs it | status |
+|---|---|---|
+| per-source licence, licence URL, copyright line and notice on each `sources` row (or a table the per-block footer reads) | the per-block attribution footer must print each source's licence; MIT and Apache sources require their copyright line and licence text | app change approved (per-block attribution); schema field not yet designed |
+| a block-level provenance and translation mark the schema knows of (`data-source`, `data-locator`, a translated block's AI mark) | per-block attribution and the AI mark on translated blocks are read from `text.html` attributes the checker does not yet know | app change approved |
+| reading `exercises-nc.json` (a section-level NC exercise table) | the NC separation (METHOD §0) | app change approved |
+| a per-exercise credit (the author of one Kattis problem, the rights owner of one ICPC package) | a Kattis or ICPC row carries one licence and no single author; `changes` is for alterations, not credit | not yet ruled; no Kattis or ICPC card needs it before chapter 1–3 cards are built |
+| `exercise_sources` for test-case sources, or a `tests_from` on an answer | to credit TheAlgorithms, keon, trekhleb and tryalgo where their test cases are used | not yet ruled; until then their notices go in the attribution |
+| the `code`, `sequence`, `pick`, `parsons`, `estimate`, `rubric` answer types | METHOD §1.2, §1.3; `code` is covered by decision 16, the others by "shared library, as little format change as possible" | `code` approved (decision 16); the others in the shared library |

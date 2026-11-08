@@ -1,0 +1,32 @@
+{
+ "id": "3",
+ "dir": "ch03",
+ "title": "Stacks, queues and deques",
+ "sections": [
+  {
+   "id": "3.1",
+   "title": "Stacks and bracket matching"
+  },
+  {
+   "id": "3.2",
+   "title": "Queues and circular buffers"
+  },
+  {
+   "id": "3.3",
+   "title": "Deques"
+  },
+  {
+   "id": "3.4",
+   "title": "Min-stacks and monotonic queues"
+  },
+  {
+   "id": "3.5",
+   "title": "Stack applications: expression evaluation"
+  },
+  {
+   "id": "3.6",
+   "title": "Space-efficient lists"
+  }
+ ],
+ "variables": []
+}

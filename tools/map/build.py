@@ -124,8 +124,13 @@ for ln, line in enumerate(open(SPEC), 1):
         if cur_a: cur_a['chapters'].append(cur_c)
     elif line.startswith('S '):
         bits = [x.strip() for x in line[2:].split('|')]
-        cur_s = {'id': bits[0], 'title': bits[1], 'folds': bits[2] if len(bits) > 2 else '', 'concepts': []}
+        cur_s = {'id': bits[0], 'title': bits[1], 'folds': bits[2] if len(bits) > 2 else '', 'notes': '', 'concepts': []}
         cur_c['sections'].append(cur_s)
+    elif line.startswith('SNOTE '):
+        sid, text = [x.strip() for x in line[6:].split('|', 1)]
+        if cur_s is None or sid != cur_s['id']:
+            sys.exit(f'spec line {ln}: SNOTE {sid} must follow its own S line')
+        cur_s['notes'] = (cur_s['notes'] + ' ' if cur_s['notes'] else '') + text
     elif line.startswith('DROP '):
         r, reason = [x.strip() for x in line[5:].split('|', 1)]
         drops[exp(r)] = reason
@@ -400,6 +405,8 @@ def toc_section(s, extra=None):
               'open_prose': any(cbyid[i]['open_prose'] for i in ids),
               'no_open_prose': [i for i in ids if not cbyid[i]['open_prose']],
               'folds': s['folds']})
+    if s['notes']:
+        d['notes'] = s['notes']
     return d
 
 def tier_counts(ids):
@@ -480,6 +487,8 @@ def md_section(s, L):
     L.append('  ' + '; '.join(names))
     if s['folds']:
         L.append(f'  *Folds:* {s["folds"]}')
+    if s.get('notes'):
+        L.append(f'  *Notes:* {s["notes"]}')
 
 L = ['# Table of contents', '',
      'Derived from the concept map (`concepts.json`). One book of numbered chapters; each numbered section is one page, the home of the concepts listed under it. '

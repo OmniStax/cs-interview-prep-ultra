@@ -1,0 +1,36 @@
+{
+ "id": "2",
+ "dir": "ch02",
+ "title": "Arrays and linked lists",
+ "sections": [
+  {
+   "id": "2.1",
+   "title": "Arrays and the list interface"
+  },
+  {
+   "id": "2.2",
+   "title": "Dynamic arrays"
+  },
+  {
+   "id": "2.3",
+   "title": "Two pointers and sliding windows"
+  },
+  {
+   "id": "2.4",
+   "title": "Prefix sums and difference arrays"
+  },
+  {
+   "id": "2.5",
+   "title": "Singly linked lists"
+  },
+  {
+   "id": "2.6",
+   "title": "Doubly linked lists"
+  },
+  {
+   "id": "2.7",
+   "title": "Cycles in linked lists: tortoise and hare"
+  }
+ ],
+ "variables": []
+}

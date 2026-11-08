@@ -3,18 +3,20 @@
 # APPENDIX letter | title | kind  ...  END APPENDIX: the chapters between are an appendix, not numbered book chapters.
 # Chapter order in this file is the book order. The '# Part:' comments are old groupings, kept for reading only.
 # concept-id = row row ... [:: key=value ;; key=value]
+# SNOTE section-id | text: a note on the section just declared (toc.json "notes", toc.md), e.g. a reference link for a concept that left the map.
 
 # Part: Foundations (foundations)
 
 C ch-cost | Algorithms and their cost
 S what-is-an-algorithm | What an algorithm is
-algorithm = j:algorithm :: note=Its worked example is jeffe:0.3 (ApportionCongress, the apportionment of Congress), carried whole with jeffe:0.1 (ruling 18, METHOD §4.4); errata 6 and bridge B2 apply.
+algorithm = j:algorithm :: note=Its worked example is jeffe:0.3 (ApportionCongress, the apportionment of Congress), carried whole with jeffe:0.1 (ruling 18, METHOD §4.4) as the home of the apportionment concept in this section (ruling 19); errata 6 and bridge B2 apply.
 underspecified-algorithm = j:bad-algorithm-underspecified
-describing-algorithms = j:describing-algorithms :: note=jeffe:0.5 mentions the compass-and-straightedge multiplication of jeffe:0.2 "Compass and Straightedge". That subsection gets no concept row: it is an aside on Euclid's constructions as algorithms that no exercise would test on its own and no interview asks, so it stays context. Carry it with the 0.2 block of lattice-multiplication (same source, same section, kept whole) or bridge the one sentence in 0.5 (B1).
+describing-algorithms = j:describing-algorithms :: note=jeffe:0.5 mentions the compass-and-straightedge multiplication of jeffe:0.2 "Compass and Straightedge". That subsection gets no concept row: it is an aside on Euclid's constructions as algorithms that no exercise would test on its own and no interview asks, so it stays context. Ruling 19 (METHOD §4.4): it is carried whole with the 0.2 block of lattice-multiplication (same source, same section), so 0.5's mention needs no bridge (B1 settled).
 need-for-efficiency = o:need-for-efficiency
 interface-vs-implementation = o:interface-vs-implementation
 lattice-multiplication = j:lattice-multiplication
 peasant-multiplication = j:peasant-multiplication
+apportionment = j:huntington-hill-apportionment :: stmt=Seats can be apportioned by repeatedly giving the next seat to the state with the largest priority P/sqrt(r(r+1)), kept in a priority queue that the algorithm uses only through its operations (NewPriorityQueue, Insert, ExtractMax); the output, and so the algorithm's correctness, does not depend on how the queue is implemented. ;; note=Home moved from 9.1 (priority queues) to 1.1 by ruling 19 (METHOD §4.4): jeffe:0.3 is carried whole there as the worked example for algorithm (ruling 18). The running times (O(Rn) with the Census Bureau's unsorted array, O(R log n) with a binary heap) are not in 0.3 but in jeffe:0.6, the complexity-analysis passage of 1.4, so the statement no longer carries the O(R log n) bound; the binary heap that gives it is 9.2.
 S growth-functions | Logarithms, factorials and harmonic numbers
 logarithms = o:logarithms
 factorials-stirling = o:factorials-stirling
@@ -28,10 +30,10 @@ word-ram = o:word-ram
 complexity-analysis = c:complexity-analysis j:running-time-analysis
 running-time-guarantees = o:running-time-guarantees
 S amortized-analysis | Amortized analysis
+SNOTE amortized-analysis | Reference link (References item, link only): jeffe-notes:09-amortize.3, Erickson's lecture notes on incrementing and decrementing counters (CC BY-NC-SA 4.0). The concept counter-increment-decrement was removed from the map by ruling 19 (METHOD §4.4): it had no open prose and contest tier; its inventory row is listed under dropped in concepts.json.
 amortized-analysis = c:amortized-analysis n:amortized-cost g:wikipedia:Amortized_analysis g:opendsa:SeniorAlgAnal/AmortAnal g:oiwiki:basic/amortized-analysis#引入 :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 aggregate-accounting = n:aggregate-accounting g:wikipedia:Amortized_analysis#Method g:oiwiki:basic/amortized-analysis#记账分析 :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 potential-method = n:potential-method o:potential-method g:oiwiki:basic/amortized-analysis#势能分析 :: note=OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. The ODS treatment (ods:arrays#lem:dualarraydeque-amortized) is the lemma that dual-array-deque's winning passage holds whole (3.3); a later run must not pick it for this concept too. Bridge B14a links the two uses of "potential".
-counter-increment-decrement = n:inc-dec-counter
 S counting-expectation | Counting and expected value
 counting = c:counting g:dmoi3:sec_counting-combperm g:oiwiki:math/combinatorics/combination#排列与组合基础 g:brisk:counting#The_Fundamental_Theorem g:brisk:counting#Permutations g:brisk:counting#Combinations :: note=Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background). brisk is the winner (three subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 probability-basics = c:probability-basics n:probability-space g:brisk:probability#Outcomes_and_events g:brisk:probability#Probability_measures g:mcs2018:17.2 g:aspnes-202:12.1.1 g:aspnes-469:2.1 g:appcomb:s_probability_intro g:openintro-stats:3.1 g:wikibooks:Probability/Probability_Spaces#Probability_axioms g:wikibooks:Probability/Introduction#Classical_theory_of_probability g:wikipedia:Probability#Mathematical_treatment g:oiwiki:math/probability/basic-conception :: note=Open prose from the chapter 1 finder run (dossiers/ch01.md 1.6), which corrected the old "no open prose" flag. brisk is the winner (two subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
@@ -234,7 +236,6 @@ random-bst = o:random-bst
 C ch-heaps | Heaps and priority queues
 S priority-queues | Priority queues
 priority-queue = c:priority-queue o:priority-queue-interface
-apportionment = j:huntington-hill-apportionment
 S binary-heaps | Binary heaps
 implicit-tree-layout = o:eytzinger
 heap-property = o:heap-property
@@ -1407,6 +1408,7 @@ DROP c:real-world-architectures | Reading list (27 links, "pick a few"), not a c
 DROP c:discrete-math | Course-length links only; the discrete-math content it points at is covered by counting, induction and probability concepts.
 DROP c:devops | One reading-list link and a one-line definition; nothing an exercise could test.
 DROP c:sd-exercises | List of practice prompts (unique IDs, key-value store, picture sharing, recommender, URL shortener, cache); the URL shortener and cache are sdp worked designs, the rest are gaps.
+DROP n:inc-dec-counter | Ruling 19 (METHOD §4.4): removed from 1.5. No open prose (only jeffe-notes 9.3, CC BY-NC-SA, link only) and contest tier; the passage is a reference link in the notes of section 1.5.
 
 # ---- prerequisite edges dropped (concept -> prereq) with reasons
 NOEDGE potential-method -> dynamic-array-cost | ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it.
@@ -1432,3 +1434,4 @@ EDGE linearity-of-expectation -> random-variable | expectation is defined on ran
 EDGE las-vegas-monte-carlo -> random-variable | its running time is a random variable whose expectation is bounded (ruling 18).
 EDGE linear-probing-analysis -> random-variable | it bounds the expected length of a run, a random variable over the hash values (ruling 18).
 NOEDGE random-walk-binary-tree -> meldable-heap | cpa proves the random root-to-leaf path bound inside its randomized-heap article; ODS states it as a lemma about any binary tree, and the heap rests on it, not the reverse. Breaks a cycle.
+NOEDGE apportionment -> priority-queue | jeffe:0.3 uses the priority queue as a black box: it names NewPriorityQueue, Insert and ExtractMax in place and says the output does not depend on how the queue is implemented. The implementations and the O(R log n) bound come later (jeffe:0.6 in 1.4; binary heaps in 9.2). Lets Huntington-Hill live in 1.1 (ruling 19).
