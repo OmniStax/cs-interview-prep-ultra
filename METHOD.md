@@ -583,6 +583,32 @@ because prerequisites force the order and each concept gets one home.
     worked example for "algorithm"; doocs code may be used without a twin
     exercise (the twin rule covers its explanations only); *DSA for
     Dummies* is excluded as likely AI-written.
+19. Full-book pass rulings (2026-11-08, all recommendations accepted):
+    title "Data Structures, Algorithms and System Design", id
+    `cs-interview-prep-ultra`; authors listed as "Author (Work)"; a one-time
+    scaffold script in this book's tools/ creates book.json (ost unchanged);
+    figures are Sims or photographs, the source's image behind the original
+    toggle; named code variables are referents, the `index` colour is for
+    unnamed positions; all 11 types declared now; app changes approved for
+    per-block attribution, NC card files (check and BY-SA export) and the AI
+    mark on translated blocks; AI-written tests use the existing
+    `generated_by`; no syntax-highlight flag; the pinned system design
+    diagram waits for chapter 24; block definitions live in the plan line and
+    figures.js; predict pauses are figure controls only, never exercise
+    cards; docstring-only test files are test sources, not exercises; a bridge
+    too long for the lead comes back to the user; first template 2.3 if the
+    trace engine and code runner are ready, else 2.2; ICPC licences checked
+    per package; one Kattis exercise source per licence. Chapter 1: carry
+    Erickson's "Compass and Straightedge" whole; Huntington–Hill's home moves
+    to 1.1; the increment/decrement counter leaves 1.5 (NC note as a
+    reference link); one lead sentence on probability notation in 1.6.
+    Exercises, chapters 1–3: choice items, the judge's top three per concept;
+    trace items wait for `sequence`; written items keyed only for now, at most
+    about five per concept; code items with source tests or Exercism track
+    tests now, Kattis/ICPC with AI tests only where the judge rated the fit
+    good, at most two per concept; NC cards keyed only; the two rejected icc
+    items stay out. Open: a person checks Wikipedia's "obsolescent as of C29"
+    before 2.1 is built.
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
