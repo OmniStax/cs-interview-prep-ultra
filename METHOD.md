@@ -52,8 +52,7 @@ need an open textbook. Candidates, licences to confirm in exploration:
   exercises, mostly unkeyed.
 - Wikipedia (CC BY-SA) as the fallback for small gaps (endianness, Unicode).
 
-**Combined licence:** CC BY-SA 4.0 for every unit not built from NC
-sources (see the next paragraphs). BY content can be
+**Combined licence:** CC BY-SA 4.0 for the whole book. BY content can be
 adapted into a BY-SA work, and BY-SA from CIU and cp-algorithms requires
 it. Every block names its source in the footer attribution.
 
@@ -63,35 +62,12 @@ AI-written code exercises in the book (those belong to the app's Exercises
 tab). Code exercises are pulled from open sources first (§6.3). Erickson's
 and ODS's printed exercises are unkeyed, so they need rule 13's choice.
 
-**NC material: licensed per unit, never mixed.** CC BY-SA and CC BY-NC-SA
-both make people keep sharing. They conflict on commercial use. BY-SA
-requires an adaptation to allow commercial use and forbids adding
-restrictions (§3(b) and §2(a)(5)(B) of the licence). NC requires an
-adaptation to forbid commercial use. So no single page can adapt both, and
-no licence satisfies both.
-
-What does work is licensing each **unit** separately: a section or an
-exercise card built only from NC sources is licensed CC BY-NC-SA, one built
-from BY-SA sources is CC BY-SA, and the book is a collection of the two.
-OmniStax is free, so it meets NC's terms as long as it stays
-non-commercial (donations are generally treated as fine). This brings in
-MIT OCW's problem sets **with their solutions**, which are keyed exercises
-and the most valuable thing NC opens up. It also brings in OCW lecture
-notes and Project Euler.
-
-The rules for NC units:
-- An NC source and a BY-SA source never share a page's prose or one
-  exercise.
-- Each unit wears its own licence in its footer and on its card. The
-  schema needs a `licence` field on sections and exercises, since today
-  the footer comes only from `book.json`. There is a precedent:
-  `exercise_sources` rows already carry `license` and `license_url`, and
-  Modern AMO II uses them for MIT 8.422's CC BY-NC-SA exercises.
-- OmniStax's own additions (concept map, ToC, figures) are licensed
-  however OmniStax licenses its own work.
-
-This is my reading of the licences, not legal advice. Before an NC unit
-goes onto `main`, the plan should name it and you approve it.
+**Decided: the whole book is CC BY-SA 4.0, and NC material is out.**
+CC BY-NC-SA can't be adapted into a BY-SA work, so the finder's licence gate
+treats NC like any other incompatible licence: link-only. That covers MIT
+OCW notes, problem sets and transcripts, and Project Euler. OmniStax's own
+additions (figures, block labels, bridging sentences, the concept map,
+AI-written tests and reference solutions) are CC BY-SA 4.0 too.
 
 ---
 
@@ -541,8 +517,7 @@ because prerequisites force the order and each concept gets one home.
 4. Code exercises: pulled from open sources first. No exercise is
    AI-written. Tests and reference solutions may be AI-written, and are
    marked (§6.3).
-6. NC sources: allowed as separately licensed units, never mixed with
-   BY-SA on one page or card (§0).
+6. Licence: CC BY-SA 4.0 for everything. NC sources are link-only (§0).
 7. Judge: lucidity concept by concept, with continuity between neighbours
    deciding close calls. Only escalated verdicts go to you.
 8. Figures: code beside the visual by default, stepping by named block
