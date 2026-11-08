@@ -10,8 +10,14 @@ the registered corpus is a failed run. You never rank quality; the judge does.
 
 ## Licence gate (before anything else)
 
-- **Prose and figures:** public domain, CC0, CC BY, CC BY-SA. Code inside
-  them: also MIT, BSD, Apache.
+- **Prose, figures and code:** public domain, CC0, CC BY, CC BY-SA, MIT,
+  BSD, Apache 2.0 (MIT and Apache notices are kept in the attribution).
+  GPL, MPL and GFDL are out.
+- **Versions:** take a page's current version, unless that page is marked
+  AI-assisted; then take its last version before the mark. Decide per
+  page.
+- **Never use** *Computer Networks: A Systems Approach*, not even as a
+  link.
 - **Exercises:** the same, plus CC BY-NC and CC BY-NC-SA, which are
   allowed as NC exercise cards only (METHOD.md §0). Mark them `nc: true`.
 - **Everything else** (all rights reserved, ND, no licence stated, a

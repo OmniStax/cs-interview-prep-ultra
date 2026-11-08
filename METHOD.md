@@ -515,9 +515,9 @@ because prerequisites force the order and each concept gets one home.
 
 - **"Keep the book's words"** becomes **keep each block's source words, with
   provenance**. Every `<section>` block in `text.html` carries
-  `data-source` and a locator. Bridging sentences between two sources'
-  blocks are OmniStax's, AI-marked. A section shouldn't quilt more than
-  two sources in its main flow (see §5).
+  `data-source` and a locator. A concept's explanation is one source's
+  writing, whole (§5). Where a section joins concepts from two sources,
+  a bridging sentence between them is OmniStax's and AI-marked.
 - **"Don't fold sections together"** (rule 11) assumes the source's
   sections are the units. Here the unit is the concept home from §4.1.
   A cp-algorithms article that is mostly a duplicate of a Part II home is
@@ -545,35 +545,18 @@ because prerequisites force the order and each concept gets one home.
 
 ---
 
-## 5. Multiple explainers for one concept
+## 5. One explanation per concept
 
-Be opinionated in the reading flow, and make the alternatives easy to
-reach when they help. Concretely:
+**Decided:** every concept is explained once, by one source, in that
+source's original writing, kept whole. There is no "Another angle" block,
+no second treatment on a missed exercise, and no stitching passages from
+two sources into one concept's explanation. The judge (§6.2) picks the
+source. A section may still hold concepts from different sources, since
+a section is a page of several concepts.
 
-- **One home explanation per concept.** The main flow teaches it once, in
-  one voice. CIU lists six videos for heaps because it is a reference, and
-  the reader of a reference has to choose. We do the choosing.
-- **At most one "Another angle" block, and only when it changes the
-  representation.** The test: does the second treatment use a different
-  picture or model, or just different words? A different model qualifies:
-  recursion tree vs substitution for a recurrence; Hoare vs Lomuto;
-  memoised top-down vs tabulated bottom-up DP; Erickson's "recursion is
-  delegation to the Recursion Fairy" vs the call-stack view. A second
-  wording of the same model doesn't, and is dropped. The block starts
-  collapsed and is labelled by its model ("As a recursion tree"), not by
-  its source.
-- **The alternative shows up when it's needed.** When a reader misses an
-  exercise on concept C, its card offers C's "Another angle" block. A
-  second explanation helps most right after the first one failed. This
-  uses evidence the concept DAG already tracks, and needs no AI.
-- **External links in the side panel, at most three, with what each is
-  good for.** From CIU's lists, curated: one sentence per link saying when
-  to choose it ("12 min, whiteboard derivation of heapify's O(n)"). They
-  live in a References item in the shell, never in the text.
-
-Reasoning: the expert reversal effect cuts both ways. A novice
-overwhelmed by choice gets one path. A reader the path didn't work for
-gets a different model, not the same one again louder.
+CIU's video and article links don't count as explanations. The curated
+ones (at most three per section, each with one sentence on what it is
+good for) live in the shell's References item, never in the text.
 
 ---
 
@@ -591,11 +574,21 @@ and prerequisite edges, and the tier tags.
 
 **Licence gate first.** A candidate goes into the dossier only if its
 licence is compatible with CC BY-SA 4.0: public domain, CC0, CC BY,
-CC BY-SA, or MIT/BSD/Apache for code. The evidence goes on file: the
+CC BY-SA, MIT, BSD or Apache 2.0. MIT and Apache prose keep their
+licence notice in the section's attribution. GPL, MPL, GFDL, ND and
+"no licence" are out. The evidence goes on file: the
 licence file's URL and the quoted line. Pages on one site can carry
 different licences (LibreTexts does this), so the check is per page, not
 per site. Anything else is recorded as **link-only** with the reason and
 never enters the text.
+
+**Which version of a page:** the current one, unless that page is marked
+AI-assisted (front matter such as `ai-usage: ai-assisted`, or an edit
+summary saying so). In that case use its last version before the mark.
+Decide page by page, never by pinning a whole site to a date.
+
+**Excluded outright:** *Computer Networks: A Systems Approach* (Peterson
+and Davie). Not used, not linked.
 
 **Where it looks, in order:**
 1. The registered corpus: cp-algorithms, the primer, Erickson, ODS, CIU.
@@ -673,8 +666,6 @@ judge honest:
 - **Verdicts are written down.** Each one goes to
   `judgements/<chapter>.md` with the winner, a ranked list, quoted
   passages for each reason, and the correctness checks it ran.
-- **The runner-up goes to the §5 test.** It becomes the "Another angle"
-  block only if it uses a different model. Otherwise it is dropped.
 - **Exercises get their own pass.** The same blind procedure ranks them,
   on whether the tests cover the edge cases, whether the statement is
   clear, and how well the exercise fits the concepts. Its reference

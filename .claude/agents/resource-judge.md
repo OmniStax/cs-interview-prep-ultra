@@ -46,9 +46,8 @@ isn't on file, it doesn't exist for you.
 - **Escalation.** If the two orders disagree, write `ESCALATE` with both
   readings. The orchestrator gets a second judge, and if they still
   disagree it goes to the user.
-- **The runner-up** becomes the "Another angle" block only if it uses a
-  different model (a different picture, not different words). Otherwise
-  it is dropped.
+- **One winner per concept.** Its source's writing is used whole for that
+  concept. There is no runner-up block (METHOD.md §5).
 - **Exercises.** Rank them the same way, on how clear the statement is,
   whether the tests cover the edge cases, and how well they fit the
   concepts. Run the reference solution against the tests. An exercise
@@ -60,7 +59,6 @@ Write `judgements/<scope>.md` with, per concept:
 - the winner and a ranked list;
 - each reason, with a short quoted passage as evidence;
 - the checks you ran and their results;
-- the "Another angle" decision;
 - any `ESCALATE` items.
 
 Report back only the decisions and the escalations.

@@ -874,24 +874,6 @@
       "locator": "aip:<number>#<heading slug>, e.g. aip:0155#guidance"
     },
     {
-      "id": "sysapproach",
-      "title": "Computer Networks: A Systems Approach",
-      "authors": [
-        "Larry Peterson",
-        "Bruce Davie"
-      ],
-      "url": "https://github.com/SystemsApproach/book",
-      "pin": "ed40b37e5e5845ddc22671c231b57764753fb213",
-      "licence": "unclear",
-      "licence_evidence": {
-        "url": "https://github.com/SystemsApproach/book/blob/master/README.rst",
-        "quote": "Source for *Computer Networks: A Systems Approach* is available on GitHub under terms of the Creative Commons (CC BY 4.0) license. ... While this license does not automatically grant the right to make derivative works, we are keen to discuss derivative works (such as translations) with interested parties."
-      },
-      "use": "link-only until the user rules: LICENSE is the CC BY 4.0 legal code (which does grant adaptation), but the README states the authors' contrary reading. README carries a 'Written by humans, not by AI' badge. Relevant: congestion/qos (token bucket), congestion/queuing, applications/infrastructure (DNS), applications/overlays (CDN, consistent hashing, DHT), applications/traditional (HTTP, web caching), foundation/performance (latency, bandwidth, delay x bandwidth), e2e/rpc (at-most-once, idempotent), data/multimedia (HTTP adaptive streaming). Exercises not in repo. LibreTexts mirror labels it CC BY 4.0.",
-      "format": "reStructuredText (Sphinx) per chapter directory",
-      "locator": "sysapproach:<chapter dir>/<file stem>#<section number or heading>, e.g. sysapproach:congestion/qos#6.5.2"
-    },
-    {
       "id": "cnp3",
       "title": "Computer Networking: Principles, Protocols and Practice (3rd ed.)",
       "authors": [
@@ -1219,129 +1201,313 @@
       "locator": "redis-cell:<file>#<fn>"
     },
     {
-      "id": "wikipedia", "title": "Wikipedia: articles on core data structures and algorithms", "authors": ["Wikipedia contributors"],
-      "url": "https://en.wikipedia.org/", "pin": "per-article revision id in sources/_cache/wikipedia/_meta.json (fetched 2026-11-08)",
-      "licence": "CC BY-SA 4.0 (text); figures per file, see dossier", "licence_evidence": {"url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights", "quote": "Most of Wikipedia's text and many of its images are co-licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) and the GNU Free Documentation License"},
-      "use": "prose (fallback and gap-filler); figures only where the Commons file licence passes", "format": "wikitext per article (<Title>.wiki), fetched with action=raw at the pinned revision",
+      "id": "wikipedia",
+      "title": "Wikipedia: articles on core data structures and algorithms",
+      "authors": [
+        "Wikipedia contributors"
+      ],
+      "url": "https://en.wikipedia.org/",
+      "pin": "per-article revision id in sources/_cache/wikipedia/_meta.json (fetched 2026-11-08)",
+      "licence": "CC BY-SA 4.0 (text); figures per file, see dossier",
+      "licence_evidence": {
+        "url": "https://en.wikipedia.org/wiki/Wikipedia:Copyrights",
+        "quote": "Most of Wikipedia's text and many of its images are co-licensed under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) and the GNU Free Documentation License"
+      },
+      "use": "prose (fallback and gap-filler); figures only where the Commons file licence passes",
+      "format": "wikitext per article (<Title>.wiki), fetched with action=raw at the pinned revision",
       "locator": "wikipedia:<Article_title>#<section heading>, e.g. wikipedia:Dynamic_array#Geometric_expansion_and_amortized_cost"
     },
     {
-      "id": "wikibooks", "title": "Wikibooks: Data Structures; Algorithms", "authors": ["Wikibooks contributors"],
-      "url": "https://en.wikibooks.org/wiki/Data_Structures", "pin": "per-page revision id in sources/_cache/wikibooks/_meta.json (fetched 2026-11-08)",
-      "licence": "CC BY-SA 4.0 (dual GFDL)", "licence_evidence": {"url": "https://en.wikibooks.org/wiki/Wikibooks:Copyrights", "quote": "Permission is granted to copy, distribute and/or modify Wikibooks' text under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License"},
-      "use": "prose", "format": "wikitext per chapter page (Data_Structures_<Chapter>.wiki, Algorithms_<Chapter>.wiki)",
+      "id": "wikibooks",
+      "title": "Wikibooks: Data Structures; Algorithms",
+      "authors": [
+        "Wikibooks contributors"
+      ],
+      "url": "https://en.wikibooks.org/wiki/Data_Structures",
+      "pin": "per-page revision id in sources/_cache/wikibooks/_meta.json (fetched 2026-11-08)",
+      "licence": "CC BY-SA 4.0 (dual GFDL)",
+      "licence_evidence": {
+        "url": "https://en.wikibooks.org/wiki/Wikibooks:Copyrights",
+        "quote": "Permission is granted to copy, distribute and/or modify Wikibooks' text under the terms of the Creative Commons Attribution-ShareAlike 4.0 International License"
+      },
+      "use": "prose",
+      "format": "wikitext per chapter page (Data_Structures_<Chapter>.wiki, Algorithms_<Chapter>.wiki)",
       "locator": "wikibooks:<Book>/<Chapter>#<section heading>, e.g. wikibooks:Algorithms/Dynamic_Programming#Fibonacci_Numbers"
     },
     {
-      "id": "opendsa", "title": "OpenDSA eTextbook modules", "authors": ["Cliff Shaffer", "OpenDSA Project Contributors"],
-      "url": "https://github.com/OpenDSA/OpenDSA", "pin": "40bf936603bdbed0d94a3354bc6aeb265ebf3ea1",
-      "licence": "MIT (stated in the header of every topic .rst file)", "licence_evidence": {"url": "https://github.com/OpenDSA/OpenDSA/blob/master/RST/en/List/ListArray.rst", "quote": "Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and distributed under an MIT open source license."},
-      "use": "prose and figures, PENDING A RULING: MIT is not in METHOD.md section 0's prose list (PD, CC0, CC BY, CC BY-SA), though it is more permissive than CC BY; the JSAV slideshows are MIT code", "format": "reStructuredText under RST/en/<Chapter>/<Module>.rst; static images under RST/Images/; slideshows are JavaScript in AV/ (not cached)",
+      "id": "opendsa",
+      "title": "OpenDSA eTextbook modules",
+      "authors": [
+        "Cliff Shaffer",
+        "OpenDSA Project Contributors"
+      ],
+      "url": "https://github.com/OpenDSA/OpenDSA",
+      "pin": "40bf936603bdbed0d94a3354bc6aeb265ebf3ea1",
+      "licence": "MIT (stated in the header of every topic .rst file)",
+      "licence_evidence": {
+        "url": "https://github.com/OpenDSA/OpenDSA/blob/master/RST/en/List/ListArray.rst",
+        "quote": "Copyright (c) 2012-2020 by the OpenDSA Project Contributors, and distributed under an MIT open source license."
+      },
+      "use": "prose and figures, ruled usable 2026-11-08 (MIT/Apache prose allowed with notice): MIT is not in METHOD.md section 0's prose list (PD, CC0, CC BY, CC BY-SA), though it is more permissive than CC BY; the JSAV slideshows are MIT code",
+      "format": "reStructuredText under RST/en/<Chapter>/<Module>.rst; static images under RST/Images/; slideshows are JavaScript in AV/ (not cached)",
       "locator": "opendsa:<Chapter>/<Module>#<heading>, e.g. opendsa:Hashing/HashCImproved#Linear Probing by Steps"
     },
     {
-      "id": "algo-explanation", "title": "TheAlgorithms: Algorithms Explanation (English)", "authors": ["The Algorithms contributors"],
-      "url": "https://github.com/TheAlgorithms/Algorithms-Explanation", "pin": "bbfce50b37c6be54d3c8b6b940e962fa6d864740",
-      "licence": "MIT (repository LICENSE.txt covers the Markdown explanations)", "licence_evidence": {"url": "https://github.com/TheAlgorithms/Algorithms-Explanation/blob/master/LICENSE.txt", "quote": "The MIT License  Copyright (c) 2020-2024 The Algorithms and contributors"},
-      "use": "prose, PENDING A RULING (MIT prose, as opendsa); embedded images are hot-linked from third-party hosts and are link-only", "format": "Markdown under en/<Category>/<Topic>.md",
+      "id": "algo-explanation",
+      "title": "TheAlgorithms: Algorithms Explanation (English)",
+      "authors": [
+        "The Algorithms contributors"
+      ],
+      "url": "https://github.com/TheAlgorithms/Algorithms-Explanation",
+      "pin": "bbfce50b37c6be54d3c8b6b940e962fa6d864740",
+      "licence": "MIT (repository LICENSE.txt covers the Markdown explanations)",
+      "licence_evidence": {
+        "url": "https://github.com/TheAlgorithms/Algorithms-Explanation/blob/master/LICENSE.txt",
+        "quote": "The MIT License  Copyright (c) 2020-2024 The Algorithms and contributors"
+      },
+      "use": "prose, ruled usable 2026-11-08 (MIT/Apache prose allowed with notice) (MIT prose, as opendsa); embedded images are hot-linked from third-party hosts and are link-only",
+      "format": "Markdown under en/<Category>/<Topic>.md",
       "locator": "algo-explanation:<Category>/<Topic>, e.g. algo-explanation:Search Algorithms/Binary Search"
     },
     {
-      "id": "lt-njoroge", "title": "Data Structure and Algorithms (African Virtual University)", "authors": ["Harrison Njoroge"],
-      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Databases_and_Data_Structures/Data_Structure_and_Algorithms_(Njoroge)", "pin": "pages fetched 2026-11-08 (LibreTexts last-modified 2024-11-26)",
-      "licence": "CC BY-SA (version not stated on the pages)", "licence_evidence": {"url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Databases_and_Data_Structures/Data_Structure_and_Algorithms_(Njoroge)", "quote": "This page titled Data Structure and Algorithms (Njoroge) ... is shared under a CC BY-SA license and was authored, remixed, and/or curated by Harrison Njoroge (African Virtual University)"},
-      "use": "prose (every content page carries the license:ccbysa tag; checked per page, see _index.json)", "format": "plain text extracted from each page's HTML, one .txt per page, with URL and licence tags in the header",
+      "id": "lt-njoroge",
+      "title": "Data Structure and Algorithms (African Virtual University)",
+      "authors": [
+        "Harrison Njoroge"
+      ],
+      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Databases_and_Data_Structures/Data_Structure_and_Algorithms_(Njoroge)",
+      "pin": "pages fetched 2026-11-08 (LibreTexts last-modified 2024-11-26)",
+      "licence": "CC BY-SA (version not stated on the pages)",
+      "licence_evidence": {
+        "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Databases_and_Data_Structures/Data_Structure_and_Algorithms_(Njoroge)",
+        "quote": "This page titled Data Structure and Algorithms (Njoroge) ... is shared under a CC BY-SA license and was authored, remixed, and/or curated by Harrison Njoroge (African Virtual University)"
+      },
+      "use": "prose (every content page carries the license:ccbysa tag; checked per page, see _index.json)",
+      "format": "plain text extracted from each page's HTML, one .txt per page, with URL and licence tags in the header",
       "locator": "lt-njoroge:<unit>.<activity>, e.g. lt-njoroge:3.1"
     },
     {
-      "id": "lt-justo", "title": "Algorithm Design and Analysis (African Virtual University)", "authors": ["Godfry Justo"],
-      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Algorithm_Design_and_Analysis_(Justo)", "pin": "pages fetched 2026-11-08",
-      "licence": "mixed per page: units 2 and 3 CC BY-SA 3.0; units 1 and 4 'not declared'", "licence_evidence": {"url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Algorithm_Design_and_Analysis_(Justo)/02%3A_Searching_Binary_Search_Trees_and_Heaps", "quote": "is shared under a CC BY-SA 3.0 license and was authored, remixed, and/or curated by Godfry Justo (African Virtual University)"},
-      "use": "prose from units 2 (searching, BSTs, heaps) and 3 (sorting) only. Units 1 (recursion, backtracking, DP) and 4 (hashing, graphs) say 'shared under a not declared license': unclear, link-only, although the AVU copyright notice page cites CC BY 2.5", "format": "plain text per page, URL, licence tags and declared licence in each header",
+      "id": "lt-justo",
+      "title": "Algorithm Design and Analysis (African Virtual University)",
+      "authors": [
+        "Godfry Justo"
+      ],
+      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Algorithm_Design_and_Analysis_(Justo)",
+      "pin": "pages fetched 2026-11-08",
+      "licence": "mixed per page: units 2 and 3 CC BY-SA 3.0; units 1 and 4 'not declared'",
+      "licence_evidence": {
+        "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Algorithm_Design_and_Analysis_(Justo)/02%3A_Searching_Binary_Search_Trees_and_Heaps",
+        "quote": "is shared under a CC BY-SA 3.0 license and was authored, remixed, and/or curated by Godfry Justo (African Virtual University)"
+      },
+      "use": "prose from units 2 (searching, BSTs, heaps) and 3 (sorting) only. Units 1 (recursion, backtracking, DP) and 4 (hashing, graphs) say 'shared under a not declared license': unclear, link-only, although the AVU copyright notice page cites CC BY 2.5",
+      "format": "plain text per page, URL, licence tags and declared licence in each header",
       "locator": "lt-justo:<unit>.<activity>, e.g. lt-justo:2.3"
     },
     {
-      "id": "openstax-introcs", "title": "Introduction to Computer Science (OpenStax), chapter 3: Data Structures and Algorithms", "authors": ["OpenStax (Rice University)"],
-      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Introduction_to_Computer_Science_(OpenStax)/03%3A_Data_Structures_and_Algorithms", "pin": "pages fetched 2026-11-08 via LibreTexts (openstax.org itself not on the allowlist)",
-      "licence": "CC BY 4.0 (text); figures carry per-caption attribution", "licence_evidence": {"url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Introduction_to_Computer_Science_(OpenStax)/03%3A_Data_Structures_and_Algorithms", "quote": "is shared under a CC BY 4.0 license"},
-      "use": "prose; figures where the caption says 'Copyright Rice University, OpenStax, under CC BY 4.0 license' (check each caption)", "format": "plain text per section page",
+      "id": "openstax-introcs",
+      "title": "Introduction to Computer Science (OpenStax), chapter 3: Data Structures and Algorithms",
+      "authors": [
+        "OpenStax (Rice University)"
+      ],
+      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Introduction_to_Computer_Science_(OpenStax)/03%3A_Data_Structures_and_Algorithms",
+      "pin": "pages fetched 2026-11-08 via LibreTexts (openstax.org itself not on the allowlist)",
+      "licence": "CC BY 4.0 (text); figures carry per-caption attribution",
+      "licence_evidence": {
+        "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Introduction_to_Computer_Science_(OpenStax)/03%3A_Data_Structures_and_Algorithms",
+        "quote": "is shared under a CC BY 4.0 license"
+      },
+      "use": "prose; figures where the caption says 'Copyright Rice University, OpenStax, under CC BY 4.0 license' (check each caption)",
+      "format": "plain text per section page",
       "locator": "openstax-introcs:3.<section>, e.g. openstax-introcs:3.4"
     },
     {
-      "id": "lt-csbu", "title": "Computer Science from the Bottom Up, chapter 2: Binary and Number Representation", "authors": ["Ian Wienand"],
-      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Computer_Science_from_the_Bottom_Up_(Wienand)/02%3A_Binary_and_Number_Representation", "pin": "pages fetched 2026-11-08",
-      "licence": "CC BY-SA 3.0", "licence_evidence": {"url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Computer_Science_from_the_Bottom_Up_(Wienand)/02%3A_Binary_and_Number_Representation", "quote": "is shared under a CC BY-SA 3.0 license"},
-      "use": "prose for bit manipulation (bitwise operators, masks, two's complement)", "format": "plain text per page",
+      "id": "lt-csbu",
+      "title": "Computer Science from the Bottom Up, chapter 2: Binary and Number Representation",
+      "authors": [
+        "Ian Wienand"
+      ],
+      "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Computer_Science_from_the_Bottom_Up_(Wienand)/02%3A_Binary_and_Number_Representation",
+      "pin": "pages fetched 2026-11-08",
+      "licence": "CC BY-SA 3.0",
+      "licence_evidence": {
+        "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Computer_Science_from_the_Bottom_Up_(Wienand)/02%3A_Binary_and_Number_Representation",
+        "quote": "is shared under a CC BY-SA 3.0 license"
+      },
+      "use": "prose for bit manipulation (bitwise operators, masks, two's complement)",
+      "format": "plain text per page",
       "locator": "lt-csbu:2.<section>, e.g. lt-csbu:2.2"
     },
     {
-      "id": "csci30", "title": "CSCI 30/CS 110 Lecture Notes (Data Structures and Algorithms)", "authors": ["Brian Guadalupe"],
-      "url": "https://github.com/alltootechnical/csci30notes", "pin": "1ddc1003de2ea4f00eb3dc369bbe531e25e8264b",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://github.com/alltootechnical/csci30notes/blob/master/copyright.tex", "quote": "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License"},
-      "use": "prose (complete chapters: correctness, efficiency/asymptotics, recursion and recurrences, sorting; the rest are stubs). Raster figures (Chocolate-Fountains.png, fountain_fail.png, insertionsort.jpg) have no stated source: unclear", "format": "LaTeX, one .tex per chapter",
+      "id": "csci30",
+      "title": "CSCI 30/CS 110 Lecture Notes (Data Structures and Algorithms)",
+      "authors": [
+        "Brian Guadalupe"
+      ],
+      "url": "https://github.com/alltootechnical/csci30notes",
+      "pin": "1ddc1003de2ea4f00eb3dc369bbe531e25e8264b",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/alltootechnical/csci30notes/blob/master/copyright.tex",
+        "quote": "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License"
+      },
+      "use": "prose (complete chapters: correctness, efficiency/asymptotics, recursion and recurrences, sorting; the rest are stubs). Raster figures (Chocolate-Fountains.png, fountain_fail.png, insertionsort.jpg) have no stated source: unclear",
+      "format": "LaTeX, one .tex per chapter",
       "locator": "csci30:<tex stem>#<section title>, e.g. csci30:efficiency#Asymptotic analysis"
     },
     {
-      "id": "holden-acs", "title": "Applied Computer Science (lecture notes, draft)", "authors": ["William John Holden"],
-      "url": "https://github.com/wjholden/Applied-Computer-Science", "pin": "c1e689d2d06ae957f89027a8b727797e2dd3b35a",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://github.com/wjholden/Applied-Computer-Science/blob/master/README.md", "quote": "This is a Creative Commons Attribution Sharealike 4.0 endeavor."},
-      "use": "prose and Graphviz figures (MST, BFS/Dijkstra, binary, recursion, tries, stacks/queues, DAGs/topological order, DP, hashing)", "format": "LaTeX (main.tex), figures as .gv + .pdf",
+      "id": "holden-acs",
+      "title": "Applied Computer Science (lecture notes, draft)",
+      "authors": [
+        "William John Holden"
+      ],
+      "url": "https://github.com/wjholden/Applied-Computer-Science",
+      "pin": "c1e689d2d06ae957f89027a8b727797e2dd3b35a",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/wjholden/Applied-Computer-Science/blob/master/README.md",
+        "quote": "This is a Creative Commons Attribution Sharealike 4.0 endeavor."
+      },
+      "use": "prose and Graphviz figures (MST, BFS/Dijkstra, binary, recursion, tries, stacks/queues, DAGs/topological order, DP, hashing)",
+      "format": "LaTeX (main.tex), figures as .gv + .pdf",
       "locator": "holden-acs:<chapter title>#<section title>, e.g. holden-acs:Tries#Tries"
     },
     {
-      "id": "itsy-bitsy", "title": "Itsy Bitsy Data Structures", "authors": ["James Kyle"],
-      "url": "https://github.com/jamiebuilds/itsy-bitsy-data-structures", "pin": "954e7d2faf2dbd5c8710aa03812f10f4bf0e3abf",
-      "licence": "CC BY 4.0", "licence_evidence": {"url": "https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/LICENSE", "quote": "Creative Commons Attribution 4.0 International"},
-      "use": "prose in code comments (memory, lists, arrays, hash tables, stacks, queues, linked lists, trees, BSTs, graphs) with JavaScript", "format": "one annotated JavaScript file",
+      "id": "itsy-bitsy",
+      "title": "Itsy Bitsy Data Structures",
+      "authors": [
+        "James Kyle"
+      ],
+      "url": "https://github.com/jamiebuilds/itsy-bitsy-data-structures",
+      "pin": "954e7d2faf2dbd5c8710aa03812f10f4bf0e3abf",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/jamiebuilds/itsy-bitsy-data-structures/blob/master/LICENSE",
+        "quote": "Creative Commons Attribution 4.0 International"
+      },
+      "use": "prose in code comments (memory, lists, arrays, hash tables, stacks, queues, linked lists, trees, BSTs, graphs) with JavaScript",
+      "format": "one annotated JavaScript file",
       "locator": "itsy-bitsy:<class name>, e.g. itsy-bitsy:HashTable"
     },
     {
-      "id": "dsa-dummies", "title": "DSA for absolute dummies", "authors": ["radojicic23"],
-      "url": "https://github.com/radojicic23/dsa-for-absolute-dummies", "pin": "b90e006def1c09624f8da9d27cf88814e04d4099",
-      "licence": "CC BY 4.0", "licence_evidence": {"url": "https://github.com/radojicic23/dsa-for-absolute-dummies/blob/master/LICENCE", "quote": "Creative Commons Attribution 4.0 International"},
-      "use": "short prose (Big O README) and Python code", "format": "Markdown plus Python",
+      "id": "dsa-dummies",
+      "title": "DSA for absolute dummies",
+      "authors": [
+        "radojicic23"
+      ],
+      "url": "https://github.com/radojicic23/dsa-for-absolute-dummies",
+      "pin": "b90e006def1c09624f8da9d27cf88814e04d4099",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/radojicic23/dsa-for-absolute-dummies/blob/master/LICENCE",
+        "quote": "Creative Commons Attribution 4.0 International"
+      },
+      "use": "short prose (Big O README) and Python code",
+      "format": "Markdown plus Python",
       "locator": "dsa-dummies:<path>"
     },
     {
-      "id": "addiscoder", "title": "AddisCoder Course Notes", "authors": ["AddisCoder staff"],
-      "url": "https://github.com/AddisCoderStaff/addiscoder-book", "pin": "de4809cd899ef2cb10cfb7909088fb286dbfea66",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://github.com/AddisCoderStaff/addiscoder-book/blob/master/LICENSE", "quote": "Attribution-ShareAlike 4.0 International"},
-      "use": "prose (only section 16, Recursion, is in scope; the rest is intro Python)", "format": "Jupyter notebook (coursenotes.ipynb)",
+      "id": "addiscoder",
+      "title": "AddisCoder Course Notes",
+      "authors": [
+        "AddisCoder staff"
+      ],
+      "url": "https://github.com/AddisCoderStaff/addiscoder-book",
+      "pin": "de4809cd899ef2cb10cfb7909088fb286dbfea66",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/AddisCoderStaff/addiscoder-book/blob/master/LICENSE",
+        "quote": "Attribution-ShareAlike 4.0 International"
+      },
+      "use": "prose (only section 16, Recursion, is in scope; the rest is intro Python)",
+      "format": "Jupyter notebook (coursenotes.ipynb)",
       "locator": "addiscoder:<section number>, e.g. addiscoder:16"
     },
     {
-      "id": "appcomb", "title": "Applied Combinatorics", "authors": ["Mitchel T. Keller", "William T. Trotter"],
-      "url": "https://github.com/mitchkeller/applied-combinatorics", "pin": "e25b222aabf2f19d32910f5b8a96cdb7f6da97c3",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://github.com/mitchkeller/applied-combinatorics/blob/main/LICENSE.md", "quote": "Attribution-ShareAlike 4.0 International"},
-      "use": "prose and figures: graph terminology, minimum weight spanning trees (Kruskal, Prim, exchange principle), Dijkstra", "format": "PreTeXt XML under source/ (s_<chapter>_<section>.ptx)",
+      "id": "appcomb",
+      "title": "Applied Combinatorics",
+      "authors": [
+        "Mitchel T. Keller",
+        "William T. Trotter"
+      ],
+      "url": "https://github.com/mitchkeller/applied-combinatorics",
+      "pin": "e25b222aabf2f19d32910f5b8a96cdb7f6da97c3",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/mitchkeller/applied-combinatorics/blob/main/LICENSE.md",
+        "quote": "Attribution-ShareAlike 4.0 International"
+      },
+      "use": "prose and figures: graph terminology, minimum weight spanning trees (Kruskal, Prim, exchange principle), Dijkstra",
+      "format": "PreTeXt XML under source/ (s_<chapter>_<section>.ptx)",
       "locator": "appcomb:<ptx stem>#<title>, e.g. appcomb:s_graphalgorithms_min-wt-span#Kruskal's Algorithm"
     },
     {
-      "id": "brisk", "title": "A Cool Brisk Walk Through Discrete Mathematics", "authors": ["Stephen Davies"],
-      "url": "https://github.com/divilian/cool-brisk-walk", "pin": "4b9934b472d41060f41357fe376f4c6917aa2c1e",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://github.com/divilian/cool-brisk-walk/blob/master/copyright.tex", "quote": "Creative Commons Attribution-ShareAlike 4.0 International License"},
-      "use": "prose and figures: graphs, BFS/DFS, Dijkstra, Prim, trees, binary trees, BSTs, balancedness (structures.tex); counting and logarithms for complexity", "format": "LaTeX, one .tex per chapter",
+      "id": "brisk",
+      "title": "A Cool Brisk Walk Through Discrete Mathematics",
+      "authors": [
+        "Stephen Davies"
+      ],
+      "url": "https://github.com/divilian/cool-brisk-walk",
+      "pin": "4b9934b472d41060f41357fe376f4c6917aa2c1e",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/divilian/cool-brisk-walk/blob/master/copyright.tex",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International License"
+      },
+      "use": "prose and figures: graphs, BFS/DFS, Dijkstra, Prim, trees, binary trees, BSTs, balancedness (structures.tex); counting and logarithms for complexity",
+      "format": "LaTeX, one .tex per chapter",
       "locator": "brisk:<tex stem>#<subsection title>, e.g. brisk:structures#Binary search trees (BST's)"
     },
     {
-      "id": "dmoi3", "title": "Discrete Mathematics: An Open Introduction, 3rd edition", "authors": ["Oscar Levin"],
-      "url": "https://github.com/oscarlevin/discrete-book/tree/3rd-ed", "pin": "tag 3rd-ed (a8e4949bc45daf100930c1182983778f56ab689f)",
-      "licence": "CC BY-SA 4.0 (3rd edition only; the 4th edition is CC BY-NC-SA 4.0)", "licence_evidence": {"url": "https://github.com/oscarlevin/discrete-book/blob/3rd-ed/LICENSE", "quote": "This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License."},
-      "use": "prose: trees and spanning trees, recurrence relations (background for complexity and recursion)", "format": "PreTeXt XML under ptx/",
+      "id": "dmoi3",
+      "title": "Discrete Mathematics: An Open Introduction, 3rd edition",
+      "authors": [
+        "Oscar Levin"
+      ],
+      "url": "https://github.com/oscarlevin/discrete-book/tree/3rd-ed",
+      "pin": "tag 3rd-ed (a8e4949bc45daf100930c1182983778f56ab689f)",
+      "licence": "CC BY-SA 4.0 (3rd edition only; the 4th edition is CC BY-NC-SA 4.0)",
+      "licence_evidence": {
+        "url": "https://github.com/oscarlevin/discrete-book/blob/3rd-ed/LICENSE",
+        "quote": "This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License."
+      },
+      "use": "prose: trees and spanning trees, recurrence relations (background for complexity and recursion)",
+      "format": "PreTeXt XML under ptx/",
       "locator": "dmoi3:<ptx stem>#<title>, e.g. dmoi3:sec_gt-trees#Spanning Trees"
     },
     {
-      "id": "anfp", "title": "Algorithms Notes for Professionals (compiled from Stack Overflow Documentation)", "authors": ["Stack Overflow Documentation contributors", "GoalKicker.com (compiler)"],
-      "url": "https://github.com/lasikaspur/AlgorithmsNotesForProfessionals", "pin": "21e32e5188a75d37860f38aef2384935b39da5ae (PDF built 2018-05-29)",
-      "licence": "CC BY-SA (text; version not stated, SO Documentation was CC BY-SA 3.0); images excluded", "licence_evidence": {"url": "https://github.com/lasikaspur/AlgorithmsNotesForProfessionals/blob/main/AlgorithmsNotesForProfessionals.pdf", "quote": "Text content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified"},
-      "use": "prose only (per-chapter contributor credits at the end of the PDF must be carried); images link-only. The mirror is a third-party upload; goalkicker.com not on the allowlist", "format": "PDF; text via pdftotext -layout (anfp.txt)",
+      "id": "anfp",
+      "title": "Algorithms Notes for Professionals (compiled from Stack Overflow Documentation)",
+      "authors": [
+        "Stack Overflow Documentation contributors",
+        "GoalKicker.com (compiler)"
+      ],
+      "url": "https://github.com/lasikaspur/AlgorithmsNotesForProfessionals",
+      "pin": "21e32e5188a75d37860f38aef2384935b39da5ae (PDF built 2018-05-29)",
+      "licence": "CC BY-SA (text; version not stated, SO Documentation was CC BY-SA 3.0); images excluded",
+      "licence_evidence": {
+        "url": "https://github.com/lasikaspur/AlgorithmsNotesForProfessionals/blob/main/AlgorithmsNotesForProfessionals.pdf",
+        "quote": "Text content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified"
+      },
+      "use": "prose only (per-chapter contributor credits at the end of the PDF must be carried); images link-only. The mirror is a third-party upload; goalkicker.com not on the allowlist",
+      "format": "PDF; text via pdftotext -layout (anfp.txt)",
       "locator": "anfp:<chapter>.<section>, e.g. anfp:11.1"
     },
     {
-      "id": "arxiv-2211.11009", "title": "Optimal resizable arrays", "authors": ["Robert E. Tarjan", "Uri Zwick"],
-      "url": "https://arxiv.org/abs/2211.11009", "pin": "v2 (29 May 2023)",
-      "licence": "CC BY 4.0", "licence_evidence": {"url": "https://arxiv.org/abs/2211.11009", "quote": "(licence link on the abstract page) http://creativecommons.org/licenses/by/4.0/"},
-      "use": "prose for the stretch tier of dynamic arrays (doubling, space lower bounds)", "format": "LaTeX source (src/arXiv-ver2.tex) and PDF",
+      "id": "arxiv-2211.11009",
+      "title": "Optimal resizable arrays",
+      "authors": [
+        "Robert E. Tarjan",
+        "Uri Zwick"
+      ],
+      "url": "https://arxiv.org/abs/2211.11009",
+      "pin": "v2 (29 May 2023)",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://arxiv.org/abs/2211.11009",
+        "quote": "(licence link on the abstract page) http://creativecommons.org/licenses/by/4.0/"
+      },
+      "use": "prose for the stretch tier of dynamic arrays (doubling, space lower bounds)",
+      "format": "LaTeX source (src/arXiv-ver2.tex) and PDF",
       "locator": "arxiv-2211.11009:<section number>"
     }
   ]
