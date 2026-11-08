@@ -1,0 +1,3922 @@
+{
+ "source": "cpa",
+ "about": "Concept inventory for cp-algorithms, navigation categories Data Structures, Dynamic Programming, String Processing, Graphs (part a; cpa-b.json covers the rest). words = prose words excluding fenced code and front matter. Practice-problem link counts are in the notes of each article's first row.",
+ "articles": [
+  {
+   "path": "data_structures/stack_queue_modification",
+   "title": "Minimum Stack / Minimum Queue",
+   "category": "Data Structures",
+   "tier": "core",
+   "words": 937
+  },
+  {
+   "path": "data_structures/sparse-table",
+   "title": "Sparse Table",
+   "category": "Data Structures",
+   "tier": "stretch",
+   "words": 984
+  },
+  {
+   "path": "data_structures/disjoint_set_union",
+   "title": "Disjoint Set Union",
+   "category": "Data Structures",
+   "tier": "stretch",
+   "words": 4058
+  },
+  {
+   "path": "data_structures/fenwick",
+   "title": "Fenwick Tree",
+   "category": "Data Structures",
+   "tier": "stretch",
+   "words": 2193
+  },
+  {
+   "path": "data_structures/sqrt_decomposition",
+   "title": "Sqrt Decomposition",
+   "category": "Data Structures",
+   "tier": "contest",
+   "words": 1905
+  },
+  {
+   "path": "data_structures/segment_tree",
+   "title": "Segment Tree",
+   "category": "Data Structures",
+   "tier": "stretch",
+   "words": 8737
+  },
+  {
+   "path": "data_structures/treap",
+   "title": "Treap",
+   "category": "Data Structures",
+   "tier": "contest",
+   "words": 2951
+  },
+  {
+   "path": "data_structures/sqrt-tree",
+   "title": "Sqrt Tree",
+   "category": "Data Structures",
+   "tier": "contest",
+   "words": 2110
+  },
+  {
+   "path": "data_structures/randomized_heap",
+   "title": "Randomized Heap",
+   "category": "Data Structures",
+   "tier": "contest",
+   "words": 917
+  },
+  {
+   "path": "data_structures/deleting_in_log_n",
+   "title": "Deleting from a data structure in O(T(n) log n)",
+   "category": "Data Structures",
+   "tier": "contest",
+   "words": 236
+  },
+  {
+   "path": "dynamic_programming/intro-to-dp",
+   "title": "Introduction to Dynamic Programming",
+   "category": "Dynamic Programming",
+   "tier": "core",
+   "words": 1126
+  },
+  {
+   "path": "dynamic_programming/knapsack",
+   "title": "Knapsack Problem",
+   "category": "Dynamic Programming",
+   "tier": "core",
+   "words": 1282
+  },
+  {
+   "path": "dynamic_programming/longest_increasing_subsequence",
+   "title": "Longest increasing subsequence",
+   "category": "Dynamic Programming",
+   "tier": "core",
+   "words": 2568
+  },
+  {
+   "path": "dynamic_programming/divide-and-conquer-dp",
+   "title": "Divide and Conquer DP",
+   "category": "Dynamic Programming",
+   "tier": "contest",
+   "words": 682
+  },
+  {
+   "path": "dynamic_programming/knuth-optimization",
+   "title": "Knuth's Optimization",
+   "category": "Dynamic Programming",
+   "tier": "contest",
+   "words": 1162
+  },
+  {
+   "path": "dynamic_programming/profile-dynamics",
+   "title": "Dynamic Programming on Broken Profile. Problem \"Parquet\"",
+   "category": "Dynamic Programming",
+   "tier": "contest",
+   "words": 298
+  },
+  {
+   "path": "dynamic_programming/zero_matrix",
+   "title": "Finding the largest zero submatrix",
+   "category": "Dynamic Programming",
+   "tier": "stretch",
+   "words": 770
+  },
+  {
+   "path": "string/string-hashing",
+   "title": "String Hashing",
+   "category": "String Processing",
+   "tier": "stretch",
+   "words": 1616
+  },
+  {
+   "path": "string/rabin-karp",
+   "title": "Rabin-Karp for String Matching",
+   "category": "String Processing",
+   "tier": "stretch",
+   "words": 176
+  },
+  {
+   "path": "string/prefix-function",
+   "title": "Prefix function - Knuth-Morris-Pratt",
+   "category": "String Processing",
+   "tier": "stretch",
+   "words": 3571
+  },
+  {
+   "path": "string/z-function",
+   "title": "Z-function",
+   "category": "String Processing",
+   "tier": "stretch",
+   "words": 2023
+  },
+  {
+   "path": "string/suffix-array",
+   "title": "Suffix Array",
+   "category": "String Processing",
+   "tier": "stretch",
+   "words": 3056
+  },
+  {
+   "path": "string/aho_corasick",
+   "title": "Aho-Corasick algorithm",
+   "category": "String Processing",
+   "tier": "contest",
+   "words": 2318
+  },
+  {
+   "path": "string/suffix-tree-ukkonen",
+   "title": "Suffix Tree",
+   "category": "String Processing",
+   "tier": "contest",
+   "words": 213
+  },
+  {
+   "path": "string/suffix-automaton",
+   "title": "Suffix Automaton",
+   "category": "String Processing",
+   "tier": "contest",
+   "words": 7031
+  },
+  {
+   "path": "string/lyndon_factorization",
+   "title": "Lyndon factorization",
+   "category": "String Processing",
+   "tier": "contest",
+   "words": 797
+  },
+  {
+   "path": "string/expression_parsing",
+   "title": "Expression parsing",
+   "category": "String Processing",
+   "tier": "core",
+   "words": 877
+  },
+  {
+   "path": "string/manacher",
+   "title": "Manacher's Algorithm - Finding all sub-palindromes in O(N)",
+   "category": "String Processing",
+   "tier": "stretch",
+   "words": 1441
+  },
+  {
+   "path": "string/main_lorentz",
+   "title": "Finding repetitions",
+   "category": "String Processing",
+   "tier": "contest",
+   "words": 1562
+  },
+  {
+   "path": "graph/breadth-first-search",
+   "title": "Breadth First Search",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 1242
+  },
+  {
+   "path": "graph/depth-first-search",
+   "title": "Depth First Search",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 1343
+  },
+  {
+   "path": "graph/search-for-connected-components",
+   "title": "Finding Connected Components",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 327
+  },
+  {
+   "path": "graph/bridge-searching",
+   "title": "Finding Bridges in O(N+M)",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 799
+  },
+  {
+   "path": "graph/bridge-searching-online",
+   "title": "Finding Bridges Online",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 2042
+  },
+  {
+   "path": "graph/cutpoints",
+   "title": "Finding Articulation Points in O(N+M)",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 584
+  },
+  {
+   "path": "graph/strongly-connected-components",
+   "title": "Strongly Connected Components and Condensation Graph",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 3673
+  },
+  {
+   "path": "graph/strong-orientation",
+   "title": "Strong Orientation",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 481
+  },
+  {
+   "path": "graph/dijkstra",
+   "title": "Dijkstra - finding shortest paths from given vertex",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 1582
+  },
+  {
+   "path": "graph/dijkstra_sparse",
+   "title": "Dijkstra on sparse graphs",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 939
+  },
+  {
+   "path": "graph/bellman_ford",
+   "title": "Bellman-Ford - finding shortest paths with negative weights",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 1926
+  },
+  {
+   "path": "graph/01_bfs",
+   "title": "0-1 BFS",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 784
+  },
+  {
+   "path": "graph/desopo_pape",
+   "title": "D´Esopo-Pape algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 477
+  },
+  {
+   "path": "graph/all-pair-shortest-path-floyd-warshall",
+   "title": "Floyd-Warshall - finding all shortest paths",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 1602
+  },
+  {
+   "path": "graph/fixed_length_paths",
+   "title": "Number of paths of fixed length / Shortest paths of fixed length",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 893
+  },
+  {
+   "path": "graph/mst_prim",
+   "title": "Minimum Spanning Tree - Prim's Algorithm",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 1492
+  },
+  {
+   "path": "graph/mst_kruskal",
+   "title": "Minimum Spanning Tree - Kruskal",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 1157
+  },
+  {
+   "path": "graph/mst_kruskal_with_dsu",
+   "title": "Minimum Spanning Tree - Kruskal with Disjoint Set Union",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 215
+  },
+  {
+   "path": "graph/second_best_mst",
+   "title": "Second best Minimum Spanning Tree - Using Kruskal and Lowest Common Ancestor",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 809
+  },
+  {
+   "path": "graph/kirchhoff-theorem",
+   "title": "Kirchhoff Theorem",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 377
+  },
+  {
+   "path": "graph/pruefer_code",
+   "title": "Prüfer code",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1940
+  },
+  {
+   "path": "graph/finding-cycle",
+   "title": "Checking a graph for acyclicity and finding a cycle in O(M)",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 292
+  },
+  {
+   "path": "graph/finding-negative-cycle-in-graph",
+   "title": "Finding a Negative Cycle in the Graph",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 468
+  },
+  {
+   "path": "graph/euler_path",
+   "title": "Eulerian Path",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 689
+  },
+  {
+   "path": "graph/lca",
+   "title": "Lowest Common Ancestor",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 754
+  },
+  {
+   "path": "graph/lca_binary_lifting",
+   "title": "Lowest Common Ancestor - Binary Lifting",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 1766
+  },
+  {
+   "path": "graph/lca_farachcoltonbender",
+   "title": "Lowest Common Ancestor - Farach-Colton and Bender algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1095
+  },
+  {
+   "path": "graph/rmq_linear",
+   "title": "Solve RMQ by finding LCA",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 615
+  },
+  {
+   "path": "graph/lca_tarjan",
+   "title": "Lowest Common Ancestor - Tarjan's off-line algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 658
+  },
+  {
+   "path": "graph/edmonds_karp",
+   "title": "Maximum flow - Ford-Fulkerson and Edmonds-Karp",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 1774
+  },
+  {
+   "path": "graph/push-relabel",
+   "title": "Maximum flow - Push-relabel algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1175
+  },
+  {
+   "path": "graph/push-relabel-faster",
+   "title": "Maximum flow - Push-relabel algorithm improved",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 168
+  },
+  {
+   "path": "graph/dinic",
+   "title": "Maximum flow - Dinic's algorithm",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 965
+  },
+  {
+   "path": "graph/mpm",
+   "title": "Maximum flow - MPM algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 332
+  },
+  {
+   "path": "graph/flow_with_demands",
+   "title": "Flows with demands",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 804
+  },
+  {
+   "path": "graph/min_cost_flow",
+   "title": "Minimum-cost flow",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1022
+  },
+  {
+   "path": "graph/Assignment-problem-min-flow",
+   "title": "Assignment problem",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 425
+  },
+  {
+   "path": "graph/stoer_wagner_mincut",
+   "title": "Minimum cut - Stoer-Wagner algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1583
+  },
+  {
+   "path": "graph/bipartite-check",
+   "title": "Bipartite Graph Check",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 264
+  },
+  {
+   "path": "graph/kuhn_maximum_bipartite_matching",
+   "title": "Kuhn's Algorithm - Maximum Bipartite Matching",
+   "category": "Graphs",
+   "tier": "stretch",
+   "words": 2326
+  },
+  {
+   "path": "graph/hungarian-algorithm",
+   "title": "Hungarian Algorithm",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 4295
+  },
+  {
+   "path": "graph/topological-sort",
+   "title": "Topological Sorting",
+   "category": "Graphs",
+   "tier": "core",
+   "words": 811
+  },
+  {
+   "path": "graph/edge_vertex_connectivity",
+   "title": "Edge connectivity / Vertex connectivity",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 877
+  },
+  {
+   "path": "graph/tree_painting",
+   "title": "Tree painting",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 630
+  },
+  {
+   "path": "graph/2SAT",
+   "title": "2-SAT",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1196
+  },
+  {
+   "path": "graph/hld",
+   "title": "Heavy-light decomposition",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1716
+  },
+  {
+   "path": "graph/centroid_decomposition",
+   "title": "Centroid decomposition",
+   "category": "Graphs",
+   "tier": "contest",
+   "words": 1399
+  }
+ ],
+ "concepts": [
+  {
+   "id": "cpa:min-stack",
+   "name": "Minimum stack",
+   "kind": "skill",
+   "statement": "Store each stack entry as a pair (value, minimum of this entry and everything below it); the stack minimum is then the top pair's second field, and push/pop stay O(1).",
+   "locator": "cpa:data_structures/stack_queue_modification#stack-modification",
+   "prereqs": [
+    "[stack]"
+   ],
+   "aliases": [
+    "min stack"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links"
+  },
+  {
+   "id": "cpa:min-queue-monotonic",
+   "name": "Minimum queue via a monotonic deque",
+   "kind": "idea",
+   "statement": "Keep only the elements that can still become the minimum, in non-decreasing order: before pushing x, remove trailing elements larger than x; the head is the minimum and every element is pushed and popped at most once, so operations are amortised O(1). Removal needs the value (method 1) or stored indices (method 2).",
+   "locator": "cpa:data_structures/stack_queue_modification#queue-modification-method-1",
+   "prereqs": [
+    "[queue]",
+    "[deque]"
+   ],
+   "aliases": [
+    "monotonic queue",
+    "monotone deque"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "methods 1 and 2"
+  },
+  {
+   "id": "cpa:queue-two-stacks",
+   "name": "Queue from two stacks (with minimum)",
+   "kind": "skill",
+   "statement": "Push to stack s1 and pop from stack s2, moving all of s1 into s2 when s2 is empty; each element moves once, so all operations are amortised O(1), and with minimum stacks the queue minimum is the smaller of the two stack minima.",
+   "locator": "cpa:data_structures/stack_queue_modification#queue-modification-method-3",
+   "prereqs": [
+    "cpa:min-stack"
+   ],
+   "aliases": [
+    "two-stack queue"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sliding-window-minimum",
+   "name": "Sliding window minimum",
+   "kind": "result",
+   "statement": "The minimum of every length-M subarray of an array of length N can be found in O(N) total by sliding a minimum queue along the array.",
+   "locator": "cpa:data_structures/stack_queue_modification#finding-the-minimum-for-all-subarrays-of-fixed-length",
+   "prereqs": [
+    "cpa:min-queue-monotonic"
+   ],
+   "aliases": [
+    "minimum of all subarrays of fixed length"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sparse-table",
+   "name": "Sparse table",
+   "kind": "definition",
+   "statement": "A table st[i][j] holding the answer for the range [j, j+2^i-1], built in O(N log N) from st[i][j] = f(st[i-1][j], st[i-1][j+2^(i-1)]); it serves range queries on an immutable array.",
+   "locator": "cpa:data_structures/sparse-table#precomputation",
+   "prereqs": [
+    "[binary representation]"
+   ],
+   "aliases": [
+    "ST"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 21 practice-problem links"
+  },
+  {
+   "id": "cpa:sparse-table-range-sum",
+   "name": "Sparse table range query by power-of-two decomposition",
+   "kind": "skill",
+   "statement": "Any range splits into at most ceil(log2 length) disjoint power-of-two blocks, so an associative query (e.g. sum) is answered in O(log N) by combining those blocks from largest to smallest.",
+   "locator": "cpa:data_structures/sparse-table#range-sum-queries",
+   "prereqs": [
+    "cpa:sparse-table"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sparse-table-rmq",
+   "name": "O(1) range minimum with a sparse table",
+   "kind": "result",
+   "statement": "For an idempotent operation such as min, a range [L,R] is covered by two overlapping blocks of length 2^k with k = floor(log2(R-L+1)), giving O(1) queries after O(N log N) preprocessing.",
+   "locator": "cpa:data_structures/sparse-table#range-minimum-queries-rmq",
+   "prereqs": [
+    "cpa:sparse-table"
+   ],
+   "aliases": [
+    "RMQ",
+    "idempotent range query"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "also covers precomputed vs on-the-fly log2"
+  },
+  {
+   "id": "cpa:disjoint-sparse-table-mention",
+   "name": "Structures for O(1) associative range queries",
+   "kind": "idea",
+   "statement": "The overlapping-block trick needs idempotence; disjoint sparse tables and sqrt trees answer any associative range query in O(1).",
+   "locator": "cpa:data_structures/sparse-table#similar-data-structures-supporting-more-types-of-queries",
+   "prereqs": [
+    "cpa:sparse-table-rmq"
+   ],
+   "aliases": [
+    "disjoint sparse table"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "pointer only; disjoint sparse table is linked externally"
+  },
+  {
+   "id": "cpa:dsu",
+   "name": "Disjoint set union",
+   "kind": "definition",
+   "statement": "A structure over disjoint sets with make_set, union_sets and find_set (returns a representative), stored as a forest of parent pointers whose roots are the representatives.",
+   "locator": "cpa:data_structures/disjoint_set_union#build-an-efficient-data-structure",
+   "prereqs": [
+    "[rooted tree]"
+   ],
+   "aliases": [
+    "DSU",
+    "union-find",
+    "disjoint-set forest"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 9 practice-problem links (heading 'Problems')"
+  },
+  {
+   "id": "cpa:dsu-path-compression",
+   "name": "Path compression",
+   "kind": "skill",
+   "statement": "During find_set, re-point every visited vertex directly to the root; alone this gives O(log n) average per call.",
+   "locator": "cpa:data_structures/disjoint_set_union#path-compression-optimization",
+   "prereqs": [
+    "cpa:dsu"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dsu-union-by-rank",
+   "name": "Union by size / rank",
+   "kind": "skill",
+   "statement": "Attach the root of the smaller (by size or by depth bound) tree under the larger; without path compression this already bounds operations at O(log n).",
+   "locator": "cpa:data_structures/disjoint_set_union#union-by-size-rank",
+   "prereqs": [
+    "cpa:dsu"
+   ],
+   "aliases": [
+    "union by size",
+    "union by rank"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "also: linking by index works, coin-flip linking does not (#linking-by-index-coin-flip-linking)"
+  },
+  {
+   "id": "cpa:dsu-inverse-ackermann",
+   "name": "DSU amortised complexity is O(alpha(n))",
+   "kind": "result",
+   "statement": "With path compression and union by size/rank, a sequence of operations costs O(alpha(n)) amortised each, alpha the inverse Ackermann function (at most 4 for practical n); stated without proof, with Fredman-Saks lower bound in the history.",
+   "locator": "cpa:data_structures/disjoint_set_union#time-complexity",
+   "prereqs": [
+    "cpa:dsu-path-compression",
+    "cpa:dsu-union-by-rank",
+    "[amortised analysis]"
+   ],
+   "aliases": [
+    "inverse Ackermann"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "amortised complexity is defined in passing"
+  },
+  {
+   "id": "cpa:dsu-connectivity",
+   "name": "DSU for incremental connectivity",
+   "kind": "skill",
+   "statement": "Adding edges as unions and answering 'same component?' with find_set handles an incrementally built graph in near-constant time per operation; also used for components of an image and in Kruskal.",
+   "locator": "cpa:data_structures/disjoint_set_union#connected-components-in-a-graph",
+   "prereqs": [
+    "cpa:dsu",
+    "cpa:connected-components"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "image components at #search-for-connected-components-in-an-image"
+  },
+  {
+   "id": "cpa:dsu-painting-offline",
+   "name": "Painting subarrays offline with DSU",
+   "kind": "skill",
+   "statement": "Process repaint queries in reverse, with each cell's DSU parent pointing to the next unpainted cell, so every cell is painted exactly once and skipped thereafter.",
+   "locator": "cpa:data_structures/disjoint_set_union#compress-jumps-along-a-segment-painting-subarrays-offline",
+   "prereqs": [
+    "cpa:dsu-path-compression"
+   ],
+   "aliases": [
+    "compress jumps along a segment"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dsu-parity",
+   "name": "DSU with distance/parity to the representative",
+   "kind": "skill",
+   "statement": "Store each node's distance (or parity) to its parent and fix it up during path compression; with parity this checks online whether components stay bipartite as edges are added.",
+   "locator": "cpa:data_structures/disjoint_set_union#support-the-parity-of-the-path-length-checking-bipartiteness-online",
+   "prereqs": [
+    "cpa:dsu-path-compression"
+   ],
+   "aliases": [
+    "weighted DSU",
+    "online bipartiteness"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "distance variant at #support-distances-up-to-representative"
+  },
+  {
+   "id": "cpa:arpa-trick",
+   "name": "Arpa's trick: offline RMQ with DSU",
+   "kind": "result",
+   "statement": "Sweeping right, link each element to the next smaller element to its right via DSU; the answer to query (L,R) with R = current index is a[find_set(L)], giving O(alpha(n)) per query offline.",
+   "locator": "cpa:data_structures/disjoint_set_union#arpa",
+   "prereqs": [
+    "cpa:dsu-path-compression"
+   ],
+   "aliases": [
+    "offline RMQ"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:small-to-large",
+   "name": "Small-to-large merging",
+   "kind": "idea",
+   "statement": "Always merge the smaller collection into the larger: each element moves O(log n) times, so explicit-list DSU costs O(m + n log n), and the same idea merges per-subtree sets in O(n log^2 n).",
+   "locator": "cpa:data_structures/disjoint_set_union#storing-the-dsu-explicitly-in-a-set-list-applications-of-this-idea-when-merging-various-data-structures",
+   "prereqs": [
+    "cpa:dsu"
+   ],
+   "aliases": [
+    "weighting heuristic",
+    "DSU on tree (merging sets)"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fenwick",
+   "name": "Fenwick tree",
+   "kind": "definition",
+   "statement": "An array T where T[i] stores f over A[g(i)..i], g(i) clearing the trailing 1 bits of i (0-based; i & (i+1)); prefix queries follow i -> g(i)-1 and updates follow i -> i | (i+1), each O(log N), for a group operation f.",
+   "locator": "cpa:data_structures/fenwick#definition-of-gi",
+   "prereqs": [
+    "cpa:bitwise-operators",
+    "[prefix sums]"
+   ],
+   "aliases": [
+    "binary indexed tree",
+    "BIT"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 36 practice-problem links"
+  },
+  {
+   "id": "cpa:fenwick-sum",
+   "name": "Fenwick tree for point update, range sum",
+   "kind": "skill",
+   "statement": "Implement sum(r) and add(i, delta) and answer [l,r] as sum(r) - sum(l-1); one-based variant uses i & -i (toggle the last set bit).",
+   "locator": "cpa:data_structures/fenwick#finding-sum-in-one-dimensional-array",
+   "prereqs": [
+    "cpa:fenwick"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "one-based at #one-based-indexing-approach; 2D at #finding-sum-in-two-dimensional-array"
+  },
+  {
+   "id": "cpa:fenwick-linear-build",
+   "name": "Linear-time Fenwick construction",
+   "kind": "skill",
+   "statement": "Build in O(N) by adding a[i] into T[i] and pushing T[i] once to its parent range i | (i+1).",
+   "locator": "cpa:data_structures/fenwick#linear-construction",
+   "prereqs": [
+    "cpa:fenwick-sum"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fenwick-prefix-min",
+   "name": "Fenwick tree for prefix minimum",
+   "kind": "result",
+   "statement": "With min (not a group) a Fenwick tree can answer only prefix-minimum queries and only under decreasing updates.",
+   "locator": "cpa:data_structures/fenwick#finding-minimum-of-0-r-in-one-dimensional-array",
+   "prereqs": [
+    "cpa:fenwick"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fenwick-range-update",
+   "name": "Fenwick range update with point / range query",
+   "kind": "skill",
+   "statement": "Range add [l,r] by x becomes add(l,x), add(r+1,-x) on a difference array, so a prefix sum gives a point value; two BITs B1, B2 with sum(B1,i)*i - sum(B2,i) give range-update range-query.",
+   "locator": "cpa:data_structures/fenwick#range-operations",
+   "prereqs": [
+    "cpa:fenwick-sum",
+    "[difference array]"
+   ],
+   "aliases": [
+    "range update range query BIT"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sqrt-decomposition",
+   "name": "Sqrt decomposition for range queries",
+   "kind": "idea",
+   "statement": "Split the array into ~sqrt(n) blocks with precomputed block aggregates; a query sums two partial tails and whole blocks in O(sqrt n), and the scheme extends to range updates with per-block lazy values.",
+   "locator": "cpa:data_structures/sqrt_decomposition#sqrt-decomposition-based-data-structure",
+   "prereqs": [
+    "[prefix sums]"
+   ],
+   "aliases": [
+    "sqrt decomposition",
+    "block decomposition"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 12 practice-problem links; variants at #other-problems"
+  },
+  {
+   "id": "cpa:mo-algorithm",
+   "name": "Mo's algorithm",
+   "kind": "result",
+   "statement": "Answer offline range queries by sorting them by (block of left end, right end) and moving a window with add/remove; total O((N+Q) F sqrt N) for add/remove cost F.",
+   "locator": "cpa:data_structures/sqrt_decomposition#mos-algorithm",
+   "prereqs": [
+    "cpa:sqrt-decomposition"
+   ],
+   "aliases": [
+    "Mo's"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "runtime tips (odd-even sort) at #tips-for-improving-runtime"
+  },
+  {
+   "id": "cpa:segment-tree",
+   "name": "Segment tree",
+   "kind": "definition",
+   "statement": "A binary tree over array segments, each node storing the merge of its two halves (e.g. a sum), stored implicitly in an array with children 2v and 2v+1 in at most 4n cells.",
+   "locator": "cpa:data_structures/segment_tree#structure-of-the-segment-tree",
+   "prereqs": [
+    "[binary tree]",
+    "[divide and conquer]"
+   ],
+   "aliases": [
+    "segtree"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 26 practice-problem links"
+  },
+  {
+   "id": "cpa:segment-tree-query-update",
+   "name": "Segment tree range query and point update",
+   "kind": "result",
+   "statement": "A range query visits O(log n) nodes (fully-inside nodes return stored values, disjoint ones contribute nothing); a point update changes one node per level, also O(log n).",
+   "locator": "cpa:data_structures/segment_tree#sum-queries",
+   "prereqs": [
+    "cpa:segment-tree"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "update at #update-queries; implementation at #implementation"
+  },
+  {
+   "id": "cpa:segment-tree-custom-merge",
+   "name": "Segment tree with custom node values",
+   "kind": "skill",
+   "statement": "Change what a node stores and how children merge: maximum, maximum with count, gcd/lcm, or the four values (sum, best prefix, best suffix, best) for maximum subsegment sum.",
+   "locator": "cpa:data_structures/segment_tree#more-complex-queries",
+   "prereqs": [
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "max subsegment sum at #finding-subsegments-with-the-maximal-sum"
+  },
+  {
+   "id": "cpa:segment-tree-descent",
+   "name": "Searching by descending the segment tree",
+   "kind": "skill",
+   "statement": "Find the k-th zero, the first prefix reaching a sum, or the first element above x in a range in O(log n) by walking down using child aggregates, instead of O(log^2 n) binary search over queries.",
+   "locator": "cpa:data_structures/segment_tree#counting-zero-search-kth",
+   "prereqs": [
+    "cpa:segment-tree-custom-merge"
+   ],
+   "aliases": [
+    "segment tree walk"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:merge-sort-tree",
+   "name": "Merge sort tree",
+   "kind": "idea",
+   "statement": "Store each node's segment sorted (built by merging children); a lower-bound query over a range takes O(log^2 n), with multisets for updates and O(log n) with fractional cascading.",
+   "locator": "cpa:data_structures/segment_tree#saving-the-entire-subarrays-in-each-vertex",
+   "prereqs": [
+    "cpa:segment-tree-query-update",
+    "cpa:binary-search"
+   ],
+   "aliases": [
+    "fractional cascading"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lazy-propagation",
+   "name": "Lazy propagation",
+   "kind": "skill",
+   "statement": "For range updates, store a pending update at fully covered nodes and push it to the children only when a later operation descends there, keeping range add/assign with range queries at O(log n).",
+   "locator": "cpa:data_structures/segment_tree#range-updates-lazy-propagation",
+   "prereqs": [
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [
+    "range updates in segment tree"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:segment-tree-2d",
+   "name": "2D segment tree",
+   "kind": "idea",
+   "statement": "A segment tree over rows whose nodes are segment trees over columns answers submatrix queries in O(log n log m); for sparse points the inner trees are built only over the points in each node.",
+   "locator": "cpa:data_structures/segment_tree#generalization-to-higher-dimensions",
+   "prereqs": [
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:persistent-segment-tree",
+   "name": "Persistent segment tree",
+   "kind": "idea",
+   "statement": "An update copies only the O(log n) nodes on its path, keeping every past version; with versions over prefixes of values, the k-th smallest in a range is found in O(log n).",
+   "locator": "cpa:data_structures/segment_tree#preserving-the-history-of-its-values-persistent-segment-tree",
+   "prereqs": [
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [
+    "k-th smallest in range"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dynamic-segment-tree",
+   "name": "Dynamic (implicit) segment tree",
+   "kind": "skill",
+   "statement": "Create nodes lazily on first access so a tree over a huge index range uses memory proportional to the operations performed.",
+   "locator": "cpa:data_structures/segment_tree#dynamic-segment-tree",
+   "prereqs": [
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [
+    "sparse segment tree",
+    "implicit segment tree"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:treap",
+   "name": "Treap",
+   "kind": "definition",
+   "statement": "A binary tree on pairs (key X, priority Y) that is a BST in X and a heap in Y; with random priorities its expected height is O(log N), and distinct priorities fix the shape uniquely.",
+   "locator": "cpa:data_structures/treap#treap-cartesian-tree",
+   "prereqs": [
+    "[binary search tree]",
+    "[binary heap]"
+   ],
+   "aliases": [
+    "Cartesian tree",
+    "tree + heap"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 16 practice-problem links"
+  },
+  {
+   "id": "cpa:treap-split-merge",
+   "name": "Treap split and merge",
+   "kind": "skill",
+   "statement": "split(T, X) cuts a treap into keys <= X and > X, merge(T1, T2) joins treaps whose keys are ordered; both are O(log N) expected and insert, erase, build and union are written with them.",
+   "locator": "cpa:data_structures/treap#split",
+   "prereqs": [
+    "cpa:treap"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "merge at #merge; insert/erase at #insert, #erase"
+  },
+  {
+   "id": "cpa:treap-linear-build",
+   "name": "Building a treap in O(N) offline",
+   "kind": "skill",
+   "statement": "From sorted keys (or sorted (x,y) pairs, using a stack) a treap / Cartesian tree is built in linear time.",
+   "locator": "cpa:data_structures/treap#building-a-treap-in-o-n-in-offline-mode",
+   "prereqs": [
+    "cpa:treap"
+   ],
+   "aliases": [
+    "Cartesian tree construction"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:implicit-treap",
+   "name": "Implicit treap",
+   "kind": "idea",
+   "statement": "Use subtree sizes as implicit keys so a treap acts as an array supporting insert/erase anywhere, range aggregates, range add/paint and range reversal in O(log N).",
+   "locator": "cpa:data_structures/treap#implicit-treaps",
+   "prereqs": [
+    "cpa:treap-split-merge"
+   ],
+   "aliases": [
+    "rope",
+    "implicit key treap"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "subtree sizes at #maintaining-the-sizes-of-subtrees"
+  },
+  {
+   "id": "cpa:sqrt-tree",
+   "name": "Sqrt tree",
+   "kind": "result",
+   "statement": "Recursively apply sqrt decomposition (prefixOp, suffixOp, between) to get a tree of height O(log log n); with power-of-two block sizes, any associative range query is O(1) after O(n log log n) preprocessing.",
+   "locator": "cpa:data_structures/sqrt-tree#description",
+   "prereqs": [
+    "cpa:sqrt-decomposition"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 1 practice-problem link"
+  },
+  {
+   "id": "cpa:sqrt-tree-updates",
+   "name": "Sqrt tree updates",
+   "kind": "skill",
+   "statement": "Point updates in O(sqrt n) by indexing the root's between array with a nested sqrt tree; segment assignment with lazy marks in O(sqrt n log log n) or O(sqrt n) depending on which layers may be lazy.",
+   "locator": "cpa:data_structures/sqrt-tree#updating-elements",
+   "prereqs": [
+    "cpa:sqrt-tree"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:randomized-heap",
+   "name": "Randomized meldable heap",
+   "kind": "result",
+   "statement": "A heap-ordered binary tree where every operation reduces to merge, which keeps the smaller root and recursively merges into a randomly chosen child; operations run in expected O(log n) with high probability.",
+   "locator": "cpa:data_structures/randomized_heap#operations",
+   "prereqs": [
+    "[binary heap]"
+   ],
+   "aliases": [
+    "meldable heap"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:randomized-heap-bound",
+   "name": "Random root-to-leaf path length bound",
+   "kind": "result",
+   "statement": "The expected length of a random root-to-leaf walk in any binary tree with n vertices is at most log(n+1) (induction), and it exceeds (c+1) log n with probability at most n^-c, so random-child merge is O(log n) with high probability.",
+   "locator": "cpa:data_structures/randomized_heap#complexity",
+   "prereqs": [
+    "cpa:randomized-heap",
+    "[expected value]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:offline-deletion",
+   "name": "Offline deletion via segment tree over time",
+   "kind": "idea",
+   "statement": "Give each element its lifetime interval over the query sequence, insert it into the O(log n) segment-tree nodes covering that interval, and DFS the tree with rollback, so a structure with add in O(T(n)) supports deletion in O(T(n) log n) offline.",
+   "locator": "cpa:data_structures/deleting_in_log_n#algorithm",
+   "prereqs": [
+    "cpa:segment-tree",
+    "cpa:rollback-dsu"
+   ],
+   "aliases": [
+    "offline dynamic connectivity",
+    "segment tree on time"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links"
+  },
+  {
+   "id": "cpa:rollback-dsu",
+   "name": "Undoing operations with a change stack (rollback DSU)",
+   "kind": "skill",
+   "statement": "A structure whose updates are worst-case O(T(n)) can be rolled back in O(T(n)) by pushing each modified cell's old value on a stack; DSU with union by rank but no path compression supports this, giving offline dynamic connectivity. Rollbacks break amortised bounds.",
+   "locator": "cpa:data_structures/deleting_in_log_n#implementation",
+   "prereqs": [
+    "cpa:dsu-union-by-rank",
+    "[stack]"
+   ],
+   "aliases": [
+    "persistent DSU (offline)",
+    "dynamic connectivity"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dp-overlapping-subproblems",
+   "name": "Dynamic programming: reuse of overlapping subproblems",
+   "kind": "idea",
+   "statement": "A recursion whose calls repeat the same subproblems (naive Fibonacci makes O(2^n) calls) can be made polynomial by computing each of its distinct subproblems once.",
+   "locator": "cpa:dynamic_programming/intro-to-dp#introduction-to-dynamic-programming",
+   "prereqs": [
+    "[recursion]"
+   ],
+   "aliases": [
+    "DP"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 8 practice-problem links plus DP contest links"
+  },
+  {
+   "id": "cpa:memoization",
+   "name": "Memoization (top-down DP)",
+   "kind": "skill",
+   "statement": "Cache each subproblem's answer in a lookup table (an array when states are small integers, a map otherwise) and return it on repeat calls, turning Fibonacci into O(n) calls.",
+   "locator": "cpa:dynamic_programming/intro-to-dp#speeding-up-fibonacci-with-dynamic-programming-memoization",
+   "prereqs": [
+    "cpa:dp-overlapping-subproblems"
+   ],
+   "aliases": [
+    "top-down DP"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bottom-up-dp",
+   "name": "Bottom-up (tabulated) DP",
+   "kind": "skill",
+   "statement": "Fill the table from the base cases upward in dependency order; when a state needs only the last few states, keep only those for O(1) memory.",
+   "locator": "cpa:dynamic_programming/intro-to-dp#bottom-up-dynamic-programming",
+   "prereqs": [
+    "cpa:dp-overlapping-subproblems"
+   ],
+   "aliases": [
+    "tabulation"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:classic-dp-problems",
+   "name": "Classic DP problems",
+   "kind": "idea",
+   "statement": "Standard first DP problems: 0-1 knapsack, subset sum, longest increasing subsequence, counting grid paths, longest common subsequence, edit distance.",
+   "locator": "cpa:dynamic_programming/intro-to-dp#classic-dynamic-programming-problems",
+   "prereqs": [
+    "cpa:bottom-up-dp"
+   ],
+   "aliases": [
+    "subset sum",
+    "LCS",
+    "edit distance",
+    "grid paths"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "table only; subset sum, grid paths, LCS, edit distance have no article here"
+  },
+  {
+   "id": "cpa:knapsack-01",
+   "name": "0-1 knapsack",
+   "kind": "result",
+   "statement": "With f[i][j] the best value from the first i items within capacity j, f[i][j] = max(f[i-1][j], f[i-1][j-w_i] + v_i), solvable in O(nW).",
+   "locator": "cpa:dynamic_programming/knapsack#0-1-knapsack",
+   "prereqs": [
+    "cpa:bottom-up-dp"
+   ],
+   "aliases": [
+    "0/1 knapsack"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 8 practice-problem links"
+  },
+  {
+   "id": "cpa:knapsack-1d-order",
+   "name": "One-dimensional knapsack and iteration order",
+   "kind": "skill",
+   "statement": "Drop the item dimension: iterate capacity downward for 0-1 knapsack (each item once) and upward for complete knapsack (unbounded reuse); the same update with the wrong order solves the other problem.",
+   "locator": "cpa:dynamic_programming/knapsack#implementation",
+   "prereqs": [
+    "cpa:knapsack-01"
+   ],
+   "aliases": [
+    "space-optimised knapsack"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:knapsack-complete",
+   "name": "Complete (unbounded) knapsack",
+   "kind": "result",
+   "statement": "With unlimited copies, f[i][j] = max(f[i-1][j], f[i][j-w_i] + v_i), O(nW).",
+   "locator": "cpa:dynamic_programming/knapsack#complete-knapsack",
+   "prereqs": [
+    "cpa:knapsack-01"
+   ],
+   "aliases": [
+    "unbounded knapsack"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:knapsack-multiple-binary",
+   "name": "Bounded knapsack by binary grouping",
+   "kind": "skill",
+   "statement": "Split k_i copies into bundles of 1, 2, 4, ... plus a remainder so every count up to k_i is a sum of bundles; the bounded problem becomes 0-1 knapsack in O(W sum log k_i).",
+   "locator": "cpa:dynamic_programming/knapsack#binary-grouping-optimization",
+   "prereqs": [
+    "cpa:knapsack-01"
+   ],
+   "aliases": [
+    "multiple knapsack",
+    "bounded knapsack"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:knapsack-monotone-queue",
+   "name": "Bounded knapsack by monotone queue",
+   "kind": "skill",
+   "statement": "Group capacities by residue mod w_i; each transition becomes a sliding-window maximum, giving O(nW).",
+   "locator": "cpa:dynamic_programming/knapsack#monotone-queue-optimization",
+   "prereqs": [
+    "cpa:knapsack-multiple-binary",
+    "cpa:sliding-window-minimum"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "mixed knapsack at #mixed-knapsack"
+  },
+  {
+   "id": "cpa:lis-quadratic",
+   "name": "LIS in O(n^2)",
+   "kind": "result",
+   "statement": "d[i] = 1 + max d[j] over j < i with a[j] < a[i] is the length of the longest increasing subsequence ending at i; the answer is max d[i].",
+   "locator": "cpa:dynamic_programming/longest_increasing_subsequence#solution-in-on2-with-dynamic-programming",
+   "prereqs": [
+    "cpa:bottom-up-dp"
+   ],
+   "aliases": [
+    "longest increasing subsequence"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 13 practice-problem links"
+  },
+  {
+   "id": "cpa:dp-reconstruction",
+   "name": "Restoring a DP solution with parent pointers",
+   "kind": "skill",
+   "statement": "Record for each state which predecessor achieved its optimum, then follow the pointers back from the best final state; alternatively recompute the choice to save memory.",
+   "locator": "cpa:dynamic_programming/longest_increasing_subsequence#restoring-the-subsequence",
+   "prereqs": [
+    "cpa:lis-quadratic"
+   ],
+   "aliases": [
+    "backtracking the DP table"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lis-nlogn",
+   "name": "LIS in O(n log n) with binary search",
+   "kind": "result",
+   "statement": "Keep d[l] = smallest tail of an increasing subsequence of length l; d is sorted and each element updates one entry found by binary search (lower bound), giving O(n log n).",
+   "locator": "cpa:dynamic_programming/longest_increasing_subsequence#solution-in-on-log-n-with-dynamic-programming-and-binary-search",
+   "prereqs": [
+    "cpa:lis-quadratic",
+    "cpa:binary-search"
+   ],
+   "aliases": [
+    "patience sorting"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lis-data-structure",
+   "name": "LIS with a prefix-maximum structure",
+   "kind": "skill",
+   "statement": "Process values in order and compute d[i] as one plus a prefix maximum over smaller values held in a segment or Fenwick tree (after coordinate compression); extends to counting LIS.",
+   "locator": "cpa:dynamic_programming/longest_increasing_subsequence#solution-in-on-log-n-with-data-structures",
+   "prereqs": [
+    "cpa:lis-quadratic",
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "counting at #number-of-longest-increasing-subsequences"
+  },
+  {
+   "id": "cpa:lis-variants",
+   "name": "LIS variants: non-decreasing, counting, covering",
+   "kind": "result",
+   "statement": "Non-decreasing needs only upper bound; the number of LIS sums ways over optimal predecessors; the minimum number of non-increasing subsequences covering a sequence equals the LIS length (duality proof).",
+   "locator": "cpa:dynamic_programming/longest_increasing_subsequence#related-tasks",
+   "prereqs": [
+    "cpa:lis-nlogn"
+   ],
+   "aliases": [
+    "Dilworth (special case)"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:monotone-opt",
+   "name": "Monotone optimal split point",
+   "kind": "definition",
+   "statement": "opt(i, j), the smallest k minimising the transition for dp(i, j), is monotone: opt(i, j) <= opt(i, j+1); this is the precondition that divide-and-conquer DP relies on.",
+   "locator": "cpa:dynamic_programming/divide-and-conquer-dp#preconditions",
+   "prereqs": [
+    "cpa:bottom-up-dp"
+   ],
+   "aliases": [
+    "opt monotonicity"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dc-dp-optimization",
+   "name": "Divide and conquer DP optimization",
+   "kind": "result",
+   "statement": "For dp(i,j) = min_k dp(i-1,k-1) + C(k,j) with monotone optimal split opt(i,j) in j, compute a row by solving the middle j and recursing with narrowed k ranges, in O(n log n) per row instead of O(n^2).",
+   "locator": "cpa:dynamic_programming/divide-and-conquer-dp#divide-and-conquer-dp",
+   "prereqs": [
+    "cpa:monotone-opt",
+    "[divide and conquer]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 18 practice-problem links"
+  },
+  {
+   "id": "cpa:quadrangle-inequality",
+   "name": "Quadrangle inequality",
+   "kind": "definition",
+   "statement": "C(a,c) + C(b,d) <= C(a,d) + C(b,c) for a <= b <= c <= d; with monotonicity it implies monotone optimal splits, the precondition for D&C and Knuth optimizations.",
+   "locator": "cpa:dynamic_programming/knuth-optimization#conditions",
+   "prereqs": [],
+   "aliases": [
+    "QI",
+    "Monge condition"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "D&C article mentions it at cpa:dynamic_programming/divide-and-conquer-dp#things-to-look-out-for"
+  },
+  {
+   "id": "cpa:knuth-optimization",
+   "name": "Knuth's optimization",
+   "kind": "result",
+   "statement": "For range DP dp(i,j) = min over i<=k<j of dp(i,k) + dp(k+1,j) + C(i,j), if C satisfies the quadrangle inequality and monotonicity then opt(i,j-1) <= opt(i,j) <= opt(i+1,j), so restricting k reduces O(n^3) to O(n^2).",
+   "locator": "cpa:dynamic_programming/knuth-optimization#algorithm",
+   "prereqs": [
+    "cpa:quadrangle-inequality",
+    "[interval DP]"
+   ],
+   "aliases": [
+    "Knuth-Yao speedup"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 4 practice-problem links; proof at #proof-of-correctness"
+  },
+  {
+   "id": "cpa:broken-profile-dp",
+   "name": "DP on broken profile",
+   "kind": "skill",
+   "statement": "Tile a grid row by row with state (row, bitmask of cells already filled in the next row) to count or optimise domino-type fillings, e.g. the 'Parquet' problem.",
+   "locator": "cpa:dynamic_programming/profile-dynamics#problem-parquet",
+   "prereqs": [
+    "cpa:bottom-up-dp",
+    "[bitmask]"
+   ],
+   "aliases": [
+    "bitmask DP",
+    "profile DP",
+    "domino tiling"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 13 practice-problem links; prose is very short"
+  },
+  {
+   "id": "cpa:largest-zero-submatrix",
+   "name": "Largest zero submatrix in O(nm)",
+   "kind": "result",
+   "statement": "For each cell compute d[i][j], the nearest row above with a 1; then in each row the widest rectangle bounded by d is found with a monotonic stack (nearest larger d to left and right), giving O(nm) time and O(m) memory.",
+   "locator": "cpa:dynamic_programming/zero_matrix#algorithm",
+   "prereqs": [
+    "cpa:nearest-smaller-stack"
+   ],
+   "aliases": [
+    "maximal rectangle",
+    "largest rectangle in histogram"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:nearest-smaller-stack",
+   "name": "Nearest smaller element to the left/right with a stack",
+   "kind": "skill",
+   "statement": "Scan the row keeping a stack of indices with increasing values, popping while the top is not smaller; the remaining top is the nearest smaller (here: larger d) index, O(m) per row amortised.",
+   "locator": "cpa:dynamic_programming/zero_matrix#step-2-problem-solving",
+   "prereqs": [
+    "[stack]"
+   ],
+   "aliases": [
+    "monotonic stack",
+    "previous smaller element"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:polynomial-hash",
+   "name": "Polynomial rolling hash of a string",
+   "kind": "definition",
+   "statement": "hash(s) = sum s[i] p^i mod m, with p a prime near the alphabet size (e.g. 31) and m a large prime (e.g. 1e9+9); equal strings have equal hashes and unequal ones collide with probability about 1/m.",
+   "locator": "cpa:string/string-hashing#calculation-of-the-hash-of-a-string",
+   "prereqs": [
+    "[modular arithmetic]"
+   ],
+   "aliases": [
+    "string hashing",
+    "rolling hash"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 19 practice-problem links"
+  },
+  {
+   "id": "cpa:hash-group-duplicates",
+   "name": "Grouping duplicate strings by hash",
+   "kind": "skill",
+   "statement": "Hash every string, sort hashes with indices, and group equal hashes, finding duplicates in O(nm + n log n) instead of O(nm log n).",
+   "locator": "cpa:string/string-hashing#search-for-duplicate-strings-in-an-array-of-strings",
+   "prereqs": [
+    "cpa:polynomial-hash"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:prefix-hash-substring",
+   "name": "Substring hash from prefix hashes",
+   "kind": "skill",
+   "statement": "With prefix hashes, hash(s[i..j]) * p^i = H[j+1] - H[i]; compare two substrings by multiplying both to a common power (or using a modular inverse) in O(1).",
+   "locator": "cpa:string/string-hashing#fast-hash-calculation-of-substrings-of-given-string",
+   "prereqs": [
+    "cpa:polynomial-hash"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:hash-distinct-substrings",
+   "name": "Counting distinct substrings by hashing",
+   "kind": "skill",
+   "statement": "For each length l, collect the normalised hashes of all length-l substrings and count distinct values; O(n^2 log n).",
+   "locator": "cpa:string/string-hashing#determine-the-number-of-different-substrings-in-a-string",
+   "prereqs": [
+    "cpa:prefix-hash-substring"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:hash-collisions",
+   "name": "Collision probability and double hashing",
+   "kind": "result",
+   "statement": "Comparing one string against many raises collision odds roughly to (number of comparisons)/m by the birthday effect; using two independent moduli (or one 64-bit modulus) makes collisions negligible.",
+   "locator": "cpa:string/string-hashing#improve-no-collision-probability",
+   "prereqs": [
+    "cpa:polynomial-hash",
+    "[birthday paradox]"
+   ],
+   "aliases": [
+    "double hashing"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:rabin-karp",
+   "name": "Rabin-Karp string matching",
+   "kind": "result",
+   "statement": "Compare the pattern's hash with the hash of every length-|s| window of the text computed from prefix hashes, finding all occurrences in O(|s| + |t|).",
+   "locator": "cpa:string/rabin-karp#rabin-karp-algorithm-for-string-matching",
+   "prereqs": [
+    "cpa:prefix-hash-substring"
+   ],
+   "aliases": [
+    "Rabin-Karp"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 4 practice-problem links; very short article"
+  },
+  {
+   "id": "cpa:prefix-function",
+   "name": "Prefix function",
+   "kind": "definition",
+   "statement": "pi[i] is the length of the longest proper prefix of s[0..i] that is also a suffix of it; pi[0] = 0.",
+   "locator": "cpa:string/prefix-function#prefix-function-definition",
+   "prereqs": [],
+   "aliases": [
+    "failure function",
+    "pi function",
+    "border array"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 11 practice-problem links"
+  },
+  {
+   "id": "cpa:prefix-function-linear",
+   "name": "Computing the prefix function in O(n)",
+   "kind": "result",
+   "statement": "Since pi[i+1] <= pi[i] + 1, and on a mismatch the next candidate length is pi[j-1], following these links computes the whole array in O(n) amortised, online.",
+   "locator": "cpa:string/prefix-function#efficient-algorithm",
+   "prereqs": [
+    "cpa:prefix-function"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "trivial O(n^3) at #trivial-algorithm"
+  },
+  {
+   "id": "cpa:kmp",
+   "name": "Knuth-Morris-Pratt substring search",
+   "kind": "result",
+   "statement": "Compute the prefix function of s + # + t; every position in the t part with pi = |s| ends an occurrence, so all occurrences are found in O(|s| + |t|) time and O(|s|) memory.",
+   "locator": "cpa:string/prefix-function#search-for-a-substring-in-a-string-the-knuth-morris-pratt-algorithm",
+   "prereqs": [
+    "cpa:prefix-function-linear"
+   ],
+   "aliases": [
+    "KMP"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:prefix-occurrence-counts",
+   "name": "Counting occurrences of each prefix",
+   "kind": "skill",
+   "statement": "Count how often each prefix occurs by tallying pi values and propagating counts along pi links from long to short.",
+   "locator": "cpa:string/prefix-function#counting-the-number-of-occurrences-of-each-prefix",
+   "prereqs": [
+    "cpa:prefix-function-linear"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:string-period",
+   "name": "Shortest period / string compression",
+   "kind": "result",
+   "statement": "With k = n - pi[n-1], if k divides n then s is a repetition of its prefix of length k (the shortest such); otherwise no compression exists. The Z-function gives the same answer.",
+   "locator": "cpa:string/prefix-function#compressing-a-string",
+   "prereqs": [
+    "cpa:prefix-function"
+   ],
+   "aliases": [
+    "period of a string"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Z version at cpa:string/z-function#string-compression"
+  },
+  {
+   "id": "cpa:prefix-automaton",
+   "name": "KMP automaton",
+   "kind": "skill",
+   "statement": "Precompute transitions (state = current pi value, next character) for s + # so the text is processed with O(1) per character without storing it; built in O(n k).",
+   "locator": "cpa:string/prefix-function#building-an-automaton-according-to-the-prefix-function",
+   "prereqs": [
+    "cpa:prefix-function-linear",
+    "[finite automaton]"
+   ],
+   "aliases": [
+    "prefix function automaton"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:distinct-substrings-incremental",
+   "name": "Counting distinct substrings incrementally",
+   "kind": "skill",
+   "statement": "When appending c to s, the new substrings are the suffixes of s+c longer than the maximum prefix function (or Z) value of reverse(s+c); summing gives O(n^2) overall.",
+   "locator": "cpa:string/prefix-function#the-number-of-different-substring-in-a-string",
+   "prereqs": [
+    "cpa:prefix-function-linear"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Z version at cpa:string/z-function#number-of-distinct-substrings-in-a-string"
+  },
+  {
+   "id": "cpa:z-function",
+   "name": "Z-function",
+   "kind": "definition",
+   "statement": "z[i] is the length of the longest common prefix of s and the suffix s[i..]; z[0] is taken as 0.",
+   "locator": "cpa:string/z-function#z-function-and-its-calculation",
+   "prereqs": [],
+   "aliases": [
+    "Z-array",
+    "Z algorithm"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 10 practice-problem links"
+  },
+  {
+   "id": "cpa:z-function-linear",
+   "name": "Computing the Z-function in O(n)",
+   "kind": "result",
+   "statement": "Maintain the rightmost match segment [l, r); for i < r start from min(r - i, z[i - l]) and extend naively; every extension step moves r right, so the total is O(n).",
+   "locator": "cpa:string/z-function#efficient-algorithm-to-compute-the-z-function",
+   "prereqs": [
+    "cpa:z-function"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "proof at #asymptotic-behavior-of-the-algorithm"
+  },
+  {
+   "id": "cpa:z-pattern-search",
+   "name": "Pattern search with the Z-function",
+   "kind": "skill",
+   "statement": "Compute Z of p + separator + t; positions in the t part with z = |p| are occurrences, in O(|p| + |t|).",
+   "locator": "cpa:string/z-function#search-the-substring",
+   "prereqs": [
+    "cpa:z-function-linear"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:suffix-array",
+   "name": "Suffix array",
+   "kind": "definition",
+   "statement": "The array of starting indices of all suffixes of s in lexicographic order.",
+   "locator": "cpa:string/suffix-array#definition",
+   "prereqs": [
+    "[sorting]"
+   ],
+   "aliases": [
+    "SA"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 33 practice-problem links"
+  },
+  {
+   "id": "cpa:suffix-array-doubling",
+   "name": "Suffix array by prefix doubling in O(n log n)",
+   "kind": "result",
+   "statement": "Sort cyclic shifts of s + $ by their first 2^k characters, using equivalence classes from round k and counting sort on pairs, for log n rounds; this yields the suffix array.",
+   "locator": "cpa:string/suffix-array#on-log-n-approach",
+   "prereqs": [
+    "cpa:suffix-array",
+    "[counting sort]"
+   ],
+   "aliases": [
+    "prefix doubling"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "naive O(n^2 log n) at #on2-log-n-approach"
+  },
+  {
+   "id": "cpa:suffix-array-search",
+   "name": "Substring search and comparison with a suffix array",
+   "kind": "skill",
+   "statement": "Binary search the suffix array for a pattern in O(|p| log |t|); keeping the doubling rounds' class arrays compares any two substrings in O(1) and gives LCP in O(log n).",
+   "locator": "cpa:string/suffix-array#finding-a-substring-in-a-string",
+   "prereqs": [
+    "cpa:suffix-array-doubling",
+    "cpa:binary-search"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "comparison at #comparing-two-substrings-of-a-string"
+  },
+  {
+   "id": "cpa:lcp-array-kasai",
+   "name": "LCP array (Kasai)",
+   "kind": "result",
+   "statement": "The LCP of adjacent sorted suffixes is computed in O(n) because the LCP drops by at most one moving from suffix i to suffix i+1; the LCP of any two suffixes is then a range minimum.",
+   "locator": "cpa:string/suffix-array#longest-common-prefix-of-two-substrings-without-additional-memory",
+   "prereqs": [
+    "cpa:suffix-array-doubling",
+    "cpa:sparse-table-rmq"
+   ],
+   "aliases": [
+    "Kasai's algorithm",
+    "LCP"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sa-distinct-substrings",
+   "name": "Distinct substrings from suffix array and LCP",
+   "kind": "result",
+   "statement": "The number of distinct substrings is sum over sorted suffixes of (n - p[i]) - lcp[i-1].",
+   "locator": "cpa:string/suffix-array#number-of-different-substrings",
+   "prereqs": [
+    "cpa:lcp-array-kasai"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "smallest cyclic shift at #finding-the-smallest-cyclic-shift"
+  },
+  {
+   "id": "cpa:trie",
+   "name": "Trie",
+   "kind": "definition",
+   "statement": "A rooted tree whose edges carry letters with distinct labels out of each vertex; each vertex is the string spelled from the root, marked if it ends a dictionary word; insertion is O(length).",
+   "locator": "cpa:string/aho_corasick#construction-of-the-trie",
+   "prereqs": [
+    "[rooted tree]"
+   ],
+   "aliases": [
+    "prefix tree"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 6 practice-problem links (heading 'Problems')"
+  },
+  {
+   "id": "cpa:aho-corasick-automaton",
+   "name": "Aho-Corasick automaton",
+   "kind": "result",
+   "statement": "Turn a trie into a DFA with suffix links (to the longest proper suffix that is a trie vertex) and transitions computed lazily or by BFS in O(mk); for one pattern this is KMP.",
+   "locator": "cpa:string/aho_corasick#construction-of-an-automaton",
+   "prereqs": [
+    "cpa:trie",
+    "cpa:prefix-function",
+    "cpa:bfs"
+   ],
+   "aliases": [
+    "Aho-Corasick",
+    "suffix links"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "BFS construction at #bfs-based-construction"
+  },
+  {
+   "id": "cpa:aho-corasick-matching",
+   "name": "Multi-pattern search with Aho-Corasick",
+   "kind": "skill",
+   "statement": "Feed the text through the automaton and report matches via output (dictionary-suffix) links, in O(len + number of matches).",
+   "locator": "cpa:string/aho_corasick#find-all-strings-from-a-given-set-in-a-text",
+   "prereqs": [
+    "cpa:aho-corasick-automaton"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:aho-corasick-dp",
+   "name": "Search and DP over the Aho-Corasick automaton",
+   "kind": "idea",
+   "statement": "Problems on strings avoiding or containing dictionary words become paths in the automaton: avoid output states for the smallest non-matching string, BFS over (state, mask) for the shortest superstring, DFS over (state, length, count).",
+   "locator": "cpa:string/aho_corasick#finding-the-lexicographically-smallest-string-of-a-given-length-that-doesnt-match-any-given-strings",
+   "prereqs": [
+    "cpa:aho-corasick-automaton"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:suffix-tree-ukkonen",
+   "name": "Suffix tree (Ukkonen's algorithm)",
+   "kind": "result",
+   "statement": "Ukkonen's algorithm builds a suffix tree of s in O(n log k) for alphabet size k; code only.",
+   "locator": "cpa:string/suffix-tree-ukkonen#suffix-tree-ukkonens-algorithm",
+   "prereqs": [
+    "cpa:trie"
+   ],
+   "aliases": [
+    "suffix tree",
+    "Ukkonen"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "stub article (says so itself): code only, no explanation; 1 practice-problem link"
+  },
+  {
+   "id": "cpa:suffix-automaton",
+   "name": "Suffix automaton",
+   "kind": "definition",
+   "statement": "The minimal DFA accepting all suffixes of s; every path from the initial state spells a substring of s and every substring is one such path.",
+   "locator": "cpa:string/suffix-automaton#definition-of-a-suffix-automaton",
+   "prereqs": [
+    "[finite automaton]"
+   ],
+   "aliases": [
+    "DAWG",
+    "SAM"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 11 practice-problem links"
+  },
+  {
+   "id": "cpa:endpos-suffix-links",
+   "name": "endpos classes and suffix links",
+   "kind": "definition",
+   "statement": "States correspond to classes of substrings with equal end-position sets; each class holds suffixes of its longest member of consecutive lengths, and the suffix link points to the class of the next shorter suffix, forming a tree.",
+   "locator": "cpa:string/suffix-automaton#end-positions-endpos",
+   "prereqs": [
+    "cpa:suffix-automaton"
+   ],
+   "aliases": [
+    "endpos"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "suffix links at #suffix-links-link"
+  },
+  {
+   "id": "cpa:suffix-automaton-construction",
+   "name": "Online linear-time suffix automaton construction",
+   "kind": "result",
+   "statement": "Add characters one at a time, creating a state, walking suffix links to add transitions, and cloning a state when a transition is non-continuous; total time O(n log k) with map transitions, O(n) for constant alphabet.",
+   "locator": "cpa:string/suffix-automaton#algorithm",
+   "prereqs": [
+    "cpa:endpos-suffix-links"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "correctness at #correctness, linear bound at #linear-number-of-operations"
+  },
+  {
+   "id": "cpa:suffix-automaton-size",
+   "name": "Suffix automaton size bounds",
+   "kind": "result",
+   "statement": "A suffix automaton of a length-n string has at most 2n-1 states (n >= 2) and at most 3n-4 transitions (n >= 3).",
+   "locator": "cpa:string/suffix-automaton#additional-properties",
+   "prereqs": [
+    "cpa:suffix-automaton-construction"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:suffix-automaton-applications",
+   "name": "Suffix automaton applications",
+   "kind": "skill",
+   "statement": "Occurrence checks, counting distinct substrings and their total length (DP over the DAG), k-th substring, occurrence counts and positions, shortest absent string and longest common substring of two or many strings.",
+   "locator": "cpa:string/suffix-automaton#applications",
+   "prereqs": [
+    "cpa:suffix-automaton-construction",
+    "[DAG DP]"
+   ],
+   "aliases": [
+    "longest common substring"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lyndon-word",
+   "name": "Lyndon word and Lyndon factorization",
+   "kind": "definition",
+   "statement": "A string is simple (Lyndon) if it is strictly smaller than all its proper suffixes (equivalently, all its nontrivial cyclic shifts); every string factors uniquely as w1 w2 ... wk of simple strings with w1 >= w2 >= ... >= wk.",
+   "locator": "cpa:string/lyndon_factorization#lyndon-factorization_1",
+   "prereqs": [],
+   "aliases": [
+    "Lyndon decomposition"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 1 practice-problem link"
+  },
+  {
+   "id": "cpa:duval-algorithm",
+   "name": "Duval's algorithm",
+   "kind": "result",
+   "statement": "A greedy scan over s = s1 s2 s3 (s2 pre-simple) emits the Lyndon factorization in O(n) time and O(1) extra memory.",
+   "locator": "cpa:string/lyndon_factorization#duval-algorithm",
+   "prereqs": [
+    "cpa:lyndon-word"
+   ],
+   "aliases": [
+    "Duval"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:smallest-cyclic-shift",
+   "name": "Smallest cyclic shift",
+   "kind": "result",
+   "statement": "The lexicographically least rotation starts at the last Lyndon factor of s + s that begins in the first half, found in O(n) by Duval; the suffix array and suffix automaton give alternatives.",
+   "locator": "cpa:string/lyndon_factorization#finding-the-smallest-cyclic-shift",
+   "prereqs": [
+    "cpa:duval-algorithm"
+   ],
+   "aliases": [
+    "minimum rotation"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "also at cpa:string/suffix-array#finding-the-smallest-cyclic-shift and cpa:string/suffix-automaton#smallest-cyclic-shift"
+  },
+  {
+   "id": "cpa:rpn-evaluation",
+   "name": "Reverse Polish notation evaluation",
+   "kind": "skill",
+   "statement": "Evaluate postfix expressions with one stack: push operands, and for an operator pop its arguments and push the result, in O(n).",
+   "locator": "cpa:string/expression_parsing#reverse-polish-notation",
+   "prereqs": [
+    "[stack]"
+   ],
+   "aliases": [
+    "RPN",
+    "postfix notation"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:expression-parsing-two-stacks",
+   "name": "Infix expression parsing with two stacks",
+   "kind": "result",
+   "statement": "Keep an operand stack and an operator stack in strictly decreasing priority; on each operator first apply stacked operators of higher (or equal, for left-associative) priority, handling parentheses as barriers; evaluates in O(n).",
+   "locator": "cpa:string/expression_parsing#parsing-of-simple-expressions",
+   "prereqs": [
+    "cpa:rpn-evaluation"
+   ],
+   "aliases": [
+    "shunting-yard",
+    "operator precedence parsing"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:unary-right-assoc",
+   "name": "Unary and right-associative operators in parsing",
+   "kind": "skill",
+   "statement": "An operator is unary if it follows another operator, an opening parenthesis or nothing; right-associative operators are postponed when priorities are equal.",
+   "locator": "cpa:string/expression_parsing#unary-operators",
+   "prereqs": [
+    "cpa:expression-parsing-two-stacks"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "right-associativity at #right-associativity"
+  },
+  {
+   "id": "cpa:palindrome-radius",
+   "name": "Palindrome radii d_odd and d_even",
+   "kind": "definition",
+   "statement": "All palindromic substrings are described compactly by, for each center, the number of palindromes centered there (d_odd[i], d_even[i]), since palindromes with a common center are nested.",
+   "locator": "cpa:string/manacher#more-precise-statement",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 7 practice-problem links (heading 'Problems')"
+  },
+  {
+   "id": "cpa:manacher",
+   "name": "Manacher's algorithm",
+   "kind": "result",
+   "statement": "Keep the rightmost found palindrome (l, r); for i inside it start from the mirror's value min(r - i, d[l + r - i]) and extend naively; every extension moves r right, so all radii take O(n).",
+   "locator": "cpa:string/manacher#manachers-algorithm",
+   "prereqs": [
+    "cpa:palindrome-radius"
+   ],
+   "aliases": [
+    "longest palindromic substring"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "trivial O(n^2) center expansion at #trivial-algorithm; linear proof at #complexity-of-manachers-algorithm"
+  },
+  {
+   "id": "cpa:manacher-parity",
+   "name": "Manacher with interleaved separators",
+   "kind": "skill",
+   "statement": "Insert # between characters so even palindromes become odd ones; d[2i] and d[2i+1] recover d_even and d_odd from one odd-only pass.",
+   "locator": "cpa:string/manacher#working-with-parities",
+   "prereqs": [
+    "cpa:manacher"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:repetition",
+   "name": "Repetitions (squares) in a string",
+   "kind": "definition",
+   "statement": "A repetition is a substring of the form tt; a string can contain O(n^2) of them, but they group into O(n) runs described by 4-tuples.",
+   "locator": "cpa:string/main_lorentz#finding-repetitions",
+   "prereqs": [],
+   "aliases": [
+    "square",
+    "tandem repeat"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:main-lorentz",
+   "name": "Main-Lorentz algorithm",
+   "kind": "result",
+   "statement": "Divide and conquer: recurse on halves, then find repetitions crossing the middle as tuples using Z-functions of the halves and reversed halves (left and right crossing criteria), in O(n log n) overall.",
+   "locator": "cpa:string/main_lorentz#main-lorentz-algorithm",
+   "prereqs": [
+    "cpa:repetition",
+    "cpa:z-function-linear",
+    "[divide and conquer]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bfs",
+   "name": "Breadth-first search",
+   "kind": "result",
+   "statement": "From a source, process vertices from a FIFO queue, marking and enqueuing unvisited neighbours; vertices are visited in order of distance, so BFS gives shortest paths by edge count in an unweighted graph in O(n + m).",
+   "locator": "cpa:graph/breadth-first-search#description-of-the-algorithm",
+   "prereqs": [
+    "[queue]",
+    "[graph representation: adjacency list]"
+   ],
+   "aliases": [
+    "BFS"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 25 practice-problem links; code in C++ and Java"
+  },
+  {
+   "id": "cpa:bfs-path-restore",
+   "name": "Restoring BFS shortest paths",
+   "kind": "skill",
+   "statement": "Record each vertex's parent when it is first reached and follow parents back from the target, then reverse.",
+   "locator": "cpa:graph/breadth-first-search#implementation",
+   "prereqs": [
+    "cpa:bfs"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bfs-applications",
+   "name": "Applications of BFS",
+   "kind": "idea",
+   "statement": "BFS also finds connected components, least-move solutions of puzzles/games as state graphs, the shortest cycle in a directed graph, the vertices/edges on some shortest a-b path, shortest even-length walks (on a doubled state graph), and shortest paths with 0/1 weights.",
+   "locator": "cpa:graph/breadth-first-search#applications-of-bfs",
+   "prereqs": [
+    "cpa:bfs"
+   ],
+   "aliases": [
+    "state-space search",
+    "multi-source BFS"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dfs",
+   "name": "Depth-first search",
+   "kind": "result",
+   "statement": "Recursively visit each unvisited neighbour before backtracking; reaches all vertices reachable from the start in O(n + m) and finds the lexicographically first paths.",
+   "locator": "cpa:graph/depth-first-search#description-of-the-algorithm",
+   "prereqs": [
+    "[recursion]",
+    "[graph representation: adjacency list]"
+   ],
+   "aliases": [
+    "DFS"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 39 practice-problem links"
+  },
+  {
+   "id": "cpa:dfs-entry-exit-times",
+   "name": "DFS entry/exit times and ancestor test",
+   "kind": "skill",
+   "statement": "Record entry and exit times (and white/grey/black colours) during DFS; in a tree, i is an ancestor of j iff tin[i] < tin[j] and tout[i] > tout[j], checkable in O(1).",
+   "locator": "cpa:graph/depth-first-search#applications-of-depth-first-search",
+   "prereqs": [
+    "cpa:dfs"
+   ],
+   "aliases": [
+    "tin/tout",
+    "Euler tour times"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dfs-edge-classification",
+   "name": "Classification of edges by DFS",
+   "kind": "definition",
+   "statement": "Edges are tree, back, forward or cross edges according to the endpoints' colours and entry/exit times; undirected graphs have only tree and back edges.",
+   "locator": "cpa:graph/depth-first-search#classification-of-edges-of-a-graph",
+   "prereqs": [
+    "cpa:dfs-entry-exit-times"
+   ],
+   "aliases": [
+    "back edge",
+    "cross edge"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:connected-components",
+   "name": "Connected components by repeated DFS/BFS",
+   "kind": "result",
+   "statement": "Run DFS (or BFS) from each still-unvisited vertex; each run labels one component, all in O(n + m).",
+   "locator": "cpa:graph/search-for-connected-components#an-algorithm-for-solving-the-problem",
+   "prereqs": [
+    "cpa:dfs"
+   ],
+   "aliases": [
+    "flood fill"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links; thin, mostly overlaps BFS/DFS applications"
+  },
+  {
+   "id": "cpa:iterative-dfs",
+   "name": "Iterative DFS with an explicit stack",
+   "kind": "skill",
+   "statement": "Replace recursion with a heap-allocated stack to avoid stack overflow on deep graphs.",
+   "locator": "cpa:graph/search-for-connected-components#iterative-implementation-of-the-code",
+   "prereqs": [
+    "cpa:dfs",
+    "[stack]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bridge",
+   "name": "Bridge (cut edge)",
+   "kind": "definition",
+   "statement": "An edge of an undirected graph whose removal increases the number of connected components.",
+   "locator": "cpa:graph/bridge-searching#finding-bridges-in-a-graph-in-onm",
+   "prereqs": [
+    "cpa:connected-components"
+   ],
+   "aliases": [
+    "cut edge",
+    "isthmus"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 11 practice-problem links"
+  },
+  {
+   "id": "cpa:low-link",
+   "name": "Low-link values",
+   "kind": "definition",
+   "statement": "low[v] = min of tin[v], tin[p] over back edges (v,p), and low[to] over DFS-tree children; it is the earliest entry time reachable from v's subtree by one back edge.",
+   "locator": "cpa:graph/bridge-searching#algorithm",
+   "prereqs": [
+    "cpa:dfs-entry-exit-times"
+   ],
+   "aliases": [
+    "low function",
+    "lowpoint"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bridge-finding",
+   "name": "Finding bridges in O(N + M)",
+   "kind": "result",
+   "statement": "A DFS tree edge (v, to) is a bridge iff low[to] > tin[v]; skip only the edge to the parent (by edge index, to allow multi-edges).",
+   "locator": "cpa:graph/bridge-searching#implementation",
+   "prereqs": [
+    "cpa:low-link",
+    "cpa:bridge"
+   ],
+   "aliases": [
+    "Tarjan's bridge-finding"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bridges-online",
+   "name": "Online bridge finding with 2-edge-connected components",
+   "kind": "result",
+   "statement": "Maintain the forest of 2-edge-connected components with two DSUs (components and 2ECCs) plus explicit parent pointers; a new edge either joins trees (re-rooting the smaller) or compresses the tree path between its ends into one 2ECC, in O(n log n + m) (the article's simplified DSU gives O(n log n + m log n)).",
+   "locator": "cpa:graph/bridge-searching-online#algorithm",
+   "prereqs": [
+    "cpa:bridge",
+    "cpa:small-to-large"
+   ],
+   "aliases": [
+    "2-edge-connected components",
+    "incremental bridges"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:articulation-point-def",
+   "name": "Articulation point (cut vertex)",
+   "kind": "definition",
+   "statement": "A vertex whose removal, with its incident edges, increases the number of connected components of an undirected graph.",
+   "locator": "cpa:graph/cutpoints#finding-articulation-points-in-a-graph-in-onm",
+   "prereqs": [
+    "cpa:connected-components"
+   ],
+   "aliases": [
+    "cut vertex"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 4 practice-problem links"
+  },
+  {
+   "id": "cpa:articulation-point",
+   "name": "Articulation points in O(N + M)",
+   "kind": "result",
+   "statement": "A non-root v is a cut vertex iff some DFS child to has low[to] >= tin[v]; the root is one iff it has more than one DFS child.",
+   "locator": "cpa:graph/cutpoints#algorithm",
+   "prereqs": [
+    "cpa:low-link",
+    "cpa:articulation-point-def"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:scc",
+   "name": "Strongly connected component and condensation",
+   "kind": "definition",
+   "statement": "A maximal vertex set of a directed graph with paths both ways between every pair; contracting each SCC gives the condensation graph, which is a DAG.",
+   "locator": "cpa:graph/strongly-connected-components#definitions",
+   "prereqs": [
+    "[directed graph]"
+   ],
+   "aliases": [
+    "SCC",
+    "condensation graph",
+    "component graph"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 20 practice-problem links"
+  },
+  {
+   "id": "cpa:kosaraju",
+   "name": "Kosaraju's algorithm",
+   "kind": "result",
+   "statement": "DFS the graph and order vertices by decreasing exit time; then DFS the transposed graph in that order, and each tree is an SCC. Correct because for an edge C -> C' of the condensation, tout[C] > tout[C']; O(n + m).",
+   "locator": "cpa:graph/strongly-connected-components#kosarajus-algorithm",
+   "prereqs": [
+    "cpa:scc",
+    "cpa:dfs-entry-exit-times"
+   ],
+   "aliases": [
+    "Kosaraju-Sharir"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:tarjan-scc",
+   "name": "Tarjan's SCC algorithm",
+   "kind": "result",
+   "statement": "One DFS with a stack and low values; a vertex with low[v] = tin[v] is the root of an SCC, which is popped off the stack; O(n + m).",
+   "locator": "cpa:graph/strongly-connected-components#tarjans-strongly-connected-components-algorithm",
+   "prereqs": [
+    "cpa:scc",
+    "cpa:low-link"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:condensation-build",
+   "name": "Building the condensation graph",
+   "kind": "skill",
+   "statement": "Map each vertex to its component's root and add an edge between roots for every edge crossing components.",
+   "locator": "cpa:graph/strongly-connected-components#building-the-condensation-graph",
+   "prereqs": [
+    "cpa:kosaraju"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:strong-orientation",
+   "name": "Strong orientation",
+   "kind": "result",
+   "statement": "An undirected connected graph can be oriented to be strongly connected iff it has no bridges (Robbins); orienting tree edges down and back edges up in a DFS does it, and minimising SCCs in general takes components + bridges.",
+   "locator": "cpa:graph/strong-orientation#solution",
+   "prereqs": [
+    "cpa:bridge-finding",
+    "cpa:scc"
+   ],
+   "aliases": [
+    "Robbins' theorem"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 1 practice-problem link"
+  },
+  {
+   "id": "cpa:sssp",
+   "name": "Single-source shortest paths problem",
+   "kind": "definition",
+   "statement": "Given a weighted graph and source s, find the length (and a path) of the shortest path from s to every vertex.",
+   "locator": "cpa:graph/dijkstra#dijkstra-algorithm",
+   "prereqs": [
+    "[weighted graph]"
+   ],
+   "aliases": [
+    "SSSP"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dijkstra",
+   "name": "Dijkstra's algorithm",
+   "kind": "result",
+   "statement": "With non-negative weights, repeatedly mark the unmarked vertex of least tentative distance and relax its out-edges; once marked, a vertex's distance is final (proof by induction), so all distances are found; O(n^2 + m) with a linear scan, optimal for dense graphs.",
+   "locator": "cpa:graph/dijkstra#algorithm",
+   "prereqs": [
+    "cpa:sssp",
+    "cpa:edge-relaxation"
+   ],
+   "aliases": [
+    "Dijkstra"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 38 practice-problem links; proof at #proof"
+  },
+  {
+   "id": "cpa:edge-relaxation",
+   "name": "Edge relaxation and predecessor array",
+   "kind": "skill",
+   "statement": "Relaxing (v, to, w) sets d[to] = d[v] + w and p[to] = v when this improves d[to]; following p from the target restores a shortest path.",
+   "locator": "cpa:graph/dijkstra#restoring-shortest-paths",
+   "prereqs": [
+    "[weighted graph]"
+   ],
+   "aliases": [
+    "relaxation"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dijkstra-heap",
+   "name": "Dijkstra with a priority queue or set",
+   "kind": "skill",
+   "statement": "On sparse graphs keep (distance, vertex) pairs in a set (erasing the old pair on improvement) or a priority queue with lazy deletion (skip entries whose distance is stale), giving O(m log n).",
+   "locator": "cpa:graph/dijkstra_sparse#implementation",
+   "prereqs": [
+    "cpa:dijkstra",
+    "[binary heap]",
+    "[balanced BST]"
+   ],
+   "aliases": [
+    "lazy deletion",
+    "Dijkstra with heap"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; set at #set, priority_queue at #priority_queue"
+  },
+  {
+   "id": "cpa:bellman-ford",
+   "name": "Bellman-Ford algorithm",
+   "kind": "result",
+   "statement": "Relax every edge in n-1 phases; after phase i all shortest paths of at most i edges are correct, so with no reachable negative cycle all distances are exact in O(nm); stopping early when a phase changes nothing.",
+   "locator": "cpa:graph/bellman_ford#description-of-the-algorithm",
+   "prereqs": [
+    "cpa:sssp",
+    "cpa:edge-relaxation"
+   ],
+   "aliases": [
+    "Bellman-Ford"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 8 practice-problem links (heading 'Related problems in online judges'); proof at #the-proof-of-the-algorithm"
+  },
+  {
+   "id": "cpa:bellman-ford-negative-cycle",
+   "name": "Negative cycle detection with Bellman-Ford",
+   "kind": "result",
+   "statement": "If some edge still relaxes in an n-th phase, a negative cycle is reachable; walking n predecessor steps back from that vertex lands on the cycle, which is then read off.",
+   "locator": "cpa:graph/bellman_ford#the-case-of-a-negative-cycle",
+   "prereqs": [
+    "cpa:bellman-ford"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:spfa",
+   "name": "Shortest Path Faster Algorithm (SPFA)",
+   "kind": "result",
+   "statement": "Queue only vertices whose distance just improved; worst case still O(nm), often much faster; counting relaxations per vertex (n) detects negative cycles.",
+   "locator": "cpa:graph/bellman_ford#shortest-path-faster-algorithm-spfa",
+   "prereqs": [
+    "cpa:bellman-ford",
+    "[queue]"
+   ],
+   "aliases": [
+    "SPFA",
+    "queue-based Bellman-Ford"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:zero-one-bfs",
+   "name": "0-1 BFS",
+   "kind": "result",
+   "statement": "With edge weights 0 or 1, a deque replaces the priority queue: push to the front after a 0-edge relaxation and to the back after a 1-edge; this is Dijkstra in O(n + m).",
+   "locator": "cpa:graph/01_bfs#algorithm",
+   "prereqs": [
+    "cpa:dijkstra",
+    "cpa:bfs",
+    "[deque]"
+   ],
+   "aliases": [
+    "0-1 BFS"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 10 practice-problem links"
+  },
+  {
+   "id": "cpa:dial-algorithm",
+   "name": "Dial's algorithm",
+   "kind": "result",
+   "statement": "With integer weights at most k, k+1 buckets of vertices indexed by distance modulo k+1 replace the priority queue.",
+   "locator": "cpa:graph/01_bfs#dials-algorithm",
+   "prereqs": [
+    "cpa:zero-one-bfs"
+   ],
+   "aliases": [
+    "bucket queue Dijkstra"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:desopo-pape",
+   "name": "D'Esopo-Pape algorithm",
+   "kind": "result",
+   "statement": "Keep vertices in three sets (done, in deque, untouched); a vertex re-improved after being processed goes to the front of the deque, a new one to the back; usually faster than Dijkstra and Bellman-Ford but exponential in the worst case.",
+   "locator": "cpa:graph/desopo_pape#description",
+   "prereqs": [
+    "cpa:edge-relaxation",
+    "[deque]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:floyd-warshall",
+   "name": "Floyd-Warshall algorithm",
+   "kind": "result",
+   "statement": "Before phase k, d[i][j] is the shortest i->j path using only intermediate vertices < k; d[i][j] = min(d[i][j], d[i][k] + d[k][j]) over k, i, j yields all-pairs distances in O(n^3) when no negative cycles exist.",
+   "locator": "cpa:graph/all-pair-shortest-path-floyd-warshall#description-of-the-algorithm",
+   "prereqs": [
+    "[weighted graph]",
+    "[adjacency matrix]"
+   ],
+   "aliases": [
+    "Floyd's algorithm",
+    "APSP"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 27 practice-problem links"
+  },
+  {
+   "id": "cpa:floyd-warshall-path",
+   "name": "Restoring Floyd-Warshall paths",
+   "kind": "skill",
+   "statement": "Store the phase k that last improved d[i][j] and recurse on (i, k) and (k, j).",
+   "locator": "cpa:graph/all-pair-shortest-path-floyd-warshall#retrieving-the-sequence-of-vertices-in-the-shortest-path",
+   "prereqs": [
+    "cpa:floyd-warshall"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "real weights with EPS at #the-case-of-real-weights"
+  },
+  {
+   "id": "cpa:floyd-warshall-negative",
+   "name": "Floyd-Warshall with negative cycles",
+   "kind": "result",
+   "statement": "After running, d[t][t] < 0 marks t on a negative cycle; any pair (i, j) with d[i][t] < INF and d[t][j] < INF for such t has no shortest path (minus infinity).",
+   "locator": "cpa:graph/all-pair-shortest-path-floyd-warshall#the-case-of-negative-cycles",
+   "prereqs": [
+    "cpa:floyd-warshall"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:paths-fixed-length-count",
+   "name": "Counting paths of fixed length by matrix power",
+   "kind": "result",
+   "statement": "The (i, j) entry of the k-th power of the adjacency matrix counts walks of exactly k edges from i to j; binary exponentiation gives O(n^3 log k).",
+   "locator": "cpa:graph/fixed_length_paths#number-of-paths-of-a-fixed-length",
+   "prereqs": [
+    "[adjacency matrix]",
+    "cpa:binary-exponentiation",
+    "[matrix multiplication]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "no practice links; no code"
+  },
+  {
+   "id": "cpa:min-plus-matrix-power",
+   "name": "Shortest paths of fixed length by min-plus product",
+   "kind": "result",
+   "statement": "Replacing (+, *) by (min, +) in matrix multiplication, the k-th power of the weight matrix gives shortest walks of exactly k edges in O(n^3 log k); adding a copy vertex with a 0-loop extends to at most k edges.",
+   "locator": "cpa:graph/fixed_length_paths#shortest-paths-of-a-fixed-length",
+   "prereqs": [
+    "cpa:paths-fixed-length-count"
+   ],
+   "aliases": [
+    "tropical semiring",
+    "distance product"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "at most k at #generalization-of-the-problems-for-paths-with-length-up-to-k"
+  },
+  {
+   "id": "cpa:mst",
+   "name": "Minimum spanning tree",
+   "kind": "definition",
+   "statement": "A spanning tree (n-1 edges connecting all vertices with no cycle) of a weighted undirected graph with least total weight.",
+   "locator": "cpa:graph/mst_prim#minimum-spanning-tree-prims-algorithm",
+   "prereqs": [
+    "[weighted graph]",
+    "[tree]"
+   ],
+   "aliases": [
+    "MST"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:prim",
+   "name": "Prim's algorithm",
+   "kind": "result",
+   "statement": "Grow one tree from an arbitrary vertex, always adding the cheapest edge leaving it (an exchange argument shows the result is minimal); O(n^2) with per-vertex minimum edges for dense graphs, O(m log n) with a set/heap for sparse ones.",
+   "locator": "cpa:graph/mst_prim#prims-algorithm",
+   "prereqs": [
+    "cpa:mst"
+   ],
+   "aliases": [
+    "Jarnik-Prim"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; proof at #proof; dense at #dense-graphs-on2, sparse at #sparse-graphs-om-log-n"
+  },
+  {
+   "id": "cpa:mst-properties",
+   "name": "Properties of minimum spanning trees",
+   "kind": "result",
+   "statement": "An MST is unique if all weights are distinct; with positive weights it also minimises the product of weights; and it minimises the maximum edge weight among spanning trees (minimum bottleneck).",
+   "locator": "cpa:graph/mst_kruskal#properties-of-the-minimum-spanning-tree",
+   "prereqs": [
+    "cpa:mst"
+   ],
+   "aliases": [
+    "minimum bottleneck spanning tree"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:kruskal",
+   "name": "Kruskal's algorithm",
+   "kind": "result",
+   "statement": "Sort edges by weight and add each edge whose endpoints lie in different trees; correctness by an exchange argument; O(m log n + n^2) with a naive tree-id array.",
+   "locator": "cpa:graph/mst_kruskal#kruskals-algorithm",
+   "prereqs": [
+    "cpa:mst",
+    "[sorting]"
+   ],
+   "aliases": [
+    "Kruskal"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 28 practice-problem links; proof at #proof-of-correctness"
+  },
+  {
+   "id": "cpa:kruskal-dsu",
+   "name": "Kruskal with DSU",
+   "kind": "skill",
+   "statement": "Use DSU find to test and union to merge trees, giving O(m log n) dominated by sorting; stop after n-1 edges.",
+   "locator": "cpa:graph/mst_kruskal_with_dsu#description",
+   "prereqs": [
+    "cpa:kruskal",
+    "cpa:dsu"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "0 links of its own (points to Kruskal article's list); near-duplicate of mst_kruskal#improved-implementation"
+  },
+  {
+   "id": "cpa:mst-one-swap",
+   "name": "Second-best MST is one edge swap from the MST",
+   "kind": "result",
+   "statement": "Some second-best spanning tree differs from a given MST by exactly one edge replacement, so it suffices to try removing one tree edge or adding one non-tree edge.",
+   "locator": "cpa:graph/second_best_mst#observation",
+   "prereqs": [
+    "cpa:mst"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 1 practice-problem link"
+  },
+  {
+   "id": "cpa:second-best-mst",
+   "name": "Second-best minimum spanning tree",
+   "kind": "result",
+   "statement": "The second-best MST differs from the MST by one edge swap; adding each non-tree edge (u, v) and removing the heaviest tree edge on the u-v path (found with binary lifting / LCA) gives it in O(m log n).",
+   "locator": "cpa:graph/second_best_mst#modeling-into-a-lowest-common-ancestor-lca-problem",
+   "prereqs": [
+    "cpa:mst-one-swap",
+    "cpa:kruskal",
+    "cpa:binary-lifting-lca"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "O(VE) variant at #using-kruskals-algorithm"
+  },
+  {
+   "id": "cpa:kirchhoff-matrix-tree",
+   "name": "Kirchhoff's matrix tree theorem",
+   "kind": "result",
+   "statement": "The number of spanning trees of a multigraph equals any cofactor of its Laplacian L = D - A, e.g. the determinant after deleting one row and column; computed by Gaussian elimination in O(n^3).",
+   "locator": "cpa:graph/kirchhoff-theorem#kirchhoffs-matrix-tree-theorem",
+   "prereqs": [
+    "cpa:determinant-gauss"
+   ],
+   "aliases": [
+    "matrix tree theorem",
+    "Laplacian matrix"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links; no code; relation to circuit laws at #relation-to-kirchhoffs-circuit-laws"
+  },
+  {
+   "id": "cpa:pruefer-code",
+   "name": "Prufer code",
+   "kind": "definition",
+   "statement": "Encode a labelled tree on n vertices as n-2 numbers by repeatedly removing the smallest-numbered leaf and writing down its neighbour; each vertex appears degree-1 times.",
+   "locator": "cpa:graph/pruefer_code#prufer-code_1",
+   "prereqs": [
+    "[labelled tree]"
+   ],
+   "aliases": [
+    "Prufer sequence"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 4 practice-problem links"
+  },
+  {
+   "id": "cpa:pruefer-linear",
+   "name": "Prufer code and tree restoration in linear time",
+   "kind": "skill",
+   "statement": "A moving pointer to the smallest leaf works because only the just-reduced neighbour can become a new smaller leaf; the same trick rebuilds the tree from the code via the degrees, both O(n) (O(n log n) with a heap).",
+   "locator": "cpa:graph/pruefer_code#building-the-prufer-code-for-a-given-tree-in-linear-time",
+   "prereqs": [
+    "cpa:pruefer-code"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "restoration at #restoring-the-tree-using-the-prufer-code-in-linear-time"
+  },
+  {
+   "id": "cpa:cayley-formula",
+   "name": "Cayley's formula",
+   "kind": "result",
+   "statement": "Prufer codes biject labelled trees with sequences of n-2 values in [0, n-1], so the complete graph K_n has n^(n-2) spanning trees.",
+   "locator": "cpa:graph/pruefer_code#cayleys-formula",
+   "prereqs": [
+    "cpa:pruefer-code"
+   ],
+   "aliases": [
+    "number of labelled trees"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "bijection at #bijection-between-trees-and-prufer-codes"
+  },
+  {
+   "id": "cpa:ways-to-connect-graph",
+   "name": "Ways to make a graph connected",
+   "kind": "result",
+   "statement": "A graph with k components of sizes s1..sk can be made connected by adding k-1 edges in s1 s2 ... sk n^(k-2) ways (via Prufer codes and the multinomial theorem).",
+   "locator": "cpa:graph/pruefer_code#number-of-ways-to-make-a-graph-connected",
+   "prereqs": [
+    "cpa:cayley-formula",
+    "[multinomial theorem]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:cycle-detection-dfs",
+   "name": "Cycle detection and finding with DFS colours",
+   "kind": "result",
+   "statement": "With white/grey/black colouring, a directed graph has a cycle iff DFS meets an edge into a grey vertex (in an undirected graph, any visited vertex other than the parent); the cycle is read from the parent array, in O(M).",
+   "locator": "cpa:graph/finding-cycle#algorithm",
+   "prereqs": [
+    "cpa:dfs-entry-exit-times"
+   ],
+   "aliases": [
+    "acyclicity check"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links; short"
+  },
+  {
+   "id": "cpa:negative-cycle-any",
+   "name": "Finding any negative cycle",
+   "kind": "skill",
+   "statement": "Initialise all d to 0 (a virtual source to every vertex) and run Bellman-Ford n phases; a vertex relaxed in the last phase leads back to a negative cycle; Floyd-Warshall's negative diagonal finds all pairs without a shortest path.",
+   "locator": "cpa:graph/finding-negative-cycle-in-graph#using-bellman-ford-algorithm",
+   "prereqs": [
+    "cpa:bellman-ford-negative-cycle",
+    "cpa:floyd-warshall-negative"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links; largely duplicates bellman_ford#the-case-of-a-negative-cycle and floyd-warshall#the-case-of-negative-cycles"
+  },
+  {
+   "id": "cpa:euler-path-existence",
+   "name": "Existence of Eulerian path/cycle",
+   "kind": "result",
+   "statement": "A connected (ignoring isolated vertices) undirected multigraph has an Eulerian cycle iff all degrees are even, and an Eulerian path iff exactly zero or two vertices have odd degree.",
+   "locator": "cpa:graph/euler_path#algorithm",
+   "prereqs": [
+    "[vertex degree]"
+   ],
+   "aliases": [
+    "Euler's theorem"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 4 practice-problem links"
+  },
+  {
+   "id": "cpa:hierholzer",
+   "name": "Finding an Eulerian path in O(M)",
+   "kind": "result",
+   "statement": "Walk unused edges from a vertex, pushing vertices on a stack and emitting each when it has no unused edges; this splices simple cycles into one Euler cycle; for a path, add an edge between the two odd vertices first and cut there.",
+   "locator": "cpa:graph/euler_path#implementation",
+   "prereqs": [
+    "cpa:euler-path-existence",
+    "[stack]"
+   ],
+   "aliases": [
+    "Hierholzer's algorithm"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "domino problem at #the-domino-problem; code uses an adjacency matrix"
+  },
+  {
+   "id": "cpa:lca",
+   "name": "Lowest common ancestor",
+   "kind": "definition",
+   "statement": "For vertices u, v of a rooted tree, the deepest vertex that is an ancestor of both (a vertex counts as its own ancestor).",
+   "locator": "cpa:graph/lca#lowest-common-ancestor-osqrtn-and-olog-n-with-on-preprocessing",
+   "prereqs": [
+    "[rooted tree]"
+   ],
+   "aliases": [
+    "LCA"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 19 practice-problem links"
+  },
+  {
+   "id": "cpa:lca-euler-tour-rmq",
+   "name": "LCA via Euler tour and range minimum",
+   "kind": "result",
+   "statement": "Record the DFS Euler tour (2n-1 entries) with depths and each vertex's first occurrence; LCA(u, v) is the minimum-depth vertex between first[u] and first[v], so LCA reduces to RMQ (segment tree: O(log N) per query; sqrt decomposition: O(sqrt N)).",
+   "locator": "cpa:graph/lca#the-idea-of-the-algorithm",
+   "prereqs": [
+    "cpa:lca",
+    "cpa:dfs",
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [
+    "Euler tour"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-lifting-lca",
+   "name": "Binary lifting for LCA",
+   "kind": "result",
+   "statement": "Precompute up[v][j], the 2^j-th ancestor, by DFS in O(N log N); with entry/exit times, lift u by decreasing powers while the ancestor is not an ancestor of v, answering LCA in O(log N).",
+   "locator": "cpa:graph/lca_binary_lifting#algorithm",
+   "prereqs": [
+    "cpa:lca",
+    "cpa:dfs-entry-exit-times"
+   ],
+   "aliases": [
+    "binary lifting",
+    "jump pointers"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links"
+  },
+  {
+   "id": "cpa:binary-lifting-dynamic",
+   "name": "Binary lifting with depths (supports adding leaves)",
+   "kind": "skill",
+   "statement": "Equalise depths by lifting the deeper vertex depth[u]-depth[v] steps, then lift both while their ancestors differ; new leaves only need their own up[] row.",
+   "locator": "cpa:graph/lca_binary_lifting#binary-lifting-on-a-dynamic-tree",
+   "prereqs": [
+    "cpa:binary-lifting-lca"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lca-linear-jump-pointers",
+   "name": "LCA with O(n) space jump pointers",
+   "kind": "result",
+   "statement": "Each vertex keeps its parent and one 'big' jump defined recursively from its parent's jumps (skew-binary); level ancestor and LCA queries run in O(log n) with O(n) space and preprocessing.",
+   "locator": "cpa:graph/lca_binary_lifting#lca-with-on-space-and-preprocessing-time",
+   "prereqs": [
+    "cpa:binary-lifting-dynamic"
+   ],
+   "aliases": [
+    "skew-binary jump pointers"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:farach-colton-bender",
+   "name": "Farach-Colton and Bender LCA",
+   "kind": "result",
+   "statement": "On the Euler tour depths (adjacent values differ by 1), split into blocks of size 0.5 log N; a sparse table over block minima plus precomputed answers for each of the O(sqrt N) possible +-1 block shapes give O(N) preprocessing and O(1) queries.",
+   "locator": "cpa:graph/lca_farachcoltonbender#algorithm",
+   "prereqs": [
+    "cpa:lca-euler-tour-rmq",
+    "cpa:sparse-table-rmq",
+    "[bitmask]"
+   ],
+   "aliases": [
+    "+-1 RMQ"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:cartesian-tree-rmq",
+   "name": "Static RMQ in O(N)/O(1) via Cartesian tree",
+   "kind": "result",
+   "statement": "Build the min-Cartesian tree of the array with a stack in O(N); RMQ(L, R) is the LCA of L and R, answered in O(1) by Farach-Colton and Bender.",
+   "locator": "cpa:graph/rmq_linear#algorithm",
+   "prereqs": [
+    "cpa:farach-colton-bender",
+    "cpa:nearest-smaller-stack"
+   ],
+   "aliases": [
+    "Cartesian tree"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; construction at #construction-of-a-cartesian-tree"
+  },
+  {
+   "id": "cpa:tarjan-offline-lca",
+   "name": "Tarjan's offline LCA",
+   "kind": "result",
+   "statement": "One DFS with DSU: after finishing a child, union it into the current vertex and set the set's ancestor to the current vertex; a query (u, v) answered at u when v is visited is ancestor[find(v)]; O(n + m) total with DSU in alpha.",
+   "locator": "cpa:graph/lca_tarjan#algorithm",
+   "prereqs": [
+    "cpa:lca",
+    "cpa:dsu",
+    "cpa:dfs"
+   ],
+   "aliases": [
+    "offline LCA"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; DSU article also links this at disjoint_set_union#offline-lca-lowest-common-ancestor-in-a-tree-in-oalphan-on-average"
+  },
+  {
+   "id": "cpa:flow-network",
+   "name": "Flow network, flow and residual network",
+   "kind": "definition",
+   "statement": "A directed graph with capacities and a source and sink; a flow respects capacities and conserves flow at inner vertices; the residual network holds capacity minus flow on each edge plus the flow as capacity on its reverse.",
+   "locator": "cpa:graph/edmonds_karp#flow-network",
+   "prereqs": [
+    "[directed graph]"
+   ],
+   "aliases": [
+    "max flow",
+    "residual capacity"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 6 practice-problem links"
+  },
+  {
+   "id": "cpa:ford-fulkerson",
+   "name": "Ford-Fulkerson method",
+   "kind": "result",
+   "statement": "While the residual network has an s-t path, push its bottleneck capacity along it (updating reverse edges); with integer capacities it terminates in O(E F).",
+   "locator": "cpa:graph/edmonds_karp#ford-fulkerson-method",
+   "prereqs": [
+    "cpa:flow-network"
+   ],
+   "aliases": [
+    "augmenting path"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:edmonds-karp",
+   "name": "Edmonds-Karp algorithm",
+   "kind": "result",
+   "statement": "Ford-Fulkerson with BFS (shortest augmenting paths) runs in O(V E^2) independent of the flow value, since each augmentation saturates an edge and s-t distances never decrease.",
+   "locator": "cpa:graph/edmonds_karp#edmonds-karp-algorithm",
+   "prereqs": [
+    "cpa:ford-fulkerson",
+    "cpa:bfs"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:integral-flow",
+   "name": "Integral flow theorem",
+   "kind": "result",
+   "statement": "If all capacities are integers there is a maximum flow with integer flow on every edge (and Ford-Fulkerson finds one).",
+   "locator": "cpa:graph/edmonds_karp#integral-theorem",
+   "prereqs": [
+    "cpa:ford-fulkerson"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:max-flow-min-cut",
+   "name": "Max-flow min-cut theorem",
+   "kind": "result",
+   "statement": "The maximum s-t flow equals the minimum capacity of an s-t cut; after max flow, the vertices reachable from s in the residual network form a minimum cut.",
+   "locator": "cpa:graph/edmonds_karp#max-flow-min-cut-theorem",
+   "prereqs": [
+    "cpa:ford-fulkerson"
+   ],
+   "aliases": [
+    "min cut"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:preflow-labeling",
+   "name": "Preflow, excess and valid labeling",
+   "kind": "definition",
+   "statement": "A preflow obeys capacities but lets inflow exceed outflow (excess x(u) > 0 marks an active vertex); a valid labeling h has h(s) = |V|, h(t) = 0 and h(u) <= h(v) + 1 for every residual edge (u, v).",
+   "locator": "cpa:graph/push-relabel#definitions",
+   "prereqs": [
+    "cpa:flow-network"
+   ],
+   "aliases": [
+    "height function"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:push-relabel",
+   "name": "Push-relabel maximum flow",
+   "kind": "result",
+   "statement": "Start with a preflow saturating source edges and heights h(s)=|V|; push excess along admissible residual edges (h(u) = h(v)+1) and relabel when none exists; O(V^2) relabels and O(VE) saturating pushes give O(V^2 E) with a FIFO of active vertices.",
+   "locator": "cpa:graph/push-relabel#algorithm",
+   "prereqs": [
+    "cpa:preflow-labeling"
+   ],
+   "aliases": [
+    "preflow-push",
+    "Goldberg-Tarjan"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "uses a current-arc structure; complexity at #complexity"
+  },
+  {
+   "id": "cpa:push-relabel-highest",
+   "name": "Highest-label push-relabel",
+   "kind": "result",
+   "statement": "Always discharging an active vertex of greatest height reduces the bound to O(VE + V^2 sqrt E), i.e. O(V^3) worst case.",
+   "locator": "cpa:graph/push-relabel-faster#description",
+   "prereqs": [
+    "cpa:push-relabel"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; very short article, a delta on push-relabel"
+  },
+  {
+   "id": "cpa:dinic",
+   "name": "Dinic's algorithm",
+   "kind": "result",
+   "statement": "In phases, build the BFS level graph of the residual network and find a blocking flow by DFS with per-vertex edge pointers; fewer than V phases as dist(s,t) strictly grows, giving O(V^2 E).",
+   "locator": "cpa:graph/dinic#algorithm",
+   "prereqs": [
+    "cpa:flow-network",
+    "cpa:bfs",
+    "cpa:dfs"
+   ],
+   "aliases": [
+    "Dinitz",
+    "blocking flow",
+    "level graph"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 1 practice-problem link; proofs at #proof-of-correctness, #number-of-phases"
+  },
+  {
+   "id": "cpa:dinic-unit-networks",
+   "name": "Dinic on unit networks",
+   "kind": "result",
+   "statement": "On unit networks (each inner vertex has a single in- or out-edge, unit capacities) Dinic runs in O(E sqrt V); on general unit-capacity networks phases are O(sqrt E) and O(V^(2/3)).",
+   "locator": "cpa:graph/dinic#unit-networks",
+   "prereqs": [
+    "cpa:dinic"
+   ],
+   "aliases": [
+    "Hopcroft-Karp via Dinic"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:mpm",
+   "name": "MPM maximum flow",
+   "kind": "result",
+   "statement": "Like Dinic but finds each blocking flow by repeatedly saturating the vertex of minimum potential min(in-capacity, out-capacity) in the layered network, giving O(V^3).",
+   "locator": "cpa:graph/mpm#algorithm",
+   "prereqs": [
+    "cpa:dinic"
+   ],
+   "aliases": [
+    "Malhotra-Pramodh-Kumar-Maheshwari"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; short"
+  },
+  {
+   "id": "cpa:flow-with-demands",
+   "name": "Flows with lower bounds (demands)",
+   "kind": "result",
+   "statement": "Edges with demand d(e) <= f(e) <= c(e): add s', t', edges s'->v and v->t' carrying the demands, capacities c - d and an infinite t->s edge; a feasible flow exists iff the max s'-t' flow saturates all new edges; binary search on the t->s capacity gives the minimal flow.",
+   "locator": "cpa:graph/flow_with_demands#finding-an-arbitrary-flow",
+   "prereqs": [
+    "cpa:flow-network"
+   ],
+   "aliases": [
+    "circulation with demands",
+    "lower bounds"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "no practice links; no code"
+  },
+  {
+   "id": "cpa:minimal-flow-demands",
+   "name": "Minimal flow with demands by binary search",
+   "kind": "skill",
+   "statement": "The infinite t->s edge carries the original network's flow; binary searching its capacity for the smallest value that still saturates the new edges gives the minimum feasible flow.",
+   "locator": "cpa:graph/flow_with_demands#minimal-flow",
+   "prereqs": [
+    "cpa:flow-with-demands",
+    "cpa:binary-search-on-answer"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:min-cost-flow",
+   "name": "Minimum-cost flow by successive shortest paths",
+   "kind": "result",
+   "statement": "Repeatedly augment along a cheapest s-t path in the residual network (reverse edges cost -c) until the required flow K is sent; O(F nm) with Bellman-Ford/SPFA, faster with Dijkstra and Johnson potentials.",
+   "locator": "cpa:graph/min_cost_flow#algorithm",
+   "prereqs": [
+    "cpa:ford-fulkerson",
+    "cpa:bellman-ford"
+   ],
+   "aliases": [
+    "MCMF",
+    "successive shortest path"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 3 practice-problem links; undirected/multigraph handling at #undirected-graphs-multigraphs"
+  },
+  {
+   "id": "cpa:assignment-via-mcf",
+   "name": "Assignment problem via min-cost flow",
+   "kind": "skill",
+   "statement": "Build source -> N workers -> N jobs -> sink with unit capacities and assignment costs on middle edges; a min-cost maximum flow of value N is an optimal assignment.",
+   "locator": "cpa:graph/Assignment-problem-min-flow#description",
+   "prereqs": [
+    "cpa:min-cost-flow"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links; overlaps hungarian-algorithm"
+  },
+  {
+   "id": "cpa:global-min-cut",
+   "name": "Global minimum cut",
+   "kind": "definition",
+   "statement": "In an undirected weighted graph, a non-empty proper vertex subset minimising the total weight of edges leaving it, with no fixed source or sink; solvable by O(n^2) max flows but faster directly.",
+   "locator": "cpa:graph/stoer_wagner_mincut#problem-statement",
+   "prereqs": [
+    "[weighted graph]"
+   ],
+   "aliases": [
+    "min cut"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "no practice links (only literature)"
+  },
+  {
+   "id": "cpa:stoer-wagner",
+   "name": "Stoer-Wagner global minimum cut",
+   "kind": "result",
+   "statement": "In each of n-1 phases grow a set A by the most tightly connected vertex; the last two added vertices s, t have min s-t cut equal to the weight of t's edges into A (Stoer-Wagner theorem); record it and merge s and t; O(n^3) simply, O(nm + n^2 log n) with a heap.",
+   "locator": "cpa:graph/stoer_wagner_mincut#description-of-the-algorithm",
+   "prereqs": [
+    "cpa:global-min-cut"
+   ],
+   "aliases": [
+    "global min cut"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "proof at #proof-of-the-stoer-wagner-theorem"
+  },
+  {
+   "id": "cpa:bipartite-check",
+   "name": "Bipartiteness check by BFS 2-colouring",
+   "kind": "result",
+   "statement": "A graph is bipartite iff it has no odd cycle; BFS from each unvisited vertex colours vertices alternately and fails exactly when an edge joins two vertices of the same colour, in O(n + m).",
+   "locator": "cpa:graph/bipartite-check#algorithm",
+   "prereqs": [
+    "cpa:bfs"
+   ],
+   "aliases": [
+    "2-colouring",
+    "odd cycle"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 6 practice-problem links; short"
+  },
+  {
+   "id": "cpa:matching-definitions",
+   "name": "Matching, maximal and maximum matching, augmenting path",
+   "kind": "definition",
+   "statement": "A matching is a set of pairwise non-adjacent edges; maximal means no edge can be added, maximum means largest cardinality; an augmenting path alternates non-matching/matching edges between two unsaturated vertices.",
+   "locator": "cpa:graph/kuhn_maximum_bipartite_matching#required-definitions",
+   "prereqs": [
+    "[bipartite graph]"
+   ],
+   "aliases": [
+    "alternating path"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 2 practice-problem links"
+  },
+  {
+   "id": "cpa:berge-lemma",
+   "name": "Berge's lemma",
+   "kind": "result",
+   "statement": "A matching is maximum iff no augmenting path exists relative to it; flipping an augmenting path increases the matching by one.",
+   "locator": "cpa:graph/kuhn_maximum_bipartite_matching#berges-lemma",
+   "prereqs": [
+    "cpa:matching-definitions"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "proof at #proof"
+  },
+  {
+   "id": "cpa:kuhn-matching",
+   "name": "Kuhn's algorithm for maximum bipartite matching",
+   "kind": "result",
+   "statement": "For each left vertex, search by DFS (try_kuhn) for an augmenting path and flip it; O(n1 m), so put the smaller part on the left; a greedy initial matching speeds it up.",
+   "locator": "cpa:graph/kuhn_maximum_bipartite_matching#kuhns-algorithm",
+   "prereqs": [
+    "cpa:berge-lemma",
+    "cpa:dfs"
+   ],
+   "aliases": [
+    "Kuhn",
+    "augmenting path matching"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "improved version at #improved-implementation; notes mention Hopcroft-Karp and Konig's theorem"
+  },
+  {
+   "id": "cpa:assignment-problem",
+   "name": "Assignment problem",
+   "kind": "definition",
+   "statement": "Given an n x n cost matrix, choose one entry in each row and column (a permutation) minimising the total; equivalently a minimum-weight perfect matching in a complete bipartite graph.",
+   "locator": "cpa:graph/hungarian-algorithm#statement-of-the-assignment-problem",
+   "prereqs": [
+    "cpa:matching-definitions"
+   ],
+   "aliases": [
+    "minimum-weight perfect matching"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 5 practice-problem links"
+  },
+  {
+   "id": "cpa:hungarian-algorithm",
+   "name": "Hungarian algorithm",
+   "kind": "result",
+   "statement": "Maintain potentials u, v with u[i] + v[j] <= A[i][j] (a lower bound by duality) and grow the matching along tight edges, adjusting potentials when stuck; adding rows one at a time with per-column minima gives O(n^2 m) (O(n^3)).",
+   "locator": "cpa:graph/hungarian-algorithm#hungarian-algorithm",
+   "prereqs": [
+    "cpa:assignment-problem",
+    "cpa:kuhn-matching"
+   ],
+   "aliases": [
+    "Kuhn-Munkres"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "O(n^4) at #the-mathcalon4-algorithm, O(n^3) at #the-mathcalon3-algorithm; link to SSP at #connection-to-the-successive-shortest-path-algorithm"
+  },
+  {
+   "id": "cpa:topological-order",
+   "name": "Topological order",
+   "kind": "definition",
+   "statement": "An ordering of the vertices of a directed graph in which every edge goes from an earlier to a later vertex; it exists iff the graph is acyclic and need not be unique.",
+   "locator": "cpa:graph/topological-sort#topological-sorting",
+   "prereqs": [
+    "[directed graph]"
+   ],
+   "aliases": [
+    "linear extension"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 9 practice-problem links"
+  },
+  {
+   "id": "cpa:topological-sort",
+   "name": "Topological sort by DFS",
+   "kind": "result",
+   "statement": "In a DAG, appending each vertex when its DFS call finishes and reversing the list yields an order in which every edge goes forward; O(n + m).",
+   "locator": "cpa:graph/topological-sort#the-algorithm",
+   "prereqs": [
+    "cpa:topological-order",
+    "cpa:dfs"
+   ],
+   "aliases": [
+    "toposort"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Kahn's algorithm is not covered"
+  },
+  {
+   "id": "cpa:edge-vertex-connectivity",
+   "name": "Edge and vertex connectivity",
+   "kind": "definition",
+   "statement": "Edge connectivity lambda (vertex connectivity kappa) is the fewest edges (vertices) whose removal disconnects the graph; it equals the minimum over pairs s, t of an s-t separating set's size.",
+   "locator": "cpa:graph/edge_vertex_connectivity#definition",
+   "prereqs": [
+    "cpa:bridge",
+    "cpa:articulation-point"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "no practice links; no code"
+  },
+  {
+   "id": "cpa:whitney-inequalities",
+   "name": "Whitney inequalities",
+   "kind": "result",
+   "statement": "kappa <= lambda <= delta, where delta is the minimum degree, and these cannot be improved in general.",
+   "locator": "cpa:graph/edge_vertex_connectivity#the-whitney-inequalities",
+   "prereqs": [
+    "cpa:edge-vertex-connectivity"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:connectivity-via-flow",
+   "name": "Computing connectivity with max flow",
+   "kind": "skill",
+   "statement": "By Menger/Ford-Fulkerson, the max number of edge-disjoint s-t paths is a unit-capacity max flow; minimise over pairs (or use Stoer-Wagner); for vertex connectivity split each vertex into in/out with capacity 1.",
+   "locator": "cpa:graph/edge_vertex_connectivity#computing-the-values",
+   "prereqs": [
+    "cpa:edge-vertex-connectivity",
+    "cpa:max-flow-min-cut"
+   ],
+   "aliases": [
+    "Menger's theorem",
+    "vertex splitting"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:tree-edge-painting",
+   "name": "Counting painted edges on tree paths with Euler tour",
+   "kind": "skill",
+   "statement": "Split a path at the LCA into two ancestor-descendant paths; over the Euler tour keep segment trees of forward and backward edge colours, so the count on an ancestor path is T1[p..q-1] - T2[p..q-1], O(log N) per query and paint.",
+   "locator": "cpa:graph/tree_painting#algorithm",
+   "prereqs": [
+    "cpa:lca-euler-tour-rmq"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "no practice links"
+  },
+  {
+   "id": "cpa:implication-graph",
+   "name": "2-CNF and the implication graph",
+   "kind": "definition",
+   "statement": "In 2-SAT every clause has two literals; each clause (a or b) is equivalent to not a -> b and not b -> a, giving a directed graph on 2n literal vertices.",
+   "locator": "cpa:graph/2SAT#2-sat",
+   "prereqs": [
+    "[Boolean formula in CNF]"
+   ],
+   "aliases": [
+    "2-CNF"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 8 practice-problem links"
+  },
+  {
+   "id": "cpa:two-sat",
+   "name": "2-SAT",
+   "kind": "result",
+   "statement": "Turn each clause (a or b) into implications not a -> b and not b -> a; the formula is satisfiable iff no variable shares an SCC with its negation, and setting x true iff comp[x] comes after comp[not x] in topological order gives an assignment; O(n + m).",
+   "locator": "cpa:graph/2SAT#algorithm",
+   "prereqs": [
+    "cpa:implication-graph",
+    "cpa:kosaraju"
+   ],
+   "aliases": [
+    "2-satisfiability"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:heavy-light-decomposition",
+   "name": "Heavy-light decomposition",
+   "kind": "result",
+   "statement": "Mark the edge to a child with subtree at least half (or the largest) as heavy; heavy edges form disjoint paths and any root path crosses O(log n) light edges, so path queries split into O(log n) path segments.",
+   "locator": "cpa:graph/hld#description",
+   "prereqs": [
+    "cpa:dfs",
+    "[rooted tree]"
+   ],
+   "aliases": [
+    "HLD"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "article ends with 7 practice-problem links; proof at #proof-of-correctness"
+  },
+  {
+   "id": "cpa:hld-path-queries",
+   "name": "Path queries with HLD and segment trees",
+   "kind": "skill",
+   "statement": "Lay heavy paths contiguously in one segment tree; max/sum queries and repainting on the path a-b take O(log^2 n) by walking both ends up chain by chain.",
+   "locator": "cpa:graph/hld#sample-problems",
+   "prereqs": [
+    "cpa:heavy-light-decomposition",
+    "cpa:segment-tree-query-update"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:centroid",
+   "name": "Centroid of a tree",
+   "kind": "definition",
+   "statement": "A vertex whose removal leaves no component with more than n/2 vertices; every tree has one or two, and two centroids are adjacent.",
+   "locator": "cpa:graph/centroid_decomposition#properties-and-definition-of-a-centroid",
+   "prereqs": [
+    "[tree]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "article ends with 6 practice-problem links; existence proof at #existence-and-uniqueness"
+  },
+  {
+   "id": "cpa:centroid-decomposition",
+   "name": "Centroid decomposition",
+   "kind": "result",
+   "statement": "Recursively remove a centroid and decompose the remaining components; the recursion depth is O(log N) and every path passes through the centroid of some component, so path-counting problems run in O(N log N) times per-level work.",
+   "locator": "cpa:graph/centroid_decomposition#properties-and-definition-of-centroid-decomposition",
+   "prereqs": [
+    "cpa:centroid",
+    "[divide and conquer]"
+   ],
+   "aliases": [
+    "centroid tree"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "finding a centroid at #finding-a-centroid; example counts paths of length K"
+  }
+ ]
+}
