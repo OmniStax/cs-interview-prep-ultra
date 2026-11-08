@@ -10,8 +10,13 @@ Checks, for concepts.json:
     match that row; open_prose agrees with the treatments;
   - every inventory row is used by some treatment or listed under "dropped".
 And for toc.json, when present:
-  - every concept sits in exactly one section and its part/chapter/section fields agree;
-  - book order respects prerequisites (a prereq never comes after its dependant);
+  - the shape is one book: flat "chapters" numbered 1..N (sections N.1, N.2, ...) plus "appendices"
+    (letters A, B, ...; pages A.1, A.2, ...); there are no parts;
+  - every concept sits in exactly one chapter section or appendix page, and its chapter/section
+    (and, for appendix pages, appendix and group) fields agree;
+  - book order respects prerequisites (a prereq never comes after its dependant) among chapter
+    concepts and within each appendix; chapter concepts may rest on appendix concepts (the reader
+    is pointed to the appendix page);
   - section tags (candidate_sources, open_prose) agree with the concepts.
 
 Usage: python3 tools/check_map.py [--quiet]     Exit status 1 on any error.
@@ -27,7 +32,7 @@ TIERS = ['core', 'stretch', 'contest']
 OPEN = {'cpa', 'jeffe', 'ods', 'sdp'}
 SOURCES = {'ciu', 'cpa', 'jeffe', 'jeffe-notes', 'ods', 'sdp'}
 SLUG = re.compile(r'^[a-z0-9]+(-[a-z0-9]+)*$')
-REQUIRED = {'id': str, 'name': str, 'kind': str, 'statement': str, 'tier': str, 'part': str, 'chapter': str,
+REQUIRED = {'id': str, 'name': str, 'kind': str, 'statement': str, 'tier': str, 'chapter': str,
             'section': str, 'prereqs': list, 'treatments': list, 'aliases': list, 'open_prose': bool, 'notes': str}
 
 errors, warnings = [], []
@@ -62,6 +67,9 @@ def check_concepts(data, rows):
         if c.get('kind') not in KINDS: err(f'{cid}: bad kind {c.get("kind")!r}')
         if c.get('tier') not in TIERS: err(f'{cid}: bad tier {c.get("tier")!r}')
         if not str(c.get('statement', '')).strip(): err(f'{cid}: empty statement')
+        if 'part' in c: err(f'{cid}: has a part field (the book has no parts)')
+        if 'appendix' in c and not (isinstance(c['appendix'], str) and re.match(r'^[A-Z]$', c['appendix'])):
+            err(f'{cid}: appendix should be a capital letter, got {c["appendix"]!r}')
 
     # prerequisites
     for cid, c in by_id.items():
@@ -126,35 +134,77 @@ def check_concepts(data, rows):
     return by_id
 
 
+def check_section(s, ids, by_id):
+    if not ids: err(f'section {s.get("id")} has no concepts')
+    srcs = set()
+    for cid in ids:
+        if cid in by_id: srcs |= {t['source'] for t in by_id[cid]['treatments']}
+    if set(s.get('candidate_sources', [])) != srcs:
+        err(f'section {s.get("id")}: candidate_sources {s.get("candidate_sources")} != {sorted(srcs)}')
+    op = any(by_id[i]['open_prose'] for i in ids if i in by_id)
+    if s.get('open_prose') != op: err(f'section {s.get("id")}: open_prose tag {s.get("open_prose")} != {op}')
+    if s.get('tier') not in TIERS: err(f'section {s.get("id")}: bad tier')
+
+
 def check_toc(toc, by_id):
-    seen = collections.Counter(); order = []
-    for p in toc.get('parts', []):
-        for ch in p.get('chapters', []):
-            for s in ch.get('sections', []):
-                ids = s.get('concepts', [])
-                if not ids: err(f'section {s.get("id")} has no concepts')
-                srcs = set()
-                for cid in ids:
-                    seen[cid] += 1; order.append(cid)
-                    c = by_id.get(cid)
-                    if c is None:
-                        err(f'toc section {s.get("id")}: unknown concept {cid}'); continue
-                    for k, v in (('part', p['id']), ('chapter', ch['id']), ('section', s['id'])):
-                        if c[k] != v: err(f'{cid}: {k} is {c[k]}, toc puts it in {v}')
-                    srcs |= {t['source'] for t in c['treatments']}
-                if set(s.get('candidate_sources', [])) != srcs:
-                    err(f'section {s.get("id")}: candidate_sources {s.get("candidate_sources")} != {sorted(srcs)}')
-                op = any(by_id[i]['open_prose'] for i in ids if i in by_id)
-                if s.get('open_prose') != op: err(f'section {s.get("id")}: open_prose tag {s.get("open_prose")} != {op}')
-                if s.get('tier') not in TIERS: err(f'section {s.get("id")}: bad tier')
+    if 'parts' in toc: err('toc.json has "parts"; the book is flat chapters plus appendices')
+    chapters = toc.get('chapters')
+    appendices = toc.get('appendices')
+    if not isinstance(chapters, list): err('toc.json: "chapters" must be a list'); chapters = []
+    if not isinstance(appendices, list): err('toc.json: "appendices" must be a list'); appendices = []
+    seen = collections.Counter()
+    book_order = []                       # concepts of numbered chapters, in book order
+    app_order = collections.defaultdict(list)
+    for n, ch in enumerate(chapters, 1):
+        if ch.get('number') != n: err(f'chapter {ch.get("id")}: number {ch.get("number")}, expected {n}')
+        if ch.get('first_pass') != (n <= 3): err(f'chapter {ch.get("id")}: first_pass should be {n <= 3}')
+        if 'parts' in ch or 'part' in ch: err(f'chapter {ch.get("id")}: carries a part')
+        for k, s in enumerate(ch.get('sections', []), 1):
+            if s.get('number') != f'{n}.{k}': err(f'section {s.get("id")}: number {s.get("number")}, expected {n}.{k}')
+            ids = s.get('concepts', [])
+            for cid in ids:
+                seen[cid] += 1; book_order.append(cid)
+                c = by_id.get(cid)
+                if c is None:
+                    err(f'toc section {s.get("id")}: unknown concept {cid}'); continue
+                if 'appendix' in c: err(f'{cid}: has appendix {c["appendix"]} but sits in chapter {n}')
+                for k2, v in (('chapter', ch['id']), ('section', s['id'])):
+                    if c[k2] != v: err(f'{cid}: {k2} is {c[k2]}, toc puts it in {v}')
+            check_section(s, ids, by_id)
+    letters = []
+    for a in appendices:
+        L = a.get('letter'); letters.append(L)
+        if not (isinstance(L, str) and re.match(r'^[A-Z]$', L)): err(f'appendix {a.get("id")}: bad letter {L!r}'); continue
+        if a.get('built') is not False: err(f'appendix {L}: built should be false')
+        if a.get('kind') not in ('links', 'reading'): err(f'appendix {L}: bad kind {a.get("kind")!r}')
+        groups = {g['id'] for g in a.get('groups', [])}
+        pages = a.get('pages', [])
+        if a.get('kind') == 'links' and not pages: err(f'appendix {L}: a links appendix needs pages')
+        for k, s in enumerate(pages, 1):
+            if s.get('number') != f'{L}.{k}': err(f'appendix page {s.get("id")}: number {s.get("number")}, expected {L}.{k}')
+            if groups and s.get('group') not in groups: err(f'appendix page {s.get("id")}: group {s.get("group")} not in the appendix groups')
+            ids = s.get('concepts', [])
+            for cid in ids:
+                seen[cid] += 1; app_order[L].append(cid)
+                c = by_id.get(cid)
+                if c is None:
+                    err(f'appendix page {s.get("id")}: unknown concept {cid}'); continue
+                if c.get('appendix') != L: err(f'{cid}: appendix is {c.get("appendix")}, toc puts it in appendix {L}')
+                for k2, v in (('chapter', s.get('group')), ('section', s['id'])):
+                    if c[k2] != v: err(f'{cid}: {k2} is {c[k2]}, toc puts it in {v}')
+            check_section(s, ids, by_id)
+    if letters != [chr(ord('A') + i) for i in range(len(letters))]: err(f'appendix letters {letters} are not A, B, ... in order')
     for cid in by_id:
-        if seen[cid] == 0: err(f'{cid}: in no toc section')
-        elif seen[cid] > 1: err(f'{cid}: in {seen[cid]} toc sections')
-    pos = {cid: i for i, cid in enumerate(order)}
-    for cid, c in by_id.items():
-        for p in c['prereqs']:
-            if p in pos and cid in pos and pos[p] > pos[cid]:
-                err(f'order: {cid} ({c["section"]}) comes before its prereq {p} ({by_id[p]["section"]})')
+        if seen[cid] == 0: err(f'{cid}: in no toc section or appendix page')
+        elif seen[cid] > 1: err(f'{cid}: in {seen[cid]} toc sections or appendix pages')
+    for order in [book_order] + list(app_order.values()):
+        pos = {cid: i for i, cid in enumerate(order)}
+        for cid in order:
+            c = by_id.get(cid)
+            if c is None: continue
+            for p in c['prereqs']:
+                if p in pos and pos[p] > pos[cid]:
+                    err(f'order: {cid} ({c["section"]}) comes before its prereq {p} ({by_id[p]["section"]})')
     # tier inversions are allowed but reported
     for cid, c in by_id.items():
         for p in c['prereqs']:

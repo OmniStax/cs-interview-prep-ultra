@@ -1,8 +1,10 @@
 # Concept map spec. Prefixes: c=ciu p=cpa j=jeffe n=jeffe-notes o=ods s=sdp
-# P id | title          C id | title          S id | title [| fold note]
+# C id | title          S id | title [| fold note]
+# APPENDIX letter | title | kind  ...  END APPENDIX: the chapters between are an appendix, not numbered book chapters.
+# Chapter order in this file is the book order. The '# Part:' comments are old groupings, kept for reading only.
 # concept-id = row row ... [:: key=value ;; key=value]
 
-P foundations | Foundations
+# Part: Foundations (foundations)
 
 C ch-cost | Algorithms and their cost
 S what-is-an-algorithm | What an algorithm is
@@ -33,8 +35,8 @@ counter-increment-decrement = n:inc-dec-counter
 S counting-expectation | Counting and expected value
 counting = c:counting
 probability-basics = c:probability-basics n:probability-space
-conditional-probability = c:conditional-probability
-linearity-of-expectation = n:linearity-of-expectation o:linearity-of-expectation c:random-variables-expectation
+conditional-probability = c:conditional-probability :: tier=core ;; why=linearity-of-expectation (core) rests on it.
+linearity-of-expectation = n:linearity-of-expectation o:linearity-of-expectation c:random-variables-expectation :: tier=core ;; why=geometric-expectation and chaining-analysis (both core) rest on it.
 indicator-variables = o:indicator-variables
 geometric-expectation = o:coin-toss-expectation
 
@@ -185,7 +187,7 @@ floating-point = c:floating-point
 endianness = c:endianness
 character-encodings = c:character-encodings
 
-P trees-sorting | Trees and sorting
+# Part: Trees and sorting (trees-sorting)
 
 C ch-bst | Trees and binary search trees
 S trees | Trees and binary trees
@@ -273,8 +275,8 @@ radix-sort = o:radix-sort c:linear-time-sorts
 C ch-balanced | Balanced search trees
 S multiway-trees | AVL, 2-3 and 2-4 trees
 avl-tree = c:avl-tree
-two-three-tree = c:2-3-tree
-two-four-tree = c:2-3-4-tree o:two-four-tree
+two-three-tree = c:2-3-tree :: tier=core ;; why=two-four-tree (core) rests on it.
+two-four-tree = c:2-3-4-tree o:two-four-tree :: tier=core ;; why=two-four-updates, b-tree-structure (core) rest on it.
 two-four-updates = o:two-four-updates
 S red-black | Red-black trees
 red-black-properties = o:red-black-properties
@@ -305,12 +307,12 @@ skiplist-list = o:skiplist-list
 skiplist-analysis = o:skiplist-analysis
 S b-trees | B-trees
 external-memory-model = o:external-memory-model
-k-ary-tree = c:k-ary-tree
+k-ary-tree = c:k-ary-tree :: tier=core ;; why=b-tree (core) rests on it.
 b-tree-structure = o:b-tree-structure
 b-tree-search = o:b-tree-search
 b-tree-insert = o:b-tree-add
 b-tree-delete = o:b-tree-remove
-b-tree = c:b-tree o:b-tree-performance
+b-tree = c:b-tree o:b-tree-performance :: tier=core ;; why=database-indexes (core) rests on it.
 
 C ch-tries | Tries and other search structures
 S tries | Tries
@@ -326,7 +328,7 @@ S augmented-spatial | Augmented and spatial trees
 augmented-trees = c:augmented-ds
 kd-tree = c:kd-tree
 
-P graphs | Graphs
+# Part: Graphs (graphs)
 
 C ch-graph-search | Graphs and graph search
 S graphs | Graphs and modelling
@@ -399,7 +401,7 @@ desopo-pape = p:desopo-pape
 
 C ch-mst | Disjoint sets and minimum spanning trees
 S union-find | Disjoint sets
-union-find = c:union-find p:dsu n:disjoint-set-adt
+union-find = c:union-find p:dsu n:disjoint-set-adt :: tier=core ;; why=kruskal (core) rests on it; ruling of 2026-11-08.
 shallow-threaded-trees = n:shallow-threaded-trees
 dsu-connectivity = p:dsu-connectivity
 S dsu-heuristics | Union by rank and path compression
@@ -416,7 +418,7 @@ prim = c:mst-prim p:prim j:prim
 kruskal = c:mst-kruskal p:kruskal p:kruskal-dsu j:kruskal
 boruvka = j:boruvka
 
-P paradigms | Paradigms
+# Part: Paradigms (paradigms)
 
 C ch-backtracking | Backtracking
 S backtracking-pattern | The backtracking pattern
@@ -480,7 +482,7 @@ apsp-repeated-sssp = j:apsp-repeated-sssp
 reweighting = j:reweighting
 johnson = j:johnson
 S floyd-warshall | Floyd-Warshall | cpa graph/finding-negative-cycle-in-graph largely duplicates the negative-cycle parts of bellman_ford and all-pair-shortest-path-floyd-warshall and is folded here.
-floyd-warshall = p:floyd-warshall j:floyd-warshall c:apsp-dp :: note=CIU's APSP-by-DP row names Floyd-Warshall and matrix-style DPs; it treats both floyd-warshall and apsp-dp.
+floyd-warshall = p:floyd-warshall j:floyd-warshall c:apsp-dp :: note=CIU's APSP-by-DP row names Floyd-Warshall and matrix-style DPs; it treats both floyd-warshall and apsp-dp. ;; tier=core ;; why=floyd-warshall-path (core) rests on it.
 floyd-warshall-path = p:floyd-warshall-path
 floyd-warshall-negative = p:floyd-warshall-negative
 negative-cycle-finding = p:negative-cycle-any
@@ -513,7 +515,7 @@ S substring-search | Substring search: brute force and Boyer-Moore
 substring-search-brute-force = c:substring-search-brute-force n:brute-force-matching
 boyer-moore = c:boyer-moore
 S string-hashing | String hashing and Rabin-Karp | cpa string/rabin-karp (176 words) is a thin application of string/string-hashing and is folded here.
-polynomial-hash = p:polynomial-hash o:polynomial-hash c:rolling-hash :: note=ODS's polynomial hash, cpa's polynomial rolling hash and CIU's rolling hash are one concept.
+polynomial-hash = p:polynomial-hash o:polynomial-hash c:rolling-hash :: note=ODS's polynomial hash, cpa's polynomial rolling hash and CIU's rolling hash are one concept. ;; tier=core ;; why=prefix-hash-substring and rabin-karp (core) rest on it.
 prefix-hash-substring = p:prefix-hash-substring
 hash-group-duplicates = p:hash-group-duplicates
 hash-collisions = p:hash-collisions
@@ -594,7 +596,8 @@ fixed-parameter-algorithms = c:fixed-parameter-algorithms
 faster-3sat = n:faster-3sat
 faster-mis = n:faster-mis
 
-P systems | Computer systems
+# Part: Computer systems (systems)
+APPENDIX A | Computer systems | links
 
 C ch-os | Computers and operating systems
 S cpu-memory | CPU, memory and caches
@@ -633,8 +636,8 @@ http = s:http c:http
 http-verbs = s:http-verbs
 tls-https = c:tls-https
 S rpc-rest | RPC, REST and serialisation
-serialization = c:serialization
-rpc = s:rpc c:rpc
+serialization = c:serialization :: tier=core ;; why=rpc (core) rests on it.
+rpc = s:rpc c:rpc :: tier=core ;; why=rpc-vs-rest (core) rests on it.
 rest = s:rest
 rpc-vs-rest = s:rpc-vs-rest
 hateoas = s:hateoas
@@ -668,7 +671,7 @@ unix-cli = c:unix-cli
 
 C ch-information-security | Information, coding and security
 S information | Information and entropy
-information-theory = c:information-theory
+information-theory = c:information-theory :: tier=core ;; why=crypto-hash (core) rests on it.
 entropy = c:entropy
 S error-detection | Parity and Hamming codes
 parity = c:parity
@@ -677,7 +680,7 @@ S compression | Compression
 compression = c:compression
 lz77 = c:lz77
 S cryptography | Cryptography
-crypto-hash = c:crypto-hash
+crypto-hash = c:crypto-hash :: tier=core ;; why=shortlink-generation (core) rests on it.
 encryption = c:encryption
 S security | Computer security
 threat-models = c:threat-models
@@ -685,18 +688,20 @@ control-hijacking = c:control-hijacking
 web-security = c:web-security
 network-security = c:network-security
 
-P system-design | System design
+END APPENDIX
+
+# Part: System design (system-design)
 
 C ch-sd-method | Approaching a system design question
 S approach | The four-step approach
-interview-approach = s:interview-approach c:sd-process
+interview-approach = s:interview-approach c:sd-process :: tier=core ;; why=requirements-scoping, core-component-design and iterative-scaling (core) rest on it.
 requirements-scoping = s:requirements-scoping
 core-component-design = s:core-component-design
 iterative-scaling = s:iterative-scaling
 S estimation | Back-of-the-envelope estimation
 latency-numbers = s:latency-numbers
 rate-conversion = s:rate-conversion
-back-of-envelope = s:back-of-envelope c:back-of-envelope
+back-of-envelope = s:back-of-envelope c:back-of-envelope :: tier=core ;; why=the core worked designs rest on it.
 S trade-offs | Performance versus scalability, latency versus throughput
 performance-vs-scalability = s:performance-vs-scalability
 latency-vs-throughput = s:latency-vs-throughput
@@ -704,7 +709,7 @@ latency-vs-throughput = s:latency-vs-throughput
 C ch-sd-availability | Availability and consistency
 S cap | Distributed systems and the CAP theorem
 distributed-fallacies = c:distributed-fallacies
-cap-theorem = s:cap-theorem c:cap-theorem
+cap-theorem = s:cap-theorem c:cap-theorem :: tier=core ;; why=weak, eventual and strong consistency (core) rest on it.
 S consistency | Consistency patterns
 weak-consistency = s:weak-consistency
 eventual-consistency = s:eventual-consistency
@@ -733,7 +738,7 @@ lb-vs-reverse-proxy = s:lb-vs-reverse-proxy
 S horizontal-scaling | Horizontal scaling and stateless servers
 horizontal-scaling = s:horizontal-scaling
 stateless-servers = s:stateless-servers
-scaling-basics = c:scaling-basics
+scaling-basics = c:scaling-basics :: tier=core ;; why=sharding (core) rests on it.
 autoscaling = s:autoscaling
 S application-layer | The application layer and microservices
 application-layer = s:application-layer
@@ -759,7 +764,7 @@ replication-drawbacks = s:replication-drawbacks
 read-write-split = s:read-write-split
 S partitioning | Federation, sharding and denormalisation
 federation = s:federation
-sharding = s:sharding c:sharding
+sharding = s:sharding c:sharding :: tier=core ;; why=denormalization, cache-cluster-partitioning and several worked designs (core) rest on it.
 denormalization = s:denormalization
 sql-tuning = s:sql-tuning
 consistent-hashing = c:consistent-hashing
@@ -790,7 +795,7 @@ refresh-ahead = s:refresh-ahead
 cache-invalidation = s:cache-invalidation
 S queues-back-pressure | Message queues and back pressure
 asynchronism = s:asynchronism
-message-queue = s:message-queue c:message-queues
+message-queue = s:message-queue c:message-queues :: tier=core ;; why=back-pressure, fanout-on-write and several worked designs (core) rest on it.
 task-queue = s:task-queue
 back-pressure = s:back-pressure
 S mapreduce | Batch processing with MapReduce
@@ -831,7 +836,7 @@ design-sales-rank = s:design-sales-rank
 S scaling-aws | Scaling to millions of users on AWS
 design-scaling-aws = s:design-scaling-aws
 
-P beyond | Beyond the interview
+# Part: Beyond the interview (beyond)
 
 C ch-range-queries | Range queries
 S sparse-tables | Range minimum and sparse tables | cpa sequences/rmq (361 words) is an index of RMQ approaches and is folded here; its rmq-approaches row sits in the sqrt section, after the structures it compares.

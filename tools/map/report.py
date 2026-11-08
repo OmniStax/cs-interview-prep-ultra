@@ -7,31 +7,53 @@ D = json.load(open(f'{OUT}/concepts.json')); C = D['concepts']; cby = {c['id']: 
 T = json.load(open(f'{OUT}/toc.json')); S = json.load(open(f'{HERE}/stats.json'))
 TIERS = ['core', 'stretch', 'contest']
 SHORT = {'ciu': 'ciu', 'cpa': 'cpa', 'jeffe': 'jeffe', 'jeffe-notes': 'notes', 'ods': 'ods', 'sdp': 'sdp'}
-chap = {ch['id']: ch for p in T['parts'] for ch in p['chapters']}
-secs = {(ch['id'], s['id']): s for p in T['parts'] for ch in p['chapters'] for s in ch['sections']}
+CH = T['chapters']; APPS = T['appendices']; APP_A = next(a for a in APPS if a['letter'] == 'A')
+chap = {ch['id']: ch for ch in CH}
+secs = {(ch['id'], s['id']): s for ch in CH for s in ch['sections']}
+pages = {(s['group'], s['id']): s for a in APPS for s in a['pages']}
+n_secs = sum(len(ch['sections']) for ch in CH)
+def where(c):
+    """Number of a concept's chapter, or 'Appendix A'."""
+    return f'Appendix {c["appendix"]}' if 'appendix' in c else str(chap[c['chapter']]['number'])
+# chapter ranges used for the summary table (book order; the ranges only group rows of the table)
+RANGES = [(1, 7), (8, 12), (13, 16), (17, 23), (24, 29), (30, len(CH))]
 L = []; A = L.append
 
 A('# Concept map report'); A('')
 A(f'Built from the seven inventories in `inventory/` ({D["counts"]["inventory_rows"]} rows). '
-  f'Output: **{len(C)} concepts** in **{sum(len(p["chapters"]) for p in T["parts"])} chapters** and '
-  f'**{sum(len(ch["sections"]) for p in T["parts"] for ch in p["chapters"])} sections** across {len(T["parts"])} parts, plus an unbuilt appendix page. '
-  '`python3 tools/check_map.py` passes (0 errors; its 6 warnings are the tier inversions listed under judgement call 5).'); A('')
+  f'Output: one book of **{len(CH)} numbered chapters** and **{n_secs} sections**, plus two appendices that are not built as text: '
+  f'**Appendix A · {APP_A["title"]}** ({len(APP_A["pages"])} curated-links pages, {sum(len(s["concepts"]) for s in APP_A["pages"])} concepts) '
+  'and **Appendix B · Getting the job** (one reading page, no concepts). '
+  f'**{len(C)} concepts** in all. '
+  f'`python3 tools/check_map.py` passes (0 errors, {len(S["inversions"])} warnings' +
+  ('; the warnings are the tier inversions listed under judgement call 3).' if S['inversions'] else '; no tier inversions remain).')); A('')
 
 # ---- counts
 A('## 1. Counts'); A('')
-A('### Concepts per part and tier'); A('')
-A('| Part | Chapters | Sections | core | stretch | contest | total |'); A('|---|---:|---:|---:|---:|---:|---:|')
+A('### Concepts per chapter range and appendix'); A('')
+A('Per-chapter counts are in `toc.md` (each chapter heading) and `toc.json` (`tier_counts`).'); A('')
+A('| Chapters | Sections | core | stretch | contest | total |'); A('|---|---:|---:|---:|---:|---:|')
 tot = collections.Counter()
-for p in T['parts']:
-    cnt = collections.Counter(cby[i]['tier'] for ch in p['chapters'] for s in ch['sections'] for i in s['concepts'])
+for lo, hi in RANGES:
+    chs = [ch for ch in CH if lo <= ch['number'] <= hi]
+    cnt = collections.Counter(cby[i]['tier'] for ch in chs for s in ch['sections'] for i in s['concepts'])
     tot += cnt
-    A(f'| {p["number"]} · {p["title"]} | {len(p["chapters"])} | {sum(len(ch["sections"]) for ch in p["chapters"])} | '
+    A(f'| {lo}–{hi} ({chs[0]["title"]} … {chs[-1]["title"]}) | {sum(len(ch["sections"]) for ch in chs)} | '
       f'{cnt["core"]} | {cnt["stretch"]} | {cnt["contest"]} | {sum(cnt.values())} |')
-A(f'| **All** | {sum(len(p["chapters"]) for p in T["parts"])} | {sum(len(ch["sections"]) for p in T["parts"] for ch in p["chapters"])} | '
-  f'**{tot["core"]}** | **{tot["stretch"]}** | **{tot["contest"]}** | **{sum(tot.values())}** |')
+A(f'| **Chapters 1–{len(CH)}** | {n_secs} | **{tot["core"]}** | **{tot["stretch"]}** | **{tot["contest"]}** | **{sum(tot.values())}** |')
+for a in APPS:
+    if not a['pages']: continue
+    cnt = collections.Counter(cby[i]['tier'] for s in a['pages'] for i in s['concepts'])
+    tot += cnt
+    A(f'| Appendix {a["letter"]} · {a["title"]} (links, not built) | {len(a["pages"])} pages | {cnt["core"]} | {cnt["stretch"]} | {cnt["contest"]} | {sum(cnt.values())} |')
+A(f'| **All** | | **{tot["core"]}** | **{tot["stretch"]}** | **{tot["contest"]}** | **{sum(tot.values())}** |')
 A('')
-st = collections.Counter(s['tier'] for p in T['parts'] for ch in p['chapters'] for s in ch['sections'])
-A(f'Sections by tag: {st["core"]} core, {st["stretch"]} stretch, {st["contest"]} contest. '
+fp = [ch for ch in CH if ch['first_pass']]
+A('First build pass: chapters ' + ', '.join(f'{ch["number"]}. {ch["title"]}' for ch in fp) + '.'); A('')
+st = collections.Counter(s['tier'] for ch in CH for s in ch['sections'])
+sa = collections.Counter(s['tier'] for s in APP_A['pages'])
+A(f'Chapter sections by tag: {st["core"]} core, {st["stretch"]} stretch, {st["contest"]} contest; '
+  f'Appendix A pages: {sa["core"]} core, {sa["stretch"]} stretch. '
   f'Section sizes (concepts: sections): ' + ', '.join(f'{k}: {v}' for k, v in S['secsizes'].items()) + '.'); A('')
 kinds = collections.Counter(c['kind'] for c in C)
 A('Kinds: ' + ', '.join(f'{k} {v}' for k, v in kinds.most_common()) + '.'); A('')
@@ -100,47 +122,83 @@ np = [c for c in C if not c['open_prose']]
 npt = collections.Counter(c['tier'] for c in np)
 A(f'**{len(np)} concepts** are taught only by CIU links or by Erickson\'s NC notes ({npt["core"]} core, {npt["stretch"]} stretch, {npt["contest"]} contest). '
   'Their prose needs the finder. Whole sections with no open source at all are marked "open prose: none" in toc.md '
-  f'({sum(1 for s in secs.values() if not s["open_prose"])} sections).'); A('')
+  f'({sum(1 for s in secs.values() if not s["open_prose"])} chapter sections; '
+  f'{sum(1 for s in pages.values() if not s["open_prose"])} of Appendix A\'s {len(pages)} pages, which is expected for a links appendix).'); A('')
 byc = collections.OrderedDict()
 for c in C:
     if not c['open_prose']:
         byc.setdefault(c['chapter'], []).append(c)
-for chid, cs in byc.items():
-    ch = chap[chid]
+for chid, cs in sorted(byc.items(), key=lambda kv: (1, 0) if 'appendix' in kv[1][0] else (0, chap[kv[0]]['number'])):
+    c0 = cs[0]
+    label = (f'Appendix A, {next(g["title"] for g in APP_A["groups"] if g["id"] == chid)}' if 'appendix' in c0
+             else f'{chap[chid]["number"]}. {chap[chid]["title"]}')
     srcs = collections.Counter('notes' if any(t['source'] == 'jeffe-notes' for t in c['treatments']) else 'ciu' for c in cs)
-    A(f'- **{ch["number"]}. {ch["title"]}** ({len(cs)}; ' + ', '.join(f'{k} only {v}' for k, v in srcs.items()) + '): ' +
+    A(f'- **{label}** ({len(cs)}; ' + ', '.join(f'{k} only {v}' for k, v in srcs.items()) + '): ' +
       '; '.join(c['name'] + (' [core]' if c['tier'] == 'core' else '') for c in cs))
 A('')
-A('The heaviest gaps are Part V (operating systems, networking basics, testing, design patterns, security: CIU links only, all core in CIU\'s required list) '
-  'and the probability, adversary and approximation chapters, whose only treatment is Erickson\'s NC notes. '
+A('Most of the CIU-only concepts are in Appendix A (operating systems, networking basics, testing, design patterns, security), '
+  'which is now a curated links appendix: its pages need good links, not open prose. '
+  'Among the numbered chapters the heaviest gaps are the probability, adversary and approximation chapters, whose only treatment is Erickson\'s NC notes. '
   'METHOD §0 already expects Wikipedia (CC BY-SA) for small systems gaps such as endianness and Unicode.'); A('')
 
+# ---- decided rulings
+A('## 3. Rulings (decided 2026-11-08)'); A('')
+set_core = [c for c in C if 'Tier set to core in the spec' in c['notes'] and c['id'] != 'union-find']
+raised = [c for c in C if 'Tier raised' in c['notes']]
+sd_ids = [ch['id'] for ch in CH if ch['id'].startswith('ch-sd-')]
+sd = [c for c in C if c['chapter'] in sd_ids]
+sdt = collections.Counter(c['tier'] for c in sd)
+cascade = ['b-tree', 'k-ary-tree', 'two-three-tree', 'two-four-tree']
+R = [
+ ('One book, flat chapters, no parts.',
+  f'OmniStax books are book → chapters → sections, so the map has no parts: `toc.json` holds {len(CH)} chapters numbered 1 to {len(CH)} and a list of appendices; '
+  'concept rows carry no part field; `toc.md` and `chapters.mmd` have no part headings or subgraphs. The old part lines in `tools/map/map.spec` are `#` comments now; the spec\'s chapter order is the book order.'),
+ (f'Appendix A · {APP_A["title"]} is a curated links appendix.',
+  'The four computer-systems chapters (' + ', '.join(g['title'] for g in APP_A['groups']) + ') are not numbered book chapters and are not built as text. '
+  f'Their {len(APP_A["pages"])} sections are the appendix\'s pages A.1 to A.{len(APP_A["pages"])}, each a list of curated links for its concepts. '
+  f'The {sum(len(s["concepts"]) for s in APP_A["pages"])} concepts stay in the map, with `"appendix": "A"` and their old chapter and section ids (the chapter id names the page group), '
+  f'so prerequisite edges into them still resolve: {len(S["into_appendix"])} edges run from a chapter concept to an Appendix A concept, '
+  'and the chapter page points the reader to the appendix for those. Chapter numbering skips the appendix, so the system design chapters '
+  f'({chap[sd_ids[0]]["number"]} to {chap[sd_ids[-1]]["number"]}) follow the paradigm chapters directly. Getting the job is Appendix B (one reading page, no concepts).'),
+ ('System design concepts take their own tiers.',
+  'The cap that held every system design concept at stretch is gone. They take the tiers the inventories give, reconciled as for any other concept: '
+  f'the system design chapters now hold {sdt["core"]} core and {sdt["stretch"]} stretch concepts. '
+  'Where an sdp row merged with a CIU row from CIU\'s optional system design list, the CIU-first rule still said stretch; those that core concepts rest on were set to core under ruling 4.'),
+ ('Union-find is core, and so is every prerequisite a core concept rests on.',
+  'Union-find is set core in the spec (Kruskal, core, rests on it). Every other case where a core concept rested on a stretch one was settled the same way, '
+  f'by setting tier=core in the spec ({len(set_core)} concepts, each with a note saying which core concept needs it): '
+  + '; '.join(f'{c["name"]} ({where(c)})' for c in set_core) + '. '
+  'None looked like a CIU mistake in the other direction, so none was settled by lowering the dependant. '
+  'The propagation rule then raised the concepts with no CIU row under them (each noted "Tier raised"). '
+  'The widest cascade comes from database indexes (sdp, core) resting on B-trees: B-trees, k-ary trees, 2-3 trees, 2-3-4 trees and, by propagation, ODS\'s B-tree and 2-4 tree operations and the external-memory model are core. '
+  'If B-trees should stay stretch, dropping the edge database-indexes → b-tree with a NOEDGE line undoes the whole cascade. '
+  + (f'{len(S["inversions"])} tier inversions remain.' if S['inversions'] else 'No tier inversions remain.')),
+ ('First pass stays chapters 1 to 3.',
+  'The first build pass is ' + ', '.join(f'{ch["number"]}. {ch["title"]}' for ch in CH if ch['first_pass']) + '.'),
+]
+for i, (h, b) in enumerate(R, 1):
+    A(f'{i}. **{h}** {b}')
+A('')
+
 # ---- judgement calls
-A('## 3. Judgement calls to check'); A('')
-promoted = [c for c in C if 'Tier raised' in c['notes']]
+A('## 4. Judgement calls to check'); A('')
+three = sum(1 for ch in CH if len(ch['sections']) == 3)
+outside = sum(1 for ch in CH if not 3 <= len(ch['sections']) <= 8)
+single = [s for s in list(secs.values()) + list(pages.values()) if len(s['concepts']) == 1]
 J = [
- ('Seven parts instead of METHOD §4.2\'s five.',
-  'I added **Part V · Computer systems** (CIU\'s required OS, networking, testing and design-pattern topics had no home in the draft), '
-  'split the draft\'s Part II into **II · Trees and sorting** and **III · Graphs** (Kruskal needs sorting, and CIU orders trees, then sorting, then graphs), '
-  'and moved **Beyond the interview** to the end (Part VII) so every core part comes first. System design is Part VI.'),
- ('Recursion and induction moved into Part I (chapter 4).',
-  'METHOD puts recursion in Part III, but recursive binary search, tree traversals and DFS rest on it in the inventories, so the DAG pulls it forward. '
-  'Correctness proofs and induction (Erickson, notes) come with it. Backtracking, DP and greedy stay in Part IV.'),
+ ('Recursion and induction moved early (chapter 4).',
+  'METHOD puts recursion later, but recursive binary search, tree traversals and DFS rest on it in the inventories, so the DAG pulls it forward. '
+  'Correctness proofs and induction (Erickson, notes) come with it. Backtracking, DP and greedy stay in chapters 17 to 20.'),
  ('All-pairs shortest paths and DAG shortest paths live in "Dynamic programming on graphs" (chapter 19), not in Shortest paths.',
   'Erickson\'s Floyd-Warshall, APSP-by-path-length and DAG shortest paths rest on his DP pattern; merged with cpa\'s rows they inherit that edge. '
-  'Dijkstra and Bellman-Ford stay in Part III. Floyd-Warshall is **stretch**, because CIU\'s only row for it sits in the optional Additional Detail (cpa says core).'),
- (f'System design capped at stretch ({len(S["capped"])} concepts).',
-  'CIU lists system design as optional ("if you have 4+ years experience"), so I read "CIU\'s required list decides core" as capping every sdp concept in Part VI at stretch. '
-  'sdp\'s own core/stretch is kept in each note ("sdp marks it core; capped"). If you want sdp\'s internal split as the tier, it is a one-line change in the build. '
-  'sdp concepts outside Part VI (TCP, UDP, HTTP, REST, OOD notebooks) keep sdp\'s tier, since CIU requires networking and design patterns.'),
- ('Tier propagation, and six inversions left on purpose.',
-  f'A concept with no CIU row takes the most basic tier of the concepts that rest on it ({len(promoted)} raised, each noted: e.g. MST definition and SCC definition to core because Prim and Kosaraju are core; '
-  'decision-tree lower bounds to core under the sorting lower bound). Concepts with a CIU row keep CIU\'s verdict, which leaves six inversions: '
-  + '; '.join(f'{cby[a]["name"]} ({ta}) rests on {cby[b]["name"]} ({tb})' for a, b, ta, tb in S['inversions']) +
-  '. The Kruskal one is CIU\'s own inconsistency (union-find is optional, Kruskal is required). Promote those prerequisites to core if you prefer.'),
+  'Dijkstra and Bellman-Ford stay in Shortest paths (chapter 15). Floyd-Warshall is now **core** (cpa says core; CIU\'s row is in its optional Additional Detail), because path reconstruction, core, rests on it.'),
+ ('Tier propagation.',
+  f'A concept with no CIU row takes the most basic tier of the concepts that rest on it ({len(raised)} raised, each noted: e.g. MST definition and SCC definition to core because Prim and Kosaraju are core; '
+  'decision-tree lower bounds to core under the sorting lower bound). Concepts with a CIU row keep CIU\'s verdict unless the spec sets a tier (ruling 4).'
+  + (' Remaining inversions: ' + '; '.join(f'{cby[a]["name"]} ({ta}) rests on {cby[b]["name"]} ({tb})' for a, b, ta, tb in S['inversions']) + '.' if S['inversions'] else '')),
  ('Probability split between chapter 1 and chapter 22.',
   'Counting, basic probability, conditional probability, expectation and indicator variables are in 1.6 because hashing, heapify\'s analysis and skip lists need them; '
-  'distributions, tail bounds, Markov chains and randomized algorithms are chapter 22. "Random variables and linearity of expectation" is **stretch** because the CIU row merged into it is in CIU\'s optional list.'),
+  'distributions, tail bounds, Markov chains and randomized algorithms are chapter 22. "Random variables and linearity of expectation" and conditional probability are now **core** (ruling 4: hashing analysis rests on them), although CIU lists them as optional.'),
  ('Rows split by granularity (7).',
   'CIU rows that cover two testable concepts were split, and the CIU row treats both: BST search/insertion, universal/perfect hashing, counting/radix sort, '
   'union by rank/path compression, Floyd-Warshall/APSP DP, convex hull/Graham scan; cpa\'s classic-DP table also treats the new LCS concept.'),
@@ -157,17 +215,18 @@ J = [
   'singly linked list → stack/queue (ODS\'s SLList implements them), potential method → array resizing, chaining → multiplicative hashing, BFS distances → Ford\'s relaxation, '
   'Huffman → compression, and three that broke cycles (max-flow min-cut ↔ Ford-Fulkerson, two\'s complement ↔ bitwise operators, random-walk lemma ↔ meldable heap). '
   'Added: binary tree → tree, Ford\'s relaxation → edge relaxation, sparse DP → LCS.'),
- ('Order inside Part II: trees and BSTs, heaps, sorting, then balanced trees and tries.',
-  'Treaps need heaps, quicksort\'s analysis needs random BSTs, and core sorting should not wait behind stretch balanced trees. CIU\'s order (trees intro, BST, heap, balanced, sorting) is kept except that balanced trees move after sorting.'),
- ('Core number theory stays in Part VII.',
-  f'cpa marks GCD, Euclid, LCM, the sieve and trial division core; they open the number-theory chapter (chapter {chap["ch-number-theory-1"]["number"]}) instead of getting a Part I chapter. '
-  'Seven core concepts therefore sit in Part VII. The alternative is a short "Number theory essentials" chapter after bits.'),
+ ('Order of chapters 8 to 12: trees and BSTs, heaps, sorting, then balanced trees and tries.',
+  'Treaps need heaps, quicksort\'s analysis needs random BSTs, and core sorting should not wait behind balanced trees. CIU\'s order (trees intro, BST, heap, balanced, sorting) is kept except that balanced trees move after sorting.'),
+ (f'Core number theory stays in chapter {chap["ch-number-theory-1"]["number"]}.',
+  f'cpa marks GCD, Euclid, LCM, the sieve and trial division core; they open the number-theory chapter (chapter {chap["ch-number-theory-1"]["number"]}) instead of getting an early chapter. '
+  f'Seven core concepts therefore sit among the beyond-the-interview chapters ({chap["ch-range-queries"]["number"]} to {len(CH)}). The alternative is a short "Number theory essentials" chapter after bits.'),
  ('Placements of a few CIU core rows.',
-  'Distributed hash tables (CIU: under Hash table, core) sit with consistent hashing in Part VI\'s partitioning section. The LRU cache stays in chapter 5 as an interview staple. '
-  'Huffman is taught as greedy (chapter 20), not in Part V\'s compression section. Tries (CIU: Even More Knowledge) are in Part II with the search trees, as METHOD proposes.'),
- ('Single-concept sections (6) and thin chapters.',
+  f'Distributed hash tables (CIU: under Hash table, core) sit with consistent hashing in the databases chapter\'s partitioning section (chapter {chap["ch-sd-data"]["number"]}). The LRU cache stays in chapter 5 as an interview staple. '
+  'Huffman is taught as greedy (chapter 20), not on Appendix A\'s compression page. Tries (CIU: Even More Knowledge) are in chapter 12 with the search trees, as METHOD proposes.'),
+ (f'Single-concept sections ({len(single)}) and thin chapters.',
   'The LRU cache, three worked designs (query cache, sales rank, scaling on AWS: each is one sdp solution page), Bloom filters and simhash are one concept each. '
-  'They are pages because each is a separate thing a reader looks up; joining them would break rule 11\'s "a section is a page". Nine chapters have exactly three sections, the floor of the 3-to-8 range; none is outside it.'),
+  f'They are pages because each is a separate thing a reader looks up; joining them would break rule 11\'s "a section is a page". {three} chapters have exactly three sections, the floor of the 3-to-8 range; '
+  + ('none is outside it.' if not outside else f'{outside} are outside it.')),
  ('Folds and what stayed apart.',
   'Thin or duplicate cp-algorithms articles were folded into the home of the concept they duplicate (each section lists its folds in toc.json/toc.md): e.g. mst_kruskal_with_dsu into Kruskal, '
   'finding-negative-cycle into Floyd-Warshall, dijkstra_sparse into Dijkstra, sequences/k-th into Selection, string/rabin-karp into string hashing, factorial-divisors into factorials mod p, '
@@ -178,14 +237,15 @@ for i, (h, b) in enumerate(J, 1):
 A('')
 
 # ---- chapter deps
-A('## 4. Chapter dependencies'); A('')
-A('Chapter → the chapters whose concepts it uses directly (any prerequisite edge that crosses chapters). The Mermaid graph in `chapters.mmd` shows the Hasse-reduced version.'); A('')
-for p in T['parts']:
-    A(f'**Part {p["number"]} · {p["title"]}**'); A('')
-    for ch in p['chapters']:
-        deps = sorted(S['cdep'].get(ch['id'], []), key=lambda x: chap[x]['number'])
-        d = ', '.join(f'{chap[x]["number"]}' for x in deps) or 'none'
-        A(f'- {ch["number"]}. {ch["title"]} → {d}')
-    A('')
+A('## 5. Chapter dependencies'); A('')
+A('Chapter → the chapters whose concepts it uses directly (any prerequisite edge that crosses chapters); "A" is Appendix A. '
+  'The Mermaid graph in `chapters.mmd` shows the Hasse-reduced version.'); A('')
+def num(x): return 'A' if x == 'A' else str(chap[x]['number'])
+for ch in CH:
+    d = ', '.join(num(x) for x in S['cdep'].get(ch['id'], [])) or 'none'
+    A(f'- {ch["number"]}. {ch["title"]} → {d}')
+d = ', '.join(num(x) for x in S['cdep'].get('A', [])) or 'none'
+A(f'- Appendix A · {APP_A["title"]} → {d}')
+A('')
 open(f'{OUT}/report.md', 'w').write('\n'.join(L))
 print('report lines', len(L))

@@ -3,62 +3,210 @@
  "rows": 1165,
  "drops": 5,
  "tier_count": {
-  "core": 264,
-  "stretch": 429,
+  "core": 375,
+  "stretch": 318,
   "contest": 307
  },
- "part_tier": {
-  "foundations": {
-   "core": 91,
-   "stretch": 34,
-   "contest": 7
+ "chapter_tier": {
+  "ch-cost": {
+   "core": 21,
+   "stretch": 4,
+   "contest": 1
   },
-  "trees-sorting": {
-   "core": 49,
-   "stretch": 46,
-   "contest": 7
+  "ch-arrays-lists": {
+   "core": 16,
+   "stretch": 1
   },
-  "graphs": {
-   "core": 37,
-   "stretch": 21,
+  "ch-stacks-queues": {
+   "core": 15,
+   "stretch": 8,
+   "contest": 1
+  },
+  "ch-recursion": {
+   "core": 12,
+   "stretch": 1
+  },
+  "ch-hashing": {
+   "core": 16,
+   "stretch": 2,
+   "contest": 2
+  },
+  "ch-binary-search": {
+   "core": 6,
+   "stretch": 5,
+   "contest": 2
+  },
+  "ch-bits": {
+   "core": 12,
+   "stretch": 6,
+   "contest": 1
+  },
+  "ch-bst": {
+   "core": 19,
+   "stretch": 2
+  },
+  "ch-heaps": {
+   "core": 8,
+   "stretch": 3
+  },
+  "ch-sorting": {
+   "core": 18,
+   "stretch": 7,
+   "contest": 2
+  },
+  "ch-balanced": {
+   "core": 11,
+   "stretch": 20,
    "contest": 3
   },
-  "paradigms": {
-   "core": 48,
-   "stretch": 57,
+  "ch-tries": {
+   "core": 3,
+   "stretch": 4,
+   "contest": 2
+  },
+  "ch-graph-search": {
+   "core": 18,
+   "stretch": 1
+  },
+  "ch-dfs-structure": {
+   "core": 7,
+   "stretch": 9
+  },
+  "ch-shortest-paths": {
+   "core": 7,
+   "stretch": 3,
+   "contest": 3
+  },
+  "ch-mst": {
+   "core": 6,
+   "stretch": 7
+  },
+  "ch-backtracking": {
+   "core": 6,
+   "stretch": 2
+  },
+  "ch-dp": {
+   "core": 21,
+   "stretch": 6,
+   "contest": 3
+  },
+  "ch-graph-dp": {
+   "core": 3,
+   "stretch": 7,
+   "contest": 3
+  },
+  "ch-greedy": {
+   "core": 3,
+   "stretch": 5,
+   "contest": 6
+  },
+  "ch-strings": {
+   "core": 10,
+   "stretch": 7,
+   "contest": 5
+  },
+  "ch-randomized": {
+   "core": 2,
+   "stretch": 9,
+   "contest": 1
+  },
+  "ch-intractability": {
+   "core": 6,
+   "stretch": 18,
+   "contest": 7
+  },
+  "ch-sd-method": {
+   "core": 9
+  },
+  "ch-sd-availability": {
+   "core": 9,
+   "stretch": 2
+  },
+  "ch-sd-web": {
+   "core": 19,
+   "stretch": 3
+  },
+  "ch-sd-data": {
+   "core": 17,
+   "stretch": 5
+  },
+  "ch-sd-cache-async": {
+   "core": 14,
+   "stretch": 3
+  },
+  "ch-sd-cases": {
+   "core": 18,
+   "stretch": 6
+  },
+  "ch-range-queries": {
+   "stretch": 16,
+   "contest": 18
+  },
+  "ch-tree-algorithms": {
+   "stretch": 3,
+   "contest": 14
+  },
+  "ch-flows": {
+   "stretch": 12,
+   "contest": 23
+  },
+  "ch-advanced-graphs": {
+   "stretch": 2,
+   "contest": 11
+  },
+  "ch-advanced-strings": {
+   "stretch": 3,
+   "contest": 16
+  },
+  "ch-advanced-dp": {
+   "contest": 13
+  },
+  "ch-sketches": {
+   "stretch": 5
+  },
+  "ch-number-theory-1": {
+   "core": 7,
+   "stretch": 23,
+   "contest": 9
+  },
+  "ch-number-theory-2": {
+   "stretch": 12,
+   "contest": 23
+  },
+  "ch-number-theory-3": {
+   "stretch": 7,
+   "contest": 30
+  },
+  "ch-combinatorics": {
+   "stretch": 25,
+   "contest": 18
+  },
+  "ch-games": {
+   "stretch": 2,
+   "contest": 7
+  },
+  "ch-algebra": {
+   "stretch": 4,
    "contest": 25
   },
-  "systems": {
-   "core": 31,
-   "stretch": 31
+  "ch-numerical": {
+   "stretch": 3,
+   "contest": 14
   },
-  "system-design": {
-   "stretch": 104,
-   "core": 1
+  "ch-geometry-primitives": {
+   "stretch": 14,
+   "contest": 19
   },
-  "beyond": {
-   "stretch": 136,
-   "contest": 265,
-   "core": 7
+  "ch-geometry-algorithms": {
+   "stretch": 5,
+   "contest": 25
   }
  },
- "part_secs": {
-  "foundations": 35,
-  "trees-sorting": 26,
-  "graphs": 19,
-  "paradigms": 32,
-  "systems": 19,
-  "system-design": 27,
-  "beyond": 95
- },
- "part_chs": {
-  "foundations": 7,
-  "trees-sorting": 5,
-  "graphs": 4,
-  "paradigms": 7,
-  "systems": 4,
-  "system-design": 6,
-  "beyond": 16
+ "appendix_tier": {
+  "A": {
+   "core": 36,
+   "stretch": 26
+  }
  },
  "multi": 135,
  "cross": 133,
@@ -69,52 +217,15 @@
   "4": 3
  },
  "src_count": {
-  "jeffe": 112,
-  "ods": 113,
   "ciu": 208,
-  "jeffe-notes": 102,
   "cpa": 518,
+  "jeffe": 112,
+  "jeffe-notes": 102,
+  "ods": 113,
   "sdp": 114
  },
  "noprose": 189,
- "inversions": [
-  [
-   "geometric-expectation",
-   "linearity-of-expectation",
-   "core",
-   "stretch"
-  ],
-  [
-   "chaining-analysis",
-   "linearity-of-expectation",
-   "core",
-   "stretch"
-  ],
-  [
-   "kruskal",
-   "union-find",
-   "core",
-   "stretch"
-  ],
-  [
-   "floyd-warshall-path",
-   "floyd-warshall",
-   "core",
-   "stretch"
-  ],
-  [
-   "prefix-hash-substring",
-   "polynomial-hash",
-   "core",
-   "stretch"
-  ],
-  [
-   "rpc-vs-rest",
-   "rpc",
-   "core",
-   "stretch"
-  ]
- ],
+ "inversions": [],
  "split_rows": {
   "ciu:universal-perfect-hashing": [
    "universal-hashing",
@@ -146,76 +257,6 @@
   ]
  },
  "hasse_removed": 105,
- "capped": [
-  "requirements-scoping",
-  "core-component-design",
-  "iterative-scaling",
-  "latency-numbers",
-  "rate-conversion",
-  "performance-vs-scalability",
-  "latency-vs-throughput",
-  "weak-consistency",
-  "eventual-consistency",
-  "strong-consistency",
-  "cp-vs-ap",
-  "active-passive-failover",
-  "active-active-failover",
-  "availability-nines",
-  "availability-composition",
-  "dns",
-  "cdn",
-  "push-vs-pull-cdn",
-  "load-balancer",
-  "lb-routing-methods",
-  "l4-vs-l7-lb",
-  "reverse-proxy",
-  "lb-vs-reverse-proxy",
-  "horizontal-scaling",
-  "stateless-servers",
-  "autoscaling",
-  "application-layer",
-  "microservices",
-  "object-store",
-  "static-content-offload",
-  "security-basics",
-  "acid",
-  "database-indexes",
-  "master-slave-replication",
-  "master-master-replication",
-  "replication-drawbacks",
-  "read-write-split",
-  "federation",
-  "denormalization",
-  "nosql-base",
-  "key-value-store",
-  "document-store",
-  "wide-column-store",
-  "sql-vs-nosql",
-  "caching",
-  "cache-locations",
-  "application-cache",
-  "cache-granularity",
-  "cache-cluster-partitioning",
-  "cache-aside",
-  "write-through",
-  "write-behind",
-  "cache-invalidation",
-  "asynchronism",
-  "back-pressure",
-  "base62",
-  "shortlink-generation",
-  "design-pastebin",
-  "fanout-on-write",
-  "celebrity-fanout",
-  "design-twitter",
-  "crawl-frontier",
-  "duplicate-detection",
-  "design-web-crawler",
-  "sharded-graph-lookup",
-  "design-query-cache",
-  "design-sales-rank",
-  "design-scaling-aws"
- ],
  "secsizes": {
   "1": 6,
   "2": 38,
@@ -228,51 +269,125 @@
  },
  "used_noedge": [
   [
-   "stack",
-   "queue"
-  ],
-  [
-   "binary-representation",
-   "bitwise-operators"
-  ],
-  [
-   "bfs-shortest-paths",
-   "ford-relaxation"
-  ],
-  [
-   "random-walk-binary-tree",
-   "meldable-heap"
-  ],
-  [
-   "singly-linked-list",
-   "stack"
+   "potential-method",
+   "dynamic-array-cost"
   ],
   [
    "list-interface",
    "deque"
   ],
   [
-   "huffman",
-   "compression"
+   "singly-linked-list",
+   "queue"
   ],
   [
-   "potential-method",
-   "dynamic-array-cost"
+   "singly-linked-list",
+   "stack"
+  ],
+  [
+   "binary-representation",
+   "bitwise-operators"
   ],
   [
    "hashing-with-chaining",
    "multiplicative-hashing"
   ],
   [
-   "singly-linked-list",
-   "queue"
+   "bfs-shortest-paths",
+   "ford-relaxation"
   ],
   [
    "max-flow-min-cut",
    "ford-fulkerson"
+  ],
+  [
+   "huffman",
+   "compression"
+  ],
+  [
+   "stack",
+   "queue"
+  ],
+  [
+   "random-walk-binary-tree",
+   "meldable-heap"
   ]
  ],
  "assumed": {
+  "[Boolean formula in CNF]": [
+   "implication-graph"
+  ],
+  "[Cramer's rule]": [
+   "line-intersection-cramer",
+   "planes-intersection"
+  ],
+  "[DCEL]": [
+   "offline-point-location"
+  ],
+  "[DFA]": [
+   "dfa-minimization"
+  ],
+  "[MapReduce]": [
+   "mapreduce-aggregation"
+  ],
+  "[Wilson's theorem]": [
+   "factorial-mod-p-recursion"
+  ],
+  "[birthday paradox]": [
+   "hash-collisions"
+  ],
+  "[bitmask DP]": [
+   "submasks-three-to-n"
+  ],
+  "[circles]": [
+   "common-tangent-count",
+   "min-enclosing-circle"
+  ],
+  "[complex numbers]": [
+   "dft",
+   "fft"
+  ],
+  "[coordinate geometry]": [
+   "line-through-two-points"
+  ],
+  "[definite integrals]": [
+   "simpson-rule"
+  ],
+  "[derivatives]": [
+   "newton-method"
+  ],
+  "[determinant]": [
+   "determinant-gauss",
+   "lu-decomposition-crout"
+  ],
+  "[difference array]": [
+   "fenwick-range-update"
+  ],
+  "[divisibility]": [
+   "gcd-definition"
+  ],
+  "[equivalence relations]": [
+   "orbits-under-symmetry"
+  ],
+  "[finite automaton]": [
+   "kmp-automaton",
+   "suffix-automaton"
+  ],
+  "[intermediate value theorem]": [
+   "bisection-method"
+  ],
+  "[linear independence]": [
+   "matrix-rank"
+  ],
+  "[matrices]": [
+   "gauss-jordan",
+   "lu-decomposition-crout"
+  ],
+  "[matrix multiplication]": [
+   "linear-fractional-transformation",
+   "paths-fixed-length-count",
+   "transformation-matrix-power"
+  ],
   "[memory and pointers]": [
    "array",
    "pointer-to-pointer",
@@ -288,28 +403,8 @@
    "montgomery-space",
    "polynomial-hash"
   ],
-  "[intermediate value theorem]": [
-   "bisection-method"
-  ],
-  "[bitmask DP]": [
-   "submasks-three-to-n"
-  ],
-  "[prefix sums]": [
-   "fenwick",
-   "max-subarray-prefix-min",
-   "sqrt-decomposition"
-  ],
-  "[matrix multiplication]": [
-   "linear-fractional-transformation",
-   "paths-fixed-length-count",
-   "transformation-matrix-power"
-  ],
-  "[birthday paradox]": [
-   "hash-collisions"
-  ],
-  "[finite automaton]": [
-   "kmp-automaton",
-   "suffix-automaton"
+  "[multinomial theorem]": [
+   "ways-to-connect-graph"
   ],
   "[object-oriented programming]": [
    "behavioral-patterns",
@@ -321,94 +416,264 @@
    "solid-srp",
    "structural-patterns"
   ],
-  "[MapReduce]": [
-   "mapreduce-aggregation"
+  "[permutation inversions]": [
+   "fifteen-puzzle-parity"
   ],
-  "[difference array]": [
-   "fenwick-range-update"
+  "[pigeonhole principle]": [
+   "pisano-period"
   ],
-  "[multinomial theorem]": [
-   "ways-to-connect-graph"
+  "[planar graphs]": [
+   "euler-formula-planar"
   ],
-  "[Boolean formula in CNF]": [
-   "implication-graph"
+  "[prefix products]": [
+   "batch-inverse"
   ],
-  "[DFA]": [
-   "dfa-minimization"
-  ],
-  "[divisibility]": [
-   "gcd-definition"
+  "[prefix sums]": [
+   "fenwick",
+   "max-subarray-prefix-min",
+   "sqrt-decomposition"
   ],
   "[prime numbers]": [
    "primality-trial-division",
    "sieve-of-eratosthenes"
   ],
-  "[prefix products]": [
-   "batch-inverse"
-  ],
-  "[Wilson's theorem]": [
-   "factorial-mod-p-recursion"
-  ],
-  "[pigeonhole principle]": [
-   "pisano-period"
+  "[quad-edge data structure]": [
+   "guibas-stolfi"
   ],
   "[sets]": [
    "inclusion-exclusion"
   ],
-  "[equivalence relations]": [
-   "orbits-under-symmetry"
-  ],
-  "[permutation inversions]": [
-   "fifteen-puzzle-parity"
-  ],
   "[systems of linear equations]": [
    "gauss-jordan"
   ],
-  "[matrices]": [
-   "gauss-jordan",
-   "lu-decomposition-crout"
-  ],
-  "[determinant]": [
-   "determinant-gauss",
-   "lu-decomposition-crout"
-  ],
-  "[linear independence]": [
-   "matrix-rank"
-  ],
-  "[complex numbers]": [
-   "dft",
-   "fft"
-  ],
-  "[derivatives]": [
-   "newton-method"
-  ],
-  "[definite integrals]": [
-   "simpson-rule"
-  ],
-  "[coordinate geometry]": [
-   "line-through-two-points"
-  ],
-  "[Cramer's rule]": [
-   "line-intersection-cramer",
-   "planes-intersection"
-  ],
-  "[circles]": [
-   "common-tangent-count",
-   "min-enclosing-circle"
-  ],
-  "[DCEL]": [
-   "offline-point-location"
-  ],
-  "[planar graphs]": [
-   "euler-formula-planar"
-  ],
   "[triangulation]": [
    "voronoi-delaunay"
-  ],
-  "[quad-edge data structure]": [
-   "guibas-stolfi"
   ]
  },
+ "promoted": {
+  "peasant-multiplication": [
+   "stretch",
+   "binary-exponentiation"
+  ],
+  "geometric-expectation": [
+   "stretch",
+   "build-heap"
+  ],
+  "guess-and-confirm": [
+   "stretch",
+   "recursion-trees"
+  ],
+  "factorials-stirling": [
+   "stretch",
+   "comparison-sort-lower-bound"
+  ],
+  "information-theoretic-bound": [
+   "stretch",
+   "comparison-sort-lower-bound"
+  ],
+  "global-rebuilding": [
+   "contest",
+   "scapegoat-tree"
+  ],
+  "splaying": [
+   "contest",
+   "splay-tree"
+  ],
+  "potential-method": [
+   "stretch",
+   "b-tree"
+  ],
+  "b-tree-delete": [
+   "stretch",
+   "b-tree"
+  ],
+  "edge-classification": [
+   "stretch",
+   "cycle-detection"
+  ],
+  "scc": [
+   "stretch",
+   "kosaraju"
+  ],
+  "mst": [
+   "stretch",
+   "prim"
+  ],
+  "apsp-problem": [
+   "stretch",
+   "floyd-warshall"
+  ],
+  "hash-compound": [
+   "stretch",
+   "polynomial-hash"
+  ],
+  "prefix-hash-substring": [
+   "stretch",
+   "rabin-karp"
+  ],
+  "prefix-function-linear": [
+   "stretch",
+   "kmp"
+  ],
+  "np-hard": [
+   "stretch",
+   "approximation-algorithms"
+  ],
+  "graph-database": [
+   "stretch",
+   "sql-vs-nosql"
+  ],
+  "mapreduce-aggregation": [
+   "stretch",
+   "design-pastebin"
+  ],
+  "timeline-cache-trimming": [
+   "stretch",
+   "design-twitter"
+  ],
+  "search-query-processing": [
+   "stretch",
+   "design-twitter"
+  ],
+  "recrawl-policy": [
+   "stretch",
+   "design-web-crawler"
+  ],
+  "crawler-throughput": [
+   "stretch",
+   "design-web-crawler"
+  ],
+  "data-tiering": [
+   "stretch",
+   "design-sales-rank"
+  ],
+  "distributed-sort": [
+   "stretch",
+   "design-sales-rank"
+  ],
+  "monitoring": [
+   "stretch",
+   "design-scaling-aws"
+  ],
+  "network-hardening": [
+   "stretch",
+   "design-scaling-aws"
+  ],
+  "sqrt-decomposition": [
+   "contest",
+   "rmq-approaches"
+  ],
+  "multiplicative-function": [
+   "contest",
+   "totient-formula"
+  ],
+  "polynomial-representations": [
+   "contest",
+   "dft"
+  ],
+  "vandermonde": [
+   "contest",
+   "fft"
+  ],
+  "aggregate-accounting": [
+   "stretch",
+   "potential-method"
+  ],
+  "multiplicative-hashing": [
+   "stretch",
+   "hash-compound"
+  ],
+  "decision-tree-model": [
+   "stretch",
+   "information-theoretic-bound"
+  ],
+  "b-tree-insert": [
+   "stretch",
+   "b-tree-delete"
+  ],
+  "string-matching-automaton": [
+   "stretch",
+   "prefix-function-linear"
+  ],
+  "prefix-function": [
+   "stretch",
+   "prefix-function-linear"
+  ],
+  "reverse-index": [
+   "stretch",
+   "search-query-processing"
+  ],
+  "connection-pooling": [
+   "stretch",
+   "crawler-throughput"
+  ],
+  "word-ram": [
+   "stretch",
+   "multiplicative-hashing"
+  ],
+  "two-four-updates": [
+   "stretch",
+   "b-tree-insert"
+  ],
+  "b-tree-search": [
+   "stretch",
+   "b-tree-insert"
+  ],
+  "b-tree-structure": [
+   "stretch",
+   "b-tree-search"
+  ],
+  "external-memory-model": [
+   "stretch",
+   "b-tree-structure"
+  ]
+ },
+ "into_appendix": [
+  [
+   "l4-vs-l7-lb",
+   "tcp"
+  ],
+  [
+   "l4-vs-l7-lb",
+   "http"
+  ],
+  [
+   "shortlink-generation",
+   "crypto-hash"
+  ],
+  [
+   "design-pastebin",
+   "rpc-vs-rest"
+  ],
+  [
+   "design-twitter",
+   "rpc-vs-rest"
+  ],
+  [
+   "crawler-throughput",
+   "connection-pooling"
+  ],
+  [
+   "design-web-crawler",
+   "rpc-vs-rest"
+  ],
+  [
+   "design-mint",
+   "rpc-vs-rest"
+  ],
+  [
+   "design-social-graph",
+   "rpc-vs-rest"
+  ],
+  [
+   "design-sales-rank",
+   "rpc-vs-rest"
+  ],
+  [
+   "simhash",
+   "crypto-hash"
+  ]
+ ],
  "cred": {
   "ch-cost": [],
   "ch-arrays-lists": [
@@ -431,9 +696,9 @@
    "ch-cost"
   ],
   "ch-bst": [
-   "ch-hashing",
+   "ch-stacks-queues",
    "ch-recursion",
-   "ch-stacks-queues"
+   "ch-hashing"
   ],
   "ch-heaps": [
    "ch-bst"
@@ -454,30 +719,30 @@
    "ch-graph-search"
   ],
   "ch-shortest-paths": [
-   "ch-graph-search",
-   "ch-heaps"
+   "ch-heaps",
+   "ch-graph-search"
   ],
   "ch-mst": [
-   "ch-graph-search",
    "ch-heaps",
-   "ch-sorting"
+   "ch-sorting",
+   "ch-graph-search"
   ],
   "ch-backtracking": [
    "ch-bst"
   ],
   "ch-dp": [
-   "ch-backtracking",
-   "ch-binary-search"
+   "ch-binary-search",
+   "ch-backtracking"
   ],
   "ch-graph-dp": [
    "ch-dfs-structure",
-   "ch-dp",
-   "ch-shortest-paths"
+   "ch-shortest-paths",
+   "ch-dp"
   ],
   "ch-greedy": [
-   "ch-dp",
    "ch-heaps",
-   "ch-sorting"
+   "ch-sorting",
+   "ch-dp"
   ],
   "ch-strings": [
    "ch-binary-search",
@@ -487,24 +752,17 @@
    "ch-balanced"
   ],
   "ch-intractability": [
-   "ch-dp",
-   "ch-mst"
-  ],
-  "ch-os": [],
-  "ch-networking": [],
-  "ch-engineering": [],
-  "ch-information-security": [
-   "ch-cost",
-   "ch-networking"
+   "ch-mst",
+   "ch-dp"
   ],
   "ch-sd-method": [
    "ch-bits"
   ],
   "ch-sd-availability": [],
   "ch-sd-web": [
-   "ch-networking",
+   "ch-sd-method",
    "ch-sd-availability",
-   "ch-sd-method"
+   "A"
   ],
   "ch-sd-data": [
    "ch-balanced",
@@ -515,13 +773,12 @@
   ],
   "ch-sd-cases": [
    "ch-graph-search",
-   "ch-information-security",
    "ch-sd-cache-async"
   ],
   "ch-range-queries": [
    "ch-bits",
-   "ch-dp",
-   "ch-mst"
+   "ch-mst",
+   "ch-dp"
   ],
   "ch-tree-algorithms": [
    "ch-dfs-structure",
@@ -532,23 +789,23 @@
    "ch-shortest-paths"
   ],
   "ch-advanced-graphs": [
-   "ch-flows",
-   "ch-tree-algorithms"
+   "ch-tree-algorithms",
+   "ch-flows"
   ],
   "ch-advanced-strings": [
+   "ch-tries",
    "ch-graph-dp",
-   "ch-range-queries",
    "ch-strings",
-   "ch-tries"
+   "ch-range-queries"
   ],
   "ch-advanced-dp": [
    "ch-bits",
-   "ch-dp",
-   "ch-sorting"
+   "ch-sorting",
+   "ch-dp"
   ],
   "ch-sketches": [
-   "ch-information-security",
-   "ch-randomized"
+   "ch-randomized",
+   "A"
   ],
   "ch-number-theory-1": [
    "ch-bits",
@@ -568,22 +825,25 @@
    "ch-range-queries"
   ],
   "ch-algebra": [
-   "ch-number-theory-2",
-   "ch-range-queries"
+   "ch-range-queries",
+   "ch-number-theory-2"
   ],
   "ch-numerical": [
-   "ch-flows",
+   "ch-randomized",
    "ch-intractability",
-   "ch-randomized"
+   "ch-flows"
   ],
   "ch-geometry-primitives": [
    "ch-mst",
-   "ch-number-theory-3",
-   "ch-randomized"
+   "ch-randomized",
+   "ch-number-theory-3"
   ],
   "ch-geometry-algorithms": [
-   "ch-geometry-primitives",
-   "ch-range-queries"
+   "ch-range-queries",
+   "ch-geometry-primitives"
+  ],
+  "A": [
+   "ch-cost"
   ]
  },
  "cdep": {
@@ -592,19 +852,19 @@
    "ch-cost"
   ],
   "ch-stacks-queues": [
-   "ch-arrays-lists",
-   "ch-cost"
+   "ch-cost",
+   "ch-arrays-lists"
   ],
   "ch-recursion": [
    "ch-cost"
   ],
   "ch-hashing": [
-   "ch-arrays-lists",
-   "ch-cost"
+   "ch-cost",
+   "ch-arrays-lists"
   ],
   "ch-binary-search": [
-   "ch-arrays-lists",
    "ch-cost",
+   "ch-arrays-lists",
    "ch-recursion"
   ],
   "ch-bits": [
@@ -612,156 +872,148 @@
   ],
   "ch-bst": [
    "ch-cost",
-   "ch-hashing",
+   "ch-stacks-queues",
    "ch-recursion",
-   "ch-stacks-queues"
+   "ch-hashing"
   ],
   "ch-heaps": [
-   "ch-arrays-lists",
-   "ch-bst",
    "ch-cost",
-   "ch-stacks-queues"
+   "ch-arrays-lists",
+   "ch-stacks-queues",
+   "ch-bst"
   ],
   "ch-sorting": [
-   "ch-arrays-lists",
-   "ch-bst",
    "ch-cost",
-   "ch-recursion"
+   "ch-arrays-lists",
+   "ch-recursion",
+   "ch-bst"
   ],
   "ch-balanced": [
+   "ch-cost",
    "ch-arrays-lists",
    "ch-bst",
-   "ch-cost",
    "ch-heaps"
   ],
   "ch-tries": [
-   "ch-arrays-lists",
-   "ch-balanced",
-   "ch-bst",
    "ch-cost",
-   "ch-hashing"
+   "ch-arrays-lists",
+   "ch-hashing",
+   "ch-bst",
+   "ch-balanced"
   ],
   "ch-graph-search": [
    "ch-arrays-lists",
-   "ch-bst",
+   "ch-stacks-queues",
    "ch-hashing",
-   "ch-stacks-queues"
+   "ch-bst"
   ],
   "ch-dfs-structure": [
-   "ch-graph-search",
-   "ch-stacks-queues"
+   "ch-stacks-queues",
+   "ch-graph-search"
   ],
   "ch-shortest-paths": [
+   "ch-stacks-queues",
    "ch-bst",
-   "ch-graph-search",
    "ch-heaps",
-   "ch-stacks-queues"
+   "ch-graph-search"
   ],
   "ch-mst": [
-   "ch-bst",
    "ch-cost",
-   "ch-graph-search",
+   "ch-bst",
    "ch-heaps",
-   "ch-sorting"
+   "ch-sorting",
+   "ch-graph-search"
   ],
   "ch-backtracking": [
-   "ch-bst",
-   "ch-recursion"
+   "ch-recursion",
+   "ch-bst"
   ],
   "ch-dp": [
-   "ch-backtracking",
+   "ch-stacks-queues",
+   "ch-recursion",
    "ch-binary-search",
    "ch-bst",
-   "ch-recursion",
-   "ch-stacks-queues"
+   "ch-backtracking"
   ],
   "ch-graph-dp": [
-   "ch-dfs-structure",
-   "ch-dp",
-   "ch-graph-search",
    "ch-recursion",
-   "ch-shortest-paths"
+   "ch-graph-search",
+   "ch-dfs-structure",
+   "ch-shortest-paths",
+   "ch-dp"
   ],
   "ch-greedy": [
-   "ch-dp",
-   "ch-heaps",
    "ch-recursion",
-   "ch-sorting"
+   "ch-heaps",
+   "ch-sorting",
+   "ch-dp"
   ],
   "ch-strings": [
-   "ch-binary-search",
    "ch-hashing",
+   "ch-binary-search",
    "ch-sorting"
   ],
   "ch-randomized": [
-   "ch-balanced",
-   "ch-cost"
+   "ch-cost",
+   "ch-balanced"
   ],
   "ch-intractability": [
-   "ch-backtracking",
    "ch-cost",
-   "ch-dp",
-   "ch-mst",
    "ch-recursion",
-   "ch-sorting"
-  ],
-  "ch-os": [],
-  "ch-networking": [],
-  "ch-engineering": [],
-  "ch-information-security": [
-   "ch-cost",
-   "ch-networking"
+   "ch-sorting",
+   "ch-mst",
+   "ch-backtracking",
+   "ch-dp"
   ],
   "ch-sd-method": [
    "ch-bits"
   ],
   "ch-sd-availability": [],
   "ch-sd-web": [
-   "ch-networking",
+   "ch-sd-method",
    "ch-sd-availability",
-   "ch-sd-method"
+   "A"
   ],
   "ch-sd-data": [
-   "ch-balanced",
    "ch-hashing",
+   "ch-balanced",
    "ch-sd-availability",
    "ch-sd-web"
   ],
   "ch-sd-cache-async": [
    "ch-hashing",
-   "ch-sd-data",
-   "ch-sd-web"
+   "ch-sd-web",
+   "ch-sd-data"
   ],
   "ch-sd-cases": [
-   "ch-graph-search",
    "ch-hashing",
    "ch-heaps",
-   "ch-information-security",
-   "ch-networking",
-   "ch-sd-cache-async",
-   "ch-sd-data",
+   "ch-graph-search",
    "ch-sd-method",
-   "ch-sd-web"
+   "ch-sd-web",
+   "ch-sd-data",
+   "ch-sd-cache-async",
+   "A"
   ],
   "ch-range-queries": [
    "ch-arrays-lists",
+   "ch-stacks-queues",
    "ch-binary-search",
    "ch-bits",
    "ch-bst",
-   "ch-dp",
-   "ch-mst",
    "ch-sorting",
-   "ch-stacks-queues"
+   "ch-mst",
+   "ch-dp"
   ],
   "ch-tree-algorithms": [
+   "ch-stacks-queues",
    "ch-bits",
    "ch-bst",
-   "ch-dfs-structure",
-   "ch-graph-search",
-   "ch-mst",
-   "ch-range-queries",
    "ch-sorting",
-   "ch-stacks-queues"
+   "ch-graph-search",
+   "ch-dfs-structure",
+   "ch-mst",
+   "ch-range-queries"
   ],
   "ch-flows": [
    "ch-binary-search",
@@ -770,56 +1022,56 @@
   ],
   "ch-advanced-graphs": [
    "ch-cost",
-   "ch-dfs-structure",
-   "ch-flows",
    "ch-graph-search",
+   "ch-dfs-structure",
    "ch-mst",
    "ch-range-queries",
-   "ch-tree-algorithms"
+   "ch-tree-algorithms",
+   "ch-flows"
   ],
   "ch-advanced-strings": [
-   "ch-graph-dp",
-   "ch-graph-search",
-   "ch-range-queries",
    "ch-sorting",
+   "ch-tries",
+   "ch-graph-search",
+   "ch-graph-dp",
    "ch-strings",
-   "ch-tries"
+   "ch-range-queries"
   ],
   "ch-advanced-dp": [
    "ch-bits",
-   "ch-dp",
-   "ch-sorting"
+   "ch-sorting",
+   "ch-dp"
   ],
   "ch-sketches": [
    "ch-hashing",
-   "ch-information-security",
-   "ch-randomized"
+   "ch-randomized",
+   "A"
   ],
   "ch-number-theory-1": [
-   "ch-bits",
    "ch-cost",
+   "ch-bits",
    "ch-dp"
   ],
   "ch-number-theory-2": [
    "ch-arrays-lists",
-   "ch-number-theory-1",
-   "ch-recursion"
+   "ch-recursion",
+   "ch-number-theory-1"
   ],
   "ch-number-theory-3": [
+   "ch-recursion",
    "ch-bits",
    "ch-dp",
    "ch-number-theory-1",
-   "ch-number-theory-2",
-   "ch-recursion"
+   "ch-number-theory-2"
   ],
   "ch-combinatorics": [
-   "ch-bits",
    "ch-cost",
-   "ch-dp",
+   "ch-stacks-queues",
+   "ch-bits",
    "ch-graph-search",
+   "ch-dp",
    "ch-number-theory-1",
-   "ch-number-theory-2",
-   "ch-stacks-queues"
+   "ch-number-theory-2"
   ],
   "ch-games": [
    "ch-bits",
@@ -828,33 +1080,36 @@
   ],
   "ch-algebra": [
    "ch-bits",
-   "ch-number-theory-1",
-   "ch-number-theory-2",
+   "ch-sorting",
    "ch-range-queries",
-   "ch-sorting"
+   "ch-number-theory-1",
+   "ch-number-theory-2"
   ],
   "ch-numerical": [
-   "ch-flows",
+   "ch-randomized",
    "ch-intractability",
-   "ch-randomized"
+   "ch-flows"
   ],
   "ch-geometry-primitives": [
+   "ch-sorting",
    "ch-mst",
-   "ch-number-theory-1",
-   "ch-number-theory-3",
    "ch-randomized",
-   "ch-sorting"
+   "ch-number-theory-1",
+   "ch-number-theory-3"
   ],
   "ch-geometry-algorithms": [
+   "ch-stacks-queues",
+   "ch-hashing",
    "ch-binary-search",
    "ch-bst",
+   "ch-sorting",
    "ch-dp",
-   "ch-geometry-primitives",
-   "ch-hashing",
    "ch-randomized",
    "ch-range-queries",
-   "ch-sorting",
-   "ch-stacks-queues"
+   "ch-geometry-primitives"
+  ],
+  "A": [
+   "ch-cost"
   ]
  }
 }

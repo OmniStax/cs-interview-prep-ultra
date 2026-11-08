@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build concept-map/{concepts.json,toc.json,toc.md,report.md,chapters.mmd} from map.spec."""
+"""Build concept-map/{concepts.json,toc.json,toc.md,chapters.mmd} and tools/map/stats.json from map.spec (report.py writes report.md)."""
 import json, re, sys, collections, os
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
@@ -60,9 +60,9 @@ for f in FILES:
         rows[c['id']] = c
 
 # ---------------------------------------------------------------- spec
-parts, drops, noedge, addedge = [], {}, set(), []
+chapters, appendices, drops, noedge, addedge = [], [], {}, [], []
 noedge_reason, addedge_reason = {}, {}
-cur_p = cur_c = cur_s = None
+cur_a = cur_c = cur_s = None
 concepts = collections.OrderedDict()
 
 def exp(r):
@@ -73,12 +73,16 @@ for ln, line in enumerate(open(SPEC), 1):
     line = line.rstrip('\n')
     if not line.strip() or line.startswith('#'):
         continue
-    if line.startswith('P '):
-        pid, title = [x.strip() for x in line[2:].split('|', 1)]
-        cur_p = {'id': pid, 'title': title, 'chapters': []}; parts.append(cur_p)
+    if line.startswith('APPENDIX '):
+        letter, title, kind = [x.strip() for x in line[9:].split('|')]
+        cur_a = {'letter': letter, 'title': title, 'kind': kind, 'chapters': []}; appendices.append(cur_a)
+    elif line.strip() == 'END APPENDIX':
+        cur_a = None
     elif line.startswith('C '):
         cid, title = [x.strip() for x in line[2:].split('|', 1)]
-        cur_c = {'id': cid, 'title': title, 'sections': []}; cur_p['chapters'].append(cur_c)
+        cur_c = {'id': cid, 'title': title, 'sections': [], 'appendix': cur_a['letter'] if cur_a else None}
+        chapters.append(cur_c)
+        if cur_a: cur_a['chapters'].append(cur_c)
     elif line.startswith('S '):
         bits = [x.strip() for x in line[2:].split('|')]
         cur_s = {'id': bits[0], 'title': bits[1], 'folds': bits[2] if len(bits) > 2 else '', 'concepts': []}
@@ -89,7 +93,7 @@ for ln, line in enumerate(open(SPEC), 1):
     elif line.startswith('NOEDGE '):
         e, reason = [x.strip() for x in line[7:].split('|', 1)]
         a, b = [x.strip() for x in e.split('->')]
-        noedge.add((a, b)); noedge_reason[(a, b)] = reason
+        noedge.append((a, b)); noedge_reason[(a, b)] = reason
     elif line.startswith('EDGE '):
         e, reason = [x.strip() for x in line[5:].split('|', 1)]
         a, b = [x.strip() for x in e.split('->')]
@@ -108,7 +112,7 @@ for ln, line in enumerate(open(SPEC), 1):
         if cid in concepts:
             sys.exit(f'duplicate concept id {cid}')
         concepts[cid] = {'id': cid, 'members': members, 'opts': opts,
-                         'part': cur_p['id'], 'chapter': cur_c['id'], 'section': cur_s['id']}
+                         'appendix': cur_c['appendix'], 'chapter': cur_c['id'], 'section': cur_s['id']}
         cur_s['concepts'].append(cid)
 
 errors = []
@@ -145,10 +149,10 @@ for cid, c in concepts.items():
                 ps.update(row2c[p])
     ps.discard(cid)
     pre[cid] = ps
-used_noedge = set()
+used_noedge = []                         # spec order, so notes and stats are deterministic
 for a, b in noedge:
     if b in pre[a]:
-        pre[a].discard(b); used_noedge.add((a, b))
+        pre[a].discard(b); used_noedge.append((a, b))
     else:
         print(f'WARNING: NOEDGE {a} -> {b} not present')
 for a, b in addedge:
@@ -198,8 +202,7 @@ for cid in concepts:
     red[cid] = keep
 
 # ---------------------------------------------------------------- order within sections, global positions
-for p in parts:
-    for ch in p['chapters']:
+for ch in chapters:
         for s in ch['sections']:
             ids = s['concepts']; inset = set(ids); out = []; placed = set()
             while len(out) < len(ids):
@@ -209,16 +212,24 @@ for p in parts:
                 else:
                     sys.exit('section topo failed ' + s['id'])
             s['concepts'] = out
+# Book chapters are numbered 1..N in spec order; appendix chapters are not numbered, and their
+# sections are the appendix's pages, numbered A.1, A.2, ... across the appendix's chapters.
 pos = {}; k = 0
-chap_num, sec_num, chap_of_num = {}, {}, {}
-cn = 0
-for p in parts:
-    for ch in p['chapters']:
+chap_num, sec_num = {}, {}
+cn = 0; app_page = collections.Counter()
+for ch in chapters:
+    if ch['appendix']:
+        ch['number'] = None; chap_num[ch['id']] = ch['appendix']
+    else:
         cn += 1; chap_num[ch['id']] = cn; ch['number'] = cn
-        for si, s in enumerate(ch['sections'], 1):
-            s['number'] = f'{cn}.{si}'; sec_num[s['id'] + '@' + ch['id']] = s['number']
-            for cid in s['concepts']:
-                pos[cid] = k; k += 1
+    for si, s in enumerate(ch['sections'], 1):
+        if ch['appendix']:
+            app_page[ch['appendix']] += 1; s['number'] = f'{ch["appendix"]}.{app_page[ch["appendix"]]}'
+        else:
+            s['number'] = f'{cn}.{si}'
+        sec_num[s['id'] + '@' + ch['id']] = s['number']
+        for cid in s['concepts']:
+            pos[cid] = k; k += 1
 viol = []
 for cid in concepts:
     for p in red[cid]:
@@ -237,7 +248,6 @@ def most_common(ts):
     return min((t for t in cnt if cnt[t] == best), key=TIERS.index)
 
 out_concepts = []
-capped = []
 split_rows = {r: cs for r, cs in row2c.items() if len(cs) > 1}
 for cid, c in concepts.items():
     mem = [rows[r] for r in c['members']]
@@ -247,9 +257,7 @@ for cid, c in concepts.items():
     ciu_t = [m['tier'] for m in mem if m['_source'] == 'ciu']
     other_t = [m['tier'] for m in mem if m['_source'] != 'ciu']
     notes = []
-    if 'tier' in o:
-        tier = o['tier']
-    elif ciu_t:
+    if ciu_t:
         tier = 'core' if 'core' in ciu_t else 'stretch'
         if other_t and any(t != tier for t in other_t):
             notes.append('Tier from CIU (' + ('required list' if tier == 'core' else 'optional list') + '); other sources say ' +
@@ -258,9 +266,14 @@ for cid, c in concepts.items():
         tier = most_common(other_t)
         if len(set(other_t)) > 1:
             notes.append('Source tiers differ (' + ', '.join(f'{m["_source"]} {m["tier"]}' for m in mem) + f'); reconciled to the most common, {tier}.')
-    if c['part'] == 'system-design' and tier == 'core' and 'core' not in ciu_t:
-        tier = 'stretch'; capped.append(cid)
-        notes.append('sdp marks it core; capped at stretch because CIU lists system design as optional ("if you have 4+ years experience").')
+    if 'tier' in o:
+        # explicit tier in the spec overrides the reconciled one; the reconciling notes above give way to one note
+        if o['tier'] != tier:
+            notes = ['Tier set to ' + o['tier'] + ' in the spec (sources say ' + ', '.join(f'{m["_source"]} {m["tier"]}' for m in mem) + ')' +
+                     (': ' + o['why'] if 'why' in o else '.')]
+        elif 'why' in o:
+            notes = ['Tier ' + tier + ': ' + o['why']]
+        tier = o['tier']
     name = o.get('name', first['name'])
     stmt = o.get('stmt', first['statement'])
     kind = o.get('kind', first['kind'])
@@ -290,14 +303,16 @@ for cid, c in concepts.items():
     if ass:
         notes.append('Assumes, untaught in the map: ' + ', '.join(x.strip('[]') for x in ass) + '.')
     treatments = [{'source': m['_source'], 'row': m['id'], 'locator': m['locator'], 'inventory': m['_file']} for m in mem]
-    out_concepts.append({
-        'id': cid, 'name': name, 'kind': kind, 'statement': stmt, 'tier': tier,
-        'part': c['part'], 'chapter': c['chapter'], 'section': c['section'],
+    row = {'id': cid, 'name': name, 'kind': kind, 'statement': stmt, 'tier': tier}
+    if c['appendix']:
+        row['appendix'] = c['appendix']
+    row.update({'chapter': c['chapter'], 'section': c['section'],
         'prereqs': sorted(red[cid], key=lambda x: pos[x]),
         'treatments': treatments, 'aliases': aliases,
         'open_prose': any(s in OPEN for s in srcs),
         'notes': ' '.join(notes),
     })
+    out_concepts.append(row)
 out_concepts.sort(key=lambda c: pos[c['id']])
 cbyid = {c['id']: c for c in out_concepts}
 
@@ -305,18 +320,16 @@ cbyid = {c['id']: c for c in out_concepts}
 # most basic concept resting on it. CIU-row concepts keep CIU's verdict; remaining inversions are reported.
 has_ciu = {cid for cid, c in concepts.items() if any(rows[r]['_source'] == 'ciu' for r in c['members']) or 'tier' in c['opts']}
 promoted = {}
-for c in reversed(out_concepts):          # dependants come later in book order
-    pass
 changed = True
 while changed:
     changed = False
     for c in out_concepts:
         for p in c['prereqs']:
             q = cbyid[p]
-            if p in has_ciu or p in capped:
+            if p in has_ciu:
                 continue
             if TIERS.index(c['tier']) < TIERS.index(q['tier']):
-                promoted.setdefault(p, (q['tier'], c['id']))
+                promoted[p] = (promoted[p][0] if p in promoted else q['tier'], c['id'])
                 q['tier'] = c['tier']; changed = True
 for p, (old, by) in promoted.items():
     q = cbyid[p]
@@ -326,7 +339,9 @@ for p, (old, by) in promoted.items():
 os.makedirs(OUT, exist_ok=True)
 json.dump({
     'about': 'Merged concept map for cs-interview-prep-ultra: one row per concept, merged across the inventories in inventory/. '
-             'Rows are in book order (toc.json). treatments list every inventory row that teaches the concept; the judge picks a home later. '
+             'Rows are in spec order (toc.json chapters, with appendix A\'s concepts where its chapters stood). '
+             'A concept with an "appendix" field lives on that appendix\'s pages (curated links, not built as text); its chapter and section ids still name its group and page. '
+             'treatments list every inventory row that teaches the concept; the judge picks a home later. '
              'dropped lists inventory rows that became no concept.',
     'counts': {'concepts': len(out_concepts), 'inventory_rows': len(rows), 'dropped_rows': len(drops)},
     'concepts': out_concepts,
@@ -336,45 +351,71 @@ json.dump({
 # ---------------------------------------------------------------- toc
 def sec_tier(ids):
     return most_common([cbyid[i]['tier'] for i in ids])
-PART_ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']
-toc_parts = []
-for pi, p in enumerate(parts):
-    tp = {'id': p['id'], 'number': PART_ROMAN[pi], 'title': p['title'], 'chapters': []}
-    for ch in p['chapters']:
-        tc = {'id': ch['id'], 'number': ch['number'], 'title': ch['title'], 'first_pass': ch['number'] <= 3, 'sections': []}
-        for s in ch['sections']:
-            ids = s['concepts']
-            srcs = sorted({t['source'] for i in ids for t in cbyid[i]['treatments']}, key=list(ABBR).index)
-            tc['sections'].append({
-                'id': s['id'], 'number': s['number'], 'title': s['title'], 'concepts': ids,
-                'tier': sec_tier(ids), 'candidate_sources': srcs,
-                'open_prose': any(cbyid[i]['open_prose'] for i in ids),
-                'no_open_prose': [i for i in ids if not cbyid[i]['open_prose']],
-                'folds': s['folds'],
-            })
-        tcnt = collections.Counter(cbyid[i]['tier'] for s in ch['sections'] for i in s['concepts'])
-        tc['tier_counts'] = {t: tcnt[t] for t in TIERS if tcnt[t]}
-        tp['chapters'].append(tc)
-    toc_parts.append(tp)
-appendix = {
-    'id': 'appendix-getting-the-job', 'title': 'Appendix: Getting the job', 'built': False, 'kind': 'reading',
+
+def toc_section(s, extra=None):
+    ids = s['concepts']
+    srcs = sorted({t['source'] for i in ids for t in cbyid[i]['treatments']}, key=list(ABBR).index)
+    d = {'id': s['id'], 'number': s['number'], 'title': s['title']}
+    d.update(extra or {})
+    d.update({'concepts': ids, 'tier': sec_tier(ids), 'candidate_sources': srcs,
+              'open_prose': any(cbyid[i]['open_prose'] for i in ids),
+              'no_open_prose': [i for i in ids if not cbyid[i]['open_prose']],
+              'folds': s['folds']})
+    return d
+
+def tier_counts(ids):
+    tcnt = collections.Counter(cbyid[i]['tier'] for i in ids)
+    return {t: tcnt[t] for t in TIERS if tcnt[t]}
+
+book_chapters = [ch for ch in chapters if not ch['appendix']]
+toc_chapters = []
+for ch in book_chapters:
+    tc = {'id': ch['id'], 'number': ch['number'], 'title': ch['title'], 'first_pass': ch['number'] <= 3,
+          'sections': [toc_section(s) for s in ch['sections']]}
+    tc['tier_counts'] = tier_counts([i for s in ch['sections'] for i in s['concepts']])
+    toc_chapters.append(tc)
+
+APP_ID = {'A': 'appendix-computer-systems', 'B': 'appendix-getting-the-job'}
+toc_appendices = []
+for a in appendices:
+    pages = [toc_section(s, {'group': ch['id']}) for ch in a['chapters'] for s in ch['sections']]
+    toc_appendices.append({
+        'id': APP_ID.get(a['letter'], 'appendix-' + a['letter'].lower()), 'letter': a['letter'], 'title': a['title'],
+        'kind': a['kind'], 'built': False,
+        'note': 'Curated links appendix: each page lists the reader-facing links for its concepts, no text is written for it. '
+                'The concepts stay in the concept map so prerequisite edges into them resolve; a book concept that rests on one '
+                'points the reader to its page. Pages are grouped by the former chapters (group ids), which are not numbered book chapters.',
+        'groups': [{'id': ch['id'], 'title': ch['title']} for ch in a['chapters']],
+        'tier_counts': tier_counts([i for p in pages for i in p['concepts']]),
+        'pages': pages,
+    })
+toc_appendices.append({
+    'id': 'appendix-getting-the-job', 'letter': 'B', 'title': 'Getting the job', 'kind': 'reading', 'built': False,
     'note': "CIU's career sections, kept as one reading page with CIU's own lists and links (in inventory/ciu-links.json). No concepts, no exercises. Not part of the first build pass.",
     'locators': ['ciu:#update-your-resume', 'ciu:#interview-process--general-interview-prep',
                  'ciu:#be-thinking-of-for-when-the-interview-comes', 'ciu:#have-questions-for-the-interviewer',
                  'ciu:#once-youve-got-the-job'],
-}
-toc = {'about': 'Table of contents derived from concept-map/concepts.json: parts, chapters, sections; each section is one concept home (one page). '
+    'pages': [],
+})
+toc = {'about': 'Table of contents derived from concept-map/concepts.json. One book: chapters numbered 1..N, each made of sections; '
+                'each section is one concept home (one page). Appendices follow: A is a curated links appendix whose pages (A.1, A.2, ...) '
+                'hold concepts but are not built as text; B is a reading page with no concepts. '
                 'Chapters with first_pass true are the first build pass. Section tier is the most common tier of its concepts (ties go to the more basic tier).',
-       'parts': toc_parts, 'appendix': appendix}
+       'chapters': toc_chapters, 'appendices': toc_appendices}
 json.dump(toc, open(f'{OUT}/toc.json', 'w'), indent=1, ensure_ascii=False)
 
 # ---------------------------------------------------------------- chapter dependencies
-chap_title = {ch['id']: ch['title'] for p in parts for ch in p['chapters']}
-chap_part = {ch['id']: p for p in parts for ch in p['chapters']}
-cdep = {ch["id"]: set() for p in parts for ch in p["chapters"]}
+# Nodes are book chapters plus appendix A as one node (keyed by its letter).
+def node(chid):
+    a = next(ch['appendix'] for ch in chapters if ch['id'] == chid)
+    return a or chid
+nodes = [ch['id'] for ch in book_chapters] + [a['letter'] for a in appendices]
+node_num = {ch['id']: ch['number'] for ch in book_chapters}
+node_num.update({a['letter']: len(book_chapters) + 1 + i for i, a in enumerate(appendices)})
+cdep = {n: set() for n in nodes}
 for c in out_concepts:
     for p in c['prereqs']:
-        a, b = c['chapter'], cbyid[p]['chapter']
+        a, b = node(c['chapter']), node(cbyid[p]['chapter'])
         if a != b: cdep[a].add(b)
 cmemo = {}
 def creach(u):
@@ -386,69 +427,81 @@ cred = {a: {b for b in bs if not any(b in creach(x) for x in bs if x != b)} for 
 
 # ---------------------------------------------------------------- toc.md
 def badge(t): return f'[{t}]'
+def md_section(s, L):
+    srcs = ', '.join(SHORT[x] for x in s['candidate_sources'])
+    op = '' if s['open_prose'] else ' · open prose: none'
+    L.append(f'- **{s["number"]} {s["title"]}** {badge(s["tier"])} · {srcs}{op}')
+    names = []
+    for i in s['concepts']:
+        c = cbyid[i]
+        nm = c['name']
+        if c['tier'] != s['tier']: nm += ' ' + badge(c['tier'])
+        if not c['open_prose']: nm += ' (no open prose)'
+        names.append(nm)
+    L.append('  ' + '; '.join(names))
+    if s['folds']:
+        L.append(f'  *Folds:* {s["folds"]}')
+
 L = ['# Table of contents', '',
-     'Derived from the concept map (`concepts.json`). Each numbered section is one page, the home of the concepts listed under it. '
+     'Derived from the concept map (`concepts.json`). One book of numbered chapters; each numbered section is one page, the home of the concepts listed under it. '
      'Section tier badges give the most common tier of the section\'s concepts; a concept whose tier differs from its section\'s carries its own badge. '
      'Sources lists the inventories that teach the section\'s concepts: '
      + ', '.join(f'**{SHORT[k]}** = {v}' for k, v in ABBR.items()) + '. '
      '"Open prose: none" marks a section whose concepts are taught only by CIU links or by Erickson\'s NC notes, so its text has no open source yet.', '',
-     'Chapters 1 to 3 (marked **first pass**) are the first build pass.', '']
+     'Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices are not built as text.', '']
 tier_count = collections.Counter(c['tier'] for c in out_concepts)
-for tp in toc_parts:
-    L.append(f'## Part {tp["number"]} · {tp["title"]}'); L.append('')
-    for tc in tp['chapters']:
-        fp = ' · **first pass**' if tc['first_pass'] else ''
-        mix = ' · '.join(f'{n} {t}' for t, n in tc['tier_counts'].items())
-        L.append(f'### {tc["number"]}. {tc["title"]}{fp}'); L.append('')
-        L.append(f'*Concepts: {mix}*'); L.append('')
-        for s in tc['sections']:
-            srcs = ', '.join(SHORT[x] for x in s['candidate_sources'])
-            op = '' if s['open_prose'] else ' · open prose: none'
-            L.append(f'- **{s["number"]} {s["title"]}** {badge(s["tier"])} · {srcs}{op}')
-            names = []
-            for i in s['concepts']:
-                c = cbyid[i]
-                nm = c['name']
-                if c['tier'] != s['tier']: nm += ' ' + badge(c['tier'])
-                if not c['open_prose']: nm += ' (no open prose)'
-                names.append(nm)
-            L.append('  ' + '; '.join(names))
-            if s['folds']:
-                L.append(f'  *Folds:* {s["folds"]}')
+for tc in toc_chapters:
+    fp = ' · **first pass**' if tc['first_pass'] else ''
+    mix = ' · '.join(f'{n} {t}' for t, n in tc['tier_counts'].items())
+    L.append(f'## {tc["number"]}. {tc["title"]}{fp}'); L.append('')
+    L.append(f'*Concepts: {mix}*'); L.append('')
+    for s in tc['sections']:
+        md_section(s, L)
+    L.append('')
+for ta in toc_appendices:
+    if ta['kind'] == 'links':
+        L.append(f'## Appendix {ta["letter"]} · {ta["title"]} (curated links, not built)'); L.append('')
+        mix = ' · '.join(f'{n} {t}' for t, n in ta['tier_counts'].items())
+        L.append(f'*Concepts: {mix}. Each page is a curated list of links for its concepts; book chapters that rest on them point here.*'); L.append('')
+        gtitle = {g['id']: g['title'] for g in ta['groups']}
+        cur = None
+        for s in ta['pages']:
+            if s['group'] != cur:
+                cur = s['group']
+                if L[-1] != '': L.append('')
+                L.append(f'### {gtitle[cur]}'); L.append('')
+            md_section(s, L)
         L.append('')
-L.append('## Appendix · Getting the job (reading page, not built)'); L.append('')
-L.append("CIU's career sections as one reading page: update your resume; interview process and general interview prep; "
-         "be thinking of for when the interview comes; have questions for the interviewer; once you've got the job. No concepts.")
-L.append('')
+    else:
+        L.append(f'## Appendix {ta["letter"]} · {ta["title"]} (reading page, not built)'); L.append('')
+        L.append("CIU's career sections as one reading page: update your resume; interview process and general interview prep; "
+                 "be thinking of for when the interview comes; have questions for the interviewer; once you've got the job. No concepts.")
+        L.append('')
 open(f'{OUT}/toc.md', 'w').write('\n'.join(L))
 
 # ---------------------------------------------------------------- mermaid
+def mnode(n): return f'C{node_num[n]}' if n in {ch['id'] for ch in book_chapters} else f'App{n}'
 M = ['%% Chapter-level dependencies (Hasse-reduced). An arrow A --> B means chapter B uses concepts from chapter A.',
+     '%% AppA is Appendix A (curated links, not built); chapters that use its concepts point to it.',
      'graph TD']
-for pi, p in enumerate(parts):
-    M.append(f'  subgraph P{pi+1}["Part {PART_ROMAN[pi]} · {p["title"]}"]')
-    for ch in p['chapters']:
-        M.append(f'    C{ch["number"]}["{ch["number"]}. {ch["title"]}"]')
-    M.append('  end')
-for a in sorted(cred, key=lambda x: chap_num[x]):
-    for b in sorted(cred[a], key=lambda x: chap_num[x]):
-        M.append(f'  C{chap_num[b]} --> C{chap_num[a]}')
+for ch in book_chapters:
+    M.append(f'  C{ch["number"]}["{ch["number"]}. {ch["title"]}"]')
+for a in appendices:
+    M.append(f'  App{a["letter"]}["Appendix {a["letter"]}. {a["title"]}"]')
+for a in sorted(cred, key=lambda x: node_num[x]):
+    for b in sorted(cred[a], key=lambda x: node_num[x]):
+        M.append(f'  {mnode(b)} --> {mnode(a)}')
 M.append('  classDef first fill:#e8f0ff,stroke:#3a5bbf,stroke-width:2px;')
+M.append('  classDef appendix fill:#f4f4f4,stroke:#888,stroke-dasharray:4 3;')
 M.append('  class C1,C2,C3 first;')
+if appendices:
+    M.append('  class ' + ','.join(f'App{a["letter"]}' for a in appendices) + ' appendix;')
 open(f'{OUT}/chapters.mmd', 'w').write('\n'.join(M) + '\n')
 
 # ---------------------------------------------------------------- stats for report (dumped for the report writer)
-stats = {
-    'tier_count': tier_count,
-    'hasse_removed': hasse_removed,
-}
-part_tier = collections.defaultdict(collections.Counter)
-part_secs = collections.Counter(); part_chs = collections.Counter()
-for tp in toc_parts:
-    part_chs[tp['id']] = len(tp['chapters'])
-    for tc in tp['chapters']:
-        part_secs[tp['id']] += len(tc['sections'])
-for c in out_concepts: part_tier[c['part']][c['tier']] += 1
+all_secs = [s for tc in toc_chapters for s in tc['sections']] + [s for ta in toc_appendices for s in ta['pages']]
+chapter_tier = {tc['id']: tc['tier_counts'] for tc in toc_chapters}
+appendix_tier = {ta['letter']: ta['tier_counts'] for ta in toc_appendices if ta['pages']}
 multi = [c for c in out_concepts if len(c['treatments']) > 1]
 cross = [c for c in multi if len({t['source'] for t in c['treatments']}) > 1]
 size_hist = collections.Counter(len(c['treatments']) for c in out_concepts)
@@ -456,21 +509,26 @@ src_count = collections.Counter(t['source'] for c in out_concepts for t in c['tr
 noprose = [c for c in out_concepts if not c['open_prose']]
 inversions = [(c['id'], p, c['tier'], cbyid[p]['tier']) for c in out_concepts for p in c['prereqs']
               if TIERS.index(cbyid[p]['tier']) > TIERS.index(c['tier'])]
-secsizes = collections.Counter(len(s['concepts']) for tp in toc_parts for tc in tp['chapters'] for s in tc['sections'])
+secsizes = collections.Counter(len(s['concepts']) for s in all_secs)
+into_appendix = [(c['id'], p) for c in out_concepts if 'appendix' not in c for p in c['prereqs'] if 'appendix' in cbyid[p]]
 json.dump({
-    'concepts': len(out_concepts), 'rows': len(rows), 'drops': len(drops), 'tier_count': tier_count,
-    'part_tier': {k: dict(v) for k, v in part_tier.items()}, 'part_secs': part_secs, 'part_chs': part_chs,
-    'multi': len(multi), 'cross': len(cross), 'size_hist': dict(sorted(size_hist.items())), 'src_count': src_count,
+    'concepts': len(out_concepts), 'rows': len(rows), 'drops': len(drops),
+    'tier_count': {t: tier_count[t] for t in TIERS},
+    'chapter_tier': chapter_tier, 'appendix_tier': appendix_tier,
+    'multi': len(multi), 'cross': len(cross), 'size_hist': dict(sorted(size_hist.items())),
+    'src_count': dict(sorted(src_count.items())),
     'noprose': len(noprose), 'inversions': inversions, 'split_rows': {r: v for r, v in split_rows.items()},
-    'hasse_removed': hasse_removed, 'capped': capped, 'secsizes': dict(sorted(secsizes.items())),
-    'used_noedge': [list(x) for x in used_noedge], 'assumed': {k: sorted(v) for k, v in assumed.items()},
-    'cred': {a: sorted(b) for a, b in cred.items()}, 'cdep': {a: sorted(b) for a, b in cdep.items()},
-}, open(os.path.join(os.path.dirname(SPEC), 'stats.json'), 'w'), indent=1, default=dict)
-print('concepts', len(out_concepts), 'tiers', dict(tier_count), 'hasse removed', hasse_removed,
+    'hasse_removed': hasse_removed, 'secsizes': dict(sorted(secsizes.items())),
+    'used_noedge': [list(x) for x in used_noedge], 'assumed': {k: sorted(v) for k, v in sorted(assumed.items())},
+    'promoted': {p: list(v) for p, v in promoted.items()},
+    'into_appendix': into_appendix,
+    'cred': {a: sorted(b, key=lambda x: node_num[x]) for a, b in cred.items()},
+    'cdep': {a: sorted(b, key=lambda x: node_num[x]) for a, b in cdep.items()},
+}, open(os.path.join(os.path.dirname(SPEC), 'stats.json'), 'w'), indent=1)
+print('concepts', len(out_concepts), 'tiers', {t: tier_count[t] for t in TIERS}, 'hasse removed', hasse_removed,
       'multi', len(multi), 'cross', len(cross), 'noprose', len(noprose), 'inversions', len(inversions))
+print('chapters', len(toc_chapters), 'appendices', ', '.join(f'{ta["letter"]} ({len(ta["pages"])} pages)' for ta in toc_appendices))
 print('section sizes', dict(sorted(secsizes.items())))
-for tp in toc_parts:
-    print(tp['number'], tp['title'], 'chapters', len(tp['chapters']), 'sections', part_secs[tp['id']], dict(part_tier[tp['id']]))
-    for tc in tp['chapters']:
-        n = len(tc['sections'])
-        if n < 3 or n > 8: print('   CHAPTER SIZE', tc['number'], tc['title'], n)
+for tc in toc_chapters:
+    n = len(tc['sections'])
+    if n < 3 or n > 8: print('   CHAPTER SIZE', tc['number'], tc['title'], n)

@@ -1,68 +1,52 @@
 %% Chapter-level dependencies (Hasse-reduced). An arrow A --> B means chapter B uses concepts from chapter A.
+%% AppA is Appendix A (curated links, not built); chapters that use its concepts point to it.
 graph TD
-  subgraph P1["Part I · Foundations"]
-    C1["1. Algorithms and their cost"]
-    C2["2. Arrays and linked lists"]
-    C3["3. Stacks, queues and deques"]
-    C4["4. Recursion and induction"]
-    C5["5. Hash tables"]
-    C6["6. Binary search"]
-    C7["7. Bits and data representation"]
-  end
-  subgraph P2["Part II · Trees and sorting"]
-    C8["8. Trees and binary search trees"]
-    C9["9. Heaps and priority queues"]
-    C10["10. Divide and conquer and sorting"]
-    C11["11. Balanced search trees"]
-    C12["12. Tries and other search structures"]
-  end
-  subgraph P3["Part III · Graphs"]
-    C13["13. Graphs and graph search"]
-    C14["14. Depth-first structure"]
-    C15["15. Shortest paths"]
-    C16["16. Disjoint sets and minimum spanning trees"]
-  end
-  subgraph P4["Part IV · Paradigms"]
-    C17["17. Backtracking"]
-    C18["18. Dynamic programming"]
-    C19["19. Dynamic programming on graphs"]
-    C20["20. Greedy algorithms"]
-    C21["21. String searching"]
-    C22["22. Probability and randomized algorithms"]
-    C23["23. Lower bounds and intractability"]
-  end
-  subgraph P5["Part V · Computer systems"]
-    C24["24. Computers and operating systems"]
-    C25["25. Networking"]
-    C26["26. Software engineering practice"]
-    C27["27. Information, coding and security"]
-  end
-  subgraph P6["Part VI · System design"]
-    C28["28. Approaching a system design question"]
-    C29["29. Availability and consistency"]
-    C30["30. Scaling the web tier"]
-    C31["31. Databases"]
-    C32["32. Caching and asynchrony"]
-    C33["33. Worked designs"]
-  end
-  subgraph P7["Part VII · Beyond the interview"]
-    C34["34. Range queries"]
-    C35["35. Tree algorithms"]
-    C36["36. Network flow and matching"]
-    C37["37. More graph algorithms"]
-    C38["38. Advanced string algorithms"]
-    C39["39. Advanced dynamic programming"]
-    C40["40. Sketches and probabilistic data structures"]
-    C41["41. Number theory: divisibility and primes"]
-    C42["42. Number theory: modular arithmetic"]
-    C43["43. Number theory: representations and fast arithmetic"]
-    C44["44. Combinatorics"]
-    C45["45. Game theory"]
-    C46["46. Linear algebra, polynomials and the FFT"]
-    C47["47. Numerical methods and optimisation"]
-    C48["48. Computational geometry: primitives"]
-    C49["49. Computational geometry: algorithms"]
-  end
+  C1["1. Algorithms and their cost"]
+  C2["2. Arrays and linked lists"]
+  C3["3. Stacks, queues and deques"]
+  C4["4. Recursion and induction"]
+  C5["5. Hash tables"]
+  C6["6. Binary search"]
+  C7["7. Bits and data representation"]
+  C8["8. Trees and binary search trees"]
+  C9["9. Heaps and priority queues"]
+  C10["10. Divide and conquer and sorting"]
+  C11["11. Balanced search trees"]
+  C12["12. Tries and other search structures"]
+  C13["13. Graphs and graph search"]
+  C14["14. Depth-first structure"]
+  C15["15. Shortest paths"]
+  C16["16. Disjoint sets and minimum spanning trees"]
+  C17["17. Backtracking"]
+  C18["18. Dynamic programming"]
+  C19["19. Dynamic programming on graphs"]
+  C20["20. Greedy algorithms"]
+  C21["21. String searching"]
+  C22["22. Probability and randomized algorithms"]
+  C23["23. Lower bounds and intractability"]
+  C24["24. Approaching a system design question"]
+  C25["25. Availability and consistency"]
+  C26["26. Scaling the web tier"]
+  C27["27. Databases"]
+  C28["28. Caching and asynchrony"]
+  C29["29. Worked designs"]
+  C30["30. Range queries"]
+  C31["31. Tree algorithms"]
+  C32["32. Network flow and matching"]
+  C33["33. More graph algorithms"]
+  C34["34. Advanced string algorithms"]
+  C35["35. Advanced dynamic programming"]
+  C36["36. Sketches and probabilistic data structures"]
+  C37["37. Number theory: divisibility and primes"]
+  C38["38. Number theory: modular arithmetic"]
+  C39["39. Number theory: representations and fast arithmetic"]
+  C40["40. Combinatorics"]
+  C41["41. Game theory"]
+  C42["42. Linear algebra, polynomials and the FFT"]
+  C43["43. Numerical methods and optimisation"]
+  C44["44. Computational geometry: primitives"]
+  C45["45. Computational geometry: algorithms"]
+  AppA["Appendix A. Computer systems"]
   C1 --> C2
   C2 --> C3
   C1 --> C4
@@ -98,52 +82,52 @@ graph TD
   C11 --> C22
   C16 --> C23
   C18 --> C23
-  C1 --> C27
-  C25 --> C27
-  C7 --> C28
-  C25 --> C30
-  C28 --> C30
-  C29 --> C30
-  C11 --> C31
+  C7 --> C24
+  C24 --> C26
+  C25 --> C26
+  AppA --> C26
+  C11 --> C27
+  C26 --> C27
+  C27 --> C28
+  C13 --> C29
+  C28 --> C29
+  C7 --> C30
+  C16 --> C30
+  C18 --> C30
+  C14 --> C31
   C30 --> C31
-  C31 --> C32
-  C13 --> C33
-  C27 --> C33
+  C6 --> C32
+  C15 --> C32
+  C31 --> C33
   C32 --> C33
-  C7 --> C34
-  C16 --> C34
-  C18 --> C34
-  C14 --> C35
-  C34 --> C35
-  C6 --> C36
-  C15 --> C36
-  C35 --> C37
-  C36 --> C37
-  C12 --> C38
-  C19 --> C38
-  C21 --> C38
-  C34 --> C38
-  C7 --> C39
-  C10 --> C39
-  C18 --> C39
-  C22 --> C40
-  C27 --> C40
-  C7 --> C41
-  C18 --> C41
-  C41 --> C42
-  C42 --> C43
-  C13 --> C44
-  C42 --> C44
-  C34 --> C45
-  C34 --> C46
-  C42 --> C46
-  C22 --> C47
-  C23 --> C47
-  C36 --> C47
-  C16 --> C48
-  C22 --> C48
-  C43 --> C48
-  C34 --> C49
-  C48 --> C49
+  C12 --> C34
+  C19 --> C34
+  C21 --> C34
+  C30 --> C34
+  C7 --> C35
+  C10 --> C35
+  C18 --> C35
+  C22 --> C36
+  AppA --> C36
+  C7 --> C37
+  C18 --> C37
+  C37 --> C38
+  C38 --> C39
+  C13 --> C40
+  C38 --> C40
+  C30 --> C41
+  C30 --> C42
+  C38 --> C42
+  C22 --> C43
+  C23 --> C43
+  C32 --> C43
+  C16 --> C44
+  C22 --> C44
+  C39 --> C44
+  C30 --> C45
+  C44 --> C45
+  C1 --> AppA
   classDef first fill:#e8f0ff,stroke:#3a5bbf,stroke-width:2px;
+  classDef appendix fill:#f4f4f4,stroke:#888,stroke-dasharray:4 3;
   class C1,C2,C3 first;
+  class AppA appendix;
