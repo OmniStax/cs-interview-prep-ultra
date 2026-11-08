@@ -1,0 +1,2008 @@
+{
+  "source": "ods",
+  "edition": "Edition 0.1G (ods.tex \\date); sources/_cache/ods at registry pin 9d22c44906dda2017b2ef0c762025bee644b58aa",
+  "licence_quote": {
+    "file": "latex/why.tex",
+    "quote": "The source code available there is released under a Creative Commons Attribution license, meaning that anyone is free to \\emph{share}: to copy, distribute and transmit the work; and to \\emph{remix}: to adapt the work, including the right to make commercial use of the work.  The only condition on these rights is \\emph{attribution}: you must acknowledge that the derived work contains code and/or text from \\url{opendatastructures.org}.",
+    "version_evidence": {
+      "file": "COPYING (repository root, sources/_cache/ods/COPYING)",
+      "quote": "This code is released under a Creative Commons Attribution license.\nThe full text of the license is available here.\n\nhttp://creativecommons.org/licenses/by/2.5/ca/"
+    },
+    "notes": "No LaTeX file names a licence version: why.tex says only 'Creative Commons Attribution license', and the title page (ods.sty \\thetitlepage, ods.tex \\date) shows the images/cc-by badge, whose PDF metadata carries no version. The version comes from COPYING, which covers latex/ and java/ods/: CC BY 2.5 Canada. COPYING also says java/test/acc/ and java/test/jdk/ hold Sun/Apache code under their own terms; don't use those."
+  },
+  "variants": {
+    "build": "ods.tex \\include{<chapter>-lang}; the Makefile seds -lang to -java, -cpp or -python and replaces %HEADCOMMAND with the edition's macro definitions. The snarf-*.pl/.py scripts expand code imports and #...# inline code into <chapter>-<lang>.tex.",
+    "macros": {
+      "\\javaonly{...}": "text shown only in the Java edition (38 uses)",
+      "\\cpponly{...}": "C++ edition only (32 uses)",
+      "\\pcodeonly{...}": "pseudocode edition only (18 uses)",
+      "\\notpcode{...}": "Java and C++ editions, not the pseudocode one (13 uses)",
+      "\\htmlonly{...}": "HTML build only (3 uses; defined empty in ods.sty)",
+      "\\lang": "edition name: 'Java', 'C++', or 'pseudocode' (the python build sets \\lang to pseudocode; its code is machine-translated from python/ods)",
+      "\\codeimport{ods/Class.method(...)...}": "code from every edition's source tree (128 uses)",
+      "\\javaimport / \\cppimport / \\pcodeimport": "code for a single edition (32 / 36 / 16 uses); ods.tex defines them empty, and the snarf scripts expand them",
+      "#...#": "inline code, also used inside math, so variables like #n# and #a.length# are typeset the same in prose, equations and code"
+    },
+    "notes": "The chapters (and so the concepts) are the same in all three editions. Differences are code-level (e.g. FastArrayStack code is Java/C++ only; mergeSort(a,c) with a Comparator in Java vs mergeSort(a) in C++; outEdges(i) is O(1) in Java but O(deg i) in C++). The pseudocode edition has its own Code Samples conventions (intro.tex). rebuilding.tex is a stub that ods.tex does not include, so it is not inventoried."
+  },
+  "style": "Morin writes in a plain, friendly first-person-plural voice ('we'), with dry humour ('Your mileage may vary'; the book should outlive 'my interest in the project, or my pulse') and everyday analogies: a grocery line for FIFO, ER triage for priority queues, a mortgage versus buying outright for amortized cost, fire insurance for expected cost, blame for scapegoat trees. Each chapter opens with motivation and often a running-time table, then sections named '#ClassName#: what it does' (e.g. 'ArrayDeque: Fast Deque Operations Using an Array'), each building a concrete class that implements one of the intro's interfaces (List, USet, SSet, Queue, Deque, Graph). Notation: code identifiers are monospace both in prose and in math (#n#, #a.length#, #u.left#); n is always the number of stored elements; lists are x_0..x_{n-1}, arrays are 0-indexed with a backing array #a#, and the heap uses 2i+1/2i+2/(i-1)/2; missing tree children are #nil#; order comes from compare(x,y); log means log base 2 and ln is used for natural logs (H_k for harmonic numbers, E[] and Pr{} for probability). Code is short, simplified Java/C++ without public/private/static (or, in the pseudocode edition, Python-derived pseudocode with assignment by an arrow, len(a), // for integer division and slice assignment), shown one method at a time between paragraphs of prose. Cost always ends in a 'Summary' subsection theorem with a fixed formula: 'X implements the Y interface. Ignoring the cost of calls to resize(), X supports get(i) and set(i,x) in O(1) time per operation ... Furthermore, beginning with an empty X, any sequence of m add(i,x) and remove(i) operations results in a total of O(m) time spent during all calls to resize().' He keeps worst-case, amortized and expected bounds explicitly separate, proves them with lemmas (counting arguments, the potential method, indicator variables plus linearity of expectation), and uses many step-by-step operation figures. Every chapter ends with 'Discussion and Exercises': history and citations to the literature, then unkeyed exercises, many asking the reader to implement, optimize or test a variant.",
+  "concepts": [
+    {
+      "id": "ods:need-for-efficiency",
+      "name": "The need for efficiency",
+      "kind": "idea",
+      "statement": "Naive array/list implementations that scan every element do not scale: 10^6 searches over 10^6 items is 10^12 inspections, about 1000 seconds at 10^9 operations per second, and far worse at web scale, so the structure must avoid inspecting most of the data.",
+      "locator": "ods:intro#the-need-for-efficiency",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:interface-vs-implementation",
+      "name": "Interface versus implementation",
+      "kind": "definition",
+      "statement": "An interface (abstract data type) specifies the operations a data structure supports and their semantics; an implementation gives the internal representation and the algorithms. One interface can have many implementations.",
+      "locator": "ods:intro#sec:interfaces",
+      "prereqs": [],
+      "aliases": [
+        "abstract data type",
+        "ADT"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:queue-interface",
+      "name": "Queue interface and queueing disciplines",
+      "kind": "definition",
+      "statement": "A Queue supports add(x) and remove(); its queueing discipline decides which element remove() returns. A FIFO Queue removes in insertion order (enqueue/dequeue in other texts).",
+      "locator": "ods:intro#the-queue-stack-and-deque-interfaces",
+      "prereqs": [
+        "ods:interface-vs-implementation"
+      ],
+      "aliases": [
+        "FIFO queue"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:stack-interface",
+      "name": "Stack (LIFO queue)",
+      "kind": "definition",
+      "statement": "A LIFO Queue removes the most recently added element; it is called a Stack, with add(x)/remove() renamed push(x)/pop().",
+      "locator": "ods:intro#the-queue-stack-and-deque-interfaces",
+      "prereqs": [
+        "ods:queue-interface"
+      ],
+      "aliases": [
+        "LIFO queue"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:priority-queue-interface",
+      "name": "Priority queue",
+      "kind": "definition",
+      "statement": "A priority Queue's remove() always removes the smallest element, breaking ties arbitrarily (deleteMin() in other texts).",
+      "locator": "ods:intro#the-queue-stack-and-deque-interfaces",
+      "prereqs": [
+        "ods:queue-interface"
+      ],
+      "aliases": [
+        "priority Queue",
+        "deleteMin"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:deque-interface",
+      "name": "Deque interface",
+      "kind": "definition",
+      "statement": "A Deque is a sequence with a front and back supporting addFirst(x), removeFirst(), addLast(x), removeLast(); a Stack uses addFirst/removeFirst and a FIFO Queue uses addLast/removeFirst.",
+      "locator": "ods:intro#the-queue-stack-and-deque-interfaces",
+      "prereqs": [
+        "ods:stack-interface",
+        "ods:queue-interface"
+      ],
+      "aliases": [
+        "double-ended queue"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:list-interface",
+      "name": "List interface (linear sequence)",
+      "kind": "definition",
+      "statement": "A List represents x_0,...,x_{n-1} with size(), get(i), set(i,x), add(i,x) (shifting x_i..x_{n-1} right) and remove(i) (shifting left). It subsumes Deque: addFirst(x)=add(0,x), removeLast()=remove(size()-1), etc.",
+      "locator": "ods:intro#the-list-interface-linear-sequences",
+      "prereqs": [
+        "ods:deque-interface"
+      ],
+      "aliases": [
+        "sequence"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:uset-interface",
+      "name": "USet interface (unordered set)",
+      "kind": "definition",
+      "statement": "A USet holds n distinct elements in no order, with size(), add(x) (returns false if an equal element exists), remove(x) and find(x), which returns the stored element y equal to x or null.",
+      "locator": "ods:intro#the-uset-interface-unordered-sets",
+      "prereqs": [
+        "ods:interface-vs-implementation"
+      ],
+      "aliases": [
+        "unordered set",
+        "set"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:map-from-uset",
+      "name": "Dictionary/map as a USet of pairs",
+      "kind": "idea",
+      "statement": "A map is a USet of (key, value) Pairs that compare equal when their keys are equal; find((k,null)) returns the stored (k,v), recovering v from k.",
+      "locator": "ods:intro#the-uset-interface-unordered-sets",
+      "prereqs": [
+        "ods:uset-interface"
+      ],
+      "aliases": [
+        "dictionary",
+        "map",
+        "associative array"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:sset-interface",
+      "name": "SSet interface and successor search",
+      "kind": "definition",
+      "statement": "An SSet stores elements from a total order, compared with compare(x,y) (<0, >0, =0). Its find(x) returns the smallest y >= x (successor search), giving a meaningful answer even when x is absent.",
+      "locator": "ods:intro#sec:sset",
+      "prereqs": [
+        "ods:uset-interface"
+      ],
+      "aliases": [
+        "sorted set",
+        "ordered set",
+        "successor search"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:uset-vs-sset-choice",
+      "name": "Prefer USet unless order is needed",
+      "kind": "idea",
+      "statement": "SSet functionality usually costs logarithmic time and more complex code, while a hash-table USet finds in constant expected time; use a USet unless the extra SSet functionality is truly needed.",
+      "locator": "ods:intro#sec:sset",
+      "prereqs": [
+        "ods:sset-interface"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:logarithms",
+      "name": "Logarithms and exponentials",
+      "kind": "definition",
+      "statement": "log_b k is the x with b^x = k; log without a base means base 2 in this book and ln is the natural log. log_b k is roughly the number of times k can be divided by b before reaching 1; change of base: ln k = (ln 2)(log k).",
+      "locator": "ods:intro#exponentials-and-logarithms",
+      "prereqs": [],
+      "aliases": [
+        "binary logarithm"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:factorials-stirling",
+      "name": "Factorials and Stirling's approximation",
+      "kind": "result",
+      "statement": "n! = sqrt(2 pi n)(n/e)^n e^{alpha(n)} with 1/(12n+1) < alpha(n) < 1/(12n), so ln(n!) = n ln n - n + (1/2) ln(2 pi n) + alpha(n); binomial coefficients are defined from factorials.",
+      "locator": "ods:intro#sec:factorials",
+      "prereqs": [
+        "ods:logarithms"
+      ],
+      "aliases": [
+        "Stirling's formula"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:big-oh",
+      "name": "Big-Oh notation",
+      "kind": "definition",
+      "statement": "O(f(n)) is the set of functions g with g(n) <= c f(n) for some c>0 and all n >= n0; writing g = O(f) means membership, and O(1) means bounded by a constant. Used to compare running times for large enough n.",
+      "locator": "ods:intro#asymptotic-notation",
+      "prereqs": [
+        "ods:logarithms"
+      ],
+      "aliases": [
+        "asymptotic notation",
+        "Big-O"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:multivariate-big-oh",
+      "name": "Big-Oh in several variables",
+      "kind": "definition",
+      "statement": "O(f(n_1,...,n_k)) is the set of g with g <= c f for all (n_1,...,n_k) where g >= z, for some c > 0 and z; this agrees with the one-variable definition and is used for bounds such as O(n+m) and O(b + n/b).",
+      "locator": "ods:intro#asymptotic-notation",
+      "prereqs": [
+        "ods:big-oh"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:linearity-of-expectation",
+      "name": "Expected value and linearity of expectation",
+      "kind": "result",
+      "statement": "For random variables X and Y, E[X+Y] = E[X] + E[Y] (no independence needed), so a complicated random variable can be analysed as a sum of simple ones.",
+      "locator": "ods:intro#sec:randomization",
+      "prereqs": [],
+      "aliases": [
+        "linearity of expectation"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:indicator-variables",
+      "name": "Indicator random variables",
+      "kind": "skill",
+      "statement": "Write a count as a sum of 0/1 indicator variables I_i; then E[sum I_i] = sum Pr{I_i = 1}. Example: the expected number of heads in k fair tosses is k/2.",
+      "locator": "ods:intro#sec:randomization",
+      "prereqs": [
+        "ods:linearity-of-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:word-ram",
+      "name": "The w-bit word-RAM model",
+      "kind": "definition",
+      "statement": "Memory is cells holding w-bit words; arithmetic, comparisons and bitwise operations on words take constant time, allocating k words takes O(k) time, and the only assumption is w >= log n. Space is counted in words, and an element occupies one word.",
+      "locator": "ods:intro#sec:model",
+      "prereqs": [
+        "ods:logarithms"
+      ],
+      "aliases": [
+        "word RAM",
+        "RAM model"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:running-time-guarantees",
+      "name": "Worst-case, amortized and expected running times",
+      "kind": "definition",
+      "statement": "Worst-case f(n): no operation takes longer. Amortized f(n): any sequence of m operations takes at most m f(n) total. Expected f(n): the running time is a random variable over the structure's own random choices with mean at most f(n). Illustrated by mortgage payments versus buying outright, and fire insurance versus self-insuring.",
+      "locator": "ods:intro#correctness-time-complexity-and-space-complexity",
+      "prereqs": [
+        "ods:big-oh"
+      ],
+      "aliases": [
+        "amortized time",
+        "expected time"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:arraystack",
+      "name": "ArrayStack (array-backed List)",
+      "kind": "result",
+      "statement": "An ArrayStack stores a List in backing array a with count n; ignoring resize(), get(i) and set(i,x) take O(1) and add(i,x), remove(i) take O(1+n-i) because they shift a[i..n-1].",
+      "locator": "ods:arrays#sec:arraystack",
+      "prereqs": [
+        "ods:list-interface",
+        "ods:running-time-guarantees"
+      ],
+      "aliases": [
+        "dynamic array",
+        "ArrayList",
+        "vector",
+        "resizable array"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:array-resize",
+      "name": "Growing and shrinking the backing array",
+      "kind": "skill",
+      "statement": "resize() allocates an array of size 2n and copies the n elements, taking O(n) time; add calls it when the array is full and remove calls it when a.length >= 3n.",
+      "locator": "ods:arrays#growing-and-shrinking",
+      "prereqs": [
+        "ods:arraystack"
+      ],
+      "aliases": [
+        "array doubling",
+        "table doubling"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:arraystack-amortized-resize",
+      "name": "Amortized cost of resizing",
+      "kind": "result",
+      "statement": "Starting empty, any sequence of m >= 1 add(i,x)/remove(i) calls spends O(m) total time in resize(): between consecutive resizes at least n_i/2 - 1 operations occur, so the copying is charged to them. Hence O(1) amortized for appends.",
+      "locator": "ods:arrays#lem:arraystack-amortized",
+      "prereqs": [
+        "ods:array-resize"
+      ],
+      "aliases": [
+        "amortized doubling"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:fastarraystack",
+      "name": "Block copying with memcpy/arraycopy",
+      "kind": "skill",
+      "statement": "Replace element-by-element shift and copy loops with native block moves (memcpy/memmove, std::copy, System.arraycopy); asymptotics are unchanged but the book measured speedups of 2 to 3 times.",
+      "locator": "ods:arrays#sec:fastarraystack",
+      "prereqs": [
+        "ods:arraystack"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Code appears only in the Java and C++ editions (\\javaimport/\\cppimport); the pseudocode edition only describes it."
+    },
+    {
+      "id": "ods:circular-array",
+      "name": "Circular array via modular arithmetic",
+      "kind": "skill",
+      "statement": "Store a queue's elements at a[j % a.length], ..., a[(j+n-1) % a.length], so indices past the end wrap around; a mod m is the unique r in {0..m-1} with a = r + km (the book notes % misbehaves for negative arguments).",
+      "locator": "ods:arrays#sec:arrayqueue",
+      "prereqs": [
+        "ods:arraystack"
+      ],
+      "aliases": [
+        "ring buffer",
+        "circular buffer",
+        "modular arithmetic"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:arrayqueue",
+      "name": "ArrayQueue (array-backed FIFO queue)",
+      "kind": "result",
+      "statement": "An ArrayQueue keeps head index j and count n in a circular array; add(x) writes a[(j+n)%a.length], remove() takes a[j] and advances j, both O(1) ignoring resize(), with O(m) total resize cost over m operations.",
+      "locator": "ods:arrays#sec:arrayqueue",
+      "prereqs": [
+        "ods:circular-array",
+        "ods:arraystack-amortized-resize",
+        "ods:queue-interface"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:arraydeque",
+      "name": "ArrayDeque",
+      "kind": "result",
+      "statement": "An ArrayDeque is a circular-array List that shifts whichever side of position i is shorter, so get/set take O(1) and add(i,x)/remove(i) take O(1+min{i, n-i}) ignoring resize(); all Deque operations are O(1) amortized.",
+      "locator": "ods:arrays#sec:arraydeque",
+      "prereqs": [
+        "ods:arrayqueue",
+        "ods:deque-interface"
+      ],
+      "aliases": [
+        "circular deque"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:dualarraydeque",
+      "name": "DualArrayDeque: a deque from two stacks",
+      "kind": "result",
+      "statement": "Two ArrayStacks, front (stored reversed) and back, back to back; balance() rebalances to floor(n/2)/ceil(n/2) when either holds fewer than n/4 elements. get/set O(1), add/remove O(1+min{i,n-i}), with O(m) total balance() cost.",
+      "locator": "ods:arrays#sec:dualarraydeque",
+      "prereqs": [
+        "ods:arraystack-amortized-resize",
+        "ods:deque-interface"
+      ],
+      "aliases": [
+        "deque from two stacks"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:potential-method",
+      "name": "Potential method of amortized analysis",
+      "kind": "idea",
+      "statement": "Define a potential Phi of the structure's state that cheap operations raise by O(1) and expensive rebuilds lower in proportion to their cost; total cost is bounded by total potential added. Used for DualArrayDeque balancing (Phi = |front.size() - back.size()|), SEList and 2-4/red-black fixups.",
+      "locator": "ods:arrays#lem:dualarraydeque-amortized",
+      "prereqs": [
+        "ods:arraystack-amortized-resize"
+      ],
+      "aliases": [
+        "potential function"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:rootisharraystack",
+      "name": "RootishArrayStack",
+      "kind": "result",
+      "statement": "Store the list in r blocks of sizes 1, 2, ..., r; element i lives in block b where b(b+1)/2 <= i < (b+1)(b+2)/2. get/set O(1), add/remove O(1+n-i), O(m) total grow/shrink, and only O(sqrt n) wasted space.",
+      "locator": "ods:arrays#sec:rootisharraystack",
+      "prereqs": [
+        "ods:arraystack",
+        "ods:arraystack-amortized-resize"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Academic; rarely asked in interviews."
+    },
+    {
+      "id": "ods:rootish-index-math",
+      "name": "Block index by the quadratic formula",
+      "kind": "skill",
+      "statement": "Block b holds index i when b is the smallest integer with (b+1)(b+2)/2 >= i+1, so i2b(i) = ceil((-3 + sqrt(9 + 8i))/2) by the quadratic formula. Because square root is not a word-RAM primitive, the section shows floor(sqrt x) for x <= n in O(1) time after O(sqrt n) preprocessing into two lookup arrays (lem:root).",
+      "locator": "ods:arrays#sec:rootisharraystack",
+      "prereqs": [
+        "ods:rootisharraystack"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:sqrt-wasted-space-lower-bound",
+      "name": "Omega(sqrt n) wasted space is unavoidable",
+      "kind": "result",
+      "statement": "Any structure that starts empty and adds items one at a time into allocated blocks must at some moment waste at least sqrt(n) space (either many blocks with overhead, or a large block not yet full), so RootishArrayStack is optimal.",
+      "locator": "ods:arrays#sec:rootishspaceusage",
+      "prereqs": [
+        "ods:rootisharraystack"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:sllist",
+      "name": "SLList (singly-linked list)",
+      "kind": "result",
+      "statement": "Nodes with x and next, plus head, tail and n; push/pop at the head and add(x) at the tail, remove() at the head, all in O(1). Implements Stack and FIFO Queue.",
+      "locator": "ods:linkedlists#sec:sllist",
+      "prereqs": [
+        "ods:stack-interface",
+        "ods:queue-interface"
+      ],
+      "aliases": [
+        "singly linked list"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:linked-vs-array",
+      "name": "Linked lists versus arrays",
+      "kind": "idea",
+      "statement": "Linked lists lose O(1) get(i)/set(i,x), having to walk to the i-th node, but gain dynamism: given a node u, inserting next to u or deleting u takes O(1) wherever u is.",
+      "locator": "ods:linkedlists#chap:linkedlists",
+      "prereqs": [
+        "ods:arraystack",
+        "ods:sllist"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:dummy-node",
+      "name": "Dummy (sentinel) node",
+      "kind": "skill",
+      "statement": "A DLList keeps a dummy node whose next is the first node and prev is the last, making the list circular so insertion and removal have no special cases for empty lists or the ends.",
+      "locator": "ods:linkedlists#sec:dllist",
+      "prereqs": [
+        "ods:sllist"
+      ],
+      "aliases": [
+        "sentinel node"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:dllist",
+      "name": "DLList (doubly-linked list)",
+      "kind": "result",
+      "statement": "Nodes have next and prev; getNode(i) walks from the front or back, whichever is nearer, so get, set, add(i,x) and remove(i) take O(1+min{i,n-i}). addBefore(w,x) and remove(w) are O(1).",
+      "locator": "ods:linkedlists#sec:dllist",
+      "prereqs": [
+        "ods:dummy-node",
+        "ods:list-interface"
+      ],
+      "aliases": [
+        "doubly linked list"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:selist",
+      "name": "SEList (space-efficient list)",
+      "kind": "result",
+      "statement": "A DLList of blocks, each a bounded deque (BDeque) of capacity b+1 holding b-1 to b+1 elements (except the last). Ignoring spread/gather, get/set take O(1+min{i,n-i}/b) and add/remove O(b+min{i,n-i}/b), and wasted space is only O(b+n/b), close to the sqrt(n) lower bound when b is about sqrt(n).",
+      "locator": "ods:linkedlists#sec:selist",
+      "prereqs": [
+        "ods:dllist",
+        "ods:arraydeque"
+      ],
+      "aliases": [
+        "unrolled linked list"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:selist-spread-gather",
+      "name": "SEList spreading and gathering",
+      "kind": "result",
+      "statement": "When a run of b blocks is full, spread(u) adds a block; when b blocks are nearly empty, gather(u) removes one. By the potential method (potential = number of fragile blocks) any m add/remove operations spend O(bm) total time in spread and gather.",
+      "locator": "ods:linkedlists#lem:selist-amortized",
+      "prereqs": [
+        "ods:selist",
+        "ods:potential-method"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:skiplist-structure",
+      "name": "Skiplist structure",
+      "kind": "definition",
+      "statement": "A sequence of singly-linked lists L_0..L_h where each element of L_{r-1} is promoted to L_r on a coin toss of heads; an element's height is the largest r with it in L_r (expected 1), a sentinel heads every list, and a search path runs from the sentinel in L_h down to any node in L_0.",
+      "locator": "ods:skiplists#the-basic-structure",
+      "prereqs": [
+        "ods:sllist",
+        "ods:linearity-of-expectation"
+      ],
+      "aliases": [
+        "skip list"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:skiplist-search-path-length",
+      "name": "Expected skiplist search path length",
+      "kind": "result",
+      "statement": "The expected length of the search path to any node in L_0 is at most 2 log n + O(1). Nodes store an array next[] with one pointer per level, so x is stored once.",
+      "locator": "ods:skiplists#lem:skiplist-searchpath",
+      "prereqs": [
+        "ods:skiplist-structure"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Stated in the basic-structure section; proved in sec:skiplist-analysis."
+    },
+    {
+      "id": "ods:skiplist-sset",
+      "name": "SkiplistSSet",
+      "kind": "result",
+      "statement": "find(x) follows the search path via findPredNode(x); add(x) picks a random height with pickHeight() and splices the node into each list on the path; remove(x) unlinks it. All three take O(log n) expected time.",
+      "locator": "ods:skiplists#sec:skiplistset",
+      "prereqs": [
+        "ods:skiplist-search-path-length",
+        "ods:sset-interface"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:skiplist-list",
+      "name": "SkiplistList (indexed skiplist)",
+      "kind": "result",
+      "statement": "Each edge stores its length (number of L_0 edges it spans), so findPred(i) can navigate by index; get, set, add(i,x) and remove(i) take O(log n) expected time.",
+      "locator": "ods:skiplists#sec:skiplistlist",
+      "prereqs": [
+        "ods:skiplist-sset",
+        "ods:list-interface"
+      ],
+      "aliases": [
+        "indexable skiplist"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:coin-toss-expectation",
+      "name": "Expected tosses until the first head",
+      "kind": "result",
+      "statement": "If T counts fair coin tosses up to and including the first head, E[T] = 2 (equivalently sum_{i>=1} i/2^i = 2). Reused for skiplist heights and bottom-up heap construction.",
+      "locator": "ods:skiplists#lem:coin-tosses",
+      "prereqs": [
+        "ods:linearity-of-expectation"
+      ],
+      "aliases": [
+        "geometric distribution"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:skiplist-analysis",
+      "name": "Skiplist size and height",
+      "kind": "result",
+      "statement": "A skiplist on n elements has expected 2n nodes excluding sentinels and 2n + O(log n) including them, expected height at most log n + 2, and expected search path length at most 2 log n + O(1).",
+      "locator": "ods:skiplists#sec:skiplist-analysis",
+      "prereqs": [
+        "ods:coin-toss-expectation",
+        "ods:skiplist-search-path-length"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:hashing-with-chaining",
+      "name": "Hashing with chaining (ChainedHashTable)",
+      "kind": "result",
+      "statement": "An array t of lists with invariant n <= t.length; x is stored in list t[hash(x)]. With a universal hash, the expected length of t[hash(x)] is at most n_x + 2, so add, remove and find run in O(1) expected time, and grow() costs O(m) over m operations.",
+      "locator": "ods:hashing#sec:hashtable",
+      "prereqs": [
+        "ods:uset-interface",
+        "ods:arraystack-amortized-resize",
+        "ods:multiplicative-hashing"
+      ],
+      "aliases": [
+        "separate chaining",
+        "hash table",
+        "hash map"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:multiplicative-hashing",
+      "name": "Multiplicative hashing",
+      "kind": "result",
+      "statement": "With t.length = 2^d and z a random odd w-bit integer, hash(x) = ((z*x) mod 2^w) div 2^{w-d}, i.e. the top d bits of z*x computed with overflow and a right shift. For x != y, Pr{hash(x) = hash(y)} <= 2/2^d.",
+      "locator": "ods:hashing#sec:multihash",
+      "prereqs": [
+        "ods:word-ram"
+      ],
+      "aliases": [
+        "universal hashing"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:open-addressing-linear-probing",
+      "name": "Linear probing (LinearHashTable)",
+      "kind": "result",
+      "statement": "Open addressing in one array t: x goes to the first free slot among t[i], t[i+1], ... (mod t.length) for i = hash(x); find stops at x or null. Keeping t.length >= 2q (q = n plus deleted markers) and t.length = 2^d gives O(1) expected add, remove and find, with O(m) total resize cost.",
+      "locator": "ods:hashing#sec:linearhashtable",
+      "prereqs": [
+        "ods:uset-interface",
+        "ods:arraystack-amortized-resize"
+      ],
+      "aliases": [
+        "open addressing",
+        "linear probing"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:tombstones",
+      "name": "Deleted markers (tombstones) in open addressing",
+      "kind": "skill",
+      "statement": "Entries are data, null (never used) or del (once used, now deleted); remove(x) writes del rather than null so later searches do not stop early, and add may reuse a del slot. Counter q tracks data plus del entries, and resize() clears the del entries.",
+      "locator": "ods:hashing#sec:linearhashtable",
+      "prereqs": [
+        "ods:open-addressing-linear-probing"
+      ],
+      "aliases": [
+        "tombstone",
+        "lazy deletion"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:linear-probing-runs",
+      "name": "Analysis of linear probing via runs",
+      "kind": "result",
+      "statement": "Assuming independent uniform hash values, the probability that a run of length k starts at a given slot is O(c^k) for a constant c < 1, so the expected run containing a slot has constant length.",
+      "locator": "ods:hashing#lem:linear-probing",
+      "prereqs": [
+        "ods:open-addressing-linear-probing",
+        "ods:factorials-stirling"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:tabulation-hashing",
+      "name": "Tabulation hashing",
+      "kind": "result",
+      "statement": "Split the w-bit hash code into w/r chunks of r bits, look each up in its own table of 2^r random w-bit integers, and XOR the results; this gives hash values strong enough for the linear probing analysis without a 2^w-entry table.",
+      "locator": "ods:hashing#sec:tabulation",
+      "prereqs": [
+        "ods:open-addressing-linear-probing"
+      ],
+      "aliases": [
+        "simple tabulation"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:hash-code-properties",
+      "name": "Hash code requirements",
+      "kind": "definition",
+      "statement": "A hash code maps objects to w-bit integers so that equal objects get equal codes and unequal objects collide with small probability, close to 1/2^w.",
+      "locator": "ods:hashing#hash-codes",
+      "prereqs": [
+        "ods:hashing-with-chaining"
+      ],
+      "aliases": [
+        "hashCode"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:hash-primitives",
+      "name": "Hash codes for primitive types",
+      "kind": "skill",
+      "statement": "A value of at most w bits uses its own bit pattern as its hash code; a value of c*w bits (e.g. Java long/double) is treated as a compound object of c parts.",
+      "locator": "ods:hashing#hash-codes-for-primitive-data-types",
+      "prereqs": [
+        "ods:hash-code-properties"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:hash-compound",
+      "name": "Hash codes for compound objects",
+      "kind": "result",
+      "statement": "Combine part hash codes x_0..x_{r-1} as ((z * sum z_i x_i) mod 2^{2w}) div 2^w with independent random w-bit z_i and a random odd 2w-bit z (a final multiplicative-hashing step), rather than easily foiled XOR hacks; tuples differing in some part collide with probability at most 3/2^w.",
+      "locator": "ods:hashing#sec:stringhash",
+      "prereqs": [
+        "ods:hash-primitives",
+        "ods:multiplicative-hashing"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:polynomial-hash",
+      "name": "Polynomial hashing for arrays and strings",
+      "kind": "result",
+      "statement": "Hash a sequence x_0..x_{r-1} as sum x_i z^i mod p for prime p > 2^w + 1 and random z; since a nonzero degree-(r-1) polynomial has at most r-1 roots mod p, equal-length distinct sequences collide with probability <= (r-1)/p. Appending the value p-1 as an end marker makes sequences of lengths r and r' (even prefixes) collide with probability <= max{r,r'}/p.",
+      "locator": "ods:hashing#sec:polyhash",
+      "prereqs": [
+        "ods:hash-compound"
+      ],
+      "aliases": [
+        "polynomial rolling hash",
+        "string hashing"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:binary-tree-terms",
+      "name": "Binary tree terminology",
+      "kind": "definition",
+      "statement": "A rooted, ordered binary tree: root, parent, left/right child, depth (path length to the root), ancestor/descendant, subtree, height (longest path to a descendant), leaf. External nodes fill every missing child; a tree with n >= 1 nodes has n+1 external nodes.",
+      "locator": "ods:binarytrees#chap:binarytrees",
+      "prereqs": [],
+      "aliases": [
+        "binary tree"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:binarytree-recursive",
+      "name": "Recursive binary-tree algorithms",
+      "kind": "skill",
+      "statement": "Nodes store left, right and parent (nil when absent). depth(u) follows parent pointers; size(u) = 1 + size(u.left) + size(u.right) and height(u) = 1 + max(height(u.left), height(u.right)), with nil giving size 0 and height -1.",
+      "locator": "ods:binarytrees#recursive-algorithms",
+      "prereqs": [
+        "ods:binary-tree-terms"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:nonrecursive-traversal",
+      "name": "Non-recursive traversal with parent pointers",
+      "kind": "skill",
+      "statement": "Recursion depth equals tree height and can overflow the stack; instead decide the next step from where you came: from the parent go left, from the left child go right, from the right child go up. Without parent pointers, keep an explicit stack.",
+      "locator": "ods:binarytrees#sec:bintree:traversal",
+      "prereqs": [
+        "ods:binarytree-recursive"
+      ],
+      "aliases": [
+        "iterative traversal"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:breadth-first-traversal",
+      "name": "Breadth-first (level-order) traversal",
+      "kind": "skill",
+      "statement": "Visit nodes level by level, left to right, using a queue that starts with the root: repeatedly remove u, process it, and enqueue its non-nil children.",
+      "locator": "ods:binarytrees#sec:bintree:traversal",
+      "prereqs": [
+        "ods:binary-tree-terms",
+        "ods:queue-interface"
+      ],
+      "aliases": [
+        "level-order traversal"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:traversal-orders",
+      "name": "Pre-order, in-order and post-order traversal",
+      "kind": "definition",
+      "statement": "Pre-order visits u before its children; in-order visits u after its left subtree and before its right subtree; post-order visits u after its whole subtree. The pre/in/post-order numbering labels nodes 0..n-1 in that order.",
+      "locator": "ods:binarytrees#exc:tree-traversal",
+      "prereqs": [
+        "ods:binarytree-recursive"
+      ],
+      "aliases": [
+        "preorder",
+        "inorder",
+        "postorder",
+        "DFS traversal"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 1,
+      "notes": "Defined inside Discussion and Exercises, in the text leading into exc:tree-traversal (implement the numberings), which the sorting chapter cites for in-order extraction."
+    },
+    {
+      "id": "ods:bst-property",
+      "name": "Binary search tree property",
+      "kind": "definition",
+      "statement": "Each node u stores u.x; every value in u's left subtree is less than u.x and every value in its right subtree is greater.",
+      "locator": "ods:binarytrees#sec:binarysearchtree",
+      "prereqs": [
+        "ods:binary-tree-terms",
+        "ods:sset-interface"
+      ],
+      "aliases": [
+        "BST"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:bst-search",
+      "name": "BST search and successor search",
+      "kind": "result",
+      "statement": "findEQ(x) walks from the root, going left if x < u.x and right if x > u.x; find(x) also remembers the last node z where it went left, returning z.x as the smallest value >= x when x is absent. Cost is proportional to the path length.",
+      "locator": "ods:binarytrees#searching",
+      "prereqs": [
+        "ods:bst-property"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:bst-add",
+      "name": "BST insertion",
+      "kind": "skill",
+      "statement": "add(x) uses findLast(x) to reach the node p where the search ends and attaches a new leaf as p's left or right child (addChild), refusing duplicates.",
+      "locator": "ods:binarytrees#addition",
+      "prereqs": [
+        "ods:bst-search"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:bst-remove",
+      "name": "BST deletion via splice and successor",
+      "kind": "skill",
+      "statement": "A node with at most one child is spliced out by linking its child to its parent. A node u with two children is replaced by the smallest value w in u's right subtree (w has no left child), and w is spliced out.",
+      "locator": "ods:binarytrees#removal",
+      "prereqs": [
+        "ods:bst-add"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:unbalanced-bst-cost",
+      "name": "Cost of an unbalanced BST",
+      "kind": "result",
+      "statement": "A BinarySearchTree implements SSet with add, remove and find in O(n) time per operation, because their cost is the length of a root-to-node path, which can be n for skewed trees; this motivates balanced variants.",
+      "locator": "ods:binarytrees#thm:bst",
+      "prereqs": [
+        "ods:bst-remove"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:harmonic-numbers",
+      "name": "Harmonic numbers",
+      "kind": "definition",
+      "statement": "H_k = 1 + 1/2 + ... + 1/k, with ln k < H_k <= ln k + 1.",
+      "locator": "ods:rbs#sec:rbst",
+      "prereqs": [
+        "ods:logarithms"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:random-bst",
+      "name": "Random binary search trees",
+      "kind": "result",
+      "statement": "Inserting a uniformly random permutation of 0..n-1 into a BST yields a random BST: the expected search path for x is H_{x+1} + H_{n-x} - O(1) (and H_{x+1} + H_{n-x} for an absent value), so it can be built in O(n log n) and find takes O(log n) expected time. Key step: a key i < x is on x's search path exactly when i comes first among {i,...,floor(x)} in the permutation, which happens with probability 1/(floor(x)-i+1).",
+      "locator": "ods:rbs#lem:rbs",
+      "prereqs": [
+        "ods:unbalanced-bst-cost",
+        "ods:harmonic-numbers",
+        "ods:linearity-of-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:tree-rotations",
+      "name": "Tree rotations",
+      "kind": "skill",
+      "statement": "rotateLeft(u) and rotateRight(u) restructure a node and one child in O(1) while preserving the BST property, moving one node up and the other down.",
+      "locator": "ods:rbs#page:rotations",
+      "prereqs": [
+        "ods:bst-property"
+      ],
+      "aliases": [
+        "rotation"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:treap",
+      "name": "Treap",
+      "kind": "result",
+      "statement": "Each node gets a random unique priority; the tree is a BST on keys and a heap on priorities, so its shape equals the random BST built in priority order and add, remove and find take O(log n) expected time.",
+      "locator": "ods:rbs#sec:treap",
+      "prereqs": [
+        "ods:random-bst",
+        "ods:tree-rotations",
+        "ods:heap-property"
+      ],
+      "aliases": [
+        "randomized BST"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:treap-updates",
+      "name": "Treap insertion and deletion by rotation",
+      "kind": "skill",
+      "statement": "add(x) inserts a leaf as in a BST, then bubbleUp rotates it upward while its priority is smaller than its parent's; remove(x) trickleDown rotates x down toward the child of smaller priority until it is a leaf, then deletes it.",
+      "locator": "ods:rbs#sec:treap",
+      "prereqs": [
+        "ods:treap"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:build-balanced-from-sorted",
+      "name": "Build a perfectly balanced BST from a sorted array",
+      "kind": "skill",
+      "statement": "Gather a subtree's nodes into array a by in-order traversal (packIntoArray), then make a[m] (m = a.length/2) the root and build both halves recursively (buildBalanced); O(size(u)) time and minimum height.",
+      "locator": "ods:scapegoat#chap:scapegoat",
+      "prereqs": [
+        "ods:traversal-orders",
+        "ods:bst-property"
+      ],
+      "aliases": [
+        "sorted array to BST"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:partial-rebuilding",
+      "name": "Partial rebuilding",
+      "kind": "idea",
+      "statement": "Keep a tree balanced lazily: when some subtree becomes too unbalanced, destroy it and rebuild it perfectly balanced, charging the O(size) cost to the many updates that caused the imbalance.",
+      "locator": "ods:scapegoat#chap:scapegoat",
+      "prereqs": [
+        "ods:build-balanced-from-sorted"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:scapegoat-tree",
+      "name": "ScapegoatTree",
+      "kind": "result",
+      "statement": "A BST with counters n and q (q/2 <= n <= q) whose height stays at most log_{3/2} q < log_{3/2} n + 2. When an insertion lands deeper than log_{3/2} q, climb to a scapegoat w with size(w)/size(parent(w)) > 2/3 and rebuild it; when q > 2n after a removal, rebuild the whole tree and set q = n. find is O(log n) worst case and rebuilds cost O(m log m) over m updates.",
+      "locator": "ods:scapegoat#sec:scapegoattree",
+      "prereqs": [
+        "ods:partial-rebuilding"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:scapegoat-amortized",
+      "name": "Amortized analysis of scapegoat rebuilding",
+      "kind": "result",
+      "statement": "Every node of depth h > log_{3/2} q has an ancestor w with size(w)/size(parent(w)) > 2/3; finding w and rebuilding it costs O(size(w)), paid by a credit scheme: each update gives one credit to every node on its path (at most log_{3/2} m credits), and a node needing a rebuild has accumulated Omega(size) credits since it was last balanced, giving O(m log m) total.",
+      "locator": "ods:scapegoat#lem:scapegoat-amortized",
+      "prereqs": [
+        "ods:scapegoat-tree"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:two-four-tree",
+      "name": "2-4 trees",
+      "kind": "definition",
+      "statement": "A rooted tree whose leaves all have the same depth and whose internal nodes have 2, 3 or 4 children; a 2-4 tree with n leaves has height at most log n.",
+      "locator": "ods:redblack#sec:twofour",
+      "prereqs": [
+        "ods:binary-tree-terms"
+      ],
+      "aliases": [
+        "2-3-4 tree"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:two-four-updates",
+      "name": "Adding and removing leaves in a 2-4 tree",
+      "kind": "skill",
+      "statement": "Adding a leaf may give a node 5 children; split it into nodes of 2 and 3 children and push the split up to the parent, possibly creating a new root. Removing a leaf may leave a node with 1 child; borrow from a sibling or merge with it, repeating upward.",
+      "locator": "ods:redblack#adding-a-leaf",
+      "prereqs": [
+        "ods:two-four-tree"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:red-black-properties",
+      "name": "Red-black tree properties",
+      "kind": "definition",
+      "statement": "A BST with each node red (0) or black (1), external nodes and root black, satisfying black-height (every root-to-leaf path has the same number of black nodes) and no-red-edge (no two adjacent reds). Its height is at most 2 log n.",
+      "locator": "ods:redblack#red-black-trees-and-2-4-trees",
+      "prereqs": [
+        "ods:bst-property"
+      ],
+      "aliases": [
+        "red-black tree",
+        "RB tree"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:red-black-as-2-4",
+      "name": "Red-black trees simulate 2-4 trees",
+      "kind": "idea",
+      "statement": "Contracting every red node into its black parent turns a red-black tree into a 2-4 tree whose leaves are the external nodes, and each 2-4 node becomes a black node with up to two red children. This correspondence explains the black-height property and the 2 log n height bound.",
+      "locator": "ods:redblack#red-black-trees-and-2-4-trees",
+      "prereqs": [
+        "ods:red-black-properties",
+        "ods:two-four-tree"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:left-leaning-red-black",
+      "name": "Left-leaning red-black trees",
+      "kind": "definition",
+      "statement": "ODS's RedBlackTree also enforces the left-leaning property: if u.left is black then u.right is black. pushBlack(u)/pullBlack(u) move colour between a node and its children, and flipLeft/flipRight rotate while swapping colours.",
+      "locator": "ods:redblack#left-leaning-red-black-trees",
+      "prereqs": [
+        "ods:red-black-as-2-4",
+        "ods:tree-rotations"
+      ],
+      "aliases": [
+        "LLRB"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:red-black-add",
+      "name": "Red-black insertion fixup",
+      "kind": "skill",
+      "statement": "add(x) inserts a red leaf, then addFixup(u) repairs red-red and left-leaning violations by flipLeft, flipRight and pushBlack while moving up the tree, mirroring a 2-4 tree split.",
+      "locator": "ods:redblack#addition",
+      "prereqs": [
+        "ods:left-leaning-red-black",
+        "ods:two-four-updates"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:red-black-remove",
+      "name": "Red-black deletion fixup",
+      "kind": "skill",
+      "statement": "remove(x) splices out a node w with at most one child u (moving the successor's value into x's node if needed) and adds w.colour to u.colour, which can make u double-black or break left-leaning; removeFixup(u) moves the double-black up by rotations and recolourings in three cases (removeFixupCase1-3), mirroring 2-4 borrows and merges.",
+      "locator": "ods:redblack#removal",
+      "prereqs": [
+        "ods:red-black-add"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:red-black-performance",
+      "name": "Red-black tree performance",
+      "kind": "result",
+      "statement": "A RedBlackTree implements SSet with add, remove and find in O(log n) worst-case time, and any m add/remove operations spend only O(m) total time in addFixup and removeFixup (amortized O(1) restructuring, by the potential method).",
+      "locator": "ods:redblack#sec:redblack-summary",
+      "prereqs": [
+        "ods:red-black-properties"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:eytzinger",
+      "name": "Eytzinger layout (implicit binary tree in an array)",
+      "kind": "skill",
+      "statement": "Store a complete binary tree in an array in breadth-first order: root at 0, left(i) = 2i+1, right(i) = 2i+2, parent(i) = (i-1)/2.",
+      "locator": "ods:heaps#sec:binaryheap",
+      "prereqs": [
+        "ods:binary-tree-terms",
+        "ods:arraystack"
+      ],
+      "aliases": [
+        "implicit binary tree",
+        "array representation of a heap"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:heap-property",
+      "name": "Heap property",
+      "kind": "definition",
+      "statement": "In a (min-)heap the value stored at every non-root index i is not smaller than the value at parent(i), so the root a[0] holds the minimum.",
+      "locator": "ods:heaps#sec:binaryheap",
+      "prereqs": [
+        "ods:eytzinger"
+      ],
+      "aliases": [
+        "heap order",
+        "min-heap"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:binary-heap",
+      "name": "BinaryHeap",
+      "kind": "result",
+      "statement": "A priority Queue on an Eytzinger array: add(x) appends x and bubbleUp swaps it with its parent while smaller; remove() moves the last element to the root and trickleDown swaps it with its smaller child. Both take O(log n), with O(m) total resize cost.",
+      "locator": "ods:heaps#thm:binaryheap",
+      "prereqs": [
+        "ods:heap-property",
+        "ods:priority-queue-interface",
+        "ods:arraystack-amortized-resize"
+      ],
+      "aliases": [
+        "binary heap"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:meldable-heap",
+      "name": "MeldableHeap (randomized meldable heap)",
+      "kind": "result",
+      "statement": "A heap-ordered binary tree with no shape constraint; merge(h1,h2) keeps the smaller root and recursively merges the other heap into a randomly chosen child. add and remove are merges, each O(log n) expected.",
+      "locator": "ods:heaps#sec:meldableheap",
+      "prereqs": [
+        "ods:heap-property",
+        "ods:random-walk-binary-tree"
+      ],
+      "aliases": [
+        "randomized meldable heap"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:random-walk-binary-tree",
+      "name": "Random walks in binary trees",
+      "kind": "result",
+      "statement": "A walk from the root that goes to a random child at each step until it falls off the tree has expected length at most log(n+1) in any binary tree with n nodes.",
+      "locator": "ods:heaps#lem:tree-random-walk",
+      "prereqs": [
+        "ods:binary-tree-terms",
+        "ods:linearity-of-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:comparison-sorting",
+      "name": "Comparison-based sorting",
+      "kind": "definition",
+      "statement": "A sorting algorithm that examines elements only through compare(a,b), so it works for any data type; merge-sort, quicksort and heap-sort sort into non-decreasing order in O(n log n) (expected) time.",
+      "locator": "ods:sorting#comparison-based-sorting",
+      "prereqs": [
+        "ods:sset-interface",
+        "ods:big-oh"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:merge-sort",
+      "name": "Merge-sort",
+      "kind": "result",
+      "statement": "Divide and conquer: split a into halves a0 and a1, sort each recursively, then merge them. It runs in O(n log n) time and performs at most n log n comparisons.",
+      "locator": "ods:sorting#sec:merge-sort",
+      "prereqs": [
+        "ods:comparison-sorting"
+      ],
+      "aliases": [
+        "mergesort"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:quicksort",
+      "name": "Quicksort",
+      "kind": "result",
+      "statement": "Pick a uniformly random pivot x, partition a in place into elements < x, = x and > x, and recursively sort the first and third parts. Expected time O(n log n), with at most 2n ln n + O(n) expected comparisons.",
+      "locator": "ods:sorting#quicksort",
+      "prereqs": [
+        "ods:comparison-sorting",
+        "ods:three-way-partition"
+      ],
+      "aliases": [
+        "quick sort"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:three-way-partition",
+      "name": "In-place three-way partitioning",
+      "kind": "skill",
+      "statement": "Scan the subarray with three indices so that, at the end, a[i..p] < x, a[p+1..q-1] = x and a[q..i+n-1] > x, swapping elements into place without extra arrays.",
+      "locator": "ods:sorting#quicksort",
+      "prereqs": [
+        "ods:comparison-sorting"
+      ],
+      "aliases": [
+        "Dutch national flag partition"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:quicksort-analysis",
+      "name": "Quicksort comparison analysis",
+      "kind": "result",
+      "statement": "On 0..n-1, element i is compared with a pivot an expected at most H_{i+1} + H_{n-i} times (the same argument as random BST search paths), so the expected total number of comparisons is at most 2n ln n + O(n).",
+      "locator": "ods:sorting#lem:quicksort",
+      "prereqs": [
+        "ods:quicksort",
+        "ods:random-bst"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:bottom-up-heapify",
+      "name": "Bottom-up heap construction in O(n)",
+      "kind": "result",
+      "statement": "Turn an array into a heap by calling trickleDown(i) for i = floor(n/2)-1 down to 0; since about n/2^k nodes have subtrees of height k-1, total work is O(n sum i/2^i) = O(n), better than n add(x) calls.",
+      "locator": "ods:sorting#sec:heapsort",
+      "prereqs": [
+        "ods:binary-heap",
+        "ods:coin-toss-expectation"
+      ],
+      "aliases": [
+        "heapify",
+        "build-heap"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:heap-sort",
+      "name": "Heap-sort",
+      "kind": "result",
+      "statement": "Build a heap in a, then repeatedly swap a[0] with a[n-1], decrement n and trickleDown(0); reverse at the end (the min-heap leaves a in decreasing order). In place, O(n log n) time, at most 2n log n + O(n) comparisons.",
+      "locator": "ods:sorting#sec:heapsort",
+      "prereqs": [
+        "ods:bottom-up-heapify"
+      ],
+      "aliases": [
+        "heapsort"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:sorting-lower-bound",
+      "name": "Comparison-sorting lower bound",
+      "kind": "result",
+      "statement": "Model a deterministic comparison sort as a binary comparison tree with at least n! leaves; some input needs at least log(n!) = n log n - O(n) comparisons. Even a randomized algorithm needs that many comparisons in expectation on a random permutation.",
+      "locator": "ods:sorting#thm:deterministic-sorting-lower-bound",
+      "prereqs": [
+        "ods:comparison-sorting",
+        "ods:factorials-stirling"
+      ],
+      "aliases": [
+        "decision tree lower bound"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:counting-sort",
+      "name": "Counting sort",
+      "kind": "result",
+      "statement": "To sort n integers in {0..k-1}, count occurrences in c, take prefix sums so c[i] gives final positions, then place elements into output b scanning a from right to left (stable). O(n+k) time, beating the comparison bound because a[i] is used as an array index.",
+      "locator": "ods:sorting#counting-sort",
+      "prereqs": [
+        "ods:sorting-lower-bound"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:radix-sort",
+      "name": "Radix sort",
+      "kind": "result",
+      "statement": "Sort w-bit integers in w/d passes of counting sort on successive d-bit digits, least significant first, relying on stability; O((w/d)(n + 2^d)) time, so integers in {0..n^c-1} sort in O(cn) time.",
+      "locator": "ods:sorting#thm:radix-sort",
+      "prereqs": [
+        "ods:counting-sort"
+      ],
+      "aliases": [
+        "LSD radix sort"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:graph-definitions",
+      "name": "Graph terminology",
+      "kind": "definition",
+      "statement": "A directed graph G = (V,E) has vertices and ordered-pair edges (i,j) from source i to target j; a path is a vertex sequence joined by edges, a cycle also returns to its start, a simple path repeats no vertex, and j is reachable from i if a path exists. n = |V|, m = |E|, V = {0..n-1}.",
+      "locator": "ods:graphs#chap:graphs",
+      "prereqs": [],
+      "aliases": [
+        "digraph",
+        "directed graph"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:graph-interface",
+      "name": "Graph operations",
+      "kind": "definition",
+      "statement": "Typical operations are addEdge(i,j), removeEdge(i,j), hasEdge(i,j), outEdges(i) and inEdges(i); which representation is best depends on which operations the application needs fast.",
+      "locator": "ods:graphs#chap:graphs",
+      "prereqs": [
+        "ods:graph-definitions",
+        "ods:list-interface"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:adjacency-matrix",
+      "name": "Adjacency matrix",
+      "kind": "result",
+      "statement": "An n x n boolean matrix a with a[i][j] true iff (i,j) is in E: addEdge, removeEdge and hasEdge take O(1), outEdges and inEdges take O(n), and space is O(n^2).",
+      "locator": "ods:graphs#sec:adjacency-matrix",
+      "prereqs": [
+        "ods:graph-interface"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:adjacency-lists",
+      "name": "Adjacency lists",
+      "kind": "result",
+      "statement": "An array adj of n lists with adj[i] holding the out-neighbours of i: addEdge O(1); removeEdge and hasEdge O(deg(i)); outEdges O(1) in the Java edition and O(deg(i)) in the C++ edition; inEdges O(n+m) because it scans every list; space O(n+m).",
+      "locator": "ods:graphs#sec:adjacency-list",
+      "prereqs": [
+        "ods:graph-interface",
+        "ods:arraystack"
+      ],
+      "aliases": [
+        "adjacency list"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:bfs",
+      "name": "Breadth-first search",
+      "kind": "result",
+      "statement": "bfs(g,r) generalizes level-order traversal: a queue starts with r and a boolean array seen ensures each vertex is enqueued once; on adjacency lists it runs in O(n+m) time.",
+      "locator": "ods:graphs#breadth-first-search",
+      "prereqs": [
+        "ods:adjacency-lists",
+        "ods:breadth-first-traversal"
+      ],
+      "aliases": [
+        "BFS"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:bfs-shortest-paths",
+      "name": "BFS shortest paths in unweighted graphs",
+      "kind": "result",
+      "statement": "BFS visits vertices in increasing distance from r and never visits unreachable ones; recording p[j] = i when j is first enqueued gives a BFS tree, and following p[j], p[p[j]], ... reconstructs a shortest path from r to j in reverse.",
+      "locator": "ods:graphs#breadth-first-search",
+      "prereqs": [
+        "ods:bfs"
+      ],
+      "aliases": [
+        "BFS tree"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:dfs",
+      "name": "Depth-first search",
+      "kind": "result",
+      "statement": "Recursive dfs colours a vertex grey on entry, recursively visits each white neighbour, then colours it black (white = unseen, grey = active, black = done); on adjacency lists it runs in O(n+m) time.",
+      "locator": "ods:graphs#depth-first-search",
+      "prereqs": [
+        "ods:adjacency-lists",
+        "ods:traversal-orders"
+      ],
+      "aliases": [
+        "DFS"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:dfs-iterative",
+      "name": "Iterative DFS with an explicit stack",
+      "kind": "skill",
+      "statement": "Recursive DFS can overflow the call stack on large graphs; dfs2 replaces recursion with an explicit stack s: a popped vertex i is coloured grey and replaced on the stack by its adjacent vertices, one of which is visited next. Same O(n+m) time.",
+      "locator": "ods:graphs#depth-first-search",
+      "prereqs": [
+        "ods:dfs",
+        "ods:stack-interface"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:traversal-cost-reachable",
+      "name": "Traversal cost restricted to the reachable part",
+      "kind": "result",
+      "statement": "bfs and dfs from r on adjacency lists run in O(n_r + m_r) time, where n_r counts vertices reachable from r and m_r the edges whose sources are those vertices; used by several of the chapter's exercises.",
+      "locator": "ods:graphs#thm:graph-traversal",
+      "prereqs": [
+        "ods:bfs",
+        "ods:dfs"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:binary-trie",
+      "name": "BinaryTrie",
+      "kind": "result",
+      "statement": "Store w-bit integers as root-to-leaf paths of depth w (bit 0 left, 1 right); leaves form a doubly-linked list and a node missing a child keeps a jump pointer to the smallest or largest leaf in its subtree. add, remove and find (successor) take O(w) time; space O(nw).",
+      "locator": "ods:integers#sec:binarytrie",
+      "prereqs": [
+        "ods:dllist",
+        "ods:sset-interface",
+        "ods:word-ram"
+      ],
+      "aliases": [
+        "bitwise trie",
+        "digital search tree"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:xfast-trie",
+      "name": "XFastTrie",
+      "kind": "result",
+      "statement": "Add one hash table per trie level holding the prefixes present; find(x) binary searches over prefix length for the deepest node on x's path, giving O(log w) expected find, while add and remove take O(w) expected; space O(nw).",
+      "locator": "ods:integers#sec:xfast",
+      "prereqs": [
+        "ods:binary-trie",
+        "ods:hashing-with-chaining"
+      ],
+      "aliases": [
+        "x-fast trie"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:yfast-trie",
+      "name": "YFastTrie",
+      "kind": "result",
+      "statement": "Keep about one in w elements (each sampled with probability 1/w) in an XFastTrie and store the elements between consecutive samples in treaps of expected size at most 2w-1; add, remove and find take O(log w) expected time and space is O(n+w).",
+      "locator": "ods:integers#sec:yfast",
+      "prereqs": [
+        "ods:xfast-trie",
+        "ods:treap"
+      ],
+      "aliases": [
+        "y-fast trie"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:external-memory-model",
+      "name": "External memory model",
+      "kind": "definition",
+      "statement": "Data lives in external memory divided into blocks of B words; transferring a block costs one unit and computation in internal memory is free, so cost counts block reads and writes. A BlockStore offers readBlock, writeBlock, placeBlock and freeBlock.",
+      "locator": "ods:btree#chap:btree",
+      "prereqs": [
+        "ods:word-ram"
+      ],
+      "aliases": [
+        "I/O model",
+        "disk access model"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:b-tree-structure",
+      "name": "B-tree structure",
+      "kind": "definition",
+      "statement": "For B >= 2, all leaves have the same depth, every non-root internal node has between B and 2B children (the root 2 to 2B), and a node with k children stores k-1 sorted keys separating the children's subtrees. Height is O(log_B n).",
+      "locator": "ods:btree#sec:btree",
+      "prereqs": [
+        "ods:external-memory-model",
+        "ods:two-four-tree"
+      ],
+      "aliases": [
+        "B-tree"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:b-tree-search",
+      "name": "B-tree search",
+      "kind": "skill",
+      "statement": "find(x) descends from the root; at each node binary search (findIt, O(log B)) finds the smallest key > x, continuing in that child, and the most recent such key z is returned as the successor when x is absent.",
+      "locator": "ods:btree#searching",
+      "prereqs": [
+        "ods:b-tree-structure",
+        "ods:bst-search"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:b-tree-add",
+      "name": "B-tree insertion with splits",
+      "kind": "skill",
+      "statement": "addRecursive inserts x into a leaf; a node that overflows to 2B keys (2B+1 children) is split: a new node w takes the B largest keys and the last B+1 children and the middle key moves up to the parent, possibly cascading to the root, which grows the tree by one level.",
+      "locator": "ods:btree#addition",
+      "prereqs": [
+        "ods:b-tree-search",
+        "ods:two-four-updates"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:b-tree-remove",
+      "name": "B-tree deletion with borrow and merge",
+      "kind": "skill",
+      "statement": "removeRecursive deletes from a leaf (replacing an internal key by the smallest in its right subtree); a node left with fewer than B-1 keys underflows, and checkUnderflow fixes it by borrowing keys from a sibling or merging with it; merges can cascade up and shrink the root.",
+      "locator": "ods:btree#removal",
+      "prereqs": [
+        "ods:b-tree-add"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "ods:b-tree-performance",
+      "name": "B-tree performance",
+      "kind": "result",
+      "statement": "In the external memory model add, remove and find take O(log_B n) block transfers. In the word-RAM, find is O(log n), and any m updates cause at most 3m/2 splits, merges and borrows (O(Bm) total time), proved by a credit scheme on nodes by key count.",
+      "locator": "ods:btree#sec:btree-amortized",
+      "prereqs": [
+        "ods:b-tree-remove",
+        "ods:potential-method"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    }
+  ],
+  "exercise_counts": [
+    {
+      "locator": "ods:intro#discussion-and-exercises",
+      "printed": 7,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:arrays#discussion-and-exercises",
+      "printed": 13,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:linkedlists#discussion-and-exercises",
+      "printed": 19,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:skiplists#discussion-and-exercises",
+      "printed": 15,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:hashing#discussion-and-exercises",
+      "printed": 11,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:binarytrees#discussion-and-exercises",
+      "printed": 19,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:rbs#discussion-and-exercises",
+      "printed": 14,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:scapegoat#discussion-and-exercises",
+      "printed": 11,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:redblack#discussion-and-exercises",
+      "printed": 14,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:heaps#discussion-and-exercises",
+      "printed": 11,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:sorting#discussion-and-exercises",
+      "printed": 14,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:graphs#discussion-and-exercises",
+      "printed": 10,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:integers#discussion-and-exercises",
+      "printed": 4,
+      "keyed": 0
+    },
+    {
+      "locator": "ods:btree#discussion-and-exercises",
+      "printed": 8,
+      "keyed": 0
+    }
+  ]
+}
