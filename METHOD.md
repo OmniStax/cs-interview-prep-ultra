@@ -559,6 +559,14 @@ because prerequisites force the order and each concept gets one home.
       concept in it whose tier differs.
     - Nothing else in the app changes. Practice sessions don't filter by
       tier.
+14. B-tree internals are Advanced: the database-indexes → B-tree edge is
+    cut (knowing an index is a B-tree is Essential; its operations aren't).
+15. OI Wiki (CC BY-SA 4.0 + SATA) is usable, translated from Chinese under
+    `docs/prompts/translate.md` and AI-marked as a translation. Its SATA
+    terms need the authors thanked in the attribution and the repo starred
+    from the owner's account (a person does that, not Claude). doocs/leetcode
+    solution write-ups are usable, each paired with an open exercise that
+    poses the same problem, since LeetCode's statements can't be copied.
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
