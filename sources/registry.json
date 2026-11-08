@@ -1509,6 +1509,111 @@
       "use": "prose for the stretch tier of dynamic arrays (doubling, space lower bounds)",
       "format": "LaTeX source (src/arXiv-ver2.tex) and PDF",
       "locator": "arxiv-2211.11009:<section number>"
+    },
+    {
+      "id": "mcs2018",
+      "title": "Mathematics for Computer Science (2018 edition)",
+      "authors": [
+        "Eric Lehman",
+        "F. Thomson Leighton",
+        "Albert R. Meyer"
+      ],
+      "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf",
+      "pin": "PDF build stamp 'mcs — 2018/6/6 — 13:43', fetched 2026-11-08",
+      "licence": "CC BY-SA 3.0",
+      "licence_evidence": {
+        "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf",
+        "quote": "2018, Eric Lehman, F Tom Leighton, Albert R Meyer. This work is available under the terms of the Creative Commons Attribution-ShareAlike 3.0 license."
+      },
+      "use": "prose and exercises (unkeyed homework problems): DAGs and topological sort by repeatedly taking minimal elements (10.5), counting sequences, subsets and permutations (15.2-15.6), generating functions for making change (16.x problems). BY-SA 3.0 may be adapted under BY-SA 4.0. Supersedes the NC 2015 copy in sources/_cache/mcs/ for licence purposes",
+      "format": "PDF (text via pdftotext -layout in mcs-2018.txt)",
+      "locator": "mcs2018:<section number>, e.g. mcs2018:10.5.1; problems mcs2018:problem.<chapter>.<n>, e.g. mcs2018:problem.16.7"
+    },
+    {
+      "id": "aspnes-223",
+      "title": "Notes on Data Structures and Programming Techniques (CPSC 223, Spring 2022)",
+      "authors": [
+        "James Aspnes"
+      ],
+      "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html",
+      "pin": "HTML fetched 2026-11-08 (copyright line 2001–2021)",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html",
+        "quote": "Copyright © 2001–2021 by James Aspnes. Distributed under a Creative Commons Attribution-ShareAlike 4.0 International license: https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "use": "prose: C programming, recursion, linked structures, queues/deques, heaps, BSTs, hash tables, graphs and DFS/BFS (5.14), dynamic programming (5.15: memoization, LIS, APSP, LCS), tries, strings. Earlier sweeps recorded www.cs.yale.edu as blocked; it is now reachable. Linked example .c files carry their own headers (not checked)",
+      "format": "single HTML page (pandoc), headings with ids; tag-stripped copy notes223.txt",
+      "locator": "aspnes-223:<heading id>, e.g. aspnes-223:dynamicProgramming"
+    },
+    {
+      "id": "aspnes-202",
+      "title": "Notes on Discrete Mathematics (CPSC 202)",
+      "authors": [
+        "James Aspnes"
+      ],
+      "url": "https://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf",
+      "pin": "PDF fetched 2026-11-08 (copyright line 2004–2022)",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://www.cs.yale.edu/homes/aspnes/classes/202/notes.pdf",
+        "quote": "Copyright © 2004–2022 by James Aspnes. Distributed under a Creative Commons Attribution-ShareAlike 4.0 International license: https://creativecommons.org/licenses/by-sa/4.0/."
+      },
+      "use": "prose and exercises: relations and partial orders, topological sort as repeated selection of a minimal element (9.5.5.1), counting and binomial coefficients (11)",
+      "format": "PDF (text via pdftotext -layout in notes202.txt)",
+      "locator": "aspnes-202:<section number>, e.g. aspnes-202:9.5.5.1"
+    },
+    {
+      "id": "doocs-leetcode",
+      "title": "doocs/leetcode: solution write-ups (English README_EN.md)",
+      "authors": [
+        "doocs contributors (Yang Libin et al.)"
+      ],
+      "url": "https://github.com/doocs/leetcode",
+      "pin": "2c124ec6e750464233305ca9cb7acb6c056a3189 (38 solution READMEs, sparse)",
+      "licence": "CC BY-SA 4.0 (solution prose); problem descriptions are LeetCode's text and link-only",
+      "licence_evidence": {
+        "url": "https://github.com/doocs/leetcode/blob/main/README_EN.md",
+        "quote": "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
+      },
+      "use": "prose: only the text between <!-- solution:start --> and <!-- solution:end --> (approach, complexity). The text between <!-- description:start --> and <!-- description:end --> copies LeetCode problem statements, which doocs cannot license: link-only. Each write-up assumes its LeetCode problem, so a passage needs the problem restated from an open source or in the book's own frame",
+      "format": "Markdown, solution/<range>/<nnnn>.<Title>/README_EN.md with code tabs",
+      "locator": "doocs-leetcode:<nnnn>#<solution heading>, e.g. doocs-leetcode:0239#Solution 2: Monotonic Queue"
+    },
+    {
+      "id": "tryalgo",
+      "title": "tryalgo: algorithms and data structures for programming competitions (code)",
+      "authors": [
+        "Jill-Jênn Vie",
+        "Christoph Dürr"
+      ],
+      "url": "https://github.com/jilljenn/tryalgo",
+      "pin": "7013c053a1c4811055dd3e16c5d95657b72aee55",
+      "licence": "MIT (code and tests); the companion book is a separate commercial publication and link-only",
+      "licence_evidence": {
+        "url": "https://github.com/jilljenn/tryalgo/blob/master/LICENSE",
+        "quote": "The MIT License (MIT) Copyright (c) 2016 Jill-Jênn Vie"
+      },
+      "use": "test cases and reference implementations (Python unittest in tests/): windows_k_distinct (sliding window), topological_order (in-degree / Kahn), intervals_union, max_interval_intersec (sweep line), interval_cover, next_permutation, merge_ordered_lists, subsetsum, closest_values",
+      "format": "Python package tryalgo/*.py with docstrings; tests/test_tryalgo.py",
+      "locator": "tryalgo:<module>::<function>, e.g. tryalgo:topological_order::topological_order"
+    },
+    {
+      "id": "oiwiki",
+      "title": "OI Wiki (Chinese competitive-programming wiki), selected pages",
+      "authors": [
+        "OI Wiki Team"
+      ],
+      "url": "https://github.com/OI-wiki/OI-wiki",
+      "pin": "c794414827bc5421fa1a463eb1a15ffc7941a1db (sparse: 15 pages)",
+      "licence": "unclear: CC BY-SA 4.0 plus the additional SATA licence (conjunctive); needs a ruling before use",
+      "licence_evidence": {
+        "url": "https://github.com/OI-wiki/OI-wiki/blob/master/README.md",
+        "quote": "除特别注明外，项目中除了代码部分均采用 (Creative Commons BY-SA 4.0) 知识共享署名 - 相同方式共享 4.0 国际许可协议及附加的 The Star And Thank Author License 进行许可。"
+      },
+      "use": "link-only until ruled: prose in Chinese (would need translation) on two pointers (misc/two-pointer), prefix sums and difference arrays in 1D/2D/tree form (basic/prefix-sum), monotonic queue / sliding window (ds/monotonic-queue), Kahn's algorithm (graph/topo), sweep line (geometry/scanning), backtracking, permutations, combinations, Gray code, knapsack. SATA 2.0 adds an MIT-style notice condition and a request to star the repo and thank the authors ('you can just express thanks in your mind'); code is excluded from the CC grant",
+      "format": "Markdown under docs/ (MkDocs), Chinese",
+      "locator": "oiwiki:<docs path without .md>#<heading>, e.g. oiwiki:basic/prefix-sum#一维差分"
     }
   ]
 }
