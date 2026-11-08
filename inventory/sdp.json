@@ -1,0 +1,4031 @@
+{
+  "source": "sdp",
+  "concepts": [
+    {
+      "id": "sdp:interview-approach",
+      "name": "Four-step system design interview approach",
+      "kind": "skill",
+      "statement": "Lead the open-ended conversation in four steps: outline use cases, constraints and assumptions; sketch a high-level design of the main components and connections and justify it; dive into the core components; then identify and address bottlenecks, discussing trade-offs, since everything is a trade-off.",
+      "locator": "sdp:#how-to-approach-a-system-design-interview-question",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Step 2 'Create a high level design' is two bullets in the README; every worked design's Step 2 is an image with no prose."
+    },
+    {
+      "id": "sdp:requirements-scoping",
+      "name": "Scoping use cases, constraints and assumptions",
+      "kind": "skill",
+      "statement": "Ask who uses the system and how, how many users, what it does, its inputs and outputs, how much data, how many requests per second and the read:write ratio; then fix in-scope and out-of-scope use cases and state assumptions (e.g. traffic not evenly distributed).",
+      "locator": "sdp:#step-1-outline-use-cases-constraints-and-assumptions",
+      "prereqs": [
+        "sdp:interview-approach"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Applied in every worked design under 'Use cases', 'Out of scope' and 'State assumptions'."
+    },
+    {
+      "id": "sdp:core-component-design",
+      "name": "Designing core components per use case",
+      "kind": "skill",
+      "statement": "For each use case, trace the data flow through named services (client, web server, API servers, services, stores), give table schemas with their indexes, a public REST API and internal RPC, and ask the interviewer how much code to write.",
+      "locator": "sdp:#step-3-design-core-components",
+      "prereqs": [
+        "sdp:interview-approach"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "README text is a bullet outline using the URL shortener as example; the worked designs' Step 3 sections are the real treatment."
+    },
+    {
+      "id": "sdp:rate-conversion",
+      "name": "Requests-per-month conversion",
+      "kind": "result",
+      "statement": "A month has about 2.5 million seconds, so 1 request/s is about 2.5 million requests/month, 40 requests/s about 100 million and 400 requests/s about 1 billion.",
+      "locator": "sdp:solutions/pastebin#calculate-usage",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "The 'Handy conversion guide' is repeated verbatim in every worked design."
+    },
+    {
+      "id": "sdp:powers-of-two",
+      "name": "Powers of two table",
+      "kind": "definition",
+      "statement": "2^10 is about a thousand (1 KB), 2^20 about a million (1 MB), 2^30 about a billion (1 GB), 2^32 about 4 billion (4 GB), 2^40 about a trillion (1 TB).",
+      "locator": "sdp:#powers-of-two-table",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:latency-numbers",
+      "name": "Latency numbers every programmer should know",
+      "kind": "result",
+      "statement": "Reference costs: L1 reference 0.5 ns, main memory 100 ns, 1 KB over 1 Gbps 10 us, 4 KB random SSD read 150 us, 1 MB sequential from memory 250 us, datacenter round trip 500 us, 1 MB from SSD 1 ms, disk seek 10 ms, 1 MB from disk 30 ms, California-Netherlands round trip 150 ms; hence disk about 30 MB/s, 1 Gbps about 100 MB/s, SSD about 1 GB/s, memory about 4 GB/s, about 2,000 datacenter round trips per second.",
+      "locator": "sdp:#latency-numbers-every-programmer-should-know",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "The worked designs cite it as 'reading 1 MB from memory takes ~250 us; SSD 4x, disk 80x longer'. The visualised version is an external image."
+    },
+    {
+      "id": "sdp:back-of-envelope",
+      "name": "Back-of-the-envelope estimation",
+      "kind": "skill",
+      "statement": "Turn stated assumptions into size per item, new storage per month and per 3 years, and average reads, writes and searches per second, then use those numbers to justify components (e.g. 4 writes/s fits one SQL master; 60,000 fan-out deliveries/s does not).",
+      "locator": "sdp:#back-of-the-envelope-calculations",
+      "prereqs": [
+        "sdp:requirements-scoping",
+        "sdp:powers-of-two",
+        "sdp:latency-numbers",
+        "sdp:rate-conversion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "README section is three links; the method is shown by the 'Calculate usage' blocks of all 8 worked designs."
+    },
+    {
+      "id": "sdp:iterative-scaling",
+      "name": "Iterative scaling loop",
+      "kind": "skill",
+      "statement": "Scale a design iteratively: benchmark or load test, profile for bottlenecks, address them while weighing alternatives and trade-offs, and repeat; don't jump from the initial design straight to the final one.",
+      "locator": "sdp:solutions/scaling_aws#use-cases",
+      "prereqs": [
+        "sdp:interview-approach"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Also stated in every worked design's Step 4 ('Important: Do not simply jump right into the final design')."
+    },
+    {
+      "id": "sdp:performance-vs-scalability",
+      "name": "Performance vs scalability",
+      "kind": "definition",
+      "statement": "A service is scalable if its performance increases in proportion to resources added; with a performance problem the system is slow for a single user, with a scalability problem it is fast for one user but slow under heavy load.",
+      "locator": "sdp:#performance-vs-scalability",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:latency-vs-throughput",
+      "name": "Latency vs throughput",
+      "kind": "definition",
+      "statement": "Latency is the time to perform an action or produce a result; throughput is the number of such actions or results per unit time; aim for maximal throughput with acceptable latency.",
+      "locator": "sdp:#latency-vs-throughput",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:cap-theorem",
+      "name": "CAP theorem",
+      "kind": "result",
+      "statement": "A distributed system can support only two of consistency (every read receives the most recent write or an error), availability (every request receives a response, possibly not the latest) and partition tolerance (it keeps operating despite network partitions); networks are unreliable, so the real choice is between consistency and availability.",
+      "locator": "sdp:#cap-theorem",
+      "prereqs": [],
+      "aliases": [
+        "CAP"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:weak-consistency",
+      "name": "Weak consistency",
+      "kind": "definition",
+      "statement": "After a write, reads may or may not see it (best effort), as in memcached; suits realtime uses such as VoIP, video chat and multiplayer games.",
+      "locator": "sdp:#weak-consistency",
+      "prereqs": [
+        "sdp:cap-theorem"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:eventual-consistency",
+      "name": "Eventual consistency",
+      "kind": "definition",
+      "statement": "After a write, reads eventually see it (typically within milliseconds) because data is replicated asynchronously, as in DNS and email; suits highly available systems.",
+      "locator": "sdp:#eventual-consistency",
+      "prereqs": [
+        "sdp:cap-theorem"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:strong-consistency",
+      "name": "Strong consistency",
+      "kind": "definition",
+      "statement": "After a write, reads see it because data is replicated synchronously, as in file systems and RDBMSes; suits systems that need transactions.",
+      "locator": "sdp:#strong-consistency",
+      "prereqs": [
+        "sdp:cap-theorem"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:cp-vs-ap",
+      "name": "CP vs AP systems",
+      "kind": "idea",
+      "statement": "A CP system waits for the partitioned node and may time out, a good choice when the business needs atomic reads and writes; an AP system answers with the most readily available, possibly stale, data and propagates writes once the partition heals, a good choice when eventual consistency is acceptable or the system must keep working despite external errors.",
+      "locator": "sdp:#cp---consistency-and-partition-tolerance",
+      "prereqs": [
+        "sdp:eventual-consistency"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:active-passive-failover",
+      "name": "Active-passive fail-over",
+      "kind": "definition",
+      "statement": "Heartbeats run between an active server and a standby; if they stop, the passive server takes over the active's IP address. Downtime depends on hot or cold standby, and only the active server handles traffic (also called master-slave failover).",
+      "locator": "sdp:#active-passive",
+      "prereqs": [],
+      "aliases": [
+        "master-slave failover",
+        "hot standby",
+        "cold standby"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Fail-over drawbacks (#disadvantages-failover): more hardware and complexity, and data written before replication can be lost."
+    },
+    {
+      "id": "sdp:active-active-failover",
+      "name": "Active-active fail-over",
+      "kind": "definition",
+      "statement": "Both servers handle traffic and share the load; for public-facing servers DNS must know both public IPs, for internal ones application logic must know both (also called master-master failover).",
+      "locator": "sdp:#active-active",
+      "prereqs": [],
+      "aliases": [
+        "master-master failover"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:availability-nines",
+      "name": "Availability in nines",
+      "kind": "definition",
+      "statement": "Availability is uptime as a percentage of time, counted in 9s: 99.9% allows about 8h 46m downtime a year (1m 26s a day), 99.99% about 52m 36s a year (8.6s a day).",
+      "locator": "sdp:#availability-in-numbers",
+      "prereqs": [],
+      "aliases": [
+        "three nines",
+        "four nines",
+        "uptime"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:availability-composition",
+      "name": "Availability in sequence vs in parallel",
+      "kind": "result",
+      "statement": "Components in sequence multiply availabilities, A = A_foo * A_bar (two 99.9% parts give 99.8%); components in parallel give A = 1 - (1 - A_foo)(1 - A_bar) (two 99.9% parts give 99.9999%).",
+      "locator": "sdp:#availability-in-parallel-vs-in-sequence",
+      "prereqs": [
+        "sdp:availability-nines"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:dns",
+      "name": "Domain name system",
+      "kind": "definition",
+      "statement": "DNS translates a domain name to an IP address through a hierarchy of servers topped by a few authoritative ones; lower-level servers, the OS and the browser cache answers for a TTL, so mappings can go stale. Lookups add a small delay, management is complex, and DNS services can be taken down by DDoS.",
+      "locator": "sdp:#domain-name-system",
+      "prereqs": [],
+      "aliases": [
+        "DNS",
+        "TTL"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:dns-records",
+      "name": "DNS record types",
+      "kind": "definition",
+      "statement": "NS names the DNS servers for a domain, MX the mail servers, A points a name to an IP address, CNAME points a name to another name or to an A record.",
+      "locator": "sdp:#domain-name-system",
+      "prereqs": [
+        "sdp:dns"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:dns-traffic-routing",
+      "name": "DNS traffic routing",
+      "kind": "idea",
+      "statement": "Managed DNS such as Route 53 or CloudFlare can route by weighted round robin (keep traffic off servers in maintenance, balance unequal clusters, A/B test), by latency or by geolocation.",
+      "locator": "sdp:#domain-name-system",
+      "prereqs": [
+        "sdp:dns"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:cdn",
+      "name": "Content delivery network",
+      "kind": "definition",
+      "statement": "A CDN is a globally distributed network of proxy servers serving content, usually static files, from locations close to the user; users get faster responses and your servers skip the requests the CDN fulfils. Costs, content stale until its TTL expires, and URLs rewritten to point at the CDN are the drawbacks.",
+      "locator": "sdp:#content-delivery-network",
+      "prereqs": [
+        "sdp:dns"
+      ],
+      "aliases": [
+        "CDN"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:push-vs-pull-cdn",
+      "name": "Push vs pull CDNs",
+      "kind": "idea",
+      "statement": "A push CDN receives content you upload whenever it changes, minimising traffic but maximising storage, and suits low-traffic or rarely updated sites; a pull CDN fetches content from your server on first request and caches it for a TTL, minimising storage but making the first request slow and possibly re-pulling unchanged files, and suits heavy traffic.",
+      "locator": "sdp:#push-cdns",
+      "prereqs": [
+        "sdp:cdn"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:load-balancer",
+      "name": "Load balancer",
+      "kind": "definition",
+      "statement": "A load balancer distributes client requests to application servers or databases and returns their responses, keeping requests off unhealthy servers, preventing overload and helping remove a single point of failure; it can also terminate SSL and keep session persistence. One load balancer is itself a single point of failure, so several run in active-passive or active-active mode, at the cost of complexity.",
+      "locator": "sdp:#load-balancer",
+      "prereqs": [
+        "sdp:active-passive-failover",
+        "sdp:active-active-failover"
+      ],
+      "aliases": [
+        "LB",
+        "SSL termination",
+        "session persistence"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:lb-routing-methods",
+      "name": "Load balancer routing methods",
+      "kind": "idea",
+      "statement": "Load balancers can route by random choice, least loaded, session or cookie, round robin or weighted round robin, or by layer 4 or layer 7 information.",
+      "locator": "sdp:#load-balancer",
+      "prereqs": [
+        "sdp:load-balancer"
+      ],
+      "aliases": [
+        "round robin",
+        "least connections"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:l4-vs-l7-lb",
+      "name": "Layer 4 vs layer 7 load balancing",
+      "kind": "definition",
+      "statement": "A layer 4 balancer looks only at transport-layer source and destination IPs and ports and forwards packets with NAT; a layer 7 balancer terminates the connection, reads headers, message and cookies, and routes by content (e.g. video traffic to video hosts, billing to hardened servers). Layer 4 needs less time and compute, layer 7 is more flexible.",
+      "locator": "sdp:#layer-4-load-balancing",
+      "prereqs": [
+        "sdp:lb-routing-methods",
+        "sdp:tcp",
+        "sdp:http"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:horizontal-scaling",
+      "name": "Horizontal vs vertical scaling",
+      "kind": "definition",
+      "statement": "Scaling out on commodity machines behind load balancers is cheaper and more available than scaling up a single server on bigger hardware (vertical scaling), and easier to hire for; it costs complexity, cloned servers, and more simultaneous connections on downstream caches and databases.",
+      "locator": "sdp:#horizontal-scaling",
+      "prereqs": [
+        "sdp:load-balancer"
+      ],
+      "aliases": [
+        "scale out",
+        "scale up",
+        "vertical scaling"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "scaling_aws starts with a single box and vertical scaling ('No redundancy/failover'), then moves to horizontal scaling at Users++."
+    },
+    {
+      "id": "sdp:stateless-servers",
+      "name": "Stateless web and application servers",
+      "kind": "idea",
+      "statement": "Servers that scale horizontally should be stateless: sessions and user data such as profile pictures live in a central database or persistent cache (Redis, Memcached), not on the server.",
+      "locator": "sdp:#disadvantages-horizontal-scaling",
+      "prereqs": [
+        "sdp:horizontal-scaling"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "scaling_aws Users+++ moves session data to the Memory Cache so web servers become stateless and can autoscale."
+    },
+    {
+      "id": "sdp:reverse-proxy",
+      "name": "Reverse proxy (web server)",
+      "kind": "definition",
+      "statement": "A reverse proxy is a web server that centralises internal services behind one public interface, forwarding each request to a server that can fulfil it and returning the response. It hides backends, can blacklist IPs and limit connections per client, lets you change servers behind one IP, terminates SSL, compresses and caches responses and serves static content; it adds complexity and is a single point of failure unless replicated.",
+      "locator": "sdp:#reverse-proxy-web-server",
+      "prereqs": [],
+      "aliases": [
+        "NGINX",
+        "HAProxy"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:lb-vs-reverse-proxy",
+      "name": "Load balancer vs reverse proxy",
+      "kind": "idea",
+      "statement": "A load balancer is useful when several servers serve the same function; a reverse proxy is useful even with a single web or application server; NGINX and HAProxy can do both layer 7 proxying and load balancing.",
+      "locator": "sdp:#load-balancer-vs-reverse-proxy",
+      "prereqs": [
+        "sdp:load-balancer",
+        "sdp:reverse-proxy"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:application-layer",
+      "name": "Separating web and application layers",
+      "kind": "idea",
+      "statement": "Separating the web layer from the application (platform) layer lets each scale and be configured independently: a new API adds application servers without adding web servers. Small autonomous services follow the single responsibility principle, and application-layer workers enable asynchronism.",
+      "locator": "sdp:#application-layer",
+      "prereqs": [
+        "sdp:reverse-proxy"
+      ],
+      "aliases": [
+        "platform layer"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Every worked design splits a Web Server from Read/Write/Search APIs; scaling_aws does it at Users++."
+    },
+    {
+      "id": "sdp:microservices",
+      "name": "Microservices",
+      "kind": "definition",
+      "statement": "Microservices are a suite of independently deployable, small, modular services, each running its own process and communicating through a lightweight mechanism toward a business goal (e.g. Pinterest: user profile, follower, feed, search, photo upload); they add deployment and operational complexity.",
+      "locator": "sdp:#microservices",
+      "prereqs": [
+        "sdp:application-layer"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:service-discovery",
+      "name": "Service discovery",
+      "kind": "definition",
+      "statement": "Systems such as Consul, Etcd and ZooKeeper let services find each other by tracking registered names, addresses and ports; health checks, often over HTTP, verify each service, and their built-in key-value store holds config and shared data.",
+      "locator": "sdp:#service-discovery",
+      "prereqs": [
+        "sdp:microservices"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:acid",
+      "name": "ACID transactions",
+      "kind": "definition",
+      "statement": "Relational database transactions are atomic (all or nothing), consistent (from one valid state to another), isolated (concurrent execution gives the same result as serial) and durable (committed stays committed).",
+      "locator": "sdp:#relational-database-management-system-rdbms",
+      "prereqs": [],
+      "aliases": [
+        "RDBMS",
+        "relational database"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:master-slave-replication",
+      "name": "Master-slave replication",
+      "kind": "definition",
+      "statement": "The master serves reads and writes and replicates writes to slaves that serve only reads, possibly in a tree; if the master goes offline the system runs read-only until a slave is promoted or a new master provisioned, which needs extra logic.",
+      "locator": "sdp:#master-slave-replication",
+      "prereqs": [
+        "sdp:acid"
+      ],
+      "aliases": [
+        "primary-replica replication",
+        "leader-follower replication",
+        "read replicas"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:master-master-replication",
+      "name": "Master-master replication",
+      "kind": "definition",
+      "statement": "Both masters serve reads and writes and coordinate on writes, so writes continue if either fails; a load balancer or application logic must choose where to write, most such systems are either loosely consistent (violating ACID) or slower to write, and conflict resolution grows with more writers and latency.",
+      "locator": "sdp:#master-master-replication",
+      "prereqs": [
+        "sdp:acid"
+      ],
+      "aliases": [
+        "multi-master replication"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:replication-drawbacks",
+      "name": "Replication drawbacks and lag",
+      "kind": "result",
+      "statement": "Data written to a master can be lost if it fails before replicating; replicas replaying many writes have less capacity for reads; more read slaves mean more replication lag; replicas may apply writes single-threaded; replication adds hardware and complexity.",
+      "locator": "sdp:#disadvantages-replication",
+      "prereqs": [
+        "sdp:master-slave-replication",
+        "sdp:master-master-replication"
+      ],
+      "aliases": [
+        "replication lag"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:federation",
+      "name": "Federation (functional partitioning)",
+      "kind": "definition",
+      "statement": "Federation splits databases by function (e.g. forums, users, products): each sees less read and write traffic and replication lag, more of its data fits in memory for more cache hits, and writes proceed in parallel; but application logic must pick the database, cross-database joins need a server link, it fails for huge functions or tables, and it adds hardware.",
+      "locator": "sdp:#federation",
+      "prereqs": [
+        "sdp:replication-drawbacks"
+      ],
+      "aliases": [
+        "functional partitioning"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:sharding",
+      "name": "Sharding",
+      "kind": "definition",
+      "statement": "Sharding distributes data across databases so each manages a subset (e.g. users by last-name initial or location): less traffic, replication and index size per shard, more cache hits, parallel writes, and a failed shard leaves the others up. Application logic and SQL get complex, power users can make a shard lopsided, rebalancing is costly (a consistent-hashing shard function reduces data moved), and cross-shard joins are hard.",
+      "locator": "sdp:#sharding",
+      "prereqs": [
+        "sdp:federation"
+      ],
+      "aliases": [
+        "horizontal partitioning"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Consistent hashing is only linked and listed under '#under-development'; the primer has no prose for it."
+    },
+    {
+      "id": "sdp:denormalization",
+      "name": "Denormalization",
+      "kind": "definition",
+      "statement": "Denormalization writes redundant copies of data into several tables to avoid expensive joins, improving reads (which can outnumber writes 100:1 or 1000:1) at the cost of writes; materialized views can maintain the copies, and it avoids joins across federated or sharded data. Data is duplicated, constraints get complex, and under heavy writes it can perform worse.",
+      "locator": "sdp:#denormalization",
+      "prereqs": [
+        "sdp:sharding"
+      ],
+      "aliases": [
+        "materialized views"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:database-indexes",
+      "name": "Database indices",
+      "kind": "result",
+      "statement": "Indices on queried columns (SELECT, GROUP BY, ORDER BY, JOIN) speed queries; they are usually self-balancing B-trees giving logarithmic search, sequential access, insertion and deletion; they take memory and slow writes, and bulk loads can be faster with indices dropped then rebuilt.",
+      "locator": "sdp:#use-good-indices",
+      "prereqs": [
+        "sdp:acid",
+        "[B-tree]"
+      ],
+      "aliases": [
+        "index"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Worked designs index the primary key and created_at 'to speed up lookups (log-time instead of scanning the entire table) and to keep the data in memory'."
+    },
+    {
+      "id": "sdp:schema-tightening",
+      "name": "Tightening the schema",
+      "kind": "skill",
+      "statement": "Use CHAR for fixed-length fields (fast random access), TEXT for large text, INT for numbers up to 2^32, DECIMAL for currency, store the location of large BLOBs rather than the BLOBs, VARCHAR(255) as the largest length countable in one byte, and NOT NULL where possible.",
+      "locator": "sdp:#tighten-up-the-schema",
+      "prereqs": [
+        "sdp:acid"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:sql-tuning",
+      "name": "SQL tuning",
+      "kind": "skill",
+      "statement": "Benchmark (e.g. with ab) and profile (e.g. the slow query log) to find bottlenecks, then tighten the schema, use good indices, avoid expensive joins by denormalizing, partition hot spots into separate tables, and tune the query cache.",
+      "locator": "sdp:#sql-tuning",
+      "prereqs": [
+        "sdp:schema-tightening",
+        "sdp:database-indexes",
+        "sdp:denormalization"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Partition tables and Tune the query cache are one bullet each."
+    },
+    {
+      "id": "sdp:nosql-base",
+      "name": "NoSQL and BASE",
+      "kind": "definition",
+      "statement": "NoSQL stores (key-value, document, wide column, graph) keep data denormalized with joins done in application code, mostly lack true ACID transactions and favour eventual consistency; BASE (basically available, soft state, eventual consistency) chooses availability over consistency.",
+      "locator": "sdp:#nosql",
+      "prereqs": [
+        "sdp:acid",
+        "sdp:eventual-consistency"
+      ],
+      "aliases": [
+        "BASE",
+        "NoSQL"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:key-value-store",
+      "name": "Key-value store",
+      "kind": "definition",
+      "statement": "A key-value store (abstraction: hash table) gives O(1) reads and writes, often backed by memory or SSD; some keep keys in lexicographic order for range retrieval. Its few operations push complexity into the application; it suits simple data models and fast-changing data such as an in-memory cache layer, and underlies document stores and some graph databases.",
+      "locator": "sdp:#key-value-store",
+      "prereqs": [
+        "sdp:nosql-base"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:document-store",
+      "name": "Document store",
+      "kind": "definition",
+      "statement": "A document store (abstraction: key-value store with documents as values) keeps all of an object's information in one XML, JSON or binary document and queries by the document's internal structure; documents grouped by collection, tag, metadata or directory can have entirely different fields. MongoDB, CouchDB, DynamoDB; flexible, for occasionally changing data.",
+      "locator": "sdp:#document-store",
+      "prereqs": [
+        "sdp:key-value-store"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:wide-column-store",
+      "name": "Wide column store",
+      "kind": "definition",
+      "statement": "A wide column store (abstraction: ColumnFamily<RowKey, Columns<ColKey, Value, Timestamp>>) stores columns, name/value pairs with timestamps for versioning and conflict resolution, grouped into column families and accessed by row key; Bigtable, HBase and Cassandra keep keys ordered for range scans and give high availability and scalability for very large data sets.",
+      "locator": "sdp:#wide-column-store",
+      "prereqs": [
+        "sdp:nosql-base"
+      ],
+      "aliases": [
+        "column family",
+        "Bigtable",
+        "Cassandra"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:graph-database",
+      "name": "Graph database",
+      "kind": "definition",
+      "statement": "In a graph database each node is a record and each arc a relationship; it is optimised for many foreign keys or many-to-many relationships such as social networks, but tooling is younger and many are reachable only through REST APIs.",
+      "locator": "sdp:#graph-database",
+      "prereqs": [
+        "sdp:nosql-base"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:sql-vs-nosql",
+      "name": "SQL or NoSQL",
+      "kind": "idea",
+      "statement": "Choose SQL for structured, relational data with a strict schema, complex joins, transactions, clear scaling patterns and fast indexed lookups; choose NoSQL for semi-structured or non-relational data with a dynamic schema, many TB or PB, very data-intensive workloads or very high IOPS, e.g. clickstream and log ingest, leaderboards, shopping carts, hot tables, metadata and lookup tables.",
+      "locator": "sdp:#sql-or-nosql",
+      "prereqs": [
+        "sdp:document-store",
+        "sdp:wide-column-store",
+        "sdp:graph-database"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Every worked design says 'We should discuss the use cases and tradeoffs between choosing SQL or NoSQL' and picks one."
+    },
+    {
+      "id": "sdp:caching",
+      "name": "Caching",
+      "kind": "definition",
+      "statement": "A cache returns a previously computed result instead of re-executing the request, improving page load times and reducing server and database load; in front of a database it absorbs the uneven load popular items cause and traffic spikes.",
+      "locator": "sdp:#cache",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:cache-locations",
+      "name": "Where to cache",
+      "kind": "idea",
+      "statement": "Caches can sit on the client (OS or browser), in a CDN, at the web server or reverse proxy (e.g. Varnish), in the database's own cache (tune its defaults to the usage pattern), or in an application cache layer.",
+      "locator": "sdp:#client-caching",
+      "prereqs": [
+        "sdp:caching",
+        "sdp:cdn",
+        "sdp:reverse-proxy"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Spread over five one- or two-sentence headings: #client-caching, #cdn-caching, #web-server-caching, #database-caching, #application-caching."
+    },
+    {
+      "id": "sdp:application-cache",
+      "name": "In-memory application cache",
+      "kind": "definition",
+      "statement": "In-memory caches such as Memcached and Redis are key-value stores between the application and data storage; RAM is fast but limited, so eviction such as least recently used keeps hot data. Redis adds persistence and data structures such as sorted sets and lists. Avoid file-based caching, which hinders cloning and autoscaling.",
+      "locator": "sdp:#application-caching",
+      "prereqs": [
+        "sdp:cache-locations",
+        "sdp:key-value-store"
+      ],
+      "aliases": [
+        "Memcached",
+        "Redis",
+        "Memory Cache"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:cache-granularity",
+      "name": "What to cache: query level vs object level",
+      "kind": "idea",
+      "statement": "Caching at the database query level stores results keyed by a hash of the query, but is hard to invalidate when any underlying cell changes; caching at the object level stores assembled objects, removed when their data changes, and lets workers build objects asynchronously. Good candidates: user sessions, fully rendered pages, activity streams, user graph data.",
+      "locator": "sdp:#caching-at-the-database-query-level",
+      "prereqs": [
+        "sdp:application-cache"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:cache-aside",
+      "name": "Cache-aside (lazy loading)",
+      "kind": "result",
+      "statement": "The application looks up the cache; on a miss it loads the entry from the database, adds it to the cache and returns it; the cache never talks to storage. Only requested data is cached, but each miss costs three trips, entries go stale unless a TTL or write-through refreshes them, and a replacement node starts empty.",
+      "locator": "sdp:#cache-aside",
+      "prereqs": [
+        "sdp:application-cache"
+      ],
+      "aliases": [
+        "lazy loading"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Used by name in mint (Step 4) and query_cache (Step 3)."
+    },
+    {
+      "id": "sdp:write-through",
+      "name": "Write-through cache",
+      "kind": "result",
+      "statement": "The application reads and writes the cache as its main store and the cache synchronously writes the database: writes are slow but freshly written data reads fast and is never stale; a new node caches nothing until entries are updated (pair with cache-aside), and much written data is never read (mitigate with a TTL).",
+      "locator": "sdp:#write-through",
+      "prereqs": [
+        "sdp:application-cache"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:write-behind",
+      "name": "Write-behind (write-back) cache",
+      "kind": "result",
+      "statement": "The application writes the cache, which writes the data store asynchronously: writes get faster, but data is lost if the cache goes down before it reaches the store, and it is harder to implement than cache-aside or write-through.",
+      "locator": "sdp:#write-behind-write-back",
+      "prereqs": [
+        "sdp:write-through"
+      ],
+      "aliases": [
+        "write-back"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:refresh-ahead",
+      "name": "Refresh-ahead cache",
+      "kind": "result",
+      "statement": "The cache automatically refreshes recently accessed entries before they expire; this lowers latency only if it predicts which items will be needed, otherwise performance is worse than without it.",
+      "locator": "sdp:#refresh-ahead",
+      "prereqs": [
+        "sdp:cache-aside"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Compares against 'read-through', which the primer never defines."
+    },
+    {
+      "id": "sdp:cache-invalidation",
+      "name": "Cache invalidation and TTL",
+      "kind": "idea",
+      "statement": "A cache must stay consistent with the source of truth; deciding when to update or invalidate it is hard, a time to live (TTL) bounds staleness most simply, and adding Redis or Memcached requires application changes.",
+      "locator": "sdp:#disadvantages-cache",
+      "prereqs": [
+        "sdp:cache-aside",
+        "sdp:write-through"
+      ],
+      "aliases": [
+        "TTL"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "query_cache #when-to-update-the-cache applies TTL to page change, removal and rank change."
+    },
+    {
+      "id": "sdp:asynchronism",
+      "name": "Asynchronous workflows",
+      "kind": "idea",
+      "statement": "Asynchronous workflows take expensive operations out of the request path and can do time-consuming work in advance (e.g. periodic aggregation); cheap calculations and realtime workflows are better done synchronously, since queues add delay and complexity.",
+      "locator": "sdp:#asynchronism",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:message-queue",
+      "name": "Message queues",
+      "kind": "definition",
+      "statement": "A message queue receives, holds and delivers messages: the application publishes a job and tells the user its status, a worker picks it up, processes it and signals completion, so the user isn't blocked (a client may show the result early, as a tweet appears on your timeline before followers receive it). Redis can lose messages, RabbitMQ needs AMQP and self-managed nodes, Amazon SQS is hosted but can be slow and deliver twice.",
+      "locator": "sdp:#message-queues",
+      "prereqs": [
+        "sdp:asynchronism"
+      ],
+      "aliases": [
+        "queue",
+        "worker"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Used in twitter (notifications), web_crawler (index and document jobs), mint (transaction extraction), scaling_aws Users+++++ (thumbnail worker)."
+    },
+    {
+      "id": "sdp:task-queue",
+      "name": "Task queues",
+      "kind": "definition",
+      "statement": "A task queue receives tasks with their data, runs them and delivers results; it can schedule computationally intensive background jobs (e.g. Celery).",
+      "locator": "sdp:#task-queues",
+      "prereqs": [
+        "sdp:message-queue"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:back-pressure",
+      "name": "Back pressure",
+      "kind": "idea",
+      "statement": "If a queue grows larger than memory, cache misses and disk reads slow everything; back pressure caps the queue size to keep throughput and response times good for queued jobs, and answers new work with server busy / HTTP 503 so clients retry later, perhaps with exponential backoff.",
+      "locator": "sdp:#back-pressure",
+      "prereqs": [
+        "sdp:message-queue"
+      ],
+      "aliases": [
+        "exponential backoff"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Little's law appears only as a further-reading link."
+    },
+    {
+      "id": "sdp:http",
+      "name": "HTTP",
+      "kind": "definition",
+      "statement": "HTTP is a request/response protocol for encoding and transporting data between client and server; a request is a verb plus a resource, and being self-contained it can pass through routers and servers that load balance, cache, encrypt and compress. It is an application-layer protocol over TCP and UDP.",
+      "locator": "sdp:#hypertext-transfer-protocol-http",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:http-verbs",
+      "name": "HTTP verbs: idempotent, safe, cacheable",
+      "kind": "result",
+      "statement": "GET reads a resource (idempotent, safe, cacheable); POST creates a resource or triggers processing (not idempotent, not safe, cacheable only with freshness info); PUT creates or replaces (idempotent); PATCH partially updates (not idempotent); DELETE deletes (idempotent). Idempotent means repeatable without different outcomes.",
+      "locator": "sdp:#hypertext-transfer-protocol-http",
+      "prereqs": [
+        "sdp:http"
+      ],
+      "aliases": [
+        "idempotency"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:tcp",
+      "name": "TCP",
+      "kind": "definition",
+      "statement": "TCP is a connection-oriented protocol over IP: handshakes open and close connections, and sequence numbers, checksums, acknowledgements and retransmission deliver packets in order and uncorrupted, with flow and congestion control; the guarantees cost delay. Use it when all data must arrive intact (web servers, databases, SMTP, FTP, SSH).",
+      "locator": "sdp:#transmission-control-protocol-tcp",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:udp",
+      "name": "UDP",
+      "kind": "definition",
+      "statement": "UDP is connectionless: datagrams may arrive out of order or not at all and there is no congestion control, so it is more efficient; it can broadcast (as DHCP needs). Use it when you need the lowest latency, late data is worse than lost data, or you implement your own error correction (VoIP, video chat, streaming, realtime games).",
+      "locator": "sdp:#user-datagram-protocol-udp",
+      "prereqs": [
+        "sdp:tcp"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:connection-pooling",
+      "name": "Connection pooling",
+      "kind": "idea",
+      "statement": "Many open TCP connections, e.g. between web server threads and memcached, cost memory; connection pooling, or UDP where applicable, helps. The web crawler keeps many connections open through a pool to raise throughput and cut memory.",
+      "locator": "sdp:#transmission-control-protocol-tcp",
+      "prereqs": [
+        "sdp:tcp"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Defined only by a Wikipedia link."
+    },
+    {
+      "id": "sdp:rpc",
+      "name": "Remote procedure call (RPC)",
+      "kind": "definition",
+      "statement": "In an RPC a client runs a procedure in another address space as if it were local: the client stub marshals the procedure id and arguments, OS communication modules carry the message, and the server stub unmarshals it and calls the procedure. RPC exposes behaviours and is often used internally for performance (Protobuf, Thrift, Avro); it couples clients to the implementation, needs a new API per operation, is hard to debug and fits HTTP caches poorly.",
+      "locator": "sdp:#remote-procedure-call-rpc",
+      "prereqs": [
+        "sdp:http"
+      ],
+      "aliases": [
+        "RPC",
+        "Thrift",
+        "Protobuf"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:rest",
+      "name": "REST",
+      "kind": "definition",
+      "statement": "REST is a stateless, cacheable client/server style where clients act on resources the server manages: identify resources by URI, change them through HTTP verbs, headers and body, report errors with status codes, and be browsable (HATEOAS). It exposes data, minimises coupling, suits public APIs and horizontal scaling; it fits non-hierarchical queries and actions poorly, needs several round trips for nested resources, and payloads bloat over time.",
+      "locator": "sdp:#representational-state-transfer-rest",
+      "prereqs": [
+        "sdp:http-verbs"
+      ],
+      "aliases": [
+        "RESTful API"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:rpc-vs-rest",
+      "name": "RPC vs REST",
+      "kind": "idea",
+      "statement": "The same operations as RPC use action endpoints (POST /signup, GET /readPerson?personid=1234, POST /removeItem) and as REST use resources and verbs (POST /persons, GET /persons/1234, DELETE /items/456); public APIs tend to be REST, internal communication RPC.",
+      "locator": "sdp:#rpc-and-rest-calls-comparison",
+      "prereqs": [
+        "sdp:rpc",
+        "sdp:rest"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Every worked design uses a public REST API and internal RPC."
+    },
+    {
+      "id": "sdp:hateoas",
+      "name": "HATEOAS",
+      "kind": "definition",
+      "statement": "Hypermedia as the engine of application state: a RESTful web service should be fully accessible in a browser.",
+      "locator": "sdp:#representational-state-transfer-rest",
+      "prereqs": [
+        "sdp:rest"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "One bullet plus a link; the Anki deck has a card for it."
+    },
+    {
+      "id": "sdp:security-basics",
+      "name": "Security basics",
+      "kind": "idea",
+      "statement": "Encrypt in transit and at rest, sanitize all user inputs to prevent XSS and SQL injection, use parameterized queries, and apply the principle of least privilege.",
+      "locator": "sdp:#security",
+      "prereqs": [],
+      "aliases": [
+        "XSS",
+        "SQL injection",
+        "least privilege"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "The primer says this section 'could use some updates'."
+    },
+    {
+      "id": "sdp:network-hardening",
+      "name": "Locking down hosts and network",
+      "kind": "skill",
+      "statement": "Open only necessary ports (80, 443, and 22 from whitelisted IPs), stop the web server initiating outbound connections, and put the web tier in a public subnet of a VPC with everything else in a private subnet, opening ports only to whitelisted IPs.",
+      "locator": "sdp:solutions/scaling_aws#secure-the-web-server",
+      "prereqs": [
+        "sdp:security-basics"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Continued at #secure-the-system (Users+)."
+    },
+    {
+      "id": "sdp:object-store",
+      "name": "Object store for blobs",
+      "kind": "definition",
+      "statement": "A managed object store such as Amazon S3 holds paste contents, media, static files and raw log files, while the SQL database keeps metadata and the object's path; it handles the designs' tens of GB to TB of new content per month.",
+      "locator": "sdp:solutions/pastebin#use-case-user-enters-a-block-of-text-and-gets-a-randomly-generated-link",
+      "prereqs": [],
+      "aliases": [
+        "S3",
+        "blob storage"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "No README section; defined only through the worked designs."
+    },
+    {
+      "id": "sdp:static-content-offload",
+      "name": "Offloading static content to an object store and CDN",
+      "kind": "idea",
+      "statement": "Move static content (user files, JS, CSS, images, videos) to a managed object store, then serve it, and some dynamic content, from a CDN, reducing web server load and latency.",
+      "locator": "sdp:solutions/scaling_aws#store-static-content-separately",
+      "prereqs": [
+        "sdp:object-store",
+        "sdp:cdn"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:read-write-split",
+      "name": "Read replicas with read/write splitting",
+      "kind": "skill",
+      "statement": "Add read replicas to relieve the write master, put load balancers in front of them, and add logic so writes go to the master and reads to replicas; most services are read-heavy.",
+      "locator": "sdp:solutions/scaling_aws#add-mysql-read-replicas",
+      "prereqs": [
+        "sdp:master-slave-replication"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:autoscaling",
+      "name": "Autoscaling",
+      "kind": "idea",
+      "statement": "Use autoscaling groups for web servers and each application server type across availability zones, with a min and max instance count, scaling on time of day for predictable load or on CPU, latency, network or custom metrics; it keeps up with spikes and powers down idle instances but adds complexity and lags demand.",
+      "locator": "sdp:solutions/scaling_aws#add-autoscaling",
+      "prereqs": [
+        "sdp:stateless-servers"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:monitoring",
+      "name": "Monitoring and automated operations",
+      "kind": "idea",
+      "statement": "Automate DevOps (Chef, Puppet, Ansible) and keep monitoring at host level, aggregate level (load balancer stats), through log analysis, external site performance, incident notification and error reporting to catch new bottlenecks.",
+      "locator": "sdp:solutions/scaling_aws#goals-4",
+      "prereqs": [
+        "sdp:iterative-scaling"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:data-tiering",
+      "name": "Keeping hot data in the database, the rest in a warehouse",
+      "kind": "idea",
+      "statement": "Store only a limited recent window (e.g. a month of transactions) in the SQL database and the rest in a data warehouse (Redshift, BigQuery) or object store; keep analytics aggregates in a separate analytics database.",
+      "locator": "sdp:solutions/mint#step-4-scale-the-design",
+      "prereqs": [
+        "sdp:object-store"
+      ],
+      "aliases": [
+        "data warehouse",
+        "analytics database"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Also in pastebin, sales_rank and scaling_aws Step 4."
+    },
+    {
+      "id": "sdp:mapreduce-aggregation",
+      "name": "MapReduce aggregation over logs",
+      "kind": "skill",
+      "statement": "Batch-aggregate logs with MapReduce: the mapper parses each line and emits (key, value) pairs such as ((month, url), 1) or ((user, month, category), amount); the reducer sums values per key. Used for paste hit counts, URL de-duplication, monthly spending and sales counts.",
+      "locator": "sdp:solutions/pastebin#use-case-service-tracks-analytics-of-pages",
+      "prereqs": [
+        "[MapReduce]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "README lists 'Distributed computing with MapReduce' under #under-development: code examples only, no prose definition."
+    },
+    {
+      "id": "sdp:distributed-sort",
+      "name": "Distributed sort as a second MapReduce step",
+      "kind": "skill",
+      "statement": "A second MapReduce step re-keys ((category, product), total) as ((category, total), product) so the shuffle/sort phase sorts across machines, giving per-category rankings ready for a sales_rank table.",
+      "locator": "sdp:solutions/sales_rank#use-case-service-calculates-the-past-weeks-most-popular-products-by-category",
+      "prereqs": [
+        "sdp:mapreduce-aggregation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:base62",
+      "name": "Base62 encoding",
+      "kind": "skill",
+      "statement": "Base62 encodes a number in [a-zA-Z0-9] by repeated modulo and division by 62, in O(k) for k digits; unlike Base64 it has no + or / so URLs need no escaping, and it is deterministic.",
+      "locator": "sdp:solutions/pastebin#use-case-user-enters-a-block-of-text-and-gets-a-randomly-generated-link",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:shortlink-generation",
+      "name": "Short link generation by hashing",
+      "kind": "result",
+      "statement": "Generate a short link by MD5-hashing the user's IP address plus a timestamp (or random data), Base62-encoding it and keeping the first 7 characters: 62^7 values cover 360 million links in 3 years. Check the database for a duplicate and regenerate if found; the shortlink is the primary key, which indexes it and enforces uniqueness.",
+      "locator": "sdp:solutions/pastebin#use-case-user-enters-a-block-of-text-and-gets-a-randomly-generated-link",
+      "prereqs": [
+        "sdp:base62",
+        "sdp:database-indexes",
+        "[MD5 hash]"
+      ],
+      "aliases": [
+        "URL shortening",
+        "tiny URL"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Collision handling is a re-check-and-retry; no counter or ID-generator alternative is discussed (unique IDs are a METHOD.md gap)."
+    },
+    {
+      "id": "sdp:fanout-on-write",
+      "name": "Fan-out on write to home timelines",
+      "kind": "result",
+      "statement": "When a user posts, the tweet is stored in the user's own timeline in SQL, and a Fan Out Service looks up the followers through the User Graph Service and inserts the tweet id into each follower's home timeline kept in a memory cache (a Redis list of tweet_id, user_id, meta) - O(followers), 60,000 deliveries/s. It also indexes the tweet for search, stores media and sends notifications through a queue. Reading a home timeline is then an O(1) cache read plus multigets to tweet and user info services.",
+      "locator": "sdp:solutions/twitter#use-case-user-posts-a-tweet",
+      "prereqs": [
+        "sdp:application-cache",
+        "sdp:message-queue"
+      ],
+      "aliases": [
+        "push model",
+        "fan-out"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:celebrity-fanout",
+      "name": "Skipping fan-out for highly followed users",
+      "kind": "idea",
+      "statement": "Fanning out a tweet from a user with millions of followers can take minutes and race with @replies (fix by reordering at serve time); instead, don't fan out tweets from highly followed users, fetch them by search and merge them into the home timeline at serve time.",
+      "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+      "prereqs": [
+        "sdp:fanout-on-write"
+      ],
+      "aliases": [
+        "hybrid fan-out",
+        "celebrity problem"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:timeline-cache-trimming",
+      "name": "Bounding the timeline cache",
+      "kind": "idea",
+      "statement": "Keep only several hundred tweets per home timeline and only users active in the past 30 days in the memory cache, rebuilding an inactive user's timeline from SQL via the user graph; keep only a month of tweets in the tweet info service and only active users in the user info service.",
+      "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+      "prereqs": [
+        "sdp:fanout-on-write"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:search-query-processing",
+      "name": "Search query processing and scatter-gather",
+      "kind": "idea",
+      "statement": "A search service parses the query (remove markup, break into terms, fix typos, normalise capitalisation, convert to boolean operations), scatter-gathers it to every server of a search cluster such as Lucene, then merges, ranks, sorts and returns results.",
+      "locator": "sdp:solutions/twitter#use-case-user-searches-keywords",
+      "prereqs": [
+        "sdp:reverse-index"
+      ],
+      "aliases": [
+        "scatter gather"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "'Scatter gather' links to #under-development: no definition in the primer."
+    },
+    {
+      "id": "sdp:reverse-index",
+      "name": "Reverse (inverted) index",
+      "kind": "definition",
+      "statement": "A reverse index maps words to the pages containing them; the crawler queues a job per page for a Reverse Index Service, which at query time finds and ranks matching documents, while a Document Service returns static titles and snippets.",
+      "locator": "sdp:solutions/web_crawler#use-case-service-crawls-a-list-of-urls",
+      "prereqs": [],
+      "aliases": [
+        "inverted index"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Explained only by a Wikipedia link."
+    },
+    {
+      "id": "sdp:crawl-frontier",
+      "name": "Crawl loop over a prioritised link store",
+      "kind": "result",
+      "statement": "Keep links_to_crawl ranked by site popularity (e.g. a Redis sorted set) and crawled_links with page signatures in a NoSQL store; loop: take the top link; if a page with a similar signature was crawled, lower the link's priority (avoiding cycles) and continue; else crawl it, queue reverse-index and document jobs, create its signature, and move it from links_to_crawl to crawled_links.",
+      "locator": "sdp:solutions/web_crawler#use-case-service-crawls-a-list-of-urls",
+      "prereqs": [
+        "sdp:key-value-store",
+        "sdp:message-queue"
+      ],
+      "aliases": [
+        "URL frontier"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:duplicate-detection",
+      "name": "Duplicate URL and content detection",
+      "kind": "idea",
+      "statement": "Remove duplicate URLs with sort | uniq for small lists or, at a billion links, a MapReduce that keeps entries of frequency 1; detect duplicate content by generating page signatures and comparing them with a similarity measure such as the Jaccard index or cosine similarity.",
+      "locator": "sdp:solutions/web_crawler#handling-duplicates",
+      "prereqs": [
+        "sdp:crawl-frontier",
+        "sdp:mapreduce-aggregation"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Jaccard and cosine similarity are Wikipedia links only."
+    },
+    {
+      "id": "sdp:recrawl-policy",
+      "name": "Recrawl freshness policy",
+      "kind": "idea",
+      "statement": "Record when each page was last crawled, refresh every page after a default period (say a week) and popular or frequently changing pages sooner (mine the mean time between updates), and optionally honour robots.txt.",
+      "locator": "sdp:solutions/web_crawler#determining-when-to-update-the-crawl-results",
+      "prereqs": [
+        "sdp:crawl-frontier"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:crawler-throughput",
+      "name": "Crawler throughput optimisations",
+      "kind": "idea",
+      "statement": "Shard and federate the reverse index and document services, keep a crawler-side DNS cache refreshed periodically, keep many connections open through a pool (or switch to UDP), and provision enough bandwidth.",
+      "locator": "sdp:solutions/web_crawler#step-4-scale-the-design",
+      "prereqs": [
+        "sdp:crawl-frontier",
+        "sdp:connection-pooling",
+        "sdp:sharding"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:transaction-categorization",
+      "name": "Categorising transactions by seller",
+      "kind": "skill",
+      "statement": "Seed a seller-to-category dictionary with the most popular sellers (50,000 entries under 255 bytes is about 12 MB); for unseeded sellers use crowd-sourced user overrides, keeping the top override per seller in a heap for O(1) lookup.",
+      "locator": "sdp:solutions/mint#category-service",
+      "prereqs": [
+        "[heap]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:budget-template",
+      "name": "Budget templates with stored overrides",
+      "kind": "skill",
+      "statement": "Allocate default category budgets from an income-tier template and store only the categories users override, instead of 100 million budget rows; compute monthly spending per category with SQL over the transactions table or MapReduce over raw transaction files, re-running when a category changes.",
+      "locator": "sdp:solutions/mint#use-case-service-recommends-a-budget",
+      "prereqs": [
+        "sdp:mapreduce-aggregation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:bfs-shortest-path",
+      "name": "Unweighted shortest path by BFS",
+      "kind": "result",
+      "statement": "In an unweighted friend graph the shortest path from source to destination is found by breadth-first search, recording each node's predecessor and walking back from the destination.",
+      "locator": "sdp:solutions/social_graph#use-case-user-searches-for-someone-and-sees-the-shortest-path-to-the-searched-person",
+      "prereqs": [
+        "[breadth-first search]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:sharded-graph-lookup",
+      "name": "BFS over a sharded graph with a lookup service",
+      "kind": "idea",
+      "statement": "When users don't fit on one machine, shard them across Person Servers and keep a Lookup Service mapping person id to server; the User Graph Service runs BFS, asking the lookup service which server holds each friend before fetching it.",
+      "locator": "sdp:solutions/social_graph#use-case-user-searches-for-someone-and-sees-the-shortest-path-to-the-searched-person",
+      "prereqs": [
+        "sdp:bfs-shortest-path",
+        "sdp:sharding"
+      ],
+      "aliases": [
+        "directory-based sharding"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:distributed-bfs-optimizations",
+      "name": "Speeding up distributed BFS",
+      "kind": "idea",
+      "statement": "Cache person data and complete or partial BFS traversals in memory, or batch-compute them offline into NoSQL; batch friend lookups on the same Person Server and shard servers by location; run two BFS searches from source and destination and merge; start from people with many friends; cap search time or hops before asking the user.",
+      "locator": "sdp:solutions/social_graph#step-4-scale-the-design",
+      "prereqs": [
+        "sdp:sharded-graph-lookup"
+      ],
+      "aliases": [
+        "bidirectional BFS"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "sdp:lru-cache",
+      "name": "LRU cache: hash map plus doubly linked list",
+      "kind": "result",
+      "statement": "An LRU cache keeps a hash map from key to node and a doubly linked list ordered by recency: get moves the node to the front; set updates and moves an existing node, or at capacity evicts the tail node (and its map entry) before inserting the new node at the front.",
+      "locator": "sdp:solutions/query_cache#cache-implementation",
+      "prereqs": [
+        "[hash table]",
+        "[doubly linked list]"
+      ],
+      "aliases": [
+        "least recently used"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Also an object-oriented design notebook (solutions/object_oriented_design/lru_cache)."
+    },
+    {
+      "id": "sdp:cache-cluster-partitioning",
+      "name": "Spreading a cache over many machines",
+      "kind": "idea",
+      "statement": "Each machine can keep its own cache (simple, low hit rate), a full copy (simple, wastes memory), or a shard chosen by machine = hash(query) (more complex, likely best), ideally with consistent hashing.",
+      "locator": "sdp:solutions/query_cache#expanding-the-memory-cache-to-many-machines",
+      "prereqs": [
+        "sdp:application-cache",
+        "sdp:sharding"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Consistent hashing links to #under-development."
+    },
+    {
+      "id": "sdp:design-pastebin",
+      "name": "Design Pastebin / Bit.ly",
+      "kind": "skill",
+      "statement": "Design a paste service: anonymous users submit text and get a random short link with optional expiry, read pastes by link, and the service keeps monthly hit analytics and deletes expired pastes, at 10M writes and 100M reads a month.",
+      "locator": "sdp:solutions/pastebin#design-pastebincom-or-bitly",
+      "prereqs": [
+        "sdp:shortlink-generation",
+        "sdp:object-store",
+        "sdp:mapreduce-aggregation",
+        "sdp:back-of-envelope",
+        "sdp:core-component-design",
+        "sdp:iterative-scaling",
+        "sdp:rpc-vs-rest",
+        "sdp:read-write-split"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Bit.ly is the same question storing the long URL instead of paste contents."
+    },
+    {
+      "id": "sdp:design-twitter",
+      "name": "Design the Twitter timeline and search",
+      "kind": "skill",
+      "statement": "Design posting tweets with fan-out to followers and notifications, user and home timelines, and keyword search, at 500M tweets a day, 250B reads and 10B searches a month.",
+      "locator": "sdp:solutions/twitter#design-the-twitter-timeline-and-search",
+      "prereqs": [
+        "sdp:celebrity-fanout",
+        "sdp:timeline-cache-trimming",
+        "sdp:search-query-processing",
+        "sdp:object-store",
+        "sdp:back-of-envelope",
+        "sdp:core-component-design",
+        "sdp:iterative-scaling",
+        "sdp:rpc-vs-rest",
+        "sdp:read-write-split"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Facebook feed and Facebook search are named as similar questions."
+    },
+    {
+      "id": "sdp:design-web-crawler",
+      "name": "Design a web crawler",
+      "kind": "skill",
+      "statement": "Design a crawler for 1B links refreshed weekly that builds a reverse index and static titles and snippets, plus the search front end, without getting stuck in cycles, at 4B pages crawled and 100B searches a month.",
+      "locator": "sdp:solutions/web_crawler#design-a-web-crawler",
+      "prereqs": [
+        "sdp:duplicate-detection",
+        "sdp:recrawl-policy",
+        "sdp:crawler-throughput",
+        "sdp:search-query-processing",
+        "sdp:back-of-envelope",
+        "sdp:core-component-design",
+        "sdp:iterative-scaling",
+        "sdp:rpc-vs-rest"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": ""
+    },
+    {
+      "id": "sdp:design-mint",
+      "name": "Design Mint.com",
+      "kind": "skill",
+      "statement": "Design a personal finance service: users link financial accounts, the service extracts and categorises transactions daily, analyses monthly spending by category, recommends budgets and notifies users near their budget, at 5B transactions a month, write-heavy 10:1.",
+      "locator": "sdp:solutions/mint#design-mintcom",
+      "prereqs": [
+        "sdp:transaction-categorization",
+        "sdp:budget-template",
+        "sdp:message-queue",
+        "sdp:data-tiering",
+        "sdp:cache-aside",
+        "sdp:back-of-envelope",
+        "sdp:core-component-design",
+        "sdp:iterative-scaling",
+        "sdp:rpc-vs-rest",
+        "sdp:read-write-split"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 1,
+      "notes": ""
+    },
+    {
+      "id": "sdp:design-social-graph",
+      "name": "Design the data structures for a social network",
+      "kind": "skill",
+      "statement": "Design shortest-path friend search over 100M users with 50 friends each (5B edges) that don't fit on one machine, at 400 searches/s, without a graph database.",
+      "locator": "sdp:solutions/social_graph#design-the-data-structures-for-a-social-network",
+      "prereqs": [
+        "sdp:distributed-bfs-optimizations",
+        "sdp:back-of-envelope",
+        "sdp:iterative-scaling",
+        "sdp:rpc-vs-rest"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 1,
+      "notes": ""
+    },
+    {
+      "id": "sdp:design-query-cache",
+      "name": "Design a key-value cache for search query results",
+      "kind": "skill",
+      "statement": "Design a cache for the most recent web search results (10B queries a month, 4,000 requests/s, limited memory): serve hits fast, fill on misses, expire and refresh, and spread the cache over many machines.",
+      "locator": "sdp:solutions/query_cache#design-a-key-value-cache-to-save-the-results-of-the-most-recent-web-server-queries",
+      "prereqs": [
+        "sdp:lru-cache",
+        "sdp:cache-invalidation",
+        "sdp:cache-cluster-partitioning",
+        "sdp:back-of-envelope",
+        "sdp:iterative-scaling"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Listed in the README index as 'Design a key-value store for a search engine'."
+    },
+    {
+      "id": "sdp:design-sales-rank",
+      "name": "Design Amazon's sales rank by category",
+      "kind": "skill",
+      "statement": "Design hourly computation and serving of the past week's most popular products per category over 10M products, 1,000 categories and 1B transactions a month, with 100B reads a month.",
+      "locator": "sdp:solutions/sales_rank#design-amazons-sales-rank-by-category-feature",
+      "prereqs": [
+        "sdp:distributed-sort",
+        "sdp:data-tiering",
+        "sdp:database-indexes",
+        "sdp:back-of-envelope",
+        "sdp:iterative-scaling",
+        "sdp:rpc-vs-rest",
+        "sdp:read-write-split"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": ""
+    },
+    {
+      "id": "sdp:design-scaling-aws",
+      "name": "Design a system that scales to millions of users on AWS",
+      "kind": "skill",
+      "statement": "Evolve a read/write web service from one box to 10M users (1B writes and 100B reads a month), stage by stage, adding components only as benchmarks and profiling show bottlenecks.",
+      "locator": "sdp:solutions/scaling_aws#design-a-system-that-scales-to-millions-of-users-on-aws",
+      "prereqs": [
+        "sdp:static-content-offload",
+        "sdp:read-write-split",
+        "sdp:autoscaling",
+        "sdp:monitoring",
+        "sdp:network-hardening",
+        "sdp:application-layer",
+        "sdp:application-cache",
+        "sdp:data-tiering",
+        "sdp:sql-vs-nosql",
+        "sdp:message-queue"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "AWS specifics are optional by the primer's own statement; the principles carry over."
+    },
+    {
+      "id": "sdp:ood-hash-map",
+      "name": "OOD: design a hash map",
+      "kind": "skill",
+      "statement": "Design a hash map class with integer keys and chaining for collisions (no load-factor handling).",
+      "locator": "sdp:solutions/object_oriented_design/hash_table#design-a-hash-map",
+      "prereqs": [
+        "[hash table]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Notebook: a 'Constraints and assumptions' Q&A list and one code cell; no explanatory prose. README marks the OOD section 'under development'."
+    },
+    {
+      "id": "sdp:ood-lru-cache",
+      "name": "OOD: design an LRU cache",
+      "kind": "skill",
+      "statement": "Design classes for an LRU cache of web query results that fits in memory.",
+      "locator": "sdp:solutions/object_oriented_design/lru_cache#design-an-lru-cache",
+      "prereqs": [
+        "sdp:lru-cache"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Notebook: a 'Constraints and assumptions' Q&A list and one code cell; no explanatory prose. README marks the OOD section 'under development'."
+    },
+    {
+      "id": "sdp:ood-call-center",
+      "name": "OOD: design a call center",
+      "kind": "skill",
+      "statement": "Design a call center where operators take calls first and escalate to supervisors, then directors, queueing calls when no one is free.",
+      "locator": "sdp:solutions/object_oriented_design/call_center#design-a-call-center",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Notebook: a 'Constraints and assumptions' Q&A list and one code cell; no explanatory prose. README marks the OOD section 'under development'."
+    },
+    {
+      "id": "sdp:ood-deck-of-cards",
+      "name": "OOD: design a deck of cards",
+      "kind": "skill",
+      "statement": "Design a generic 52-card deck and extend it to blackjack.",
+      "locator": "sdp:solutions/object_oriented_design/deck_of_cards#design-a-deck-of-cards",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Notebook: a 'Constraints and assumptions' Q&A list and one code cell; no explanatory prose. README marks the OOD section 'under development'."
+    },
+    {
+      "id": "sdp:ood-parking-lot",
+      "name": "OOD: design a parking lot",
+      "kind": "skill",
+      "statement": "Design a multi-level parking lot with motorcycle, compact and large spots, where a bus takes five consecutive large spots.",
+      "locator": "sdp:solutions/object_oriented_design/parking_lot#design-a-parking-lot",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Notebook: a 'Constraints and assumptions' Q&A list and one code cell; no explanatory prose. README marks the OOD section 'under development'."
+    },
+    {
+      "id": "sdp:ood-online-chat",
+      "name": "OOD: design an online chat",
+      "kind": "skill",
+      "statement": "Design text chat with users, friend requests, private and group chats.",
+      "locator": "sdp:solutions/object_oriented_design/online_chat#design-an-online-chat",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 1,
+      "notes": "Notebook: a 'Constraints and assumptions' Q&A list and one code cell; no explanatory prose. README marks the OOD section 'under development'."
+    }
+  ],
+  "case_studies": [
+    {
+      "id": "pastebin",
+      "title": "Design Pastebin.com (or Bit.ly)",
+      "locator": "sdp:solutions/pastebin",
+      "tier": "core",
+      "design_row": "sdp:design-pastebin",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/pastebin#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: anonymous user submits text, gets a random link (no expiry by default, optional timed expiry); views paste by link; monthly visit analytics; delete expired pastes; high availability. Out: accounts, editing, visibility, custom shortlinks. 10M users, 10M writes and 100M reads a month (10:1), ~1.27 KB per paste, 12.7 GB/month, 450 GB and 360M links in 3 years, 4 writes/s, 40 reads/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/pastebin#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Write API",
+            "Read API",
+            "Analytics",
+            "SQL",
+            "Object Store"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Write API",
+            "Web Server->Read API",
+            "Write API->SQL",
+            "Write API->Object Store",
+            "Read API->SQL",
+            "Read API->Object Store",
+            "Analytics->Object Store",
+            "Analytics->SQL"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/pastebin/pastebin_basic.png",
+          "concepts": [],
+          "notes": "Image only; components and edges read off the figure."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: User enters a block of text and gets a randomly generated link",
+          "locator": "sdp:solutions/pastebin#use-case-user-enters-a-block-of-text-and-gets-a-randomly-generated-link",
+          "adds": [],
+          "changes": [
+            "Web Server (runs as reverse proxy)",
+            "Write API (generates MD5+Base62 7-char link, re-checks SQL for duplicates)",
+            "SQL (pastes table: shortlink PK, expiration, created_at index, paste_path)",
+            "Object Store (paste contents)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "SQL as a large hash table from link to object path; object store (or NoSQL document store) for contents; public REST, internal RPC.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:shortlink-generation",
+            "sdp:base62",
+            "sdp:object-store",
+            "sdp:reverse-proxy",
+            "sdp:database-indexes",
+            "sdp:rpc-vs-rest"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Use case: User enters a paste's url and views the contents",
+          "locator": "sdp:solutions/pastebin#use-case-user-enters-a-pastes-url-and-views-the-contents",
+          "adds": [],
+          "changes": [
+            "Read API (looks up link in SQL, then fetches contents from Object Store, else error)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": []
+        },
+        {
+          "step": "3c",
+          "phase": "core components",
+          "heading": "Use case: Service tracks analytics of pages",
+          "locator": "sdp:solutions/pastebin#use-case-service-tracks-analytics-of-pages",
+          "adds": [],
+          "changes": [
+            "Analytics (MapReduce over Web Server logs into monthly hit counts)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:mapreduce-aggregation"
+          ]
+        },
+        {
+          "step": "3d",
+          "phase": "core components",
+          "heading": "Use case: Service deletes expired pastes",
+          "locator": "sdp:solutions/pastebin#use-case-service-deletes-expired-pastes",
+          "adds": [],
+          "changes": [
+            "SQL (scan for expired entries, delete or mark expired)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": []
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/pastebin#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "CDN",
+            "Load Balancer"
+          ],
+          "changes": [
+            "Web Server x N",
+            "Write API x N",
+            "Read API x N",
+            "Analytics x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->CDN",
+            "CDN->Object Store",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/pastebin/pastebin.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:cdn",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ],
+          "notes": "Primer draws all of Step 4 as one figure; 4a-4d split it in the order the prose discusses it."
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Analytics database",
+          "locator": "sdp:solutions/pastebin#step-4-scale-the-design",
+          "adds": [
+            "SQL Analytics"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Analytics->SQL Analytics"
+          ],
+          "problem": "",
+          "summary": "The Analytics Database could be a data warehouse such as Redshift or BigQuery; the Object Store comfortably handles 12.7 GB/month.",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/pastebin/pastebin.png",
+          "concepts": [
+            "sdp:data-tiering"
+          ]
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "Memory cache and read replicas for reads",
+          "locator": "sdp:solutions/pastebin#step-4-scale-the-design",
+          "adds": [
+            "Memory Cache",
+            "SQL Read Replicas"
+          ],
+          "changes": [
+            "SQL -> SQL Write Master-Slave"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Read API->Memory Cache",
+            "Read API->SQL Read Replicas",
+            "Write API->SQL Write Master-Slave",
+            "SQL Write Master-Slave->SQL Read Replicas"
+          ],
+          "problem": "40 average reads/s (higher at peak) and unevenly distributed traffic with spikes; popular content should come from the cache, replicas handle misses.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/pastebin/pastebin.png",
+          "concepts": [
+            "sdp:application-cache",
+            "sdp:master-slave-replication",
+            "sdp:read-write-split"
+          ]
+        },
+        {
+          "step": "4d",
+          "phase": "scaling",
+          "heading": "If writes outgrow one master",
+          "locator": "sdp:solutions/pastebin#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "SQL Write Master-Slave (federation, sharding, denormalization, SQL tuning)",
+            "some data to a NoSQL Database"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "4 average writes/s should be fine for one SQL Write Master-Slave; otherwise employ SQL scaling patterns.",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:federation",
+            "sdp:sharding",
+            "sdp:denormalization",
+            "sdp:sql-tuning",
+            "sdp:sql-vs-nosql"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "twitter",
+      "title": "Design the Twitter timeline and search",
+      "locator": "sdp:solutions/twitter",
+      "tier": "core",
+      "design_row": "sdp:design-twitter",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/twitter#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: post a tweet (fan-out to followers, push notifications and email), user timeline, home timeline, keyword search, high availability. Out: firehose, visibility filtering, analytics. 100M active users, 500M tweets/day, average fan-out 10, 250B reads and 10B searches a month; ~10 KB per tweet, 150 TB/month, 5.4 PB in 3 years; 100k reads/s, 6k tweets/s, 60k fan-out deliveries/s, 4k searches/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/twitter#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Read API",
+            "Write API",
+            "Search API",
+            "Timeline Service",
+            "Tweet Info Service",
+            "User Info Service",
+            "Fan Out Service",
+            "User Graph Service",
+            "Search Service",
+            "Notification Service",
+            "Memory Cache",
+            "MySQL",
+            "Object Store"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Read API",
+            "Web Server->Write API",
+            "Web Server->Search API",
+            "Read API->Timeline Service",
+            "Read API->MySQL",
+            "Timeline Service->Tweet Info Service",
+            "Timeline Service->User Info Service",
+            "Timeline Service->Memory Cache",
+            "Write API->Fan Out Service",
+            "Write API->MySQL",
+            "Fan Out Service->User Graph Service",
+            "Fan Out Service->Search Service",
+            "Fan Out Service->Notification Service",
+            "Fan Out Service->Memory Cache",
+            "Fan Out Service->Object Store",
+            "Search API->Search Service"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/twitter/twitter_basic.png",
+          "concepts": [],
+          "notes": "Image only; components and edges read off the figure."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: User posts a tweet",
+          "locator": "sdp:solutions/twitter#use-case-user-posts-a-tweet",
+          "adds": [
+            "Queue (for notifications, not pictured)"
+          ],
+          "changes": [
+            "Write API (stores tweet in user's timeline in SQL)",
+            "Fan Out Service (followers from User Graph Service; insert into followers' home timelines; search index; media; notifications)",
+            "Memory Cache (home timelines as Redis lists of tweet_id, user_id, meta)",
+            "Object Store (media)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "60k fan-out deliveries/s would overload a relational database, so home timelines go in a fast-write store.",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:fanout-on-write",
+            "sdp:message-queue",
+            "sdp:rpc-vs-rest"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Use case: User views the home timeline",
+          "locator": "sdp:solutions/twitter#use-case-user-views-the-home-timeline",
+          "adds": [],
+          "changes": [
+            "Timeline Service (O(1) read of timeline ids from Memory Cache, multiget Tweet Info and User Info, O(n))"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": []
+        },
+        {
+          "step": "3c",
+          "phase": "core components",
+          "heading": "Use case: User views the user timeline",
+          "locator": "sdp:solutions/twitter#use-case-user-views-the-user-timeline",
+          "adds": [],
+          "changes": [
+            "Read API (reads the user timeline from SQL)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": []
+        },
+        {
+          "step": "3d",
+          "phase": "core components",
+          "heading": "Use case: User searches keywords",
+          "locator": "sdp:solutions/twitter#use-case-user-searches-keywords",
+          "adds": [],
+          "changes": [
+            "Search Service (parse/tokenize query; scatter-gather a Lucene search cluster; merge, rank, sort)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:search-query-processing"
+          ]
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "CDN",
+            "Load Balancer"
+          ],
+          "changes": [
+            "every API and service x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->CDN",
+            "CDN->Object Store",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/twitter/twitter.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:cdn",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ],
+          "notes": "Primer draws all of Step 4 as one figure; 4a-4e split it in the order the prose discusses it."
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Fan-out bottleneck",
+          "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "Fan Out Service (skip highly followed users)",
+            "Timeline Service (merge their tweets from search, reorder at serve time)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "Users with millions of followers take minutes to fan out, racing with @replies.",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:celebrity-fanout"
+          ]
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "Bounding cache and service data",
+          "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "Memory Cache (several hundred tweets per timeline, active users only)",
+            "Tweet Info Service (one month of tweets)",
+            "User Info Service (active users only)",
+            "Search Service (cluster keeps tweets in memory)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:timeline-cache-trimming"
+          ]
+        },
+        {
+          "step": "4d",
+          "phase": "scaling",
+          "heading": "Read replicas and write master",
+          "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+          "adds": [
+            "SQL Read Replicas"
+          ],
+          "changes": [
+            "MySQL -> SQL Write Master-Slave"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Read API->SQL Read Replicas",
+            "Write API->SQL Write Master-Slave",
+            "SQL Write Master-Slave->SQL Read Replicas"
+          ],
+          "problem": "The memory cache reduces load, but read replicas alone are unlikely to absorb the cache misses, and the write volume would overwhelm one master.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/twitter/twitter.png",
+          "concepts": [
+            "sdp:master-slave-replication",
+            "sdp:read-write-split"
+          ]
+        },
+        {
+          "step": "4e",
+          "phase": "scaling",
+          "heading": "SQL scaling patterns and NoSQL",
+          "locator": "sdp:solutions/twitter#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "SQL (federation, sharding, denormalization, SQL tuning)",
+            "some data to a NoSQL Database"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:federation",
+            "sdp:sharding",
+            "sdp:denormalization",
+            "sdp:sql-tuning",
+            "sdp:sql-vs-nosql"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "web_crawler",
+      "title": "Design a web crawler",
+      "locator": "sdp:solutions/web_crawler",
+      "tier": "core",
+      "design_row": "sdp:design-web-crawler",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/web_crawler#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: crawl a list of URLs, build a reverse index and static titles/snippets; users search (sketch only); high availability. Out: search analytics, personalisation, page rank. Don't loop on cycles; don't use solr or nutch. 1B links, weekly refresh = 4B crawled a month, 500 KB per page, 100B searches a month; 2 PB/month, 72 PB in 3 years, 1,600 writes/s, 40,000 searches/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/web_crawler#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Query API",
+            "Reverse Index Service",
+            "Document Service",
+            "Queue (reverse index)",
+            "Queue (document)",
+            "Crawler Service",
+            "NoSQL"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Query API",
+            "Query API->Reverse Index Service",
+            "Query API->Document Service",
+            "Crawler Service->Queue (reverse index)",
+            "Queue (reverse index)->Reverse Index Service",
+            "Crawler Service->Queue (document)",
+            "Queue (document)->Document Service",
+            "Crawler Service->NoSQL"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/web_crawler/web_crawler_basic.png",
+          "concepts": [],
+          "notes": "Image only; the figure separates user-search and crawler data flows."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: Service crawls a list of urls",
+          "locator": "sdp:solutions/web_crawler#use-case-service-crawls-a-list-of-urls",
+          "adds": [],
+          "changes": [
+            "Crawler Service (priority crawl loop, signature check, PagesDataStore/Page/Crawler classes)",
+            "NoSQL (links_to_crawl as Redis sorted set, crawled_links with signatures)",
+            "Queues (reverse index and document jobs)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:crawl-frontier",
+            "sdp:reverse-index",
+            "sdp:key-value-store"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Handling duplicates",
+          "locator": "sdp:solutions/web_crawler#handling-duplicates",
+          "adds": [],
+          "changes": [
+            "Crawler Service (URL de-duplication by MapReduce; content similarity of signatures)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "The crawler gets stuck in an infinite loop when the link graph has a cycle.",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:duplicate-detection",
+            "sdp:mapreduce-aggregation"
+          ]
+        },
+        {
+          "step": "3c",
+          "phase": "core components",
+          "heading": "Determining when to update the crawl results",
+          "locator": "sdp:solutions/web_crawler#determining-when-to-update-the-crawl-results",
+          "adds": [],
+          "changes": [
+            "NoSQL (last-crawled timestamp)",
+            "Crawler Service (weekly default, faster for popular pages, robots.txt)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:recrawl-policy"
+          ]
+        },
+        {
+          "step": "3d",
+          "phase": "core components",
+          "heading": "Use case: User inputs a search term and sees a list of relevant pages with titles and snippets",
+          "locator": "sdp:solutions/web_crawler#use-case-user-inputs-a-search-term-and-sees-a-list-of-relevant-pages-with-titles-and-snippets",
+          "adds": [],
+          "changes": [
+            "Query API (parse query; Reverse Index Service ranks matches; Document Service returns titles and snippets)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:search-query-processing",
+            "sdp:rpc-vs-rest"
+          ]
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/web_crawler#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "Load Balancer"
+          ],
+          "changes": [
+            "every API, service and queue x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/web_crawler/web_crawler.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ],
+          "notes": "No CDN in this design. Primer draws all of Step 4 as one figure; 4a-4d split it in prose order."
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Memory cache for popular queries",
+          "locator": "sdp:solutions/web_crawler#step-4-scale-the-design",
+          "adds": [
+            "Memory Cache"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Query API->Memory Cache"
+          ],
+          "problem": "Some searches are very popular while others run once; popular queries would overload the Reverse Index and Document services.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/web_crawler/web_crawler.png",
+          "concepts": [
+            "sdp:application-cache"
+          ]
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "Sharding the index and document services",
+          "locator": "sdp:solutions/web_crawler#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "Reverse Index Service (sharding, federation)",
+            "Document Service (sharding, federation)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "Data size and request load.",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:sharding",
+            "sdp:federation"
+          ]
+        },
+        {
+          "step": "4d",
+          "phase": "scaling",
+          "heading": "Crawler optimisations",
+          "locator": "sdp:solutions/web_crawler#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "Crawler Service (own DNS lookup cache, connection pooling, maybe UDP, enough bandwidth)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "DNS lookup can be a bottleneck; crawling is bandwidth intensive.",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:crawler-throughput",
+            "sdp:connection-pooling"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "mint",
+      "title": "Design Mint.com",
+      "locator": "sdp:solutions/mint",
+      "tier": "stretch",
+      "design_row": "sdp:design-mint",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/mint#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: link a financial account; extract transactions daily (users active in 30 days), categorise with manual override, analyse monthly spending by category; recommend and set budgets, notify near or over budget; high availability. 10M users, 100M budget items, 50,000 sellers, 30M accounts, 5B transactions and 500M reads a month (10:1 write:read); ~50 bytes per transaction, 250 GB/month, 9 TB in 3 years, 2,000 transactions/s, 200 reads/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/mint#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Accounts API",
+            "Queue",
+            "Transaction Extraction Service",
+            "Category Service",
+            "Budget Service",
+            "Notification Service",
+            "SQL",
+            "Object Store"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Accounts API",
+            "Accounts API->Queue",
+            "Queue->Transaction Extraction Service",
+            "Accounts API->SQL",
+            "Transaction Extraction Service->Category Service",
+            "Transaction Extraction Service->Budget Service",
+            "Transaction Extraction Service->Notification Service",
+            "Transaction Extraction Service->SQL",
+            "Transaction Extraction Service->Object Store"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/mint/mint_basic.png",
+          "concepts": [],
+          "notes": "Image only; components and edges read off the figure."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: User connects to a financial account",
+          "locator": "sdp:solutions/mint#use-case-user-connects-to-a-financial-account",
+          "adds": [],
+          "changes": [
+            "Accounts API (writes accounts table)",
+            "SQL (accounts table, indexes on id, user_id, created_at)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:database-indexes",
+            "sdp:rpc-vs-rest"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Use case: Service extracts transactions from the account",
+          "locator": "sdp:solutions/mint#use-case-service-extracts-transactions-from-the-account",
+          "adds": [
+            "Queue (for notifications, not pictured)"
+          ],
+          "changes": [
+            "Accounts API (puts extraction job on Queue)",
+            "Transaction Extraction Service (pulls job, stores raw logs in Object Store, categorises, updates transactions and monthly_spending)",
+            "Budget Service (monthly aggregates; notifies near budget)",
+            "SQL (transactions and monthly_spending tables)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "Extracting transactions could take a while, so it runs asynchronously from a queue.",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:message-queue",
+            "sdp:asynchronism"
+          ]
+        },
+        {
+          "step": "3c",
+          "phase": "core components",
+          "heading": "Category service",
+          "locator": "sdp:solutions/mint#category-service",
+          "adds": [],
+          "changes": [
+            "Category Service (seeded seller-to-category map, crowd overrides in a heap)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:transaction-categorization"
+          ]
+        },
+        {
+          "step": "3d",
+          "phase": "core components",
+          "heading": "Use case: Service recommends a budget",
+          "locator": "sdp:solutions/mint#use-case-service-recommends-a-budget",
+          "adds": [],
+          "changes": [
+            "Budget Service (income-tier template, budget_overrides table, SQL or MapReduce aggregation)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:budget-template",
+            "sdp:mapreduce-aggregation"
+          ]
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/mint#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "CDN",
+            "Load Balancer"
+          ],
+          "changes": [
+            "every API, service and queue x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->CDN",
+            "CDN->Object Store",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/mint/mint.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:cdn",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ],
+          "notes": "Primer draws all of Step 4 as one figure; 4a-4e split it in prose order."
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "New use case: user reads summaries and transactions",
+          "locator": "sdp:solutions/mint#step-4-scale-the-design",
+          "adds": [
+            "Read API",
+            "Memory Cache"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Web Server->Read API",
+            "Read API->Memory Cache",
+            "Read API->SQL Read Replicas"
+          ],
+          "problem": "",
+          "summary": "Sessions, aggregate stats by category and recent transactions in the cache; static content from the Object Store via the CDN; cache-aside.",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/mint/mint.png",
+          "concepts": [
+            "sdp:cache-aside",
+            "sdp:application-cache"
+          ]
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "Analytics database and data tiering",
+          "locator": "sdp:solutions/mint#step-4-scale-the-design",
+          "adds": [
+            "Analytics Database"
+          ],
+          "changes": [
+            "SQL (keep only a month of transactions; rest to warehouse or Object Store)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:data-tiering"
+          ],
+          "notes": "Described in prose but not drawn in mint.png."
+        },
+        {
+          "step": "4d",
+          "phase": "scaling",
+          "heading": "Read replicas and write master",
+          "locator": "sdp:solutions/mint#step-4-scale-the-design",
+          "adds": [
+            "SQL Read Replicas"
+          ],
+          "changes": [
+            "SQL -> SQL Write Master-Slave"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Transaction Extraction Service->SQL Write Master-Slave",
+            "SQL Write Master-Slave->SQL Read Replicas"
+          ],
+          "problem": "200 average reads/s go to the cache with replicas for misses; 2,000 average transaction writes/s might be tough for one master.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/mint/mint.png",
+          "concepts": [
+            "sdp:master-slave-replication",
+            "sdp:read-write-split"
+          ]
+        },
+        {
+          "step": "4e",
+          "phase": "scaling",
+          "heading": "SQL scaling patterns and NoSQL",
+          "locator": "sdp:solutions/mint#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "SQL (federation, sharding, denormalization, SQL tuning)",
+            "some data to a NoSQL Database"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:federation",
+            "sdp:sharding",
+            "sdp:denormalization",
+            "sdp:sql-tuning",
+            "sdp:sql-vs-nosql"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "social_graph",
+      "title": "Design the data structures for a social network",
+      "locator": "sdp:solutions/social_graph",
+      "tier": "stretch",
+      "design_row": "sdp:design-social-graph",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/social_graph#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: search for someone and see the shortest path to them; high availability. Graph won't fit one machine, edges unweighted, no graph database or GraphQL. 100M users, 50 friends average, 1B searches a month; 5B friend relationships, 400 searches/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/social_graph#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Search API",
+            "User Graph Service",
+            "Lookup Service",
+            "Person Server"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Search API",
+            "Search API->User Graph Service",
+            "User Graph Service->Lookup Service",
+            "User Graph Service->Person Server"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/social_graph/social_graph_basic.png",
+          "concepts": [],
+          "notes": "Image only."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: shortest path on one machine (BFS)",
+          "locator": "sdp:solutions/social_graph#use-case-user-searches-for-someone-and-sees-the-shortest-path-to-the-searched-person",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "Without the scale constraint, unweighted shortest path is plain BFS (code given).",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:bfs-shortest-path"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Use case: shortest path over sharded Person Servers",
+          "locator": "sdp:solutions/social_graph#use-case-user-searches-for-someone-and-sees-the-shortest-path-to-the-searched-person",
+          "adds": [],
+          "changes": [
+            "Person Server (sharded people store)",
+            "Lookup Service (person id -> Person Server)",
+            "User Graph Service (BFS that asks Lookup Service for every friend's server)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "All users won't fit on one machine.",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:sharded-graph-lookup",
+            "sdp:sharding",
+            "sdp:rpc-vs-rest"
+          ],
+          "notes": "3a and 3b are one heading in the primer; split because the code moves from a local graph to sharded servers."
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/social_graph#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "Load Balancer"
+          ],
+          "changes": [
+            "every API and service x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/social_graph/social_graph.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ],
+          "notes": "The scaled figure labels the Search API as 'Query API', unlike Step 2 and Step 3."
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Memory cache for person data",
+          "locator": "sdp:solutions/social_graph#step-4-scale-the-design",
+          "adds": [
+            "Memory Cache"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Query API->Memory Cache",
+            "User Graph Service->Memory Cache"
+          ],
+          "problem": "400 average searches/s (higher at peak); repeated searches and well-connected people hit the same data.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/social_graph/social_graph.png",
+          "concepts": [
+            "sdp:application-cache"
+          ]
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "BFS optimisations",
+          "locator": "sdp:solutions/social_graph#step-4-scale-the-design",
+          "adds": [
+            "NoSQL Database (precomputed traversals, not drawn)"
+          ],
+          "changes": [
+            "User Graph Service (cached or precomputed traversals, batched lookups, bidirectional BFS, start from high-degree people, hop limit)",
+            "Person Server (shard by location)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:distributed-bfs-optimizations"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "query_cache",
+      "title": "Design a key-value cache to save the results of the most recent web server queries",
+      "locator": "sdp:solutions/query_cache",
+      "tier": "core",
+      "design_row": "sdp:design-query-cache",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/query_cache#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: search request with cache hit; with cache miss; high availability. Popular queries should almost always be cached; fast lookups; limited memory; 10M users, 10B queries a month; 270 bytes per entry, 2.7 TB a month if every query were unique and stored, 4,000 requests/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/query_cache#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Query API",
+            "Reverse Index Service",
+            "Document Service",
+            "Memory Cache"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Query API",
+            "Query API->Reverse Index Service",
+            "Query API->Document Service",
+            "Query API->Memory Cache"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/query_cache/query_cache_basic.png",
+          "concepts": [],
+          "notes": "Image only."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: User sends a request resulting in a cache hit",
+          "locator": "sdp:solutions/query_cache#use-case-user-sends-a-request-resulting-in-a-cache-hit",
+          "adds": [],
+          "changes": [
+            "Query API (parse query; check cache; on miss query Reverse Index and Document services, then fill cache)",
+            "Memory Cache (LRU order)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:cache-aside",
+            "sdp:search-query-processing"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Cache implementation",
+          "locator": "sdp:solutions/query_cache#cache-implementation",
+          "adds": [],
+          "changes": [
+            "Memory Cache (hash map + doubly linked list; QueryApi, Node, LinkedList, Cache classes)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:lru-cache"
+          ]
+        },
+        {
+          "step": "3c",
+          "phase": "core components",
+          "heading": "When to update the cache",
+          "locator": "sdp:solutions/query_cache#when-to-update-the-cache",
+          "adds": [],
+          "changes": [
+            "Memory Cache (TTL on page change, removal, addition, rank change)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:cache-invalidation"
+          ]
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/query_cache#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "Load Balancer"
+          ],
+          "changes": [
+            "Web Server x N",
+            "Query API x N",
+            "Reverse Index Service x N",
+            "Document Service x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/query_cache/query_cache.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ]
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Expanding the Memory Cache to many machines",
+          "locator": "sdp:solutions/query_cache#expanding-the-memory-cache-to-many-machines",
+          "adds": [],
+          "changes": [
+            "Memory Cache x N (sharded by hash(query), ideally consistent hashing)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "Heavy request load and the large amount of memory needed.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/query_cache/query_cache.png",
+          "concepts": [
+            "sdp:cache-cluster-partitioning"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "sales_rank",
+      "title": "Design Amazon's sales rank by category feature",
+      "locator": "sdp:solutions/sales_rank",
+      "tier": "core",
+      "design_row": "sdp:design-sales-rank",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/sales_rank#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "In scope: compute the past week's most popular products by category; users view them; high availability. Out: the rest of the e-commerce site. Items in several categories, no subcategories, hourly updates; 10M products, 1,000 categories, 1B transactions and 100B reads a month (100:1); ~40 bytes per transaction, 40 GB/month, 1.44 TB in 3 years, 400 transactions/s, 40,000 reads/s.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/sales_rank#step-2-create-a-high-level-design",
+          "adds": [
+            "Client",
+            "Web Server",
+            "Sales API",
+            "Read API",
+            "Sales Rank Service",
+            "SQL",
+            "Object Store"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server",
+            "Web Server->Sales API",
+            "Web Server->Read API",
+            "Sales API->SQL",
+            "Sales API->Object Store",
+            "Read API->SQL",
+            "Sales Rank Service->Object Store",
+            "Sales Rank Service->SQL"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/sales_rank/sales_rank_basic.png",
+          "concepts": [],
+          "notes": "Image only."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Use case: Service calculates the past week's most popular products by category",
+          "locator": "sdp:solutions/sales_rank#use-case-service-calculates-the-past-weeks-most-popular-products-by-category",
+          "adds": [],
+          "changes": [
+            "Object Store (raw Sales API logs)",
+            "Sales Rank Service (two-step MapReduce: sum per (category, product), distributed sort)",
+            "SQL (sales_rank table, indexes on id, category_id, product_id)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:mapreduce-aggregation",
+            "sdp:distributed-sort",
+            "sdp:object-store",
+            "sdp:database-indexes"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Use case: User views the past week's most popular products by category",
+          "locator": "sdp:solutions/sales_rank#use-case-user-views-the-past-weeks-most-popular-products-by-category",
+          "adds": [],
+          "changes": [
+            "Read API (reads sales_rank table)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:rpc-vs-rest"
+          ]
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Step 4: Scale the design (front door and horizontal scaling)",
+          "locator": "sdp:solutions/sales_rank#step-4-scale-the-design",
+          "adds": [
+            "DNS",
+            "CDN",
+            "Load Balancer"
+          ],
+          "changes": [
+            "every API and service x N"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS",
+            "Client->CDN",
+            "CDN->Object Store",
+            "Client->Load Balancer",
+            "Load Balancer->Web Server"
+          ],
+          "problem": "Generic Step 4 list shared by all designs: 'what issues are addressed by adding a Load Balancer with multiple Web Servers? CDN? Master-Slave Replicas?' No design-specific reason is given.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/sales_rank/sales_rank.png",
+          "concepts": [
+            "sdp:iterative-scaling",
+            "sdp:dns",
+            "sdp:cdn",
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling"
+          ],
+          "notes": "Primer draws all of Step 4 as one figure; 4a-4d split it in prose order."
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Analytics database and data tiering",
+          "locator": "sdp:solutions/sales_rank#step-4-scale-the-design",
+          "adds": [
+            "Analytics Database"
+          ],
+          "changes": [
+            "SQL (keep a limited time window; rest to warehouse or Object Store)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:data-tiering"
+          ],
+          "notes": "Not drawn in sales_rank.png."
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "Memory cache and read replicas for 40,000 reads/s",
+          "locator": "sdp:solutions/sales_rank#step-4-scale-the-design",
+          "adds": [
+            "Memory Cache",
+            "SQL Read Replicas"
+          ],
+          "changes": [
+            "SQL -> SQL Write Master-Slave"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Read API->Memory Cache",
+            "Read API->SQL Read Replicas",
+            "Sales API->SQL Write Master-Slave",
+            "SQL Write Master-Slave->SQL Read Replicas"
+          ],
+          "problem": "40,000 average reads/s; popular products and their rank should come from the cache, and replicas might not handle the misses.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/sales_rank/sales_rank.png",
+          "concepts": [
+            "sdp:application-cache",
+            "sdp:master-slave-replication",
+            "sdp:read-write-split"
+          ]
+        },
+        {
+          "step": "4d",
+          "phase": "scaling",
+          "heading": "SQL scaling patterns and NoSQL",
+          "locator": "sdp:solutions/sales_rank#step-4-scale-the-design",
+          "adds": [],
+          "changes": [
+            "SQL (federation, sharding, denormalization, SQL tuning)",
+            "some data to a NoSQL Database"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "400 average writes/s might be tough for one SQL Write Master-Slave.",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:federation",
+            "sdp:sharding",
+            "sdp:denormalization",
+            "sdp:sql-tuning",
+            "sdp:sql-vs-nosql"
+          ]
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "id": "scaling_aws",
+      "title": "Design a system that scales to millions of users on AWS",
+      "locator": "sdp:solutions/scaling_aws",
+      "tier": "core",
+      "design_row": "sdp:design-scaling-aws",
+      "primer_steps": 4,
+      "steps": [
+        {
+          "step": "1",
+          "phase": "requirements",
+          "heading": "Step 1: Outline use cases and constraints",
+          "locator": "sdp:solutions/scaling_aws#step-1-outline-use-cases-and-constraints",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "A user makes a read or write request; the service evolves from a few users to millions; high availability. Relational data needed; 10M users, 1B writes and 100B reads a month (100:1), 1 KB per write; 1 TB/month, 36 TB in 3 years, 400 writes/s, 40,000 reads/s. Approach: benchmark, profile, fix bottlenecks, repeat.",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:requirements-scoping",
+            "sdp:back-of-envelope",
+            "sdp:rate-conversion",
+            "sdp:iterative-scaling"
+          ]
+        },
+        {
+          "step": "2",
+          "phase": "high-level design",
+          "heading": "Step 2: Create a high level design",
+          "locator": "sdp:solutions/scaling_aws#step-2-create-a-high-level-design",
+          "adds": [],
+          "changes": [],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws.png",
+          "concepts": [],
+          "notes": "Image only. Unlike the other designs it seems to show the end state (DNS, CDN, LB, web servers, queues and workers, memory cache, SQL master-slave and replicas, NoSQL, object store, sharding and federation), not a minimal design; scaling_aws.png matches that by inspection, but the imgur original can't be compared offline. For a step-diff figure treat it as a preview, not a state."
+        },
+        {
+          "step": "3a",
+          "phase": "core components",
+          "heading": "Start with a single box",
+          "locator": "sdp:solutions/scaling_aws#start-with-a-single-box",
+          "adds": [
+            "Client",
+            "Web Server (EC2, with MySQL on the same box)"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->Web Server"
+          ],
+          "problem": "",
+          "summary": "Vertical scaling: choose a bigger box, monitor CPU, memory, IO and network; expensive, no redundancy or failover.",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_1.png",
+          "concepts": [
+            "sdp:horizontal-scaling"
+          ]
+        },
+        {
+          "step": "3b",
+          "phase": "core components",
+          "heading": "Start with SQL, consider NoSQL",
+          "locator": "sdp:solutions/scaling_aws#start-with-sql-consider-nosql",
+          "adds": [],
+          "changes": [
+            "Web Server (MySQL database on the single box)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": [
+            "sdp:sql-vs-nosql"
+          ]
+        },
+        {
+          "step": "3c",
+          "phase": "core components",
+          "heading": "Assign a public static IP",
+          "locator": "sdp:solutions/scaling_aws#assign-a-public-static-ip",
+          "adds": [],
+          "changes": [
+            "Web Server (Elastic IP; fail over by pointing the domain at a new IP)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": null,
+          "concepts": []
+        },
+        {
+          "step": "3d",
+          "phase": "core components",
+          "heading": "Use a DNS",
+          "locator": "sdp:solutions/scaling_aws#use-a-dns",
+          "adds": [
+            "DNS (Route 53)"
+          ],
+          "changes": [],
+          "removes": [],
+          "edges_added": [
+            "Client->DNS"
+          ],
+          "problem": "",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_1.png",
+          "concepts": [
+            "sdp:dns"
+          ]
+        },
+        {
+          "step": "3e",
+          "phase": "core components",
+          "heading": "Secure the web server",
+          "locator": "sdp:solutions/scaling_aws#secure-the-web-server",
+          "adds": [],
+          "changes": [
+            "Web Server (only ports 80, 443 and whitelisted 22; no outbound connections)"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "",
+          "summary": "",
+          "drawn": false,
+          "figure": null,
+          "concepts": [
+            "sdp:network-hardening"
+          ]
+        },
+        {
+          "step": "4a",
+          "phase": "scaling",
+          "heading": "Users+",
+          "locator": "sdp:solutions/scaling_aws#users",
+          "adds": [
+            "Object Store (S3)",
+            "SQL (MySQL on its own box, e.g. RDS)"
+          ],
+          "changes": [
+            "Web Server (no longer hosts DB or static content)",
+            "network: VPC with public and private subnets"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Web Server->SQL",
+            "Web Server->Object Store"
+          ],
+          "problem": "Benchmarks show MySQL taking more memory and CPU and user content filling the disk; vertical scaling has become expensive and can't scale the DB and web server independently.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_2.png",
+          "concepts": [
+            "sdp:static-content-offload",
+            "sdp:object-store",
+            "sdp:network-hardening"
+          ]
+        },
+        {
+          "step": "4b",
+          "phase": "scaling",
+          "heading": "Users++",
+          "locator": "sdp:solutions/scaling_aws#users-1",
+          "adds": [
+            "Load Balancer (ELB)",
+            "CDN (CloudFront)",
+            "Write API",
+            "Read API"
+          ],
+          "changes": [
+            "Web Server x N across availability zones (now reverse proxy)",
+            "SQL -> MySQL Master-Slave failover across AZs"
+          ],
+          "removes": [
+            "Client->Web Server direct edge"
+          ],
+          "edges_added": [
+            "Client->Load Balancer",
+            "Load Balancer->Web Server",
+            "Client->CDN",
+            "CDN->Object Store",
+            "Web Server->Write API",
+            "Web Server->Read API",
+            "Write API->SQL Write Master-Slave",
+            "Read API->SQL Write Master-Slave",
+            "Write API->Object Store",
+            "Read API->Object Store"
+          ],
+          "problem": "The single web server bottlenecks at peak hours, giving slow responses and sometimes downtime; the service also wants higher availability and redundancy.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_3.png",
+          "concepts": [
+            "sdp:load-balancer",
+            "sdp:horizontal-scaling",
+            "sdp:active-active-failover",
+            "sdp:master-slave-replication",
+            "sdp:application-layer",
+            "sdp:reverse-proxy",
+            "sdp:cdn"
+          ]
+        },
+        {
+          "step": "4c",
+          "phase": "scaling",
+          "heading": "Users+++",
+          "locator": "sdp:solutions/scaling_aws#users-2",
+          "adds": [
+            "Memory Cache (Elasticache)",
+            "SQL Read Replicas",
+            "internal Load Balancers (not pictured)"
+          ],
+          "changes": [
+            "Web Server (stateless: sessions moved to Memory Cache)",
+            "Web Server and Application Servers x more"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Read API->Memory Cache",
+            "Read API->SQL Read Replicas",
+            "SQL Write Master-Slave->SQL Read Replicas"
+          ],
+          "problem": "Reads dominate 100:1 and the database suffers under the read load; first try tuning MySQL's own cache.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_4.png",
+          "concepts": [
+            "sdp:application-cache",
+            "sdp:stateless-servers",
+            "sdp:read-write-split",
+            "sdp:database-indexes"
+          ]
+        },
+        {
+          "step": "4d",
+          "phase": "scaling",
+          "heading": "Users++++",
+          "locator": "sdp:solutions/scaling_aws#users-3",
+          "adds": [
+            "Autoscaling groups (Web Server, Write API, Read API)"
+          ],
+          "changes": [
+            "operations: DevOps automation, monitoring, alerting"
+          ],
+          "removes": [],
+          "edges_added": [],
+          "problem": "Traffic spikes in US business hours and drops after; spinning servers up and down with load would cut cost, and a small team wants automated operations.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_5.png",
+          "concepts": [
+            "sdp:autoscaling",
+            "sdp:monitoring"
+          ]
+        },
+        {
+          "step": "4e",
+          "phase": "scaling",
+          "heading": "Users+++++",
+          "locator": "sdp:solutions/scaling_aws#users-4",
+          "adds": [
+            "Queue (SQS)",
+            "Worker Service",
+            "Write API Async",
+            "NoSQL (DynamoDB)",
+            "data warehouse (Redshift)",
+            "sharded SQL (e.g. Customers A-M, N-Z)",
+            "federated SQL (e.g. Customers, Products)"
+          ],
+          "changes": [
+            "Memory Cache (scaled out)",
+            "SQL (keep a limited time window; rest to warehouse)"
+          ],
+          "removes": [],
+          "edges_added": [
+            "Web Server->Write API Async",
+            "Write API Async->Queue",
+            "Queue->Worker Service",
+            "Worker Service->NoSQL",
+            "Worker Service->Object Store"
+          ],
+          "problem": "Growing toward 40,000 reads/s and 400 writes/s with higher peaks: the database grows too large, replicas struggle with cache misses, and one write master struggles; batch work need not be realtime.",
+          "summary": "",
+          "drawn": true,
+          "figure": "sources/_cache/sdp/solutions/system_design/scaling_aws/scaling_aws_7.png",
+          "concepts": [
+            "sdp:data-tiering",
+            "sdp:federation",
+            "sdp:sharding",
+            "sdp:denormalization",
+            "sdp:sql-tuning",
+            "sdp:sql-vs-nosql",
+            "sdp:message-queue",
+            "sdp:application-layer"
+          ],
+          "notes": "scaling_aws_6.png is an intermediate figure of the photo-thumbnail queue/worker example; not referenced in the README text. Warehouse is described but not drawn."
+        }
+      ],
+      "notes": "The only design with the scaling broken into stages by the primer itself, each with its own figure and 'Assumptions' (the failure) and 'Goals' (the fix)."
+    }
+  ],
+  "external_prose": [
+    {
+      "locator": "sdp:#system-design-topics-start-here",
+      "covers": "vertical and horizontal scaling, caching, load balancing, DB replication and partitioning, clones, asynchronism",
+      "what_is_there": "Two link-only steps: the Harvard scalability video lecture and the four-part 'Scalability for Dummies' articles (archived lecloud.net). The primer's own arc starts after them."
+    },
+    {
+      "locator": "sdp:#back-of-the-envelope-calculations",
+      "covers": "estimation method",
+      "what_is_there": "Three links (highscalability 'use back of the envelope calculations', powers of two, latency numbers). The method is shown only by the 8 designs' 'Calculate usage' blocks."
+    },
+    {
+      "locator": "sdp:#step-2-create-a-high-level-design",
+      "covers": "high-level design step",
+      "what_is_there": "Two bullets."
+    },
+    {
+      "locator": "sdp:#sources-and-further-reading",
+      "covers": "how to run the interview",
+      "what_is_there": "Four links (Palantir, HiredInTech, a YouTube talk, LeetCode template)."
+    },
+    {
+      "locator": "sdp:#performance-vs-scalability",
+      "covers": "scalability definition",
+      "what_is_there": "Three sentences, footnoted to allthingsdistributed; two further-reading links."
+    },
+    {
+      "locator": "sdp:#latency-vs-throughput",
+      "covers": "latency, throughput",
+      "what_is_there": "Three sentences and one link."
+    },
+    {
+      "locator": "sdp:#consistency-patterns",
+      "covers": "weak, eventual, strong consistency",
+      "what_is_there": "Two sentences per pattern; one link ('Transactions across data centers')."
+    },
+    {
+      "locator": "sdp:#master-slave-and-master-master",
+      "covers": "replication as availability pattern",
+      "what_is_there": "Two internal links to the Database section only."
+    },
+    {
+      "locator": "sdp:#service-discovery",
+      "covers": "service discovery",
+      "what_is_there": "One paragraph that is mostly product names with links (Consul, Etcd, ZooKeeper, health checks)."
+    },
+    {
+      "locator": "sdp:#microservices",
+      "covers": "microservices",
+      "what_is_there": "Two sentences quoting smartbear, one example."
+    },
+    {
+      "locator": "sdp:#sql-tuning",
+      "covers": "SQL tuning",
+      "what_is_there": "Opens 'many books have been written'; #partition-tables, #tune-the-query-cache and #avoid-expensive-joins are one bullet each, the last two pointing out."
+    },
+    {
+      "locator": "sdp:#client-caching",
+      "covers": "client, CDN, web server, database caching",
+      "what_is_there": "#client-caching, #cdn-caching, #web-server-caching and #database-caching are one or two sentences each, mostly internal or product links."
+    },
+    {
+      "locator": "sdp:#task-queues",
+      "covers": "task queues",
+      "what_is_there": "Two sentences and a Celery link."
+    },
+    {
+      "locator": "sdp:#back-pressure",
+      "covers": "back pressure, exponential backoff, Little's law",
+      "what_is_there": "One paragraph built on mechanical-sympathy and Wikipedia links; Little's law only in further reading."
+    },
+    {
+      "locator": "sdp:#security",
+      "covers": "security",
+      "what_is_there": "Self-described as needing updates: four bullets and three checklists (API security checklist, security guide, OWASP top ten)."
+    },
+    {
+      "locator": "sdp:#latency-numbers-visualized",
+      "covers": "latency numbers",
+      "what_is_there": "An external image only."
+    },
+    {
+      "locator": "sdp:#under-development",
+      "covers": "consistent hashing, MapReduce, scatter-gather",
+      "what_is_there": "Names only, no text. Solutions link here: query_cache (consistent hashing), twitter (scatter gather); sharding links consistent hashing to an external blog; MapReduce appears only as code in four designs."
+    },
+    {
+      "locator": "sdp:#additional-system-design-interview-questions",
+      "covers": "23 further design questions",
+      "what_is_there": "Each is a question plus 1-4 external reference links; no solutions."
+    },
+    {
+      "locator": "sdp:#real-world-architectures",
+      "covers": "17 systems (MapReduce, Spark, Storm, Bigtable, HBase, Cassandra, DynamoDB, MongoDB, Spanner, Memcached, Redis, GFS, HDFS, Chubby, Dapper, Kafka, ZooKeeper)",
+      "what_is_there": "One-line descriptions with links to papers and slide decks."
+    },
+    {
+      "locator": "sdp:#company-architectures",
+      "covers": "23 companies",
+      "what_is_there": "Links only (mostly highscalability.com)."
+    },
+    {
+      "locator": "sdp:#company-engineering-blogs",
+      "covers": "40 engineering blogs",
+      "what_is_there": "Links only."
+    },
+    {
+      "locator": "sdp:#object-oriented-design-interview-questions-with-solutions",
+      "covers": "6 OOD questions",
+      "what_is_there": "Marked 'under development'; each notebook is a constraints Q&A plus code with no explanatory prose; 'Design a circular array' has no solution."
+    },
+    {
+      "locator": "sdp:#sources-and-further-reading-1",
+      "covers": "every topic's 'Source(s) and further reading' heading (30 in the README)",
+      "what_is_there": "Link lists only, by design. Locator shown is the first; they continue as -2, -3 ... and as 'Source(s) and further reading: <topic>' headings."
+    },
+    {
+      "locator": "sdp:solutions/pastebin#step-2-create-a-high-level-design",
+      "covers": "high-level design of every worked design",
+      "what_is_there": "In all 8 designs Step 2 is an image with no prose; the components must be read from the figure."
+    },
+    {
+      "locator": "sdp:solutions/pastebin#step-4-scale-the-design",
+      "covers": "scaling of every worked design except scaling_aws",
+      "what_is_there": "Boilerplate in all designs: a fixed list of 8-13 internal links (DNS, CDN, LB, ...) said to hold 'main talking points'. Design-specific prose is one to five short paragraphs after it."
+    },
+    {
+      "locator": "sdp:solutions/pastebin#additional-talking-points",
+      "covers": "NoSQL, caching, async, communications, security, latency in every worked design",
+      "what_is_there": "Pure internal link lists, identical across designs (two variants: with or without 'SQL scaling patterns')."
+    },
+    {
+      "locator": "sdp:solutions/web_crawler#use-case-service-crawls-a-list-of-urls",
+      "covers": "reverse (inverted) index",
+      "what_is_there": "Named and linked to Wikipedia; not explained."
+    },
+    {
+      "locator": "sdp:solutions/web_crawler#handling-duplicates",
+      "covers": "Jaccard index, cosine similarity, page signatures",
+      "what_is_there": "Two Wikipedia links; signature generation left as '...'."
+    }
+  ],
+  "exercises": {
+    "anki": {
+      "locator": "sdp:#anki-flashcards",
+      "decks": [
+        {
+          "name": "System Design",
+          "file": "resources/flash_cards/System Design.apkg",
+          "cards": 42,
+          "covers": "One card per README topic (performance vs scalability through latency numbers), plus MD5, Base 62, HATEOAS and RPC vs REST; answers are the primer's own text, condensed."
+        },
+        {
+          "name": "System Design Exercises",
+          "file": "resources/flash_cards/System Design Exercises.apkg",
+          "cards": 8,
+          "covers": "One card per worked design (the 8 solutions/system_design questions)."
+        },
+        {
+          "name": "OO Design",
+          "file": "resources/flash_cards/OO Design.apkg",
+          "cards": 6,
+          "covers": "One card per OOD notebook (deck of cards, call center, hash map, LRU cache, online chat, parking lot)."
+        }
+      ],
+      "total_cards": 56,
+      "not_bundled": "A 'Coding deck' in the sister repo donnemartin/interactive-coding-challenges is linked, not included.",
+      "notes": "Cards are recall prompts (front = topic name, back = summary), not problems. Counts read from the .apkg SQLite collections. The decks are recall checks of material already in the inventory rows, not new exercises."
+    },
+    "worked_designs": {
+      "locator": "sdp:#system-design-interview-questions-with-solutions",
+      "count": 8,
+      "items": [
+        "pastebin",
+        "twitter",
+        "web_crawler",
+        "mint",
+        "social_graph",
+        "query_cache",
+        "sales_rank",
+        "scaling_aws"
+      ],
+      "notes": "Each is a question with a full worked solution (the inventory rows sdp:design-*, exercises: 1). Six ship companion .py files (all but twitter and scaling_aws): pastebin.py, web_crawler_mapreduce.py and web_crawler_snippets.py, mint_mapreduce.py and mint_snippets.py, social_graph_snippets.py, query_cache_snippets.py, sales_rank_mapreduce.py. The README snippets are pseudocode-like and some do not parse as printed (e.g. 'while num > 0' without a colon in pastebin, 'def mapper(self, _ line)' in sales_rank)."
+    },
+    "object_oriented_design": {
+      "locator": "sdp:#object-oriented-design-interview-questions-with-solutions",
+      "count": 6,
+      "items": [
+        "hash_table",
+        "lru_cache",
+        "call_center",
+        "deck_of_cards",
+        "parking_lot",
+        "online_chat"
+      ],
+      "placeholders": [
+        "Design a circular array (no solution, 'Contribute')"
+      ],
+      "notes": "Jupyter notebooks with a .py twin; constraints Q&A plus one code cell, no tests."
+    },
+    "additional_questions": {
+      "locator": "sdp:#additional-system-design-interview-questions",
+      "count": 23,
+      "items": [
+        "Design a file sync service like Dropbox",
+        "Design a search engine like Google",
+        "Design a scalable web crawler like Google",
+        "Design Google docs",
+        "Design a key-value store like Redis",
+        "Design a cache system like Memcached",
+        "Design a recommendation system like Amazon's",
+        "Design a tinyurl system like Bitly",
+        "Design a chat app like WhatsApp",
+        "Design a picture sharing system like Instagram",
+        "Design the Facebook news feed function",
+        "Design the Facebook timeline function",
+        "Design the Facebook chat function",
+        "Design a graph search function like Facebook's",
+        "Design a content delivery network like CloudFlare",
+        "Design a trending topic system like Twitter's",
+        "Design a random ID generation system",
+        "Return the top k requests during a time interval",
+        "Design a system that serves data from multiple data centers",
+        "Design an online multiplayer card game",
+        "Design a garbage collection system",
+        "Design an API rate limiter",
+        "Design a Stock Exchange (like NASDAQ or Binance)"
+      ],
+      "notes": "Prompts only, each with 1-4 external reference links (blogs, papers, videos); no solutions or answers in the primer. Overlaps worked designs: 'scalable web crawler like Google', 'tinyurl system like Bitly', 'key-value store like Redis', 'cache system like Memcached'. Several cover METHOD.md gaps by link only: 'random ID generation system' (Snowflake), 'API rate limiter' (Stripe blog), 'top k requests during a time interval'."
+    },
+    "in_design_prompts": {
+      "notes": "Each worked design repeats 'Clarify with your interviewer how much code you are expected to write' and 'Clarify with your interviewer if you should run back-of-the-envelope usage calculations'; these are interview-practice cues, not exercises, and are not counted."
+    }
+  }
+}
