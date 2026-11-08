@@ -1,8 +1,8 @@
 {
  "about": "Merged concept map for cs-interview-prep-ultra: one row per concept, merged across the inventories in inventory/. Rows are in spec order (toc.json chapters, with appendix A's concepts where its chapters stood). A concept with an \"appendix\" field lives on that appendix's pages (curated links, not built as text); its chapter and section ids still name its group and page. treatments list every inventory row that teaches the concept; the judge picks a home later. dropped lists inventory rows that became no concept.",
  "counts": {
-  "concepts": 1000,
-  "inventory_rows": 1165,
+  "concepts": 1022,
+  "inventory_rows": 1301,
   "dropped_rows": 5
  },
  "concepts": [
@@ -298,11 +298,26 @@
      "row": "ciu:big-omega-theta",
      "locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations",
+     "locator": "wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:AlgAnal/AnalLower",
+     "locator": "opendsa:AlgAnal/AnalLower",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Family of Bachmann-Landau notations",
+    "Lower bounds and Theta notation"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:big-omega-theta, wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations, opendsa:AlgAnal/AnalLower). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "multivariate-big-o",
@@ -436,14 +451,26 @@
      "row": "jeffe-notes:amortized-cost",
      "locator": "jeffe-notes:09-amortize.1",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Amortized_analysis",
+     "locator": "wikipedia:Amortized_analysis",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:SeniorAlgAnal/AmortAnal",
+     "locator": "opendsa:SeniorAlgAnal/AmortAnal",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "Amortized analysis: the binary counter",
     "amortized time"
    ],
-   "open_prose": false,
-   "notes": "Merged 2 rows (ciu:amortized-analysis, jeffe-notes:amortized-cost)."
+   "open_prose": true,
+   "notes": "Merged 4 rows (ciu:amortized-analysis, jeffe-notes:amortized-cost, wikipedia:Amortized_analysis, opendsa:SeniorAlgAnal/AmortAnal). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "aggregate-accounting",
@@ -462,22 +489,29 @@
      "row": "jeffe-notes:aggregate-accounting",
      "locator": "jeffe-notes:09-amortize.2",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Amortized_analysis#Method",
+     "locator": "wikipedia:Amortized_analysis#Method",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "aggregate method",
     "accounting method",
-    "banker's method"
+    "banker's method",
+    "Aggregate, accounting and potential methods"
    ],
-   "open_prose": false,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of potential-method (core)."
+   "open_prose": true,
+   "notes": "Merged 2 rows (jeffe-notes:aggregate-accounting, wikipedia:Amortized_analysis#Method). Source tiers differ (jeffe-notes stretch, wikipedia core); reconciled to the most common, core. Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "potential-method",
    "name": "The potential method",
    "kind": "skill",
    "statement": "Define a non-negative potential Phi on data-structure states with Phi(initial)=0; the amortized cost of an operation is its actual cost plus the change in Phi, and total amortized cost bounds total actual cost.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-cost",
    "section": "amortized-analysis",
    "prereqs": [
@@ -503,7 +537,7 @@
     "potential function"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (jeffe-notes:potential-method, ods:potential-method). Edge to dynamic-array-cost dropped: ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it. Tier raised from stretch to core: it is a prerequisite of b-tree (core)."
+   "notes": "Merged 2 rows (jeffe-notes:potential-method, ods:potential-method). Edge to dynamic-array-cost dropped: ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it."
   },
   {
    "id": "counter-increment-decrement",
@@ -543,11 +577,26 @@
      "row": "ciu:counting",
      "locator": "ciu:#combinatorics-n-choose-k--probability",
      "inventory": "ciu"
+    },
+    {
+     "source": "dmoi3",
+     "row": "dmoi3:sec_counting-combperm",
+     "locator": "dmoi3:sec_counting-combperm",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:math/combinatorics/combination#排列与组合基础",
+     "locator": "oiwiki:math/combinatorics/combination#排列与组合基础",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Combinations and permutations",
+    "Permutation and combination numbers"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:counting, dmoi3:sec_counting-combperm, oiwiki:math/combinatorics/combination#排列与组合基础). Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background)."
   },
   {
    "id": "probability-basics",
@@ -711,11 +760,26 @@
      "row": "ciu:array",
      "locator": "ciu:#arrays",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Array_(data_structure)",
+     "locator": "wikipedia:Array_(data_structure)",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:Data_Structures/Arrays",
+     "locator": "wikibooks:Data_Structures/Arrays",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": "Assumes, untaught in the map: memory and pointers."
+   "aliases": [
+    "Array data structure",
+    "Arrays"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:array, wikipedia:Array_(data_structure), wikibooks:Data_Structures/Arrays). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. Assumes, untaught in the map: memory and pointers."
   },
   {
    "id": "pointer-arithmetic",
@@ -907,6 +971,400 @@
    "notes": ""
   },
   {
+   "id": "two-pointers",
+   "name": "Two pointers",
+   "kind": "idea",
+   "statement": "Two indices move through an array, typically from both ends of a sorted array toward each other, so that each step discards one candidate and a pair with a target sum (or the best pair) is found in one O(n) pass with O(1) extra space.",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "two-pointers",
+   "prereqs": [
+    "array"
+   ],
+   "treatments": [
+    {
+     "source": "dsa-dummies",
+     "row": "dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py",
+     "locator": "dsa-dummies:Algorithms/Two Pointers/Python/Two Pointers.py",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:misc/two-pointer#利用序列有序性",
+     "locator": "oiwiki:misc/two-pointer#利用序列有序性",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0167#Solution_2:_Two_Pointers",
+     "locator": "doocs-leetcode:0167#Solution 2: Two Pointers",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0011#Solution_1:_Two_Pointers",
+     "locator": "doocs-leetcode:0011#Solution 1: Two Pointers",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "two-pointer technique",
+    "Two pointers on a sorted sequence",
+    "双指针",
+    "Pair sum in a sorted array by two pointers",
+    "Two Sum II",
+    "Container with most water by two pointers",
+    "container with most water"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py, oiwiki:misc/two-pointer#利用序列有序性, doocs-leetcode:0167#Solution_2:_Two_Pointers, doocs-leetcode:0011#Solution_1:_Two_Pointers). From the gap-patterns finder run (dossiers/gap-patterns.md §1). No open source states the pattern as a pattern at textbook length: dsa-dummies gives a short general note and OI Wiki a general page; doocs applies it to pair sum (167) and container with most water (11). The canonical cases that rest on it are 3SUM (here), merging (here), three-way partition (10.4) and tortoise and hare (2.7)."
+  },
+  {
+   "id": "three-sum",
+   "name": "3SUM in quadratic time",
+   "kind": "result",
+   "statement": "Sort the array; for each a[i], look for a pair summing to -a[i] in the rest with two pointers moving inward by the sign of the sum, giving O(n^2) time.",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "two-pointers",
+   "prereqs": [
+    "two-pointers"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:3SUM#Quadratic_algorithm",
+     "locator": "wikipedia:3SUM#Quadratic_algorithm",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0015#Solution_1:_Sort_+_Two_Pointers",
+     "locator": "doocs-leetcode:0015#Solution 1: Sort + Two Pointers",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "3SUM",
+    "three sum",
+    "3SUM by sorting and two pointers, skipping duplicates"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (wikipedia:3SUM#Quadratic_algorithm, doocs-leetcode:0015#Solution_1:_Sort_+_Two_Pointers). From the gap-patterns finder run (dossiers/gap-patterns.md §1). Sorting is used as a library call here; sorting algorithms are chapter 10."
+  },
+  {
+   "id": "merge-sorted-sequences",
+   "name": "Merging two sorted lists",
+   "kind": "result",
+   "statement": "Two sorted lists are merged by keeping one pointer in each and repeatedly moving the smaller head to the output, in time linear in the total length.",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "two-pointers",
+   "prereqs": [
+    "array"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Merge_algorithm#Merging_two_lists",
+     "locator": "wikipedia:Merge_algorithm#Merging_two_lists",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "merge step",
+    "two-way merge"
+   ],
+   "open_prose": true,
+   "notes": "From the gap-patterns finder run (dossiers/gap-patterns.md §1): two pointers, one per sorted list. Merge sort (10.3) rests on it (edge added)."
+  },
+  {
+   "id": "sliding-window-fixed",
+   "name": "Fixed-size sliding window",
+   "kind": "skill",
+   "statement": "A window of the last k items is updated in O(1) per step by adding the item that enters and subtracting the one that leaves (SMA_next = SMA_prev + (p_new - p_old)/k), instead of recomputing all k.",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "two-pointers",
+   "prereqs": [
+    "array"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Moving_average#Simple_moving_average",
+     "locator": "wikipedia:Moving_average#Simple_moving_average",
+     "inventory": "gap"
+    },
+    {
+     "source": "dsa-dummies",
+     "row": "dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py",
+     "locator": "dsa-dummies:Algorithms/Sliding Window/Python/Sliding Window.py",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0643#Solution_1:_Sliding_Window",
+     "locator": "doocs-leetcode:0643#Solution 1: Sliding Window",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:1456#Solution_1:_Sliding_Window",
+     "locator": "doocs-leetcode:1456#Solution 1: Sliding Window",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0567#Solution_1:_Sliding_Window",
+     "locator": "doocs-leetcode:0567#Solution 1: Sliding Window",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0438#Solution_1",
+     "locator": "doocs-leetcode:0438#Solution 1",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "simple moving average",
+    "fixed window",
+    "Sliding window",
+    "Maximum average subarray of length k",
+    "Most vowels in a substring of length k",
+    "Permutation in a string by a window of counts",
+    "All anagram windows of a pattern"
+   ],
+   "open_prose": true,
+   "notes": "Merged 6 rows (wikipedia:Moving_average#Simple_moving_average, dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py, doocs-leetcode:0643#Solution_1:_Sliding_Window, doocs-leetcode:1456#Solution_1:_Sliding_Window, doocs-leetcode:0567#Solution_1:_Sliding_Window, doocs-leetcode:0438#Solution_1). From the gap-patterns finder run (dossiers/gap-patterns.md §2). The fixed-window minimum with a monotonic deque stays its own concept (sliding-window-minimum, 3.4), which now rests on this one."
+  },
+  {
+   "id": "sliding-window-variable",
+   "name": "Variable-size sliding window",
+   "kind": "skill",
+   "statement": "Extend the window at the right one element at a time and shrink it from the left while it breaks the condition (here: a repeated character, tracked in a set), so each element enters and leaves once and the longest valid window is found in O(n).",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "two-pointers",
+   "prereqs": [
+    "two-pointers",
+    "sliding-window-fixed"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0003#Solution_1:_Sliding_Window",
+     "locator": "doocs-leetcode:0003#Solution 1: Sliding Window",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:misc/two-pointer#维护区间信息",
+     "locator": "oiwiki:misc/two-pointer#维护区间信息",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0076#Solution_1:_Counting_+_Two_Pointers",
+     "locator": "doocs-leetcode:0076#Solution 1: Counting + Two Pointers",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0209#Solution_2:_Two_Pointers",
+     "locator": "doocs-leetcode:0209#Solution 2: Two Pointers",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/longest_substr_k_distinct",
+     "locator": "icc:recursion_dynamic/longest_substr_k_distinct",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "two-pointer window",
+    "longest substring without repeating characters",
+    "Maintaining window information with two pointers",
+    "维护区间信息",
+    "Minimum window substring",
+    "Shortest subarray with sum at least the target",
+    "Longest substring with at most k distinct characters"
+   ],
+   "open_prose": true,
+   "notes": "Merged 5 rows (doocs-leetcode:0003#Solution_1:_Sliding_Window, oiwiki:misc/two-pointer#维护区间信息, doocs-leetcode:0076#Solution_1:_Counting_+_Two_Pointers, doocs-leetcode:0209#Solution_2:_Two_Pointers, icc:recursion_dynamic/longest_substr_k_distinct). From the gap-patterns finder run (dossiers/gap-patterns.md §2). OI Wiki's window section is the only general account of the expand/shrink invariant (ruling 15 made it usable); the rest are problem-level write-ups. Several examples keep the window's contents in a hash set or map, taught in chapter 5: the section should open with an example whose window state is a sum or a count array."
+  },
+  {
+   "id": "prefix-sums",
+   "name": "Prefix sums",
+   "kind": "definition",
+   "statement": "The prefix sums of x_0, x_1, ... are y_i = x_0 + ... + x_i, computed in one pass by y_i = y_{i-1} + x_i; with them any range sum is a difference of two prefix sums, and finite differences invert them.",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "prefix-sums",
+   "prereqs": [
+    "array"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Prefix_sum",
+     "locator": "wikipedia:Prefix_sum",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/prefix-sum#一维前缀和",
+     "locator": "oiwiki:basic/prefix-sum#一维前缀和",
+     "inventory": "gap"
+    },
+    {
+     "source": "dsa-dummies",
+     "row": "dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py",
+     "locator": "dsa-dummies:Algorithms/Prefix Sum/Python/Prefix Sum.py",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0303#Solution_1:_Prefix_Sum",
+     "locator": "doocs-leetcode:0303#Solution 1: Prefix Sum",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "cumulative sum",
+    "scan",
+    "inclusive scan",
+    "One-dimensional prefix sums",
+    "一维前缀和",
+    "Prefix sum array for range queries",
+    "Range sum query with a leading zero",
+    "range sum query"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (wikipedia:Prefix_sum, oiwiki:basic/prefix-sum#一维前缀和, dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py, doocs-leetcode:0303#Solution_1:_Prefix_Sum). From the gap-patterns finder run (dossiers/gap-patterns.md §4). Replaces the bracketed [prefix sums] that Fenwick trees, sqrt decomposition and the prefix-minimum maximum subarray assumed."
+  },
+  {
+   "id": "prefix-sums-2d",
+   "name": "Two-dimensional prefix sums (summed-area table)",
+   "kind": "result",
+   "statement": "I(x, y) = i(x, y) + I(x, y-1) + I(x-1, y) - I(x-1, y-1) builds the table in one pass, after which the sum over any axis-aligned rectangle takes four lookups by inclusion-exclusion.",
+   "tier": "stretch",
+   "chapter": "ch-arrays-lists",
+   "section": "prefix-sums",
+   "prereqs": [
+    "prefix-sums"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Summed-area_table#The_algorithm",
+     "locator": "wikipedia:Summed-area_table#The_algorithm",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/prefix-sum#基于容斥原理",
+     "locator": "oiwiki:basic/prefix-sum#基于容斥原理",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0304#Solution_1:_Two-dimensional_Prefix_Sum",
+     "locator": "doocs-leetcode:0304#Solution 1: Two-dimensional Prefix Sum",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "summed-area table",
+    "integral image",
+    "2D prefix sums",
+    "Two-dimensional prefix sums by inclusion-exclusion",
+    "二维前缀和",
+    "Range sum query 2D by prefix sums",
+    "range sum query 2D"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (wikipedia:Summed-area_table#The_algorithm, oiwiki:basic/prefix-sum#基于容斥原理, doocs-leetcode:0304#Solution_1:_Two-dimensional_Prefix_Sum). From the gap-patterns finder run (dossiers/gap-patterns.md §4). Tier stretch: range sums over a matrix come up at harder interviews and in contests, not in the typical loop, and no open exercise with tests was found for it."
+  },
+  {
+   "id": "difference-array",
+   "name": "Difference arrays",
+   "kind": "skill",
+   "statement": "The difference array b_i = a_i - a_{i-1} is the inverse of prefix sums: adding v to a_l..a_r becomes b_l += v and b_{r+1} -= v, so many range updates cost O(1) each and one prefix-sum pass recovers the array.",
+   "tier": "core",
+   "chapter": "ch-arrays-lists",
+   "section": "prefix-sums",
+   "prereqs": [
+    "prefix-sums"
+   ],
+   "treatments": [
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/prefix-sum#一维差分",
+     "locator": "oiwiki:basic/prefix-sum#一维差分",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0370#Solution_1:_Difference_Array",
+     "locator": "doocs-leetcode:0370#Solution 1: Difference Array",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:1094#Solution_1:_Difference_Array",
+     "locator": "doocs-leetcode:1094#Solution 1: Difference Array",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:1109#Solution_1:_Difference_Array",
+     "locator": "doocs-leetcode:1109#Solution 1: Difference Array",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "一维差分",
+    "difference array",
+    "Range addition by a difference array",
+    "range addition",
+    "Car pooling by a difference array over positions",
+    "car pooling",
+    "Flight bookings by a difference array",
+    "corporate flight bookings"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (oiwiki:basic/prefix-sum#一维差分, doocs-leetcode:0370#Solution_1:_Difference_Array, doocs-leetcode:1094#Solution_1:_Difference_Array, doocs-leetcode:1109#Solution_1:_Difference_Array). From the gap-patterns finder run (dossiers/gap-patterns.md §4). Tier core: range-update problems (car pooling, flight bookings) are common interview mediums, and the meeting-rooms sweep (20.2, core) rests on it. Replaces the bracketed [difference array] that cpa's Fenwick range update assumed."
+  },
+  {
+   "id": "difference-array-2d",
+   "name": "Two-dimensional difference arrays",
+   "kind": "skill",
+   "statement": "Adding v to every cell of a sub-rectangle becomes four point updates of a 2D difference array (+v, -v, -v, +v at the corners), and a 2D prefix-sum pass recovers the matrix.",
+   "tier": "stretch",
+   "chapter": "ch-arrays-lists",
+   "section": "prefix-sums",
+   "prereqs": [
+    "prefix-sums-2d",
+    "difference-array"
+   ],
+   "treatments": [
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/prefix-sum#二维/多维差分",
+     "locator": "oiwiki:basic/prefix-sum#二维/多维差分",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "二维差分"
+   ],
+   "open_prose": true,
+   "notes": "From the gap-patterns finder run (dossiers/gap-patterns.md §4; OI Wiki only). Tier stretch, as 2D prefix sums."
+  },
+  {
    "id": "singly-linked-list",
    "name": "Singly linked list",
    "kind": "definition",
@@ -974,11 +1432,19 @@
      "row": "ciu:implement-linked-list",
      "locator": "ciu:#linked-lists",
      "inventory": "ciu"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:List/ListLinked",
+     "locator": "opendsa:List/ListLinked",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Linked list implementation"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:implement-linked-list, opendsa:List/ListLinked). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "linked-list-vs-array",
@@ -1084,13 +1550,36 @@
      "row": "cpa:floyd-cycle-detection",
      "locator": "cpa:others/tortoise_and_hare#step-1-presence-of-the-cycle",
      "inventory": "cpa-b"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Cycle_detection#Floyd's_tortoise_and_hare",
+     "locator": "wikipedia:Cycle_detection#Floyd's_tortoise_and_hare",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:misc/two-pointer#在单向链表中找环",
+     "locator": "oiwiki:misc/two-pointer#在单向链表中找环",
+     "inventory": "gap"
+    },
+    {
+     "source": "algo-explanation",
+     "row": "algo-explanation:Search_Algorithms/Floyd_Cycle_Detection_Algorithm_to_Find_Duplicate_Number",
+     "locator": "algo-explanation:Search Algorithms/Floyd Cycle Detection Algorithm to Find Duplicate Number",
+     "inventory": "gap"
     }
    ],
    "aliases": [
-    "tortoise and hare"
+    "tortoise and hare",
+    "Floyd's tortoise and hare",
+    "fast and slow pointers",
+    "Finding a cycle in a singly linked list with two pointers",
+    "快慢指针",
+    "Duplicate number by Floyd cycle detection"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 4 rows (cpa:floyd-cycle-detection, wikipedia:Cycle_detection#Floyd's_tortoise_and_hare, oiwiki:misc/two-pointer#在单向链表中找环, algo-explanation:Search_Algorithms/Floyd_Cycle_Detection_Algorithm_to_Find_Duplicate_Number). Fast and slow pointers: the gap-patterns run (§1) added the Wikipedia, OI Wiki and algo-explanation treatments."
   },
   {
    "id": "cycle-start",
@@ -1301,11 +1790,19 @@
      "row": "ciu:queue-linked-list",
      "locator": "ciu:#queue",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:Data_Structures/Stacks_and_Queues#Queues",
+     "locator": "wikibooks:Data_Structures/Stacks_and_Queues#Queues",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Queue on a linked list"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:queue-linked-list, wikibooks:Data_Structures/Stacks_and_Queues#Queues). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "array-queue",
@@ -1502,6 +1999,7 @@
    "chapter": "ch-stacks-queues",
    "section": "monotonic",
    "prereqs": [
+    "sliding-window-fixed",
     "monotonic-queue-minimum"
    ],
    "treatments": [
@@ -1510,13 +2008,37 @@
      "row": "cpa:sliding-window-minimum",
      "locator": "cpa:data_structures/stack_queue_modification#finding-the-minimum-for-all-subarrays-of-fixed-length",
      "inventory": "cpa-a"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Double-ended_queue#Monotonic_queue",
+     "locator": "wikipedia:Double-ended_queue#Monotonic_queue",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:ds/monotonic-queue",
+     "locator": "oiwiki:ds/monotonic-queue",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0239#Solution_2:_Monotonic_Queue",
+     "locator": "doocs-leetcode:0239#Solution 2: Monotonic Queue",
+     "inventory": "gap"
     }
    ],
    "aliases": [
-    "minimum of all subarrays of fixed length"
+    "minimum of all subarrays of fixed length",
+    "Monotonic queue for sliding-window minimum",
+    "monotonic deque",
+    "Monotonic queue",
+    "单调队列",
+    "Sliding window maximum with a monotonic deque",
+    "sliding window maximum"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 4 rows (cpa:sliding-window-minimum, wikipedia:Double-ended_queue#Monotonic_queue, oiwiki:ds/monotonic-queue, doocs-leetcode:0239#Solution_2:_Monotonic_Queue). The gap-patterns run (§2) added the Wikipedia, OI Wiki and doocs treatments of the monotonic-deque window. Edge to sliding-window-fixed added: the monotonic-deque minimum is a fixed-size window whose state is a min-queue (gap inventory)."
   },
   {
    "id": "nearest-smaller-element",
@@ -1840,11 +2362,19 @@
      "row": "ciu:tail-recursion",
      "locator": "ciu:#recursion",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Tail_call",
+     "locator": "wikipedia:Tail_call",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Tail calls and tail recursion"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:tail-recursion, wikipedia:Tail_call). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "tower-of-hanoi",
@@ -2016,14 +2546,21 @@
      "row": "jeffe-notes:induction-axiom",
      "locator": "jeffe-notes:98-induction.2",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "csci30",
+     "row": "csci30:correctness#Mathematical_induction",
+     "locator": "csci30:correctness#Mathematical induction",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "strong induction",
-    "mathematical induction"
+    "mathematical induction",
+    "Mathematical induction for correctness"
    ],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 2 rows (jeffe-notes:induction-axiom, csci30:correctness#Mathematical_induction). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "induction-practice",
@@ -2177,16 +2714,29 @@
      "row": "jeffe-notes:hash-table",
      "locator": "jeffe-notes:05-hashing.1",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Hash_table",
+     "locator": "wikipedia:Hash_table",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:Hashing/HashIntro",
+     "locator": "opendsa:Hashing/HashIntro",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "hash map",
     "dictionary",
     "Hash tables: the dictionary problem",
-    "load factor"
+    "load factor",
+    "Introduction to hashing"
    ],
-   "open_prose": false,
-   "notes": "Merged 2 rows (ciu:hash-table, jeffe-notes:hash-table)."
+   "open_prose": true,
+   "notes": "Merged 4 rows (ciu:hash-table, jeffe-notes:hash-table, wikipedia:Hash_table, opendsa:Hashing/HashIntro). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "hashing-with-chaining",
@@ -2243,11 +2793,19 @@
      "row": "ciu:table-doubling",
      "locator": "ciu:#hash-table",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Hash_table#Dynamic_resizing",
+     "locator": "wikipedia:Hash_table#Dynamic_resizing",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Dynamic resizing of hash tables"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:table-doubling, wikipedia:Hash_table#Dynamic_resizing). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "open-addressing",
@@ -2373,15 +2931,22 @@
      "row": "ciu:universal-perfect-hashing",
      "locator": "ciu:#hash-table",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Hash_function#Universality",
+     "locator": "wikipedia:Hash_function#Universality",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "universal family",
     "2-uniform",
-    "Universal and perfect hashing"
+    "Universal and perfect hashing",
+    "Universal hashing"
    ],
-   "open_prose": false,
-   "notes": "Merged 2 rows (jeffe-notes:universal-hashing, ciu:universal-perfect-hashing). Tier from CIU (required list); other sources say jeffe-notes stretch. ciu:universal-perfect-hashing also treats perfect-hashing (row split by granularity). CIU's one row covers universal and perfect hashing; split into two concepts, CIU's row treats both."
+   "open_prose": true,
+   "notes": "Merged 3 rows (jeffe-notes:universal-hashing, ciu:universal-perfect-hashing, wikipedia:Hash_function#Universality). Tier from CIU (required list); other sources say jeffe-notes stretch, wikipedia core. ciu:universal-perfect-hashing also treats perfect-hashing (row split by granularity). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. CIU's one row covers universal and perfect hashing; split into two concepts, CIU's row treats both."
   },
   {
    "id": "multiplicative-hashing",
@@ -2640,11 +3205,17 @@
      "row": "jeffe-notes:cuckoo-hashing",
      "locator": "jeffe-notes:05-hashing.11",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Hash_table#Cuckoo_hashing",
+     "locator": "wikipedia:Hash_table#Cuckoo_hashing",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 2 rows (jeffe-notes:cuckoo-hashing, wikipedia:Hash_table#Cuckoo_hashing). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "lru-cache",
@@ -3430,11 +4001,19 @@
      "row": "ciu:floating-point",
      "locator": "ciu:#floating-point-numbers",
      "inventory": "ciu"
+    },
+    {
+     "source": "lt-csbu",
+     "row": "lt-csbu:2.2",
+     "locator": "lt-csbu:2.2",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Types and number representation"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:floating-point, lt-csbu:2.2). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "endianness",
@@ -3495,11 +4074,26 @@
      "row": "ciu:tree",
      "locator": "ciu:#trees---intro",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Tree_(abstract_data_type)",
+     "locator": "wikipedia:Tree_(abstract_data_type)",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:General/GenTreeIntro",
+     "locator": "opendsa:General/GenTreeIntro",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Tree (abstract data type)",
+    "General trees"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:tree, wikipedia:Tree_(abstract_data_type), opendsa:General/GenTreeIntro). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "binary-tree",
@@ -3828,11 +4422,19 @@
      "row": "ciu:bst-successor",
      "locator": "ciu:#binary-search-trees-bsts",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Binary_search_tree#Successor_and_predecessor",
+     "locator": "wikipedia:Binary_search_tree#Successor_and_predecessor",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "BST successor and predecessor"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:bst-successor, wikipedia:Binary_search_tree#Successor_and_predecessor). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "bst-delete",
@@ -3955,11 +4557,26 @@
      "row": "ciu:balanced-bst-idea",
      "locator": "ciu:#balanced-search-trees",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Self-balancing_binary_search_tree",
+     "locator": "wikipedia:Self-balancing_binary_search_tree",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:SearchStruct/BalancedTree",
+     "locator": "opendsa:SearchStruct/BalancedTree",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Self-balancing binary search tree",
+    "Balanced trees"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:balanced-bst-idea, wikipedia:Self-balancing_binary_search_tree, opendsa:SearchStruct/BalancedTree). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "tree-rotations",
@@ -4198,11 +4815,19 @@
      "row": "ciu:heap-sift",
      "locator": "ciu:#heap--priority-queue--binary-heap",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Binary_heap#Heap_operations",
+     "locator": "wikipedia:Binary_heap#Heap_operations",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Binary heap insert and extract"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:heap-sift, wikipedia:Binary_heap#Heap_operations). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "build-heap",
@@ -4396,11 +5021,19 @@
      "row": "ciu:sort-stability",
      "locator": "ciu:#sorting",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Sorting_algorithm#Stability",
+     "locator": "wikipedia:Sorting_algorithm#Stability",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Stability of sorting"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:sort-stability, wikipedia:Sorting_algorithm#Stability). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "selection-sort",
@@ -4419,11 +5052,23 @@
      "row": "ciu:selection-sort",
      "locator": "ciu:#sorting",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Selection_sort",
+     "locator": "wikipedia:Selection_sort",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:Sorting/SelectionSort",
+     "locator": "opendsa:Sorting/SelectionSort",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:selection-sort, wikipedia:Selection_sort, opendsa:Sorting/SelectionSort). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "insertion-sort",
@@ -4442,11 +5087,23 @@
      "row": "ciu:insertion-sort",
      "locator": "ciu:#sorting",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Insertion_sort",
+     "locator": "wikipedia:Insertion_sort",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:Sorting/InsertionSort",
+     "locator": "opendsa:Sorting/InsertionSort",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:insertion-sort, wikipedia:Insertion_sort, opendsa:Sorting/InsertionSort). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "bubble-sort",
@@ -4465,11 +5122,23 @@
      "row": "ciu:bubble-sort",
      "locator": "ciu:#sorting",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Bubble_sort",
+     "locator": "wikipedia:Bubble_sort",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:Sorting/BubbleSort",
+     "locator": "opendsa:Sorting/BubbleSort",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:bubble-sort, wikipedia:Bubble_sort, opendsa:Sorting/BubbleSort). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "divide-and-conquer",
@@ -4655,6 +5324,7 @@
    "chapter": "ch-sorting",
    "section": "mergesort",
    "prereqs": [
+    "merge-sorted-sequences",
     "comparison-sorting",
     "recursion-trees"
    ],
@@ -4684,7 +5354,7 @@
     "Merge-sort"
    ],
    "open_prose": true,
-   "notes": "Merged 3 rows (jeffe:mergesort, ciu:mergesort, ods:merge-sort)."
+   "notes": "Merged 3 rows (jeffe:mergesort, ciu:mergesort, ods:merge-sort). Edge to merge-sorted-sequences added: merge sort repeats the two-list merge, which chapter 2 teaches as a two-pointer case (gap inventory)."
   },
   {
    "id": "sorting-linked-lists",
@@ -4750,13 +5420,21 @@
      "row": "ods:three-way-partition",
      "locator": "ods:sorting#quicksort",
      "inventory": "ods"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Dutch_national_flag_problem#The_array_case",
+     "locator": "wikipedia:Dutch_national_flag_problem#The_array_case",
+     "inventory": "gap"
     }
    ],
    "aliases": [
-    "Dutch national flag partition"
+    "Dutch national flag partition",
+    "Dutch national flag (three-way) partition",
+    "Dutch national flag problem"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 2 rows (ods:three-way-partition, wikipedia:Dutch_national_flag_problem#The_array_case). Also the Dutch national flag problem, a three-pointer case of the two-pointer pattern (2.3); the Wikipedia treatment is from the gap-patterns run (§1)."
   },
   {
    "id": "quicksort",
@@ -5149,18 +5827,30 @@
      "row": "ciu:avl-tree",
      "locator": "ciu:#balanced-search-trees",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:AVL_tree",
+     "locator": "wikipedia:AVL_tree",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:SearchStruct/AVL",
+     "locator": "opendsa:SearchStruct/AVL",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:avl-tree, wikipedia:AVL_tree, opendsa:SearchStruct/AVL). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "two-three-tree",
    "name": "2-3 search tree",
    "kind": "definition",
    "statement": "A perfectly balanced search tree whose nodes hold one or two keys (two or three children).",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "multiway-trees",
    "prereqs": [
@@ -5172,18 +5862,26 @@
      "row": "ciu:2-3-tree",
      "locator": "ciu:#balanced-search-trees",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:2–3_tree",
+     "locator": "wikipedia:2–3_tree",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": "Tier set to core in the spec (sources say ciu stretch): two-four-tree (core) rests on it."
+   "aliases": [
+    "2-3 tree"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:2-3-tree, wikipedia:2–3_tree)."
   },
   {
    "id": "two-four-tree",
    "name": "2-3-4 tree",
    "kind": "definition",
    "statement": "A balanced search tree whose nodes hold one to three keys; its splits correspond to red-black colour flips and rotations.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "multiway-trees",
    "prereqs": [
@@ -5208,14 +5906,14 @@
     "2-4 trees"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:2-3-4-tree, ods:two-four-tree). Tier set to core in the spec (sources say ciu stretch, ods stretch): two-four-updates, b-tree-structure (core) rest on it."
+   "notes": "Merged 2 rows (ciu:2-3-4-tree, ods:two-four-tree)."
   },
   {
    "id": "two-four-updates",
    "name": "Adding and removing leaves in a 2-4 tree",
    "kind": "skill",
    "statement": "Adding a leaf may give a node 5 children; split it into nodes of 2 and 3 children and push the split up to the parent, possibly creating a new root. Removing a leaf may leave a node with 1 child; borrow from a sibling or merge with it, repeating upward.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "multiway-trees",
    "prereqs": [
@@ -5231,7 +5929,7 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of b-tree-insert (core)."
+   "notes": ""
   },
   {
    "id": "red-black-properties",
@@ -5724,14 +6422,20 @@
      "row": "jeffe-notes:splay-tree",
      "locator": "jeffe-notes:10-scapegoat-splay.6",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:SearchStruct/Splay",
+     "locator": "opendsa:SearchStruct/Splay",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "Splay trees",
     "Access Lemma"
    ],
-   "open_prose": false,
-   "notes": "Merged 2 rows (ciu:splay-tree, jeffe-notes:splay-tree). Tier from CIU (optional list); other sources say jeffe-notes contest."
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:splay-tree, jeffe-notes:splay-tree, opendsa:SearchStruct/Splay). Tier from CIU (optional list); other sources say jeffe-notes contest, opendsa stretch. Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "skiplist-structure",
@@ -5877,7 +6581,7 @@
    "name": "External memory model",
    "kind": "definition",
    "statement": "Data lives in external memory divided into blocks of B words; transferring a block costs one unit and computation in internal memory is free, so cost counts block reads and writes. A BlockStore offers readBlock, writeBlock, placeBlock and freeBlock.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -5896,14 +6600,14 @@
     "disk access model"
    ],
    "open_prose": true,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of b-tree-structure (core)."
+   "notes": ""
   },
   {
    "id": "k-ary-tree",
    "name": "K-ary tree",
    "kind": "definition",
    "statement": "A tree in which each node has at most k children (the branching factor).",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -5915,21 +6619,27 @@
      "row": "ciu:k-ary-tree",
      "locator": "ciu:#balanced-search-trees",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:M-ary_tree",
+     "locator": "wikipedia:M-ary_tree",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "N-ary tree",
     "M-ary tree"
    ],
-   "open_prose": false,
-   "notes": "Tier set to core in the spec (sources say ciu stretch): b-tree (core) rests on it."
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:k-ary-tree, wikipedia:M-ary_tree)."
   },
   {
    "id": "b-tree-structure",
    "name": "B-tree structure",
    "kind": "definition",
    "statement": "For B >= 2, all leaves have the same depth, every non-root internal node has between B and 2B children (the root 2 to 2B), and a node with k children stores k-1 sorted keys separating the children's subtrees. Height is O(log_B n).",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -5948,14 +6658,14 @@
     "B-tree"
    ],
    "open_prose": true,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of b-tree-search (core)."
+   "notes": ""
   },
   {
    "id": "b-tree-search",
    "name": "B-tree search",
    "kind": "skill",
    "statement": "find(x) descends from the root; at each node binary search (findIt, O(log B)) finds the smallest key > x, continuing in that child, and the most recent such key z is returned as the successor when x is absent.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -5971,14 +6681,14 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of b-tree-insert (core)."
+   "notes": ""
   },
   {
    "id": "b-tree-insert",
    "name": "B-tree insertion with splits",
    "kind": "skill",
    "statement": "addRecursive inserts x into a leaf; a node that overflows to 2B keys (2B+1 children) is split: a new node w takes the B largest keys and the last B+1 children and the middle key moves up to the parent, possibly cascading to the root, which grows the tree by one level.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -5995,14 +6705,14 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of b-tree-delete (core)."
+   "notes": ""
   },
   {
    "id": "b-tree-delete",
    "name": "B-tree deletion with borrow and merge",
    "kind": "skill",
    "statement": "removeRecursive deletes from a leaf (replacing an internal key by the smallest in its right subtree); a node left with fewer than B-1 keys underflows, and checkUnderflow fixes it by borrowing keys from a sibling or merging with it; merges can cascade up and shrink the root.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -6018,14 +6728,14 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": "Tier raised from stretch to core: it is a prerequisite of b-tree (core)."
+   "notes": ""
   },
   {
    "id": "b-tree",
    "name": "B-tree",
    "kind": "result",
    "statement": "A balanced k-ary search tree with large nodes sized to a disk block, keeping height O(log_B n); used by databases and filesystems.",
-   "tier": "core",
+   "tier": "stretch",
    "chapter": "ch-balanced",
    "section": "b-trees",
    "prereqs": [
@@ -6051,7 +6761,7 @@
     "B-tree performance"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:b-tree, ods:b-tree-performance). Tier set to core in the spec (sources say ciu stretch, ods stretch): database-indexes (core) rests on it."
+   "notes": "Merged 2 rows (ciu:b-tree, ods:b-tree-performance)."
   },
   {
    "id": "trie",
@@ -6102,11 +6812,19 @@
      "row": "ciu:trie-operations",
      "locator": "ciu:#tries",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Trie#Operations",
+     "locator": "wikipedia:Trie#Operations",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Trie operations"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:trie-operations, wikipedia:Trie#Operations). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "ternary-search-trie",
@@ -6451,11 +7169,25 @@
      "row": "ciu:graph-representations",
      "locator": "ciu:#graphs",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Graph_(abstract_data_type)#Common_data_structures_for_graph_representation",
+     "locator": "wikipedia:Graph_(abstract_data_type)#Common_data_structures_for_graph_representation",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:Graph/GraphImpl",
+     "locator": "opendsa:Graph/GraphImpl",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Graph implementations"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (ciu:graph-representations, wikipedia:Graph_(abstract_data_type)#Common_data_structures_for_graph_representation, opendsa:Graph/GraphImpl). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
   },
   {
    "id": "whatever-first-search",
@@ -6995,13 +7727,28 @@
      "row": "cpa:topological-order",
      "locator": "cpa:graph/topological-sort#topological-sorting",
      "inventory": "cpa-a"
+    },
+    {
+     "source": "mcs2018",
+     "row": "mcs2018:10.5.1",
+     "locator": "mcs2018:10.5.1",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-202",
+     "row": "aspnes-202:9.5.5.1",
+     "locator": "aspnes-202:9.5.5.1",
+     "inventory": "gap"
     }
    ],
    "aliases": [
-    "linear extension"
+    "linear extension",
+    "Topological sort by repeatedly taking a minimal element",
+    "getting dressed",
+    "Topological sort as repeated selection of a minimal element"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 3 rows (cpa:topological-order, mcs2018:10.5.1, aspnes-202:9.5.5.1). The MCS and Aspnes treatments (gap-patterns §3) prove that every finite DAG has a topological order by repeatedly taking a minimal element: Kahn's idea as an existence proof, without the data structures, so they treat this concept rather than kahn-topological-sort."
   },
   {
    "id": "topological-sort",
@@ -7043,6 +7790,72 @@
    ],
    "open_prose": true,
    "notes": "Merged 3 rows (ciu:topological-sort, cpa:topological-sort, jeffe:topological-sort). Tier from CIU (required list); other sources say cpa core, jeffe stretch."
+  },
+  {
+   "id": "kahn-topological-sort",
+   "name": "Kahn's algorithm",
+   "kind": "result",
+   "statement": "Put every vertex with no incoming edge in a set S; repeatedly remove a vertex from S, append it to the order, delete its out-edges and add any vertex left with no incoming edge. If edges remain at the end the graph has a cycle; otherwise the order is topological, found in O(V+E).",
+   "tier": "core",
+   "chapter": "ch-dfs-structure",
+   "section": "topological-order",
+   "prereqs": [
+    "queue",
+    "adjacency-list",
+    "topological-order"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Topological_sorting#Kahn's_algorithm",
+     "locator": "wikipedia:Topological_sorting#Kahn's_algorithm",
+     "inventory": "gap"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:Graph/GraphTopsort#Queue-based_Solution",
+     "locator": "opendsa:Graph/GraphTopsort#Queue-based Solution",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:graph/topo#Kahn_算法",
+     "locator": "oiwiki:graph/topo#Kahn 算法",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0207#Solution_1:_Topological_Sorting",
+     "locator": "doocs-leetcode:0207#Solution 1: Topological Sorting",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0210#Solution_1",
+     "locator": "doocs-leetcode:0210#Solution 1",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:graphs_trees/graph_build_order",
+     "locator": "icc:graphs_trees/graph_build_order",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "BFS topological sort",
+    "topological sort by in-degrees",
+    "Queue-based topological sort",
+    "Kahn 算法",
+    "Course schedule by Kahn's algorithm",
+    "course schedule",
+    "Course schedule order by Kahn's algorithm",
+    "course schedule II",
+    "Build order by repeatedly removing independent nodes",
+    "build order"
+   ],
+   "open_prose": true,
+   "notes": "Merged 6 rows (wikipedia:Topological_sorting#Kahn's_algorithm, opendsa:Graph/GraphTopsort#Queue-based_Solution, oiwiki:graph/topo#Kahn_算法, doocs-leetcode:0207#Solution_1:_Topological_Sorting, doocs-leetcode:0210#Solution_1, icc:graphs_trees/graph_build_order). From the gap-patterns finder run (dossiers/gap-patterns.md §3). cpa says outright that it does not cover Kahn's algorithm, and Erickson and CIU teach only the DFS method, which stays the topological-sort concept beside this one."
   },
   {
    "id": "low-link",
@@ -8231,6 +9044,191 @@
    "notes": ""
   },
   {
+   "id": "generate-permutations",
+   "name": "Generating all permutations by backtracking",
+   "kind": "skill",
+   "statement": "Fill positions one at a time; at each position try every unused element (tracked in a used-array), recurse, then undo the choice. n! permutations, each produced in O(n).",
+   "tier": "core",
+   "chapter": "ch-backtracking",
+   "section": "generation",
+   "prereqs": [
+    "backtracking"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0046#Solution_1:_DFS_(Backtracking)",
+     "locator": "doocs-leetcode:0046#Solution 1: DFS (Backtracking)",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0047#Solution_1:_Sorting_+_Backtracking",
+     "locator": "doocs-leetcode:0047#Solution 1: Sorting + Backtracking",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/permutations",
+     "locator": "icc:recursion_dynamic/permutations",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "permutations",
+    "Permutations of a multiset by backtracking",
+    "permutations II",
+    "Permutations of a string with duplicates"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (doocs-leetcode:0046#Solution_1:_DFS_(Backtracking), doocs-leetcode:0047#Solution_1:_Sorting_+_Backtracking, icc:recursion_dynamic/permutations). From the gap-patterns finder run (dossiers/gap-patterns.md §6). CIU's backtracking row only links to permutation and subset write-ups; no inventory row taught generation."
+  },
+  {
+   "id": "next-permutation",
+   "name": "Next permutation in lexicographic order",
+   "kind": "result",
+   "statement": "Find the largest k with a[k] < a[k+1], then the largest l > k with a[k] < a[l]; swap them and reverse a[k+1..]. Repeating from the sorted order lists all permutations lexicographically, and repeated values are handled.",
+   "tier": "core",
+   "chapter": "ch-backtracking",
+   "section": "generation",
+   "prereqs": [
+    "counting"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Permutation#Generation_in_lexicographic_order",
+     "locator": "wikipedia:Permutation#Generation_in_lexicographic_order",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0031#Solution_1:_Two_traversals",
+     "locator": "doocs-leetcode:0031#Solution 1: Two traversals",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "next permutation",
+    "lexicographic permutations",
+    "Next permutation by two traversals"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (wikipedia:Permutation#Generation_in_lexicographic_order, doocs-leetcode:0031#Solution_1:_Two_traversals). From the gap-patterns finder run (dossiers/gap-patterns.md §6). Iterative, not backtracking; it sits here with the other generators."
+  },
+  {
+   "id": "heaps-algorithm",
+   "name": "Heap's algorithm",
+   "kind": "result",
+   "statement": "Heap's algorithm generates all n! permutations, each from the previous by a single swap, by a recursion that swaps a[k-1] with a[i] or a[0] according to the parity of k; recursive and iterative forms.",
+   "tier": "stretch",
+   "chapter": "ch-backtracking",
+   "section": "generation",
+   "prereqs": [
+    "recursion"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Heap's_algorithm#Details_of_the_algorithm",
+     "locator": "wikipedia:Heap's_algorithm#Details_of_the_algorithm",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [],
+   "open_prose": true,
+   "notes": "From the gap-patterns finder run (dossiers/gap-patterns.md §6). Tier stretch: one swap per permutation matters for contests and puzzles, not for the typical interview, where backtracking and next permutation suffice."
+  },
+  {
+   "id": "generate-subsets",
+   "name": "Generating all subsets",
+   "kind": "skill",
+   "statement": "Decide for each element in turn whether it is in the subset (include, recurse, exclude, recurse); the 2^n leaves of this recursion are the subsets. Equivalently, the bits of each mask 0..2^n-1 select a subset (Solution 2).",
+   "tier": "core",
+   "chapter": "ch-backtracking",
+   "section": "generation",
+   "prereqs": [
+    "binary-representation",
+    "backtracking"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0078#Solution_1:_DFS_(Backtracking)",
+     "locator": "doocs-leetcode:0078#Solution 1: DFS (Backtracking)",
+     "inventory": "gap"
+    },
+    {
+     "source": "trekhleb-jsalgo",
+     "row": "trekhleb-jsalgo:src/algorithms/sets/power-set/README.md#Algorithms",
+     "locator": "trekhleb-jsalgo:src/algorithms/sets/power-set/README.md#Algorithms",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Power_set#Representing_subsets_as_functions",
+     "locator": "wikipedia:Power_set#Representing_subsets_as_functions",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0090#Solution_1:_Sorting_+_DFS",
+     "locator": "doocs-leetcode:0090#Solution 1: Sorting + DFS",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/power_set",
+     "locator": "icc:recursion_dynamic/power_set",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "power set",
+    "subsets",
+    "Power set: bitwise, backtracking and cascading",
+    "Subsets as bit strings",
+    "Subsets of a multiset",
+    "subsets II",
+    "All subsets of a string"
+   ],
+   "open_prose": true,
+   "notes": "Merged 5 rows (doocs-leetcode:0078#Solution_1:_DFS_(Backtracking), trekhleb-jsalgo:src/algorithms/sets/power-set/README.md#Algorithms, wikipedia:Power_set#Representing_subsets_as_functions, doocs-leetcode:0090#Solution_1:_Sorting_+_DFS, icc:recursion_dynamic/power_set). From the gap-patterns finder run (dossiers/gap-patterns.md §6). Kept apart from submask enumeration (7.4), which lists the submasks of one mask, and from subset sum by backtracking (17.3), which decides rather than lists."
+  },
+  {
+   "id": "generate-combinations",
+   "name": "Generating k-combinations by backtracking",
+   "kind": "skill",
+   "statement": "Choose elements in increasing order: either decide pick or skip for each number, or loop the next pick from i to n; stop a branch when it can no longer reach k elements.",
+   "tier": "core",
+   "chapter": "ch-backtracking",
+   "section": "generation",
+   "prereqs": [
+    "backtracking"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0077#Solution_1:_Backtracking_(Two_Ways)",
+     "locator": "doocs-leetcode:0077#Solution 1: Backtracking (Two Ways)",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0039#Solution_1:_Sorting_+_Pruning_+_Backtracking",
+     "locator": "doocs-leetcode:0039#Solution 1: Sorting + Pruning + Backtracking",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "combinations",
+    "Combination sum with reuse",
+    "combination sum"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (doocs-leetcode:0077#Solution_1:_Backtracking_(Two_Ways), doocs-leetcode:0039#Solution_1:_Sorting_+_Pruning_+_Backtracking). From the gap-patterns finder run (dossiers/gap-patterns.md §6). The lexicographic successor method is next-combination (40.5, stretch)."
+  },
+  {
    "id": "subset-sum-backtracking",
    "name": "Subset sum by backtracking",
    "kind": "result",
@@ -8620,6 +9618,207 @@
    "notes": "Merged 2 rows (cpa:fibonacci-matrix, jeffe:fast-fibonacci)."
   },
   {
+   "id": "coin-change-min",
+   "name": "Coin change: fewest coins by DP",
+   "kind": "result",
+   "statement": "The fewest coins making value r is found by a table over coins and values: m[c][r] = min(m[c-1][r], 1 + m[c][r - coin_c]), with infinity where no change exists; the greedy method is optimal only for canonical coin systems.",
+   "tier": "core",
+   "chapter": "ch-dp",
+   "section": "coin-change-grid-paths",
+   "prereqs": [
+    "bottom-up-dp"
+   ],
+   "treatments": [
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Change-making_problem#Simple_dynamic_programming",
+     "locator": "wikipedia:Change-making_problem#Simple_dynamic_programming",
+     "inventory": "gap"
+    },
+    {
+     "source": "anfp",
+     "row": "anfp:17.3",
+     "locator": "anfp:17.3",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0322#Solution_1:_Dynamic_Programming_(Complete_Knapsack)",
+     "locator": "doocs-leetcode:0322#Solution 1: Dynamic Programming (Complete Knapsack)",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/coin_change_min",
+     "locator": "icc:recursion_dynamic/coin_change_min",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "change-making problem",
+    "minimum coins",
+    "coin change",
+    "Coin change as a complete knapsack",
+    "Minimum coins by memoised recursion"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (wikipedia:Change-making_problem#Simple_dynamic_programming, anfp:17.3, doocs-leetcode:0322#Solution_1:_Dynamic_Programming_(Complete_Knapsack), icc:recursion_dynamic/coin_change_min). From the gap-patterns finder run (dossiers/gap-patterns.md §7). doocs frames it as the complete knapsack (18.6); the map does not make it rest on knapsack, since Wikipedia and ANFP teach it directly."
+  },
+  {
+   "id": "coin-change-ways",
+   "name": "Coin change: counting the ways",
+   "kind": "result",
+   "statement": "With dp[0] = 1, for each coin and each value i from the coin upward do dp[i] += dp[i - coin]; putting the coins in the outer loop counts each combination once regardless of order. O(N·S) time, O(N) space.",
+   "tier": "core",
+   "chapter": "ch-dp",
+   "section": "coin-change-grid-paths",
+   "prereqs": [
+    "bottom-up-dp"
+   ],
+   "treatments": [
+    {
+     "source": "algo-explanation",
+     "row": "algo-explanation:Dynamic_Programming/Coin_Change",
+     "locator": "algo-explanation:Dynamic Programming/Coin Change",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/coin_change_ways",
+     "locator": "icc:recursion_dynamic/coin_change_ways",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/coin_change",
+     "locator": "icc:recursion_dynamic/coin_change",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0518#Solution_1:_Dynamic_Programming_(Complete_Knapsack)",
+     "locator": "doocs-leetcode:0518#Solution 1: Dynamic Programming (Complete Knapsack)",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "coin change II",
+    "number of ways to make change",
+    "Ways to make change, one array",
+    "Ways to make change, two-dimensional table",
+    "Coin change II as a complete knapsack count"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (algo-explanation:Dynamic_Programming/Coin_Change, icc:recursion_dynamic/coin_change_ways, icc:recursion_dynamic/coin_change, doocs-leetcode:0518#Solution_1:_Dynamic_Programming_(Complete_Knapsack)). From the gap-patterns finder run (dossiers/gap-patterns.md §7)."
+  },
+  {
+   "id": "grid-paths",
+   "name": "Counting grid paths",
+   "kind": "result",
+   "statement": "The number of right/down paths to cell (i, j) is f[i][j] = f[i-1][j] + f[i][j-1] with f = 1 on the first row and column, so an m×n grid is counted in O(mn), and in O(n) memory with a rolling array; the count equals C(m+n-2, m-1).",
+   "tier": "core",
+   "chapter": "ch-dp",
+   "section": "coin-change-grid-paths",
+   "prereqs": [
+    "counting",
+    "bottom-up-dp"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0062#Solution_1:_Dynamic_Programming",
+     "locator": "doocs-leetcode:0062#Solution 1: Dynamic Programming",
+     "inventory": "gap"
+    },
+    {
+     "source": "trekhleb-jsalgo",
+     "row": "trekhleb-jsalgo:src/algorithms/uncategorized/unique-paths/README.md#Algorithms",
+     "locator": "trekhleb-jsalgo:src/algorithms/uncategorized/unique-paths/README.md#Algorithms",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Lattice_path#Counting_lattice_paths",
+     "locator": "wikipedia:Lattice_path#Counting_lattice_paths",
+     "inventory": "gap"
+    },
+    {
+     "source": "dmoi3",
+     "row": "dmoi3:sec_counting-binom#Lattice_Paths",
+     "locator": "dmoi3:sec_counting-binom#Lattice Paths",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "unique paths",
+    "lattice paths",
+    "counting paths in a 2D array",
+    "Unique paths: backtracking, DP and Pascal's triangle",
+    "Counting lattice paths",
+    "Lattice paths and binomial coefficients"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (doocs-leetcode:0062#Solution_1:_Dynamic_Programming, trekhleb-jsalgo:src/algorithms/uncategorized/unique-paths/README.md#Algorithms, wikipedia:Lattice_path#Counting_lattice_paths, dmoi3:sec_counting-binom#Lattice_Paths). From the gap-patterns finder run (dossiers/gap-patterns.md §8). One concept with two derivations: the DP recurrence (doocs, trekhleb) and the binomial count (Wikipedia, Levin). cpa's classic-DP table names it only as an alias (classic-dp-problems); cpa's lattice paths avoiding obstacles (40.4) now rests on it."
+  },
+  {
+   "id": "grid-paths-obstacles",
+   "name": "Counting grid paths around obstacles",
+   "kind": "result",
+   "statement": "Set f[i][j] = 0 on obstacle cells and f[i][j] = f[i-1][j] + f[i][j-1] elsewhere; borders are filled until the first obstacle. O(mn).",
+   "tier": "core",
+   "chapter": "ch-dp",
+   "section": "coin-change-grid-paths",
+   "prereqs": [
+    "grid-paths"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0063#Solution_2:_Dynamic_Programming",
+     "locator": "doocs-leetcode:0063#Solution 2: Dynamic Programming",
+     "inventory": "gap"
+    },
+    {
+     "source": "icc",
+     "row": "icc:recursion_dynamic/grid_path",
+     "locator": "icc:recursion_dynamic/grid_path",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "unique paths II",
+    "A robot's path around off-limits cells",
+    "robot in a grid"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (doocs-leetcode:0063#Solution_2:_Dynamic_Programming, icc:recursion_dynamic/grid_path). From the gap-patterns finder run (dossiers/gap-patterns.md §8). Kept apart from cpa's inclusion-exclusion count with few obstacles (lattice-paths-obstacles, contest)."
+  },
+  {
+   "id": "min-path-sum",
+   "name": "Minimum path sum in a grid",
+   "kind": "result",
+   "statement": "f[i][j] = min(f[i-1][j], f[i][j-1]) + grid[i][j], with the first row and column as running sums; f[m-1][n-1] is the cheapest right/down path. O(mn).",
+   "tier": "core",
+   "chapter": "ch-dp",
+   "section": "coin-change-grid-paths",
+   "prereqs": [
+    "grid-paths"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0064#Solution_1:_Dynamic_Programming",
+     "locator": "doocs-leetcode:0064#Solution 1: Dynamic Programming",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "minimum path sum"
+   ],
+   "open_prose": true,
+   "notes": "From the gap-patterns finder run (dossiers/gap-patterns.md §8)."
+  },
+  {
    "id": "text-segmentation-dp",
    "name": "Text segmentation by dynamic programming",
    "kind": "result",
@@ -8785,6 +9984,7 @@
    "chapter": "ch-dp",
    "section": "max-subarray",
    "prereqs": [
+    "prefix-sums",
     "max-subarray-problem"
    ],
    "treatments": [
@@ -8797,7 +9997,7 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": "Assumes, untaught in the map: prefix sums."
+   "notes": ""
   },
   {
    "id": "kadane",
@@ -9613,14 +10813,50 @@
      "row": "jeffe:interval-scheduling",
      "locator": "jeffe:4.2",
      "inventory": "jeffe"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Interval_scheduling#Unweighted",
+     "locator": "wikipedia:Interval_scheduling#Unweighted",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Activity_selection_problem#Algorithm",
+     "locator": "wikipedia:Activity_selection_problem#Algorithm",
+     "inventory": "gap"
+    },
+    {
+     "source": "anfp",
+     "row": "anfp:17.2",
+     "locator": "anfp:17.2",
+     "inventory": "gap"
+    },
+    {
+     "source": "anfp",
+     "row": "anfp:18.3",
+     "locator": "anfp:18.3",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0435#Solution_1:_Sorting_+_Greedy",
+     "locator": "doocs-leetcode:0435#Solution 1: Sorting + Greedy",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "activity selection",
-    "GreedySchedule"
+    "GreedySchedule",
+    "Unweighted interval scheduling: earliest finish first",
+    "Activity selection: greedy by finish time",
+    "activity selection problem",
+    "Interval scheduling: which greedy works",
+    "Fewest intervals to remove for no overlap",
+    "non-overlapping intervals"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 6 rows (jeffe:interval-scheduling, wikipedia:Interval_scheduling#Unweighted, wikipedia:Activity_selection_problem#Algorithm, anfp:17.2, anfp:18.3, doocs-leetcode:0435#Solution_1:_Sorting_+_Greedy). The map already had it from Erickson 4.2; the gap-patterns run (§5) added the Wikipedia, ANFP and doocs treatments."
   },
   {
    "id": "stable-matching",
@@ -9648,6 +10884,76 @@
    ],
    "open_prose": true,
    "notes": ""
+  },
+  {
+   "id": "merge-intervals",
+   "name": "Merging overlapping intervals",
+   "kind": "skill",
+   "statement": "Sort intervals by start; scan them, extending the current merged interval while the next one starts no later than its end, and starting a new one otherwise. O(n log n).",
+   "tier": "core",
+   "chapter": "ch-greedy",
+   "section": "intervals",
+   "prereqs": [
+    "comparison-sorting"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0056#Solution_1:_Sorting_+_One-pass_Traversal",
+     "locator": "doocs-leetcode:0056#Solution 1: Sorting + One-pass Traversal",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0057#Solution_2:_One-pass_Traversal",
+     "locator": "doocs-leetcode:0057#Solution 2: One-pass Traversal",
+     "inventory": "gap"
+    },
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0252#Solution_1:_Sorting",
+     "locator": "doocs-leetcode:0252#Solution 1: Sorting",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "merge intervals",
+    "Inserting an interval into sorted disjoint intervals",
+    "insert interval",
+    "Checking whether intervals overlap",
+    "meeting rooms"
+   ],
+   "open_prose": true,
+   "notes": "Merged 3 rows (doocs-leetcode:0056#Solution_1:_Sorting_+_One-pass_Traversal, doocs-leetcode:0057#Solution_2:_One-pass_Traversal, doocs-leetcode:0252#Solution_1:_Sorting). From the gap-patterns finder run (dossiers/gap-patterns.md §5). Open prose at problem level only (doocs). Sits with interval scheduling, after sorting."
+  },
+  {
+   "id": "interval-partitioning",
+   "name": "Interval partitioning: minimum rooms as maximum overlap",
+   "kind": "result",
+   "statement": "Add +1 at each meeting's start and -1 at its end in a difference array over time; the largest prefix sum is the largest number of meetings in progress at once, which is the minimum number of rooms.",
+   "tier": "core",
+   "chapter": "ch-greedy",
+   "section": "intervals",
+   "prereqs": [
+    "difference-array"
+   ],
+   "treatments": [
+    {
+     "source": "doocs-leetcode",
+     "row": "doocs-leetcode:0253#Solution_1:_Difference_Array",
+     "locator": "doocs-leetcode:0253#Solution 1: Difference Array",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "Minimum meeting rooms as maximum overlap",
+    "meeting rooms II",
+    "interval partitioning",
+    "sweep line over intervals",
+    "maximum overlap"
+   ],
+   "open_prose": true,
+   "notes": "From the gap-patterns finder run (dossiers/gap-patterns.md §5). Also the sweep line over intervals: +1 at each start and -1 at each end, read in time order. cpa's union of segments (44.3) is the same sweep for lengths and stays there. Its only open prose is the doocs write-up; Erickson's interval-colouring exercise (ch. 4, unkeyed) is an exercise, not prose."
   },
   {
    "id": "prefix-free-code",
@@ -13244,11 +14550,17 @@
      "row": "ciu:distributed-fallacies",
      "locator": "ciu:#system-design-scalability-data-handling",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Fallacies_of_distributed_computing",
+     "locator": "wp:Fallacies_of_distributed_computing",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:distributed-fallacies, wp:Fallacies_of_distributed_computing). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4."
   },
   {
    "id": "cap-theorem",
@@ -13388,11 +14700,33 @@
      "row": "ciu:consensus",
      "locator": "ciu:#system-design-scalability-data-handling",
      "inventory": "ciu"
+    },
+    {
+     "source": "raft-site",
+     "row": "raft-site:index.html",
+     "locator": "raft-site:index.html",
+     "inventory": "gap"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Raft_(algorithm)",
+     "locator": "wp:Raft_(algorithm)",
+     "inventory": "gap"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Paxos_(computer_science)",
+     "locator": "wp:Paxos_(computer_science)",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "The Raft consensus algorithm (overview)",
+    "Raft (algorithm)",
+    "Paxos"
+   ],
+   "open_prose": true,
+   "notes": "Merged 4 rows (ciu:consensus, raft-site:index.html, wp:Raft_(algorithm), wp:Paxos_(computer_science)). Open prose added in the gap inventory from dossiers/sweep-system-design.md §1, §2.1 and §2.4."
   },
   {
    "id": "active-passive-failover",
@@ -13802,11 +15136,19 @@
      "row": "ciu:scaling-basics",
      "locator": "ciu:#system-design-scalability-data-handling",
      "inventory": "ciu"
+    },
+    {
+     "source": "aosa",
+     "row": "aosa:v2/distsys",
+     "locator": "aosa:v2/distsys",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": "Tier set to core in the spec (sources say ciu stretch): sharding (core) rests on it."
+   "aliases": [
+    "Scalable web architecture and distributed systems"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:scaling-basics, aosa:v2/distsys). Tier set to core in the spec (sources say ciu stretch, aosa core): sharding (core) rests on it. Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.1."
   },
   {
    "id": "autoscaling",
@@ -14075,7 +15417,6 @@
    "chapter": "ch-sd-data",
    "section": "rdbms",
    "prereqs": [
-    "b-tree",
     "acid"
    ],
    "treatments": [
@@ -14090,7 +15431,7 @@
     "index"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Edge to b-tree dropped: knowing an index is a B-tree is Essential; its operations are Advanced (user ruling 2026-11-08)"
   },
   {
    "id": "schema-tightening",
@@ -14340,11 +15681,17 @@
      "row": "ciu:consistent-hashing",
      "locator": "ciu:#system-design-scalability-data-handling",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Consistent_hashing",
+     "locator": "wp:Consistent_hashing",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:consistent-hashing, wp:Consistent_hashing). Open prose added in the gap inventory from dossiers/sweep-system-design.md §1 and §2.4."
   },
   {
    "id": "distributed-hash-table",
@@ -14363,11 +15710,19 @@
      "row": "ciu:distributed-hash-table",
      "locator": "ciu:#hash-table",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Distributed_hash_table",
+     "locator": "wp:Distributed_hash_table",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Distributed hash table"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:distributed-hash-table, wp:Distributed_hash_table). Open prose added in the gap inventory from dossiers/sweep-system-design.md §1 and §2.4."
   },
   {
    "id": "data-tiering",
@@ -14535,11 +15890,19 @@
      "row": "ciu:nosql-patterns",
      "locator": "ciu:#system-design-scalability-data-handling",
      "inventory": "ciu"
+    },
+    {
+     "source": "aosa",
+     "row": "aosa:v1/nosql",
+     "locator": "aosa:v1/nosql",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "The NoSQL ecosystem"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:nosql-patterns, aosa:v1/nosql). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.1."
   },
   {
    "id": "sql-vs-nosql",
@@ -14680,11 +16043,19 @@
      "row": "ciu:redis",
      "locator": "ciu:#messaging-serialization-and-queueing-systems",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Redis",
+     "locator": "wp:Redis",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Redis"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:redis, wp:Redis). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4."
   },
   {
    "id": "cache-cluster-partitioning",
@@ -15739,6 +17110,7 @@
    "chapter": "ch-range-queries",
    "section": "fenwick",
    "prereqs": [
+    "prefix-sums",
     "bitwise-operators"
    ],
    "treatments": [
@@ -15754,7 +17126,7 @@
     "BIT"
    ],
    "open_prose": true,
-   "notes": "Assumes, untaught in the map: prefix sums."
+   "notes": ""
   },
   {
    "id": "fenwick-sum",
@@ -15834,6 +17206,7 @@
    "chapter": "ch-range-queries",
    "section": "fenwick",
    "prereqs": [
+    "difference-array",
     "fenwick-sum"
    ],
    "treatments": [
@@ -15848,7 +17221,7 @@
     "range update range query BIT"
    ],
    "open_prose": true,
-   "notes": "Assumes, untaught in the map: difference array."
+   "notes": ""
   },
   {
    "id": "segment-tree",
@@ -16104,7 +17477,9 @@
    "tier": "stretch",
    "chapter": "ch-range-queries",
    "section": "sqrt-decomposition",
-   "prereqs": [],
+   "prereqs": [
+    "prefix-sums"
+   ],
    "treatments": [
     {
      "source": "cpa",
@@ -16118,7 +17493,7 @@
     "block decomposition"
    ],
    "open_prose": true,
-   "notes": "Assumes, untaught in the map: prefix sums. Tier raised from contest to stretch: it is a prerequisite of rmq-approaches (stretch)."
+   "notes": "Tier raised from contest to stretch: it is a prerequisite of rmq-approaches (stretch)."
   },
   {
    "id": "mo-algorithm",
@@ -18944,14 +20319,20 @@
      "row": "ciu:bloom-filter",
      "locator": "ciu:#bloom-filter",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Bloom_filter",
+     "locator": "wp:Bloom_filter",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "false positive rate",
     "Bloom filter"
    ],
-   "open_prose": false,
-   "notes": "Merged 2 rows (jeffe-notes:bloom-filter, ciu:bloom-filter)."
+   "open_prose": true,
+   "notes": "Merged 3 rows (jeffe-notes:bloom-filter, ciu:bloom-filter, wp:Bloom_filter). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4 (also in its key-value-store row)."
   },
   {
    "id": "streaming-model",
@@ -18995,11 +20376,17 @@
      "row": "jeffe-notes:count-min-sketch",
      "locator": "jeffe-notes:06-bloom.4",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Count–min_sketch",
+     "locator": "wp:Count–min_sketch",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 2 rows (jeffe-notes:count-min-sketch, wp:Count–min_sketch). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4."
   },
   {
    "id": "hyperloglog",
@@ -19018,11 +20405,17 @@
      "row": "ciu:hyperloglog",
      "locator": "ciu:#hyperloglog",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:HyperLogLog",
+     "locator": "wp:HyperLogLog",
+     "inventory": "gap"
     }
    ],
    "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:hyperloglog, wp:HyperLogLog). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4."
   },
   {
    "id": "simhash",
@@ -19041,11 +20434,19 @@
      "row": "ciu:simhash",
      "locator": "ciu:#locality-sensitive-hashing",
      "inventory": "ciu"
+    },
+    {
+     "source": "wp-sysdesign",
+     "row": "wp:Locality-sensitive_hashing",
+     "locator": "wp:Locality-sensitive_hashing",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Locality-sensitive hashing"
+   ],
+   "open_prose": true,
+   "notes": "Merged 2 rows (ciu:simhash, wp:Locality-sensitive_hashing). Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4."
   },
   {
    "id": "gcd-definition",
@@ -22136,6 +23537,7 @@
    "chapter": "ch-combinatorics",
    "section": "inclusion-exclusion",
    "prereqs": [
+    "grid-paths",
     "binomial-mod-prime",
     "inclusion-exclusion"
    ],
@@ -22149,7 +23551,7 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": ""
+   "notes": "Edge to grid-paths added: the inclusion-exclusion count with obstacles counts the same monotone lattice paths (gap inventory)."
   },
   {
    "id": "mobius-style-ie",
@@ -22308,11 +23710,19 @@
      "row": "cpa:next-combination",
      "locator": "cpa:combinatorics/generating_combinations#generate-next-lexicographical-k-combination",
      "inventory": "cpa-b"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Combination#Enumerating_k-combinations",
+     "locator": "wikipedia:Combination#Enumerating_k-combinations",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
+   "aliases": [
+    "Enumerating k-combinations"
+   ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 2 rows (cpa:next-combination, wikipedia:Combination#Enumerating_k-combinations). The Wikipedia treatment is from the gap-patterns run (§6)."
   },
   {
    "id": "combinations-gray-order",

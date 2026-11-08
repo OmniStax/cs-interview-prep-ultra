@@ -527,7 +527,7 @@ because prerequisites force the order and each concept gets one home.
 
 ### 4.4 Decisions so far
 
-1. System design: the primer only. No AI-written prose.
+1. System design: the primer replaces Alex Xu as the spine. Other open sources the finder turns up may supply concepts, judged like any other; no system design prose is AI-written.
 2. Erickson and ODS come in, and so does anything else the finder turns up.
    The judge (§6) picks per topic: lucidity first, then cohesive style,
    then comprehensiveness.

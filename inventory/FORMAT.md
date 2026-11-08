@@ -36,3 +36,9 @@ teaches. No merging across sources happens here.
 - `exercises`: how many exercises the source prints at that locator.
   `0` where it only links to external judges (cp-algorithms' practice
   lists count as 0, with the count of links in `notes`).
+- **The gap inventory** `inventory/gap.json` is the one exception to "one file per
+  source": its `source` is `"gap"`, and each row's id and locator start with the
+  real source's locator prefix from `sources/registry.json` (`wikipedia:`,
+  `doocs-leetcode:`, `oiwiki:`, ...). The id is the locator with spaces as
+  underscores. `tools/map/build.py` takes each row's source from that prefix, and
+  `tools/check_map.py` checks that the locator resolves in `sources/_cache/<id>/`.

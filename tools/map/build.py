@@ -7,12 +7,35 @@ INV = ROOT + '/inventory'
 OUT = ROOT + '/concept-map'
 SPEC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'map.spec')
 
-FILES = ['ciu', 'cpa-a', 'cpa-b', 'jeffe', 'jeffe-notes', 'ods', 'sdp']
-PFX = {'c': 'ciu', 'p': 'cpa', 'j': 'jeffe', 'n': 'jeffe-notes', 'o': 'ods', 's': 'sdp'}
-OPEN = {'cpa', 'jeffe', 'ods', 'sdp'}
+FILES = ['ciu', 'cpa-a', 'cpa-b', 'jeffe', 'jeffe-notes', 'ods', 'sdp', 'gap']
+GAP = 'gap'          # inventory/gap.json: rows name their real source in the id prefix (registry locator prefix)
+# spec prefixes; g: takes the gap row's full id, e.g. g:wikipedia:Prefix_sum
+PFX = {'c': 'ciu', 'p': 'cpa', 'j': 'jeffe', 'n': 'jeffe-notes', 'o': 'ods', 's': 'sdp', 'g': None}
+# Sources whose prose may be used: METHOD §0 (PD, CC0, CC BY, CC BY-SA), ruling 12 (MIT and Apache 2.0 prose with
+# notices) and ruling 15 (OI Wiki in translation, doocs solution write-ups). Licences as in sources/registry.json.
+OPEN = {'cpa', 'jeffe', 'ods', 'sdp',
+        'wikipedia', 'wikibooks', 'wp-sysdesign',            # CC BY-SA 4.0
+        'dsa-dummies',                                        # CC BY 4.0
+        'doocs-leetcode', 'oiwiki',                           # CC BY-SA 4.0 (ruling 15)
+        'opendsa', 'algo-explanation', 'trekhleb-jsalgo',     # MIT (ruling 12; trekhleb: README Algorithms sections only)
+        'icc',                                                # Apache-2.0 (ruling 12; online_judges stays link-only)
+        'mcs2018', 'anfp', 'lt-csbu',                         # CC BY-SA 3.0 / CC BY-SA
+        'aspnes-202', 'dmoi3', 'appcomb', 'csci30', 'holden-acs',  # CC BY-SA 4.0
+        'aosa', 'raft-site'}                                  # CC BY 3.0
 TIERS = ['core', 'stretch', 'contest']
-ABBR = {'ciu': 'CIU', 'cpa': 'cpa', 'jeffe': 'Erickson', 'jeffe-notes': 'Erickson notes (NC)', 'ods': 'ODS', 'sdp': 'Primer'}
-SHORT = {'ciu': 'ciu', 'cpa': 'cpa', 'jeffe': 'jeffe', 'jeffe-notes': 'notes', 'ods': 'ods', 'sdp': 'sdp'}
+ABBR = {'ciu': 'CIU', 'cpa': 'cpa', 'jeffe': 'Erickson', 'jeffe-notes': 'Erickson notes (NC)', 'ods': 'ODS', 'sdp': 'Primer',
+        'wikipedia': 'Wikipedia', 'wikibooks': 'Wikibooks', 'wp-sysdesign': 'Wikipedia (system design set)',
+        'opendsa': 'OpenDSA', 'doocs-leetcode': 'doocs/leetcode write-ups', 'oiwiki': 'OI Wiki (in translation)',
+        'dsa-dummies': 'DSA for absolute dummies', 'algo-explanation': 'TheAlgorithms explanations', 'icc': 'Interactive Coding Challenges',
+        'trekhleb-jsalgo': 'javascript-algorithms READMEs', 'mcs2018': 'Mathematics for Computer Science (2018)',
+        'aspnes-202': 'Aspnes, discrete math notes', 'anfp': 'Algorithms Notes for Professionals', 'dmoi3': 'Levin, Discrete Mathematics',
+        'appcomb': 'Applied Combinatorics', 'csci30': 'CSCI 30 notes', 'lt-csbu': 'Computer Science from the Bottom Up',
+        'holden-acs': 'Holden, Applied CS', 'aosa': 'Architecture of Open Source Applications', 'raft-site': 'Raft website'}
+SHORT = {'ciu': 'ciu', 'cpa': 'cpa', 'jeffe': 'jeffe', 'jeffe-notes': 'notes', 'ods': 'ods', 'sdp': 'sdp',
+         'wikipedia': 'wikipedia', 'wikibooks': 'wikibooks', 'wp-sysdesign': 'wp', 'opendsa': 'opendsa', 'doocs-leetcode': 'doocs',
+         'oiwiki': 'oiwiki', 'dsa-dummies': 'dsa-dummies', 'algo-explanation': 'algo-expl', 'icc': 'icc', 'trekhleb-jsalgo': 'trekhleb',
+         'mcs2018': 'mcs2018', 'aspnes-202': 'aspnes', 'anfp': 'anfp', 'dmoi3': 'dmoi3', 'appcomb': 'appcomb', 'csci30': 'csci30',
+         'lt-csbu': 'lt-csbu', 'holden-acs': 'holden', 'aosa': 'aosa', 'raft-site': 'raft-site'}
 
 # bracketed prerequisite names -> merged concept id (None = assumed knowledge, no concept)
 BRACKET = {
@@ -27,7 +50,7 @@ BRACKET = {
  '[birthday paradox]': None, '[bit shifts]': 'shift-operators', '[bitmask DP]': None, '[bitmask]': 'bitwise-operators',
  '[breadth-first search]': 'graph-bfs', '[circles]': None, '[complex numbers]': None, '[coordinate geometry]': None,
  '[counting sort]': 'counting-sort', '[definite integrals]': None, '[deque]': 'deque', '[derivatives]': None,
- '[determinant]': None, '[difference array]': None, '[directed graph]': 'graph', '[disjoint-set (union-find)]': 'union-find',
+ '[determinant]': None, '[difference array]': 'difference-array', '[directed graph]': 'graph', '[disjoint-set (union-find)]': 'union-find',
  '[divide and conquer]': 'divide-and-conquer', '[divisibility]': None, '[doubly linked list]': 'doubly-linked-list',
  '[dynamic programming]': 'overlapping-subproblems', '[edit distance]': 'edit-distance', '[equivalence relations]': None,
  '[exchange argument]': 'exchange-argument', '[expected value]': 'linearity-of-expectation',
@@ -40,7 +63,7 @@ BRACKET = {
  '[merge sort]': 'mergesort', '[minimum spanning trees]': 'mst', '[modular arithmetic]': None, '[multinomial theorem]': None,
  '[object-oriented programming]': None, '[optimal binary search trees]': 'obst-dp', '[permutation inversions]': None,
  '[permutations]': 'counting', '[persistent data structures]': 'persistent-segment-tree', '[pigeonhole principle]': None,
- '[planar graphs]': None, '[polynomials]': 'polynomial-representations', '[prefix products]': None, '[prefix sums]': None,
+ '[planar graphs]': None, '[polynomials]': 'polynomial-representations', '[prefix products]': None, '[prefix sums]': 'prefix-sums',
  '[prime factorization]': 'factorization-trial-division', '[prime numbers]': None, '[priority queue]': 'priority-queue',
  '[quad-edge data structure]': None, '[queue]': 'queue', '[quicksort partition]': 'partition', '[quicksort]': 'quicksort',
  '[randomized algorithms]': 'las-vegas-monte-carlo', '[recursion]': 'recursion', '[rooted tree]': 'tree', '[rooted trees]': 'tree',
@@ -48,14 +71,20 @@ BRACKET = {
  '[sqrt decomposition]': 'sqrt-decomposition', '[stack]': 'stack', '[subset sum DP]': 'subset-sum-dp',
  '[systems of linear equations]': None, '[tree rotations]': 'tree-rotations', '[tree]': 'tree', '[triangulation]': None,
  '[vertex degree]': 'graph', '[weighted graph]': 'graph',
+ # added for inventory/gap.json
+ '[topological order]': 'topological-order', '[combinations]': 'counting', '[tabulation]': 'bottom-up-dp',
 }
 
 # ---------------------------------------------------------------- inventories
+REG_PFX = {s['locator'].split(':', 1)[0]: s['id'] for s in json.load(open(ROOT + '/sources/registry.json'))['sources'] if s.get('locator')}
 rows = {}
 for f in FILES:
     d = json.load(open(f'{INV}/{f}.json'))
     for c in d['concepts']:
         c = dict(c); c['_file'] = f; c['_source'] = d['source']
+        if f == GAP:                     # the real source is named by the id prefix
+            c['_source'] = REG_PFX[c['id'].split(':', 1)[0]]
+            assert c['_source'] in ABBR, c['_source']
         assert c['id'] not in rows, c['id']
         rows[c['id']] = c
 
@@ -67,7 +96,7 @@ concepts = collections.OrderedDict()
 
 def exp(r):
     p, rest = r.split(':', 1)
-    return PFX[p] + ':' + rest
+    return rest if p == 'g' else PFX[p] + ':' + rest
 
 for ln, line in enumerate(open(SPEC), 1):
     line = line.rstrip('\n')
@@ -519,6 +548,8 @@ json.dump({
     'src_count': dict(sorted(src_count.items())),
     'noprose': len(noprose), 'inversions': inversions, 'split_rows': {r: v for r, v in split_rows.items()},
     'hasse_removed': hasse_removed, 'secsizes': dict(sorted(secsizes.items())),
+    'inventories': FILES, 'gap_rows': sum(1 for r in rows.values() if r['_file'] == GAP),
+    'open_sources': sorted(OPEN), 'short': SHORT, 'addedge': [list(x) for x in addedge],
     'used_noedge': [list(x) for x in used_noedge], 'assumed': {k: sorted(v) for k, v in sorted(assumed.items())},
     'promoted': {p: list(v) for p, v in promoted.items()},
     'into_appendix': into_appendix,

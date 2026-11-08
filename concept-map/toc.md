@@ -1,39 +1,45 @@
 # Table of contents
 
-Derived from the concept map (`concepts.json`). One book of numbered chapters; each numbered section is one page, the home of the concepts listed under it. Section tier badges give the most common tier of the section's concepts; a concept whose tier differs from its section's carries its own badge. Sources lists the inventories that teach the section's concepts: **ciu** = CIU, **cpa** = cpa, **jeffe** = Erickson, **notes** = Erickson notes (NC), **ods** = ODS, **sdp** = Primer. "Open prose: none" marks a section whose concepts are taught only by CIU links or by Erickson's NC notes, so its text has no open source yet.
+Derived from the concept map (`concepts.json`). One book of numbered chapters; each numbered section is one page, the home of the concepts listed under it. Section tier badges give the most common tier of the section's concepts; a concept whose tier differs from its section's carries its own badge. Sources lists the inventories that teach the section's concepts: **ciu** = CIU, **cpa** = cpa, **jeffe** = Erickson, **notes** = Erickson notes (NC), **ods** = ODS, **sdp** = Primer, **wikipedia** = Wikipedia, **wikibooks** = Wikibooks, **wp** = Wikipedia (system design set), **opendsa** = OpenDSA, **doocs** = doocs/leetcode write-ups, **oiwiki** = OI Wiki (in translation), **dsa-dummies** = DSA for absolute dummies, **algo-expl** = TheAlgorithms explanations, **icc** = Interactive Coding Challenges, **trekhleb** = javascript-algorithms READMEs, **mcs2018** = Mathematics for Computer Science (2018), **aspnes** = Aspnes, discrete math notes, **anfp** = Algorithms Notes for Professionals, **dmoi3** = Levin, Discrete Mathematics, **appcomb** = Applied Combinatorics, **csci30** = CSCI 30 notes, **lt-csbu** = Computer Science from the Bottom Up, **holden** = Holden, Applied CS, **aosa** = Architecture of Open Source Applications, **raft-site** = Raft website. "Open prose: none" marks a section whose concepts are taught only by CIU links or by Erickson's NC notes, so its text has no open source yet.
 
 Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices are not built as text.
 
 ## 1. Algorithms and their cost · **first pass**
 
-*Concepts: 21 core · 4 stretch · 1 contest*
+*Concepts: 20 core · 5 stretch · 1 contest*
 
 - **1.1 What an algorithm is** [core] · jeffe, ods
   What an algorithm is; What makes a description not an algorithm; Describing an algorithm: what, how, why, how fast; The need for efficiency; Interface versus implementation; Lattice (grade-school) multiplication [stretch]; Duplation and mediation (peasant multiplication)
 - **1.2 Logarithms, factorials and harmonic numbers** [core] · ods
   Logarithms and exponentials; Factorials and Stirling's approximation; Harmonic numbers [stretch]
-- **1.3 Asymptotic notation** [core] · ciu, ods
-  Big-O notation; Big-Omega and Big-Theta (no open prose); Big-Oh in several variables [stretch]
+- **1.3 Asymptotic notation** [core] · ciu, ods, wikipedia, opendsa
+  Big-O notation; Big-Omega and Big-Theta; Big-Oh in several variables [stretch]
 - **1.4 Analysing running time and space** [core] · ciu, jeffe, ods
   The w-bit word-RAM model; Analysing an algorithm's running time and space; Worst-case, amortized and expected running times
-- **1.5 Amortized analysis** [core] · ciu, notes, ods
-  Amortized analysis (no open prose); Summation, taxation and charging methods (no open prose); The potential method; Incrementing and decrementing counters [contest] (no open prose)
-- **1.6 Counting and expected value** [core] · ciu, notes, ods
-  Factorials, permutations and combinations (no open prose); Basic probability (no open prose); Conditional probability and independence (no open prose); Random variables and linearity of expectation; Indicator random variables [stretch]; Expected tosses until the first head
+- **1.5 Amortized analysis** [core] · ciu, notes, ods, wikipedia, opendsa
+  Amortized analysis; Summation, taxation and charging methods; The potential method [stretch]; Incrementing and decrementing counters [contest] (no open prose)
+- **1.6 Counting and expected value** [core] · ciu, notes, ods, oiwiki, dmoi3
+  Factorials, permutations and combinations; Basic probability (no open prose); Conditional probability and independence (no open prose); Random variables and linearity of expectation; Indicator random variables [stretch]; Expected tosses until the first head
 
 ## 2. Arrays and linked lists · **first pass**
 
-*Concepts: 16 core · 1 stretch*
+*Concepts: 23 core · 3 stretch*
 
-- **2.1 Arrays and the list interface** [core] · ciu, ods
-  Array (no open prose); Indexing by pointer arithmetic (no open prose); List interface (linear sequence)
+- **2.1 Arrays and the list interface** [core] · ciu, ods, wikipedia, wikibooks
+  Array; Indexing by pointer arithmetic (no open prose); List interface (linear sequence)
 - **2.2 Dynamic arrays** [core] · ciu, ods
   Dynamic array (vector); Growing and shrinking the backing array; Cost of dynamic-array operations; Block copying with memcpy/arraycopy [stretch]; Implement a vector (no open prose)
-- **2.3 Singly linked lists** [core] · ciu, ods
-  Singly linked list; Pointer to pointer (no open prose); Implement a linked list (no open prose); Linked lists versus arrays
-- **2.4 Doubly linked lists** [core] · ciu, ods
+- **2.3 Two pointers and sliding windows** [core] · wikipedia, doocs, oiwiki, dsa-dummies, icc
+  Two pointers; 3SUM in quadratic time; Merging two sorted lists; Fixed-size sliding window; Variable-size sliding window
+  *Folds:* OI Wiki misc/two-pointer is split over this home: its sorted-sequence section treats two-pointers, its window section the variable window, its linked-list section Floyd's cycle detection (2.7).
+- **2.4 Prefix sums and difference arrays** [core] · wikipedia, doocs, oiwiki, dsa-dummies
+  Prefix sums; Two-dimensional prefix sums (summed-area table) [stretch]; Difference arrays; Two-dimensional difference arrays [stretch]
+  *Folds:* OI Wiki basic/prefix-sum is split over this home: one row per section (1D, 2D, 1D difference, 2D difference); its tree prefix sums and differences are not taken.
+- **2.5 Singly linked lists** [core] · ciu, ods, opendsa
+  Singly linked list; Pointer to pointer (no open prose); Implement a linked list; Linked lists versus arrays
+- **2.6 Doubly linked lists** [core] · ciu, ods
   Dummy (sentinel) node; Doubly linked list
-- **2.5 Cycles in linked lists: tortoise and hare** [core] · cpa
+- **2.7 Cycles in linked lists: tortoise and hare** [core] · cpa, wikipedia, oiwiki, algo-expl
   Floyd's cycle detection (tortoise and hare); Finding where the cycle starts; Why the reset finds the cycle start
 
 ## 3. Stacks, queues and deques · **first pass**
@@ -42,11 +48,11 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 - **3.1 Stacks and bracket matching** [core] · ciu, cpa, ods
   Stack; Balanced bracket sequence; Checking bracket balance
-- **3.2 Queues and circular buffers** [core] · ciu, ods
-  Queue; Circular buffer; Queue on a linked list with a tail pointer (no open prose); ArrayQueue (array-backed FIFO queue)
+- **3.2 Queues and circular buffers** [core] · ciu, ods, wikibooks
+  Queue; Circular buffer; Queue on a linked list with a tail pointer; ArrayQueue (array-backed FIFO queue)
 - **3.3 Deques** [core] · ods
   Deque interface; ArrayDeque; DualArrayDeque: a deque from two stacks [stretch]
-- **3.4 Min-stacks and monotonic queues** [core] · cpa
+- **3.4 Min-stacks and monotonic queues** [core] · cpa, wikipedia, doocs, oiwiki
   Minimum stack; Queue from two stacks (with minimum); Minimum queue via a monotonic deque; Sliding window minimum; Nearest smaller element to the left/right with a stack; Largest zero submatrix in O(nm) [stretch]
   *Folds:* cpa data_structures/stack_queue_modification is the home article; cpa dynamic_programming/zero_matrix contributes its stack step.
 - **3.5 Stack applications: expression evaluation** [stretch] · cpa
@@ -58,29 +64,29 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 *Concepts: 12 core · 1 stretch*
 
-- **4.1 Recursion and reduction** [core] · ciu, jeffe
-  Reduction; Recursion: simplify and delegate (the Recursion Fairy); Tail recursion (no open prose); Tower of Hanoi
+- **4.1 Recursion and reduction** [core] · ciu, jeffe, wikipedia
+  Reduction; Recursion: simplify and delegate (the Recursion Fairy); Tail recursion; Tower of Hanoi
 - **4.2 Exponentiation by squaring** [core] · cpa, jeffe
   Binary exponentiation; Iterative binary exponentiation; Modular exponentiation; Binary exponentiation for any associative operation [stretch]
-- **4.3 Induction and correctness proofs** [core] · jeffe, notes
-  Proof by smallest counterexample (no open prose); The axiom of induction and strong induction (no open prose); Induction on numbers, summations and tilings (no open prose); Induction on recursive functions and trees (no open prose); Proving an algorithm correct
+- **4.3 Induction and correctness proofs** [core] · jeffe, notes, csci30
+  Proof by smallest counterexample (no open prose); The axiom of induction and strong induction; Induction on numbers, summations and tilings (no open prose); Induction on recursive functions and trees (no open prose); Proving an algorithm correct
 
 ## 5. Hash tables
 
 *Concepts: 16 core · 2 stretch · 2 contest*
 
-- **5.1 Sets, maps and the dictionary problem** [core] · ciu, notes, ods
-  USet interface (unordered set); Dictionary/map as a USet of pairs; Hash table (no open prose)
-- **5.2 Hashing with chaining** [core] · ciu, ods
-  Hashing with chaining; Table doubling (no open prose)
+- **5.1 Sets, maps and the dictionary problem** [core] · ciu, notes, ods, wikipedia, opendsa
+  USet interface (unordered set); Dictionary/map as a USet of pairs; Hash table
+- **5.2 Hashing with chaining** [core] · ciu, ods, wikipedia
+  Hashing with chaining; Table doubling
 - **5.3 Open addressing** [core] · ciu, notes, ods, sdp
   Open addressing and linear probing; Deleted markers (tombstones) in open addressing; Implement a hash table with linear probing
-- **5.4 Hash function families** [core] · ciu, notes, ods
-  Universal hash families (no open prose); Multiplicative hashing; Tabulation hashing [stretch]; Perfect hashing (two-level) (no open prose)
+- **5.4 Hash function families** [core] · ciu, notes, ods, wikipedia
+  Universal hash families; Multiplicative hashing; Tabulation hashing [stretch]; Perfect hashing (two-level) (no open prose)
 - **5.5 Hash codes** [core] · ods
   Hash code requirements; Hash codes for primitive types; Hash codes for compound objects
-- **5.6 Analysing hash tables** [contest] · notes, ods
-  Expected chain length under universal hashing [core] (no open prose); Balls and bins: maximum chain length (no open prose); Analysis of linear probing via runs [stretch]; Cuckoo hashing (no open prose)
+- **5.6 Analysing hash tables** [contest] · notes, ods, wikipedia
+  Expected chain length under universal hashing [core] (no open prose); Balls and bins: maximum chain length (no open prose); Analysis of linear probing via runs [stretch]; Cuckoo hashing
 - **5.7 Combining structures: the LRU cache** [core] · ciu, sdp
   LRU cache: hash map plus doubly linked list
 
@@ -107,25 +113,25 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
   Lowest-set-bit tricks; Branch-free bit tricks (no open prose); Counting set bits; Counting set bits over 0..n [stretch]
 - **7.4 Submasks and Gray codes** [stretch] · cpa, notes
   Enumerating submasks; All masks with all submasks is O(3^n); Gray code; G(n) = n xor (n >> 1); Inverse Gray code; Applications of Gray codes [contest]
-- **7.5 Representing numbers and text** [core] · ciu · open prose: none
-  Floating-point representation (no open prose); Endianness (no open prose); Unicode and character encodings (no open prose)
+- **7.5 Representing numbers and text** [core] · ciu, lt-csbu
+  Floating-point representation; Endianness (no open prose); Unicode and character encodings (no open prose)
 
 ## 8. Trees and binary search trees
 
 *Concepts: 19 core · 2 stretch*
 
-- **8.1 Trees and binary trees** [core] · ciu, ods
-  Tree (no open prose); Binary tree terminology; Recursive binary-tree algorithms
+- **8.1 Trees and binary trees** [core] · ciu, ods, wikipedia, opendsa
+  Tree; Binary tree terminology; Recursive binary-tree algorithms
 - **8.2 Tree traversals: depth-first and level-order** [core] · ciu, ods
   Depth-first tree traversals: preorder, inorder, postorder; Non-recursive traversal with parent pointers [stretch]; Level-order (breadth-first) tree traversal
 - **8.3 Sorted sets and the BST property** [core] · ciu, ods
   SSet interface and successor search; Prefer USet unless order is needed; Binary search tree
-- **8.4 Search and insertion** [core] · ciu, ods
-  BST search and successor search; BST insertion; BST minimum, maximum and height (no open prose); Inorder successor in a BST (no open prose)
+- **8.4 Search and insertion** [core] · ciu, ods, wikipedia
+  BST search and successor search; BST insertion; BST minimum, maximum and height (no open prose); Inorder successor in a BST
 - **8.5 Deletion, validation and cost** [core] · ciu, ods
   BST deletion; Checking whether a binary tree is a BST (no open prose); Implement a BST (no open prose); Cost of an unbalanced BST
-- **8.6 Keeping a BST balanced** [core] · ciu, ods
-  Balanced search trees (the general idea) (no open prose); Tree rotations; Build a perfectly balanced BST from a sorted array; Random binary search trees [stretch]
+- **8.6 Keeping a BST balanced** [core] · ciu, ods, wikipedia, opendsa
+  Balanced search trees (the general idea); Tree rotations; Build a perfectly balanced BST from a sorted array; Random binary search trees [stretch]
 
 ## 9. Heaps and priority queues
 
@@ -133,8 +139,8 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 - **9.1 Priority queues** [core] · ciu, jeffe, ods
   Priority queue; Huntington-Hill apportionment [stretch]
-- **9.2 Binary heaps** [core] · ciu, ods
-  Eytzinger layout (implicit binary tree in an array); Heap property; Binary heap; Sift up and sift down (no open prose)
+- **9.2 Binary heaps** [core] · ciu, ods, wikipedia
+  Eytzinger layout (implicit binary tree in an array); Heap property; Binary heap; Sift up and sift down
 - **9.3 Heapify and heapsort** [core] · ciu, ods
   Linear-time heapify; Heapsort; Implement a max-heap (no open prose)
 - **9.4 Meldable heaps** [stretch] · cpa, ods
@@ -145,13 +151,13 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 *Concepts: 18 core · 7 stretch · 2 contest*
 
-- **10.1 Elementary sorts** [core] · ciu, ods
-  Comparison-based sorting; Stability in sorting (no open prose); Selection sort (no open prose); Insertion sort (no open prose); Bubble sort (no open prose)
+- **10.1 Elementary sorts** [core] · ciu, ods, wikipedia, opendsa
+  Comparison-based sorting; Stability in sorting; Selection sort; Insertion sort; Bubble sort
 - **10.2 Divide and conquer and recurrences** [core] · ciu, jeffe, notes
   The divide-and-conquer pattern; Solving recurrences by guess and confirm (no open prose); Recursion trees and the master theorem; The Akra-Bazzi method [contest] (no open prose); Linear recurrences by annihilators [contest] (no open prose); Karatsuba multiplication [stretch]
 - **10.3 Merge sort** [core] · ciu, jeffe, ods
   Mergesort; Sorting linked lists versus arrays (no open prose)
-- **10.4 Quicksort and partitioning** [core] · ciu, jeffe, notes, ods
+- **10.4 Quicksort and partitioning** [core] · ciu, jeffe, notes, ods, wikipedia
   In-place partition around a pivot; In-place three-way partitioning; Quicksort; The nuts and bolts problem [stretch] (no open prose); Expected comparisons of randomized quicksort [stretch]; Implement merge sort and quicksort (no open prose)
 - **10.5 Selection** [core] · ciu, cpa, jeffe
   Quickselect; Linear-time selection (median of medians) [stretch]
@@ -163,28 +169,28 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 ## 11. Balanced search trees
 
-*Concepts: 11 core · 20 stretch · 3 contest*
+*Concepts: 1 core · 30 stretch · 3 contest*
 
-- **11.1 AVL, 2-3 and 2-4 trees** [core] · ciu, ods
-  AVL tree [stretch] (no open prose); 2-3 search tree (no open prose); 2-3-4 tree; Adding and removing leaves in a 2-4 tree
+- **11.1 AVL, 2-3 and 2-4 trees** [stretch] · ciu, ods, wikipedia, opendsa
+  AVL tree; 2-3 search tree; 2-3-4 tree; Adding and removing leaves in a 2-4 tree
 - **11.2 Red-black trees** [stretch] · ciu, ods
   Red-black tree properties [core]; Red-black trees simulate 2-4 trees; Left-leaning red-black trees; Red-black insertion fixup; Red-black deletion fixup; Red-black tree performance
 - **11.3 Treaps** [stretch] · ciu, cpa, notes, ods
   Treap; Treap insertion and deletion by rotation; Random priorities give expected logarithmic depth (no open prose); Treap split and merge [contest]; Building a treap in O(N) offline [contest]; Implicit treap [contest]
   *Folds:* cpa data_structures/treap shares this home with ODS and jeffe-notes; its split/merge and implicit-key material is contest-tier.
-- **11.4 Scapegoat and splay trees** [stretch] · ciu, notes, ods
-  Partial rebuilding; Lazy deletion and global rebuilding (no open prose); ScapegoatTree; Amortized analysis of scapegoat rebuilding; Rotations, double rotations and splaying (no open prose); Splay tree (no open prose)
+- **11.4 Scapegoat and splay trees** [stretch] · ciu, notes, ods, opendsa
+  Partial rebuilding; Lazy deletion and global rebuilding (no open prose); ScapegoatTree; Amortized analysis of scapegoat rebuilding; Rotations, double rotations and splaying (no open prose); Splay tree
 - **11.5 Skip lists** [stretch] · ciu, notes, ods
   Skiplist structure; Expected skiplist search path length; Skip list; SkiplistList (indexed skiplist); Skiplist size and height
-- **11.6 B-trees** [core] · ciu, ods
-  External memory model; K-ary tree (no open prose); B-tree structure; B-tree search; B-tree insertion with splits; B-tree deletion with borrow and merge; B-tree
+- **11.6 B-trees** [stretch] · ciu, ods, wikipedia
+  External memory model; K-ary tree; B-tree structure; B-tree search; B-tree insertion with splits; B-tree deletion with borrow and merge; B-tree
 
 ## 12. Tries and other search structures
 
 *Concepts: 3 core · 4 stretch · 2 contest*
 
-- **12.1 Tries** [core] · ciu, cpa
-  Trie (R-way); Trie prefix operations and performance (no open prose); Ternary search trie (no open prose)
+- **12.1 Tries** [core] · ciu, cpa, wikipedia
+  Trie (R-way); Trie prefix operations and performance; Ternary search trie (no open prose)
 - **12.2 Integer search structures** [stretch] · ciu, ods
   BinaryTrie; XFastTrie [contest]; YFastTrie [contest]; van Emde Boas trees (no open prose)
 - **12.3 Augmented and spatial trees** [stretch] · ciu · open prose: none
@@ -196,8 +202,8 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 - **13.1 Graphs and modelling** [core] · ciu, jeffe, ods
   Graph (directed, undirected, weighted); Modeling problems as graphs; Graph operations
-- **13.2 Adjacency matrices and lists** [core] · ciu, jeffe, ods
-  Adjacency matrices; Adjacency lists; Graph representations (no open prose)
+- **13.2 Adjacency matrices and lists** [core] · ciu, jeffe, ods, wikipedia, opendsa
+  Adjacency matrices; Adjacency lists; Graph representations
 - **13.3 Whatever-first search** [core] · jeffe
   Whatever-first search; Stack, queue and priority-queue traversals
 - **13.4 Breadth-first search** [core] · ciu, cpa, jeffe, ods, sdp
@@ -210,12 +216,12 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 ## 14. Depth-first structure
 
-*Concepts: 7 core · 9 stretch*
+*Concepts: 8 core · 9 stretch*
 
 - **14.1 DFS clocks and edge classification** [core] · cpa, jeffe
   DFS entry/exit times and ancestor test; Classification of edges by DFS
-- **14.2 Cycles and topological order** [core] · ciu, cpa, jeffe
-  Cycle detection; Topological order; Topological sort
+- **14.2 Cycles and topological order** [core] · ciu, cpa, jeffe, wikipedia, opendsa, doocs, oiwiki, icc, mcs2018, aspnes
+  Cycle detection; Topological order; Topological sort; Kahn's algorithm
   *Folds:* cpa graph/finding-cycle (292 words) is folded into this home.
 - **14.3 Bridges and articulation points** [stretch] · cpa
   Low-link values; Bridge (cut edge); Finding bridges in O(N + M); Articulation point (cut vertex); Articulation points in O(N + M)
@@ -255,32 +261,37 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 ## 17. Backtracking
 
-*Concepts: 6 core · 2 stretch*
+*Concepts: 10 core · 3 stretch*
 
 - **17.1 The backtracking pattern** [core] · ciu, jeffe
   The backtracking pattern; n Queens by backtracking; Game trees and minimax [stretch]
-- **17.2 Subset sum and text segmentation** [core] · jeffe
+- **17.2 Generating permutations, subsets and combinations** [core] · wikipedia, doocs, icc, trekhleb
+  Generating all permutations by backtracking; Next permutation in lexicographic order; Heap's algorithm [stretch]; Generating all subsets; Generating k-combinations by backtracking
+  *Folds:* cpa combinatorics/generating_combinations stays with stars and bars (40.5), where its next-combination row lives; Wikipedia's k-combination enumeration joins it there.
+- **17.3 Subset sum and text segmentation** [core] · jeffe
   Subset sum by backtracking; Text segmentation (word break) by backtracking; Index formulation of a recurrence
-- **17.3 Recursive formulations of optimisation problems** [core] · jeffe
+- **17.4 Recursive formulations of optimisation problems** [core] · jeffe
   Longest increasing subsequence by backtracking; Optimal binary search tree recurrence [stretch]
 
 ## 18. Dynamic programming
 
-*Concepts: 21 core · 6 stretch · 3 contest*
+*Concepts: 26 core · 6 stretch · 3 contest*
 
 - **18.1 Memoization and tabulation** [core] · ciu, cpa, jeffe
   Dynamic programming: overlapping subproblems; Memoization; Bottom-up (tabulated) DP; Dynamic programming is smart recursion; Recognising a DP problem (no open prose); Classic DP problems [stretch]
 - **18.2 Fibonacci numbers: from recursion to logarithmic time** [core] · cpa, jeffe
   Fibonacci numbers; Fibonacci in linear time; Fibonacci via matrix exponentiation [stretch]
-- **18.3 Text segmentation and longest increasing subsequence** [core] · cpa, jeffe
+- **18.3 Coin change and grid paths** [core] · wikipedia, doocs, algo-expl, icc, trekhleb, anfp, dmoi3
+  Coin change: fewest coins by DP; Coin change: counting the ways; Counting grid paths; Counting grid paths around obstacles; Minimum path sum in a grid
+- **18.4 Text segmentation and longest increasing subsequence** [core] · cpa, jeffe
   Text segmentation by dynamic programming; Longest increasing subsequence by DP; Restoring a DP solution with parent pointers; LIS in O(n log n) with binary search; LIS variants: non-decreasing, counting, covering [stretch]
-- **18.4 Maximum subarray** [core] · cpa
+- **18.5 Maximum subarray** [core] · cpa
   Maximum subarray sum problem; Maximum subarray via prefix sums and running minimum; Kadane's algorithm; Maximum-sum submatrix [stretch]; Maximum-average subarray with a length bound [contest]
-- **18.5 Subset sum and knapsack** [core] · cpa, jeffe
+- **18.6 Subset sum and knapsack** [core] · cpa, jeffe
   Subset sum by DP (pseudo-polynomial); 0-1 knapsack; One-dimensional knapsack and iteration order; Complete (unbounded) knapsack; Bounded knapsack by binary grouping [contest]; Bounded knapsack by monotone queue [contest]
-- **18.6 Edit distance and longest common subsequence** [core] · ciu, cpa, jeffe
+- **18.7 Edit distance and longest common subsequence** [core] · ciu, cpa, jeffe
   Edit distance; Longest common subsequence; RNA secondary structure (no open prose)
-- **18.7 DP on trees and optimal binary search trees** [stretch] · jeffe
+- **18.8 DP on trees and optimal binary search trees** [stretch] · jeffe
   Dynamic programming on trees; Optimal binary search trees by DP
 
 ## 19. Dynamic programming on graphs
@@ -299,13 +310,15 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 ## 20. Greedy algorithms
 
-*Concepts: 3 core · 5 stretch · 6 contest*
+*Concepts: 5 core · 5 stretch · 6 contest*
 
-- **20.1 Greedy choices and exchange arguments** [core] · jeffe
+- **20.1 Greedy choices and exchange arguments** [core] · jeffe, wikipedia, doocs, anfp
   Warning: greed is stupid; Greedy correctness by exchange argument; Storing files on tape [stretch]; Class (interval) scheduling: earliest finish first; Stable matching (Gale-Shapley) [stretch]
-- **20.2 Huffman codes** [stretch] · ciu, jeffe
+- **20.2 Merging intervals and meeting rooms** [core] · doocs
+  Merging overlapping intervals; Interval partitioning: minimum rooms as maximum overlap
+- **20.3 Huffman codes** [stretch] · ciu, jeffe
   Prefix-free codes as binary trees; Huffman codes
-- **20.3 Greedy scheduling and matroids** [contest] · cpa, notes
+- **20.4 Greedy scheduling and matroids** [contest] · cpa, notes
   Maximum number of jobs meeting deadlines [stretch]; Matroids and the greedy algorithm (no open prose); Scheduling unit jobs with deadlines (no open prose); Single-machine scheduling with linear penalties; Exponential and identical penalty cases; Livshits-Kladov theorem; Johnson's rule for two-machine flow shop
   *Folds:* cpa schedules/schedule_one_machine and schedule_two_machines are contest-tier and share this home with jeffe-notes E-matroids.
 
@@ -370,10 +383,10 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 *Concepts: 9 core · 2 stretch*
 
-- **25.1 Distributed systems and the CAP theorem** [core] · ciu, sdp
-  Fallacies of distributed computing [stretch] (no open prose); CAP theorem
-- **25.2 Consistency patterns** [core] · ciu, sdp
-  Weak consistency; Eventual consistency; Strong consistency; CP vs AP systems; Consensus: Paxos and Raft [stretch] (no open prose)
+- **25.1 Distributed systems and the CAP theorem** [core] · ciu, sdp, wp
+  Fallacies of distributed computing [stretch]; CAP theorem
+- **25.2 Consistency patterns** [core] · ciu, sdp, wp, raft-site
+  Weak consistency; Eventual consistency; Strong consistency; CP vs AP systems; Consensus: Paxos and Raft [stretch]
 - **25.3 Availability patterns** [core] · sdp
   Active-passive fail-over; Active-active fail-over; Availability in nines; Availability in sequence vs in parallel
 
@@ -385,8 +398,8 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
   Domain name system; DNS record types [stretch]; DNS traffic routing [stretch]; Content delivery network; Push vs pull CDNs
 - **26.2 Load balancers and reverse proxies** [core] · sdp
   Load balancer; Load balancer routing methods; Layer 4 vs layer 7 load balancing; Reverse proxy (web server); Load balancer vs reverse proxy
-- **26.3 Horizontal scaling and stateless servers** [core] · ciu, sdp
-  Horizontal vs vertical scaling; Stateless web and application servers; Scaling a web service: clones, databases, caches, asynchrony (no open prose); Autoscaling
+- **26.3 Horizontal scaling and stateless servers** [core] · ciu, sdp, aosa
+  Horizontal vs vertical scaling; Stateless web and application servers; Scaling a web service: clones, databases, caches, asynchrony; Autoscaling
 - **26.4 The application layer and microservices** [core] · sdp
   Separating web and application layers; Microservices; Service discovery [stretch]
 - **26.5 Object storage, monitoring and security** [core] · sdp
@@ -400,17 +413,17 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
   ACID transactions; Database normalisation [stretch] (no open prose); Database indices; Tightening the schema [stretch]
 - **27.2 Replication** [core] · sdp
   Master-slave replication; Master-master replication; Replication drawbacks and lag; Read replicas with read/write splitting
-- **27.3 Federation, sharding and denormalisation** [core] · ciu, sdp
-  Federation (functional partitioning); Sharding; Denormalization; SQL tuning [stretch]; Consistent hashing [stretch] (no open prose); Distributed hash tables (no open prose); Keeping hot data in the database, the rest in a warehouse
-- **27.4 NoSQL stores** [core] · ciu, sdp
-  NoSQL and BASE; Key-value store; Document store; Wide column store; Graph database; NoSQL patterns [stretch] (no open prose); SQL or NoSQL
+- **27.3 Federation, sharding and denormalisation** [core] · ciu, sdp, wp
+  Federation (functional partitioning); Sharding; Denormalization; SQL tuning [stretch]; Consistent hashing [stretch]; Distributed hash tables; Keeping hot data in the database, the rest in a warehouse
+- **27.4 NoSQL stores** [core] · ciu, sdp, aosa
+  NoSQL and BASE; Key-value store; Document store; Wide column store; Graph database; NoSQL patterns [stretch]; SQL or NoSQL
 
 ## 28. Caching and asynchrony
 
 *Concepts: 14 core · 3 stretch*
 
-- **28.1 Caches and where to put them** [core] · ciu, sdp
-  Caching; Where to cache; In-memory application cache; What to cache: query level vs object level; Redis as an in-memory data store [stretch] (no open prose); Spreading a cache over many machines
+- **28.1 Caches and where to put them** [core] · ciu, sdp, wp
+  Caching; Where to cache; In-memory application cache; What to cache: query level vs object level; Redis as an in-memory data store [stretch]; Spreading a cache over many machines
 - **28.2 Cache update strategies** [core] · sdp
   Cache-aside (lazy loading); Write-through cache; Write-behind (write-back) cache; Refresh-ahead cache [stretch]; Cache invalidation and TTL
 - **28.3 Message queues and back pressure** [core] · ciu, sdp
@@ -544,12 +557,12 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 *Concepts: 5 stretch*
 
-- **36.1 Bloom filters** [stretch] · ciu, notes · open prose: none
-  Bloom filters (no open prose)
-- **36.2 Streaming sketches** [stretch] · ciu, notes · open prose: none
-  The streaming model (no open prose); Count-min sketch (no open prose); HyperLogLog (no open prose)
-- **36.3 Locality-sensitive hashing** [stretch] · ciu · open prose: none
-  Locality-sensitive hashing (simhash) (no open prose)
+- **36.1 Bloom filters** [stretch] · ciu, notes, wp
+  Bloom filters
+- **36.2 Streaming sketches** [stretch] · ciu, notes, wp
+  The streaming model (no open prose); Count-min sketch; HyperLogLog
+- **36.3 Locality-sensitive hashing** [stretch] · ciu, wp
+  Locality-sensitive hashing (simhash)
 
 ## 37. Number theory: divisibility and primes
 
@@ -630,7 +643,7 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
   Next balanced sequence in lexicographic order; Generating all balanced sequences; Index and k-th balanced sequence [contest]
 - **40.4 Inclusion-exclusion** [stretch] · cpa
   Inclusion-exclusion principle; Proof of inclusion-exclusion; Counting elements in exactly r sets [contest]; Counting via the complement of bad events; Integers in [1, r] coprime to n; Lattice paths avoiding obstacles [contest]; Inclusion-exclusion over square-free divisors [contest]; Derangements
-- **40.5 Stars and bars and k-combinations** [stretch] · cpa
+- **40.5 Stars and bars and k-combinations** [stretch] · cpa, wikipedia
   Stars and bars; Compositions into positive parts; Sums with lower bounds; Sums with upper bounds [contest]; Next k-combination in lexicographic order; k-combinations with minimal change via Gray codes [contest]
 - **40.6 Burnside's lemma and Polya enumeration** [contest] · cpa
   Counting objects up to symmetry; Burnside's lemma; Polya enumeration theorem; Counting necklaces; Burnside by generating the group programmatically

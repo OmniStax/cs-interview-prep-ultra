@@ -1,21 +1,21 @@
 {
- "concepts": 1000,
- "rows": 1165,
+ "concepts": 1022,
+ "rows": 1301,
  "drops": 5,
  "tier_count": {
-  "core": 375,
-  "stretch": 318,
+  "core": 383,
+  "stretch": 332,
   "contest": 307
  },
  "chapter_tier": {
   "ch-cost": {
-   "core": 21,
-   "stretch": 4,
+   "core": 20,
+   "stretch": 5,
    "contest": 1
   },
   "ch-arrays-lists": {
-   "core": 16,
-   "stretch": 1
+   "core": 23,
+   "stretch": 3
   },
   "ch-stacks-queues": {
    "core": 15,
@@ -55,8 +55,8 @@
    "contest": 2
   },
   "ch-balanced": {
-   "core": 11,
-   "stretch": 20,
+   "core": 1,
+   "stretch": 30,
    "contest": 3
   },
   "ch-tries": {
@@ -69,7 +69,7 @@
    "stretch": 1
   },
   "ch-dfs-structure": {
-   "core": 7,
+   "core": 8,
    "stretch": 9
   },
   "ch-shortest-paths": {
@@ -82,11 +82,11 @@
    "stretch": 7
   },
   "ch-backtracking": {
-   "core": 6,
-   "stretch": 2
+   "core": 10,
+   "stretch": 3
   },
   "ch-dp": {
-   "core": 21,
+   "core": 26,
    "stretch": 6,
    "contest": 3
   },
@@ -96,7 +96,7 @@
    "contest": 3
   },
   "ch-greedy": {
-   "core": 3,
+   "core": 5,
    "stretch": 5,
    "contest": 6
   },
@@ -208,23 +208,43 @@
    "stretch": 26
   }
  },
- "multi": 135,
- "cross": 133,
+ "multi": 192,
+ "cross": 188,
  "size_hist": {
-  "1": 865,
-  "2": 106,
-  "3": 26,
-  "4": 3
+  "1": 830,
+  "2": 130,
+  "3": 43,
+  "4": 14,
+  "5": 2,
+  "6": 3
  },
  "src_count": {
+  "algo-explanation": 2,
+  "anfp": 3,
+  "aosa": 2,
+  "aspnes-202": 1,
   "ciu": 208,
   "cpa": 518,
+  "csci30": 1,
+  "dmoi3": 2,
+  "doocs-leetcode": 35,
+  "dsa-dummies": 3,
+  "icc": 8,
   "jeffe": 112,
   "jeffe-notes": 102,
+  "lt-csbu": 1,
+  "mcs2018": 1,
   "ods": 113,
-  "sdp": 114
+  "oiwiki": 10,
+  "opendsa": 13,
+  "raft-site": 1,
+  "sdp": 114,
+  "trekhleb-jsalgo": 2,
+  "wikibooks": 2,
+  "wikipedia": 39,
+  "wp-sysdesign": 10
  },
- "noprose": 189,
+ "noprose": 150,
  "inversions": [],
  "split_rows": {
   "ciu:universal-perfect-hashing": [
@@ -256,17 +276,108 @@
    "graham-scan"
   ]
  },
- "hasse_removed": 105,
+ "hasse_removed": 106,
  "secsizes": {
   "1": 6,
-  "2": 38,
-  "3": 67,
-  "4": 56,
-  "5": 47,
+  "2": 39,
+  "3": 66,
+  "4": 58,
+  "5": 50,
   "6": 22,
   "7": 10,
   "8": 7
  },
+ "inventories": [
+  "ciu",
+  "cpa-a",
+  "cpa-b",
+  "jeffe",
+  "jeffe-notes",
+  "ods",
+  "sdp",
+  "gap"
+ ],
+ "gap_rows": 136,
+ "open_sources": [
+  "algo-explanation",
+  "anfp",
+  "aosa",
+  "appcomb",
+  "aspnes-202",
+  "cpa",
+  "csci30",
+  "dmoi3",
+  "doocs-leetcode",
+  "dsa-dummies",
+  "holden-acs",
+  "icc",
+  "jeffe",
+  "lt-csbu",
+  "mcs2018",
+  "ods",
+  "oiwiki",
+  "opendsa",
+  "raft-site",
+  "sdp",
+  "trekhleb-jsalgo",
+  "wikibooks",
+  "wikipedia",
+  "wp-sysdesign"
+ ],
+ "short": {
+  "ciu": "ciu",
+  "cpa": "cpa",
+  "jeffe": "jeffe",
+  "jeffe-notes": "notes",
+  "ods": "ods",
+  "sdp": "sdp",
+  "wikipedia": "wikipedia",
+  "wikibooks": "wikibooks",
+  "wp-sysdesign": "wp",
+  "opendsa": "opendsa",
+  "doocs-leetcode": "doocs",
+  "oiwiki": "oiwiki",
+  "dsa-dummies": "dsa-dummies",
+  "algo-explanation": "algo-expl",
+  "icc": "icc",
+  "trekhleb-jsalgo": "trekhleb",
+  "mcs2018": "mcs2018",
+  "aspnes-202": "aspnes",
+  "anfp": "anfp",
+  "dmoi3": "dmoi3",
+  "appcomb": "appcomb",
+  "csci30": "csci30",
+  "lt-csbu": "lt-csbu",
+  "holden-acs": "holden",
+  "aosa": "aosa",
+  "raft-site": "raft-site"
+ },
+ "addedge": [
+  [
+   "binary-tree",
+   "tree"
+  ],
+  [
+   "ford-relaxation",
+   "edge-relaxation"
+  ],
+  [
+   "sparse-dp",
+   "longest-common-subsequence"
+  ],
+  [
+   "mergesort",
+   "merge-sorted-sequences"
+  ],
+  [
+   "sliding-window-minimum",
+   "sliding-window-fixed"
+  ],
+  [
+   "lattice-paths-obstacles",
+   "grid-paths"
+  ]
+ ],
  "used_noedge": [
   [
    "potential-method",
@@ -303,6 +414,10 @@
   [
    "huffman",
    "compression"
+  ],
+  [
+   "database-indexes",
+   "b-tree"
   ],
   [
    "stack",
@@ -359,9 +474,6 @@
   "[determinant]": [
    "determinant-gauss",
    "lu-decomposition-crout"
-  ],
-  "[difference array]": [
-   "fenwick-range-update"
   ],
   "[divisibility]": [
    "gcd-definition"
@@ -428,11 +540,6 @@
   "[prefix products]": [
    "batch-inverse"
   ],
-  "[prefix sums]": [
-   "fenwick",
-   "max-subarray-prefix-min",
-   "sqrt-decomposition"
-  ],
   "[prime numbers]": [
    "primality-trial-division",
    "sieve-of-eratosthenes"
@@ -478,14 +585,6 @@
   "splaying": [
    "contest",
    "splay-tree"
-  ],
-  "potential-method": [
-   "stretch",
-   "b-tree"
-  ],
-  "b-tree-delete": [
-   "stretch",
-   "b-tree"
   ],
   "edge-classification": [
    "stretch",
@@ -575,10 +674,6 @@
    "contest",
    "fft"
   ],
-  "aggregate-accounting": [
-   "stretch",
-   "potential-method"
-  ],
   "multiplicative-hashing": [
    "stretch",
    "hash-compound"
@@ -586,10 +681,6 @@
   "decision-tree-model": [
    "stretch",
    "information-theoretic-bound"
-  ],
-  "b-tree-insert": [
-   "stretch",
-   "b-tree-delete"
   ],
   "string-matching-automaton": [
    "stretch",
@@ -610,22 +701,6 @@
   "word-ram": [
    "stretch",
    "multiplicative-hashing"
-  ],
-  "two-four-updates": [
-   "stretch",
-   "b-tree-insert"
-  ],
-  "b-tree-search": [
-   "stretch",
-   "b-tree-insert"
-  ],
-  "b-tree-structure": [
-   "stretch",
-   "b-tree-search"
-  ],
-  "external-memory-model": [
-   "stretch",
-   "b-tree-structure"
   ]
  },
  "into_appendix": [
@@ -728,6 +803,7 @@
    "ch-graph-search"
   ],
   "ch-backtracking": [
+   "ch-bits",
    "ch-bst"
   ],
   "ch-dp": [
@@ -765,18 +841,18 @@
    "A"
   ],
   "ch-sd-data": [
-   "ch-balanced",
+   "ch-hashing",
    "ch-sd-web"
   ],
   "ch-sd-cache-async": [
    "ch-sd-data"
   ],
   "ch-sd-cases": [
+   "ch-heaps",
    "ch-graph-search",
    "ch-sd-cache-async"
   ],
   "ch-range-queries": [
-   "ch-bits",
    "ch-mst",
    "ch-dp"
   ],
@@ -799,7 +875,6 @@
    "ch-range-queries"
   ],
   "ch-advanced-dp": [
-   "ch-bits",
    "ch-sorting",
    "ch-dp"
   ],
@@ -808,7 +883,6 @@
    "A"
   ],
   "ch-number-theory-1": [
-   "ch-bits",
    "ch-dp"
   ],
   "ch-number-theory-2": [
@@ -925,10 +999,14 @@
    "ch-graph-search"
   ],
   "ch-backtracking": [
+   "ch-cost",
    "ch-recursion",
+   "ch-bits",
    "ch-bst"
   ],
   "ch-dp": [
+   "ch-cost",
+   "ch-arrays-lists",
    "ch-stacks-queues",
    "ch-recursion",
    "ch-binary-search",
@@ -943,6 +1021,7 @@
    "ch-dp"
   ],
   "ch-greedy": [
+   "ch-arrays-lists",
    "ch-recursion",
    "ch-heaps",
    "ch-sorting",
@@ -976,7 +1055,6 @@
   ],
   "ch-sd-data": [
    "ch-hashing",
-   "ch-balanced",
    "ch-sd-availability",
    "ch-sd-web"
   ],

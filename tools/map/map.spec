@@ -1,4 +1,4 @@
-# Concept map spec. Prefixes: c=ciu p=cpa j=jeffe n=jeffe-notes o=ods s=sdp
+# Concept map spec. Prefixes: c=ciu p=cpa j=jeffe n=jeffe-notes o=ods s=sdp g=gap (g: takes the gap row's full id, whose own prefix names its real source)
 # C id | title          S id | title [| fold note]
 # APPENDIX letter | title | kind  ...  END APPENDIX: the chapters between are an appendix, not numbered book chapters.
 # Chapter order in this file is the book order. The '# Part:' comments are old groupings, kept for reading only.
@@ -21,19 +21,19 @@ factorials-stirling = o:factorials-stirling
 harmonic-numbers = o:harmonic-numbers
 S asymptotic-notation | Asymptotic notation
 big-o = c:big-o o:big-oh
-big-omega-theta = c:big-omega-theta
+big-omega-theta = c:big-omega-theta g:wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations g:opendsa:AlgAnal/AnalLower :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 multivariate-big-o = o:multivariate-big-oh
 S analysing-algorithms | Analysing running time and space
 word-ram = o:word-ram
 complexity-analysis = c:complexity-analysis j:running-time-analysis
 running-time-guarantees = o:running-time-guarantees
 S amortized-analysis | Amortized analysis
-amortized-analysis = c:amortized-analysis n:amortized-cost
-aggregate-accounting = n:aggregate-accounting
+amortized-analysis = c:amortized-analysis n:amortized-cost g:wikipedia:Amortized_analysis g:opendsa:SeniorAlgAnal/AmortAnal :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
+aggregate-accounting = n:aggregate-accounting g:wikipedia:Amortized_analysis#Method :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 potential-method = n:potential-method o:potential-method
 counter-increment-decrement = n:inc-dec-counter
 S counting-expectation | Counting and expected value
-counting = c:counting
+counting = c:counting g:dmoi3:sec_counting-combperm g:oiwiki:math/combinatorics/combination#排列与组合基础 :: note=Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background).
 probability-basics = c:probability-basics n:probability-space
 conditional-probability = c:conditional-probability :: tier=core ;; why=linearity-of-expectation (core) rests on it.
 linearity-of-expectation = n:linearity-of-expectation o:linearity-of-expectation c:random-variables-expectation :: tier=core ;; why=geometric-expectation and chaining-analysis (both core) rest on it.
@@ -42,7 +42,7 @@ geometric-expectation = o:coin-toss-expectation
 
 C ch-arrays-lists | Arrays and linked lists
 S arrays | Arrays and the list interface
-array = c:array
+array = c:array g:wikipedia:Array_(data_structure) g:wikibooks:Data_Structures/Arrays :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 pointer-arithmetic = c:pointer-arithmetic
 list-interface = o:list-interface
 S dynamic-arrays | Dynamic arrays
@@ -51,16 +51,27 @@ array-resize = o:array-resize
 dynamic-array-cost = c:dynamic-array-cost o:arraystack-amortized-resize
 block-copy = o:fastarraystack
 implement-vector = c:implement-vector
+S two-pointers | Two pointers and sliding windows | OI Wiki misc/two-pointer is split over this home: its sorted-sequence section treats two-pointers, its window section the variable window, its linked-list section Floyd's cycle detection (2.7).
+two-pointers = g:dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py g:oiwiki:misc/two-pointer#利用序列有序性 g:doocs-leetcode:0167#Solution_2:_Two_Pointers g:doocs-leetcode:0011#Solution_1:_Two_Pointers :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §1). No open source states the pattern as a pattern at textbook length: dsa-dummies gives a short general note and OI Wiki a general page; doocs applies it to pair sum (167) and container with most water (11). The canonical cases that rest on it are 3SUM (here), merging (here), three-way partition (10.4) and tortoise and hare (2.7).
+three-sum = g:wikipedia:3SUM#Quadratic_algorithm g:doocs-leetcode:0015#Solution_1:_Sort_+_Two_Pointers :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §1). Sorting is used as a library call here; sorting algorithms are chapter 10.
+merge-sorted-sequences = g:wikipedia:Merge_algorithm#Merging_two_lists :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §1): two pointers, one per sorted list. Merge sort (10.3) rests on it (edge added).
+sliding-window-fixed = g:wikipedia:Moving_average#Simple_moving_average g:dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py g:doocs-leetcode:0643#Solution_1:_Sliding_Window g:doocs-leetcode:1456#Solution_1:_Sliding_Window g:doocs-leetcode:0567#Solution_1:_Sliding_Window g:doocs-leetcode:0438#Solution_1 :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §2). The fixed-window minimum with a monotonic deque stays its own concept (sliding-window-minimum, 3.4), which now rests on this one.
+sliding-window-variable = g:doocs-leetcode:0003#Solution_1:_Sliding_Window g:oiwiki:misc/two-pointer#维护区间信息 g:doocs-leetcode:0076#Solution_1:_Counting_+_Two_Pointers g:doocs-leetcode:0209#Solution_2:_Two_Pointers g:icc:recursion_dynamic/longest_substr_k_distinct :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §2). OI Wiki's window section is the only general account of the expand/shrink invariant (ruling 15 made it usable); the rest are problem-level write-ups. Several examples keep the window's contents in a hash set or map, taught in chapter 5: the section should open with an example whose window state is a sum or a count array.
+S prefix-sums | Prefix sums and difference arrays | OI Wiki basic/prefix-sum is split over this home: one row per section (1D, 2D, 1D difference, 2D difference); its tree prefix sums and differences are not taken.
+prefix-sums = g:wikipedia:Prefix_sum g:oiwiki:basic/prefix-sum#一维前缀和 g:dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py g:doocs-leetcode:0303#Solution_1:_Prefix_Sum :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Replaces the bracketed [prefix sums] that Fenwick trees, sqrt decomposition and the prefix-minimum maximum subarray assumed.
+prefix-sums-2d = g:wikipedia:Summed-area_table#The_algorithm g:oiwiki:basic/prefix-sum#基于容斥原理 g:doocs-leetcode:0304#Solution_1:_Two-dimensional_Prefix_Sum :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Tier stretch: range sums over a matrix come up at harder interviews and in contests, not in the typical loop, and no open exercise with tests was found for it.
+difference-array = g:oiwiki:basic/prefix-sum#一维差分 g:doocs-leetcode:0370#Solution_1:_Difference_Array g:doocs-leetcode:1094#Solution_1:_Difference_Array g:doocs-leetcode:1109#Solution_1:_Difference_Array :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Tier core: range-update problems (car pooling, flight bookings) are common interview mediums, and the meeting-rooms sweep (20.2, core) rests on it. Replaces the bracketed [difference array] that cpa's Fenwick range update assumed.
+difference-array-2d = g:oiwiki:basic/prefix-sum#二维/多维差分 :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4; OI Wiki only). Tier stretch, as 2D prefix sums.
 S singly-linked-lists | Singly linked lists
 singly-linked-list = c:singly-linked-list o:sllist
 pointer-to-pointer = c:pointer-to-pointer
-implement-linked-list = c:implement-linked-list
+implement-linked-list = c:implement-linked-list g:opendsa:List/ListLinked :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 linked-list-vs-array = c:linked-list-vs-array o:linked-vs-array
 S doubly-linked-lists | Doubly linked lists
 doubly-linked-list = c:doubly-linked-list o:dllist
 sentinel-node = o:dummy-node
 S tortoise-and-hare | Cycles in linked lists: tortoise and hare
-floyd-cycle-detection = p:floyd-cycle-detection
+floyd-cycle-detection = p:floyd-cycle-detection g:wikipedia:Cycle_detection#Floyd's_tortoise_and_hare g:oiwiki:misc/two-pointer#在单向链表中找环 g:algo-explanation:Search_Algorithms/Floyd_Cycle_Detection_Algorithm_to_Find_Duplicate_Number :: note=Fast and slow pointers: the gap-patterns run (§1) added the Wikipedia, OI Wiki and algo-explanation treatments.
 cycle-start = p:cycle-start
 cycle-start-proof = p:cycle-start-proof
 
@@ -72,7 +83,7 @@ bracket-validation = p:bracket-validation
 S queues | Queues and circular buffers
 queue = c:queue o:queue-interface
 circular-buffer = c:circular-buffer o:circular-array
-queue-linked-list = c:queue-linked-list
+queue-linked-list = c:queue-linked-list g:wikibooks:Data_Structures/Stacks_and_Queues#Queues :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 array-queue = o:arrayqueue c:queue-fixed-array :: note=CIU's fixed-size array queue and ODS's resizing ArrayQueue are one concept (a circular array holding a FIFO queue); ODS adds resizing.
 S deques | Deques
 deque = o:deque-interface
@@ -82,7 +93,7 @@ S monotonic | Min-stacks and monotonic queues | cpa data_structures/stack_queue_
 min-stack = p:min-stack
 queue-from-two-stacks = p:queue-two-stacks
 monotonic-queue-minimum = p:min-queue-monotonic
-sliding-window-minimum = p:sliding-window-minimum
+sliding-window-minimum = p:sliding-window-minimum g:wikipedia:Double-ended_queue#Monotonic_queue g:oiwiki:ds/monotonic-queue g:doocs-leetcode:0239#Solution_2:_Monotonic_Queue :: note=The gap-patterns run (§2) added the Wikipedia, OI Wiki and doocs treatments of the monotonic-deque window.
 nearest-smaller-element = p:nearest-smaller-stack
 largest-zero-submatrix = p:largest-zero-submatrix
 S expressions | Stack applications: expression evaluation
@@ -100,7 +111,7 @@ C ch-recursion | Recursion and induction
 S recursion | Recursion and reduction
 reduction = j:reduction
 recursion = j:recursion c:recursion
-tail-recursion = c:tail-recursion
+tail-recursion = c:tail-recursion g:wikipedia:Tail_call :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 tower-of-hanoi = j:tower-of-hanoi
 S exponentiation | Exponentiation by squaring
 binary-exponentiation = p:binary-exponentiation j:fast-exponentiation
@@ -109,7 +120,7 @@ modular-exponentiation = p:modular-exponentiation
 associative-power = p:associative-power
 S induction | Induction and correctness proofs
 smallest-counterexample = n:smallest-counterexample
-induction = n:induction-axiom
+induction = n:induction-axiom g:csci30:correctness#Mathematical_induction :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 induction-practice = n:induction-practice
 structural-induction = n:structural-induction
 correctness-proof = j:correctness-proof
@@ -118,17 +129,17 @@ C ch-hashing | Hash tables
 S sets-and-maps | Sets, maps and the dictionary problem
 uset-interface = o:uset-interface
 map-interface = o:map-from-uset
-hash-table = c:hash-table n:hash-table
+hash-table = c:hash-table n:hash-table g:wikipedia:Hash_table g:opendsa:Hashing/HashIntro :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S chaining | Hashing with chaining
 hashing-with-chaining = c:hashing-with-chaining o:hashing-with-chaining :: note=Split from jeffe-notes 05-hashing.4, whose row is the expected-chain-length analysis (concept chaining-analysis).
-table-doubling = c:table-doubling
+table-doubling = c:table-doubling g:wikipedia:Hash_table#Dynamic_resizing :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S open-addressing | Open addressing
 open-addressing = c:open-addressing o:open-addressing-linear-probing n:open-addressing
 tombstones = o:tombstones
 implement-hash-table = c:implement-hash-table s:ood-hash-map :: note=sdp's OOD hash-map notebook is the same exercise as CIU's implementation task.
 S hash-families | Hash function families
 multiplicative-hashing = o:multiplicative-hashing n:multiplicative-hashing
-universal-hashing = n:universal-hashing c:universal-perfect-hashing :: note=CIU's one row covers universal and perfect hashing; split into two concepts, CIU's row treats both.
+universal-hashing = n:universal-hashing c:universal-perfect-hashing g:wikipedia:Hash_function#Universality :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. CIU's one row covers universal and perfect hashing; split into two concepts, CIU's row treats both.
 tabulation-hashing = o:tabulation-hashing
 perfect-hashing = n:perfect-hashing c:universal-perfect-hashing
 S hash-codes | Hash codes
@@ -139,7 +150,7 @@ S hashing-analysis | Analysing hash tables
 chaining-analysis = n:chaining :: name=Expected chain length under universal hashing
 balls-and-bins = n:balls-and-bins
 linear-probing-analysis = o:linear-probing-runs
-cuckoo-hashing = n:cuckoo-hashing
+cuckoo-hashing = n:cuckoo-hashing g:wikipedia:Hash_table#Cuckoo_hashing :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S lru-cache | Combining structures: the LRU cache
 lru-cache = s:lru-cache c:lru-cache s:ood-lru-cache :: note=sdp's query-cache implementation and its OOD LRU notebook are the same structure CIU asks for under Caches.
 
@@ -183,7 +194,7 @@ gray-code-formula = p:gray-code-formula
 inverse-gray-code = p:inverse-gray-code
 gray-code-applications = p:gray-code-applications
 S data-representation | Representing numbers and text
-floating-point = c:floating-point
+floating-point = c:floating-point g:lt-csbu:2.2 :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 endianness = c:endianness
 character-encodings = c:character-encodings
 
@@ -191,7 +202,7 @@ character-encodings = c:character-encodings
 
 C ch-bst | Trees and binary search trees
 S trees | Trees and binary trees
-tree = c:tree
+tree = c:tree g:wikipedia:Tree_(abstract_data_type) g:opendsa:General/GenTreeIntro :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 binary-tree = o:binary-tree-terms
 binary-tree-recursion = o:binarytree-recursive
 S tree-traversals | Tree traversals: depth-first and level-order
@@ -207,14 +218,14 @@ S bst-search-insert | Search and insertion
 bst-search = o:bst-search c:bst-search-insert :: note=CIU joins search and insertion in one row; ODS separates them. Split to ODS's grain, CIU's row treats both.
 bst-insert = o:bst-add c:bst-search-insert
 bst-min-max-height = c:bst-min-max-height
-bst-successor = c:bst-successor
+bst-successor = c:bst-successor g:wikipedia:Binary_search_tree#Successor_and_predecessor :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S bst-delete | Deletion, validation and cost
 bst-delete = c:bst-delete o:bst-remove
 validate-bst = c:validate-bst
 implement-bst = c:implement-bst
 unbalanced-bst-cost = o:unbalanced-bst-cost
 S balance-idea | Keeping a BST balanced
-balanced-bst-idea = c:balanced-bst-idea
+balanced-bst-idea = c:balanced-bst-idea g:wikipedia:Self-balancing_binary_search_tree g:opendsa:SearchStruct/BalancedTree :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 tree-rotations = o:tree-rotations
 build-balanced-from-sorted = o:build-balanced-from-sorted
 random-bst = o:random-bst
@@ -227,7 +238,7 @@ S binary-heaps | Binary heaps
 implicit-tree-layout = o:eytzinger
 heap-property = o:heap-property
 binary-heap = c:binary-heap o:binary-heap
-heap-sift = c:heap-sift
+heap-sift = c:heap-sift g:wikipedia:Binary_heap#Heap_operations :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S heapify-heapsort | Heapify and heapsort
 build-heap = c:build-heap o:bottom-up-heapify
 heapsort = c:heapsort o:heap-sort
@@ -239,10 +250,10 @@ meldable-heap = o:meldable-heap p:randomized-heap
 C ch-sorting | Divide and conquer and sorting
 S elementary-sorts | Elementary sorts
 comparison-sorting = o:comparison-sorting
-sort-stability = c:sort-stability
-selection-sort = c:selection-sort
-insertion-sort = c:insertion-sort
-bubble-sort = c:bubble-sort
+sort-stability = c:sort-stability g:wikipedia:Sorting_algorithm#Stability :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
+selection-sort = c:selection-sort g:wikipedia:Selection_sort g:opendsa:Sorting/SelectionSort :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
+insertion-sort = c:insertion-sort g:wikipedia:Insertion_sort g:opendsa:Sorting/InsertionSort :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
+bubble-sort = c:bubble-sort g:wikipedia:Bubble_sort g:opendsa:Sorting/BubbleSort :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S divide-and-conquer | Divide and conquer and recurrences
 divide-and-conquer = j:divide-and-conquer
 guess-and-confirm = n:guess-and-confirm
@@ -255,7 +266,7 @@ mergesort = j:mergesort c:mergesort o:merge-sort
 sorting-linked-lists = c:sorting-linked-lists
 S quicksort | Quicksort and partitioning
 partition = j:partition
-three-way-partition = o:three-way-partition
+three-way-partition = o:three-way-partition g:wikipedia:Dutch_national_flag_problem#The_array_case :: note=Also the Dutch national flag problem, a three-pointer case of the two-pointer pattern (2.3); the Wikipedia treatment is from the gap-patterns run (§1).
 quicksort = j:quicksort c:quicksort o:quicksort
 nuts-and-bolts = n:nuts-and-bolts
 quicksort-expected-comparisons = n:quicksort-expected-comparisons o:quicksort-analysis
@@ -274,9 +285,9 @@ radix-sort = o:radix-sort c:linear-time-sorts
 
 C ch-balanced | Balanced search trees
 S multiway-trees | AVL, 2-3 and 2-4 trees
-avl-tree = c:avl-tree
-two-three-tree = c:2-3-tree :: tier=core ;; why=two-four-tree (core) rests on it.
-two-four-tree = c:2-3-4-tree o:two-four-tree :: tier=core ;; why=two-four-updates, b-tree-structure (core) rest on it.
+avl-tree = c:avl-tree g:wikipedia:AVL_tree g:opendsa:SearchStruct/AVL :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
+two-three-tree = c:2-3-tree g:wikipedia:2–3_tree
+two-four-tree = c:2-3-4-tree o:two-four-tree
 two-four-updates = o:two-four-updates
 S red-black | Red-black trees
 red-black-properties = o:red-black-properties
@@ -298,7 +309,7 @@ global-rebuilding = n:global-rebuilding
 scapegoat-tree = o:scapegoat-tree n:scapegoat-tree
 scapegoat-amortized = o:scapegoat-amortized
 splaying = n:splaying
-splay-tree = c:splay-tree n:splay-tree
+splay-tree = c:splay-tree n:splay-tree g:opendsa:SearchStruct/Splay :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S skip-lists | Skip lists
 skiplist-structure = o:skiplist-structure
 skiplist-search-path = o:skiplist-search-path-length
@@ -307,17 +318,17 @@ skiplist-list = o:skiplist-list
 skiplist-analysis = o:skiplist-analysis
 S b-trees | B-trees
 external-memory-model = o:external-memory-model
-k-ary-tree = c:k-ary-tree :: tier=core ;; why=b-tree (core) rests on it.
+k-ary-tree = c:k-ary-tree g:wikipedia:M-ary_tree
 b-tree-structure = o:b-tree-structure
 b-tree-search = o:b-tree-search
 b-tree-insert = o:b-tree-add
 b-tree-delete = o:b-tree-remove
-b-tree = c:b-tree o:b-tree-performance :: tier=core ;; why=database-indexes (core) rests on it.
+b-tree = c:b-tree o:b-tree-performance
 
 C ch-tries | Tries and other search structures
 S tries | Tries
 trie = c:trie p:trie
-trie-operations = c:trie-operations
+trie-operations = c:trie-operations g:wikipedia:Trie#Operations :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 ternary-search-trie = c:ternary-search-trie
 S integer-search | Integer search structures
 binary-trie = o:binary-trie
@@ -338,7 +349,7 @@ graph-operations = o:graph-interface
 S representations | Adjacency matrices and lists
 adjacency-matrix = j:adjacency-matrix o:adjacency-matrix
 adjacency-list = j:adjacency-list o:adjacency-lists
-graph-representations = c:graph-representations
+graph-representations = c:graph-representations g:wikipedia:Graph_(abstract_data_type)#Common_data_structures_for_graph_representation g:opendsa:Graph/GraphImpl :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
 S whatever-first | Whatever-first search
 whatever-first-search = j:whatever-first-search
 traversal-variants = j:traversal-variants
@@ -363,8 +374,9 @@ dfs-clocks = p:dfs-entry-exit-times j:pre-postorder
 edge-classification = p:dfs-edge-classification j:edge-classification
 S topological-order | Cycles and topological order | cpa graph/finding-cycle (292 words) is folded into this home.
 cycle-detection = c:cycle-detection j:cycle-detection p:cycle-detection-dfs
-topological-order = p:topological-order
+topological-order = p:topological-order g:mcs2018:10.5.1 g:aspnes-202:9.5.5.1 :: note=The MCS and Aspnes treatments (gap-patterns §3) prove that every finite DAG has a topological order by repeatedly taking a minimal element: Kahn's idea as an existence proof, without the data structures, so they treat this concept rather than kahn-topological-sort.
 topological-sort = c:topological-sort p:topological-sort j:topological-sort
+kahn-topological-sort = g:wikipedia:Topological_sorting#Kahn's_algorithm g:opendsa:Graph/GraphTopsort#Queue-based_Solution g:oiwiki:graph/topo#Kahn_算法 g:doocs-leetcode:0207#Solution_1:_Topological_Sorting g:doocs-leetcode:0210#Solution_1 g:icc:graphs_trees/graph_build_order :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §3). cpa says outright that it does not cover Kahn's algorithm, and Erickson and CIU teach only the DFS method, which stays the topological-sort concept beside this one.
 S bridges | Bridges and articulation points | cpa graph/cutpoints shares the low-link method of graph/bridge-searching; both live here.
 low-link = p:low-link
 bridge = p:bridge
@@ -425,6 +437,12 @@ S backtracking-pattern | The backtracking pattern
 backtracking = j:backtracking-pattern c:backtracking
 n-queens = j:n-queens
 game-trees = j:game-trees
+S generation | Generating permutations, subsets and combinations | cpa combinatorics/generating_combinations stays with stars and bars (40.5), where its next-combination row lives; Wikipedia's k-combination enumeration joins it there.
+generate-permutations = g:doocs-leetcode:0046#Solution_1:_DFS_(Backtracking) g:doocs-leetcode:0047#Solution_1:_Sorting_+_Backtracking g:icc:recursion_dynamic/permutations :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §6). CIU's backtracking row only links to permutation and subset write-ups; no inventory row taught generation.
+next-permutation = g:wikipedia:Permutation#Generation_in_lexicographic_order g:doocs-leetcode:0031#Solution_1:_Two_traversals :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §6). Iterative, not backtracking; it sits here with the other generators.
+heaps-algorithm = g:wikipedia:Heap's_algorithm#Details_of_the_algorithm :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §6). Tier stretch: one swap per permutation matters for contests and puzzles, not for the typical interview, where backtracking and next permutation suffice.
+generate-subsets = g:doocs-leetcode:0078#Solution_1:_DFS_(Backtracking) g:trekhleb-jsalgo:src/algorithms/sets/power-set/README.md#Algorithms g:wikipedia:Power_set#Representing_subsets_as_functions g:doocs-leetcode:0090#Solution_1:_Sorting_+_DFS g:icc:recursion_dynamic/power_set :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §6). Kept apart from submask enumeration (7.4), which lists the submasks of one mask, and from subset sum by backtracking (17.3), which decides rather than lists.
+generate-combinations = g:doocs-leetcode:0077#Solution_1:_Backtracking_(Two_Ways) g:doocs-leetcode:0039#Solution_1:_Sorting_+_Pruning_+_Backtracking :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §6). The lexicographic successor method is next-combination (40.5, stretch).
 S subset-sum-segmentation | Subset sum and text segmentation
 subset-sum-backtracking = j:subset-sum-backtracking
 text-segmentation = j:text-segmentation
@@ -445,6 +463,12 @@ S fibonacci | Fibonacci numbers: from recursion to logarithmic time
 fibonacci-numbers = p:fibonacci-definition
 fibonacci-linear = p:fibonacci-iterative
 fibonacci-matrix = p:fibonacci-matrix j:fast-fibonacci
+S coin-change-grid-paths | Coin change and grid paths
+coin-change-min = g:wikipedia:Change-making_problem#Simple_dynamic_programming g:anfp:17.3 g:doocs-leetcode:0322#Solution_1:_Dynamic_Programming_(Complete_Knapsack) g:icc:recursion_dynamic/coin_change_min :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §7). doocs frames it as the complete knapsack (18.6); the map does not make it rest on knapsack, since Wikipedia and ANFP teach it directly.
+coin-change-ways = g:algo-explanation:Dynamic_Programming/Coin_Change g:icc:recursion_dynamic/coin_change_ways g:icc:recursion_dynamic/coin_change g:doocs-leetcode:0518#Solution_1:_Dynamic_Programming_(Complete_Knapsack) :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §7).
+grid-paths = g:doocs-leetcode:0062#Solution_1:_Dynamic_Programming g:trekhleb-jsalgo:src/algorithms/uncategorized/unique-paths/README.md#Algorithms g:wikipedia:Lattice_path#Counting_lattice_paths g:dmoi3:sec_counting-binom#Lattice_Paths :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §8). One concept with two derivations: the DP recurrence (doocs, trekhleb) and the binomial count (Wikipedia, Levin). cpa's classic-DP table names it only as an alias (classic-dp-problems); cpa's lattice paths avoiding obstacles (40.4) now rests on it.
+grid-paths-obstacles = g:doocs-leetcode:0063#Solution_2:_Dynamic_Programming g:icc:recursion_dynamic/grid_path :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §8). Kept apart from cpa's inclusion-exclusion count with few obstacles (lattice-paths-obstacles, contest).
+min-path-sum = g:doocs-leetcode:0064#Solution_1:_Dynamic_Programming :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §8).
 S dp-sequences | Text segmentation and longest increasing subsequence
 text-segmentation-dp = j:text-segmentation-dp
 lis-dp = j:lis-dp p:lis-quadratic
@@ -496,8 +520,11 @@ S greedy-idea | Greedy choices and exchange arguments
 greed-is-stupid = j:greed-is-stupid
 exchange-argument = j:exchange-argument
 tape-storage = j:tape-storage
-interval-scheduling = j:interval-scheduling
+interval-scheduling = j:interval-scheduling g:wikipedia:Interval_scheduling#Unweighted g:wikipedia:Activity_selection_problem#Algorithm g:anfp:17.2 g:anfp:18.3 g:doocs-leetcode:0435#Solution_1:_Sorting_+_Greedy :: note=The map already had it from Erickson 4.2; the gap-patterns run (§5) added the Wikipedia, ANFP and doocs treatments.
 stable-matching = j:stable-matching
+S intervals | Merging intervals and meeting rooms
+merge-intervals = g:doocs-leetcode:0056#Solution_1:_Sorting_+_One-pass_Traversal g:doocs-leetcode:0057#Solution_2:_One-pass_Traversal g:doocs-leetcode:0252#Solution_1:_Sorting :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §5). Open prose at problem level only (doocs). Sits with interval scheduling, after sorting.
+interval-partitioning = g:doocs-leetcode:0253#Solution_1:_Difference_Array :: name=Interval partitioning: minimum rooms as maximum overlap ;; note=From the gap-patterns finder run (dossiers/gap-patterns.md §5). Also the sweep line over intervals: +1 at each start and -1 at each end, read in time order. cpa's union of segments (44.3) is the same sweep for lengths and stays there. Its only open prose is the doocs write-up; Erickson's interval-colouring exercise (ch. 4, unkeyed) is an exercise, not prose.
 S huffman | Huffman codes
 prefix-free-code = j:prefix-free-code
 huffman = j:huffman c:huffman
@@ -708,14 +735,14 @@ latency-vs-throughput = s:latency-vs-throughput
 
 C ch-sd-availability | Availability and consistency
 S cap | Distributed systems and the CAP theorem
-distributed-fallacies = c:distributed-fallacies
+distributed-fallacies = c:distributed-fallacies g:wp:Fallacies_of_distributed_computing :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4.
 cap-theorem = s:cap-theorem c:cap-theorem :: tier=core ;; why=weak, eventual and strong consistency (core) rest on it.
 S consistency | Consistency patterns
 weak-consistency = s:weak-consistency
 eventual-consistency = s:eventual-consistency
 strong-consistency = s:strong-consistency
 cp-vs-ap = s:cp-vs-ap
-consensus = c:consensus
+consensus = c:consensus g:raft-site:index.html g:wp:Raft_(algorithm) g:wp:Paxos_(computer_science) :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §1, §2.1 and §2.4.
 S availability | Availability patterns
 active-passive-failover = s:active-passive-failover
 active-active-failover = s:active-active-failover
@@ -738,7 +765,7 @@ lb-vs-reverse-proxy = s:lb-vs-reverse-proxy
 S horizontal-scaling | Horizontal scaling and stateless servers
 horizontal-scaling = s:horizontal-scaling
 stateless-servers = s:stateless-servers
-scaling-basics = c:scaling-basics :: tier=core ;; why=sharding (core) rests on it.
+scaling-basics = c:scaling-basics g:aosa:v2/distsys :: tier=core ;; why=sharding (core) rests on it. ;; note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.1.
 autoscaling = s:autoscaling
 S application-layer | The application layer and microservices
 application-layer = s:application-layer
@@ -767,8 +794,8 @@ federation = s:federation
 sharding = s:sharding c:sharding :: tier=core ;; why=denormalization, cache-cluster-partitioning and several worked designs (core) rest on it.
 denormalization = s:denormalization
 sql-tuning = s:sql-tuning
-consistent-hashing = c:consistent-hashing
-distributed-hash-table = c:distributed-hash-table
+consistent-hashing = c:consistent-hashing g:wp:Consistent_hashing :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §1 and §2.4.
+distributed-hash-table = c:distributed-hash-table g:wp:Distributed_hash_table :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §1 and §2.4.
 data-tiering = s:data-tiering
 S nosql | NoSQL stores
 nosql-base = s:nosql-base
@@ -776,7 +803,7 @@ key-value-store = s:key-value-store
 document-store = s:document-store
 wide-column-store = s:wide-column-store
 graph-database = s:graph-database
-nosql-patterns = c:nosql-patterns
+nosql-patterns = c:nosql-patterns g:aosa:v1/nosql :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.1.
 sql-vs-nosql = s:sql-vs-nosql
 
 C ch-sd-cache-async | Caching and asynchrony
@@ -785,7 +812,7 @@ caching = s:caching
 cache-locations = s:cache-locations
 application-cache = s:application-cache
 cache-granularity = s:cache-granularity
-redis = c:redis
+redis = c:redis g:wp:Redis :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4.
 cache-cluster-partitioning = s:cache-cluster-partitioning
 S cache-strategies | Cache update strategies
 cache-aside = s:cache-aside
@@ -1015,13 +1042,13 @@ cyk-parsing = n:cyk-parsing
 
 C ch-sketches | Sketches and probabilistic data structures
 S bloom-filters | Bloom filters
-bloom-filter = n:bloom-filter c:bloom-filter
+bloom-filter = n:bloom-filter c:bloom-filter g:wp:Bloom_filter :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4 (also in its key-value-store row).
 S streaming | Streaming sketches
 streaming-model = n:streaming-model
-count-min-sketch = n:count-min-sketch
-hyperloglog = c:hyperloglog
+count-min-sketch = n:count-min-sketch g:wp:Count–min_sketch :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4.
+hyperloglog = c:hyperloglog g:wp:HyperLogLog :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4.
 S similarity-hashing | Locality-sensitive hashing
-simhash = c:simhash
+simhash = c:simhash g:wp:Locality-sensitive_hashing :: note=Open prose added in the gap inventory from dossiers/sweep-system-design.md §2.4.
 
 C ch-number-theory-1 | Number theory: divisibility and primes
 S gcd | Greatest common divisors
@@ -1197,7 +1224,7 @@ stars-and-bars = p:stars-and-bars
 positive-integer-sums = p:positive-integer-sums
 lower-bounded-sums = p:lower-bounded-sums
 upper-bounded-sums = p:upper-bounded-sums
-next-combination = p:next-combination
+next-combination = p:next-combination g:wikipedia:Combination#Enumerating_k-combinations :: note=The Wikipedia treatment is from the gap-patterns run (§6).
 combinations-gray-order = p:combinations-gray-order
 S burnside | Burnside's lemma and Polya enumeration
 orbits-under-symmetry = p:orbits-under-symmetry
@@ -1390,10 +1417,14 @@ NOEDGE hashing-with-chaining -> multiplicative-hashing | ODS's ChainedHashTable 
 NOEDGE bfs-shortest-paths -> ford-relaxation | Erickson frames BFS as an instance of Ford's relaxation; unweighted BFS distances need no relaxation framework, and cpa and ODS teach them from BFS alone.
 NOEDGE max-flow-min-cut -> ford-fulkerson | cpa proves the theorem through Ford-Fulkerson; Erickson states it first and derives the algorithm from it. Breaks a cycle.
 NOEDGE huffman -> compression | CIU files Huffman under Compression; the greedy construction needs prefix codes and a priority queue, not the compression chapter.
+NOEDGE database-indexes -> b-tree | knowing an index is a B-tree is Essential; its operations are Advanced (user ruling 2026-11-08)
 NOEDGE stack -> queue | ODS defines a stack as a LIFO queue; CIU and most readers meet stacks first, and nothing in the stack needs FIFO queues.
 
 # ---- prerequisite edges added between sources (concept -> prereq) with reasons
 EDGE binary-tree -> tree | ODS's binary-tree terminology and CIU's tree are taught by different sources; a binary tree is a tree.
 EDGE ford-relaxation -> edge-relaxation | Erickson's generic algorithm repeats the relaxation step that cpa names separately.
 EDGE sparse-dp -> longest-common-subsequence | Hunt-Szymanski's sparse DP is stated on LCS.
+EDGE mergesort -> merge-sorted-sequences | merge sort repeats the two-list merge, which chapter 2 teaches as a two-pointer case (gap inventory).
+EDGE sliding-window-minimum -> sliding-window-fixed | the monotonic-deque minimum is a fixed-size window whose state is a min-queue (gap inventory).
+EDGE lattice-paths-obstacles -> grid-paths | the inclusion-exclusion count with obstacles counts the same monotone lattice paths (gap inventory).
 NOEDGE random-walk-binary-tree -> meldable-heap | cpa proves the random root-to-leaf path bound inside its randomized-heap article; ODS states it as a lemma about any binary tree, and the heap rests on it, not the reverse. Breaks a cycle.

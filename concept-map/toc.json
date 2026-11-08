@@ -58,12 +58,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "big-omega-theta"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -99,12 +99,12 @@
      "candidate_sources": [
       "ciu",
       "jeffe-notes",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "amortized-analysis",
-      "aggregate-accounting",
       "counter-increment-decrement"
      ],
      "folds": ""
@@ -125,11 +125,12 @@
      "candidate_sources": [
       "ciu",
       "jeffe-notes",
-      "ods"
+      "ods",
+      "oiwiki",
+      "dmoi3"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "counting",
       "probability-basics",
       "conditional-probability"
      ],
@@ -137,8 +138,8 @@
     }
    ],
    "tier_counts": {
-    "core": 21,
-    "stretch": 4,
+    "core": 20,
+    "stretch": 5,
     "contest": 1
    }
   },
@@ -160,11 +161,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia",
+      "wikibooks"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "array",
       "pointer-arithmetic"
      ],
      "folds": ""
@@ -192,8 +194,52 @@
      "folds": ""
     },
     {
-     "id": "singly-linked-lists",
+     "id": "two-pointers",
      "number": "2.3",
+     "title": "Two pointers and sliding windows",
+     "concepts": [
+      "two-pointers",
+      "three-sum",
+      "merge-sorted-sequences",
+      "sliding-window-fixed",
+      "sliding-window-variable"
+     ],
+     "tier": "core",
+     "candidate_sources": [
+      "wikipedia",
+      "doocs-leetcode",
+      "oiwiki",
+      "dsa-dummies",
+      "icc"
+     ],
+     "open_prose": true,
+     "no_open_prose": [],
+     "folds": "OI Wiki misc/two-pointer is split over this home: its sorted-sequence section treats two-pointers, its window section the variable window, its linked-list section Floyd's cycle detection (2.7)."
+    },
+    {
+     "id": "prefix-sums",
+     "number": "2.4",
+     "title": "Prefix sums and difference arrays",
+     "concepts": [
+      "prefix-sums",
+      "prefix-sums-2d",
+      "difference-array",
+      "difference-array-2d"
+     ],
+     "tier": "core",
+     "candidate_sources": [
+      "wikipedia",
+      "doocs-leetcode",
+      "oiwiki",
+      "dsa-dummies"
+     ],
+     "open_prose": true,
+     "no_open_prose": [],
+     "folds": "OI Wiki basic/prefix-sum is split over this home: one row per section (1D, 2D, 1D difference, 2D difference); its tree prefix sums and differences are not taken."
+    },
+    {
+     "id": "singly-linked-lists",
+     "number": "2.5",
      "title": "Singly linked lists",
      "concepts": [
       "singly-linked-list",
@@ -204,18 +250,18 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "opendsa"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "pointer-to-pointer",
-      "implement-linked-list"
+      "pointer-to-pointer"
      ],
      "folds": ""
     },
     {
      "id": "doubly-linked-lists",
-     "number": "2.4",
+     "number": "2.6",
      "title": "Doubly linked lists",
      "concepts": [
       "sentinel-node",
@@ -232,7 +278,7 @@
     },
     {
      "id": "tortoise-and-hare",
-     "number": "2.5",
+     "number": "2.7",
      "title": "Cycles in linked lists: tortoise and hare",
      "concepts": [
       "floyd-cycle-detection",
@@ -241,7 +287,10 @@
      ],
      "tier": "core",
      "candidate_sources": [
-      "cpa"
+      "cpa",
+      "wikipedia",
+      "oiwiki",
+      "algo-explanation"
      ],
      "open_prose": true,
      "no_open_prose": [],
@@ -249,8 +298,8 @@
     }
    ],
    "tier_counts": {
-    "core": 16,
-    "stretch": 1
+    "core": 23,
+    "stretch": 3
    }
   },
   {
@@ -291,12 +340,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikibooks"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "queue-linked-list"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -330,7 +378,10 @@
      ],
      "tier": "core",
      "candidate_sources": [
-      "cpa"
+      "cpa",
+      "wikipedia",
+      "doocs-leetcode",
+      "oiwiki"
      ],
      "open_prose": true,
      "no_open_prose": [],
@@ -398,12 +449,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "jeffe"
+      "jeffe",
+      "wikipedia"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "tail-recursion"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -439,12 +489,12 @@
      "tier": "core",
      "candidate_sources": [
       "jeffe",
-      "jeffe-notes"
+      "jeffe-notes",
+      "csci30"
      ],
      "open_prose": true,
      "no_open_prose": [
       "smallest-counterexample",
-      "induction",
       "induction-practice",
       "structural-induction"
      ],
@@ -475,12 +525,12 @@
      "candidate_sources": [
       "ciu",
       "jeffe-notes",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "hash-table"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -494,12 +544,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "table-doubling"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -536,11 +585,11 @@
      "candidate_sources": [
       "ciu",
       "jeffe-notes",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "universal-hashing",
       "perfect-hashing"
      ],
      "folds": ""
@@ -575,13 +624,13 @@
      "tier": "contest",
      "candidate_sources": [
       "jeffe-notes",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [
       "chaining-analysis",
-      "balls-and-bins",
-      "cuckoo-hashing"
+      "balls-and-bins"
      ],
      "folds": ""
     },
@@ -776,11 +825,11 @@
      ],
      "tier": "core",
      "candidate_sources": [
-      "ciu"
+      "ciu",
+      "lt-csbu"
      ],
-     "open_prose": false,
+     "open_prose": true,
      "no_open_prose": [
-      "floating-point",
       "endianness",
       "character-encodings"
      ],
@@ -811,12 +860,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "tree"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -868,12 +917,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "bst-min-max-height",
-      "bst-successor"
+      "bst-min-max-height"
      ],
      "folds": ""
     },
@@ -912,12 +961,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "balanced-bst-idea"
-     ],
+     "no_open_prose": [],
      "folds": ""
     }
    ],
@@ -963,12 +1012,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "heap-sift"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -1034,15 +1082,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "sort-stability",
-      "selection-sort",
-      "insertion-sort",
-      "bubble-sort"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -1108,7 +1153,8 @@
       "ciu",
       "jeffe",
       "jeffe-notes",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [
@@ -1199,16 +1245,15 @@
       "two-four-tree",
       "two-four-updates"
      ],
-     "tier": "core",
+     "tier": "stretch",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "avl-tree",
-      "two-three-tree"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -1273,13 +1318,13 @@
      "candidate_sources": [
       "ciu",
       "jeffe-notes",
-      "ods"
+      "ods",
+      "opendsa"
      ],
      "open_prose": true,
      "no_open_prose": [
       "global-rebuilding",
-      "splaying",
-      "splay-tree"
+      "splaying"
      ],
      "folds": ""
     },
@@ -1317,21 +1362,20 @@
       "b-tree-delete",
       "b-tree"
      ],
-     "tier": "core",
+     "tier": "stretch",
      "candidate_sources": [
       "ciu",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "k-ary-tree"
-     ],
+     "no_open_prose": [],
      "folds": ""
     }
    ],
    "tier_counts": {
-    "core": 11,
-    "stretch": 20,
+    "core": 1,
+    "stretch": 30,
     "contest": 3
    }
   },
@@ -1353,11 +1397,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "cpa"
+      "cpa",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [
-      "trie-operations",
       "ternary-search-trie"
      ],
      "folds": ""
@@ -1447,12 +1491,12 @@
      "candidate_sources": [
       "ciu",
       "jeffe",
-      "ods"
+      "ods",
+      "wikipedia",
+      "opendsa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "graph-representations"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -1572,13 +1616,21 @@
      "concepts": [
       "cycle-detection",
       "topological-order",
-      "topological-sort"
+      "topological-sort",
+      "kahn-topological-sort"
      ],
      "tier": "core",
      "candidate_sources": [
       "ciu",
       "cpa",
-      "jeffe"
+      "jeffe",
+      "wikipedia",
+      "opendsa",
+      "doocs-leetcode",
+      "oiwiki",
+      "icc",
+      "mcs2018",
+      "aspnes-202"
      ],
      "open_prose": true,
      "no_open_prose": [],
@@ -1641,7 +1693,7 @@
     }
    ],
    "tier_counts": {
-    "core": 7,
+    "core": 8,
     "stretch": 9
    }
   },
@@ -1849,8 +1901,30 @@
      "folds": ""
     },
     {
-     "id": "subset-sum-segmentation",
+     "id": "generation",
      "number": "17.2",
+     "title": "Generating permutations, subsets and combinations",
+     "concepts": [
+      "generate-permutations",
+      "next-permutation",
+      "heaps-algorithm",
+      "generate-subsets",
+      "generate-combinations"
+     ],
+     "tier": "core",
+     "candidate_sources": [
+      "wikipedia",
+      "doocs-leetcode",
+      "icc",
+      "trekhleb-jsalgo"
+     ],
+     "open_prose": true,
+     "no_open_prose": [],
+     "folds": "cpa combinatorics/generating_combinations stays with stars and bars (40.5), where its next-combination row lives; Wikipedia's k-combination enumeration joins it there."
+    },
+    {
+     "id": "subset-sum-segmentation",
+     "number": "17.3",
      "title": "Subset sum and text segmentation",
      "concepts": [
       "subset-sum-backtracking",
@@ -1867,7 +1941,7 @@
     },
     {
      "id": "recursive-formulations",
-     "number": "17.3",
+     "number": "17.4",
      "title": "Recursive formulations of optimisation problems",
      "concepts": [
       "lis-backtracking",
@@ -1883,8 +1957,8 @@
     }
    ],
    "tier_counts": {
-    "core": 6,
-    "stretch": 2
+    "core": 10,
+    "stretch": 3
    }
   },
   {
@@ -1936,8 +2010,33 @@
      "folds": ""
     },
     {
-     "id": "dp-sequences",
+     "id": "coin-change-grid-paths",
      "number": "18.3",
+     "title": "Coin change and grid paths",
+     "concepts": [
+      "coin-change-min",
+      "coin-change-ways",
+      "grid-paths",
+      "grid-paths-obstacles",
+      "min-path-sum"
+     ],
+     "tier": "core",
+     "candidate_sources": [
+      "wikipedia",
+      "doocs-leetcode",
+      "algo-explanation",
+      "icc",
+      "trekhleb-jsalgo",
+      "anfp",
+      "dmoi3"
+     ],
+     "open_prose": true,
+     "no_open_prose": [],
+     "folds": ""
+    },
+    {
+     "id": "dp-sequences",
+     "number": "18.4",
      "title": "Text segmentation and longest increasing subsequence",
      "concepts": [
       "text-segmentation-dp",
@@ -1957,7 +2056,7 @@
     },
     {
      "id": "max-subarray",
-     "number": "18.4",
+     "number": "18.5",
      "title": "Maximum subarray",
      "concepts": [
       "max-subarray-problem",
@@ -1976,7 +2075,7 @@
     },
     {
      "id": "knapsack",
-     "number": "18.5",
+     "number": "18.6",
      "title": "Subset sum and knapsack",
      "concepts": [
       "subset-sum-dp",
@@ -1997,7 +2096,7 @@
     },
     {
      "id": "string-dp",
-     "number": "18.6",
+     "number": "18.7",
      "title": "Edit distance and longest common subsequence",
      "concepts": [
       "edit-distance",
@@ -2018,7 +2117,7 @@
     },
     {
      "id": "dp-trees",
-     "number": "18.7",
+     "number": "18.8",
      "title": "DP on trees and optimal binary search trees",
      "concepts": [
       "dp-on-trees",
@@ -2034,7 +2133,7 @@
     }
    ],
    "tier_counts": {
-    "core": 21,
+    "core": 26,
     "stretch": 6,
     "contest": 3
    }
@@ -2144,7 +2243,26 @@
      ],
      "tier": "core",
      "candidate_sources": [
-      "jeffe"
+      "jeffe",
+      "wikipedia",
+      "doocs-leetcode",
+      "anfp"
+     ],
+     "open_prose": true,
+     "no_open_prose": [],
+     "folds": ""
+    },
+    {
+     "id": "intervals",
+     "number": "20.2",
+     "title": "Merging intervals and meeting rooms",
+     "concepts": [
+      "merge-intervals",
+      "interval-partitioning"
+     ],
+     "tier": "core",
+     "candidate_sources": [
+      "doocs-leetcode"
      ],
      "open_prose": true,
      "no_open_prose": [],
@@ -2152,7 +2270,7 @@
     },
     {
      "id": "huffman",
-     "number": "20.2",
+     "number": "20.3",
      "title": "Huffman codes",
      "concepts": [
       "prefix-free-code",
@@ -2169,7 +2287,7 @@
     },
     {
      "id": "scheduling",
-     "number": "20.3",
+     "number": "20.4",
      "title": "Greedy scheduling and matroids",
      "concepts": [
       "deadline-scheduling-greedy",
@@ -2194,7 +2312,7 @@
     }
    ],
    "tier_counts": {
-    "core": 3,
+    "core": 5,
     "stretch": 5,
     "contest": 6
    }
@@ -2649,12 +2767,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "sdp"
+      "sdp",
+      "wp-sysdesign"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "distributed-fallacies"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -2671,12 +2788,12 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "sdp"
+      "sdp",
+      "wp-sysdesign",
+      "raft-site"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "consensus"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -2760,12 +2877,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "sdp"
+      "sdp",
+      "aosa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "scaling-basics"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -2871,13 +2987,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "sdp"
+      "sdp",
+      "wp-sysdesign"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "consistent-hashing",
-      "distributed-hash-table"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -2896,12 +3010,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "sdp"
+      "sdp",
+      "aosa"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "nosql-patterns"
-     ],
+     "no_open_prose": [],
      "folds": ""
     }
    ],
@@ -2931,12 +3044,11 @@
      "tier": "core",
      "candidate_sources": [
       "ciu",
-      "sdp"
+      "sdp",
+      "wp-sysdesign"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "redis"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -3842,12 +3954,11 @@
      "tier": "stretch",
      "candidate_sources": [
       "ciu",
-      "jeffe-notes"
+      "jeffe-notes",
+      "wp-sysdesign"
      ],
-     "open_prose": false,
-     "no_open_prose": [
-      "bloom-filter"
-     ],
+     "open_prose": true,
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -3862,13 +3973,12 @@
      "tier": "stretch",
      "candidate_sources": [
       "ciu",
-      "jeffe-notes"
+      "jeffe-notes",
+      "wp-sysdesign"
      ],
-     "open_prose": false,
+     "open_prose": true,
      "no_open_prose": [
-      "streaming-model",
-      "count-min-sketch",
-      "hyperloglog"
+      "streaming-model"
      ],
      "folds": ""
     },
@@ -3881,12 +3991,11 @@
      ],
      "tier": "stretch",
      "candidate_sources": [
-      "ciu"
+      "ciu",
+      "wp-sysdesign"
      ],
-     "open_prose": false,
-     "no_open_prose": [
-      "simhash"
-     ],
+     "open_prose": true,
+     "no_open_prose": [],
      "folds": ""
     }
    ],
@@ -4465,7 +4574,8 @@
      ],
      "tier": "stretch",
      "candidate_sources": [
-      "cpa"
+      "cpa",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [],

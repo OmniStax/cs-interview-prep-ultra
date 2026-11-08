@@ -1,0 +1,2064 @@
+{
+ "source": "gap",
+ "about": "Gap-fill inventory (2026-11-08): treatments the finder found for interview topics the first seven inventories lack (dossiers/gap-patterns.md), and open prose for concepts that had none (sweep-dsa.md, sweep-system-design.md). Each row's id and locator carry its real source prefix; the source is the registry row whose locator scheme has that prefix. Every locator was checked against sources/_cache/<id>/.",
+ "concepts": [
+  {
+   "id": "dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py",
+   "name": "Two pointers",
+   "kind": "idea",
+   "statement": "Two indices move through an array, typically from both ends of a sorted array toward each other, so that each step discards one candidate and a pair with a target sum (or the best pair) is found in one O(n) pass with O(1) extra space.",
+   "locator": "dsa-dummies:Algorithms/Two Pointers/Python/Two Pointers.py",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "two-pointer technique"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (short): docstring essay on what the technique is, its O(n)/O(1) cost and when to use it, then commented pair-sum code on a sorted array. The LeetCode links at the end are link-only."
+  },
+  {
+   "id": "doocs-leetcode:0167#Solution_2:_Two_Pointers",
+   "name": "Pair sum in a sorted array by two pointers",
+   "kind": "result",
+   "statement": "In a sorted array, start i at the left and j at the right; if a[i]+a[j] is too small move i right, if too large move j left. No discarded pair can be the answer, so the scan finds it in O(n).",
+   "locator": "doocs-leetcode:0167#Solution 2: Two Pointers",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "Two Sum II"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: why moving one end is safe, with complexity. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0011#Solution_1:_Two_Pointers",
+   "name": "Container with most water by two pointers",
+   "kind": "result",
+   "statement": "With pointers at both ends, the area is limited by the shorter line; moving the shorter side inward is the only move that can improve the area, so one inward scan finds the maximum in O(n).",
+   "locator": "doocs-leetcode:0011#Solution 1: Two Pointers",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "container with most water"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: move the shorter side inward; reasoning and complexity. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:misc/two-pointer#利用序列有序性",
+   "name": "Two pointers on a sorted sequence",
+   "kind": "idea",
+   "statement": "Sortedness makes two pointers correct: for a target pair sum, if num[l]+num[r] > target decrease r, if smaller increase l; the pointers close in on the answer in O(n), beating binary search by a log factor.",
+   "locator": "oiwiki:misc/two-pointer#利用序列有序性",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "双指针"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the page's introduction (引入) defines two pointers as moving together or toward each other; this section works the sorted pair-sum case. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "wikipedia:3SUM#Quadratic_algorithm",
+   "name": "3SUM in quadratic time",
+   "kind": "result",
+   "statement": "Sort the array; for each a[i], look for a pair summing to -a[i] in the rest with two pointers moving inward by the sign of the sum, giving O(n^2) time.",
+   "locator": "wikipedia:3SUM#Quadratic_algorithm",
+   "prereqs": [
+    "dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py"
+   ],
+   "aliases": [
+    "3SUM",
+    "three sum"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: colour-coded trace on a small array and a correctness argument. The sort is used as a black box (sorting is chapter 10)."
+  },
+  {
+   "id": "doocs-leetcode:0015#Solution_1:_Sort_+_Two_Pointers",
+   "name": "3SUM by sorting and two pointers, skipping duplicates",
+   "kind": "result",
+   "statement": "Sort, fix i, run two pointers on the suffix, and skip equal neighbours so that each triple is reported once; O(n^2) time.",
+   "locator": "doocs-leetcode:0015#Solution 1: Sort + Two Pointers",
+   "prereqs": [
+    "dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py"
+   ],
+   "aliases": [
+    "3Sum"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Merge_algorithm#Merging_two_lists",
+   "name": "Merging two sorted lists",
+   "kind": "result",
+   "statement": "Two sorted lists are merged by keeping one pointer in each and repeatedly moving the smaller head to the output, in time linear in the total length.",
+   "locator": "wikipedia:Merge_algorithm#Merging_two_lists",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "merge step",
+    "two-way merge"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: pseudocode and linear cost; the merge that merge sort repeats."
+  },
+  {
+   "id": "wikipedia:Cycle_detection#Floyd's_tortoise_and_hare",
+   "name": "Floyd's tortoise and hare",
+   "kind": "result",
+   "statement": "Move one pointer one step and another two steps along x_i = f(x_{i-1}); they meet inside the cycle, and restarting one pointer from the start finds the cycle's first element.",
+   "locator": "wikipedia:Cycle_detection#Floyd's_tortoise_and_hare",
+   "prereqs": [],
+   "aliases": [
+    "fast and slow pointers"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "oiwiki:misc/two-pointer#在单向链表中找环",
+   "name": "Finding a cycle in a singly linked list with two pointers",
+   "kind": "result",
+   "statement": "A slow pointer moving one node and a fast pointer moving two meet iff the list has a cycle; resetting one to the head and moving both one step finds the cycle entry.",
+   "locator": "oiwiki:misc/two-pointer#在单向链表中找环",
+   "prereqs": [],
+   "aliases": [
+    "快慢指针"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "algo-explanation:Search_Algorithms/Floyd_Cycle_Detection_Algorithm_to_Find_Duplicate_Number",
+   "name": "Duplicate number by Floyd cycle detection",
+   "kind": "result",
+   "statement": "Reading an array of n+1 values in 1..n as a function i -> a[i] makes the duplicate the entry of a cycle, which tortoise and hare find in O(n) time and O(1) space.",
+   "locator": "algo-explanation:Search Algorithms/Floyd Cycle Detection Algorithm to Find Duplicate Number",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12): fast/slow pointers on an array-as-function. Embedded images are hot-linked and link-only. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Dutch_national_flag_problem#The_array_case",
+   "name": "Dutch national flag (three-way) partition",
+   "kind": "result",
+   "statement": "Dijkstra's three-way partition keeps three indices i, j, k so that the array holds values below, equal to and above the pivot, in one pass and in place.",
+   "locator": "wikipedia:Dutch_national_flag_problem#The_array_case",
+   "prereqs": [],
+   "aliases": [
+    "Dutch national flag problem"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: pseudocode. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Moving_average#Simple_moving_average",
+   "name": "Fixed-size sliding window",
+   "kind": "skill",
+   "statement": "A window of the last k items is updated in O(1) per step by adding the item that enters and subtracting the one that leaves (SMA_next = SMA_prev + (p_new - p_old)/k), instead of recomputing all k.",
+   "locator": "wikipedia:Moving_average#Simple_moving_average",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "simple moving average",
+    "fixed window"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: derives the O(1) update; the buffer of the last k items is a FIFO queue."
+  },
+  {
+   "id": "dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py",
+   "name": "Sliding window",
+   "kind": "skill",
+   "statement": "A sliding window is a contiguous range of fixed size moved one position at a time over an array or string; it turns nested loops over subarrays into one pass.",
+   "locator": "dsa-dummies:Algorithms/Sliding Window/Python/Sliding Window.py",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (short, fixed windows only): definition, cost, when to use; the code lists windows by slicing and names longest-substring and maximum-sum-of-size-k as uses."
+  },
+  {
+   "id": "doocs-leetcode:0643#Solution_1:_Sliding_Window",
+   "name": "Maximum average subarray of length k",
+   "kind": "result",
+   "statement": "Keep the sum of the current length-k window, add the entering element and subtract the leaving one, and track the maximum sum: O(n) time, O(1) space.",
+   "locator": "doocs-leetcode:0643#Solution 1: Sliding Window",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:1456#Solution_1:_Sliding_Window",
+   "name": "Most vowels in a substring of length k",
+   "kind": "result",
+   "statement": "Count the vowels in the first k characters, then slide the window one step at a time, adjusting the count for the entering and leaving characters.",
+   "locator": "doocs-leetcode:1456#Solution 1: Sliding Window",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0567#Solution_1:_Sliding_Window",
+   "name": "Permutation in a string by a window of counts",
+   "kind": "result",
+   "statement": "A window of length |s1| over s2 keeps character counts; it contains a permutation of s1 exactly when its counts equal those of s1, and each slide changes two counts.",
+   "locator": "doocs-leetcode:0567#Solution 1: Sliding Window",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: fixed window of counts. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0438#Solution_1",
+   "name": "All anagram windows of a pattern",
+   "kind": "result",
+   "statement": "Slide a length-|p| window over s with an array of character counts and report every start where the counts match those of p.",
+   "locator": "doocs-leetcode:0438#Solution 1",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: fixed window of counts. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0003#Solution_1:_Sliding_Window",
+   "name": "Variable-size sliding window",
+   "kind": "skill",
+   "statement": "Extend the window at the right one element at a time and shrink it from the left while it breaks the condition (here: a repeated character, tracked in a set), so each element enters and leaves once and the longest valid window is found in O(n).",
+   "locator": "doocs-leetcode:0003#Solution 1: Sliding Window",
+   "prereqs": [
+    "dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py",
+    "wikipedia:Moving_average#Simple_moving_average"
+   ],
+   "aliases": [
+    "two-pointer window",
+    "longest substring without repeating characters"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: longest substring without repeats. The write-up keeps the window's characters in a hash set (hash tables are chapter 5). Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0076#Solution_1:_Counting_+_Two_Pointers",
+   "name": "Minimum window substring",
+   "kind": "result",
+   "statement": "Grow the window until it covers every needed character count, then shrink it from the left while it still covers them, recording the shortest window; O(m+n).",
+   "locator": "doocs-leetcode:0076#Solution 1: Counting + Two Pointers",
+   "prereqs": [
+    "doocs-leetcode:0003#Solution_1:_Sliding_Window"
+   ],
+   "aliases": [
+    "minimum window substring"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the minimum covering window, a shrink-while-valid window. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0209#Solution_2:_Two_Pointers",
+   "name": "Shortest subarray with sum at least the target",
+   "kind": "result",
+   "statement": "With positive numbers, extend the right end, and while the window sum is at least the target record its length and move the left end; O(n).",
+   "locator": "doocs-leetcode:0209#Solution 2: Two Pointers",
+   "prereqs": [
+    "doocs-leetcode:0003#Solution_1:_Sliding_Window"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:misc/two-pointer#维护区间信息",
+   "name": "Maintaining window information with two pointers",
+   "kind": "idea",
+   "statement": "Two pointers l and r maintain information about [l, r] that is monotone and cheap to update when one element enters or leaves (a sum of positives, a product of positive integers): advance r, then advance l until the window is valid again; for each r the count of valid windows ending there is r-l+1.",
+   "locator": "oiwiki:misc/two-pointer#维护区间信息",
+   "prereqs": [
+    "oiwiki:misc/two-pointer#利用序列有序性"
+   ],
+   "aliases": [
+    "维护区间信息"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the general expand/shrink account with two worked examples (LeetCode 713 statement quoted; the explanation is OI Wiki's). Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "icc:recursion_dynamic/longest_substr_k_distinct",
+   "name": "Longest substring with at most k distinct characters",
+   "kind": "result",
+   "statement": "A map from character to last index maintains a window; when it holds more than k characters, drop the one with the lowest index and move the left end past it.",
+   "locator": "icc:recursion_dynamic/longest_substr_k_distinct",
+   "prereqs": [
+    "doocs-leetcode:0003#Solution_1:_Sliding_Window"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12). The online_judges copy is link-only."
+  },
+  {
+   "id": "wikipedia:Double-ended_queue#Monotonic_queue",
+   "name": "Monotonic queue for sliding-window minimum",
+   "kind": "result",
+   "statement": "A deque holding the window's candidates in increasing order gives the minimum of every length-k window in O(n) total, against O(nk) naively and O(n log n) with a heap; the same structure is a min-queue.",
+   "locator": "wikipedia:Double-ended_queue#Monotonic_queue",
+   "prereqs": [],
+   "aliases": [
+    "monotonic deque"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: pseudocode and comparison with the naive and heap methods. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "doocs-leetcode:0239#Solution_2:_Monotonic_Queue",
+   "name": "Sliding window maximum with a monotonic deque",
+   "kind": "result",
+   "statement": "Keep indices in a deque with decreasing values, pop from the back before pushing, pop the front when it leaves the window; the front is the window maximum, O(n) total.",
+   "locator": "doocs-leetcode:0239#Solution 2: Monotonic Queue",
+   "prereqs": [],
+   "aliases": [
+    "sliding window maximum"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: Solution 1 of the same write-up uses a heap. Added to an existing concept; prerequisites are left to that concept's other rows. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:ds/monotonic-queue",
+   "name": "Monotonic queue",
+   "kind": "result",
+   "statement": "A monotonic queue keeps the elements that can still be the window minimum (or maximum) in order; sliding the window pops expired elements from the front and dominated ones from the back, giving every window's extreme in O(n).",
+   "locator": "oiwiki:ds/monotonic-queue",
+   "prereqs": [],
+   "aliases": [
+    "单调队列"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: introduced on the sliding-window problem, then defined and analysed. Added to an existing concept; prerequisites are left to that concept's other rows. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Prefix_sum",
+   "name": "Prefix sums",
+   "kind": "definition",
+   "statement": "The prefix sums of x_0, x_1, ... are y_i = x_0 + ... + x_i, computed in one pass by y_i = y_{i-1} + x_i; with them any range sum is a difference of two prefix sums, and finite differences invert them.",
+   "locator": "wikipedia:Prefix_sum",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "cumulative sum",
+    "scan",
+    "inclusive scan"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (definition): the lead and the inclusive/exclusive scan section; the range-sum use is stated briefly."
+  },
+  {
+   "id": "dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py",
+   "name": "Prefix sum array for range queries",
+   "kind": "skill",
+   "statement": "Precompute prefix[i] = a[0]+...+a[i] once in O(n); then the sum of a[l..r] is prefix[r] - prefix[l-1], answered in O(1).",
+   "locator": "dsa-dummies:Algorithms/Prefix Sum/Python/Prefix Sum.py",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (short): docstring essay and code."
+  },
+  {
+   "id": "doocs-leetcode:0303#Solution_1:_Prefix_Sum",
+   "name": "Range sum query with a leading zero",
+   "kind": "skill",
+   "statement": "Store s with s[0] = 0 and s[i+1] = s[i] + nums[i]; the sum of nums[l..r] is s[r+1] - s[l], with no special case at l = 0.",
+   "locator": "doocs-leetcode:0303#Solution 1: Prefix Sum",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "range sum query"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:basic/prefix-sum#一维前缀和",
+   "name": "One-dimensional prefix sums",
+   "kind": "definition",
+   "statement": "S_i = a_1 + ... + a_i is built by the recurrence S_i = S_{i-1} + a_i in O(n), after which the sum of a_l..a_r is S_r - S_{l-1}.",
+   "locator": "oiwiki:basic/prefix-sum#一维前缀和",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "一维前缀和"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: worked example with code. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Summed-area_table#The_algorithm",
+   "name": "Two-dimensional prefix sums (summed-area table)",
+   "kind": "result",
+   "statement": "I(x, y) = i(x, y) + I(x, y-1) + I(x-1, y) - I(x-1, y-1) builds the table in one pass, after which the sum over any axis-aligned rectangle takes four lookups by inclusion-exclusion.",
+   "locator": "wikipedia:Summed-area_table#The_algorithm",
+   "prereqs": [
+    "wikipedia:Prefix_sum"
+   ],
+   "aliases": [
+    "summed-area table",
+    "integral image",
+    "2D prefix sums"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: one-pass build and four-corner query. The figure File:Summed area table.png has an unchecked licence."
+  },
+  {
+   "id": "doocs-leetcode:0304#Solution_1:_Two-dimensional_Prefix_Sum",
+   "name": "Range sum query 2D by prefix sums",
+   "kind": "result",
+   "statement": "s[i+1][j+1] = s[i][j+1] + s[i+1][j] - s[i][j] + matrix[i][j]; a submatrix sum is s[x2+1][y2+1] - s[x1][y2+1] - s[x2+1][y1] + s[x1][y1].",
+   "locator": "doocs-leetcode:0304#Solution 1: Two-dimensional Prefix Sum",
+   "prereqs": [
+    "doocs-leetcode:0303#Solution_1:_Prefix_Sum"
+   ],
+   "aliases": [
+    "range sum query 2D"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:basic/prefix-sum#基于容斥原理",
+   "name": "Two-dimensional prefix sums by inclusion-exclusion",
+   "kind": "result",
+   "statement": "S_{i,j} = a_{i,j} + S_{i-1,j} + S_{i,j-1} - S_{i-1,j-1}, and a sub-rectangle sum is recovered by the same inclusion-exclusion with four terms.",
+   "locator": "oiwiki:basic/prefix-sum#基于容斥原理",
+   "prereqs": [
+    "oiwiki:basic/prefix-sum#一维前缀和"
+   ],
+   "aliases": [
+    "二维前缀和"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: with a figure (prefix-sum-2d.svg, part of the BY-SA page) and an example. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "oiwiki:basic/prefix-sum#一维差分",
+   "name": "Difference arrays",
+   "kind": "skill",
+   "statement": "The difference array b_i = a_i - a_{i-1} is the inverse of prefix sums: adding v to a_l..a_r becomes b_l += v and b_{r+1} -= v, so many range updates cost O(1) each and one prefix-sum pass recovers the array.",
+   "locator": "oiwiki:basic/prefix-sum#一维差分",
+   "prereqs": [
+    "oiwiki:basic/prefix-sum#一维前缀和"
+   ],
+   "aliases": [
+    "一维差分",
+    "difference array"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the only general account of difference arrays found; with an example. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0370#Solution_1:_Difference_Array",
+   "name": "Range addition by a difference array",
+   "kind": "skill",
+   "statement": "For each update (l, r, v) do d[l] += v and d[r+1] -= v; the prefix sums of d are the final array, O(n + k) for k updates.",
+   "locator": "doocs-leetcode:0370#Solution 1: Difference Array",
+   "prereqs": [
+    "doocs-leetcode:0303#Solution_1:_Prefix_Sum"
+   ],
+   "aliases": [
+    "range addition"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E: Solution 2 of the same write-up adds a Fenwick tree. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:1094#Solution_1:_Difference_Array",
+   "name": "Car pooling by a difference array over positions",
+   "kind": "result",
+   "statement": "Add each trip's passengers at its start and subtract them at its end in a difference array over positions; the prefix sums give the load at every point, which must never exceed capacity.",
+   "locator": "doocs-leetcode:1094#Solution 1: Difference Array",
+   "prereqs": [
+    "doocs-leetcode:0370#Solution_1:_Difference_Array"
+   ],
+   "aliases": [
+    "car pooling"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:1109#Solution_1:_Difference_Array",
+   "name": "Flight bookings by a difference array",
+   "kind": "result",
+   "statement": "Each booking (first, last, seats) adds seats to a range of flights; record it as two difference-array updates and take prefix sums once.",
+   "locator": "doocs-leetcode:1109#Solution 1: Difference Array",
+   "prereqs": [
+    "doocs-leetcode:0370#Solution_1:_Difference_Array"
+   ],
+   "aliases": [
+    "corporate flight bookings"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:basic/prefix-sum#二维/多维差分",
+   "name": "Two-dimensional difference arrays",
+   "kind": "skill",
+   "statement": "Adding v to every cell of a sub-rectangle becomes four point updates of a 2D difference array (+v, -v, -v, +v at the corners), and a 2D prefix-sum pass recovers the matrix.",
+   "locator": "oiwiki:basic/prefix-sum#二维/多维差分",
+   "prereqs": [
+    "oiwiki:basic/prefix-sum#基于容斥原理",
+    "oiwiki:basic/prefix-sum#一维差分"
+   ],
+   "aliases": [
+    "二维差分"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Topological_sorting#Kahn's_algorithm",
+   "name": "Kahn's algorithm",
+   "kind": "result",
+   "statement": "Put every vertex with no incoming edge in a set S; repeatedly remove a vertex from S, append it to the order, delete its out-edges and add any vertex left with no incoming edge. If edges remain at the end the graph has a cycle; otherwise the order is topological, found in O(V+E).",
+   "locator": "wikipedia:Topological_sorting#Kahn's_algorithm",
+   "prereqs": [
+    "[topological order]",
+    "[queue]",
+    "[graph representation: adjacency list]"
+   ],
+   "aliases": [
+    "BFS topological sort",
+    "topological sort by in-degrees"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: pseudocode, cycle detection by leftover edges, O(V+E); S may be a set, queue or stack."
+  },
+  {
+   "id": "opendsa:Graph/GraphTopsort#Queue-based_Solution",
+   "name": "Queue-based topological sort",
+   "kind": "result",
+   "statement": "Count each vertex's incoming edges, queue the vertices whose count is zero, and when a vertex leaves the queue print it and decrement its neighbours' counts, queueing those that reach zero; if the queue empties before every vertex is printed, the graph has a cycle.",
+   "locator": "opendsa:Graph/GraphTopsort#Queue-based Solution",
+   "prereqs": [
+    "[topological order]",
+    "[queue]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12): with the topSortQCON slideshow (MIT JavaScript, not cached). The same module's depth-first solution duplicates topological-sort."
+  },
+  {
+   "id": "doocs-leetcode:0207#Solution_1:_Topological_Sorting",
+   "name": "Course schedule by Kahn's algorithm",
+   "kind": "result",
+   "statement": "Build the prerequisite graph with an in-degree array, process zero in-degree courses from a queue, and decide that all courses can be finished iff every course is processed.",
+   "locator": "doocs-leetcode:0207#Solution 1: Topological Sorting",
+   "prereqs": [
+    "[topological order]",
+    "[queue]"
+   ],
+   "aliases": [
+    "course schedule"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0210#Solution_1",
+   "name": "Course schedule order by Kahn's algorithm",
+   "kind": "result",
+   "statement": "The order in which Kahn's algorithm removes zero in-degree vertices is a valid course order; return it, or an empty list if some course is never removed.",
+   "locator": "doocs-leetcode:0210#Solution 1",
+   "prereqs": [
+    "[topological order]",
+    "[queue]"
+   ],
+   "aliases": [
+    "course schedule II"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A (short). Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "oiwiki:graph/topo#Kahn_算法",
+   "name": "Kahn's algorithm",
+   "kind": "result",
+   "statement": "Maintain the set S of vertices with in-degree 0; take one out, append it to the order, and delete its out-edges, adding vertices whose in-degree becomes 0; O(V+E), and a vertex never reaching in-degree 0 shows a cycle. Using a priority queue for S gives the lexicographically smallest order.",
+   "locator": "oiwiki:graph/topo#Kahn 算法",
+   "prereqs": [
+    "[topological order]",
+    "[queue]"
+   ],
+   "aliases": [
+    "Kahn 算法"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: process, complexity, implementation; the same page has the DFS method and lexicographically smallest/largest orders. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15)."
+  },
+  {
+   "id": "icc:graphs_trees/graph_build_order",
+   "name": "Build order by repeatedly removing independent nodes",
+   "kind": "result",
+   "statement": "Process the projects with no remaining dependencies, remove their outgoing edges, and repeat; if at some step no project is free, there is a circular dependency. O(V+E).",
+   "locator": "icc:graphs_trees/graph_build_order",
+   "prereqs": [
+    "[topological order]"
+   ],
+   "aliases": [
+    "build order"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "mcs2018:10.5.1",
+   "name": "Topological sort by repeatedly taking a minimal element",
+   "kind": "result",
+   "statement": "In a finite DAG, repeatedly picking a minimal vertex (one not reachable from any other remaining vertex) and removing it lists the vertices in a topological order; so every finite DAG has a topological sort.",
+   "locator": "mcs2018:10.5.1",
+   "prereqs": [],
+   "aliases": [
+    "getting dressed"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (mathematical, no data structures): the getting-dressed DAG. It is Kahn's idea stated as an existence proof, so it treats the existence of topological orders, not the O(V+E) algorithm. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "aspnes-202:9.5.5.1",
+   "name": "Topological sort as repeated selection of a minimal element",
+   "kind": "result",
+   "statement": "Every nonempty finite partial order has a minimal element (by induction), so putting a minimal element first and sorting the rest extends any finite partial order to a total order.",
+   "locator": "aspnes-202:9.5.5.1",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (mathematical; efficiency explicitly skipped). Treats the existence of topological orders. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Interval_scheduling#Unweighted",
+   "name": "Unweighted interval scheduling: earliest finish first",
+   "kind": "result",
+   "statement": "Repeatedly selecting the interval with the earliest finishing time and discarding those that overlap it yields a maximum set of pairwise compatible intervals; other natural greedy rules fail.",
+   "locator": "wikipedia:Interval_scheduling#Unweighted",
+   "prereqs": [],
+   "aliases": [
+    "activity selection"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Activity_selection_problem#Algorithm",
+   "name": "Activity selection: greedy by finish time",
+   "kind": "result",
+   "statement": "Sort activities by finish time and take each one that starts after the last selected one finishes; an exchange argument (Proof of optimality) shows the greedy set is maximum. O(n log n).",
+   "locator": "wikipedia:Activity_selection_problem#Algorithm",
+   "prereqs": [],
+   "aliases": [
+    "activity selection problem"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: pseudocode, explanation and proof of optimality in the following subsections. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "anfp:17.2",
+   "name": "Activity selection problem",
+   "kind": "result",
+   "statement": "Sort activities by finishing time and repeatedly select the next activity compatible with those chosen; worked on a class timetable.",
+   "locator": "anfp:17.2",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: carry the chapter's contributor credits; images link-only. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "anfp:18.3",
+   "name": "Interval scheduling: which greedy works",
+   "kind": "result",
+   "statement": "Of four candidate greedy orders (earliest start, shortest, fewest conflicts, earliest finish), counterexamples rule out the first three; earliest finish time is optimal.",
+   "locator": "anfp:18.3",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: images link-only; carry the contributor credits. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "doocs-leetcode:0435#Solution_1:_Sorting_+_Greedy",
+   "name": "Fewest intervals to remove for no overlap",
+   "kind": "result",
+   "statement": "Sort by end and keep each interval that starts at or after the last kept end; the number removed is n minus the maximum set of non-overlapping intervals.",
+   "locator": "doocs-leetcode:0435#Solution 1: Sorting + Greedy",
+   "prereqs": [],
+   "aliases": [
+    "non-overlapping intervals"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Added to an existing concept; prerequisites are left to that concept's other rows. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0056#Solution_1:_Sorting_+_One-pass_Traversal",
+   "name": "Merging overlapping intervals",
+   "kind": "skill",
+   "statement": "Sort intervals by start; scan them, extending the current merged interval while the next one starts no later than its end, and starting a new one otherwise. O(n log n).",
+   "locator": "doocs-leetcode:0056#Solution 1: Sorting + One-pass Traversal",
+   "prereqs": [
+    "[sorting]"
+   ],
+   "aliases": [
+    "merge intervals"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E: Solutions 2 and 3 of the same write-up are variants. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0057#Solution_2:_One-pass_Traversal",
+   "name": "Inserting an interval into sorted disjoint intervals",
+   "kind": "skill",
+   "statement": "Copy the intervals that end before the new one, merge every interval that overlaps it into one, then copy the rest; one pass, O(n).",
+   "locator": "doocs-leetcode:0057#Solution 2: One-pass Traversal",
+   "prereqs": [
+    "doocs-leetcode:0056#Solution_1:_Sorting_+_One-pass_Traversal"
+   ],
+   "aliases": [
+    "insert interval"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0252#Solution_1:_Sorting",
+   "name": "Checking whether intervals overlap",
+   "kind": "skill",
+   "statement": "After sorting by start, a set of intervals is pairwise disjoint iff every interval starts no earlier than its predecessor ends.",
+   "locator": "doocs-leetcode:0252#Solution 1: Sorting",
+   "prereqs": [
+    "[sorting]"
+   ],
+   "aliases": [
+    "meeting rooms"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A (short): the overlap test that merging rests on. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0253#Solution_1:_Difference_Array",
+   "name": "Minimum meeting rooms as maximum overlap",
+   "kind": "result",
+   "statement": "Add +1 at each meeting's start and -1 at its end in a difference array over time; the largest prefix sum is the largest number of meetings in progress at once, which is the minimum number of rooms.",
+   "locator": "doocs-leetcode:0253#Solution 1: Difference Array",
+   "prereqs": [
+    "[difference array]"
+   ],
+   "aliases": [
+    "meeting rooms II",
+    "interval partitioning",
+    "sweep line over intervals",
+    "maximum overlap"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: Solution 2 of the same write-up does the same sweep with a sorted map of events. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0046#Solution_1:_DFS_(Backtracking)",
+   "name": "Generating all permutations by backtracking",
+   "kind": "skill",
+   "statement": "Fill positions one at a time; at each position try every unused element (tracked in a used-array), recurse, then undo the choice. n! permutations, each produced in O(n).",
+   "locator": "doocs-leetcode:0046#Solution 1: DFS (Backtracking)",
+   "prereqs": [
+    "[backtracking]"
+   ],
+   "aliases": [
+    "permutations"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0047#Solution_1:_Sorting_+_Backtracking",
+   "name": "Permutations of a multiset by backtracking",
+   "kind": "skill",
+   "statement": "Sort the input; when choosing the element for a position, skip an element equal to the previous one unless that one is in use, so each distinct permutation is generated once.",
+   "locator": "doocs-leetcode:0047#Solution 1: Sorting + Backtracking",
+   "prereqs": [
+    "doocs-leetcode:0046#Solution_1:_DFS_(Backtracking)"
+   ],
+   "aliases": [
+    "permutations II"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "icc:recursion_dynamic/permutations",
+   "name": "Permutations of a string with duplicates",
+   "kind": "skill",
+   "statement": "Keep a count per distinct character; at each step choose any character with a positive count, decrement it, recurse, and restore it, which yields each distinct permutation once. O(n!) results.",
+   "locator": "icc:recursion_dynamic/permutations",
+   "prereqs": [
+    "[backtracking]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "wikipedia:Permutation#Generation_in_lexicographic_order",
+   "name": "Next permutation in lexicographic order",
+   "kind": "result",
+   "statement": "Find the largest k with a[k] < a[k+1], then the largest l > k with a[k] < a[l]; swap them and reverse a[k+1..]. Repeating from the sorted order lists all permutations lexicographically, and repeated values are handled.",
+   "locator": "wikipedia:Permutation#Generation_in_lexicographic_order",
+   "prereqs": [
+    "[permutations]"
+   ],
+   "aliases": [
+    "next permutation",
+    "lexicographic permutations"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: step list."
+  },
+  {
+   "id": "doocs-leetcode:0031#Solution_1:_Two_traversals",
+   "name": "Next permutation by two traversals",
+   "kind": "result",
+   "statement": "Scan from the right for the first i with nums[i] < nums[i+1], scan again for the rightmost j with nums[j] > nums[i], swap, and reverse the suffix after i; O(n), in place.",
+   "locator": "doocs-leetcode:0031#Solution 1: Two traversals",
+   "prereqs": [
+    "[permutations]"
+   ],
+   "aliases": [
+    "next permutation"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Heap's_algorithm#Details_of_the_algorithm",
+   "name": "Heap's algorithm",
+   "kind": "result",
+   "statement": "Heap's algorithm generates all n! permutations, each from the previous by a single swap, by a recursion that swaps a[k-1] with a[i] or a[0] according to the parity of k; recursive and iterative forms.",
+   "locator": "wikipedia:Heap's_algorithm#Details_of_the_algorithm",
+   "prereqs": [
+    "[recursion]"
+   ],
+   "aliases": [
+    "Heap's algorithm"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: pseudocode; the article continues with a proof and frequent mis-implementations."
+  },
+  {
+   "id": "doocs-leetcode:0078#Solution_1:_DFS_(Backtracking)",
+   "name": "Generating all subsets",
+   "kind": "skill",
+   "statement": "Decide for each element in turn whether it is in the subset (include, recurse, exclude, recurse); the 2^n leaves of this recursion are the subsets. Equivalently, the bits of each mask 0..2^n-1 select a subset (Solution 2).",
+   "locator": "doocs-leetcode:0078#Solution 1: DFS (Backtracking)",
+   "prereqs": [
+    "[backtracking]"
+   ],
+   "aliases": [
+    "power set",
+    "subsets"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E: two models in one write-up (backtracking; binary enumeration). Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0090#Solution_1:_Sorting_+_DFS",
+   "name": "Subsets of a multiset",
+   "kind": "skill",
+   "statement": "Sort the input and, after excluding an element, skip its equal neighbours, so each distinct subset is generated once.",
+   "locator": "doocs-leetcode:0090#Solution 1: Sorting + DFS",
+   "prereqs": [
+    "doocs-leetcode:0078#Solution_1:_DFS_(Backtracking)"
+   ],
+   "aliases": [
+    "subsets II"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Power_set#Representing_subsets_as_functions",
+   "name": "Subsets as bit strings",
+   "kind": "result",
+   "statement": "Subsets of an n-element set correspond to functions from the set to {0, 1}, that is to n-bit strings, so counting from 0 to 2^n - 1 in binary enumerates every subset once.",
+   "locator": "wikipedia:Power_set#Representing_subsets_as_functions",
+   "prereqs": [
+    "[binary numbers]"
+   ],
+   "aliases": [
+    "power set"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (mathematical)."
+  },
+  {
+   "id": "trekhleb-jsalgo:src/algorithms/sets/power-set/README.md#Algorithms",
+   "name": "Power set: bitwise, backtracking and cascading",
+   "kind": "skill",
+   "statement": "Three ways to list the power set: read each number 0..2^n-1 as a bit mask, recurse with include/exclude decisions, or start from the empty set and add each element to every subset found so far.",
+   "locator": "trekhleb-jsalgo:src/algorithms/sets/power-set/README.md#Algorithms",
+   "prereqs": [
+    "[backtracking]"
+   ],
+   "aliases": [
+    "power set"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the README's Algorithms section only (MIT prose, ruling 12; the registry row says READMEs are not used, and the dossier clears this section as the author's own). Tests in __test__ are the registered use."
+  },
+  {
+   "id": "icc:recursion_dynamic/power_set",
+   "name": "All subsets of a string",
+   "kind": "skill",
+   "statement": "Recurse from a start index, adding each remaining character with a positive count, recording the current result and backtracking, so each subset is produced once. O(2^n).",
+   "locator": "icc:recursion_dynamic/power_set",
+   "prereqs": [
+    "[backtracking]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "doocs-leetcode:0077#Solution_1:_Backtracking_(Two_Ways)",
+   "name": "Generating k-combinations by backtracking",
+   "kind": "skill",
+   "statement": "Choose elements in increasing order: either decide pick or skip for each number, or loop the next pick from i to n; stop a branch when it can no longer reach k elements.",
+   "locator": "doocs-leetcode:0077#Solution 1: Backtracking (Two Ways)",
+   "prereqs": [
+    "[backtracking]"
+   ],
+   "aliases": [
+    "combinations"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A/E. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0039#Solution_1:_Sorting_+_Pruning_+_Backtracking",
+   "name": "Combination sum with reuse",
+   "kind": "skill",
+   "statement": "Sort the candidates and recurse from index i, allowing the same candidate again; stop a branch as soon as a candidate exceeds the remaining target.",
+   "locator": "doocs-leetcode:0039#Solution 1: Sorting + Pruning + Backtracking",
+   "prereqs": [
+    "doocs-leetcode:0077#Solution_1:_Backtracking_(Two_Ways)"
+   ],
+   "aliases": [
+    "combination sum"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Combination#Enumerating_k-combinations",
+   "name": "Enumerating k-combinations",
+   "kind": "result",
+   "statement": "Track k index numbers starting from {1..k}; move to the next combination by incrementing the smallest index that can be incremented without colliding and resetting the smaller ones.",
+   "locator": "wikipedia:Combination#Enumerating_k-combinations",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (short). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Change-making_problem#Simple_dynamic_programming",
+   "name": "Coin change: fewest coins by DP",
+   "kind": "result",
+   "statement": "The fewest coins making value r is found by a table over coins and values: m[c][r] = min(m[c-1][r], 1 + m[c][r - coin_c]), with infinity where no change exists; the greedy method is optimal only for canonical coin systems.",
+   "locator": "wikipedia:Change-making_problem#Simple_dynamic_programming",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [
+    "change-making problem",
+    "minimum coins",
+    "coin change"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the DP, a Python implementation (CC BY-SA text), and the greedy method with when it fails (#Greedy method)."
+  },
+  {
+   "id": "anfp:17.3",
+   "name": "Change-making problem",
+   "kind": "result",
+   "statement": "Greedy change works for canonical money systems; in general, try every coin P and solve the remaining amount X - P recursively, keeping the fewest coins, and memoise to avoid recomputing.",
+   "locator": "anfp:17.3",
+   "prereqs": [
+    "[recursion]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: OCaml code; carry the chapter's contributor credits."
+  },
+  {
+   "id": "doocs-leetcode:0322#Solution_1:_Dynamic_Programming_(Complete_Knapsack)",
+   "name": "Coin change as a complete knapsack",
+   "kind": "result",
+   "statement": "f[i][j] is the fewest coins from the first i kinds making j: f[i][j] = min(f[i-1][j], f[i][j - x] + 1); Solution 2 rolls it into one array. O(mn).",
+   "locator": "doocs-leetcode:0322#Solution 1: Dynamic Programming (Complete Knapsack)",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [
+    "coin change"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E/A: frames the problem as the complete knapsack (18.5). Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "icc:recursion_dynamic/coin_change_min",
+   "name": "Minimum coins by memoised recursion",
+   "kind": "result",
+   "statement": "For a total, try each coin not larger than it, recurse on the remainder, and keep the minimum plus one; memoise by total.",
+   "locator": "icc:recursion_dynamic/coin_change_min",
+   "prereqs": [
+    "[recursion]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "algo-explanation:Dynamic_Programming/Coin_Change",
+   "name": "Coin change: counting the ways",
+   "kind": "result",
+   "statement": "With dp[0] = 1, for each coin and each value i from the coin upward do dp[i] += dp[i - coin]; putting the coins in the outer loop counts each combination once regardless of order. O(N·S) time, O(N) space.",
+   "locator": "algo-explanation:Dynamic Programming/Coin Change",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [
+    "coin change II",
+    "number of ways to make change"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12): with a worked table."
+  },
+  {
+   "id": "icc:recursion_dynamic/coin_change_ways",
+   "name": "Ways to make change, one array",
+   "kind": "result",
+   "statement": "arr[i] counts the ways to make i; for each coin and each index from coin to n, add arr[i - coin]; the notebook explains why adding a coin to the ways of making i - coin is correct.",
+   "locator": "icc:recursion_dynamic/coin_change_ways",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "icc:recursion_dynamic/coin_change",
+   "name": "Ways to make change, two-dimensional table",
+   "kind": "result",
+   "statement": "T[i][j] = T[i-1][j] + T[i][j - coins[i]] counts the ways to make j with the first i coins; the answer is the bottom-right cell.",
+   "locator": "icc:recursion_dynamic/coin_change",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "doocs-leetcode:0518#Solution_1:_Dynamic_Programming_(Complete_Knapsack)",
+   "name": "Coin change II as a complete knapsack count",
+   "kind": "result",
+   "statement": "f[i][j] = f[i-1][j] + f[i][j - x] counts combinations; the loop order (coins outside) is what keeps permutations from being counted.",
+   "locator": "doocs-leetcode:0518#Solution 1: Dynamic Programming (Complete Knapsack)",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [
+    "coin change II"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E/A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "doocs-leetcode:0062#Solution_1:_Dynamic_Programming",
+   "name": "Counting grid paths",
+   "kind": "result",
+   "statement": "The number of right/down paths to cell (i, j) is f[i][j] = f[i-1][j] + f[i][j-1] with f = 1 on the first row and column, so an m×n grid is counted in O(mn), and in O(n) memory with a rolling array; the count equals C(m+n-2, m-1).",
+   "locator": "doocs-leetcode:0062#Solution 1: Dynamic Programming",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [
+    "unique paths",
+    "lattice paths",
+    "counting paths in a 2D array"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E/A: three DP solutions (plain, prefilled borders, rolling array). Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "trekhleb-jsalgo:src/algorithms/uncategorized/unique-paths/README.md#Algorithms",
+   "name": "Unique paths: backtracking, DP and Pascal's triangle",
+   "kind": "result",
+   "statement": "The decision tree of right/down moves gives an O(2^n) backtracking count; BOARD[i][j] = BOARD[i-1][j] + BOARD[i][j-1] gives O(mn); and the counts are entries of Pascal's triangle.",
+   "locator": "trekhleb-jsalgo:src/algorithms/uncategorized/unique-paths/README.md#Algorithms",
+   "prereqs": [
+    "[tabulation]"
+   ],
+   "aliases": [
+    "unique paths"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the README's Algorithms section only (MIT prose, ruling 12); the opening problem statement and robot_maze.png are LeetCode's and link-only."
+  },
+  {
+   "id": "wikipedia:Lattice_path#Counting_lattice_paths",
+   "name": "Counting lattice paths",
+   "kind": "result",
+   "statement": "A north-east lattice path from (0, 0) to (n, k) is a sequence of n east and k north steps, so there are C(n+k, k) of them; the counts form Pascal's triangle.",
+   "locator": "wikipedia:Lattice_path#Counting_lattice_paths",
+   "prereqs": [
+    "[combinations]"
+   ],
+   "aliases": [
+    "lattice paths"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (combinatorial); the figure File:Walking on Pascal's Triangle SVG.svg has an unchecked licence."
+  },
+  {
+   "id": "dmoi3:sec_counting-binom#Lattice_Paths",
+   "name": "Lattice paths and binomial coefficients",
+   "kind": "result",
+   "statement": "Paths on a grid moving only right and up correspond to bit strings with a fixed number of 1s, so a path to (m, n) is counted by C(m+n, n).",
+   "locator": "dmoi3:sec_counting-binom#Lattice Paths",
+   "prereqs": [
+    "[combinations]"
+   ],
+   "aliases": [
+    "lattice paths"
+   ],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: lattice paths, bit strings and subsets as one count, with figures (part of the BY-SA text)."
+  },
+  {
+   "id": "doocs-leetcode:0063#Solution_2:_Dynamic_Programming",
+   "name": "Counting grid paths around obstacles",
+   "kind": "result",
+   "statement": "Set f[i][j] = 0 on obstacle cells and f[i][j] = f[i-1][j] + f[i][j-1] elsewhere; borders are filled until the first obstacle. O(mn).",
+   "locator": "doocs-leetcode:0063#Solution 2: Dynamic Programming",
+   "prereqs": [
+    "doocs-leetcode:0062#Solution_1:_Dynamic_Programming"
+   ],
+   "aliases": [
+    "unique paths II"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E/A: Solution 1 of the same write-up is memoised search. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "icc:recursion_dynamic/grid_path",
+   "name": "A robot's path around off-limits cells",
+   "kind": "result",
+   "statement": "A cell is reachable if the cell to its left or the cell above is reachable and the cell is not off limits; memoised recursion from the target back to the start finds a path or reports none.",
+   "locator": "icc:recursion_dynamic/grid_path",
+   "prereqs": [
+    "doocs-leetcode:0062#Solution_1:_Dynamic_Programming"
+   ],
+   "aliases": [
+    "robot in a grid"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "A: the solution notebook's \"## Algorithm\" section (Apache-2.0 prose, ruling 12)."
+  },
+  {
+   "id": "doocs-leetcode:0064#Solution_1:_Dynamic_Programming",
+   "name": "Minimum path sum in a grid",
+   "kind": "result",
+   "statement": "f[i][j] = min(f[i-1][j], f[i][j-1]) + grid[i][j], with the first row and column as running sums; f[m-1][n-1] is the cheapest right/down path. O(mn).",
+   "locator": "doocs-leetcode:0064#Solution 1: Dynamic Programming",
+   "prereqs": [
+    "doocs-leetcode:0062#Solution_1:_Dynamic_Programming"
+   ],
+   "aliases": [
+    "minimum path sum"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E/A. Solution write-up (CC BY-SA 4.0); the problem statement above it is LeetCode's and link-only, so the write-up is paired with an open exercise posing the same problem (ruling 15)."
+  },
+  {
+   "id": "wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations",
+   "name": "Family of Bachmann-Landau notations",
+   "kind": "definition",
+   "statement": "Big O, little o, Big Omega, little omega and Big Theta are defined side by side by limits and quantifiers: Theta(g) bounds f above and below, Omega(g) from below.",
+   "locator": "wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: comparison table. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:AlgAnal/AnalLower",
+   "name": "Lower bounds and Theta notation",
+   "kind": "definition",
+   "statement": "Omega gives a lower bound on growth rate in the same way big-Oh gives an upper bound; when both bounds match, the cost is Theta of that function.",
+   "locator": "opendsa:AlgAnal/AnalLower",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Amortized_analysis",
+   "name": "Amortized analysis",
+   "kind": "idea",
+   "statement": "Amortized analysis bounds the cost of a sequence of operations rather than each one, so occasional expensive operations (dynamic array growth, two-stack queue transfers) are averaged over the cheap ones.",
+   "locator": "wikipedia:Amortized_analysis",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: the dynamic array and queue examples. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:SeniorAlgAnal/AmortAnal",
+   "name": "Amortized analysis",
+   "kind": "idea",
+   "statement": "The amortized cost of an operation is the total cost of a worst-case sequence divided by its length; potential and accounting arguments bound it.",
+   "locator": "opendsa:SeniorAlgAnal/AmortAnal",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Amortized_analysis#Method",
+   "name": "Aggregate, accounting and potential methods",
+   "kind": "idea",
+   "statement": "Three methods compute amortized cost: the aggregate method bounds the total of n operations; the accounting method charges cheap operations extra credit that pays for later expensive ones; the potential method uses a potential function of the state.",
+   "locator": "wikipedia:Amortized_analysis#Method",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (short). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "dmoi3:sec_counting-combperm",
+   "name": "Combinations and permutations",
+   "kind": "result",
+   "statement": "Ordered selections of k from n number n!/(n-k)! and unordered ones C(n, k) = n!/(k!(n-k)!), told apart by whether order matters; worked with counting arguments.",
+   "locator": "dmoi3:sec_counting-combperm",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (counting): listed in gap-patterns.md under generation as the counting background. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "oiwiki:math/combinatorics/combination#排列与组合基础",
+   "name": "Permutation and combination numbers",
+   "kind": "result",
+   "statement": "The number of arrangements of m of n distinct items is A(n, m) = n!/(n-m)!, and of selections C(n, m) = A(n, m)/m!.",
+   "locator": "oiwiki:math/combinatorics/combination#排列与组合基础",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Chinese; usable in translation under docs/prompts/translate.md, AI-marked as a translation; SATA attribution thanks the OI Wiki authors (ruling 15). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Array_(data_structure)",
+   "name": "Array data structure",
+   "kind": "definition",
+   "statement": "An array stores elements of one size in contiguous memory so the address of element i is computed from the base address and i; multidimensional arrays map indices to one address by row-major or column-major order.",
+   "locator": "wikipedia:Array_(data_structure)",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikibooks:Data_Structures/Arrays",
+   "name": "Arrays",
+   "kind": "definition",
+   "statement": "An array is a collection of elements reached in constant time by index; the chapter covers bounds, declaration, multidimensional arrays and growing arrays.",
+   "locator": "wikibooks:Data_Structures/Arrays",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:List/ListLinked",
+   "name": "Linked list implementation",
+   "kind": "skill",
+   "statement": "A linked list is implemented from nodes holding an element and a next pointer, with head, tail and current pointers and a header node that removes special cases from insertion and removal.",
+   "locator": "opendsa:List/ListLinked",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12): code with slideshows. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikibooks:Data_Structures/Stacks_and_Queues#Queues",
+   "name": "Queue on a linked list",
+   "kind": "skill",
+   "statement": "A queue implemented on a singly linked list enqueues at the tail and dequeues at the head, keeping a pointer to each end so both operations are O(1).",
+   "locator": "wikibooks:Data_Structures/Stacks_and_Queues#Queues",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "E: the Queues section opens with the linked list implementation and its performance analysis. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Tail_call",
+   "name": "Tail calls and tail recursion",
+   "kind": "idea",
+   "statement": "A call in tail position can reuse the caller's stack frame, so a tail-recursive function runs in constant stack space when the language eliminates tail calls; accumulators turn ordinary recursion into tail recursion.",
+   "locator": "wikipedia:Tail_call",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "csci30:correctness#Mathematical_induction",
+   "name": "Mathematical induction for correctness",
+   "kind": "axiom",
+   "statement": "Prove a base case and that truth for n-1 implies truth for n; when the recursion shrinks the problem by more than one, assume the claim for all smaller values (strong induction).",
+   "locator": "csci30:correctness#Mathematical induction",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: induction on a closed form and on a recursive algorithm, with strong induction. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Hash_table",
+   "name": "Hash table",
+   "kind": "definition",
+   "statement": "A hash table maps keys to values through a hash function into an array of buckets, resolving collisions by chaining or open addressing; with a bounded load factor, operations take expected O(1) time.",
+   "locator": "wikipedia:Hash_table",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:Hashing/HashIntro",
+   "name": "Introduction to hashing",
+   "kind": "definition",
+   "statement": "Hashing finds a record by computing its slot from its key with a hash function into a table, rather than by comparisons; collisions must be resolved.",
+   "locator": "opendsa:Hashing/HashIntro",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Hash_table#Dynamic_resizing",
+   "name": "Dynamic resizing of hash tables",
+   "kind": "result",
+   "statement": "When the load factor passes a threshold the table is rebuilt at a larger size (typically doubled) and every entry rehashed; geometric growth keeps the amortized cost per insertion O(1).",
+   "locator": "wikipedia:Hash_table#Dynamic_resizing",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Hash_function#Universality",
+   "name": "Universal hashing",
+   "kind": "definition",
+   "statement": "A universal family of hash functions makes the probability that two distinct keys collide at most 1/m for a function drawn at random from it.",
+   "locator": "wikipedia:Hash_function#Universality",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (short). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Hash_table#Cuckoo_hashing",
+   "name": "Cuckoo hashing",
+   "kind": "result",
+   "statement": "Cuckoo hashing keeps each key in one of two possible slots; an insertion that finds both full evicts an occupant to its alternative slot, giving worst-case constant lookups.",
+   "locator": "wikipedia:Hash_table#Cuckoo_hashing",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (short). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "lt-csbu:2.2",
+   "name": "Types and number representation",
+   "kind": "definition",
+   "statement": "IEEE 754 floating point splits a word into sign, exponent and significand, representing sign × significand × 2^exponent with a normalised significand, which limits precision.",
+   "locator": "lt-csbu:2.2",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: two's complement and floating point (CC BY-SA 3.0). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Tree_(abstract_data_type)",
+   "name": "Tree (abstract data type)",
+   "kind": "definition",
+   "statement": "A tree is a hierarchy of nodes with one root, each other node having exactly one parent; terminology (child, leaf, depth, height, subtree), operations and representations.",
+   "locator": "wikipedia:Tree_(abstract_data_type)",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:General/GenTreeIntro",
+   "name": "General trees",
+   "kind": "definition",
+   "statement": "A general tree has a root and any number of subtrees per node; its ADT and traversals, with children kept by leftmost-child/right-sibling links.",
+   "locator": "opendsa:General/GenTreeIntro",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Binary_search_tree#Successor_and_predecessor",
+   "name": "BST successor and predecessor",
+   "kind": "result",
+   "statement": "The successor of a node is the minimum of its right subtree if it has one; otherwise it is the lowest ancestor whose left subtree contains the node. Minimum and maximum follow left or right links to the end.",
+   "locator": "wikipedia:Binary_search_tree#Successor_and_predecessor",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: pseudocode. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Self-balancing_binary_search_tree",
+   "name": "Self-balancing binary search tree",
+   "kind": "idea",
+   "statement": "A self-balancing BST restores small height (O(log n)) after insertions and deletions by local transformations such as rotations, so that operations stay logarithmic.",
+   "locator": "wikipedia:Self-balancing_binary_search_tree",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:SearchStruct/BalancedTree",
+   "name": "Balanced trees",
+   "kind": "idea",
+   "statement": "BST cost depends on depth; balance conditions (AVL, splay, 2-3) keep depth logarithmic without requiring perfect balance.",
+   "locator": "opendsa:SearchStruct/BalancedTree",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Binary_heap#Heap_operations",
+   "name": "Binary heap insert and extract",
+   "kind": "result",
+   "statement": "Insertion appends at the bottom and sifts up (up-heap) while the parent is out of order; extraction moves the last element to the root and sifts down (down-heap), each O(log n).",
+   "locator": "wikipedia:Binary_heap#Heap_operations",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Sorting_algorithm#Stability",
+   "name": "Stability of sorting",
+   "kind": "definition",
+   "statement": "A stable sort keeps records with equal keys in their original relative order, which allows sorting by several keys in succession.",
+   "locator": "wikipedia:Sorting_algorithm#Stability",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: playing-card example. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Selection_sort",
+   "name": "Selection sort",
+   "kind": "result",
+   "statement": "Repeatedly select the smallest remaining element and swap it to the front: O(n^2) comparisons, at most n swaps, in place, not stable.",
+   "locator": "wikipedia:Selection_sort",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:Sorting/SelectionSort",
+   "name": "Selection sort",
+   "kind": "result",
+   "statement": "The i-th pass selects the i-th smallest key and swaps it into position, so selection sort makes n-1 swaps and Theta(n^2) comparisons.",
+   "locator": "opendsa:Sorting/SelectionSort",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Insertion_sort",
+   "name": "Insertion sort",
+   "kind": "result",
+   "statement": "Insert each element into its place in the sorted prefix by shifting larger elements right: O(n^2) worst case, O(n) on sorted input, stable and in place.",
+   "locator": "wikipedia:Insertion_sort",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:Sorting/InsertionSort",
+   "name": "Insertion sort",
+   "kind": "result",
+   "statement": "Each record is inserted into the sorted sublist before it by swapping it down; the cost is Theta(n^2) in the worst and average case and Theta(n) when the input is sorted.",
+   "locator": "opendsa:Sorting/InsertionSort",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Bubble_sort",
+   "name": "Bubble sort",
+   "kind": "result",
+   "statement": "Repeatedly swap adjacent out-of-order elements, pass after pass, until no swap occurs: O(n^2), stable, with an early exit on sorted input.",
+   "locator": "wikipedia:Bubble_sort",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:Sorting/BubbleSort",
+   "name": "Bubble sort",
+   "kind": "result",
+   "statement": "Each pass bubbles the largest remaining key to its place by adjacent swaps; Theta(n^2) comparisons whatever the input.",
+   "locator": "opendsa:Sorting/BubbleSort",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:AVL_tree",
+   "name": "AVL tree",
+   "kind": "result",
+   "statement": "An AVL tree keeps the heights of every node's two subtrees within one, restoring the balance by single or double rotations after updates, so height is O(log n).",
+   "locator": "wikipedia:AVL_tree",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:SearchStruct/AVL",
+   "name": "AVL tree",
+   "kind": "result",
+   "statement": "The AVL tree maintains the balance property by rotations after insertion and deletion; four rotation cases.",
+   "locator": "opendsa:SearchStruct/AVL",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:2–3_tree",
+   "name": "2-3 tree",
+   "kind": "definition",
+   "statement": "A 2-3 tree is a search tree whose internal nodes have two children and one key or three children and two keys, with all leaves at one depth; insertion splits full nodes upward.",
+   "locator": "wikipedia:2–3_tree",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:SearchStruct/Splay",
+   "name": "Splay tree",
+   "kind": "result",
+   "statement": "A splay tree rotates each accessed node to the root by zig, zig-zig and zig-zag steps, giving O(log n) amortized cost per operation.",
+   "locator": "opendsa:SearchStruct/Splay",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:M-ary_tree",
+   "name": "m-ary tree",
+   "kind": "definition",
+   "statement": "An m-ary tree is a rooted tree in which each node has at most m children; full, complete and perfect m-ary trees, their node counts and height bounds.",
+   "locator": "wikipedia:M-ary_tree",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Trie#Operations",
+   "name": "Trie operations",
+   "kind": "result",
+   "statement": "Search, insertion and deletion in a trie follow one edge per key character, so they take time proportional to the key length, independent of the number of keys.",
+   "locator": "wikipedia:Trie#Operations",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: pseudocode. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wikipedia:Graph_(abstract_data_type)#Common_data_structures_for_graph_representation",
+   "name": "Graph representations",
+   "kind": "definition",
+   "statement": "Adjacency lists, adjacency matrices and incidence matrices, with the time each takes for adding vertices and edges, removing them and testing adjacency.",
+   "locator": "wikipedia:Graph_(abstract_data_type)#Common_data_structures_for_graph_representation",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E: comparison table. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "opendsa:Graph/GraphImpl",
+   "name": "Graph implementations",
+   "kind": "definition",
+   "statement": "Adjacency matrix and adjacency list implementations of a graph ADT, and the space and time trade-off between them for sparse and dense graphs.",
+   "locator": "opendsa:Graph/GraphImpl",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (MIT prose, ruling 12). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Bloom_filter",
+   "name": "Bloom filter",
+   "kind": "result",
+   "statement": "A Bloom filter sets k hashed bits per inserted element in an m-bit array; a query reports present if all k bits are set, giving no false negatives and a tunable false-positive rate.",
+   "locator": "wp:Bloom_filter",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign; CC BY-SA 4.0, pre-2023 revision cached). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Count–min_sketch",
+   "name": "Count-min sketch",
+   "kind": "result",
+   "statement": "A count-min sketch keeps d rows of w counters with one hash function per row; each update increments one counter per row and a query returns the minimum, an overestimate bounded with high probability.",
+   "locator": "wp:Count–min_sketch",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:HyperLogLog",
+   "name": "HyperLogLog",
+   "kind": "result",
+   "statement": "HyperLogLog estimates the number of distinct elements from the maximum number of leading zeros of hashed values in many registers, combined by a harmonic mean, using O(log log n) bits per register.",
+   "locator": "wp:HyperLogLog",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Locality-sensitive_hashing",
+   "name": "Locality-sensitive hashing",
+   "kind": "idea",
+   "statement": "Locality-sensitive hash families make similar items collide with higher probability than dissimilar ones, which turns approximate nearest-neighbour search into bucket lookups; random hyperplanes (simhash) and MinHash are examples.",
+   "locator": "wp:Locality-sensitive_hashing",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Consistent_hashing",
+   "name": "Consistent hashing",
+   "kind": "result",
+   "statement": "Mapping servers and keys onto a ring and assigning each key to the next server clockwise means adding or removing a server moves only about K/n keys; virtual nodes even out the load.",
+   "locator": "wp:Consistent_hashing",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Distributed_hash_table",
+   "name": "Distributed hash table",
+   "kind": "definition",
+   "statement": "A distributed hash table spreads key-value pairs across nodes with keyspace partitioning (often consistent hashing) and an overlay network that routes a lookup to the responsible node in few hops.",
+   "locator": "wp:Distributed_hash_table",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "raft-site:index.html",
+   "name": "The Raft consensus algorithm (overview)",
+   "kind": "result",
+   "statement": "Raft keeps a replicated log consistent by electing a leader that appends client commands and replicates them to a majority before committing; the page explains leader election and log replication.",
+   "locator": "raft-site:index.html",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (CC BY 3.0): the website overview; raft.pdf in the repo has no licence and is excluded. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Raft_(algorithm)",
+   "name": "Raft (algorithm)",
+   "kind": "result",
+   "statement": "Raft decomposes consensus into leader election, log replication and safety, using terms, randomised election timeouts and majority acknowledgement.",
+   "locator": "wp:Raft_(algorithm)",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Paxos_(computer_science)",
+   "name": "Paxos",
+   "kind": "result",
+   "statement": "Paxos lets a set of acceptors agree on one value despite failures: proposers run a prepare phase and an accept phase with ballot numbers, and a value chosen by a majority is never changed.",
+   "locator": "wp:Paxos_(computer_science)",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Fallacies_of_distributed_computing",
+   "name": "Fallacies of distributed computing",
+   "kind": "idea",
+   "statement": "Eight false assumptions newcomers make about distributed systems: the network is reliable, latency is zero, bandwidth is infinite, the network is secure, topology does not change, there is one administrator, transport cost is zero, the network is homogeneous.",
+   "locator": "wp:Fallacies_of_distributed_computing",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign). Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "wp:Redis",
+   "name": "Redis",
+   "kind": "definition",
+   "statement": "Redis is an in-memory key-value store with data structures (strings, lists, sets, sorted sets, hashes), optional persistence and replication, used as a cache, message broker and database.",
+   "locator": "wp:Redis",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (wp-sysdesign); product article: strip product-specific passages. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "aosa:v1/nosql",
+   "name": "The NoSQL ecosystem",
+   "kind": "idea",
+   "statement": "NoSQL systems trade SQL's query model and transactions for data models (key-value, document, column-family, graph) and for partitioning and replication schemes such as consistent hashing and eventual consistency.",
+   "locator": "aosa:v1/nosql",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (CC BY 3.0): Adam Marcus's chapter. Added to an existing concept; prerequisites are left to that concept's other rows."
+  },
+  {
+   "id": "aosa:v2/distsys",
+   "name": "Scalable web architecture and distributed systems",
+   "kind": "idea",
+   "statement": "A web service scales by splitting services, adding redundancy, partitioning data, and adding caches, proxies, indexes, load balancers and queues, each with its trade-offs.",
+   "locator": "aosa:v2/distsys",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "E (CC BY 3.0): Kate Matsudaira's chapter. Added to an existing concept; prerequisites are left to that concept's other rows."
+  }
+ ]
+}
