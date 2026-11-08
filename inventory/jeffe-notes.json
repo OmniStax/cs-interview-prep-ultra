@@ -1,0 +1,1905 @@
+{
+  "source": "jeffe-notes",
+  "title": "Jeff Erickson, extra lecture notes for Algorithms (2013-2018)",
+  "license": "CC BY-NC-SA 4.0 (prose link-only for this book; exercises may become NC exercise cards)",
+  "locator_scheme": "jeffe-notes:<file stem>.<section>, where <section> is the printed section number with the lecture prefix removed (01-random '1.4.1' -> 01-random.4.1; A-fft 'A.5' -> A-fft.5; 08-mincut prints its sections as 13.x -> 08-mincut.x; 98-induction and 99-recurrences use their bare section numbers).",
+  "has_code_meaning": "true = the note prints pseudocode for it.",
+  "style": "Same author and voice as jeffe (see inventory/jeffe.json 'style'); older lecture-note format, sections numbered per lecture, several sections unfinished.",
+  "exercises_note": "Counts are the highest printed exercise number per note (numbers survive in this cache and run contiguously; 12-lowerbounds starts at 0). The notes print no topical subheadings in exercise lists, so by_section is empty. keyed is 0 throughout: no answers are printed. C-automata-dynprog has an Exercises heading with only the placeholder 'Add some exercises!'. Licence CC BY-NC-SA 4.0: exercises may only become NC exercise cards.",
+  "exercise_counts": [
+    {
+      "locator": "jeffe-notes:01-random.exercises",
+      "printed": 17,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:02-nutsbolts.exercises",
+      "printed": 10,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:03-treaps.exercises",
+      "printed": 10,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:04-chernoff.exercises",
+      "printed": 6,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:05-hashing.exercises",
+      "printed": 4,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:06-bloom.exercises",
+      "printed": 2,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:07-strings.exercises",
+      "printed": 10,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:08-mincut.exercises",
+      "printed": 4,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:09-amortize.exercises",
+      "printed": 16,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:10-scapegoat-splay.exercises",
+      "printed": 10,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:11-unionfind.exercises",
+      "printed": 8,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:12-lowerbounds.exercises",
+      "printed": 5,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:13-adversary.exercises",
+      "printed": 7,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:98-induction.exercises",
+      "printed": 23,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:99-recurrences.exercises",
+      "printed": 4,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:A-fft.exercises",
+      "printed": 11,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:B-fastexpo.exercises",
+      "printed": 5,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:C-automata-dynprog.exercises",
+      "printed": 0,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:D-faster-dynprog.exercises",
+      "printed": 6,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:E-matroids.exercises",
+      "printed": 6,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:F-pseudoflows.exercises",
+      "printed": 5,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:G-mincostflow.exercises",
+      "printed": 5,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:H-lp.exercises",
+      "printed": 10,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:I-simplex.exercises",
+      "printed": 9,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe-notes:J-approx.exercises",
+      "printed": 18,
+      "keyed": 0,
+      "by_section": {}
+    }
+  ],
+  "concepts": [
+    {
+      "id": "jeffe-notes:probability-space",
+      "name": "Discrete probability spaces and events",
+      "kind": "definition",
+      "statement": "A discrete probability space is a countable sample space with a mass function Pr >= 0 summing to 1; events are subsets, combined by union, intersection, complement and conditioning, with independence defined by Pr[A and B] = Pr[A]Pr[B].",
+      "locator": "jeffe-notes:01-random.1",
+      "prereqs": [],
+      "aliases": [
+        "sample space",
+        "conditional probability",
+        "independence",
+        "union bound"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "1.1.3 lists identities and inequalities incl. the union bound."
+    },
+    {
+      "id": "jeffe-notes:linearity-of-expectation",
+      "name": "Random variables and linearity of expectation",
+      "kind": "result",
+      "statement": "For any random variables X_i and constants a_i, E[sum a_i X_i] = sum a_i E[X_i], with no independence required; indicator variables turn counting questions into sums of probabilities.",
+      "locator": "jeffe-notes:01-random.2",
+      "prereqs": [
+        "jeffe-notes:probability-space"
+      ],
+      "aliases": [
+        "indicator random variable",
+        "expectation"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Section 1.2.1 is titled 'It is a fungus.'"
+    },
+    {
+      "id": "jeffe-notes:common-distributions",
+      "name": "Common distributions: uniform, Bernoulli, binomial, geometric",
+      "kind": "definition",
+      "statement": "The notes define the uniform, Bernoulli, binomial and geometric distributions with their expectations, e.g. a geometric variable with success probability p has expectation 1/p.",
+      "locator": "jeffe-notes:01-random.3",
+      "prereqs": [
+        "jeffe-notes:linearity-of-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:unbiasing-coins",
+      "name": "Removing bias from coin flips",
+      "kind": "result",
+      "statement": "Flip a biased coin twice: output heads on HT, tails on TH, and retry on HH or TT; this yields a fair bit in 1/(p(1-p)) expected pairs (von Neumann), and a fair coin can simulate any known bias.",
+      "locator": "jeffe-notes:01-random.4",
+      "prereqs": [
+        "jeffe-notes:common-distributions"
+      ],
+      "aliases": [
+        "von Neumann extractor"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:coupon-collector",
+      "name": "Coupon collecting (Pokemon collecting)",
+      "kind": "result",
+      "statement": "Collecting all n equally likely types takes n*H_n = Theta(n log n) expected trials; after n trials the expected number of distinct types seen is about (1-1/e)n.",
+      "locator": "jeffe-notes:01-random.5",
+      "prereqs": [
+        "jeffe-notes:linearity-of-expectation",
+        "jeffe-notes:common-distributions"
+      ],
+      "aliases": [
+        "coupon collector"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:random-permutation",
+      "name": "Generating random permutations (shuffling)",
+      "kind": "result",
+      "statement": "Swapping each A[i] with a uniformly random element of A[1..i] (Fisher-Yates) produces every permutation with probability 1/n!, in O(n) time; plausible-looking variants are biased.",
+      "locator": "jeffe-notes:01-random.6",
+      "prereqs": [
+        "jeffe-notes:probability-space"
+      ],
+      "aliases": [
+        "Fisher-Yates",
+        "Knuth shuffle",
+        "Shuffle"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "1.7 (properties of random permutations) is an unfinished outline."
+    },
+    {
+      "id": "jeffe-notes:nuts-and-bolts",
+      "name": "The nuts and bolts problem",
+      "kind": "result",
+      "statement": "Given n nuts and n bolts that can only be compared to each other, pick a random bolt, partition the nuts with it and the bolts with its matching nut, and recurse: expected O(n log n) comparisons, mirroring randomized quicksort.",
+      "locator": "jeffe-notes:02-nutsbolts.1",
+      "prereqs": [
+        "[quicksort]",
+        "jeffe-notes:linearity-of-expectation"
+      ],
+      "aliases": [
+        "matching nuts and bolts"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 2.1 and 2.3."
+    },
+    {
+      "id": "jeffe-notes:las-vegas-monte-carlo",
+      "name": "Deterministic vs. randomized algorithms; expected running time",
+      "kind": "definition",
+      "statement": "A randomized algorithm's running time is a random variable; we bound its expectation for the worst-case input, separating Las Vegas algorithms (always correct) from Monte Carlo ones (probably correct).",
+      "locator": "jeffe-notes:02-nutsbolts.2",
+      "prereqs": [
+        "jeffe-notes:probability-space"
+      ],
+      "aliases": [
+        "Las Vegas",
+        "Monte Carlo",
+        "expected worst-case time"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:sorting-reductions",
+      "name": "Reductions to and from sorting",
+      "kind": "result",
+      "statement": "Nuts and bolts and sorting reduce to each other, so randomized nuts-and-bolts matching needs Omega(n log n) comparisons and any deterministic O(n log n) solution would be hard to find.",
+      "locator": "jeffe-notes:02-nutsbolts.5",
+      "prereqs": [
+        "jeffe-notes:nuts-and-bolts"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:quicksort-expected-comparisons",
+      "name": "Expected comparisons of randomized quicksort",
+      "kind": "result",
+      "statement": "The i-th and j-th smallest elements are compared iff one of them is the first pivot chosen among ranks i..j, with probability 2/(j-i+1); summing gives at most 2n H_n = O(n log n) expected comparisons.",
+      "locator": "jeffe-notes:02-nutsbolts.7",
+      "prereqs": [
+        "jeffe-notes:nuts-and-bolts",
+        "jeffe-notes:linearity-of-expectation"
+      ],
+      "aliases": [
+        "randomized quicksort analysis"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "2.6 gives a recursive analysis, 2.7 the iterative (indicator) analysis, 2.8 an exact 'masochistic' solution."
+    },
+    {
+      "id": "jeffe-notes:treap",
+      "name": "Treaps",
+      "kind": "definition",
+      "statement": "A treap stores keys with priorities so that it is a binary search tree by key and a heap by priority; for distinct keys and priorities the treap is unique.",
+      "locator": "jeffe-notes:03-treaps.1.1",
+      "prereqs": [
+        "[binary search tree]",
+        "[binary heap]"
+      ],
+      "aliases": [
+        "tree-heap"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:treap-operations",
+      "name": "Treap insertion and deletion by rotations",
+      "kind": "skill",
+      "statement": "Insert as a leaf then rotate it up while its priority beats its parent's; delete by rotating the node down toward its higher-priority child until it is a leaf.",
+      "locator": "jeffe-notes:03-treaps.1.2",
+      "prereqs": [
+        "jeffe-notes:treap",
+        "[tree rotations]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:treap-depth",
+      "name": "Random priorities give expected logarithmic depth",
+      "kind": "result",
+      "statement": "With independent uniformly random priorities, node k is an ancestor of node i with probability 1/(|k-i|+1), so every node has expected depth at most 2 ln n + O(1).",
+      "locator": "jeffe-notes:03-treaps.1.3",
+      "prereqs": [
+        "jeffe-notes:treap",
+        "jeffe-notes:linearity-of-expectation"
+      ],
+      "aliases": [
+        "randomized BST"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "3.1.4 notes the equivalence with randomized quicksort."
+    },
+    {
+      "id": "jeffe-notes:skip-list",
+      "name": "Skip lists",
+      "kind": "result",
+      "statement": "Promote each element of a sorted linked list to the next level with probability 1/2; the expected number of levels is O(log n) and a search takes O(log n) expected time.",
+      "locator": "jeffe-notes:03-treaps.2",
+      "prereqs": [
+        "jeffe-notes:linearity-of-expectation",
+        "[linked list]"
+      ],
+      "aliases": [
+        "skiplist"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:markov-inequality",
+      "name": "Markov's inequality",
+      "kind": "result",
+      "statement": "For a non-negative random variable X and z > 0, Pr[X >= z] <= E[X]/z.",
+      "locator": "jeffe-notes:04-chernoff.1",
+      "prereqs": [
+        "jeffe-notes:linearity-of-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:chebyshev-inequality",
+      "name": "Chebyshev's inequality",
+      "kind": "result",
+      "statement": "Pr[|X - E[X]| >= z] <= Var[X]/z^2; for sums of pairwise independent indicators the variance is at most the mean.",
+      "locator": "jeffe-notes:04-chernoff.3",
+      "prereqs": [
+        "jeffe-notes:markov-inequality"
+      ],
+      "aliases": [
+        "variance"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "4.2 defines pairwise and k-wise independence; 4.4 higher moments."
+    },
+    {
+      "id": "jeffe-notes:chernoff-bound",
+      "name": "Chernoff bounds",
+      "kind": "result",
+      "statement": "For a sum X of independent indicator variables with mean mu, Pr[X >= (1+d)mu] <= (e^d/(1+d)^(1+d))^mu, and similar lower-tail bounds; deviations shrink exponentially in mu.",
+      "locator": "jeffe-notes:04-chernoff.5",
+      "prereqs": [
+        "jeffe-notes:markov-inequality"
+      ],
+      "aliases": [
+        "tail bound"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "4.6 applies it to coin flips."
+    },
+    {
+      "id": "jeffe-notes:treap-depth-whp",
+      "name": "Treap depth with high probability",
+      "kind": "result",
+      "statement": "Chernoff bounds show every node of a treap with random priorities has depth O(log n) with high probability, not just in expectation.",
+      "locator": "jeffe-notes:04-chernoff.7",
+      "prereqs": [
+        "jeffe-notes:chernoff-bound",
+        "jeffe-notes:treap-depth"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections 4.7 and 4.8 (two takes)."
+    },
+    {
+      "id": "jeffe-notes:hash-table",
+      "name": "Hash tables: the dictionary problem",
+      "kind": "definition",
+      "statement": "A hash table stores n items from a large universe U in an array of m slots using a hash function h: U -> {0..m-1}; the load factor is n/m, and collisions must be resolved.",
+      "locator": "jeffe-notes:05-hashing.1",
+      "prereqs": [],
+      "aliases": [
+        "dictionary",
+        "load factor"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:universal-hashing",
+      "name": "Universal hash families",
+      "kind": "definition",
+      "statement": "Any fixed hash function has bad inputs, so h is chosen at random from a family; the family is universal if Pr[h(x)=h(y)] <= 1/m for all x != y.",
+      "locator": "jeffe-notes:05-hashing.3",
+      "prereqs": [
+        "jeffe-notes:hash-table",
+        "jeffe-notes:probability-space"
+      ],
+      "aliases": [
+        "universal family",
+        "2-uniform"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "5.2 'The Importance of Being Random', 5.3 '...But Not Too Random'."
+    },
+    {
+      "id": "jeffe-notes:chaining",
+      "name": "Hashing with chaining",
+      "kind": "result",
+      "statement": "With each slot holding a linked list and h drawn from a universal family, the expected length of the chain for any key is at most 1 + n/m, so operations take O(1 + n/m) expected time.",
+      "locator": "jeffe-notes:05-hashing.4",
+      "prereqs": [
+        "jeffe-notes:universal-hashing",
+        "jeffe-notes:linearity-of-expectation"
+      ],
+      "aliases": [
+        "separate chaining"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:multiplicative-hashing",
+      "name": "Multiplicative hashing",
+      "kind": "result",
+      "statement": "h_a(x) = (a x mod p) mod m with random a, and the binary variant ((a x) mod 2^w) >> (w - l), give (nearly) universal families that are fast to evaluate.",
+      "locator": "jeffe-notes:05-hashing.5",
+      "prereqs": [
+        "jeffe-notes:universal-hashing"
+      ],
+      "aliases": [
+        "prime multiplicative hashing",
+        "binary multiplicative hashing"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "5.5.1 prime, 5.5.2 actually universal, 5.5.3 binary."
+    },
+    {
+      "id": "jeffe-notes:balls-and-bins",
+      "name": "Balls and bins: maximum chain length",
+      "kind": "result",
+      "statement": "Throwing n balls into n bins uniformly, the fullest bin holds O(log n / log log n) balls with high probability.",
+      "locator": "jeffe-notes:05-hashing.6",
+      "prereqs": [
+        "jeffe-notes:chaining",
+        "jeffe-notes:probability-space"
+      ],
+      "aliases": [
+        "max load"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:perfect-hashing",
+      "name": "Perfect hashing (two-level)",
+      "kind": "result",
+      "statement": "For a static set, hash into n primary buckets and give each bucket of size n_i a collision-free secondary table of size n_i^2; expected total space is O(n) and lookups take O(1) worst-case time.",
+      "locator": "jeffe-notes:05-hashing.7",
+      "prereqs": [
+        "jeffe-notes:universal-hashing"
+      ],
+      "aliases": [
+        "FKS hashing"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:open-addressing",
+      "name": "Open addressing and linear/binary probing",
+      "kind": "result",
+      "statement": "Open addressing stores items in the table itself and probes a sequence of slots; linear probing scans consecutive slots, and binary probing (a variant analyzed in the notes) gives O(1) expected probes when the load factor is bounded below 1.",
+      "locator": "jeffe-notes:05-hashing.8",
+      "prereqs": [
+        "jeffe-notes:hash-table"
+      ],
+      "aliases": [
+        "linear probing",
+        "binary probing"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 5.8 to 5.10."
+    },
+    {
+      "id": "jeffe-notes:cuckoo-hashing",
+      "name": "Cuckoo hashing",
+      "kind": "result",
+      "statement": "Each key lives in one of two slots h1(x) or h2(x); insertion evicts occupants along a path and rebuilds on long cycles, giving worst-case O(1) lookups and expected O(1) insertions at load below 1/2.",
+      "locator": "jeffe-notes:05-hashing.11",
+      "prereqs": [
+        "jeffe-notes:open-addressing",
+        "jeffe-notes:universal-hashing"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:bloom-filter",
+      "name": "Bloom filters",
+      "kind": "result",
+      "statement": "Represent a set by an m-bit array and k hash functions, setting bits h_1(x)..h_k(x) on insertion; queries never give false negatives and the false-positive rate is about (1 - e^{-kn/m})^k, minimized near k = (m/n) ln 2.",
+      "locator": "jeffe-notes:06-bloom.1",
+      "prereqs": [
+        "jeffe-notes:hash-table",
+        "jeffe-notes:universal-hashing"
+      ],
+      "aliases": [
+        "false positive rate"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 6.1 and 6.2."
+    },
+    {
+      "id": "jeffe-notes:streaming-model",
+      "name": "The streaming model",
+      "kind": "definition",
+      "statement": "A streaming algorithm reads a long sequence once and must answer queries about it using space much smaller than the stream.",
+      "locator": "jeffe-notes:06-bloom.3",
+      "prereqs": [],
+      "aliases": [
+        "data stream"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:count-min-sketch",
+      "name": "Count-min sketch",
+      "kind": "result",
+      "statement": "Keep d rows of w counters with independent hash functions; estimating a frequency as the minimum of its d counters never underestimates and overestimates by more than eps*N with probability at most delta when w = e/eps and d = ln(1/delta).",
+      "locator": "jeffe-notes:06-bloom.4",
+      "prereqs": [
+        "jeffe-notes:streaming-model",
+        "jeffe-notes:universal-hashing",
+        "jeffe-notes:markov-inequality"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "6.5 (distinct items) is an unfinished stub."
+    },
+    {
+      "id": "jeffe-notes:brute-force-matching",
+      "name": "Brute-force string matching",
+      "kind": "result",
+      "statement": "Checking every shift of pattern P[1..m] against text T[1..n] takes O(mn) time in the worst case.",
+      "locator": "jeffe-notes:07-strings.1",
+      "prereqs": [],
+      "aliases": [
+        "naive string search"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:karp-rabin",
+      "name": "Karp-Rabin fingerprinting",
+      "kind": "result",
+      "statement": "Treat strings as base-sigma numbers reduced mod a random prime q; rolling the fingerprint of each text window in O(1) time finds all matches in O(n + m) expected time with a small false-positive probability.",
+      "locator": "jeffe-notes:07-strings.3",
+      "prereqs": [
+        "jeffe-notes:brute-force-matching"
+      ],
+      "aliases": [
+        "Rabin-Karp",
+        "rolling hash"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "7.2 sets up strings as numbers."
+    },
+    {
+      "id": "jeffe-notes:string-matching-automaton",
+      "name": "String matching with a finite-state machine",
+      "kind": "result",
+      "statement": "Redundant comparisons can be avoided by a finite-state machine whose state is the length of the longest pattern prefix that is a suffix of the text read so far; with failure links this is the Knuth-Morris-Pratt algorithm, running in O(n) after preprocessing.",
+      "locator": "jeffe-notes:07-strings.5",
+      "prereqs": [
+        "jeffe-notes:brute-force-matching"
+      ],
+      "aliases": [
+        "KMP",
+        "Knuth-Morris-Pratt"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 7.4 and 7.5."
+    },
+    {
+      "id": "jeffe-notes:failure-function",
+      "name": "Computing the KMP failure function",
+      "kind": "result",
+      "statement": "The failure function fail[j] (the longest proper prefix of P[1..j-1] that is also a suffix) can be computed in O(m) time by running the matcher on the pattern against itself; an optimized version skips states that would compare the same character.",
+      "locator": "jeffe-notes:07-strings.6",
+      "prereqs": [
+        "jeffe-notes:string-matching-automaton"
+      ],
+      "aliases": [
+        "prefix function"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "7.7 optimizes it."
+    },
+    {
+      "id": "jeffe-notes:global-min-cut",
+      "name": "Global minimum cut and edge contraction",
+      "kind": "definition",
+      "statement": "A minimum cut of a connected multigraph is a smallest set of edges whose removal disconnects it; contracting an edge merges its endpoints, keeps parallel edges and never decreases the minimum cut.",
+      "locator": "jeffe-notes:08-mincut.1",
+      "prereqs": [
+        "[graphs]"
+      ],
+      "aliases": [
+        "min cut",
+        "contraction"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "File's sections are printed 13.x."
+    },
+    {
+      "id": "jeffe-notes:karger",
+      "name": "Karger's contraction algorithm",
+      "kind": "result",
+      "statement": "Contracting uniformly random edges until two vertices remain returns a particular minimum cut with probability at least 2/(n(n-1)); repeating O(n^2 log n) times finds a minimum cut with high probability.",
+      "locator": "jeffe-notes:08-mincut.2",
+      "prereqs": [
+        "jeffe-notes:global-min-cut",
+        "jeffe-notes:probability-space"
+      ],
+      "aliases": [
+        "random contraction"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 13.2 and 13.3."
+    },
+    {
+      "id": "jeffe-notes:karger-stein",
+      "name": "Karger-Stein recursive contraction",
+      "kind": "result",
+      "statement": "Contract to about n/sqrt(2) vertices twice independently and recurse on each; success probability is Omega(1/log n) and the running time is O(n^2 log n), so O(n^2 log^3 n) gives high probability.",
+      "locator": "jeffe-notes:08-mincut.4",
+      "prereqs": [
+        "jeffe-notes:karger"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "13.5 solves its recurrence."
+    },
+    {
+      "id": "jeffe-notes:amortized-cost",
+      "name": "Amortized analysis: the binary counter",
+      "kind": "idea",
+      "statement": "Amortized cost bounds the total cost of a sequence of operations rather than each one; incrementing a binary counter costs O(log n) in the worst case but n increments flip only O(n) bits in total.",
+      "locator": "jeffe-notes:09-amortize.1",
+      "prereqs": [
+        "[big-O notation]"
+      ],
+      "aliases": [
+        "amortized time"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 9.1 and 9.2."
+    },
+    {
+      "id": "jeffe-notes:aggregate-accounting",
+      "name": "Summation, taxation and charging methods",
+      "kind": "skill",
+      "statement": "Bound total cost by summing over operations, by charging each operation a fixed 'tax' that prepays future work, or by charging each unit of work to an earlier event that pays for it.",
+      "locator": "jeffe-notes:09-amortize.2",
+      "prereqs": [
+        "jeffe-notes:amortized-cost"
+      ],
+      "aliases": [
+        "aggregate method",
+        "accounting method",
+        "banker's method"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Subsections 9.2.1 to 9.2.3."
+    },
+    {
+      "id": "jeffe-notes:potential-method",
+      "name": "The potential method",
+      "kind": "skill",
+      "statement": "Define a non-negative potential Phi on data-structure states with Phi(initial)=0; the amortized cost of an operation is its actual cost plus the change in Phi, and total amortized cost bounds total actual cost.",
+      "locator": "jeffe-notes:09-amortize.2.4",
+      "prereqs": [
+        "jeffe-notes:aggregate-accounting"
+      ],
+      "aliases": [
+        "physicist's method"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:inc-dec-counter",
+      "name": "Incrementing and decrementing counters",
+      "kind": "result",
+      "statement": "Alternating between 2^k and 2^k - 1 makes a standard binary counter cost Theta(k) per operation; representing the value as P - N with bit strings P AND N = 0 gives O(1) amortized increments and decrements.",
+      "locator": "jeffe-notes:09-amortize.3",
+      "prereqs": [
+        "jeffe-notes:potential-method"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:gray-codes",
+      "name": "Gray codes",
+      "kind": "result",
+      "statement": "A Gray code lists all 2^n bit strings so consecutive strings differ in one bit (binary reflected Gray code); it can be generated with O(1) bit flips per step.",
+      "locator": "jeffe-notes:09-amortize.4",
+      "prereqs": [
+        "jeffe-notes:amortized-cost"
+      ],
+      "aliases": [
+        "reflected binary code"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "9.5 discusses generalities and pitfalls of amortization."
+    },
+    {
+      "id": "jeffe-notes:global-rebuilding",
+      "name": "Lazy deletion and global rebuilding",
+      "kind": "skill",
+      "statement": "Mark deleted nodes instead of removing them and rebuild the whole tree perfectly balanced once half the nodes are marked; rebuilding costs O(n) but is amortized O(1) per deletion.",
+      "locator": "jeffe-notes:10-scapegoat-splay.2",
+      "prereqs": [
+        "jeffe-notes:amortized-cost",
+        "[binary search tree]"
+      ],
+      "aliases": [
+        "lazy deletion"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "10.1 gives BST definitions."
+    },
+    {
+      "id": "jeffe-notes:scapegoat-tree",
+      "name": "Scapegoat trees",
+      "kind": "result",
+      "statement": "Keep the tree alpha-weight-balanced lazily: after an insertion makes the tree too deep, rebuild the subtree of the highest unbalanced ancestor (the scapegoat); operations take O(log n) amortized time.",
+      "locator": "jeffe-notes:10-scapegoat-splay.4",
+      "prereqs": [
+        "jeffe-notes:global-rebuilding",
+        "jeffe-notes:potential-method"
+      ],
+      "aliases": [
+        "partial rebuilding"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 10.3 and 10.4."
+    },
+    {
+      "id": "jeffe-notes:splaying",
+      "name": "Rotations, double rotations and splaying",
+      "kind": "skill",
+      "statement": "Splaying moves a node to the root by zig, zig-zig and zig-zag (double) rotations, roughly halving the depth of every node on the access path.",
+      "locator": "jeffe-notes:10-scapegoat-splay.5",
+      "prereqs": [
+        "[tree rotations]"
+      ],
+      "aliases": [
+        "zig-zig",
+        "zig-zag"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:splay-tree",
+      "name": "Splay trees",
+      "kind": "result",
+      "statement": "A splay tree splays every accessed node to the root; by the Access Lemma (potential = sum of log subtree sizes) every operation takes O(log n) amortized time.",
+      "locator": "jeffe-notes:10-scapegoat-splay.6",
+      "prereqs": [
+        "jeffe-notes:splaying",
+        "jeffe-notes:potential-method"
+      ],
+      "aliases": [
+        "Access Lemma"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "10.7 (static optimality, working set) and 10.8 (dynamic optimality conjecture) follow."
+    },
+    {
+      "id": "jeffe-notes:disjoint-set-adt",
+      "name": "Disjoint sets with reversed trees",
+      "kind": "definition",
+      "statement": "The union-find ADT supports MakeSet, Find (return the set's leader) and Union; storing each set as a reversed tree whose root is the leader, with union by rank (or depth), gives O(log n) worst-case Find.",
+      "locator": "jeffe-notes:11-unionfind.1",
+      "prereqs": [
+        "[rooted trees]"
+      ],
+      "aliases": [
+        "union-find",
+        "union by rank",
+        "DSU"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:shallow-threaded-trees",
+      "name": "Shallow threaded trees",
+      "kind": "result",
+      "statement": "Giving every element a direct pointer to its leader makes Find O(1); merging the smaller set into the larger makes Union O(log n) amortized.",
+      "locator": "jeffe-notes:11-unionfind.2",
+      "prereqs": [
+        "jeffe-notes:disjoint-set-adt",
+        "jeffe-notes:amortized-cost"
+      ],
+      "aliases": [
+        "weighted union",
+        "union by size"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:path-compression",
+      "name": "Path compression",
+      "kind": "result",
+      "statement": "During Find, point every visited node directly at the root; combined with union by rank, any m operations on n elements take O(m log* n) time, and in fact O(m alpha(m,n)).",
+      "locator": "jeffe-notes:11-unionfind.3",
+      "prereqs": [
+        "jeffe-notes:disjoint-set-adt"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "11.4 proves O(log* n); 11.5 'turning the crank' iterates the argument."
+    },
+    {
+      "id": "jeffe-notes:inverse-ackermann",
+      "name": "The Ackermann function and its inverse",
+      "kind": "result",
+      "statement": "Iterating the log*-style argument shows union by rank with path compression runs in O(m alpha(n)) time, where alpha is the inverse Ackermann function, at most 4 for any practical n.",
+      "locator": "jeffe-notes:11-unionfind.6",
+      "prereqs": [
+        "jeffe-notes:path-compression"
+      ],
+      "aliases": [
+        "alpha(n)"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:decision-tree-model",
+      "name": "Decision-tree lower bounds",
+      "kind": "definition",
+      "statement": "A comparison algorithm corresponds to a decision tree whose internal nodes are queries and leaves are outputs; its worst-case running time is at least the tree's depth.",
+      "locator": "jeffe-notes:12-lowerbounds.2",
+      "prereqs": [],
+      "aliases": [
+        "comparison model"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "12.1 motivates lower bounds."
+    },
+    {
+      "id": "jeffe-notes:information-theoretic-bound",
+      "name": "Information-theoretic lower bound",
+      "kind": "result",
+      "statement": "A decision tree with branching factor k that must distinguish N outcomes has depth at least log_k N; e.g. searching a sorted array needs Omega(log n) comparisons. Hashing escapes it by asking queries with more than O(1) outcomes.",
+      "locator": "jeffe-notes:12-lowerbounds.3",
+      "prereqs": [
+        "jeffe-notes:decision-tree-model"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "12.4 'But wait a second...' explains the hashing loophole."
+    },
+    {
+      "id": "jeffe-notes:sorting-lower-bound",
+      "name": "Comparison sorting needs Omega(n log n)",
+      "kind": "result",
+      "statement": "Any comparison sort must distinguish n! permutations, so its decision tree has depth at least log_2 n! = Omega(n log n).",
+      "locator": "jeffe-notes:12-lowerbounds.5",
+      "prereqs": [
+        "jeffe-notes:information-theoretic-bound"
+      ],
+      "aliases": [
+        "sorting lower bound"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:max-lower-bound",
+      "name": "Finding the maximum needs n-1 comparisons",
+      "kind": "result",
+      "statement": "Every element other than the maximum must lose at least one comparison, so any algorithm needs n-1 comparisons; an adversary argument makes this precise.",
+      "locator": "jeffe-notes:12-lowerbounds.6",
+      "prereqs": [
+        "jeffe-notes:decision-tree-model"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:adversary-argument",
+      "name": "Adversary arguments",
+      "kind": "skill",
+      "statement": "To prove a lower bound, imagine an adversary that answers queries consistently but so as to keep the answer undetermined as long as possible (three-card and n-card monte).",
+      "locator": "jeffe-notes:13-adversary.1",
+      "prereqs": [
+        "jeffe-notes:decision-tree-model"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections 13.1 and 13.2; 13.3 finds the pattern 01 in bit strings."
+    },
+    {
+      "id": "jeffe-notes:evasive-properties",
+      "name": "Evasive graph properties",
+      "kind": "result",
+      "statement": "A graph property is evasive if every algorithm must query all n(n-1)/2 edge slots in the worst case; connectedness is evasive by an adversary that answers 'no edge' unless that would disconnect the graph.",
+      "locator": "jeffe-notes:13-adversary.4",
+      "prereqs": [
+        "jeffe-notes:adversary-argument"
+      ],
+      "aliases": [
+        "Aanderaa-Karp-Rosenberg conjecture"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "13.5 connectedness, 13.6 the evasiveness conjecture."
+    },
+    {
+      "id": "jeffe-notes:min-max-lower-bound",
+      "name": "Finding the minimum and maximum: ceil(3n/2) - 2",
+      "kind": "result",
+      "statement": "Pairing elements and comparing winners and losers finds both min and max in ceil(3n/2) - 2 comparisons, and an adversary argument shows this is optimal.",
+      "locator": "jeffe-notes:13-adversary.7",
+      "prereqs": [
+        "jeffe-notes:adversary-argument"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "13.8 gives a lower bound for median finding."
+    },
+    {
+      "id": "jeffe-notes:smallest-counterexample",
+      "name": "Proof by smallest counterexample",
+      "kind": "skill",
+      "statement": "To prove P(n) for all n, suppose some n fails and take the smallest such n; deriving a smaller counterexample is a contradiction (shown by proving every integer > 1 has a prime divisor).",
+      "locator": "jeffe-notes:98-induction.1",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:induction-axiom",
+      "name": "The axiom of induction and strong induction",
+      "kind": "axiom",
+      "statement": "If P(0) holds and P(k) for all k < n implies P(n), then P(n) holds for all natural numbers; the inductive hypothesis may assume all smaller cases (strong induction).",
+      "locator": "jeffe-notes:98-induction.2",
+      "prereqs": [
+        "jeffe-notes:smallest-counterexample"
+      ],
+      "aliases": [
+        "strong induction",
+        "mathematical induction"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "3 'Stamps and Recursion' shows that induction proofs and recursive algorithms are the same thing."
+    },
+    {
+      "id": "jeffe-notes:induction-practice",
+      "name": "Induction on numbers, summations and tilings",
+      "kind": "skill",
+      "statement": "Worked induction proofs: closed forms for summations, tiling a 2^n x 2^n board minus one square with L-triominoes, existence of binary representations, Fibonacci parity.",
+      "locator": "jeffe-notes:98-induction.5",
+      "prereqs": [
+        "jeffe-notes:induction-axiom"
+      ],
+      "aliases": [
+        "triomino tiling"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections 5 to 9."
+    },
+    {
+      "id": "jeffe-notes:structural-induction",
+      "name": "Induction on recursive functions and trees",
+      "kind": "skill",
+      "statement": "Properties of recursively defined functions and of trees are proved by induction following the recursive definition (e.g. on the subtrees of a full binary tree).",
+      "locator": "jeffe-notes:98-induction.10",
+      "prereqs": [
+        "jeffe-notes:induction-axiom"
+      ],
+      "aliases": [
+        "structural induction"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections 10 and 11."
+    },
+    {
+      "id": "jeffe-notes:guess-and-confirm",
+      "name": "Solving recurrences by guess and confirm",
+      "kind": "skill",
+      "statement": "Guess a closed form (from small cases or a recursion tree) and prove it by induction, adjusting constants or lower-order terms when the induction fails; worked for Hanoi, Fibonacci and mergesort.",
+      "locator": "jeffe-notes:99-recurrences.2",
+      "prereqs": [
+        "jeffe-notes:induction-axiom"
+      ],
+      "aliases": [
+        "substitution method"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:recursion-tree-method",
+      "name": "Divide-and-conquer recurrences by recursion trees",
+      "kind": "skill",
+      "statement": "For T(n) = rT(n/c) + f(n), the level sums form a series that is decreasing (root dominates), constant (Theta(f(n) log n)) or increasing (leaves dominate, Theta(n^{log_c r})).",
+      "locator": "jeffe-notes:99-recurrences.3",
+      "prereqs": [
+        "jeffe-notes:guess-and-confirm"
+      ],
+      "aliases": [
+        "master theorem"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Same content as textbook 1.7."
+    },
+    {
+      "id": "jeffe-notes:akra-bazzi",
+      "name": "The Akra-Bazzi method",
+      "kind": "result",
+      "statement": "For T(n) = sum a_i T(n/b_i) + f(n), let rho satisfy sum a_i b_i^{-rho} = 1; then T(n) = Theta(n^rho (1 + integral_1^n f(u)/u^{rho+1} du)).",
+      "locator": "jeffe-notes:99-recurrences.4",
+      "prereqs": [
+        "jeffe-notes:recursion-tree-method"
+      ],
+      "aliases": [
+        "Nuclear Bomb"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Stated without proof."
+    },
+    {
+      "id": "jeffe-notes:annihilators",
+      "name": "Linear recurrences by annihilators",
+      "kind": "skill",
+      "statement": "Write the recurrence with shift operators; the operator that annihilates the sequence factors as a product of (E - c) terms, and each factor (E - c)^k contributes a term polynomial(n) * c^n to the solution.",
+      "locator": "jeffe-notes:99-recurrences.5",
+      "prereqs": [
+        "jeffe-notes:guess-and-confirm"
+      ],
+      "aliases": [
+        "characteristic polynomial",
+        "operators"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Section 6 covers domain and range transformations."
+    },
+    {
+      "id": "jeffe-notes:polynomial-representations",
+      "name": "Polynomial representations",
+      "kind": "definition",
+      "statement": "A degree-(n-1) polynomial can be stored by its n coefficients, by its values at n distinct points, or by its roots; each makes different operations (evaluate, add, multiply) cheap.",
+      "locator": "jeffe-notes:A-fft.1",
+      "prereqs": [],
+      "aliases": [
+        "coefficient form",
+        "point-value form"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections A.1 and A.2."
+    },
+    {
+      "id": "jeffe-notes:vandermonde",
+      "name": "Converting by Vandermonde matrices",
+      "kind": "result",
+      "statement": "Evaluating at n points is multiplication by the Vandermonde matrix and interpolation by its inverse; done naively these take O(n^2) time.",
+      "locator": "jeffe-notes:A-fft.3",
+      "prereqs": [
+        "jeffe-notes:polynomial-representations"
+      ],
+      "aliases": [
+        "interpolation"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:fft",
+      "name": "The fast Fourier transform",
+      "kind": "result",
+      "statement": "Evaluating at the n-th roots of unity splits p(x) = p_even(x^2) + x p_odd(x^2) into two half-size problems at the (n/2)-th roots, giving the DFT in O(n log n) time.",
+      "locator": "jeffe-notes:A-fft.4",
+      "prereqs": [
+        "jeffe-notes:vandermonde",
+        "[divide and conquer]",
+        "[complex numbers]"
+      ],
+      "aliases": [
+        "FFT",
+        "DFT",
+        "discrete Fourier transform"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections A.4 to A.6."
+    },
+    {
+      "id": "jeffe-notes:inverse-fft",
+      "name": "Inverting the FFT",
+      "kind": "result",
+      "statement": "The inverse DFT is the DFT with conjugate roots of unity divided by n, so interpolation from values at roots of unity also takes O(n log n).",
+      "locator": "jeffe-notes:A-fft.7",
+      "prereqs": [
+        "jeffe-notes:fft"
+      ],
+      "aliases": [
+        "inverse DFT"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:fft-multiplication",
+      "name": "Fast polynomial multiplication",
+      "kind": "result",
+      "statement": "Multiply two polynomials by FFT to values, pointwise multiplication, and inverse FFT, in O(n log n) time.",
+      "locator": "jeffe-notes:A-fft.8",
+      "prereqs": [
+        "jeffe-notes:inverse-fft"
+      ],
+      "aliases": [
+        "convolution"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "A.9 describes the iterative radix-2 butterfly network."
+    },
+    {
+      "id": "jeffe-notes:faster-3sat",
+      "name": "Faster exponential algorithms for 3SAT",
+      "kind": "result",
+      "statement": "Branching on the literals of a short clause (with simplification) solves 3SAT in O(c^n poly(n)) time for c < 2, e.g. a recurrence like T(n) <= T(n-1)+T(n-2)+T(n-3) gives about 1.84^n.",
+      "locator": "jeffe-notes:B-fastexpo.1",
+      "prereqs": [
+        "[backtracking]",
+        "[3SAT]"
+      ],
+      "aliases": [
+        "branching algorithms"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Note marked 'Status: Unfinished'."
+    },
+    {
+      "id": "jeffe-notes:faster-mis",
+      "name": "Faster exponential algorithms for maximum independent set",
+      "kind": "result",
+      "statement": "Branching on a vertex of high degree (exclude it, or include it and delete its neighbours), with simple rules for low-degree vertices, gives MIS in O(c^n) time for c well below 2.",
+      "locator": "jeffe-notes:B-fastexpo.2",
+      "prereqs": [
+        "jeffe-notes:faster-3sat"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "B.3 (dynamic programming, Held-Karp TSP) is a stub."
+    },
+    {
+      "id": "jeffe-notes:dfa-minimization",
+      "name": "DFA minimization by dynamic programming",
+      "kind": "result",
+      "statement": "Two DFA states are distinguishable iff some string leads one to accept and the other to reject; filling the distinguishability table by string length computes the minimal DFA in polynomial time.",
+      "locator": "jeffe-notes:C-automata-dynprog.1",
+      "prereqs": [
+        "[DFA]",
+        "[dynamic programming]"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:nfa-acceptance",
+      "name": "NFA acceptance and regular-expression matching",
+      "kind": "result",
+      "statement": "Whether an NFA (or a regular expression, via an equivalent NFA or a direct recurrence on subexpressions) accepts a string of length n is decided by DP over (position, state) in polynomial time.",
+      "locator": "jeffe-notes:C-automata-dynprog.2",
+      "prereqs": [
+        "jeffe-notes:dfa-minimization"
+      ],
+      "aliases": [
+        "regex matching"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections C.2 and C.3."
+    },
+    {
+      "id": "jeffe-notes:cyk-parsing",
+      "name": "Context-free parsing (CYK)",
+      "kind": "result",
+      "statement": "For a grammar in Chomsky normal form, whether a nonterminal derives each substring is computed by DP over substring intervals in O(n^3) time.",
+      "locator": "jeffe-notes:C-automata-dynprog.4",
+      "prereqs": [
+        "jeffe-notes:nfa-acceptance"
+      ],
+      "aliases": [
+        "CYK",
+        "Cocke-Younger-Kasami"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:hirschberg",
+      "name": "Saving space by divide and conquer (Hirschberg)",
+      "kind": "result",
+      "statement": "An optimal edit-distance alignment can be recovered in O(mn) time and O(m + n) space by finding where the optimal path crosses the middle row and recursing on both halves.",
+      "locator": "jeffe-notes:D-faster-dynprog.1",
+      "prereqs": [
+        "[edit distance]",
+        "[divide and conquer]"
+      ],
+      "aliases": [
+        "Hirschberg's algorithm"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:sparse-dp",
+      "name": "Saving time with sparseness",
+      "kind": "result",
+      "statement": "When few table entries matter (e.g. few matching character pairs in LCS), the DP can be computed from those key entries only, in time near-linear in their number.",
+      "locator": "jeffe-notes:D-faster-dynprog.2",
+      "prereqs": [
+        "jeffe-notes:hirschberg"
+      ],
+      "aliases": [
+        "Hunt-Szymanski"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:knuth-monotonicity",
+      "name": "Monotone optimal roots (Knuth's speedup)",
+      "kind": "result",
+      "statement": "For optimal binary search trees, OptRoot[i, j-1] <= OptRoot[i, j] <= OptRoot[i+1, j], which limits each minimization and reduces the time from O(n^3) to O(n^2).",
+      "locator": "jeffe-notes:D-faster-dynprog.3",
+      "prereqs": [
+        "[optimal binary search trees]"
+      ],
+      "aliases": [
+        "Knuth optimization",
+        "Knuth-Yao"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections D.3 and D.4."
+    },
+    {
+      "id": "jeffe-notes:smawk",
+      "name": "Total monotonicity and the SMAWK algorithm",
+      "kind": "result",
+      "statement": "In a totally monotone matrix the row minima can be found in O(m + n) time by SMAWK (reduce columns, recurse on even rows, interpolate odd rows), which speeds up many DPs.",
+      "locator": "jeffe-notes:D-faster-dynprog.5",
+      "prereqs": [
+        "jeffe-notes:knuth-monotonicity"
+      ],
+      "aliases": [
+        "SMAWK",
+        "Monge arrays"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections D.5 to D.7."
+    },
+    {
+      "id": "jeffe-notes:four-russians",
+      "name": "The Four Russians speedup",
+      "kind": "result",
+      "statement": "Precomputing all small t x t blocks of a DP table with tiny alphabets, for t = Theta(log n), cuts the work by a factor of about log^2 n (e.g. edit distance in O(n^2 / log n)).",
+      "locator": "jeffe-notes:D-faster-dynprog.8",
+      "prereqs": [
+        "jeffe-notes:hirschberg"
+      ],
+      "aliases": [
+        "method of Four Russians"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:matroid",
+      "name": "Matroids and the greedy algorithm",
+      "kind": "result",
+      "statement": "A matroid is a ground set with a non-empty family of independent sets closed under subsets and satisfying the exchange property; for every weight function the greedy algorithm finds a maximum-weight basis exactly when the structure is a matroid.",
+      "locator": "jeffe-notes:E-matroids.1",
+      "prereqs": [
+        "[greedy algorithms]"
+      ],
+      "aliases": [
+        "graphic matroid",
+        "exchange property"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:scheduling-deadlines",
+      "name": "Scheduling unit jobs with deadlines",
+      "kind": "result",
+      "statement": "Sets of unit-time jobs that can all meet their deadlines form a matroid, so greedily taking jobs in decreasing profit order while feasible maximizes total profit.",
+      "locator": "jeffe-notes:E-matroids.2",
+      "prereqs": [
+        "jeffe-notes:matroid"
+      ],
+      "aliases": [
+        "job sequencing with deadlines"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:unbalanced-flow",
+      "name": "Unbalanced flows: supplies and demands",
+      "kind": "definition",
+      "statement": "Generalize flows by giving each vertex a balance (supply or demand) and edges lower and upper bounds; feasibility reduces to one maximum flow from a super-source to a super-sink.",
+      "locator": "jeffe-notes:F-pseudoflows.1",
+      "prereqs": [
+        "[maximum flow]"
+      ],
+      "aliases": [
+        "circulation with demands",
+        "lower bounds"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections F.1 and F.2."
+    },
+    {
+      "id": "jeffe-notes:pseudoflow",
+      "name": "Pseudoflows and augmenting between imbalances",
+      "kind": "result",
+      "statement": "A pseudoflow respects capacities but not conservation; repeatedly pushing flow along residual paths from excess to deficit vertices yields a feasible flow if one exists.",
+      "locator": "jeffe-notes:F-pseudoflows.3",
+      "prereqs": [
+        "jeffe-notes:unbalanced-flow"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "F.4: two-stage variations (feasible flow, then max flow in the residual graph)."
+    },
+    {
+      "id": "jeffe-notes:min-cost-circulation",
+      "name": "Minimum-cost circulations and cycle canceling",
+      "kind": "result",
+      "statement": "A circulation is minimum-cost iff its residual graph has no negative-cost cycle; repeatedly canceling negative cycles (found by Bellman-Ford) terminates with an optimal integral circulation.",
+      "locator": "jeffe-notes:G-mincostflow.1",
+      "prereqs": [
+        "jeffe-notes:unbalanced-flow",
+        "[Bellman-Ford]"
+      ],
+      "aliases": [
+        "cycle canceling"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:successive-shortest-paths",
+      "name": "Successive shortest paths",
+      "kind": "result",
+      "statement": "Augmenting along cheapest residual paths from supply to demand vertices maintains a minimum-cost flow at every step.",
+      "locator": "jeffe-notes:G-mincostflow.2",
+      "prereqs": [
+        "jeffe-notes:min-cost-circulation"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:reduced-costs",
+      "name": "Node potentials and reduced costs",
+      "kind": "result",
+      "statement": "With potentials pi equal to shortest-path distances, the reduced costs c(u->v) + pi(u) - pi(v) are non-negative, so each successive-shortest-path step can use Dijkstra.",
+      "locator": "jeffe-notes:G-mincostflow.3",
+      "prereqs": [
+        "jeffe-notes:successive-shortest-paths"
+      ],
+      "aliases": [
+        "Johnson reweighting"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "G.4 covers transshipment and transportation problems."
+    },
+    {
+      "id": "jeffe-notes:linear-programming",
+      "name": "Linear programming",
+      "kind": "definition",
+      "statement": "A linear program maximizes or minimizes a linear objective over the points satisfying a finite set of linear inequalities; in canonical form: maximize c.x subject to Ax <= b, x >= 0.",
+      "locator": "jeffe-notes:H-lp.1",
+      "prereqs": [],
+      "aliases": [
+        "LP"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:lp-geometry",
+      "name": "The geometry of linear programs",
+      "kind": "result",
+      "statement": "The feasible region is a convex polyhedron; a bounded feasible LP attains its optimum at a vertex, and an LP may be infeasible or unbounded.",
+      "locator": "jeffe-notes:H-lp.2",
+      "prereqs": [
+        "jeffe-notes:linear-programming"
+      ],
+      "aliases": [
+        "feasible region",
+        "polyhedron"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:lp-formulations",
+      "name": "Formulating problems as linear programs",
+      "kind": "skill",
+      "statement": "Shortest paths, maximum flows and minimum cuts (and many other problems) can be written as linear programs.",
+      "locator": "jeffe-notes:H-lp.3",
+      "prereqs": [
+        "jeffe-notes:linear-programming"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:lp-duality",
+      "name": "Linear programming duality",
+      "kind": "result",
+      "statement": "Every LP has a dual whose feasible solutions bound the primal (weak duality); if either has an optimum, both do and the optima are equal (strong duality), proved via the fundamental theorem / Farkas-type separation.",
+      "locator": "jeffe-notes:H-lp.4",
+      "prereqs": [
+        "jeffe-notes:lp-geometry"
+      ],
+      "aliases": [
+        "weak duality",
+        "strong duality",
+        "Farkas lemma"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sections H.4 to H.7."
+    },
+    {
+      "id": "jeffe-notes:complementary-slackness",
+      "name": "Complementary slackness",
+      "kind": "result",
+      "statement": "Feasible primal x and dual y are both optimal iff every primal variable that is positive has a tight dual constraint and every dual variable that is positive has a tight primal constraint.",
+      "locator": "jeffe-notes:H-lp.8",
+      "prereqs": [
+        "jeffe-notes:lp-duality"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:simplex",
+      "name": "The simplex algorithm",
+      "kind": "result",
+      "statement": "Starting from a feasible basis, the simplex algorithm repeatedly pivots to an adjacent basis that improves the objective until the current vertex is locally, hence globally, optimal.",
+      "locator": "jeffe-notes:I-simplex.2",
+      "prereqs": [
+        "jeffe-notes:lp-geometry"
+      ],
+      "aliases": [
+        "pivoting"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "I.1 defines bases, feasibility and local optimality; I.3 finds an initial basis."
+    },
+    {
+      "id": "jeffe-notes:network-simplex",
+      "name": "Network simplex",
+      "kind": "result",
+      "statement": "For flow LPs, bases correspond to spanning trees and pivots to exchanging tree edges, giving a combinatorial version of simplex for minimum-cost flows.",
+      "locator": "jeffe-notes:I-simplex.4",
+      "prereqs": [
+        "jeffe-notes:simplex",
+        "jeffe-notes:min-cost-circulation"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:seidel-lp",
+      "name": "Linear expected time in fixed dimension",
+      "kind": "result",
+      "statement": "A randomized incremental algorithm (Seidel) solves an LP with n constraints in d variables in O(d! n) expected time.",
+      "locator": "jeffe-notes:I-simplex.5",
+      "prereqs": [
+        "jeffe-notes:simplex"
+      ],
+      "aliases": [
+        "Seidel's algorithm"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Section marked as needing revision."
+    },
+    {
+      "id": "jeffe-notes:approximation-ratio",
+      "name": "Approximation algorithms and ratios",
+      "kind": "definition",
+      "statement": "An algorithm is an alpha-approximation if on every instance its output is within a factor alpha of the optimum (A(X) <= alpha OPT(X) for minimization); proofs compare against a lower bound on OPT.",
+      "locator": "jeffe-notes:J-approx.2",
+      "prereqs": [
+        "[NP-hardness]"
+      ],
+      "aliases": [
+        "approximation ratio"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:load-balancing",
+      "name": "Greedy load balancing",
+      "kind": "result",
+      "statement": "Assigning each job to the currently least-loaded machine gives makespan at most 2 OPT; sorting jobs in decreasing order first improves this to 3/2 OPT (and in fact 4/3 - 1/(3m)).",
+      "locator": "jeffe-notes:J-approx.1",
+      "prereqs": [
+        "jeffe-notes:approximation-ratio"
+      ],
+      "aliases": [
+        "list scheduling",
+        "LPT",
+        "makespan"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:vertex-cover-approx",
+      "name": "Vertex cover approximation",
+      "kind": "result",
+      "statement": "Greedily taking a vertex of maximum degree is an O(log n)-approximation; the 'obviously stupid' rule of taking both endpoints of any remaining edge is a 2-approximation, essentially the best known, and extends to hitting set.",
+      "locator": "jeffe-notes:J-approx.3",
+      "prereqs": [
+        "jeffe-notes:approximation-ratio"
+      ],
+      "aliases": [
+        "maximal matching"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections J.3 and J.5."
+    },
+    {
+      "id": "jeffe-notes:set-cover-greedy",
+      "name": "Greedy set cover and hitting set",
+      "kind": "result",
+      "statement": "Repeatedly choosing the set that covers the most uncovered elements is an H_n = O(log n) approximation for set cover (and for hitting set).",
+      "locator": "jeffe-notes:J-approx.4",
+      "prereqs": [
+        "jeffe-notes:approximation-ratio"
+      ],
+      "aliases": [
+        "harmonic number bound"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe-notes:lp-rounding",
+      "name": "LP rounding for weighted vertex cover",
+      "kind": "result",
+      "statement": "Solve the LP relaxation and take every vertex with x*(v) >= 1/2; the result is a vertex cover of weight at most 2 OPT. Randomized rounding (take v with probability x*(v), repeated) gives O(log n) for set cover.",
+      "locator": "jeffe-notes:J-approx.6",
+      "prereqs": [
+        "jeffe-notes:vertex-cover-approx",
+        "[linear programming]"
+      ],
+      "aliases": [
+        "randomized rounding"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections J.6 and J.7."
+    },
+    {
+      "id": "jeffe-notes:tsp-approx",
+      "name": "Traveling salesman: hardness and metric approximation",
+      "kind": "result",
+      "statement": "General TSP has no polynomial-time approximation within any factor unless P=NP, but for metric TSP doubling an MST and shortcutting gives a 2-approximation (Christofides improves to 3/2).",
+      "locator": "jeffe-notes:J-approx.8",
+      "prereqs": [
+        "jeffe-notes:approximation-ratio",
+        "[minimum spanning trees]"
+      ],
+      "aliases": [
+        "metric TSP",
+        "Christofides"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections J.8 and J.9."
+    },
+    {
+      "id": "jeffe-notes:k-center",
+      "name": "k-center clustering",
+      "kind": "result",
+      "statement": "Gonzalez's algorithm picks each next center as the point farthest from the current centers, giving a 2-approximation; doing better than 2 is NP-hard.",
+      "locator": "jeffe-notes:J-approx.10",
+      "prereqs": [
+        "jeffe-notes:approximation-ratio"
+      ],
+      "aliases": [
+        "farthest-first traversal",
+        "Gonzalez"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "J.11 approximation schemes for clustering."
+    },
+    {
+      "id": "jeffe-notes:subset-sum-fptas",
+      "name": "An FPTAS for subset sum",
+      "kind": "result",
+      "statement": "Trimming the list of reachable sums so that no two kept values are within a factor (1 + eps/2n) gives a (1 - eps)-approximation in time polynomial in n and 1/eps.",
+      "locator": "jeffe-notes:J-approx.12",
+      "prereqs": [
+        "jeffe-notes:approximation-ratio",
+        "[subset sum DP]"
+      ],
+      "aliases": [
+        "fully polynomial-time approximation scheme"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    }
+  ]
+}

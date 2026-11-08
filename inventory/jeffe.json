@@ -1,0 +1,2096 @@
+{
+  "source": "jeffe",
+  "title": "Algorithms, Jeff Erickson (1st edition, 2019), chapters 0-12",
+  "license": "CC BY 4.0",
+  "locator_scheme": "jeffe:<chapter>.<section> using the printed chapter (0-12) and section numbers; section numbers are garbled in the cache and were reconstructed from heading order and running heads. jeffe:6.0 means a chapter's preamble before its first numbered section.",
+  "has_code_meaning": "true = the section prints pseudocode for it (Erickson gives no runnable code).",
+  "style": "Voice: first-person, conversational and opinionated ('I', 'we'), dry humour and long historical footnotes (Egyptian scribes, Sanskrit prosodists, the Recursion Fairy, 'Greed is stupid', 'Dynamic programming is not about filling in tables; it's about smart recursion'). Every chapter opens with epigraphs. He insists that a complete algorithm description has four parts (what / how / why / how fast), that correctness is proved, usually by induction ('Induction is our friend'), and that algorithms are written for 'a competent but skeptical programmer'. Motivation: ideas arrive through a concrete, often historical, puzzle or problem (multiplication, Hanoi, prosody meters, apportionment, n Queens), then a naive recursive/backtracking solution, then the observation that motivates the improvement (repeated subproblems -> DP, the index formulation -> table). He prefers one generic algorithm with instances over a zoo: whatever-first search (stack/queue/priority queue), 'the only MST algorithm' (safe/useless edges), 'the only SSSP algorithm' (Ford's relax-tense-edges). Greedy comes after DP and is treated with suspicion (exchange arguments required). Notation: arrays are usually 1-indexed A[1 .. n] with subarrays A[i .. j] (0-indexed A[0 .. n-1] only when convenient); pseudocode has SMALL-CAPS procedure names (MergeSort, PeasantMultiply, WhateverFirstSearch; these come out garbled in the cached text), assignment by a left arrow, comments in double angle brackets <<Recurse!>>, indentation for blocks, no semicolons or types, loops written explicitly ('never write and so on'). Graphs: V and E denote both the sets and their sizes (O(V + E)); directed edges u->v, undirected uv; dist(v), pred(v), parent(v); v.pre / v.post clocks. Recurrences T(n); memo tables named after the recursive function (LIS[i, j], Edit[i, j]); log means log base 2. Exercises say 'Describe and analyze an algorithm ...' and expect the four-part write-up; harder exercises and optional sections carry a heart/star marker (garbled as special glyphs). The lecture notes (jeffe-notes) share the voice and pseudocode, are older (2013-2018), number sections per lecture, mark harder exercises with '?' or a star, and several sections are unfinished (marked with a construction glyph).",
+  "exercises_note": "Exercises sit at the end of each chapter, so counts are per chapter here and every row's exercises is 0. Exercise numbers do not survive in the cache (the digit font is lost), so counts were obtained by detecting exercise-start lines in both the cached layout text and a fresh non-layout pdftotext pass of the cached PDFs, reconciling the two and removing false starts (sentence fragments after an elided year). Expect +-1 per chapter. by_section uses the topical subheadings Erickson prints inside the exercise lists, not the chapter's sections. keyed is 0 throughout: no answers are printed, only occasional [Hint: ...] brackets.",
+  "exercise_counts": [
+    {
+      "locator": "jeffe:0.exercises",
+      "printed": 5,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:1.exercises",
+      "printed": 42,
+      "keyed": 0,
+      "by_section": {
+        "Tower of Hanoi": 5,
+        "Recursion Trees": 3,
+        "Sorting": 7,
+        "Selection": 6,
+        "Arithmetic": 4,
+        "Arrays": 11,
+        "Trees": 6
+      }
+    },
+    {
+      "locator": "jeffe:2.exercises",
+      "printed": 6,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:3.exercises",
+      "printed": 53,
+      "keyed": 0,
+      "by_section": {
+        "Sequences/Arrays": 30,
+        "Splitting Sequences/Arrays": 14,
+        "Trees and Subtrees": 9
+      }
+    },
+    {
+      "locator": "jeffe:4.exercises",
+      "printed": 25,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:5.exercises",
+      "printed": 28,
+      "keyed": 0,
+      "by_section": {
+        "Graphs": 6,
+        "Traversal Algorithms": 4,
+        "Reductions": 18
+      }
+    },
+    {
+      "locator": "jeffe:6.exercises",
+      "printed": 26,
+      "keyed": 0,
+      "by_section": {
+        "Depth-first search, topological sort, and strong components": 12,
+        "Dynamic Programming": 14
+      }
+    },
+    {
+      "locator": "jeffe:7.exercises",
+      "printed": 10,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:8.exercises",
+      "printed": 27,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:9.exercises",
+      "printed": 13,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:10.exercises",
+      "printed": 21,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:11.exercises",
+      "printed": 22,
+      "keyed": 0,
+      "by_section": {}
+    },
+    {
+      "locator": "jeffe:12.exercises",
+      "printed": 42,
+      "keyed": 0,
+      "by_section": {}
+    }
+  ],
+  "concepts": [
+    {
+      "id": "jeffe:algorithm",
+      "name": "What an algorithm is",
+      "kind": "definition",
+      "statement": "An algorithm is an explicit, precise, unambiguous, mechanically executable sequence of elementary instructions, usually intended to accomplish a specific purpose.",
+      "locator": "jeffe:0.1",
+      "prereqs": [],
+      "aliases": [
+        "algorithm definition"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:lattice-multiplication",
+      "name": "Lattice (grade-school) multiplication",
+      "kind": "result",
+      "statement": "Multiplying an m-digit number by an n-digit number digit by digit, summing partial products by place value, takes O(mn) time.",
+      "locator": "jeffe:0.2",
+      "prereqs": [
+        "jeffe:algorithm"
+      ],
+      "aliases": [
+        "grade-school multiplication",
+        "long multiplication"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:peasant-multiplication",
+      "name": "Duplation and mediation (peasant multiplication)",
+      "kind": "result",
+      "statement": "x*y can be computed using only halving, doubling, parity tests and addition: halve x and double y repeatedly, summing the y values for which x is odd; it takes O(mn) digit operations.",
+      "locator": "jeffe:0.2",
+      "prereqs": [
+        "jeffe:algorithm"
+      ],
+      "aliases": [
+        "Russian peasant multiplication",
+        "Egyptian multiplication",
+        "PeasantMultiply"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Reused in 1.2 as the first recursive example."
+    },
+    {
+      "id": "jeffe:huntington-hill-apportionment",
+      "name": "Huntington-Hill apportionment",
+      "kind": "result",
+      "statement": "Seats can be apportioned by repeatedly giving the next seat to the state with the largest priority P/sqrt(r(r+1)), using a priority queue; n states and R seats take O(R log n) time.",
+      "locator": "jeffe:0.3",
+      "prereqs": [
+        "jeffe:algorithm",
+        "[priority queue]"
+      ],
+      "aliases": [
+        "congressional apportionment"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Used again in 1.1 as an example of reduction to a priority-queue black box."
+    },
+    {
+      "id": "jeffe:bad-algorithm-underspecified",
+      "name": "What makes a description not an algorithm",
+      "kind": "idea",
+      "statement": "Steve Martin's 'how to be a millionaire and never pay taxes' (step one: get a million dollars) is not an algorithm because its first step is not an elementary, unambiguous instruction, though it is a perfectly good reduction.",
+      "locator": "jeffe:0.4",
+      "prereqs": [
+        "jeffe:algorithm"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Light section; borderline for a card."
+    },
+    {
+      "id": "jeffe:describing-algorithms",
+      "name": "Describing an algorithm: what, how, why, how fast",
+      "kind": "skill",
+      "statement": "A complete algorithm description gives a precise problem specification, the algorithm itself in pseudocode/structured English (loops written as loops, recursion as recursion), a correctness proof, and a running-time analysis.",
+      "locator": "jeffe:0.5",
+      "prereqs": [
+        "jeffe:algorithm"
+      ],
+      "aliases": [
+        "problem specification",
+        "pseudocode"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Sets the 'describe and analyze' contract that every exercise assumes."
+    },
+    {
+      "id": "jeffe:correctness-proof",
+      "name": "Proving an algorithm correct",
+      "kind": "skill",
+      "statement": "Correctness must hold for every input and must be proved, usually by induction; 'obvious' is often a synonym for 'wrong'.",
+      "locator": "jeffe:0.6",
+      "prereqs": [
+        "jeffe:describing-algorithms",
+        "[mathematical induction]"
+      ],
+      "aliases": [
+        "correctness"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:running-time-analysis",
+      "name": "Asymptotic running-time analysis",
+      "kind": "skill",
+      "statement": "Running time is the worst-case number of elementary operations as a function of input size, stated in O/Omega/Theta notation, ignoring constant factors.",
+      "locator": "jeffe:0.6",
+      "prereqs": [
+        "jeffe:describing-algorithms",
+        "[big-O notation]"
+      ],
+      "aliases": [
+        "worst-case analysis",
+        "Big-O"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Assumes big-O is known from prerequisite courses."
+    },
+    {
+      "id": "jeffe:reduction",
+      "name": "Reduction",
+      "kind": "idea",
+      "statement": "Reducing problem X to problem Y means solving X with an algorithm for Y used as a black box; correctness of the X algorithm may not depend on how Y is solved.",
+      "locator": "jeffe:1.1",
+      "prereqs": [
+        "jeffe:algorithm"
+      ],
+      "aliases": [
+        "black-box subroutine"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:recursion",
+      "name": "Recursion: simplify and delegate (the Recursion Fairy)",
+      "kind": "idea",
+      "statement": "Solve small instances directly; otherwise reduce to strictly simpler instances of the same problem and trust the recursive calls (the induction hypothesis); every chain of reductions must reach a base case.",
+      "locator": "jeffe:1.2",
+      "prereqs": [
+        "jeffe:reduction"
+      ],
+      "aliases": [
+        "Recursion Fairy",
+        "base case",
+        "recursive call"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:tower-of-hanoi",
+      "name": "Tower of Hanoi",
+      "kind": "result",
+      "statement": "Move the top n-1 disks to the spare peg, move the largest disk, move the n-1 disks back on top; this takes T(n)=2T(n-1)+1 = 2^n - 1 moves, which is optimal.",
+      "locator": "jeffe:1.3",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "Hanoi"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:mergesort",
+      "name": "Mergesort",
+      "kind": "result",
+      "statement": "Split the array in halves, sort each recursively, and merge the sorted halves in linear time; correctness follows by induction and the running time satisfies T(n)=2T(n/2)+O(n)=O(n log n).",
+      "locator": "jeffe:1.4",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "merge sort",
+        "Merge"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Includes the induction proof of Merge."
+    },
+    {
+      "id": "jeffe:quicksort",
+      "name": "Quicksort",
+      "kind": "result",
+      "statement": "Choose a pivot, partition the array around it, and recursively sort both sides; worst case O(n^2) with bad pivots, O(n log n) if the pivot is always near the median.",
+      "locator": "jeffe:1.5",
+      "prereqs": [
+        "jeffe:recursion",
+        "jeffe:partition"
+      ],
+      "aliases": [
+        "quick sort"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Subsection 'Good pivots'."
+    },
+    {
+      "id": "jeffe:partition",
+      "name": "In-place partition around a pivot",
+      "kind": "skill",
+      "statement": "Partition rearranges A[1..n] in place in O(n) time so that elements smaller than the pivot precede it and larger ones follow, returning the pivot's final index.",
+      "locator": "jeffe:1.5",
+      "prereqs": [],
+      "aliases": [
+        "Partition"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:divide-and-conquer",
+      "name": "The divide-and-conquer pattern",
+      "kind": "idea",
+      "statement": "Divide the instance into smaller independent instances, delegate each to recursion, and combine their solutions; with a base case for constant-size inputs.",
+      "locator": "jeffe:1.6",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "divide and conquer"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:recursion-trees",
+      "name": "Recursion trees for divide-and-conquer recurrences",
+      "kind": "skill",
+      "statement": "To solve T(n)=rT(n/c)+f(n), sum the work level by level: if level sums decrease geometrically the root dominates (O(f(n))), if equal it is O(f(n) log n), if increasing the leaves dominate (O(n^{log_c r})).",
+      "locator": "jeffe:1.7",
+      "prereqs": [
+        "jeffe:divide-and-conquer"
+      ],
+      "aliases": [
+        "master theorem"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Also covers ignoring floors/ceilings and domain transformations; subsection 'Sanity checking'."
+    },
+    {
+      "id": "jeffe:quickselect",
+      "name": "Quickselect",
+      "kind": "result",
+      "statement": "To find the k-th smallest element, partition around a pivot and recurse only into the side containing rank k; worst case O(n^2), linear if pivots are good.",
+      "locator": "jeffe:1.8",
+      "prereqs": [
+        "jeffe:partition"
+      ],
+      "aliases": [
+        "QuickSelect",
+        "selection"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Section marked optional/advanced in the book."
+    },
+    {
+      "id": "jeffe:median-of-medians",
+      "name": "Linear-time selection (median of medians)",
+      "kind": "result",
+      "statement": "Choosing the pivot as the median of the medians of groups of five guarantees each side has at most about 7n/10 elements, giving T(n) <= T(n/5)+T(7n/10)+O(n) = O(n).",
+      "locator": "jeffe:1.8",
+      "prereqs": [
+        "jeffe:quickselect",
+        "jeffe:recursion-trees"
+      ],
+      "aliases": [
+        "BFPRT",
+        "Blum-Floyd-Pratt-Rivest-Tarjan",
+        "MomSelect"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Optional section."
+    },
+    {
+      "id": "jeffe:karatsuba",
+      "name": "Karatsuba multiplication",
+      "kind": "result",
+      "statement": "Two n-digit numbers can be multiplied with three recursive half-size multiplications instead of four, giving O(n^{log_2 3}) = O(n^1.585) time.",
+      "locator": "jeffe:1.9",
+      "prereqs": [
+        "jeffe:divide-and-conquer",
+        "jeffe:recursion-trees",
+        "jeffe:lattice-multiplication"
+      ],
+      "aliases": [
+        "fast multiplication"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:fast-exponentiation",
+      "name": "Exponentiation by repeated squaring",
+      "kind": "result",
+      "statement": "a^n can be computed with O(log n) multiplications using a^n = (a^{n/2})^2 for even n and a*(a^{(n-1)/2})^2 for odd n (Pingala's and the peasant algorithms).",
+      "locator": "jeffe:1.10",
+      "prereqs": [
+        "jeffe:recursion",
+        "jeffe:peasant-multiplication"
+      ],
+      "aliases": [
+        "binary exponentiation",
+        "PingalaPower",
+        "addition chains"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:n-queens",
+      "name": "n Queens by backtracking",
+      "kind": "result",
+      "statement": "Place queens row by row; for each row try every column that does not attack a previously placed queen and recurse, abandoning partial placements that cannot be extended.",
+      "locator": "jeffe:2.1",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "eight queens",
+        "PlaceQueens"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:game-trees",
+      "name": "Game trees and minimax",
+      "kind": "result",
+      "statement": "A state in a two-player game with perfect information is good for the player to move iff some move leads to a state that is bad for the opponent; recursive search of the game tree decides any such game.",
+      "locator": "jeffe:2.2",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "minimax",
+        "PlayAnyGame"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:subset-sum-backtracking",
+      "name": "Subset sum by backtracking",
+      "kind": "result",
+      "statement": "Whether some subset of X[1..n] sums to T is decided by recursing on whether X[n] is in the subset: SubsetSum(X[1..n-1], T) or SubsetSum(X[1..n-1], T - X[n]); O(2^n) time.",
+      "locator": "jeffe:2.3",
+      "prereqs": [
+        "jeffe:backtracking-pattern"
+      ],
+      "aliases": [
+        "SubsetSum"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:backtracking-pattern",
+      "name": "The backtracking pattern",
+      "kind": "idea",
+      "statement": "A backtracking algorithm builds a solution one decision at a time; each recursive call receives the remaining input and a summary of past decisions, tries every option for the next decision, and recurses.",
+      "locator": "jeffe:2.4",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "backtracking"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:text-segmentation",
+      "name": "Text segmentation (word break) by backtracking",
+      "kind": "result",
+      "statement": "A string A[1..n] can be split into words iff some prefix A[1..i] is a word and the suffix A[i+1..n] is splittable; the backtracking algorithm runs in exponential time in the worst case.",
+      "locator": "jeffe:2.5",
+      "prereqs": [
+        "jeffe:backtracking-pattern"
+      ],
+      "aliases": [
+        "word break",
+        "Splittable",
+        "Interpunctio Verborum"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:index-formulation",
+      "name": "Index formulation of a recurrence",
+      "kind": "skill",
+      "statement": "Rewrite a recursive algorithm so every subproblem is identified by a few integer indices into the fixed global input (e.g. Splittable(i) for suffix A[i..n]); this exposes how many distinct subproblems exist.",
+      "locator": "jeffe:2.5",
+      "prereqs": [
+        "jeffe:text-segmentation"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Subsection 'Index formulation'; the bridge to Chapter 3."
+    },
+    {
+      "id": "jeffe:lis-backtracking",
+      "name": "Longest increasing subsequence by backtracking",
+      "kind": "result",
+      "statement": "LIS can be computed by recursion either on (prev, j) - the length of the longest increasing subsequence of A[j..n] whose elements all exceed A[prev] - or on the index of the first element chosen (take 2).",
+      "locator": "jeffe:2.6",
+      "prereqs": [
+        "jeffe:backtracking-pattern",
+        "jeffe:index-formulation"
+      ],
+      "aliases": [
+        "LISbigger",
+        "LISfirst"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 2.6 and 2.7 give two recurrences."
+    },
+    {
+      "id": "jeffe:obst-recurrence",
+      "name": "Optimal binary search tree recurrence",
+      "kind": "result",
+      "statement": "Given key frequencies f[1..n], the cost of an optimal BST satisfies OptCost(i,k) = sum f[i..k] + min over roots r of OptCost(i,r-1)+OptCost(r+1,k); backtracking evaluates it in exponential time.",
+      "locator": "jeffe:2.8",
+      "prereqs": [
+        "jeffe:backtracking-pattern",
+        "[binary search tree]"
+      ],
+      "aliases": [
+        "OBST"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:memoization",
+      "name": "Memoization",
+      "kind": "skill",
+      "statement": "Store the result of each recursive subproblem the first time it is computed and look it up on later calls; for Fibonacci this turns exponential time into O(n) additions.",
+      "locator": "jeffe:3.1",
+      "prereqs": [
+        "jeffe:recursion"
+      ],
+      "aliases": [
+        "memoized recursion",
+        "MemFibo"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Motivated by Virahanka/Pingala's prosody counts (Matravrtta)."
+    },
+    {
+      "id": "jeffe:dp-fill-deliberately",
+      "name": "Dynamic programming: filling the table deliberately",
+      "kind": "skill",
+      "statement": "Instead of memoizing lazily, evaluate subproblems in an order that respects their dependencies (e.g. increasing i) in an array; often only the last few entries need to be kept, saving space.",
+      "locator": "jeffe:3.1",
+      "prereqs": [
+        "jeffe:memoization"
+      ],
+      "aliases": [
+        "bottom-up DP",
+        "tabulation",
+        "IterFibo"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:fast-fibonacci",
+      "name": "Even faster Fibonacci numbers",
+      "kind": "result",
+      "statement": "F_n can be computed with O(log n) arithmetic operations by raising the 2x2 matrix [[0,1],[1,1]] to the n-th power by repeated squaring; but the numbers have Theta(n) bits, so real cost depends on multiplication.",
+      "locator": "jeffe:3.2",
+      "prereqs": [
+        "jeffe:dp-fill-deliberately",
+        "jeffe:fast-exponentiation"
+      ],
+      "aliases": [
+        "matrix Fibonacci"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Optional aside."
+    },
+    {
+      "id": "jeffe:text-segmentation-dp",
+      "name": "Text segmentation by dynamic programming",
+      "kind": "result",
+      "statement": "Memoizing Splittable(i) over i=1..n+1 and filling from n+1 down gives an O(n^2) algorithm (given constant-time IsWord).",
+      "locator": "jeffe:3.3",
+      "prereqs": [
+        "jeffe:index-formulation",
+        "jeffe:dp-fill-deliberately"
+      ],
+      "aliases": [
+        "word break DP"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:dp-pattern",
+      "name": "Dynamic programming is smart recursion",
+      "kind": "idea",
+      "statement": "Dynamic programming is recursion without repetition: specify the subproblem in English, give a recurrence, identify subproblems by indices, choose a memoization structure, find a dependency-respecting evaluation order, and analyze time and space.",
+      "locator": "jeffe:3.4",
+      "prereqs": [
+        "jeffe:memoization",
+        "jeffe:dp-fill-deliberately",
+        "jeffe:backtracking-pattern"
+      ],
+      "aliases": [
+        "DP"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Erickson: 'Dynamic programming is not about filling in tables. It's about smart recursion!'"
+    },
+    {
+      "id": "jeffe:greed-is-stupid",
+      "name": "Warning: greed is stupid",
+      "kind": "idea",
+      "statement": "Greedy choices usually give wrong answers for optimization problems (shown with a greedy counterexample); a greedy algorithm needs a proof, so the default is to try recursion/DP first.",
+      "locator": "jeffe:3.5",
+      "prereqs": [
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:lis-dp",
+      "name": "Longest increasing subsequence by DP",
+      "kind": "result",
+      "statement": "Memoizing LISbigger over all (i, j) pairs gives O(n^2) time; the 'first element' recurrence LISfirst(i) = 1 + max over j>i with A[j]>A[i] also gives O(n^2).",
+      "locator": "jeffe:3.6",
+      "prereqs": [
+        "jeffe:lis-backtracking",
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "LIS"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:edit-distance",
+      "name": "Edit distance",
+      "kind": "result",
+      "statement": "The minimum number of insertions, deletions and substitutions turning A[1..m] into B[1..n] satisfies Edit(i,j) = min(Edit(i-1,j)+1, Edit(i,j-1)+1, Edit(i-1,j-1)+[A[i]!=B[j]]), computable in O(mn) time.",
+      "locator": "jeffe:3.7",
+      "prereqs": [
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "Levenshtein distance"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Recursive structure via the gap representation of alignments."
+    },
+    {
+      "id": "jeffe:subset-sum-dp",
+      "name": "Subset sum by DP (pseudo-polynomial)",
+      "kind": "result",
+      "statement": "Memoizing SS(i, t) for 1<=i<=n, 0<=t<=T solves subset sum in O(nT) time, which is not polynomial in the input size.",
+      "locator": "jeffe:3.8",
+      "prereqs": [
+        "jeffe:subset-sum-backtracking",
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "knapsack-style DP"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:obst-dp",
+      "name": "Optimal binary search trees by DP",
+      "kind": "result",
+      "statement": "Filling OptCost(i,k) by increasing interval length k-i computes an optimal BST in O(n^3) time.",
+      "locator": "jeffe:3.9",
+      "prereqs": [
+        "jeffe:obst-recurrence",
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "OBST DP"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:dp-on-trees",
+      "name": "Dynamic programming on trees",
+      "kind": "result",
+      "statement": "On a rooted tree, a maximum independent set can be computed by recursing over children, memoizing one value (or two: with/without v) per node and filling in postorder, in O(n) time.",
+      "locator": "jeffe:3.10",
+      "prereqs": [
+        "jeffe:dp-pattern",
+        "[rooted trees]"
+      ],
+      "aliases": [
+        "tree DP",
+        "maximum independent set in a tree"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:tape-storage",
+      "name": "Storing files on tape",
+      "kind": "result",
+      "statement": "To minimize the expected cost of accessing files stored sequentially, sort them by length (or by length/frequency ratio when access frequencies differ); proved by an exchange argument.",
+      "locator": "jeffe:4.1",
+      "prereqs": [
+        "jeffe:exchange-argument"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:interval-scheduling",
+      "name": "Class (interval) scheduling: earliest finish first",
+      "kind": "result",
+      "statement": "Repeatedly choosing the compatible class that ends first yields a maximum set of non-overlapping intervals in O(n log n) time.",
+      "locator": "jeffe:4.2",
+      "prereqs": [
+        "jeffe:exchange-argument"
+      ],
+      "aliases": [
+        "activity selection",
+        "GreedySchedule"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Opens with 'Some Bad Ideas' - plausible greedy rules that fail."
+    },
+    {
+      "id": "jeffe:exchange-argument",
+      "name": "Greedy correctness by exchange argument",
+      "kind": "skill",
+      "statement": "To prove a greedy algorithm optimal, take an optimal solution that differs from the greedy choice, swap in the greedy choice without making it worse, and conclude by induction that greedy is optimal.",
+      "locator": "jeffe:4.3",
+      "prereqs": [
+        "jeffe:correctness-proof"
+      ],
+      "aliases": [
+        "greedy pattern",
+        "greedy stays ahead"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:prefix-free-code",
+      "name": "Prefix-free codes as binary trees",
+      "kind": "definition",
+      "statement": "A binary code is prefix-free if no codeword is a prefix of another; such codes are exactly binary trees with symbols at leaves, and the encoded length is the sum of f[i]*depth(i).",
+      "locator": "jeffe:4.4",
+      "prereqs": [],
+      "aliases": [
+        "prefix code"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:huffman",
+      "name": "Huffman codes",
+      "kind": "result",
+      "statement": "Repeatedly merging the two least frequent symbols into a new symbol builds an optimal prefix-free code; O(n log n) with a priority queue.",
+      "locator": "jeffe:4.4",
+      "prereqs": [
+        "jeffe:prefix-free-code",
+        "jeffe:exchange-argument",
+        "[priority queue]"
+      ],
+      "aliases": [
+        "Huffman coding"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:stable-matching",
+      "name": "Stable matching (Gale-Shapley)",
+      "kind": "result",
+      "statement": "If unmatched proposers repeatedly propose to their most preferred not-yet-proposed partner and receivers keep the best offer so far, the algorithm halts after O(n^2) proposals with a stable matching that is best for every proposer.",
+      "locator": "jeffe:4.5",
+      "prereqs": [
+        "jeffe:exchange-argument"
+      ],
+      "aliases": [
+        "Gale-Shapley",
+        "Boston Pool algorithm",
+        "stable marriage"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:graph-basics",
+      "name": "Graph definitions",
+      "kind": "definition",
+      "statement": "A graph is a pair (V, E) of vertices and edges (unordered pairs, or ordered pairs u->v when directed); with walks, paths, cycles, subgraphs, connected components, trees, forests and degree defined from them.",
+      "locator": "jeffe:5.2",
+      "prereqs": [],
+      "aliases": [
+        "vertex",
+        "edge",
+        "directed graph",
+        "connected component"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "5.1 is history/motivation."
+    },
+    {
+      "id": "jeffe:graph-modeling",
+      "name": "Modeling problems as graphs",
+      "kind": "skill",
+      "statement": "Many problems become graph problems once states or objects are vertices and allowed transitions or relations are edges (examples: maps, mazes, configuration graphs, word ladders).",
+      "locator": "jeffe:5.3",
+      "prereqs": [
+        "jeffe:graph-basics"
+      ],
+      "aliases": [
+        "graph representation of problems"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:adjacency-list",
+      "name": "Adjacency lists",
+      "kind": "definition",
+      "statement": "An adjacency list stores, for each vertex, a list of its neighbours; it uses O(V+E) space and lists the neighbours of v in O(deg(v)) time.",
+      "locator": "jeffe:5.4",
+      "prereqs": [
+        "jeffe:graph-basics"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:adjacency-matrix",
+      "name": "Adjacency matrices",
+      "kind": "definition",
+      "statement": "An adjacency matrix is a V x V array with A[u,v]=1 iff uv is an edge; it uses Theta(V^2) space and tests adjacency in O(1) time.",
+      "locator": "jeffe:5.4",
+      "prereqs": [
+        "jeffe:graph-basics"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Includes a comparison table of list vs matrix costs."
+    },
+    {
+      "id": "jeffe:whatever-first-search",
+      "name": "Whatever-first search",
+      "kind": "result",
+      "statement": "Generic traversal: put (parent, vertex) pairs into a bag, repeatedly take one out and, if unmarked, mark it and add its neighbours; it marks exactly the vertices reachable from s, the parent edges form a spanning tree of them, and it runs in O(V + E*T) time for bag operation cost T.",
+      "locator": "jeffe:5.5",
+      "prereqs": [
+        "jeffe:graph-basics",
+        "jeffe:adjacency-list"
+      ],
+      "aliases": [
+        "generic graph traversal",
+        "WhateverFirstSearch"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:traversal-variants",
+      "name": "Stack, queue and priority-queue traversals",
+      "kind": "result",
+      "statement": "Using a stack, queue or priority queue as the bag gives depth-first search, breadth-first search and best-first search (Prim, Dijkstra, widest path); each runs in O(V+E) or O(E log E) time.",
+      "locator": "jeffe:5.6",
+      "prereqs": [
+        "jeffe:whatever-first-search"
+      ],
+      "aliases": [
+        "BFS",
+        "DFS",
+        "best-first search"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:counting-components",
+      "name": "Traversing disconnected and directed graphs",
+      "kind": "result",
+      "statement": "Calling the traversal from every unmarked vertex counts and labels connected components in O(V+E) time; in a directed graph the same search finds exactly the vertices reachable from s.",
+      "locator": "jeffe:5.6",
+      "prereqs": [
+        "jeffe:whatever-first-search"
+      ],
+      "aliases": [
+        "WFSAll",
+        "CountComponents",
+        "reachability"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:flood-fill",
+      "name": "Flood fill as a graph reduction",
+      "kind": "result",
+      "statement": "Recolouring the connected region of a pixel image is whatever-first search on the implicit grid graph whose vertices are same-coloured pixels and edges join adjacent pixels; O(n) for n pixels.",
+      "locator": "jeffe:5.7",
+      "prereqs": [
+        "jeffe:traversal-variants",
+        "jeffe:graph-modeling"
+      ],
+      "aliases": [
+        "FloodFill",
+        "connected regions in a grid"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Example of reduction to graph search."
+    },
+    {
+      "id": "jeffe:dfs",
+      "name": "Depth-first search (recursive)",
+      "kind": "result",
+      "statement": "DFS(v): if v is unmarked, mark it and call DFS on every out-neighbour; it is whatever-first search with a stack and runs in O(V+E) time.",
+      "locator": "jeffe:6.0",
+      "prereqs": [
+        "jeffe:whatever-first-search"
+      ],
+      "aliases": [
+        "DFS"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Chapter preamble before 6.1; also DFSAll wrapper."
+    },
+    {
+      "id": "jeffe:pre-postorder",
+      "name": "Preorder and postorder clocks",
+      "kind": "result",
+      "statement": "Recording v.pre when DFS(v) starts and v.post when it ends gives intervals [u.pre, u.post] that are either nested or disjoint (parenthesis structure).",
+      "locator": "jeffe:6.1",
+      "prereqs": [
+        "jeffe:dfs"
+      ],
+      "aliases": [
+        "discovery/finish times",
+        "timestamps"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:edge-classification",
+      "name": "Classifying vertices and edges in DFS",
+      "kind": "result",
+      "statement": "During DFS each vertex is new, active or finished, and each edge u->v is a tree, forward, back or cross edge, determined by comparing pre/post intervals.",
+      "locator": "jeffe:6.1",
+      "prereqs": [
+        "jeffe:pre-postorder"
+      ],
+      "aliases": [
+        "tree edge",
+        "back edge",
+        "cross edge",
+        "forward edge"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:cycle-detection",
+      "name": "Detecting cycles in directed graphs",
+      "kind": "result",
+      "statement": "A directed graph contains a cycle iff DFS finds a back edge, i.e. an edge u->v with v still active; this gives an O(V+E) acyclicity test.",
+      "locator": "jeffe:6.2",
+      "prereqs": [
+        "jeffe:edge-classification"
+      ],
+      "aliases": [
+        "IsAcyclic",
+        "DAG test"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:topological-sort",
+      "name": "Topological sort by reverse postorder",
+      "kind": "result",
+      "statement": "In a dag, every edge u->v has u.post > v.post, so listing vertices by decreasing postorder gives a topological order in O(V+E) time.",
+      "locator": "jeffe:6.3",
+      "prereqs": [
+        "jeffe:cycle-detection",
+        "jeffe:pre-postorder"
+      ],
+      "aliases": [
+        "TopoSort",
+        "topological order"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:dag-dp",
+      "name": "Memoization and dynamic programming in dags",
+      "kind": "idea",
+      "statement": "Any recurrence's subproblems form a dependency dag; memoized recursion is a depth-first search of that dag and a valid evaluation order is a reverse topological order (e.g. longest path in a dag in O(V+E)).",
+      "locator": "jeffe:6.4",
+      "prereqs": [
+        "jeffe:topological-sort",
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "dependency graph",
+        "longest path in DAG"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Subsection 'Dynamic Programming in Dags'."
+    },
+    {
+      "id": "jeffe:strong-components",
+      "name": "Strong connectivity and the strong component graph",
+      "kind": "definition",
+      "statement": "Vertices u and v are strongly connected if each can reach the other; the strong components partition V and contracting them yields an acyclic strong component graph scc(G).",
+      "locator": "jeffe:6.5",
+      "prereqs": [
+        "jeffe:dfs"
+      ],
+      "aliases": [
+        "SCC",
+        "strongly connected components"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Also a naive O(VE) algorithm."
+    },
+    {
+      "id": "jeffe:kosaraju-sharir",
+      "name": "Kosaraju-Sharir strong components",
+      "kind": "result",
+      "statement": "Run DFS on the reversed graph to obtain a postorder, then run DFS on G from vertices in decreasing postorder; each search tree is one strong component; O(V+E) time.",
+      "locator": "jeffe:6.6",
+      "prereqs": [
+        "jeffe:strong-components",
+        "jeffe:pre-postorder"
+      ],
+      "aliases": [
+        "Kosaraju's algorithm"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:tarjan-scc",
+      "name": "Tarjan's strong components algorithm",
+      "kind": "result",
+      "statement": "A single DFS that tracks for each vertex the lowest preorder reachable via its subtree and one back edge identifies the roots of strong components as they finish, in O(V+E) time.",
+      "locator": "jeffe:6.6",
+      "prereqs": [
+        "jeffe:strong-components",
+        "jeffe:edge-classification"
+      ],
+      "aliases": [
+        "Tarjan SCC",
+        "low-link"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:mst-unique",
+      "name": "Minimum spanning trees with distinct weights",
+      "kind": "result",
+      "statement": "If all edge weights are distinct, a connected graph has a unique minimum spanning tree; ties can be broken consistently so this is assumed w.l.o.g.",
+      "locator": "jeffe:7.1",
+      "prereqs": [
+        "jeffe:graph-basics"
+      ],
+      "aliases": [
+        "MST"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:generic-mst",
+      "name": "The only MST algorithm: safe and useless edges",
+      "kind": "result",
+      "statement": "Maintain a forest F contained in the MST; an edge is useless if both endpoints are in one component of F and safe if it is the lightest edge leaving some component; the MST contains every safe edge and no useless edge, so adding safe edges until F spans is correct.",
+      "locator": "jeffe:7.2",
+      "prereqs": [
+        "jeffe:mst-unique"
+      ],
+      "aliases": [
+        "cut property",
+        "cycle property"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:boruvka",
+      "name": "Boruvka's algorithm",
+      "kind": "result",
+      "statement": "In each phase add all safe edges (the lightest edge leaving every component), found by one O(V+E) labeling pass; components at least halve, so it runs in O(E log V) time.",
+      "locator": "jeffe:7.3",
+      "prereqs": [
+        "jeffe:generic-mst",
+        "jeffe:counting-components"
+      ],
+      "aliases": [
+        "Sollin's algorithm"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Erickson: 'This is the MST algorithm you want.'"
+    },
+    {
+      "id": "jeffe:prim",
+      "name": "Jarnik's (Prim's) algorithm",
+      "kind": "result",
+      "statement": "Grow one tree from a start vertex, repeatedly adding its unique safe edge, kept in a priority queue; O(E log E) with a binary heap, O(E + V log V) with a Fibonacci heap.",
+      "locator": "jeffe:7.4",
+      "prereqs": [
+        "jeffe:generic-mst",
+        "jeffe:traversal-variants",
+        "[priority queue]"
+      ],
+      "aliases": [
+        "Prim's algorithm",
+        "Jarnik's algorithm"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:kruskal",
+      "name": "Kruskal's algorithm",
+      "kind": "result",
+      "statement": "Scan edges in increasing weight order and add each edge whose endpoints lie in different components, using a disjoint-set structure; O(E log E) time dominated by sorting.",
+      "locator": "jeffe:7.5",
+      "prereqs": [
+        "jeffe:generic-mst",
+        "[disjoint-set (union-find)]"
+      ],
+      "aliases": [
+        "Kruskal"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Union-find is deferred to the lecture notes."
+    },
+    {
+      "id": "jeffe:shortest-path-tree",
+      "name": "Single-source shortest paths and shortest-path trees",
+      "kind": "definition",
+      "statement": "For a source s, the shortest paths to all reachable vertices can be chosen to form a tree rooted at s (if no negative cycles), recorded by predecessor pointers pred(v).",
+      "locator": "jeffe:8.1",
+      "prereqs": [
+        "jeffe:graph-basics"
+      ],
+      "aliases": [
+        "SSSP",
+        "pred"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Chapter preamble frames the SSSP problem."
+    },
+    {
+      "id": "jeffe:negative-edges",
+      "name": "Negative edges and negative cycles",
+      "kind": "idea",
+      "statement": "With negative edge weights shortest walks may not exist (a reachable negative cycle makes distances -infinity) and shortest simple paths are NP-hard; algorithms either assume no negative cycles or report one.",
+      "locator": "jeffe:8.2",
+      "prereqs": [
+        "jeffe:shortest-path-tree"
+      ],
+      "aliases": [
+        "negative cycle"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Optional section."
+    },
+    {
+      "id": "jeffe:ford-relaxation",
+      "name": "Ford's generic algorithm: relax tense edges",
+      "kind": "result",
+      "statement": "Initialize dist(s)=0 and dist(v)=infinity; an edge u->v is tense if dist(u)+w(u->v) < dist(v); repeatedly relaxing tense edges until none remain yields correct distances and a shortest-path tree whenever there is no negative cycle.",
+      "locator": "jeffe:8.3",
+      "prereqs": [
+        "jeffe:shortest-path-tree"
+      ],
+      "aliases": [
+        "edge relaxation",
+        "Relax",
+        "the only SSSP algorithm"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:bfs-shortest-paths",
+      "name": "Breadth-first search for unweighted shortest paths",
+      "kind": "result",
+      "statement": "Using a FIFO queue in Ford's framework with unit weights, BFS settles vertices in order of distance and computes all shortest-path distances in O(V+E) time.",
+      "locator": "jeffe:8.4",
+      "prereqs": [
+        "jeffe:ford-relaxation",
+        "jeffe:traversal-variants"
+      ],
+      "aliases": [
+        "BFS"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:dag-shortest-paths",
+      "name": "Shortest paths in dags",
+      "kind": "result",
+      "statement": "Relaxing the out-edges of vertices in topological order computes shortest (or longest) paths in a dag in O(V+E) time, even with negative weights; it is dynamic programming over the dag.",
+      "locator": "jeffe:8.5",
+      "prereqs": [
+        "jeffe:ford-relaxation",
+        "jeffe:topological-sort",
+        "jeffe:dag-dp"
+      ],
+      "aliases": [
+        "DagSSSP"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:dijkstra",
+      "name": "Dijkstra's algorithm",
+      "kind": "result",
+      "statement": "Using a priority queue keyed by dist, repeatedly relax the out-edges of the closest unsettled vertex; with non-negative weights each vertex is extracted once and the algorithm runs in O(E log V) time.",
+      "locator": "jeffe:8.6",
+      "prereqs": [
+        "jeffe:ford-relaxation",
+        "[priority queue]"
+      ],
+      "aliases": [
+        "best-first search",
+        "Dijkstra"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Subsection 'No Negative Edges' proves correctness; also discusses behaviour with negative edges."
+    },
+    {
+      "id": "jeffe:bellman-ford",
+      "name": "Bellman-Ford",
+      "kind": "result",
+      "statement": "Relaxing every edge in V-1 rounds computes shortest paths with negative edges in O(VE) time; any tense edge after that reveals a negative cycle; equivalently a DP over the maximum number of edges in the path.",
+      "locator": "jeffe:8.7",
+      "prereqs": [
+        "jeffe:ford-relaxation",
+        "jeffe:negative-edges"
+      ],
+      "aliases": [
+        "Bellman-Ford-Moore"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Subsections 'Moore's Improvement' and 'Dynamic Programming Formulation'."
+    },
+    {
+      "id": "jeffe:moore-queue",
+      "name": "Moore's queue-based Bellman-Ford",
+      "kind": "result",
+      "statement": "Keeping only vertices whose distance just changed in a FIFO queue performs the same relaxation phases with less work; still O(VE) worst case.",
+      "locator": "jeffe:8.7",
+      "prereqs": [
+        "jeffe:bellman-ford"
+      ],
+      "aliases": [
+        "SPFA"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:apsp-problem",
+      "name": "All-pairs shortest paths",
+      "kind": "definition",
+      "statement": "Compute dist(u,v) and pred(u,v) for every pair of vertices; output size is Theta(V^2).",
+      "locator": "jeffe:9.1",
+      "prereqs": [
+        "jeffe:shortest-path-tree"
+      ],
+      "aliases": [
+        "APSP"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:apsp-repeated-sssp",
+      "name": "APSP by repeated single-source",
+      "kind": "result",
+      "statement": "Running BFS, Dijkstra or Bellman-Ford from every vertex gives APSP in O(VE), O(VE log V) or O(V^2 E) time respectively.",
+      "locator": "jeffe:9.2",
+      "prereqs": [
+        "jeffe:apsp-problem",
+        "jeffe:dijkstra",
+        "jeffe:bellman-ford"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:reweighting",
+      "name": "Reweighting with vertex potentials",
+      "kind": "result",
+      "statement": "Replacing w(u->v) by w(u->v) + pi(u) - pi(v) changes every u-to-v path length by the same amount pi(u)-pi(v), so shortest paths are preserved; with pi = distances from a new source all new weights are non-negative.",
+      "locator": "jeffe:9.3",
+      "prereqs": [
+        "jeffe:apsp-problem"
+      ],
+      "aliases": [
+        "potentials",
+        "reduced costs"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:johnson",
+      "name": "Johnson's algorithm",
+      "kind": "result",
+      "statement": "Add a source joined to all vertices by zero-weight edges, run Bellman-Ford to get potentials, reweight, then run Dijkstra from every vertex: O(VE log V) APSP with negative edges.",
+      "locator": "jeffe:9.4",
+      "prereqs": [
+        "jeffe:reweighting",
+        "jeffe:bellman-ford",
+        "jeffe:dijkstra"
+      ],
+      "aliases": [
+        "Johnson"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:apsp-dp",
+      "name": "APSP by dynamic programming on path length",
+      "kind": "result",
+      "statement": "dist(u,v,l) = min over edges x->v of dist(u,x,l-1) + w(x->v) gives an O(V^4) algorithm; halving/doubling the edge bound gives O(V^3 log V).",
+      "locator": "jeffe:9.5",
+      "prereqs": [
+        "jeffe:apsp-problem",
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "Shimbel"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Sections 9.5 and 9.6."
+    },
+    {
+      "id": "jeffe:min-plus-product",
+      "name": "Funny (min-plus) matrix multiplication",
+      "kind": "result",
+      "statement": "The O(V^3 log V) APSP algorithm is repeated squaring of the weight matrix under the (min,+) semiring.",
+      "locator": "jeffe:9.7",
+      "prereqs": [
+        "jeffe:apsp-dp",
+        "jeffe:fast-exponentiation"
+      ],
+      "aliases": [
+        "tropical matrix multiplication",
+        "distance product"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:floyd-warshall",
+      "name": "Floyd-Warshall",
+      "kind": "result",
+      "statement": "dist(u,v,r) = min(dist(u,v,r-1), dist(u,r,r-1) + dist(r,v,r-1)), restricting intermediate vertices to the first r, computes APSP in O(V^3) time and O(V^2) space.",
+      "locator": "jeffe:9.8",
+      "prereqs": [
+        "jeffe:apsp-problem",
+        "jeffe:dp-pattern"
+      ],
+      "aliases": [
+        "Kleene-Roy-Floyd-Warshall-Ingerman",
+        "Floyd's algorithm"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:flow",
+      "name": "Flow networks and (s,t)-flows",
+      "kind": "definition",
+      "statement": "Given a directed graph with source s, target t and edge capacities c, a feasible (s,t)-flow assigns 0 <= f(e) <= c(e) to each edge with conservation at every vertex other than s and t; its value is the net flow out of s.",
+      "locator": "jeffe:10.1",
+      "prereqs": [
+        "jeffe:graph-basics"
+      ],
+      "aliases": [
+        "max flow",
+        "flow conservation"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:cut",
+      "name": "(s,t)-cuts and capacity",
+      "kind": "definition",
+      "statement": "An (s,t)-cut partitions V into S containing s and T containing t; its capacity is the total capacity of edges from S to T, and every flow's value is at most every cut's capacity.",
+      "locator": "jeffe:10.2",
+      "prereqs": [
+        "jeffe:flow"
+      ],
+      "aliases": [
+        "min cut"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:residual-graph",
+      "name": "Residual graphs and augmenting paths",
+      "kind": "definition",
+      "statement": "The residual graph of flow f has an edge u->v of capacity c(u->v)-f(u->v) and a reverse edge v->u of capacity f(u->v); an s-to-t path in it can push more flow.",
+      "locator": "jeffe:10.3",
+      "prereqs": [
+        "jeffe:flow"
+      ],
+      "aliases": [
+        "augmenting path"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:maxflow-mincut",
+      "name": "Maxflow-mincut theorem",
+      "kind": "result",
+      "statement": "In every flow network the maximum (s,t)-flow value equals the minimum (s,t)-cut capacity; a flow is maximum iff its residual graph has no s-to-t path.",
+      "locator": "jeffe:10.3",
+      "prereqs": [
+        "jeffe:cut",
+        "jeffe:residual-graph"
+      ],
+      "aliases": [
+        "max-flow min-cut"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:ford-fulkerson",
+      "name": "Ford-Fulkerson augmenting paths",
+      "kind": "result",
+      "statement": "Repeatedly augment along any residual s-to-t path; with integer capacities it terminates after at most |f*| augmentations in O(E|f*|) time with an integral maximum flow (integrality theorem); with irrational capacities it may not terminate.",
+      "locator": "jeffe:10.4",
+      "prereqs": [
+        "jeffe:maxflow-mincut"
+      ],
+      "aliases": [
+        "integrality theorem"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:flow-decomposition",
+      "name": "Combining and decomposing flows",
+      "kind": "result",
+      "statement": "Every acyclic (s,t)-flow is a sum of at most E path flows, and every flow is a sum of path flows and cycle flows, computable in O(VE) time.",
+      "locator": "jeffe:10.5",
+      "prereqs": [
+        "jeffe:flow"
+      ],
+      "aliases": [
+        "path decomposition"
+      ],
+      "tier": "contest",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:edmonds-karp",
+      "name": "Edmonds-Karp augmenting-path rules",
+      "kind": "result",
+      "statement": "Augmenting along the fattest path gives O(E log|f*|) augmentations; along the shortest (BFS) path gives O(VE) augmentations, i.e. O(VE^2) time independent of capacities.",
+      "locator": "jeffe:10.6",
+      "prereqs": [
+        "jeffe:ford-fulkerson",
+        "jeffe:bfs-shortest-paths"
+      ],
+      "aliases": [
+        "fattest augmenting paths",
+        "shortest augmenting paths"
+      ],
+      "tier": "stretch",
+      "has_code": true,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:maxflow-further",
+      "name": "Faster maximum-flow algorithms (survey)",
+      "kind": "idea",
+      "statement": "Later algorithms (Dinitz's blocking flows, push-relabel, Orlin's O(VE)) improve on Edmonds-Karp; the section surveys them without proofs.",
+      "locator": "jeffe:10.7",
+      "prereqs": [
+        "jeffe:edmonds-karp"
+      ],
+      "aliases": [
+        "Dinic",
+        "push-relabel"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Survey only."
+    },
+    {
+      "id": "jeffe:edge-disjoint-paths",
+      "name": "Edge-disjoint paths",
+      "kind": "result",
+      "statement": "The maximum number of edge-disjoint s-to-t paths equals the maximum flow with unit capacities (and the minimum number of edges whose removal separates s from t, Menger).",
+      "locator": "jeffe:11.1",
+      "prereqs": [
+        "jeffe:ford-fulkerson",
+        "jeffe:flow-decomposition"
+      ],
+      "aliases": [
+        "Menger's theorem"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:vertex-splitting",
+      "name": "Vertex capacities and vertex-disjoint paths",
+      "kind": "skill",
+      "statement": "Split each vertex v into v_in -> v_out with capacity c(v) to reduce vertex-capacitated flow (and vertex-disjoint paths) to ordinary maximum flow.",
+      "locator": "jeffe:11.2",
+      "prereqs": [
+        "jeffe:edge-disjoint-paths"
+      ],
+      "aliases": [
+        "node splitting"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:bipartite-matching",
+      "name": "Bipartite matching via maximum flow",
+      "kind": "result",
+      "statement": "Add a source to all left vertices and a sink from all right vertices with unit capacities; integral maximum flows correspond to maximum matchings, found in O(VE) time.",
+      "locator": "jeffe:11.3",
+      "prereqs": [
+        "jeffe:ford-fulkerson"
+      ],
+      "aliases": [
+        "maximum matching"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:tuple-selection",
+      "name": "Tuple selection (exam scheduling)",
+      "kind": "skill",
+      "statement": "Problems that select d-tuples with one element from each of several sets under per-element and per-pair capacities reduce to maximum flow through layered vertices, e.g. scheduling exams into rooms and times with proctors.",
+      "locator": "jeffe:11.4",
+      "prereqs": [
+        "jeffe:bipartite-matching",
+        "jeffe:vertex-splitting"
+      ],
+      "aliases": [
+        "exam scheduling"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Subsection 'Exam Scheduling'."
+    },
+    {
+      "id": "jeffe:disjoint-path-cover",
+      "name": "Disjoint-path covers of dags",
+      "kind": "result",
+      "statement": "The minimum number of vertex-disjoint paths covering a dag equals V minus the size of a maximum matching in the bipartite split graph; with 'Minimal Faculty Hiring' as an application.",
+      "locator": "jeffe:11.5",
+      "prereqs": [
+        "jeffe:bipartite-matching"
+      ],
+      "aliases": [
+        "minimum path cover"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:baseball-elimination",
+      "name": "Baseball elimination",
+      "kind": "result",
+      "statement": "A team is eliminated iff a flow network with game nodes and team nodes (capacities from remaining games and win slack) has no flow saturating all game edges; the min cut gives a certificate.",
+      "locator": "jeffe:11.6",
+      "prereqs": [
+        "jeffe:maxflow-mincut"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:project-selection",
+      "name": "Project selection by minimum cut",
+      "kind": "result",
+      "statement": "Choosing a dependency-closed set of projects maximizing total profit reduces to a minimum (s,t)-cut with profitable projects attached to s, costly ones to t, and infinite-capacity dependency edges.",
+      "locator": "jeffe:11.7",
+      "prereqs": [
+        "jeffe:maxflow-mincut"
+      ],
+      "aliases": [
+        "maximum closure"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:circuit-sat",
+      "name": "Circuit satisfiability",
+      "kind": "definition",
+      "statement": "CircuitSAT asks whether a boolean circuit of AND, OR and NOT gates has an input assignment making its output true; no polynomial-time algorithm is known.",
+      "locator": "jeffe:12.1",
+      "prereqs": [],
+      "aliases": [
+        "CircuitSAT"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Introduced through the 'game you can't win' story."
+    },
+    {
+      "id": "jeffe:p-np",
+      "name": "P, NP and co-NP",
+      "kind": "definition",
+      "statement": "P is the set of decision problems solvable in polynomial time, NP those whose yes-instances have polynomial-time checkable certificates, and co-NP those whose no-instances do; P is in NP and in co-NP, and P vs NP is open.",
+      "locator": "jeffe:12.2",
+      "prereqs": [
+        "jeffe:running-time-analysis"
+      ],
+      "aliases": [
+        "P versus NP"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:np-hard",
+      "name": "NP-hard, NP-easy and NP-complete",
+      "kind": "definition",
+      "statement": "A problem is NP-hard if a polynomial-time algorithm for it would give one for every NP problem, NP-easy if it is solvable in polynomial time given an NP oracle, and NP-complete if it is NP-hard and in NP.",
+      "locator": "jeffe:12.3",
+      "prereqs": [
+        "jeffe:p-np",
+        "jeffe:reduction"
+      ],
+      "aliases": [
+        "NP-complete"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "12.4 adds formal definitions (Karp vs Cook reductions); optional."
+    },
+    {
+      "id": "jeffe:cook-levin",
+      "name": "Cook-Levin: SAT is NP-hard",
+      "kind": "result",
+      "statement": "CircuitSAT (and hence SAT) is NP-hard; to prove a problem X NP-hard, reduce a known NP-hard problem to X in polynomial time (CircuitSAT reduces to SAT via one variable and clause set per gate).",
+      "locator": "jeffe:12.5",
+      "prereqs": [
+        "jeffe:np-hard",
+        "jeffe:circuit-sat"
+      ],
+      "aliases": [
+        "SAT",
+        "Cook's theorem"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:three-sat",
+      "name": "3SAT is NP-hard",
+      "kind": "result",
+      "statement": "CircuitSAT reduces to 3SAT by rewriting each gate as at most three-literal clauses; so satisfiability of 3CNF formulas is NP-hard.",
+      "locator": "jeffe:12.6",
+      "prereqs": [
+        "jeffe:cook-levin"
+      ],
+      "aliases": [
+        "3SAT",
+        "3-CNF"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:max-independent-set-np",
+      "name": "Maximum independent set is NP-hard",
+      "kind": "result",
+      "statement": "From a 3CNF formula with k clauses build a graph with a triangle per clause and edges between complementary literals; it has an independent set of size k iff the formula is satisfiable.",
+      "locator": "jeffe:12.7",
+      "prereqs": [
+        "jeffe:three-sat"
+      ],
+      "aliases": [
+        "MaxIndSet",
+        "independent set"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:np-hardness-proof-pattern",
+      "name": "The NP-hardness proof pattern",
+      "kind": "skill",
+      "statement": "To prove X NP-hard: pick a known NP-hard problem Y, describe a polynomial-time transformation of Y-instances to X-instances, and prove both directions (good Y instance -> good X instance and conversely).",
+      "locator": "jeffe:12.8",
+      "prereqs": [
+        "jeffe:cook-levin"
+      ],
+      "aliases": [
+        "polynomial-time reduction",
+        "Karp reduction"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:clique-vertex-cover",
+      "name": "Clique and vertex cover are NP-hard",
+      "kind": "result",
+      "statement": "S is independent in G iff S is a clique in the complement of G iff V\\S is a vertex cover of G, so MaxClique and MinVertexCover are NP-hard by easy reductions from MaxIndSet.",
+      "locator": "jeffe:12.9",
+      "prereqs": [
+        "jeffe:max-independent-set-np"
+      ],
+      "aliases": [
+        "MaxClique",
+        "MinVertexCover"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:graph-coloring-np",
+      "name": "Graph 3-colouring is NP-hard",
+      "kind": "result",
+      "statement": "A reduction from 3SAT using a truth triangle and clause gadgets shows 3Colour, and hence chromatic number, is NP-hard; 2-colouring is solvable in linear time.",
+      "locator": "jeffe:12.10",
+      "prereqs": [
+        "jeffe:three-sat"
+      ],
+      "aliases": [
+        "3Color",
+        "chromatic number"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:hamiltonian-cycle-np",
+      "name": "Hamiltonian cycle (and TSP) is NP-hard",
+      "kind": "result",
+      "statement": "Hamiltonian cycle in directed graphs is NP-hard by a reduction from vertex cover (or 3SAT) with gadgets per edge; undirected Hamiltonian cycle and the traveling salesman problem follow.",
+      "locator": "jeffe:12.11",
+      "prereqs": [
+        "jeffe:clique-vertex-cover"
+      ],
+      "aliases": [
+        "HamCycle",
+        "traveling salesman"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:subset-sum-np",
+      "name": "Subset sum is NP-hard",
+      "kind": "result",
+      "statement": "Encoding a vertex cover instance as base-4 numbers shows subset sum is NP-hard; this does not contradict the O(nT) algorithm because T can be exponential in the input size (weak NP-hardness).",
+      "locator": "jeffe:12.12",
+      "prereqs": [
+        "jeffe:clique-vertex-cover",
+        "jeffe:subset-sum-dp"
+      ],
+      "aliases": [
+        "weakly NP-hard",
+        "pseudo-polynomial"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:np-hard-catalog",
+      "name": "A catalog of NP-hard problems",
+      "kind": "idea",
+      "statement": "Useful NP-hard starting points include planar CircuitSAT, 1-in-3 SAT, Not-All-Equal SAT, planar SAT, exact cover by 3-sets, partition, 3-partition, set cover, hitting set, longest path, Steiner tree, MaxSAT and MaxCut, plus puzzles such as Minesweeper and Sudoku.",
+      "locator": "jeffe:12.13",
+      "prereqs": [
+        "jeffe:np-hardness-proof-pattern"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Subsection 'Variants and extensions'."
+    },
+    {
+      "id": "jeffe:choosing-reduction-source",
+      "name": "Choosing the right problem to reduce from",
+      "kind": "skill",
+      "statement": "Pick a source problem structurally close to the target: SAT variants for constraint/choice problems, independent set/vertex cover/clique for graph selection, Hamiltonian cycle for ordering, subset sum/partition for numbers.",
+      "locator": "jeffe:12.14",
+      "prereqs": [
+        "jeffe:np-hard-catalog"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": ""
+    },
+    {
+      "id": "jeffe:draughts-np",
+      "name": "A frivolous example: international draughts",
+      "kind": "result",
+      "statement": "On an n x n board, international draughts' forced-maximum-capture rule makes merely finding a legal move NP-hard, by Hearn's reduction from Hamiltonian cycle with vertex and arc gadgets.",
+      "locator": "jeffe:12.15",
+      "prereqs": [
+        "jeffe:hamiltonian-cycle-np"
+      ],
+      "aliases": [],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Worked full reduction; fun but not interview material."
+    },
+    {
+      "id": "jeffe:beyond-np",
+      "name": "Beyond NP: PSPACE, EXP and decidability",
+      "kind": "idea",
+      "statement": "P and NP are the start of a hierarchy: PSPACE (canonical QBF), EXP, NEXP, EXPSPACE, and undecidable problems such as halting; many games are PSPACE- or EXP-hard.",
+      "locator": "jeffe:12.16",
+      "prereqs": [
+        "jeffe:p-np"
+      ],
+      "aliases": [
+        "PSPACE",
+        "QBF"
+      ],
+      "tier": "contest",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "Optional section."
+    }
+  ]
+}
