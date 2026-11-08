@@ -540,6 +540,14 @@ because prerequisites force the order and each concept gets one home.
    deciding close calls. Only escalated verdicts go to you.
 8. Figures: code beside the visual by default, stepping by named block
    like a debugger (§2.3).
+9. Structure (2026-11-08): one book, flat chapters, no parts. The former
+   Computer systems chapters become Appendix A, a curated links appendix
+   (unbuilt); Getting the job is Appendix B.
+10. Tiers: system design concepts take their own tiers (core where the
+    primer says so); union-find is core.
+11. One explanation per concept, one source, its writing kept whole (§5).
+12. MIT and Apache 2.0 prose allowed with notices; versions chosen per page;
+    *Computer Networks: A Systems Approach* excluded entirely (§6.1).
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
