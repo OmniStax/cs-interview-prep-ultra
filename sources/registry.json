@@ -1485,8 +1485,9 @@
       "pin": "21e32e5188a75d37860f38aef2384935b39da5ae (PDF built 2018-05-29)",
       "licence": "CC BY-SA (text; version not stated, SO Documentation was CC BY-SA 3.0); images excluded",
       "licence_evidence": {
-        "url": "https://github.com/lasikaspur/AlgorithmsNotesForProfessionals/blob/main/AlgorithmsNotesForProfessionals.pdf",
-        "quote": "Text content is released under Creative Commons BY-SA, see credits at the end of this book whom contributed to the various chapters. Images may be copyright of their respective owners unless otherwise specified"
+        "url": "https://goalkicker.com/AlgorithmsBook/",
+        "quote": "Text content is released under Creative Commons BY-SA",
+        "note": "Official GoalKicker PDF is byte-identical to the cached mirror copy (checked 2026-11-08)."
       },
       "use": "prose only (per-chapter contributor credits at the end of the PDF must be carried); images link-only. The mirror is a third-party upload; goalkicker.com not on the allowlist",
       "format": "PDF; text via pdftotext -layout (anfp.txt)",
