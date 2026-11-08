@@ -30,24 +30,16 @@ from them:
 | cp-algorithms/cp-algorithms | ~163 Markdown articles under `src/`, 10 categories (Graphs 47, Algebra 29, Geometry 26, Misc 13, Strings 12, Data Structures 10, Combinatorics 10, DP 7, Numerical 5, Linear Algebra 4), C++ code, practice-problem links at the end | CC BY-SA 4.0 (LICENSE) | Yes, fully. This is the only source of real prose among the three. |
 | *System Design Interview* by Alex Xu (PDF in aasthas2022/SDE-Interview-and-Prep-Roadmap) | A commercial book (Byte Code LLC / ByteByteGo) | All rights reserved. The hosting repo has no LICENSE and says nothing about permission. | **No.** The PDF there is almost certainly an unauthorised copy. Transforming it and publishing to omnistax.org would distribute a copyrighted book. We shouldn't even use it as a private working source in this repo. |
 
-**What replaces Alex Xu.** Two options; I recommend doing both:
-
-- **Text spine: donnemartin/system-design-primer** (CC BY 4.0). It has the
-  same arc as Xu's chapter 1 (scaling from one server to millions of users:
-  DNS, CDN, load balancers, reverse proxies, application layer, SQL vs NoSQL,
-  caching, async and queues, communication, security, back-of-envelope
-  numbers). It also has worked designs that overlap with Xu's case studies:
-  Pastebin/bit.ly (the URL shortener), Twitter timeline (news feed), web
-  crawler, key-value cache, social graph, sales rank, scaling on AWS.
-- **Syllabus only from Xu.** A list of topics ("design a rate limiter",
-  "consistent hashing", "design a unique ID generator") is not protected
-  expression, so we can use Xu's table of contents as a checklist of what
-  interviews expect. For case studies the primer lacks (rate limiter,
-  consistent hashing, unique IDs, notification system, chat, search
-  autocomplete, YouTube, Google Drive), the prose would be AI-written and
-  AI-marked (root rule 13). That breaks the usual OmniStax guarantee that
-  the words are the source's. The user should decide this case by case
-  (§4.4). Never paraphrase Xu's pages; write from the general literature.
+**What replaces Alex Xu (decided: primer only).** donnemartin/system-design-primer
+(CC BY 4.0) is the system design source, and no system design prose is
+AI-written. It has the same arc as Xu's chapter 1 (scaling from one server to
+millions of users: DNS, CDN, load balancers, reverse proxies, application
+layer, SQL vs NoSQL, caching, async and queues, communication, security,
+back-of-envelope numbers). It also has worked designs: Pastebin/bit.ly,
+Twitter timeline, web crawler, key-value cache, social graph, sales rank,
+scaling on AWS. Topics the primer lacks (rate limiting, consistent hashing in
+depth, unique IDs) go to the resource finder (§6) like any other gap. If
+nothing open is good enough, the topic stays out.
 
 **The DSA basics have the same gap.** CIU is links, and cp-algorithms is
 advanced (it barely explains a linked list or a hash table). The core topics
@@ -65,9 +57,14 @@ adapted into a BY-SA work, and BY-SA from CIU and cp-algorithms requires
 it. Every block names its source in the footer attribution.
 
 **Exercises can't be copied from the practice links.** LeetCode, Codeforces
-and SPOJ statements are copyrighted, so they stay links. Exercises come from
-Erickson and ODS (unkeyed, so they need rule 13's choice), and from
-AI-written code exercises whose tests are the key (§1.2).
+and SPOJ statements are copyrighted, so they stay links. **Decided:** no
+AI-written code exercises in the book (those belong to the app's Exercises
+tab). Code exercises are pulled from open sources first (§6.3). Erickson's
+and ODS's printed exercises are unkeyed, so they need rule 13's choice.
+
+**NC licences are out.** A CC BY-SA book can't include CC BY-NC material.
+That excludes MIT OCW problem sets and lecture transcripts, and Project
+Euler, however good they are. They can still be linked.
 
 ---
 
@@ -118,9 +115,7 @@ states: `trace = [{line, vars, event}]`. Events are things like
 - **The key is the reference solution.** Before a code exercise ships, the
   build runs `reference` against every test and the complexity check.
   That's the deterministic check root rule 13 asks of an AI solution.
-- **Language.** Python first, because Pyodide is already there and most
-  interview candidates use it. C++ needs a wasm clang (~30 MB) or a limited
-  interpreter. That's phase 2, and it matters for the cp-algorithms part.
+- **Language.** See §1.5.
 
 ### 1.3 Checkable answer types that cost no code
 
@@ -155,6 +150,40 @@ runtime, because a layout that moves while you read it is extraneous
 load), `grid` (DP table with dependency arrows), `stack`/`queue`/`heap`
 (the heap shown as tree and array together), `buckets` (hash table),
 `bits`, and a `code` panel with the current line marked.
+
+### 1.5 Which languages run, and why C++ costs more
+
+The runner is one interface, `load() · run(code, tests) · count(code, sizes) ·
+trace(code, input)`, with one adapter per language. The adapters differ in
+download size and in whether `count` and `trace` can be built at all, and
+`trace` is what drives the figures:
+
+| | Python (Pyodide) | JavaScript | C++ (clang in wasm) |
+|---|---|---|---|
+| Download | ~10 MB, already cached by the calculator | 0, the browser runs it | 30–60 MB toolchain plus libc++ headers |
+| Time to first run | ~2 s cold, then instant | instant | several seconds to compile each submission |
+| Step count (§1.2) | `sys.settrace` line events | AST rewrite (acorn): a counter at every statement and loop head | no hook; would need coverage instrumentation in a wasm clang. Falls back to timing, which is fairly stable in wasm since it runs near native speed |
+| Variable trace (§1.1) | `sys.settrace` gives the frame's locals | the same AST rewrite snapshots locals | needs a debugger over wasm; not practical now |
+| Interview fit | most common interview language | common, but the standard library has no heap, deque, or ordered map | standard for contests |
+| Integers | arbitrary precision | 2⁵³ doubles: `a*b % (1e9+7)` with a, b near 10⁹ comes out **wrong** unless written with BigInt | 64-bit, as cp-algorithms assumes |
+
+So C++ is heavier for three reasons. It is compiled, so a whole compiler has
+to be shipped to the browser. Each run waits for a compile. And the two
+instruments the book relies on, step counting and variable tracing, have no
+cheap hook, so C++ exercises would get pass/fail plus a timing-based
+complexity check and no "watch your code run".
+
+JavaScript is the cheapest runner of the three and gets every instrument,
+because the figures' own trace code is already JS. Its weak spot is the
+number theory in Part IV: silent precision loss there is worse than a
+missing feature.
+
+Proposal: **Python and JavaScript in the first pass**, the reader picks a
+language per book, and every open-sourced exercise runs in whichever of the
+two its tests are written for (§6.3 often supplies both). **C++ later**,
+lazy-loaded only on Part IV pages and run with timing-based checks. Code the
+source prints stays in the source's language (cp-algorithms' C++) and isn't
+translated.
 
 System design: `component(kind)` boxes (client, DNS, CDN, LB, server, cache,
 DB primary/replica, queue, worker, object store) with one icon per kind,
@@ -430,20 +459,16 @@ because prerequisites force the order and each concept gets one home.
   it only when the article really is a duplicate. Each fold is listed in
   the chapter's `exploration.md`.
 
-### 4.4 Decisions for you
+### 4.4 Decisions so far
 
-1. Replace Alex Xu with the primer + AI-written case studies for the gaps,
-   or primer only (fewer case studies, all source prose)?
-2. Bring in Erickson and ODS for Part I–III prose? (Without them Parts I–III
-   are mostly AI-written, since CIU has no prose.)
-3. Code language: Python executable plus C++ shown verbatim where
-   cp-algorithms prints it, with an AI-translated Python twin marked as
-   such? Or C++ executable from the start (heavier)?
-4. Exercises: AI-written code exercises with tests as the key (the
-   reference passes every test before shipping) as the main practice
-   supply for Parts I–III?
-5. How far into cp-algorithms: all ~163 articles, or `core` + `stretch`
-   first with `contest` later?
+1. System design: the primer only. No AI-written prose.
+2. Erickson and ODS come in, and so does anything else the finder turns up.
+   The judge (§6) picks per topic: lucidity first, then cohesive style,
+   then comprehensiveness.
+3. Languages: proposed in §1.5, awaiting your answer.
+4. Code exercises: pulled from open sources first. None are AI-written.
+5. First pass: the concept map and the ToC for the whole book, then the
+   first three chapters.
 
 ---
 
@@ -479,10 +504,139 @@ gets a different model, not the same one again louder.
 
 ---
 
+## 6. The resource finder and the resource judge
+
+Two subagents with separate powers. The finder fetches and never ranks
+quality. The judge ranks and never fetches. So the judge only sees what is
+on file, every verdict can be traced back to evidence, and nothing gets
+picked just because it was easy to get.
+
+### 6.1 The finder
+
+**Input:** one chapter of the concept map: its concepts, their statements
+and prerequisite edges, and the tier tags.
+
+**Licence gate first.** A candidate goes into the dossier only if its
+licence is compatible with CC BY-SA 4.0: public domain, CC0, CC BY,
+CC BY-SA, or MIT/BSD/Apache for code. The evidence goes on file: the
+licence file's URL and the quoted line. Pages on one site can carry
+different licences (LibreTexts does this), so the check is per page, not
+per site. Anything else is recorded as **link-only** with the reason and
+never enters the text.
+
+**Where it looks, in order:**
+1. The registered corpus: cp-algorithms, the primer, Erickson, ODS, CIU.
+   This is a cheap local search.
+2. Known open collections: OpenDSA, Wikibooks, Wikipedia, the Open
+   Textbook Library, open university lecture notes with a stated licence,
+   arXiv papers under CC BY for the advanced topics.
+3. The links in CIU's lists, followed one by one and kept when their
+   licence passes.
+4. Open web and GitHub search for the concept, filtered by licence.
+
+**How it obtains things:** clone the repo, get LaTeX or Markdown sources
+before falling back to PDFs (`pdftotext` keeps math worse than the source
+does), and pull captions for videos whose licence passes (YouTube's CC BY
+flag). Few interview videos are CC BY, and a transcript reads like speech,
+so expect videos to end up as link-only side-panel references (§5).
+Every fetched item is saved under `sources/<id>/` with its URL, the date,
+the licence evidence, and a locator scheme.
+
+**Output:** a dossier per chapter, `dossiers/<chapter>.md`. Each candidate
+gets a row: locator, licence and evidence, kind (prose | code exercise with
+tests | figure | dataset), the concepts it covers, length, and
+prerequisites it assumes that the concept map puts later. The finder
+writes no opinion on quality.
+
+**Network:** this cloud environment has a network policy, and
+YouTube, PDF hosts or some universities may be blocked. The finder
+records each blocked host in the dossier. Opening a host is a change the
+user approves.
+
+### 6.2 The judge
+
+Your three criteria, applied in that order, with the steps that keep an LLM
+judge honest:
+
+- **Lucidity (decides).** Checked against concrete signs, not a general
+  impression:
+  - each term is defined before it is used;
+  - an example sits next to the abstraction;
+  - the passage says why the idea is needed before giving it;
+  - it avoids unexplained jumps ("it is easy to see", skipped steps);
+  - every claim is correct.
+
+  Correctness is checked, not assumed: the judge runs the passage's code on
+  small inputs, works one example by hand, and checks the stated
+  complexity. A clear passage that is wrong loses.
+- **Cohesive style (breaks near-ties).** Lucidity per passage alone would
+  produce a quilt of five voices in one chapter. So the judge works in two
+  rounds:
+  1. **Chapter round:** pick the **primary source** for the chapter, the
+     one that best covers the chapter as a whole.
+  2. **Concept round:** a concept switches to another source only when
+     that source beats the primary clearly on lucidity, or the primary
+     doesn't cover the concept.
+
+  Style also covers notation: 0- or 1-indexed arrays, pseudocode or real
+  code, "we" or "you". A switch that brings in a clashing notation counts
+  against the challenger.
+- **Comprehensiveness (last).** Measured against the concept map, not the
+  judge's taste: does the passage cover the concept's statement, its edge
+  cases, its cost, and the sub-concepts the map hangs under it?
+
+**Procedure:**
+- **Pairwise and blind.** Source names and URLs are stripped from the
+  passages, which removes prestige bias. Each pair is judged in both
+  orders, which removes position bias.
+- **Disagreement escalates.** If the two orders disagree, the pair is
+  judged by a second independent judge. If the judges still disagree, it
+  goes to you.
+- **Verdicts are written down.** Each one goes to
+  `judgements/<chapter>.md` with the winner, a ranked list, quoted
+  passages for each reason, and the correctness checks it ran.
+- **The runner-up goes to the §5 test.** It becomes the "Another angle"
+  block only if it uses a different model. Otherwise it is dropped.
+- **Exercises get their own pass.** The same blind procedure ranks them,
+  on whether the tests cover the edge cases, whether the statement is
+  clear, and how well the exercise fits the concepts. Its reference
+  solution is run against its own tests before the exercise is accepted.
+
+Both judges use the `the-judge` skill's stance: no deference to how
+famous a source is.
+
+### 6.3 Where open code exercises come from
+
+The finder's first stops for code exercises (licences to confirm):
+
+- **Exercism `problem-specifications`** (MIT): problem descriptions plus
+  language-neutral test cases in `canonical-data.json`. It covers binary
+  search, linked lists, binary search trees, a circular buffer,
+  word-search and more. The tests port to Python and JS mechanically, so
+  one exercise runs in both runners.
+- **ICPC regional problem packages published under CC BY-SA** (several
+  regionals publish statements, test data and reference solutions), for
+  Part IV.
+- **Kattis open problems** whose page states a CC BY-SA licence.
+- **TheAlgorithms/Python and /JavaScript** (MIT): these are
+  implementations with doctests, not exercises. Their doctests are a
+  source of test cases for a printed book exercise.
+
+**Open question:** a book exercise (Erickson, ODS) whose tests come from
+an open source like the above is fully sourced. One whose tests would have
+to be written for it is half AI-written. Is that allowed (the statement
+is the book's, the tests are AI-written and marked), or does such an
+exercise stay a non-code `open` exercise?
+
+---
+
 ## Next step I'd propose
 
-Build two figures in figlib, `sim-binary-search` and the scaling diagram
-for primer chapter 1 (step-by-step), plus the `code` answer type with the
-line-count complexity check. They test the three new mechanisms (trace,
-invariant shading with referent-coloured code, step-diff diagrams) before
-any pipeline work starts.
+1. Phase 0 and 1 (§4.1): register the corpus, and inventory the concepts
+   in each source.
+2. Merge them into the concept map, then derive the ToC. You review both.
+3. For chapters 1 to 3: finder dossiers, then judge verdicts. You review
+   those.
+4. In parallel with 2 and 3, since neither depends on the other: the
+   `sim-binary-search` prototype, the step-by-step scaling diagram, and
+   the `code` answer type with the Python and JS runners.
