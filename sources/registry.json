@@ -1615,6 +1615,47 @@
       "use": "prose, in translation from Chinese, following OmniStax docs/prompts/translate.md (field terms looked up, never coined; translation AI-marked). SATA terms: attribution thanks the authors, and the project is starred by a person on the owner's account (Claude does not do this).",
       "format": "Markdown under docs/ (MkDocs), Chinese",
       "locator": "oiwiki:<docs path without .md>#<heading>, e.g. oiwiki:basic/prefix-sum#一维差分"
+    },
+    {
+      "id": "sicp",
+      "title": "Structure and Interpretation of Computer Programs, 2nd ed. (HTML5 edition by Andres Raba)",
+      "authors": [
+        "Harold Abelson",
+        "Gerald Jay Sussman",
+        "Julie Sussman",
+        "Andres Raba (HTML5 edition)"
+      ],
+      "url": "https://github.com/sarabander/sicp",
+      "pin": "bda03f79d6e2e8899ac2b5ca6a3732210e290a79",
+      "licence": "CC BY-SA 4.0 (HTML files and html/fig illustrations)",
+      "licence_evidence": {
+        "url": "https://raw.githubusercontent.com/sarabander/sicp/bda03f79d6e2e8899ac2b5ca6a3732210e290a79/LICENSE",
+        "quote": "The HTML files of the book and illustrations in directory 'html/fig' are licensed under Creative Commons Attribution-ShareAlike 4.0 International License"
+      },
+      "use": "prose, figures and written exercises; only section 3.3.2 (Representing Queues, front/rear pointers) and Exercises 3.21-3.23 are cached, for chapter 3 (queues, deques). Code is Scheme.",
+      "format": "XHTML (html/3_002e3.xhtml) plus SVG figures fig/chap3/Fig3.18-3.21; cached in sources/_cache/sicp/",
+      "locator": "sicp:<section number>[#Exercise-<n>], e.g. sicp:3.3.2 or sicp:3.3.2#Exercise-3.23",
+      "added_by": "ch03 finder 2026-11-08"
+    },
+    {
+      "id": "pythonds",
+      "title": "Problem Solving with Algorithms and Data Structures using Python (Runestone edition)",
+      "authors": [
+        "Bradley N. Miller",
+        "David L. Ranum"
+      ],
+      "url": "https://github.com/RunestoneInteractive/pythonds",
+      "pin": "946c02ed651768bc99ea9751961fabd20bb8194d",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://raw.githubusercontent.com/RunestoneInteractive/pythonds/master/LICENSE.txt",
+        "quote": "This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License."
+      },
+      "use": "NC exercise cards only (METHOD.md §0): the 36 end-of-chapter exercises of Basic Data Structures (stacks, queues, deques, infix/postfix, parentheses, linked lists) and the in-text self-checks. Prose is NC and link-only.",
+      "format": "reStructuredText under _sources/BasicDS/ (Exercises.rst, self-check directives in each section); cached in sources/_cache/pythonds/",
+      "locator": "pythonds:BasicDS/<rst stem>[#exc-<n>], e.g. pythonds:BasicDS/Exercises#exc-19",
+      "nc": true,
+      "added_by": "ch03 finder 2026-11-08"
     }
   ]
 }
