@@ -548,6 +548,17 @@ because prerequisites force the order and each concept gets one home.
 11. One explanation per concept, one source, its writing kept whole (§5).
 12. MIT and Apache 2.0 prose allowed with notices; versions chosen per page;
     *Computer Networks: A Systems Approach* excluded entirely (§6.1).
+13. Tiers are shown to the reader as **Essential, Advanced, Beyond** (the
+    concept map's `core`, `stretch`, `contest`), with no app change:
+    - **The book's introduction** (an OmniStax-written page, AI-marked)
+      says what each word means and lists which chapters are which. A
+      chapter with sections of mixed tiers is listed under its most common
+      tier, and its exceptions are named.
+    - **Each section's lead** (the OmniStax-written sentence or two under
+      the title, root rule 21.5) says the section's tier, and names any
+      concept in it whose tier differs.
+    - Nothing else in the app changes. Practice sessions don't filter by
+      tier.
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
