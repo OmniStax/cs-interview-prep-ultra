@@ -8,9 +8,9 @@
 
 C ch-cost | Algorithms and their cost
 S what-is-an-algorithm | What an algorithm is
-algorithm = j:algorithm
+algorithm = j:algorithm :: note=Its worked example is jeffe:0.3 (ApportionCongress, the apportionment of Congress), carried whole with jeffe:0.1 (ruling 18, METHOD §4.4); errata 6 and bridge B2 apply.
 underspecified-algorithm = j:bad-algorithm-underspecified
-describing-algorithms = j:describing-algorithms
+describing-algorithms = j:describing-algorithms :: note=jeffe:0.5 mentions the compass-and-straightedge multiplication of jeffe:0.2 "Compass and Straightedge". That subsection gets no concept row: it is an aside on Euclid's constructions as algorithms that no exercise would test on its own and no interview asks, so it stays context. Carry it with the 0.2 block of lattice-multiplication (same source, same section, kept whole) or bridge the one sentence in 0.5 (B1).
 need-for-efficiency = o:need-for-efficiency
 interface-vs-implementation = o:interface-vs-implementation
 lattice-multiplication = j:lattice-multiplication
@@ -22,51 +22,52 @@ harmonic-numbers = o:harmonic-numbers
 S asymptotic-notation | Asymptotic notation
 big-o = c:big-o o:big-oh
 big-omega-theta = c:big-omega-theta g:wikipedia:Big_O_notation#Family_of_Bachmann–Landau_notations g:opendsa:AlgAnal/AnalLower :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
-multivariate-big-o = o:multivariate-big-oh
+multivariate-big-o = o:multivariate-big-oh g:opendsa:AlgAnal/AnalMultiple :: note=OpenDSA AnalMultiple is the winner (judgements/ch01-03-reconciled.md); added from the reconciliation pass.
 S analysing-algorithms | Analysing running time and space
 word-ram = o:word-ram
 complexity-analysis = c:complexity-analysis j:running-time-analysis
 running-time-guarantees = o:running-time-guarantees
 S amortized-analysis | Amortized analysis
-amortized-analysis = c:amortized-analysis n:amortized-cost g:wikipedia:Amortized_analysis g:opendsa:SeniorAlgAnal/AmortAnal :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
-aggregate-accounting = n:aggregate-accounting g:wikipedia:Amortized_analysis#Method :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
-potential-method = n:potential-method o:potential-method
+amortized-analysis = c:amortized-analysis n:amortized-cost g:wikipedia:Amortized_analysis g:opendsa:SeniorAlgAnal/AmortAnal g:oiwiki:basic/amortized-analysis#引入 :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+aggregate-accounting = n:aggregate-accounting g:wikipedia:Amortized_analysis#Method g:oiwiki:basic/amortized-analysis#记账分析 :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+potential-method = n:potential-method o:potential-method g:oiwiki:basic/amortized-analysis#势能分析 :: note=OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. The ODS treatment (ods:arrays#lem:dualarraydeque-amortized) is the lemma that dual-array-deque's winning passage holds whole (3.3); a later run must not pick it for this concept too. Bridge B14a links the two uses of "potential".
 counter-increment-decrement = n:inc-dec-counter
 S counting-expectation | Counting and expected value
-counting = c:counting g:dmoi3:sec_counting-combperm g:oiwiki:math/combinatorics/combination#排列与组合基础 :: note=Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background).
-probability-basics = c:probability-basics n:probability-space
-conditional-probability = c:conditional-probability :: tier=core ;; why=linearity-of-expectation (core) rests on it.
-linearity-of-expectation = n:linearity-of-expectation o:linearity-of-expectation c:random-variables-expectation :: tier=core ;; why=geometric-expectation and chaining-analysis (both core) rest on it.
+counting = c:counting g:dmoi3:sec_counting-combperm g:oiwiki:math/combinatorics/combination#排列与组合基础 g:brisk:counting#The_Fundamental_Theorem g:brisk:counting#Permutations g:brisk:counting#Combinations :: note=Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background). brisk is the winner (three subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+probability-basics = c:probability-basics n:probability-space g:brisk:probability#Outcomes_and_events g:brisk:probability#Probability_measures g:mcs2018:17.2 g:aspnes-202:12.1.1 g:aspnes-469:2.1 g:appcomb:s_probability_intro g:openintro-stats:3.1 g:wikibooks:Probability/Probability_Spaces#Probability_axioms g:wikibooks:Probability/Introduction#Classical_theory_of_probability g:wikipedia:Probability#Mathematical_treatment g:oiwiki:math/probability/basic-conception :: note=Open prose from the chapter 1 finder run (dossiers/ch01.md 1.6), which corrected the old "no open prose" flag. brisk is the winner (two subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+conditional-probability = c:conditional-probability g:brisk:probability#Conditional_probability g:brisk:probability#Independence g:mcs2018:18.2 g:aspnes-202:12.1.5 g:aspnes-469:2.3 g:appcomb:s_probability_conditional g:openintro-stats:3.2.3 g:wikibooks:Probability/Conditional_Probability#Definition g:wikipedia:Conditional_probability#Definition g:wikipedia:Independence_(probability_theory)#Two_events g:wikipedia:Probability#Mathematical_treatment g:oiwiki:math/probability/conditional-probability :: tier=core ;; why=linearity-of-expectation (core) rests on it. ;; note=Open prose from the chapter 1 finder run (dossiers/ch01.md 1.6), which corrected the old "no open prose" flag. brisk is the winner (two subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+random-variable = g:mcs2018:19.1 g:wikibooks:Probability/Random_Variables#Definition g:aspnes-202:12.2 g:aspnes-469:3 g:wikipedia:Random_variable g:openintro-stats:3.4 g:appcomb:s_probability_discrete-random-variables g:oiwiki:math/probability/random-variable#随机变量 :: tier=core ;; name=Random variable ;; why=ruling 18 (METHOD §4.4) makes it an Essential concept of 1.6; linearity of expectation (core) rests on it. ;; note=Own concept by ruling 18 (2026-11-08): ODS's linearity passage uses the term without defining it (reconciliation item 4, bridge B4), so the definition is taught from a source, not by a lead sentence. Winner mcs2018:19.1, Definition 19.1.1 (PDF p. 857) through 19.1.2, before §19.2. brisk, the 1.6 winner for the three concepts before it, has no random-variable passage (probability.tex ends at Independence).
+linearity-of-expectation = n:linearity-of-expectation o:linearity-of-expectation c:random-variables-expectation :: tier=core ;; name=Expected value and linearity of expectation ;; why=geometric-expectation and chaining-analysis (both core) rest on it. ;; note=Rests on random-variable (ruling 18): the ODS winner uses random variables without defining them.
 indicator-variables = o:indicator-variables
 geometric-expectation = o:coin-toss-expectation
 
 C ch-arrays-lists | Arrays and linked lists
 S arrays | Arrays and the list interface
 array = c:array g:wikipedia:Array_(data_structure) g:wikibooks:Data_Structures/Arrays :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
-pointer-arithmetic = c:pointer-arithmetic
+pointer-arithmetic = c:pointer-arithmetic g:wikipedia:Pointer_(computer_programming)#C_arrays g:wikipedia:Array_(data_structure)#Element_identifier_and_addressing_formulas g:wikibooks:C_programming/Pointers_and_arrays#Pointers_and_arrays g:aspnes-223:pointerArithmetic g:aspnes-223:arrays g:holden-acs:Pointers#Arrays g:oiwiki:lang/pointer#指针的偏移 :: note=Open prose from the chapter 2 finder run (dossiers/ch02.md, Gaps), which corrected the old "no open prose" flag; the eh-dsa passage it also lists is excluded. Wikipedia Pointer #C arrays is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 list-interface = o:list-interface
 S dynamic-arrays | Dynamic arrays
 dynamic-array = c:dynamic-array o:arraystack
 array-resize = o:array-resize
 dynamic-array-cost = c:dynamic-array-cost o:arraystack-amortized-resize
 block-copy = o:fastarraystack
-implement-vector = c:implement-vector
+implement-vector = c:implement-vector :: note=Stays "no open prose": open sources give implementations, not prose (confirmed by the chapter 2 finder run). Its explanation in judgements/ch02.md is the ODS ArrayStack code as shown in the 2.2 passages, with no separate prose block.
 S two-pointers | Two pointers and sliding windows | OI Wiki misc/two-pointer is split over this home: its sorted-sequence section treats two-pointers, its window section the variable window, its linked-list section Floyd's cycle detection (2.7).
-two-pointers = g:dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py g:oiwiki:misc/two-pointer#利用序列有序性 g:doocs-leetcode:0167#Solution_2:_Two_Pointers g:doocs-leetcode:0011#Solution_1:_Two_Pointers :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §1). No open source states the pattern as a pattern at textbook length: dsa-dummies gives a short general note and OI Wiki a general page; doocs applies it to pair sum (167) and container with most water (11). The canonical cases that rest on it are 3SUM (here), merging (here), three-way partition (10.4) and tortoise and hare (2.7).
+two-pointers = g:oiwiki:misc/two-pointer#利用序列有序性 g:doocs-leetcode:0167#Solution_2:_Two_Pointers g:doocs-leetcode:0011#Solution_1:_Two_Pointers :: name=Two pointers ;; stmt=Two indices move through an array, together or toward each other, so that each step rules out candidates and the scan ends after one O(n) pass with O(1) extra space; on a sorted array, closing in from both ends on a target pair sum is the classic case. ;; note=From the gap-patterns finder run (dossiers/gap-patterns.md §1). No open source states the pattern as a pattern at textbook length: OI Wiki gives a general page; doocs applies it to pair sum (167) and container with most water (11). The dsa-dummies note was removed (source excluded, ruling 18). The canonical cases that rest on it are 3SUM (here), merging (here), three-way partition (10.4) and tortoise and hare (2.7).
 three-sum = g:wikipedia:3SUM#Quadratic_algorithm g:doocs-leetcode:0015#Solution_1:_Sort_+_Two_Pointers :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §1). Sorting is used as a library call here; sorting algorithms are chapter 10.
 merge-sorted-sequences = g:wikipedia:Merge_algorithm#Merging_two_lists :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §1): two pointers, one per sorted list. Merge sort (10.3) rests on it (edge added).
-sliding-window-fixed = g:wikipedia:Moving_average#Simple_moving_average g:dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py g:doocs-leetcode:0643#Solution_1:_Sliding_Window g:doocs-leetcode:1456#Solution_1:_Sliding_Window g:doocs-leetcode:0567#Solution_1:_Sliding_Window g:doocs-leetcode:0438#Solution_1 :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §2). The fixed-window minimum with a monotonic deque stays its own concept (sliding-window-minimum, 3.4), which now rests on this one.
+sliding-window-fixed = g:wikipedia:Moving_average#Simple_moving_average g:doocs-leetcode:0643#Solution_1:_Sliding_Window g:doocs-leetcode:1456#Solution_1:_Sliding_Window g:doocs-leetcode:0567#Solution_1:_Sliding_Window g:doocs-leetcode:0438#Solution_1 :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §2). The fixed-window minimum with a monotonic deque stays its own concept (sliding-window-minimum, 3.4), which now rests on this one.
 sliding-window-variable = g:doocs-leetcode:0003#Solution_1:_Sliding_Window g:oiwiki:misc/two-pointer#维护区间信息 g:doocs-leetcode:0076#Solution_1:_Counting_+_Two_Pointers g:doocs-leetcode:0209#Solution_2:_Two_Pointers g:icc:recursion_dynamic/longest_substr_k_distinct :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §2). OI Wiki's window section is the only general account of the expand/shrink invariant (ruling 15 made it usable); the rest are problem-level write-ups. Several examples keep the window's contents in a hash set or map, taught in chapter 5: the section should open with an example whose window state is a sum or a count array.
 S prefix-sums | Prefix sums and difference arrays | OI Wiki basic/prefix-sum is split over this home: one row per section (1D, 2D, 1D difference, 2D difference); its tree prefix sums and differences are not taken.
-prefix-sums = g:wikipedia:Prefix_sum g:oiwiki:basic/prefix-sum#一维前缀和 g:dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py g:doocs-leetcode:0303#Solution_1:_Prefix_Sum :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Replaces the bracketed [prefix sums] that Fenwick trees, sqrt decomposition and the prefix-minimum maximum subarray assumed.
+prefix-sums = g:wikipedia:Prefix_sum g:oiwiki:basic/prefix-sum#一维前缀和 g:doocs-leetcode:0303#Solution_1:_Prefix_Sum :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Replaces the bracketed [prefix sums] that Fenwick trees, sqrt decomposition and the prefix-minimum maximum subarray assumed.
 prefix-sums-2d = g:wikipedia:Summed-area_table#The_algorithm g:oiwiki:basic/prefix-sum#基于容斥原理 g:doocs-leetcode:0304#Solution_1:_Two-dimensional_Prefix_Sum :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Tier stretch: range sums over a matrix come up at harder interviews and in contests, not in the typical loop, and no open exercise with tests was found for it.
 difference-array = g:oiwiki:basic/prefix-sum#一维差分 g:doocs-leetcode:0370#Solution_1:_Difference_Array g:doocs-leetcode:1094#Solution_1:_Difference_Array g:doocs-leetcode:1109#Solution_1:_Difference_Array :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4). Tier core: range-update problems (car pooling, flight bookings) are common interview mediums, and the meeting-rooms sweep (20.2, core) rests on it. Replaces the bracketed [difference array] that cpa's Fenwick range update assumed.
 difference-array-2d = g:oiwiki:basic/prefix-sum#二维/多维差分 :: note=From the gap-patterns finder run (dossiers/gap-patterns.md §4; OI Wiki only). Tier stretch, as 2D prefix sums.
 S singly-linked-lists | Singly linked lists
-singly-linked-list = c:singly-linked-list o:sllist
-pointer-to-pointer = c:pointer-to-pointer
-implement-linked-list = c:implement-linked-list g:opendsa:List/ListLinked :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
-linked-list-vs-array = c:linked-list-vs-array o:linked-vs-array
+singly-linked-list = c:singly-linked-list o:sllist g:wikipedia:Linked_list#Singly_linked_list :: note=Wikipedia Linked list is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+pointer-to-pointer = c:pointer-to-pointer g:wikipedia:Pointer_(computer_programming)#Multiple_indirection g:wikipedia:Pointer_(computer_programming)#Pass-by-address_using_pointers g:aspnes-223:Pointers_and_functions g:aspnes-223:stacks g:oiwiki:lang/pointer#指针类型参数的使用 :: note=Open prose from the chapter 2 finder run (dossiers/ch02.md 2.5), which corrected the old "no open prose" flag; pass-by-address, Aspnes 4.9.4 and the OI Wiki passage are background (changing a caller's variable), and the declaration-only mentions it lists are not taken. Wikipedia #Multiple indirection is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+implement-linked-list = c:implement-linked-list g:opendsa:List/ListLinked g:wikipedia:Linked_list#Singly_linked_lists :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. Wikipedia Linked list operations is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
+linked-list-vs-array = c:linked-list-vs-array o:linked-vs-array g:wikipedia:Linked_list#Linked_lists_vs._dynamic_arrays :: note=Wikipedia is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 S doubly-linked-lists | Doubly linked lists
 doubly-linked-list = c:doubly-linked-list o:dllist
 sentinel-node = o:dummy-node
@@ -77,13 +78,13 @@ cycle-start-proof = p:cycle-start-proof
 
 C ch-stacks-queues | Stacks, queues and deques
 S stacks | Stacks and bracket matching
-stack = c:stack o:stack-interface
+stack = c:stack o:stack-interface g:wikipedia:Stack_(abstract_data_type) :: note=Wikipedia is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 balanced-brackets = p:balanced-bracket-sequence
 bracket-validation = p:bracket-validation
 S queues | Queues and circular buffers
 queue = c:queue o:queue-interface
 circular-buffer = c:circular-buffer o:circular-array
-queue-linked-list = c:queue-linked-list g:wikibooks:Data_Structures/Stacks_and_Queues#Queues :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates.
+queue-linked-list = c:queue-linked-list g:wikibooks:Data_Structures/Stacks_and_Queues#Queues o:sllist-queue :: note=Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. The winner is ODS SLList "Queue Operations" with the closing paragraph after thm:sllist (row ods:sllist-queue, added in the reconciliation pass); Winner and locator: judgements/ch01-03-reconciled.md, final winner table. Bridge B11.
 array-queue = o:arrayqueue c:queue-fixed-array :: note=CIU's fixed-size array queue and ODS's resizing ArrayQueue are one concept (a circular array holding a FIFO queue); ODS adds resizing.
 S deques | Deques
 deque = o:deque-interface
@@ -94,7 +95,7 @@ min-stack = p:min-stack
 queue-from-two-stacks = p:queue-two-stacks
 monotonic-queue-minimum = p:min-queue-monotonic
 sliding-window-minimum = p:sliding-window-minimum g:wikipedia:Double-ended_queue#Monotonic_queue g:oiwiki:ds/monotonic-queue g:doocs-leetcode:0239#Solution_2:_Monotonic_Queue :: note=The gap-patterns run (§2) added the Wikipedia, OI Wiki and doocs treatments of the monotonic-deque window.
-nearest-smaller-element = p:nearest-smaller-stack
+nearest-smaller-element = p:nearest-smaller-stack g:wikipedia:All_nearest_smaller_values#Sequential_algorithm :: note=Wikipedia is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table.
 largest-zero-submatrix = p:largest-zero-submatrix
 S expressions | Stack applications: expression evaluation
 rpn-evaluation = p:rpn-evaluation
@@ -1427,4 +1428,7 @@ EDGE sparse-dp -> longest-common-subsequence | Hunt-Szymanski's sparse DP is sta
 EDGE mergesort -> merge-sorted-sequences | merge sort repeats the two-list merge, which chapter 2 teaches as a two-pointer case (gap inventory).
 EDGE sliding-window-minimum -> sliding-window-fixed | the monotonic-deque minimum is a fixed-size window whose state is a min-queue (gap inventory).
 EDGE lattice-paths-obstacles -> grid-paths | the inclusion-exclusion count with obstacles counts the same monotone lattice paths (gap inventory).
+EDGE linearity-of-expectation -> random-variable | expectation is defined on random variables, which ODS's winning passage uses undefined (ruling 18).
+EDGE las-vegas-monte-carlo -> random-variable | its running time is a random variable whose expectation is bounded (ruling 18).
+EDGE linear-probing-analysis -> random-variable | it bounds the expected length of a run, a random variable over the hash values (ruling 18).
 NOEDGE random-walk-binary-tree -> meldable-heap | cpa proves the random root-to-leaf path bound inside its randomized-heap article; ODS states it as a lemma about any binary tree, and the heap rests on it, not the reverse. Breaks a cycle.

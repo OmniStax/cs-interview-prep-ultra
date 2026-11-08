@@ -7,7 +7,8 @@ Checks, for concepts.json:
   - prereqs resolve, contain no self-loops, form no cycle, and are Hasse-reduced
     (no prereq is reachable through another prereq of the same concept);
   - every treatment names an inventory row that exists, and its locator and source
-    match that row; open_prose agrees with the treatments;
+    match that row; no treatment or inventory row comes from a source that sources/registry.json
+    marks "excluded" (such a source is never open); open_prose agrees with the treatments;
   - every inventory row is used by some treatment or listed under "dropped";
   - inventory/gap.json rows (source "gap") carry their real source in the id prefix: the prefix must be a
     registry locator prefix, the id must be the locator with spaces as underscores, and the locator must
@@ -34,10 +35,12 @@ GAP = 'gap'                          # inventory whose rows name their real sour
 KINDS = {'definition', 'axiom', 'result', 'idea', 'skill'}
 TIERS = ['core', 'stretch', 'contest']
 # Sources whose prose may be used (METHOD §0, rulings 12 and 15). Keep in step with tools/map/build.py.
+# A registry row with an "excluded" field is never open (ruling 18 for dsa-dummies); it is removed from OPEN in main().
 OPEN = {'cpa', 'jeffe', 'ods', 'sdp',
-        'wikipedia', 'wikibooks', 'wp-sysdesign', 'dsa-dummies', 'doocs-leetcode', 'oiwiki', 'opendsa',
-        'algo-explanation', 'icc', 'trekhleb-jsalgo', 'mcs2018', 'aspnes-202', 'anfp', 'dmoi3', 'appcomb',
-        'csci30', 'lt-csbu', 'holden-acs', 'aosa', 'raft-site'}
+        'wikipedia', 'wikibooks', 'wp-sysdesign', 'doocs-leetcode', 'oiwiki', 'opendsa',
+        'algo-explanation', 'icc', 'trekhleb-jsalgo', 'mcs2018', 'aspnes-202', 'aspnes-223', 'aspnes-469', 'brisk',
+        'openintro-stats', 'anfp', 'dmoi3', 'appcomb', 'csci30', 'lt-csbu', 'holden-acs', 'aosa', 'raft-site'}
+EXCLUDED = set()                     # filled from sources/registry.json in main()
 SOURCES = {'ciu', 'cpa', 'jeffe', 'jeffe-notes', 'ods', 'sdp'}
 CACHE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sources', '_cache')
 REGISTRY = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'sources', 'registry.json')
@@ -56,6 +59,11 @@ def registry_prefixes():
     return {s['locator'].split(':', 1)[0]: s['id'] for s in reg['sources'] if s.get('locator')}
 
 
+def registry_excluded():
+    """Ids of registry rows that carry an "excluded" field: never open, never a treatment."""
+    return {s['id'] for s in json.load(open(REGISTRY))['sources'] if s.get('excluded')}
+
+
 def load_inventories():
     rows = {}
     pfx = registry_prefixes()
@@ -69,6 +77,7 @@ def load_inventories():
                     err(f'gap row {r["id"]}: prefix {p} is not a registry locator prefix'); continue
                 src = pfx[p]
             if r['id'] in rows: err(f'duplicate inventory row id {r["id"]}')
+            if src in EXCLUDED: err(f'inventory row {r["id"]} ({f}.json): source {src} is excluded in sources/registry.json')
             rows[r['id']] = (f, src, r)
     return rows
 
@@ -131,8 +140,6 @@ def resolve_locator(src, loc):
         if not os.path.exists(f): return f'file {path} not cached'
         if anchor and _norm(anchor) not in _md_headings(f): return f'heading {anchor} not in {path}'
         return None
-    if src in ('dsa-dummies',):
-        return None if os.path.exists(os.path.join(d, path)) else f'file {path} not cached'
     if src == 'algo-explanation':
         return None if os.path.exists(os.path.join(d, 'en', path + '.md')) else f'topic {path} not cached'
     if src == 'icc':
@@ -149,11 +156,40 @@ def resolve_locator(src, loc):
         secs = {_norm(t) for t in re.findall(r'\\(?:sub)*section\*?\{(.*?)\}', open(f, encoding='utf-8').read())}
         if anchor and _norm(anchor) not in secs: return f'section {anchor} not in {path}'
         return None
-    if src in ('mcs2018', 'aspnes-202', 'anfp', 'lt-csbu'):
+    if src == 'brisk':
+        f = os.path.join(d, path + '.tex')
+        if not os.path.exists(f): return f'chapter {path} not cached'
+        secs = {_norm(t) for t in re.findall(r'\\(?:sub)*section\*?\{(.*?)\}', open(f, encoding='utf-8').read())}
+        if anchor and _norm(anchor) not in secs: return f'section {anchor} not in {path}'
+        return None
+    if src == 'aspnes-223':
+        html = open(os.path.join(d, 'notes223.html'), encoding='utf-8', errors='replace').read()
+        return None if re.search(r'\bid="' + re.escape(path) + '"', html) else f'heading id {path} not in notes223.html'
+    if src == 'holden-acs':
+        tex = open(os.path.join(d, 'main.tex'), encoding='utf-8').read()
+        parts = re.split(r'^\\chapter\*?\{(.*?)\}', tex, flags=re.M)
+        chap = {_norm(parts[i]): parts[i + 1] for i in range(1, len(parts) - 1, 2)}
+        if _norm(path) not in chap: return f'chapter {path} not in main.tex'
+        secs = {_norm(t) for t in re.findall(r'\\(?:sub)*section\*?\{(.*?)\}', chap[_norm(path)])}
+        if anchor and _norm(anchor) not in secs | {_norm(path)}: return f'section {anchor} not in chapter {path}'  # #<chapter title> = whole chapter
+        return None
+    if src == 'openintro-stats':
+        # numbers as printed in chapter 3: \section n -> 3.n, \subsection m of it -> 3.n.m, in ch_probability.tex order
+        tex = open(os.path.join(d, 'ch_probability', 'TeX', 'ch_probability.tex'), encoding='utf-8').read()
+        nums, sec, sub = {}, 0, 0
+        for kind, title in re.findall(r'^\\(section|subsection)\{(.*?)\}', tex, re.M):
+            if kind == 'section': sec += 1; sub = 0; nums[f'3.{sec}'] = title
+            else: sub += 1; nums[f'3.{sec}.{sub}'] = title
+        if path not in nums: return f'section {path} not in chapter 3'
+        if anchor and _norm(anchor) != _norm(nums[path]): return f'section {path} is titled {nums[path]!r}, not {anchor!r}'
+        return None
+    if src in ('mcs2018', 'aspnes-202', 'aspnes-469', 'anfp', 'lt-csbu'):
         txt = ''.join(open(os.path.join(d, x), encoding='utf-8', errors='replace').read()
                       for x in sorted(os.listdir(d)) if x.endswith('.txt') and x != 'FETCHED.txt')
         num = re.escape(path)
         pat = {'anfp': r'^Section ' + num + r':', 'lt-csbu': r'_' + path.replace('.', '_0') + r'_'}.get(src, r'^\s*' + num + r'\s+\S')
+        if src == 'aspnes-469' and '.' not in path:      # a whole chapter: its "Chapter n" heading line
+            pat = r'^\f?Chapter ' + num + r'[ \t]*$'
         if src == 'lt-csbu':
             ok = any(re.search(pat, x) for x in os.listdir(d))
         else:
@@ -245,6 +281,8 @@ def check_concepts(data, rows):
             used.add(row)
             if t.get('inventory') not in (None, f): err(f'{cid}: treatment {row} names inventory {t.get("inventory")}, row is in {f}')
             if t.get('source') != src: err(f'{cid}: treatment {row} source {t.get("source")} != {src}')
+            if t.get('source') in EXCLUDED or src in EXCLUDED:
+                err(f'{cid}: treatment {row} points at excluded source {src} (sources/registry.json "excluded")')
             if loc != r['locator']: err(f'{cid}: treatment {row} locator {loc} != inventory locator {r["locator"]}')
         expect = any(t.get('source') in OPEN for t in ts)
         if c.get('open_prose') != expect: err(f'{cid}: open_prose is {c.get("open_prose")}, treatments say {expect}')
@@ -341,6 +379,8 @@ def check_toc(toc, by_id):
 
 def main():
     quiet = '--quiet' in sys.argv
+    EXCLUDED.update(registry_excluded())
+    OPEN.difference_update(EXCLUDED)
     rows = load_inventories()
     check_gap_rows(rows)
     data = json.load(open(os.path.join(MAP, 'concepts.json')))

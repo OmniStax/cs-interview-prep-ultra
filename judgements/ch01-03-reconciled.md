@@ -598,3 +598,71 @@ moves no other winner (item 12).
    - the ODS Python port for the runners;
    - the human check on Wikipedia's "C29";
    - starring the OI Wiki repo (SATA).
+
+---
+
+## Rulings applied 2026-11-08
+
+The user's rulings on this file (METHOD §4.4 item 18), applied to the concept map in
+`tools/map/map.spec`, `inventory/gap.json` and `inventory/ods.json`; the map was rebuilt and
+`tools/check_map.py` passes. The tables above are left as they were.
+
+1. **random-variable → mcs2018.** A new concept in 1.6 (definition, Essential), placed
+   before `linearity-of-expectation`, which now rests on it, as do `las-vegas-monte-carlo`
+   and `linear-probing-analysis`.
+   - Locator: `mcs2018:19.1`, from Definition 19.1.1 ("A random variable R on a
+     probability space is a total function whose domain is the sample space.", PDF p. 857;
+     `mcs-2018.txt` line 38724) through 19.1.1 Indicator Random Variables and 19.1.2
+     Random Variables and Events, ending before §19.2 Independence. The chapter 19 opening
+     paragraph may lead in. Checked against `sources/_cache/mcs2018/`. The cached text
+     renders "=" as "D", so quote from the PDF.
+   - B4 is settled by the concept, not by a lead sentence. B3 gains MCS's notation
+     (Pr[·], [C = 2] for an event) beside brisk's Pr(·) and ODS's Pr{·} and E[·]. Indexing
+     for 1.6 stays "none".
+   - The other open treatments recorded for the judge as gap rows: `wikibooks:Probability/Random_Variables#Definition`,
+     `aspnes-202:12.2`, `aspnes-469:3` (chapter opening), `wikipedia:Random_variable`,
+     `openintro-stats:3.4`, `appcomb:s_probability_discrete-random-variables`,
+     `oiwiki:math/probability/random-variable#随机变量`. brisk has no random-variable passage.
+2. **Erickson §0.3 kept whole as `algorithm`'s worked example.** B1 takes its first
+   branch. B2 and erratum 6 apply, and the 1.1 "mixed" indexing (Pop[1..n], Rep[1..n])
+   stands. 0.2 "Compass and Straightedge" gets **no concept row**: it is an aside on
+   Euclid's constructions that no exercise would test on its own and no interview asks
+   about. 0.5's mention of it is handled by carrying the subsection with
+   `lattice-multiplication`'s 0.2 block (same source and section, kept whole) or by a
+   one-sentence bridge. That is the builder's call, recorded in the note on
+   `describing-algorithms`.
+3. **doocs code is allowed without a twin exercise.** The twin rule covers doocs
+   explanations only, and no doocs explanation won. The three chapter 2 concepts that
+   had no open code take doocs code (CC BY-SA 4.0, credited to doocs/leetcode). The code
+   is in each problem's `README_EN.md` under `sources/_cache/doocs-leetcode/solution/`.
+   The cache has no separate `Solution.*` files.
+
+   | concept | winner (prose) | doocs code | block |
+   |---|---|---|---|
+   | sliding-window-variable (the product window, OI Wiki 例题 1) | OI Wiki | `0700-0799/0713.Subarray Product Less Than K/README_EN.md` | "Solution 1: Two Pointers", Python3 and JavaScript |
+   | prefix-sums-2d | OI Wiki | `0300-0399/0304.Range Sum Query 2D - Immutable/README_EN.md` | "Solution 1: Two-dimensional Prefix Sum", Python3 and JavaScript |
+   | difference-array | OI Wiki | `0300-0399/0370.Range Addition/README_EN.md` | "Solution 1: Difference Array" (not Solution 2, the Fenwick version), Python3 and JavaScript |
+
+   - The three named files are kept. 0713 is the problem OI Wiki's own example works.
+     0370 is the bare template for 一维差分, while 1094 and 1109 wrap the same update in a
+     story, and 1109 is 1-based.
+   - The Python blocks assume LeetCode's implicit imports (`List`; `accumulate` in 0370).
+     Add them when the code is run, isolated as ruling 17 says.
+   - The doocs code is 0-based. Section 2.4's OI Wiki text is 1-based with S₀ = 0. 0304
+     pads its table to (m+1)×(n+1), and 0370 writes `d[r + 1]`. The 2.4 lead should name
+     the shift.
+4. **dsa-dummies excluded (no winner affected).** Its three gap rows are gone, from
+   two-pointers, sliding-window-fixed and prefix-sums. Each of those concepts keeps
+   other open prose. The map scripts now treat any registry row with an `excluded` field
+   as not open, and `check_map.py` fails on a treatment from one. The "pending a
+   provenance ruling" line under **Rules applied** is settled.
+
+**Concept-map corrections applied** (from the section above): probability-basics,
+conditional-probability, pointer-arithmetic and pointer-to-pointer have `open_prose: true`
+from the treatments the dossiers name, so their "(no open prose)" marks are gone. Every
+chapter 1–3 winner is now among its concept's treatments, so the toc "Sources" lines name
+oiwiki in 1.5, brisk in 1.6 and wikipedia in 2.5 and 3.1. The winners for
+multivariate-big-o (OpenDSA AnalMultiple), nearest-smaller-element (Wikipedia) and
+queue-linked-list (ODS SLList "Queue Operations", new row `ods:sllist-queue`) were added
+too. potential-method and queue-linked-list carry the notes this file asked for.
+implement-vector and counter-increment-decrement still have no open prose.

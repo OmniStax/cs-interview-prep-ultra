@@ -1,8 +1,8 @@
 {
  "about": "Merged concept map for cs-interview-prep-ultra: one row per concept, merged across the inventories in inventory/. Rows are in spec order (toc.json chapters, with appendix A's concepts where its chapters stood). A concept with an \"appendix\" field lives on that appendix's pages (curated links, not built as text); its chapter and section ids still name its group and page. treatments list every inventory row that teaches the concept; the judge picks a home later. dropped lists inventory rows that became no concept.",
  "counts": {
-  "concepts": 1022,
-  "inventory_rows": 1301,
+  "concepts": 1023,
+  "inventory_rows": 1353,
   "dropped_rows": 5
  },
  "concepts": [
@@ -27,7 +27,7 @@
     "algorithm definition"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Its worked example is jeffe:0.3 (ApportionCongress, the apportionment of Congress), carried whole with jeffe:0.1 (ruling 18, METHOD §4.4); errata 6 and bridge B2 apply."
   },
   {
    "id": "underspecified-algorithm",
@@ -76,7 +76,7 @@
     "pseudocode"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "jeffe:0.5 mentions the compass-and-straightedge multiplication of jeffe:0.2 \"Compass and Straightedge\". That subsection gets no concept row: it is an aside on Euclid's constructions as algorithms that no exercise would test on its own and no interview asks, so it stays context. Carry it with the 0.2 block of lattice-multiplication (same source, same section, kept whole) or bridge the one sentence in 0.5 (B1)."
   },
   {
    "id": "need-for-efficiency",
@@ -336,11 +336,19 @@
      "row": "ods:multivariate-big-oh",
      "locator": "ods:intro#asymptotic-notation",
      "inventory": "ods"
+    },
+    {
+     "source": "opendsa",
+     "row": "opendsa:AlgAnal/AnalMultiple",
+     "locator": "opendsa:AlgAnal/AnalMultiple",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
+   "aliases": [
+    "Analysing problems with multiple parameters"
+   ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 2 rows (ods:multivariate-big-oh, opendsa:AlgAnal/AnalMultiple). OpenDSA AnalMultiple is the winner (judgements/ch01-03-reconciled.md); added from the reconciliation pass."
   },
   {
    "id": "word-ram",
@@ -463,6 +471,12 @@
      "row": "opendsa:SeniorAlgAnal/AmortAnal",
      "locator": "opendsa:SeniorAlgAnal/AmortAnal",
      "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/amortized-analysis#引入",
+     "locator": "oiwiki:basic/amortized-analysis#引入",
+     "inventory": "gap"
     }
    ],
    "aliases": [
@@ -470,7 +484,7 @@
     "amortized time"
    ],
    "open_prose": true,
-   "notes": "Merged 4 rows (ciu:amortized-analysis, jeffe-notes:amortized-cost, wikipedia:Amortized_analysis, opendsa:SeniorAlgAnal/AmortAnal). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
+   "notes": "Merged 5 rows (ciu:amortized-analysis, jeffe-notes:amortized-cost, wikipedia:Amortized_analysis, opendsa:SeniorAlgAnal/AmortAnal, oiwiki:basic/amortized-analysis#引入). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "aggregate-accounting",
@@ -495,16 +509,23 @@
      "row": "wikipedia:Amortized_analysis#Method",
      "locator": "wikipedia:Amortized_analysis#Method",
      "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/amortized-analysis#记账分析",
+     "locator": "oiwiki:basic/amortized-analysis#记账分析",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "aggregate method",
     "accounting method",
     "banker's method",
-    "Aggregate, accounting and potential methods"
+    "Aggregate, accounting and potential methods",
+    "Aggregate and accounting methods"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (jeffe-notes:aggregate-accounting, wikipedia:Amortized_analysis#Method). Source tiers differ (jeffe-notes stretch, wikipedia core); reconciled to the most common, core. Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
+   "notes": "Merged 3 rows (jeffe-notes:aggregate-accounting, wikipedia:Amortized_analysis#Method, oiwiki:basic/amortized-analysis#记账分析). Source tiers differ (jeffe-notes stretch, wikipedia core, oiwiki core); reconciled to the most common, core. Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "potential-method",
@@ -529,15 +550,22 @@
      "row": "ods:potential-method",
      "locator": "ods:arrays#lem:dualarraydeque-amortized",
      "inventory": "ods"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:basic/amortized-analysis#势能分析",
+     "locator": "oiwiki:basic/amortized-analysis#势能分析",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "physicist's method",
     "Potential method of amortized analysis",
-    "potential function"
+    "potential function",
+    "Potential method"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (jeffe-notes:potential-method, ods:potential-method). Edge to dynamic-array-cost dropped: ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it."
+   "notes": "Merged 3 rows (jeffe-notes:potential-method, ods:potential-method, oiwiki:basic/amortized-analysis#势能分析). OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. The ODS treatment (ods:arrays#lem:dualarraydeque-amortized) is the lemma that dual-array-deque's winning passage holds whole (3.3); a later run must not pick it for this concept too. Bridge B14a links the two uses of \"potential\". Edge to dynamic-array-cost dropped: ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it."
   },
   {
    "id": "counter-increment-decrement",
@@ -589,14 +617,35 @@
      "row": "oiwiki:math/combinatorics/combination#排列与组合基础",
      "locator": "oiwiki:math/combinatorics/combination#排列与组合基础",
      "inventory": "gap"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:counting#The_Fundamental_Theorem",
+     "locator": "brisk:counting#The Fundamental Theorem",
+     "inventory": "gap"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:counting#Permutations",
+     "locator": "brisk:counting#Permutations",
+     "inventory": "gap"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:counting#Combinations",
+     "locator": "brisk:counting#Combinations",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "Combinations and permutations",
-    "Permutation and combination numbers"
+    "Permutation and combination numbers",
+    "The fundamental theorem of counting (product rule)",
+    "Permutations and partial permutations",
+    "Combinations and binomial coefficients"
    ],
    "open_prose": true,
-   "notes": "Merged 3 rows (ciu:counting, dmoi3:sec_counting-combperm, oiwiki:math/combinatorics/combination#排列与组合基础). Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background)."
+   "notes": "Merged 6 rows (ciu:counting, dmoi3:sec_counting-combperm, oiwiki:math/combinatorics/combination#排列与组合基础, brisk:counting#The_Fundamental_Theorem, brisk:counting#Permutations, brisk:counting#Combinations). Open prose added in the gap inventory from dossiers/gap-patterns.md §6 (counting background). brisk is the winner (three subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "probability-basics",
@@ -621,6 +670,72 @@
      "row": "jeffe-notes:probability-space",
      "locator": "jeffe-notes:01-random.1",
      "inventory": "jeffe-notes"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:probability#Outcomes_and_events",
+     "locator": "brisk:probability#Outcomes and events",
+     "inventory": "gap"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:probability#Probability_measures",
+     "locator": "brisk:probability#Probability measures",
+     "inventory": "gap"
+    },
+    {
+     "source": "mcs2018",
+     "row": "mcs2018:17.2",
+     "locator": "mcs2018:17.2",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-202",
+     "row": "aspnes-202:12.1.1",
+     "locator": "aspnes-202:12.1.1",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-469",
+     "row": "aspnes-469:2.1",
+     "locator": "aspnes-469:2.1",
+     "inventory": "gap"
+    },
+    {
+     "source": "appcomb",
+     "row": "appcomb:s_probability_intro",
+     "locator": "appcomb:s_probability_intro",
+     "inventory": "gap"
+    },
+    {
+     "source": "openintro-stats",
+     "row": "openintro-stats:3.1",
+     "locator": "openintro-stats:3.1",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:Probability/Probability_Spaces#Probability_axioms",
+     "locator": "wikibooks:Probability/Probability_Spaces#Probability axioms",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:Probability/Introduction#Classical_theory_of_probability",
+     "locator": "wikibooks:Probability/Introduction#Classical theory of probability",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Probability#Mathematical_treatment",
+     "locator": "wikipedia:Probability#Mathematical treatment",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:math/probability/basic-conception",
+     "locator": "oiwiki:math/probability/basic-conception",
+     "inventory": "gap"
     }
    ],
    "aliases": [
@@ -628,10 +743,20 @@
     "sample space",
     "conditional probability",
     "independence",
-    "union bound"
+    "union bound",
+    "Outcomes, sample space and events",
+    "Probability measures and their axioms",
+    "Sample spaces by the four-step method",
+    "Probability axioms",
+    "Probability spaces and events (for algorithm analysis)",
+    "Introduction to probability",
+    "Defining probability",
+    "Classical (equally likely) probability",
+    "Rules of probability for two events",
+    "Sample space, events and probability"
    ],
-   "open_prose": false,
-   "notes": "Merged 2 rows (ciu:probability-basics, jeffe-notes:probability-space). Tier from CIU (required list); other sources say jeffe-notes stretch."
+   "open_prose": true,
+   "notes": "Merged 13 rows (ciu:probability-basics, jeffe-notes:probability-space, brisk:probability#Outcomes_and_events, brisk:probability#Probability_measures, mcs2018:17.2, aspnes-202:12.1.1, aspnes-469:2.1, appcomb:s_probability_intro, openintro-stats:3.1, wikibooks:Probability/Probability_Spaces#Probability_axioms, wikibooks:Probability/Introduction#Classical_theory_of_probability, wikipedia:Probability#Mathematical_treatment, oiwiki:math/probability/basic-conception). Tier from CIU (required list); other sources say jeffe-notes stretch, brisk core, brisk core, mcs2018 core, aspnes-202 core, aspnes-469 core, appcomb core, openintro-stats core, wikibooks core, wikibooks core, wikipedia core, oiwiki core. wikipedia:Probability#Mathematical_treatment also treats conditional-probability (row split by granularity). Open prose from the chapter 1 finder run (dossiers/ch01.md 1.6), which corrected the old \"no open prose\" flag. brisk is the winner (two subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "conditional-probability",
@@ -650,22 +775,174 @@
      "row": "ciu:conditional-probability",
      "locator": "ciu:#additional-detail-on-some-subjects",
      "inventory": "ciu"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:probability#Conditional_probability",
+     "locator": "brisk:probability#Conditional probability",
+     "inventory": "gap"
+    },
+    {
+     "source": "brisk",
+     "row": "brisk:probability#Independence",
+     "locator": "brisk:probability#Independence",
+     "inventory": "gap"
+    },
+    {
+     "source": "mcs2018",
+     "row": "mcs2018:18.2",
+     "locator": "mcs2018:18.2",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-202",
+     "row": "aspnes-202:12.1.5",
+     "locator": "aspnes-202:12.1.5",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-469",
+     "row": "aspnes-469:2.3",
+     "locator": "aspnes-469:2.3",
+     "inventory": "gap"
+    },
+    {
+     "source": "appcomb",
+     "row": "appcomb:s_probability_conditional",
+     "locator": "appcomb:s_probability_conditional",
+     "inventory": "gap"
+    },
+    {
+     "source": "openintro-stats",
+     "row": "openintro-stats:3.2.3",
+     "locator": "openintro-stats:3.2.3",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:Probability/Conditional_Probability#Definition",
+     "locator": "wikibooks:Probability/Conditional_Probability#Definition",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Conditional_probability#Definition",
+     "locator": "wikipedia:Conditional_probability#Definition",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Independence_(probability_theory)#Two_events",
+     "locator": "wikipedia:Independence_(probability_theory)#Two events",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Probability#Mathematical_treatment",
+     "locator": "wikipedia:Probability#Mathematical treatment",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:math/probability/conditional-probability",
+     "locator": "oiwiki:math/probability/conditional-probability",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": "Tier set to core in the spec (sources say ciu stretch): linearity-of-expectation (core) rests on it."
+   "aliases": [
+    "Conditional probability",
+    "Independent events",
+    "Conditional probability: definition and notation",
+    "Conditional probability (for algorithm analysis)",
+    "Conditional probability and independent events",
+    "Defining conditional probability",
+    "Rules of probability for two events"
+   ],
+   "open_prose": true,
+   "notes": "Merged 13 rows (ciu:conditional-probability, brisk:probability#Conditional_probability, brisk:probability#Independence, mcs2018:18.2, aspnes-202:12.1.5, aspnes-469:2.3, appcomb:s_probability_conditional, openintro-stats:3.2.3, wikibooks:Probability/Conditional_Probability#Definition, wikipedia:Conditional_probability#Definition, wikipedia:Independence_(probability_theory)#Two_events, wikipedia:Probability#Mathematical_treatment, oiwiki:math/probability/conditional-probability). Tier set to core in the spec (sources say ciu stretch, brisk core, brisk core, mcs2018 core, aspnes-202 core, aspnes-469 core, appcomb core, openintro-stats core, wikibooks core, wikipedia core, wikipedia core, wikipedia core, oiwiki core): linearity-of-expectation (core) rests on it. wikipedia:Probability#Mathematical_treatment also treats probability-basics (row split by granularity). Open prose from the chapter 1 finder run (dossiers/ch01.md 1.6), which corrected the old \"no open prose\" flag. brisk is the winner (two subsections); Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
+  },
+  {
+   "id": "random-variable",
+   "name": "Random variable",
+   "kind": "definition",
+   "statement": "A random variable R on a probability space is a total function whose domain is the sample space, usually real-valued: every outcome determines its value, and an assertion about its value, such as [C = 2], is an event.",
+   "tier": "core",
+   "chapter": "ch-cost",
+   "section": "counting-expectation",
+   "prereqs": [
+    "probability-basics"
+   ],
+   "treatments": [
+    {
+     "source": "mcs2018",
+     "row": "mcs2018:19.1",
+     "locator": "mcs2018:19.1",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:Probability/Random_Variables#Definition",
+     "locator": "wikibooks:Probability/Random_Variables#Definition",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-202",
+     "row": "aspnes-202:12.2",
+     "locator": "aspnes-202:12.2",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-469",
+     "row": "aspnes-469:3",
+     "locator": "aspnes-469:3",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Random_variable",
+     "locator": "wikipedia:Random_variable",
+     "inventory": "gap"
+    },
+    {
+     "source": "openintro-stats",
+     "row": "openintro-stats:3.4",
+     "locator": "openintro-stats:3.4",
+     "inventory": "gap"
+    },
+    {
+     "source": "appcomb",
+     "row": "appcomb:s_probability_discrete-random-variables",
+     "locator": "appcomb:s_probability_discrete-random-variables",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:math/probability/random-variable#随机变量",
+     "locator": "oiwiki:math/probability/random-variable#随机变量",
+     "inventory": "gap"
+    }
+   ],
+   "aliases": [
+    "random variables",
+    "indicator random variable",
+    "Random variable (measurable function)",
+    "Random variables (for algorithm analysis)",
+    "Discrete random variables"
+   ],
+   "open_prose": true,
+   "notes": "Merged 8 rows (mcs2018:19.1, wikibooks:Probability/Random_Variables#Definition, aspnes-202:12.2, aspnes-469:3, wikipedia:Random_variable, openintro-stats:3.4, appcomb:s_probability_discrete-random-variables, oiwiki:math/probability/random-variable#随机变量). Tier core: ruling 18 (METHOD §4.4) makes it an Essential concept of 1.6; linearity of expectation (core) rests on it. Own concept by ruling 18 (2026-11-08): ODS's linearity passage uses the term without defining it (reconciliation item 4, bridge B4), so the definition is taught from a source, not by a lead sentence. Winner mcs2018:19.1, Definition 19.1.1 (PDF p. 857) through 19.1.2, before §19.2. brisk, the 1.6 winner for the three concepts before it, has no random-variable passage (probability.tex ends at Independence)."
   },
   {
    "id": "linearity-of-expectation",
-   "name": "Random variables and linearity of expectation",
+   "name": "Expected value and linearity of expectation",
    "kind": "result",
    "statement": "For any random variables X_i and constants a_i, E[sum a_i X_i] = sum a_i E[X_i], with no independence required; indicator variables turn counting questions into sums of probabilities.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "counting-expectation",
    "prereqs": [
-    "conditional-probability"
+    "conditional-probability",
+    "random-variable"
    ],
    "treatments": [
     {
@@ -688,14 +965,14 @@
     }
    ],
    "aliases": [
+    "Random variables and linearity of expectation",
     "indicator random variable",
     "expectation",
-    "Expected value and linearity of expectation",
     "linearity of expectation",
     "Random variables and expectation"
    ],
    "open_prose": true,
-   "notes": "Merged 3 rows (jeffe-notes:linearity-of-expectation, ods:linearity-of-expectation, ciu:random-variables-expectation). Tier set to core in the spec (sources say jeffe-notes core, ods stretch, ciu stretch): geometric-expectation and chaining-analysis (both core) rest on it."
+   "notes": "Merged 3 rows (jeffe-notes:linearity-of-expectation, ods:linearity-of-expectation, ciu:random-variables-expectation). Tier set to core in the spec (sources say jeffe-notes core, ods stretch, ciu stretch): geometric-expectation and chaining-analysis (both core) rest on it. Rests on random-variable (ruling 18): the ODS winner uses random variables without defining them. Edge to random-variable added: expectation is defined on random variables, which ODS's winning passage uses undefined (ruling 18)."
   },
   {
    "id": "indicator-variables",
@@ -798,11 +1075,61 @@
      "row": "ciu:pointer-arithmetic",
      "locator": "ciu:#arrays",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Pointer_(computer_programming)#C_arrays",
+     "locator": "wikipedia:Pointer_(computer_programming)#C arrays",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Array_(data_structure)#Element_identifier_and_addressing_formulas",
+     "locator": "wikipedia:Array_(data_structure)#Element identifier and addressing formulas",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikibooks",
+     "row": "wikibooks:C_programming/Pointers_and_arrays#Pointers_and_arrays",
+     "locator": "wikibooks:C_programming/Pointers_and_arrays#Pointers and arrays",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-223",
+     "row": "aspnes-223:pointerArithmetic",
+     "locator": "aspnes-223:pointerArithmetic",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-223",
+     "row": "aspnes-223:arrays",
+     "locator": "aspnes-223:arrays",
+     "inventory": "gap"
+    },
+    {
+     "source": "holden-acs",
+     "row": "holden-acs:Pointers#Arrays",
+     "locator": "holden-acs:Pointers#Arrays",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:lang/pointer#指针的偏移",
+     "locator": "oiwiki:lang/pointer#指针的偏移",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": ""
+   "aliases": [
+    "Arrays and pointer arithmetic in C",
+    "Array addressing formulas",
+    "Pointers and arrays in C",
+    "Pointer arithmetic",
+    "Arrays as pointers",
+    "Array syntax as pointer arithmetic",
+    "Pointer offsets"
+   ],
+   "open_prose": true,
+   "notes": "Merged 8 rows (ciu:pointer-arithmetic, wikipedia:Pointer_(computer_programming)#C_arrays, wikipedia:Array_(data_structure)#Element_identifier_and_addressing_formulas, wikibooks:C_programming/Pointers_and_arrays#Pointers_and_arrays, aspnes-223:pointerArithmetic, aspnes-223:arrays, holden-acs:Pointers#Arrays, oiwiki:lang/pointer#指针的偏移). Open prose from the chapter 2 finder run (dossiers/ch02.md, Gaps), which corrected the old \"no open prose\" flag; the eh-dsa passage it also lists is excluded. Wikipedia Pointer #C arrays is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "list-interface",
@@ -968,13 +1295,13 @@
    ],
    "aliases": [],
    "open_prose": false,
-   "notes": ""
+   "notes": "Stays \"no open prose\": open sources give implementations, not prose (confirmed by the chapter 2 finder run). Its explanation in judgements/ch02.md is the ODS ArrayStack code as shown in the 2.2 passages, with no separate prose block."
   },
   {
    "id": "two-pointers",
    "name": "Two pointers",
    "kind": "idea",
-   "statement": "Two indices move through an array, typically from both ends of a sorted array toward each other, so that each step discards one candidate and a pair with a target sum (or the best pair) is found in one O(n) pass with O(1) extra space.",
+   "statement": "Two indices move through an array, together or toward each other, so that each step rules out candidates and the scan ends after one O(n) pass with O(1) extra space; on a sorted array, closing in from both ends on a target pair sum is the classic case.",
    "tier": "core",
    "chapter": "ch-arrays-lists",
    "section": "two-pointers",
@@ -982,12 +1309,6 @@
     "array"
    ],
    "treatments": [
-    {
-     "source": "dsa-dummies",
-     "row": "dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py",
-     "locator": "dsa-dummies:Algorithms/Two Pointers/Python/Two Pointers.py",
-     "inventory": "gap"
-    },
     {
      "source": "oiwiki",
      "row": "oiwiki:misc/two-pointer#利用序列有序性",
@@ -1008,7 +1329,6 @@
     }
    ],
    "aliases": [
-    "two-pointer technique",
     "Two pointers on a sorted sequence",
     "双指针",
     "Pair sum in a sorted array by two pointers",
@@ -1017,7 +1337,7 @@
     "container with most water"
    ],
    "open_prose": true,
-   "notes": "Merged 4 rows (dsa-dummies:Algorithms/Two_Pointers/Python/Two_Pointers.py, oiwiki:misc/two-pointer#利用序列有序性, doocs-leetcode:0167#Solution_2:_Two_Pointers, doocs-leetcode:0011#Solution_1:_Two_Pointers). From the gap-patterns finder run (dossiers/gap-patterns.md §1). No open source states the pattern as a pattern at textbook length: dsa-dummies gives a short general note and OI Wiki a general page; doocs applies it to pair sum (167) and container with most water (11). The canonical cases that rest on it are 3SUM (here), merging (here), three-way partition (10.4) and tortoise and hare (2.7)."
+   "notes": "Merged 3 rows (oiwiki:misc/two-pointer#利用序列有序性, doocs-leetcode:0167#Solution_2:_Two_Pointers, doocs-leetcode:0011#Solution_1:_Two_Pointers). From the gap-patterns finder run (dossiers/gap-patterns.md §1). No open source states the pattern as a pattern at textbook length: OI Wiki gives a general page; doocs applies it to pair sum (167) and container with most water (11). The dsa-dummies note was removed (source excluded, ruling 18). The canonical cases that rest on it are 3SUM (here), merging (here), three-way partition (10.4) and tortoise and hare (2.7)."
   },
   {
    "id": "three-sum",
@@ -1097,12 +1417,6 @@
      "inventory": "gap"
     },
     {
-     "source": "dsa-dummies",
-     "row": "dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py",
-     "locator": "dsa-dummies:Algorithms/Sliding Window/Python/Sliding Window.py",
-     "inventory": "gap"
-    },
-    {
      "source": "doocs-leetcode",
      "row": "doocs-leetcode:0643#Solution_1:_Sliding_Window",
      "locator": "doocs-leetcode:0643#Solution 1: Sliding Window",
@@ -1130,14 +1444,13 @@
    "aliases": [
     "simple moving average",
     "fixed window",
-    "Sliding window",
     "Maximum average subarray of length k",
     "Most vowels in a substring of length k",
     "Permutation in a string by a window of counts",
     "All anagram windows of a pattern"
    ],
    "open_prose": true,
-   "notes": "Merged 6 rows (wikipedia:Moving_average#Simple_moving_average, dsa-dummies:Algorithms/Sliding_Window/Python/Sliding_Window.py, doocs-leetcode:0643#Solution_1:_Sliding_Window, doocs-leetcode:1456#Solution_1:_Sliding_Window, doocs-leetcode:0567#Solution_1:_Sliding_Window, doocs-leetcode:0438#Solution_1). From the gap-patterns finder run (dossiers/gap-patterns.md §2). The fixed-window minimum with a monotonic deque stays its own concept (sliding-window-minimum, 3.4), which now rests on this one."
+   "notes": "Merged 5 rows (wikipedia:Moving_average#Simple_moving_average, doocs-leetcode:0643#Solution_1:_Sliding_Window, doocs-leetcode:1456#Solution_1:_Sliding_Window, doocs-leetcode:0567#Solution_1:_Sliding_Window, doocs-leetcode:0438#Solution_1). From the gap-patterns finder run (dossiers/gap-patterns.md §2). The fixed-window minimum with a monotonic deque stays its own concept (sliding-window-minimum, 3.4), which now rests on this one."
   },
   {
    "id": "sliding-window-variable",
@@ -1220,12 +1533,6 @@
      "inventory": "gap"
     },
     {
-     "source": "dsa-dummies",
-     "row": "dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py",
-     "locator": "dsa-dummies:Algorithms/Prefix Sum/Python/Prefix Sum.py",
-     "inventory": "gap"
-    },
-    {
      "source": "doocs-leetcode",
      "row": "doocs-leetcode:0303#Solution_1:_Prefix_Sum",
      "locator": "doocs-leetcode:0303#Solution 1: Prefix Sum",
@@ -1238,12 +1545,11 @@
     "inclusive scan",
     "One-dimensional prefix sums",
     "一维前缀和",
-    "Prefix sum array for range queries",
     "Range sum query with a leading zero",
     "range sum query"
    ],
    "open_prose": true,
-   "notes": "Merged 4 rows (wikipedia:Prefix_sum, oiwiki:basic/prefix-sum#一维前缀和, dsa-dummies:Algorithms/Prefix_Sum/Python/Prefix_Sum.py, doocs-leetcode:0303#Solution_1:_Prefix_Sum). From the gap-patterns finder run (dossiers/gap-patterns.md §4). Replaces the bracketed [prefix sums] that Fenwick trees, sqrt decomposition and the prefix-minimum maximum subarray assumed."
+   "notes": "Merged 3 rows (wikipedia:Prefix_sum, oiwiki:basic/prefix-sum#一维前缀和, doocs-leetcode:0303#Solution_1:_Prefix_Sum). From the gap-patterns finder run (dossiers/gap-patterns.md §4). Replaces the bracketed [prefix sums] that Fenwick trees, sqrt decomposition and the prefix-minimum maximum subarray assumed."
   },
   {
    "id": "prefix-sums-2d",
@@ -1385,13 +1691,19 @@
      "row": "ods:sllist",
      "locator": "ods:linkedlists#sec:sllist",
      "inventory": "ods"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Linked_list#Singly_linked_list",
+     "locator": "wikipedia:Linked_list#Singly linked list",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "SLList (singly-linked list)"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:singly-linked-list, ods:sllist). Edge to queue dropped: ODS's SLList implements Stack and Queue operations, but a linked list rests on neither; those operations are the concepts queue-linked-list and stack. Edge to stack dropped: as above Assumes, untaught in the map: memory and pointers."
+   "notes": "Merged 3 rows (ciu:singly-linked-list, ods:sllist, wikipedia:Linked_list#Singly_linked_list). Wikipedia Linked list is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. Edge to queue dropped: ODS's SLList implements Stack and Queue operations, but a linked list rests on neither; those operations are the concepts queue-linked-list and stack. Edge to stack dropped: as above Assumes, untaught in the map: memory and pointers."
   },
   {
    "id": "pointer-to-pointer",
@@ -1408,11 +1720,46 @@
      "row": "ciu:pointer-to-pointer",
      "locator": "ciu:#linked-lists",
      "inventory": "ciu"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Pointer_(computer_programming)#Multiple_indirection",
+     "locator": "wikipedia:Pointer_(computer_programming)#Multiple indirection",
+     "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Pointer_(computer_programming)#Pass-by-address_using_pointers",
+     "locator": "wikipedia:Pointer_(computer_programming)#Pass-by-address using pointers",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-223",
+     "row": "aspnes-223:Pointers_and_functions",
+     "locator": "aspnes-223:Pointers_and_functions",
+     "inventory": "gap"
+    },
+    {
+     "source": "aspnes-223",
+     "row": "aspnes-223:stacks",
+     "locator": "aspnes-223:stacks",
+     "inventory": "gap"
+    },
+    {
+     "source": "oiwiki",
+     "row": "oiwiki:lang/pointer#指针类型参数的使用",
+     "locator": "oiwiki:lang/pointer#指针类型参数的使用",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
-   "open_prose": false,
-   "notes": "Assumes, untaught in the map: memory and pointers."
+   "aliases": [
+    "Pass by address",
+    "Pointers and functions",
+    "Linked-list stack through a pointer to the head",
+    "Pointer parameters"
+   ],
+   "open_prose": true,
+   "notes": "Merged 6 rows (ciu:pointer-to-pointer, wikipedia:Pointer_(computer_programming)#Multiple_indirection, wikipedia:Pointer_(computer_programming)#Pass-by-address_using_pointers, aspnes-223:Pointers_and_functions, aspnes-223:stacks, oiwiki:lang/pointer#指针类型参数的使用). Open prose from the chapter 2 finder run (dossiers/ch02.md 2.5), which corrected the old \"no open prose\" flag; pass-by-address, Aspnes 4.9.4 and the OI Wiki passage are background (changing a caller's variable), and the declaration-only mentions it lists are not taken. Wikipedia #Multiple indirection is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. Assumes, untaught in the map: memory and pointers."
   },
   {
    "id": "implement-linked-list",
@@ -1438,13 +1785,20 @@
      "row": "opendsa:List/ListLinked",
      "locator": "opendsa:List/ListLinked",
      "inventory": "gap"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Linked_list#Singly_linked_lists",
+     "locator": "wikipedia:Linked_list#Singly linked lists",
+     "inventory": "gap"
     }
    ],
    "aliases": [
-    "Linked list implementation"
+    "Linked list implementation",
+    "Singly linked list operations"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:implement-linked-list, opendsa:List/ListLinked). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
+   "notes": "Merged 3 rows (ciu:implement-linked-list, opendsa:List/ListLinked, wikipedia:Linked_list#Singly_linked_lists). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. Wikipedia Linked list operations is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "linked-list-vs-array",
@@ -1470,11 +1824,19 @@
      "row": "ods:linked-vs-array",
      "locator": "ods:linkedlists#chap:linkedlists",
      "inventory": "ods"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Linked_list#Linked_lists_vs._dynamic_arrays",
+     "locator": "wikipedia:Linked_list#Linked lists vs. dynamic arrays",
+     "inventory": "gap"
     }
    ],
-   "aliases": [],
+   "aliases": [
+    "Linked lists against dynamic arrays"
+   ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:linked-list-vs-array, ods:linked-vs-array)."
+   "notes": "Merged 3 rows (ciu:linked-list-vs-array, ods:linked-vs-array, wikipedia:Linked_list#Linked_lists_vs._dynamic_arrays). Wikipedia is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "sentinel-node",
@@ -1650,6 +2012,12 @@
      "row": "ods:stack-interface",
      "locator": "ods:intro#the-queue-stack-and-deque-interfaces",
      "inventory": "ods"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:Stack_(abstract_data_type)",
+     "locator": "wikipedia:Stack_(abstract_data_type)",
+     "inventory": "gap"
     }
    ],
    "aliases": [
@@ -1658,7 +2026,7 @@
     "LIFO queue"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:stack, ods:stack-interface). Edge to queue dropped: ODS defines a stack as a LIFO queue; CIU and most readers meet stacks first, and nothing in the stack needs FIFO queues."
+   "notes": "Merged 3 rows (ciu:stack, ods:stack-interface, wikipedia:Stack_(abstract_data_type)). Wikipedia is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. Edge to queue dropped: ODS defines a stack as a LIFO queue; CIU and most readers meet stacks first, and nothing in the stack needs FIFO queues."
   },
   {
    "id": "balanced-brackets",
@@ -1796,13 +2164,21 @@
      "row": "wikibooks:Data_Structures/Stacks_and_Queues#Queues",
      "locator": "wikibooks:Data_Structures/Stacks_and_Queues#Queues",
      "inventory": "gap"
+    },
+    {
+     "source": "ods",
+     "row": "ods:sllist-queue",
+     "locator": "ods:linkedlists#sec:sllist",
+     "inventory": "ods"
     }
    ],
    "aliases": [
-    "Queue on a linked list"
+    "Queue on a linked list",
+    "FIFO queue on an SLList",
+    "queue as a linked list"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ciu:queue-linked-list, wikibooks:Data_Structures/Stacks_and_Queues#Queues). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates."
+   "notes": "Merged 3 rows (ciu:queue-linked-list, wikibooks:Data_Structures/Stacks_and_Queues#Queues, ods:sllist-queue). Open prose added in the gap inventory from dossiers/sweep-dsa.md, Candidates. The winner is ODS SLList \"Queue Operations\" with the closing paragraph after thm:sllist (row ods:sllist-queue, added in the reconciliation pass); Winner and locator: judgements/ch01-03-reconciled.md, final winner table. Bridge B11."
   },
   {
    "id": "array-queue",
@@ -2057,14 +2433,21 @@
      "row": "cpa:nearest-smaller-stack",
      "locator": "cpa:dynamic_programming/zero_matrix#step-2-problem-solving",
      "inventory": "cpa-a"
+    },
+    {
+     "source": "wikipedia",
+     "row": "wikipedia:All_nearest_smaller_values#Sequential_algorithm",
+     "locator": "wikipedia:All_nearest_smaller_values#Sequential algorithm",
+     "inventory": "gap"
     }
    ],
    "aliases": [
     "monotonic stack",
-    "previous smaller element"
+    "previous smaller element",
+    "All nearest smaller values by a stack"
    ],
    "open_prose": true,
-   "notes": ""
+   "notes": "Merged 2 rows (cpa:nearest-smaller-stack, wikipedia:All_nearest_smaller_values#Sequential_algorithm). Wikipedia is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table."
   },
   {
    "id": "largest-zero-submatrix",
@@ -3173,6 +3556,7 @@
    "section": "hashing-analysis",
    "prereqs": [
     "factorials-stirling",
+    "random-variable",
     "open-addressing"
    ],
    "treatments": [
@@ -3185,7 +3569,7 @@
    ],
    "aliases": [],
    "open_prose": true,
-   "notes": ""
+   "notes": "Edge to random-variable added: it bounds the expected length of a run, a random variable over the hash values (ruling 18)."
   },
   {
    "id": "cuckoo-hashing",
@@ -11851,7 +12235,7 @@
    "chapter": "ch-randomized",
    "section": "randomized-algorithms",
    "prereqs": [
-    "probability-basics"
+    "random-variable"
    ],
    "treatments": [
     {
@@ -11867,7 +12251,7 @@
     "expected worst-case time"
    ],
    "open_prose": false,
-   "notes": ""
+   "notes": "Edge to random-variable added: its running time is a random variable whose expectation is bounded (ruling 18)."
   },
   {
    "id": "random-permutation",

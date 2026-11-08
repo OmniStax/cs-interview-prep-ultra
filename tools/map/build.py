@@ -13,29 +13,37 @@ GAP = 'gap'          # inventory/gap.json: rows name their real source in the id
 PFX = {'c': 'ciu', 'p': 'cpa', 'j': 'jeffe', 'n': 'jeffe-notes', 'o': 'ods', 's': 'sdp', 'g': None}
 # Sources whose prose may be used: METHOD §0 (PD, CC0, CC BY, CC BY-SA), ruling 12 (MIT and Apache 2.0 prose with
 # notices) and ruling 15 (OI Wiki in translation, doocs solution write-ups). Licences as in sources/registry.json.
+# A registry row with an "excluded" field is never open, whatever its licence (ruling 18: dsa-dummies; also eh-dsa,
+# algowiki and the OpenStax rows); EXCLUDED is read from the registry and removed from OPEN below.
 OPEN = {'cpa', 'jeffe', 'ods', 'sdp',
         'wikipedia', 'wikibooks', 'wp-sysdesign',            # CC BY-SA 4.0
-        'dsa-dummies',                                        # CC BY 4.0
         'doocs-leetcode', 'oiwiki',                           # CC BY-SA 4.0 (ruling 15)
         'opendsa', 'algo-explanation', 'trekhleb-jsalgo',     # MIT (ruling 12; trekhleb: README Algorithms sections only)
         'icc',                                                # Apache-2.0 (ruling 12; online_judges stays link-only)
-        'mcs2018', 'anfp', 'lt-csbu',                         # CC BY-SA 3.0 / CC BY-SA
-        'aspnes-202', 'dmoi3', 'appcomb', 'csci30', 'holden-acs',  # CC BY-SA 4.0
+        'mcs2018', 'anfp', 'lt-csbu', 'openintro-stats',      # CC BY-SA 3.0 / CC BY-SA
+        'aspnes-202', 'aspnes-223', 'aspnes-469', 'brisk',    # CC BY-SA 4.0
+        'dmoi3', 'appcomb', 'csci30', 'holden-acs',           # CC BY-SA 4.0
         'aosa', 'raft-site'}                                  # CC BY 3.0
+REGISTRY = json.load(open(ROOT + '/sources/registry.json'))['sources']
+EXCLUDED = {s['id'] for s in REGISTRY if s.get('excluded')}
+OPEN -= EXCLUDED
 TIERS = ['core', 'stretch', 'contest']
 ABBR = {'ciu': 'CIU', 'cpa': 'cpa', 'jeffe': 'Erickson', 'jeffe-notes': 'Erickson notes (NC)', 'ods': 'ODS', 'sdp': 'Primer',
         'wikipedia': 'Wikipedia', 'wikibooks': 'Wikibooks', 'wp-sysdesign': 'Wikipedia (system design set)',
         'opendsa': 'OpenDSA', 'doocs-leetcode': 'doocs/leetcode write-ups', 'oiwiki': 'OI Wiki (in translation)',
-        'dsa-dummies': 'DSA for absolute dummies', 'algo-explanation': 'TheAlgorithms explanations', 'icc': 'Interactive Coding Challenges',
+        'algo-explanation': 'TheAlgorithms explanations', 'icc': 'Interactive Coding Challenges',
         'trekhleb-jsalgo': 'javascript-algorithms READMEs', 'mcs2018': 'Mathematics for Computer Science (2018)',
         'aspnes-202': 'Aspnes, discrete math notes', 'anfp': 'Algorithms Notes for Professionals', 'dmoi3': 'Levin, Discrete Mathematics',
         'appcomb': 'Applied Combinatorics', 'csci30': 'CSCI 30 notes', 'lt-csbu': 'Computer Science from the Bottom Up',
-        'holden-acs': 'Holden, Applied CS', 'aosa': 'Architecture of Open Source Applications', 'raft-site': 'Raft website'}
+        'holden-acs': 'Holden, Applied CS', 'aosa': 'Architecture of Open Source Applications', 'raft-site': 'Raft website',
+        'brisk': 'A Cool Brisk Walk Through Discrete Mathematics', 'aspnes-469': 'Aspnes, randomized algorithms notes',
+        'aspnes-223': 'Aspnes, data structures and programming notes', 'openintro-stats': 'OpenIntro Statistics'}
 SHORT = {'ciu': 'ciu', 'cpa': 'cpa', 'jeffe': 'jeffe', 'jeffe-notes': 'notes', 'ods': 'ods', 'sdp': 'sdp',
          'wikipedia': 'wikipedia', 'wikibooks': 'wikibooks', 'wp-sysdesign': 'wp', 'opendsa': 'opendsa', 'doocs-leetcode': 'doocs',
-         'oiwiki': 'oiwiki', 'dsa-dummies': 'dsa-dummies', 'algo-explanation': 'algo-expl', 'icc': 'icc', 'trekhleb-jsalgo': 'trekhleb',
-         'mcs2018': 'mcs2018', 'aspnes-202': 'aspnes', 'anfp': 'anfp', 'dmoi3': 'dmoi3', 'appcomb': 'appcomb', 'csci30': 'csci30',
-         'lt-csbu': 'lt-csbu', 'holden-acs': 'holden', 'aosa': 'aosa', 'raft-site': 'raft-site'}
+         'oiwiki': 'oiwiki', 'algo-explanation': 'algo-expl', 'icc': 'icc', 'trekhleb-jsalgo': 'trekhleb',
+         'mcs2018': 'mcs2018', 'aspnes-202': 'aspnes-202', 'anfp': 'anfp', 'dmoi3': 'dmoi3', 'appcomb': 'appcomb', 'csci30': 'csci30',
+         'lt-csbu': 'lt-csbu', 'holden-acs': 'holden', 'aosa': 'aosa', 'raft-site': 'raft-site',
+         'brisk': 'brisk', 'aspnes-469': 'aspnes-469', 'aspnes-223': 'aspnes-223', 'openintro-stats': 'openintro'}
 
 # bracketed prerequisite names -> merged concept id (None = assumed knowledge, no concept)
 BRACKET = {
@@ -76,7 +84,7 @@ BRACKET = {
 }
 
 # ---------------------------------------------------------------- inventories
-REG_PFX = {s['locator'].split(':', 1)[0]: s['id'] for s in json.load(open(ROOT + '/sources/registry.json'))['sources'] if s.get('locator')}
+REG_PFX = {s['locator'].split(':', 1)[0]: s['id'] for s in REGISTRY if s.get('locator')}
 rows = {}
 for f in FILES:
     d = json.load(open(f'{INV}/{f}.json'))
@@ -85,6 +93,8 @@ for f in FILES:
         if f == GAP:                     # the real source is named by the id prefix
             c['_source'] = REG_PFX[c['id'].split(':', 1)[0]]
             assert c['_source'] in ABBR, c['_source']
+        if c['_source'] in EXCLUDED:
+            sys.exit(f'{f}.json row {c["id"]}: source {c["_source"]} is excluded in sources/registry.json')
         assert c['id'] not in rows, c['id']
         rows[c['id']] = c
 

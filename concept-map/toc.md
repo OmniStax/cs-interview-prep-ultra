@@ -1,12 +1,12 @@
 # Table of contents
 
-Derived from the concept map (`concepts.json`). One book of numbered chapters; each numbered section is one page, the home of the concepts listed under it. Section tier badges give the most common tier of the section's concepts; a concept whose tier differs from its section's carries its own badge. Sources lists the inventories that teach the section's concepts: **ciu** = CIU, **cpa** = cpa, **jeffe** = Erickson, **notes** = Erickson notes (NC), **ods** = ODS, **sdp** = Primer, **wikipedia** = Wikipedia, **wikibooks** = Wikibooks, **wp** = Wikipedia (system design set), **opendsa** = OpenDSA, **doocs** = doocs/leetcode write-ups, **oiwiki** = OI Wiki (in translation), **dsa-dummies** = DSA for absolute dummies, **algo-expl** = TheAlgorithms explanations, **icc** = Interactive Coding Challenges, **trekhleb** = javascript-algorithms READMEs, **mcs2018** = Mathematics for Computer Science (2018), **aspnes** = Aspnes, discrete math notes, **anfp** = Algorithms Notes for Professionals, **dmoi3** = Levin, Discrete Mathematics, **appcomb** = Applied Combinatorics, **csci30** = CSCI 30 notes, **lt-csbu** = Computer Science from the Bottom Up, **holden** = Holden, Applied CS, **aosa** = Architecture of Open Source Applications, **raft-site** = Raft website. "Open prose: none" marks a section whose concepts are taught only by CIU links or by Erickson's NC notes, so its text has no open source yet.
+Derived from the concept map (`concepts.json`). One book of numbered chapters; each numbered section is one page, the home of the concepts listed under it. Section tier badges give the most common tier of the section's concepts; a concept whose tier differs from its section's carries its own badge. Sources lists the inventories that teach the section's concepts: **ciu** = CIU, **cpa** = cpa, **jeffe** = Erickson, **notes** = Erickson notes (NC), **ods** = ODS, **sdp** = Primer, **wikipedia** = Wikipedia, **wikibooks** = Wikibooks, **wp** = Wikipedia (system design set), **opendsa** = OpenDSA, **doocs** = doocs/leetcode write-ups, **oiwiki** = OI Wiki (in translation), **algo-expl** = TheAlgorithms explanations, **icc** = Interactive Coding Challenges, **trekhleb** = javascript-algorithms READMEs, **mcs2018** = Mathematics for Computer Science (2018), **aspnes-202** = Aspnes, discrete math notes, **anfp** = Algorithms Notes for Professionals, **dmoi3** = Levin, Discrete Mathematics, **appcomb** = Applied Combinatorics, **csci30** = CSCI 30 notes, **lt-csbu** = Computer Science from the Bottom Up, **holden** = Holden, Applied CS, **aosa** = Architecture of Open Source Applications, **raft-site** = Raft website, **brisk** = A Cool Brisk Walk Through Discrete Mathematics, **aspnes-469** = Aspnes, randomized algorithms notes, **aspnes-223** = Aspnes, data structures and programming notes, **openintro** = OpenIntro Statistics. "Open prose: none" marks a section whose concepts are taught only by CIU links or by Erickson's NC notes, so its text has no open source yet.
 
 Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices are not built as text.
 
 ## 1. Algorithms and their cost · **first pass**
 
-*Concepts: 20 core · 5 stretch · 1 contest*
+*Concepts: 21 core · 5 stretch · 1 contest*
 
 - **1.1 What an algorithm is** [core] · jeffe, ods
   What an algorithm is; What makes a description not an algorithm; Describing an algorithm: what, how, why, how fast; The need for efficiency; Interface versus implementation; Lattice (grade-school) multiplication [stretch]; Duplation and mediation (peasant multiplication)
@@ -16,27 +16,27 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
   Big-O notation; Big-Omega and Big-Theta; Big-Oh in several variables [stretch]
 - **1.4 Analysing running time and space** [core] · ciu, jeffe, ods
   The w-bit word-RAM model; Analysing an algorithm's running time and space; Worst-case, amortized and expected running times
-- **1.5 Amortized analysis** [core] · ciu, notes, ods, wikipedia, opendsa
+- **1.5 Amortized analysis** [core] · ciu, notes, ods, wikipedia, opendsa, oiwiki
   Amortized analysis; Summation, taxation and charging methods; The potential method [stretch]; Incrementing and decrementing counters [contest] (no open prose)
-- **1.6 Counting and expected value** [core] · ciu, notes, ods, oiwiki, dmoi3
-  Factorials, permutations and combinations; Basic probability (no open prose); Conditional probability and independence (no open prose); Random variables and linearity of expectation; Indicator random variables [stretch]; Expected tosses until the first head
+- **1.6 Counting and expected value** [core] · ciu, notes, ods, wikipedia, wikibooks, oiwiki, mcs2018, aspnes-202, dmoi3, appcomb, brisk, aspnes-469, openintro
+  Factorials, permutations and combinations; Basic probability; Conditional probability and independence; Random variable; Expected value and linearity of expectation; Indicator random variables [stretch]; Expected tosses until the first head
 
 ## 2. Arrays and linked lists · **first pass**
 
 *Concepts: 23 core · 3 stretch*
 
-- **2.1 Arrays and the list interface** [core] · ciu, ods, wikipedia, wikibooks
-  Array; Indexing by pointer arithmetic (no open prose); List interface (linear sequence)
+- **2.1 Arrays and the list interface** [core] · ciu, ods, wikipedia, wikibooks, oiwiki, holden, aspnes-223
+  Array; Indexing by pointer arithmetic; List interface (linear sequence)
 - **2.2 Dynamic arrays** [core] · ciu, ods
   Dynamic array (vector); Growing and shrinking the backing array; Cost of dynamic-array operations; Block copying with memcpy/arraycopy [stretch]; Implement a vector (no open prose)
-- **2.3 Two pointers and sliding windows** [core] · wikipedia, doocs, oiwiki, dsa-dummies, icc
+- **2.3 Two pointers and sliding windows** [core] · wikipedia, doocs, oiwiki, icc
   Two pointers; 3SUM in quadratic time; Merging two sorted lists; Fixed-size sliding window; Variable-size sliding window
   *Folds:* OI Wiki misc/two-pointer is split over this home: its sorted-sequence section treats two-pointers, its window section the variable window, its linked-list section Floyd's cycle detection (2.7).
-- **2.4 Prefix sums and difference arrays** [core] · wikipedia, doocs, oiwiki, dsa-dummies
+- **2.4 Prefix sums and difference arrays** [core] · wikipedia, doocs, oiwiki
   Prefix sums; Two-dimensional prefix sums (summed-area table) [stretch]; Difference arrays; Two-dimensional difference arrays [stretch]
   *Folds:* OI Wiki basic/prefix-sum is split over this home: one row per section (1D, 2D, 1D difference, 2D difference); its tree prefix sums and differences are not taken.
-- **2.5 Singly linked lists** [core] · ciu, ods, opendsa
-  Singly linked list; Pointer to pointer (no open prose); Implement a linked list; Linked lists versus arrays
+- **2.5 Singly linked lists** [core] · ciu, ods, wikipedia, opendsa, oiwiki, aspnes-223
+  Singly linked list; Pointer to pointer; Implement a linked list; Linked lists versus arrays
 - **2.6 Doubly linked lists** [core] · ciu, ods
   Dummy (sentinel) node; Doubly linked list
 - **2.7 Cycles in linked lists: tortoise and hare** [core] · cpa, wikipedia, oiwiki, algo-expl
@@ -46,7 +46,7 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 *Concepts: 15 core · 8 stretch · 1 contest*
 
-- **3.1 Stacks and bracket matching** [core] · ciu, cpa, ods
+- **3.1 Stacks and bracket matching** [core] · ciu, cpa, ods, wikipedia
   Stack; Balanced bracket sequence; Checking bracket balance
 - **3.2 Queues and circular buffers** [core] · ciu, ods, wikibooks
   Queue; Circular buffer; Queue on a linked list with a tail pointer; ArrayQueue (array-backed FIFO queue)
@@ -220,7 +220,7 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 
 - **14.1 DFS clocks and edge classification** [core] · cpa, jeffe
   DFS entry/exit times and ancestor test; Classification of edges by DFS
-- **14.2 Cycles and topological order** [core] · ciu, cpa, jeffe, wikipedia, opendsa, doocs, oiwiki, icc, mcs2018, aspnes
+- **14.2 Cycles and topological order** [core] · ciu, cpa, jeffe, wikipedia, opendsa, doocs, oiwiki, icc, mcs2018, aspnes-202
   Cycle detection; Topological order; Topological sort; Kahn's algorithm
   *Folds:* cpa graph/finding-cycle (292 words) is folded into this home.
 - **14.3 Bridges and articulation points** [stretch] · cpa

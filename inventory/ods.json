@@ -570,6 +570,24 @@
       "notes": ""
     },
     {
+      "id": "ods:sllist-queue",
+      "name": "FIFO queue on an SLList",
+      "kind": "skill",
+      "statement": "An SLList is a FIFO queue: add(x) appends at the tail and remove() takes the head, both O(1); the tail pointer is what makes add(x) cheap.",
+      "locator": "ods:linkedlists#sec:sllist",
+      "prereqs": [
+        "ods:sllist",
+        "ods:queue-interface"
+      ],
+      "aliases": [
+        "queue as a linked list"
+      ],
+      "tier": "core",
+      "has_code": true,
+      "exercises": 0,
+      "notes": "Subsection \"Queue Operations\" of sec:sllist, plus the closing paragraph after thm:sllist (judgements/ch01-03-reconciled.md, queue-linked-list winner). The rest of sec:sllist is ods:sllist."
+    },
+    {
       "id": "ods:linked-vs-array",
       "name": "Linked lists versus arrays",
       "kind": "idea",

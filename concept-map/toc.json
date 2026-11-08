@@ -101,7 +101,8 @@
       "jeffe-notes",
       "ods",
       "wikipedia",
-      "opendsa"
+      "opendsa",
+      "oiwiki"
      ],
      "open_prose": true,
      "no_open_prose": [
@@ -117,6 +118,7 @@
       "counting",
       "probability-basics",
       "conditional-probability",
+      "random-variable",
       "linearity-of-expectation",
       "indicator-variables",
       "geometric-expectation"
@@ -126,19 +128,24 @@
       "ciu",
       "jeffe-notes",
       "ods",
+      "wikipedia",
+      "wikibooks",
       "oiwiki",
-      "dmoi3"
+      "mcs2018",
+      "aspnes-202",
+      "dmoi3",
+      "appcomb",
+      "brisk",
+      "aspnes-469",
+      "openintro-stats"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "probability-basics",
-      "conditional-probability"
-     ],
+     "no_open_prose": [],
      "folds": ""
     }
    ],
    "tier_counts": {
-    "core": 20,
+    "core": 21,
     "stretch": 5,
     "contest": 1
    }
@@ -163,12 +170,13 @@
       "ciu",
       "ods",
       "wikipedia",
-      "wikibooks"
+      "wikibooks",
+      "oiwiki",
+      "holden-acs",
+      "aspnes-223"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "pointer-arithmetic"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -209,7 +217,6 @@
       "wikipedia",
       "doocs-leetcode",
       "oiwiki",
-      "dsa-dummies",
       "icc"
      ],
      "open_prose": true,
@@ -230,8 +237,7 @@
      "candidate_sources": [
       "wikipedia",
       "doocs-leetcode",
-      "oiwiki",
-      "dsa-dummies"
+      "oiwiki"
      ],
      "open_prose": true,
      "no_open_prose": [],
@@ -251,12 +257,13 @@
      "candidate_sources": [
       "ciu",
       "ods",
-      "opendsa"
+      "wikipedia",
+      "opendsa",
+      "oiwiki",
+      "aspnes-223"
      ],
      "open_prose": true,
-     "no_open_prose": [
-      "pointer-to-pointer"
-     ],
+     "no_open_prose": [],
      "folds": ""
     },
     {
@@ -321,7 +328,8 @@
      "candidate_sources": [
       "ciu",
       "cpa",
-      "ods"
+      "ods",
+      "wikipedia"
      ],
      "open_prose": true,
      "no_open_prose": [],

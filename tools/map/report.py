@@ -79,7 +79,7 @@ A('- Source combinations in cross-source clusters: ' + ', '.join(f'{k} ({v})' fo
 src = collections.Counter(); srcc = collections.Counter()
 for c in C:
     for s in {t['source'] for t in c['treatments']}: srcc[s] += 1
-A('- Concepts each source treats: ' + ', '.join(f'{SHORT[k]} {v}' for k, v in sorted(srcc.items(), key=lambda x: -x[1])) + '.')
+A('- Concepts each source treats: ' + ', '.join(f'{SHORT[k]} {v}' for k, v in sorted(srcc.items(), key=lambda x: (-x[1], SHORT[x[0]]))) + '.')
 A(f'- Hasse reduction removed {S["hasse_removed"]} redundant prerequisite edges; {sum(len(c["prereqs"]) for c in C)} edges remain.')
 A('')
 A('Rows split over two concepts (a source row whose grain was coarser than "an exercise could test it alone"):'); A('')
@@ -97,7 +97,8 @@ A('No other row was dropped. ODS\'s implementation-variant classes (DualArrayDeq
 # ---- gaps
 A('## 2. Gaps'); A('')
 A('### Interview topics no inventory teaches'); A('')
-gapc = [c for c in C if c['treatments'] and all(t['inventory'] == 'gap' for t in c['treatments'])]
+RULED = {'random-variable'}      # gap-only concepts made by a user ruling, not by the gap-patterns run (ruling 18)
+gapc = [c for c in C if c['treatments'] and all(t['inventory'] == 'gap' for t in c['treatments']) and c['id'] not in RULED]
 A(f'**Filled by the gap inventory (2026-11-08).** The finder\'s targeted run (`dossiers/gap-patterns.md`) found open treatments for the interview patterns this table used to list first, and `inventory/gap.json` records them, one row per treatment. '
   f'They are {len(gapc)} new concepts: ' + '; '.join(f'{c["name"]} ({secnum[c["id"]]}, {c["tier"]})' for c in gapc) + '. '
   'Where a gap topic matched a concept the map already had, the new treatments joined it instead: interval scheduling (Erickson 4.2, ' + secnum['interval-scheduling'] + '), '
@@ -131,7 +132,7 @@ old = [c for c in C if any(t['inventory'] != 'gap' for t in c['treatments'])]
 before = [c for c in old if not any(t['source'] in OPEN and t['inventory'] != 'gap' for t in c['treatments'])]
 flipped = [c for c in before if c['open_prose']]
 A(f'**Before the gap inventory, {len(before)} concepts had no open prose; {len(flipped)} of them now have some**, from treatments the finder sweeps listed '
-  '(`dossiers/sweep-dsa.md`, `sweep-system-design.md`, `gap-patterns.md`) and that were added to `inventory/gap.json` with locators checked against the source caches: '
+  '(`dossiers/sweep-dsa.md`, `sweep-system-design.md`, `gap-patterns.md`) or the chapter 1 and 2 finder runs (`dossiers/ch01.md`, `ch02.md`) and that were added to `inventory/gap.json` with locators checked against the source caches: '
   + '; '.join(f'{c["name"]} ({where(c) if "appendix" in c else secnum[c["id"]]})' for c in flipped) + '. '
   'The open-prose sources are those whose licence passes METHOD §0 or METHOD §4.4 items 12 and 15: ' + ', '.join(f'`{x}`' for x in sorted(OPEN)) + '.'); A('')
 A(f'**{len(np)} concepts** are still taught only by CIU links or by Erickson\'s NC notes ({npt["core"]} core, {npt["stretch"]} stretch, {npt["contest"]} contest). '
@@ -204,6 +205,15 @@ R = [
   f'It has {S["gap_rows"]} rows in the FORMAT.md shape with `source` "gap"; each row\'s id and locator start with its real source\'s locator prefix (wikipedia:, doocs-leetcode:, oiwiki:, opendsa:, mcs2018:, ...), and the id is the locator with spaces as underscores. '
   '`build.py` reads it like the other inventories and takes each row\'s source from the registry row whose locator scheme has that prefix; the spec names its rows with the prefix `g:`. '
   '`check_map.py` checks that every gap row\'s prefix is a registry prefix, that its source is open, and that its locator resolves in `sources/_cache/<id>/` (the file, and the heading or section number where the locator names one).'),
+ ('Chapters 1 to 3 rulings and the reconciliation\'s map corrections (METHOD §4.4 item 18).',
+  f'Random variable is a new Essential concept ({secnum["random-variable"]}), taught by *Mathematics for Computer Science* 2018, Definition 19.1.1 (`mcs2018:19.1`); '
+  'linearity of expectation, Las Vegas and Monte Carlo algorithms and the linear-probing analysis rest on it, and the gap inventory also records the Wikibooks, Aspnes (202, 469), Wikipedia, OpenIntro, Applied Combinatorics and OI Wiki definitions for the judge (brisk has none). '
+  '*DSA for absolute dummies* is excluded (likely AI-written): its three gap rows are gone, and `build.py` and `check_map.py` now treat any registry row with an `excluded` field as not open, and `check_map.py` fails on any treatment from one. '
+  'It was never the only open source of a concept, so no concept lost open prose. '
+  'Following `judgements/ch01-03-reconciled.md` ("Concept-map corrections"): ' + ', '.join(cby[x]['name'] for x in ('probability-basics', 'conditional-probability', 'pointer-arithmetic', 'pointer-to-pointer')) +
+  ' now have open prose from the treatments the chapter dossiers name; every chapter 1–3 winner is now among its concept\'s treatments, so the sections\' source lists name it '
+  '(OI Wiki in 1.5, brisk in 1.6, Wikipedia in 2.5 and 3.1, and also OpenDSA for multivariate Big-O, Wikipedia for nearest smaller values and ODS\'s SLList queue operations for the linked-list queue); '
+  'the potential-method and queue-linked-list rows carry notes on their ODS passages. Erickson\'s 0.2 "Compass and Straightedge" gets no concept row: it is context that no exercise tests on its own, carried with the 0.2 block or bridged (note on describing-algorithms).'),
 ]
 for i, (h, b) in enumerate(R, 1):
     A(f'{i}. **{h}** {b}')
@@ -227,10 +237,11 @@ J = [
   + (' Remaining inversions: ' + '; '.join(f'{cby[a]["name"]} ({ta}) rests on {cby[b]["name"]} ({tb})' for a, b, ta, tb in S['inversions']) + '.' if S['inversions'] else '')),
  ('Probability split between chapter 1 and chapter 22.',
   'Counting, basic probability, conditional probability, expectation and indicator variables are in 1.6 because hashing, heapify\'s analysis and skip lists need them; '
-  'distributions, tail bounds, Markov chains and randomized algorithms are chapter 22. "Random variables and linearity of expectation" and conditional probability are now **core** (ruling 4: hashing analysis rests on them), although CIU lists them as optional.'),
- ('Rows split by granularity (7).',
+  'distributions, tail bounds, Markov chains and randomized algorithms are chapter 22. Linearity of expectation (CIU: "random variables and expectation") and conditional probability are now **core** (ruling 4: hashing analysis rests on them), although CIU lists them as optional. '
+  f'Random variable is its own core concept ({secnum["random-variable"]}, ruling 9 of section 3), placed before linearity of expectation.'),
+ (f'Rows split by granularity ({len(S["split_rows"])}).',
   'CIU rows that cover two testable concepts were split, and the CIU row treats both: BST search/insertion, universal/perfect hashing, counting/radix sort, '
-  'union by rank/path compression, Floyd-Warshall/APSP DP, convex hull/Graham scan; cpa\'s classic-DP table also treats the new LCS concept.'),
+  'union by rank/path compression, Floyd-Warshall/APSP DP, convex hull/Graham scan; cpa\'s classic-DP table also treats the new LCS concept; Wikipedia\'s Probability #Mathematical treatment treats both basic and conditional probability.'),
  ('Joins across sources that might look loose.',
   'ODS\'s resizing ArrayQueue with CIU\'s fixed-size array queue; SPFA (cpa) with Moore\'s queue-based Bellman-Ford (Erickson); the master theorem (CIU) with recursion trees (Erickson, notes); '
   'ODS polynomial hashing, cpa polynomial rolling hash and CIU rolling hash; CIU powers of two with sdp\'s powers-of-two table; CIU\'s LRU cache with sdp\'s query-cache implementation and OOD LRU notebook; '
@@ -243,7 +254,8 @@ J = [
   'Each is recorded in the concept\'s notes. Dropped, mostly where a source\'s presentation order posed as a dependency: stack → queue and list → deque (ODS defines them through each other), '
   'singly linked list → stack/queue (ODS\'s SLList implements them), potential method → array resizing, chaining → multiplicative hashing, BFS distances → Ford\'s relaxation, '
   'Huffman → compression, database indexes → B-tree (ruling 6), and three that broke cycles (max-flow min-cut ↔ Ford-Fulkerson, two\'s complement ↔ bitwise operators, random-walk lemma ↔ meldable heap). '
-  'Added: binary tree → tree, Ford\'s relaxation → edge relaxation, sparse DP → LCS, and three for the gap concepts: merge sort → merging two sorted lists, sliding-window minimum → fixed-size window, lattice paths avoiding obstacles → grid paths.'),
+  'Added: binary tree → tree, Ford\'s relaxation → edge relaxation, sparse DP → LCS, three for the gap concepts (merge sort → merging two sorted lists, sliding-window minimum → fixed-size window, lattice paths avoiding obstacles → grid paths), '
+  'and three onto the new random-variable concept (linearity of expectation, Las Vegas and Monte Carlo, linear-probing analysis; ruling 9 of section 3).'),
  ('Order of chapters 8 to 12: trees and BSTs, heaps, sorting, then balanced trees and tries.',
   'Treaps need heaps, quicksort\'s analysis needs random BSTs, and core sorting should not wait behind balanced trees. CIU\'s order (trees intro, BST, heap, balanced, sorting) is kept except that balanced trees move after sorting.'),
  (f'Core number theory stays in chapter {chap["ch-number-theory-1"]["number"]}.',
