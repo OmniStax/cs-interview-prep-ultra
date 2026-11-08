@@ -1,0 +1,4538 @@
+[
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Harvard CS50 - Asymptotic Notation (video)",
+    "url": "https://www.youtube.com/watch?v=iOq5kSKqeR4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Big O Notations (general quick tutorial) (video)",
+    "url": "https://www.youtube.com/watch?v=V6mKVRU1evU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Big O Notation (and Omega and Theta) - best mathematical explanation (video)",
+    "url": "https://www.youtube.com/watch?v=ei-A_wy5Yxw&index=2&list=PL1BaGV1cIH4UhkL8a9bJGG356covJ76qN",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Skiena (video)",
+    "url": "https://www.youtube.com/watch?v=z1mkCe3kVUA",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "UC Berkeley Big O (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_VIS4YDpuP98",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Amortized Analysis (video)",
+    "url": "https://www.youtube.com/watch?v=B3SpQZaAZP4&index=10&list=PL1BaGV1cIH4UhkL8a9bJGG356covJ76qN",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Computational Complexity: Section 1",
+    "url": "https://www.topcoder.com/thrive/articles/Computational%20Complexity%20part%20one",
+    "kind": "article",
+    "host": "topcoder.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Computational Complexity: Section 2",
+    "url": "https://www.topcoder.com/thrive/articles/Computational%20Complexity%20part%20two",
+    "kind": "article",
+    "host": "topcoder.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "Cheat sheet",
+    "url": "https://bigocheatsheet.com/",
+    "kind": "cheat sheet",
+    "host": "bigocheatsheet.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+    "title": "[Review] Analyzing Algorithms (playlist) in 18 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZMxejjIyFHWa-4nKg6sdoIv",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#arrays",
+    "title": "Arrays CS50 Harvard University",
+    "url": "https://www.youtube.com/watch?v=tI_tIZFyKBw&t=3009s",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#arrays",
+    "title": "Arrays (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/arrays-OsBSF",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#arrays",
+    "title": "UC Berkeley CS61B - Linear and Multi-Dim Arrays (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_Wp8oiO_CZZE",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#arrays",
+    "title": "Dynamic Arrays (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/dynamic-arrays-EwbnV",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#arrays",
+    "title": "Jagged Arrays (video)",
+    "url": "https://www.youtube.com/watch?v=1jtrQqYpt7g",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "Linked Lists CS50 Harvard University",
+    "url": "https://www.youtube.com/watch?v=2T-A_GFuoTo&t=650s",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "Singly Linked Lists (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/singly-linked-lists-kHhgK",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "CS 61B - Linked Lists 1 (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_htzJdKoEmO0",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "CS 61B - Linked Lists 2 (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_-c4I3gFYe3w",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "[Review] Linked lists in 4 minutes (video)",
+    "url": "https://youtu.be/F8AbOfQwl1c",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "C Code (video)",
+    "url": "https://www.youtube.com/watch?v=QN6FPiD0Gzo",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "Core Linked Lists Vs Arrays (video)",
+    "url": "https://www.coursera.org/lecture/data-structures-optimizing-performance/core-linked-lists-vs-arrays-rjBs9",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "In The Real World Linked Lists Vs Arrays (video)",
+    "url": "https://www.coursera.org/lecture/data-structures-optimizing-performance/in-the-real-world-lists-vs-arrays-QUaUd",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "Why you should avoid linked lists (video)",
+    "url": "https://www.youtube.com/watch?v=YQs6IC-vgmo",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "Pointers to Pointers",
+    "url": "https://www.eskimo.com/~scs/cclass/int/sx8.html",
+    "kind": "article",
+    "host": "eskimo.com"
+  },
+  {
+    "topic_locator": "ciu:#linked-lists",
+    "title": "Description (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/doubly-linked-lists-jpGKD",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#stack",
+    "title": "Stacks (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/stacks-UdKzQ",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#stack",
+    "title": "[Review] Stacks in 3 minutes (video)",
+    "url": "https://youtu.be/KcT3aVgrrpU",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#queue",
+    "title": "Queue (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/queues-EShpq",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#queue",
+    "title": "Circular buffer/FIFO",
+    "url": "https://en.wikipedia.org/wiki/Circular_buffer",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#queue",
+    "title": "[Review] Queues in 3 minutes (video)",
+    "url": "https://youtu.be/D6gu-_tmEpQ",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Hashing with Chaining (video)",
+    "url": "https://www.youtube.com/watch?v=0M_kIqhwbFo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Table Doubling, Karp-Rabin (video)",
+    "url": "https://www.youtube.com/watch?v=BRO7mVIFt08&index=9&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Open Addressing, Cryptographic Hashing (video)",
+    "url": "https://www.youtube.com/watch?v=rvdJDijO2Ro&index=10&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "PyCon 2010: The Mighty Dictionary (video)",
+    "url": "https://www.youtube.com/watch?v=C4Kc8xzcA68",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "PyCon 2017: The Dictionary Even Mightier (video)",
+    "url": "https://www.youtube.com/watch?v=66P5FMkWoVU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "(Advanced) Randomization: Universal & Perfect Hashing (video)",
+    "url": "https://www.youtube.com/watch?v=z0lJ2k0sl1g&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=11",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "(Advanced) Perfect hashing (video)",
+    "url": "https://www.youtube.com/watch?v=N0COwN14gt0&list=PL2B4EEwhKD-NbwZ4ezj7gyc_3yNrojKM9&index=4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "[Review] Hash tables in 4 minutes (video)",
+    "url": "https://youtu.be/knV86FlSXJ8",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Core Hash Tables (video)",
+    "url": "https://www.coursera.org/lecture/data-structures-optimizing-performance/core-hash-tables-m7UuP",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Data Structures (video)",
+    "url": "https://www.coursera.org/learn/data-structures/home/week/4",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Phone Book Problem (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/phone-book-problem-NYZZP",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Instant Uploads And Storage Optimization In Dropbox (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/instant-uploads-and-storage-optimization-in-dropbox-DvaIb",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#hash-table",
+    "title": "Distributed Hash Tables (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/distributed-hash-tables-tvH8H",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#binary-search",
+    "title": "Binary Search (video)",
+    "url": "https://www.youtube.com/watch?v=D5SrAga1pno",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search",
+    "title": "Binary Search (video)",
+    "url": "https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search",
+    "kind": "video",
+    "host": "khanacademy.org"
+  },
+  {
+    "topic_locator": "ciu:#binary-search",
+    "title": "detail",
+    "url": "https://www.topcoder.com/thrive/articles/Binary%20Search",
+    "kind": "article",
+    "host": "topcoder.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search",
+    "title": "blueprint",
+    "url": "https://leetcode.com/discuss/general-discussion/786126/python-powerful-ultimate-binary-search-template-solved-many-problems",
+    "kind": "article",
+    "host": "leetcode.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search",
+    "title": "[Review] Binary search in 4 minutes (video)",
+    "url": "https://youtu.be/fDKIpRe8GW4",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Bits cheat sheet",
+    "url": "https://github.com/jwasham/coding-interview-university/blob/main/extras/cheat%20sheets/bits-cheat-sheet.pdf",
+    "kind": "cheat sheet",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "words",
+    "url": "https://en.wikipedia.org/wiki/Word_(computer_architecture)",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Bit Manipulation (video)",
+    "url": "https://www.youtube.com/watch?v=7jkIUgLC29I",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "C Programming Tutorial 2-10: Bitwise Operators (video)",
+    "url": "https://www.youtube.com/watch?v=d0AwjSpNXR0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Bit Manipulation",
+    "url": "https://en.wikipedia.org/wiki/Bit_manipulation",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Bitwise Operation",
+    "url": "https://en.wikipedia.org/wiki/Bitwise_operation",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Bithacks",
+    "url": "https://graphics.stanford.edu/~seander/bithacks.html",
+    "kind": "article",
+    "host": "graphics.stanford.edu"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "The Bit Twiddler",
+    "url": "https://bits.stephan-brumme.com/",
+    "kind": "article",
+    "host": "bits.stephan-brumme.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "The Bit Twiddler Interactive",
+    "url": "https://bits.stephan-brumme.com/interactive.html",
+    "kind": "practice site",
+    "host": "bits.stephan-brumme.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Bit Hacks (video)",
+    "url": "https://www.youtube.com/watch?v=ZusiKXcz_ac",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Practice Operations",
+    "url": "https://pconrad.github.io/old_pconrad_cs16/topics/bitOps/",
+    "kind": "practice site",
+    "host": "pconrad.github.io"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Binary: Plusses & Minuses (Why We Use Two's Complement) (video)",
+    "url": "https://www.youtube.com/watch?v=lKTsv6iVxV4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "1s Complement",
+    "url": "https://en.wikipedia.org/wiki/Ones%27_complement",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "2s Complement",
+    "url": "https://en.wikipedia.org/wiki/Two%27s_complement",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "4 ways to count bits in a byte (video)",
+    "url": "https://youtu.be/Hzuzo9NJrlc",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Count Bits",
+    "url": "https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan",
+    "kind": "article",
+    "host": "graphics.stanford.edu"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "How To Count The Number Of Set Bits In a 32 Bit Integer",
+    "url": "http://stackoverflow.com/questions/109023/how-to-count-the-number-of-set-bits-in-a-32-bit-integer",
+    "kind": "article",
+    "host": "stackoverflow.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Swap",
+    "url": "https://bits.stephan-brumme.com/swap.html",
+    "kind": "article",
+    "host": "bits.stephan-brumme.com"
+  },
+  {
+    "topic_locator": "ciu:#bitwise-operations",
+    "title": "Absolute Integer",
+    "url": "https://bits.stephan-brumme.com/absInteger.html",
+    "kind": "article",
+    "host": "bits.stephan-brumme.com"
+  },
+  {
+    "topic_locator": "ciu:#trees---intro",
+    "title": "Intro to Trees (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/trees-95qda",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#trees---intro",
+    "title": "Tree Traversal (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/tree-traversal-fr51b",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#trees---intro",
+    "title": "BFS(breadth-first search) and DFS(depth-first search) (video)",
+    "url": "https://www.youtube.com/watch?v=uWL6FJhq5fM",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#trees---intro",
+    "title": "[Review] Breadth-first search in 4 minutes (video)",
+    "url": "https://youtu.be/HZ5YTanv5QE",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#trees---intro",
+    "title": "[Review] Depth-first search in 4 minutes (video)",
+    "url": "https://youtu.be/Urx87-NMm6c",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#trees---intro",
+    "title": "[Review] Tree Traversal (playlist) in 11 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZO1JC2RgEi04nLy6D-rKk6b",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Binary Search Tree Review (video)",
+    "url": "https://www.youtube.com/watch?v=x6At0nzX92o&index=1&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Introduction (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/E7cXP/introduction",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "MIT (video)",
+    "url": "https://www.youtube.com/watch?v=76dhtgZt38A&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Binary search tree - Implementation in C/C++ (video)",
+    "url": "https://www.youtube.com/watch?v=COZK7NATh4k&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=28",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "BST implementation - memory allocation in stack and heap (video)",
+    "url": "https://www.youtube.com/watch?v=hWokyBoo0aI&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=29",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Find min and max element in a binary search tree (video)",
+    "url": "https://www.youtube.com/watch?v=Ut90klNN264&index=30&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Find the height of a binary tree (video)",
+    "url": "https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Binary tree traversal - breadth-first and depth-first strategies (video)",
+    "url": "https://www.youtube.com/watch?v=9RHO6jU--GU&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=32",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Binary tree: Level Order Traversal (video)",
+    "url": "https://www.youtube.com/watch?v=86g8jAQug04&index=33&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Binary tree traversal: Preorder, Inorder, Postorder (video)",
+    "url": "https://www.youtube.com/watch?v=gm8DUJJhmY4&index=34&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Check if a binary tree is a binary search tree or not (video)",
+    "url": "https://www.youtube.com/watch?v=yEwSGhSsT0U&index=35&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Delete a node from Binary Search Tree (video)",
+    "url": "https://www.youtube.com/watch?v=gcULXE7ViZw&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=36",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "Inorder Successor in a binary search tree (video)",
+    "url": "https://www.youtube.com/watch?v=5cPbNCrdotA&index=37&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "insert    // insert value into tree",
+    "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/submissions/987660183/",
+    "kind": "practice site",
+    "host": "leetcode.com"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "get_height // returns the height in nodes (single node's height is 1)",
+    "url": "https://www.geeksforgeeks.org/find-the-maximum-depth-or-height-of-a-tree/",
+    "kind": "article",
+    "host": "geeksforgeeks.org"
+  },
+  {
+    "topic_locator": "ciu:#binary-search-trees-bsts",
+    "title": "is_binary_search_tree",
+    "url": "https://leetcode.com/problems/validate-binary-search-tree/",
+    "kind": "practice site",
+    "host": "leetcode.com"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Heap",
+    "url": "https://en.wikipedia.org/wiki/Heap_(data_structure)",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Introduction (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/introduction-2OpTs",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Binary Trees (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/GRV2q/binary-trees",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Tree Height Remark (video)",
+    "url": "https://www.coursera.org/learn/data-structures/supplement/S5xxz/tree-height-remark",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Basic Operations (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/0g1dl/basic-operations",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Complete Binary Trees (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/gl5Ni/complete-binary-trees",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Pseudocode (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/HxQo9/pseudocode",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Heap Sort - jumps to start (video)",
+    "url": "https://youtu.be/odNJmw5TOEE?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3291",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Heap Sort (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/heap-sort-hSzMO",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Building a heap (video)",
+    "url": "https://www.coursera.org/lecture/data-structures/building-a-heap-dwrOS",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "MIT 6.006 Introduction to Algorithms: Binary Heaps",
+    "url": "https://www.youtube.com/watch?v=Xnpo1atN-Iw&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=12",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "CS 61B Lecture 24: Priority Queues (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_yIUFT6AKBGE",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "Linear Time BuildHeap (max-heap)",
+    "url": "https://www.youtube.com/watch?v=MiyLo8adrWw",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#heap--priority-queue--binary-heap",
+    "title": "[Review] Heap (playlist) in 13 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZNsyqgPW-DNwUeT8F8uhWc6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Sorting Algorithm Stability",
+    "url": "https://en.wikipedia.org/wiki/Sorting_algorithm#Stability",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Stability In Sorting Algorithms",
+    "url": "http://stackoverflow.com/questions/1517793/stability-in-sorting-algorithms",
+    "kind": "article",
+    "host": "stackoverflow.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Stability In Sorting Algorithms",
+    "url": "https://www.geeksforgeeks.org/stability-in-sorting-algorithms/",
+    "kind": "article",
+    "host": "geeksforgeeks.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Sorting Algorithms - Stability",
+    "url": "https://homepages.math.uic.edu/~leon/cs-mcs401-s08/handouts/stability.pdf",
+    "kind": "lecture notes",
+    "host": "homepages.math.uic.edu"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Merge Sort For Linked List",
+    "url": "https://www.geeksforgeeks.org/merge-sort-for-linked-list/",
+    "kind": "article",
+    "host": "geeksforgeeks.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Sedgewick - Mergesort (5 videos)",
+    "url": "https://www.coursera.org/learn/algorithms-part1/home/week/3",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "1. Mergesort",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/mergesort-ARWDq",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "2. Bottom-up Mergesort",
+    "url": "https://www.coursera.org/learn/algorithms-part1/lecture/PWNEl/bottom-up-mergesort",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "3. Sorting Complexity",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/sorting-complexity-xAltF",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "4. Comparators",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/comparators-9FYhS",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "5. Stability",
+    "url": "https://www.coursera.org/learn/algorithms-part1/lecture/pvvLZ/stability",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Sedgewick - Quicksort (4 videos)",
+    "url": "https://www.coursera.org/learn/algorithms-part1/home/week/3",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "1. Quicksort",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/quicksort-vjvnC",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "2. Selection",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/selection-UQxFT",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "3. Duplicate Keys",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/duplicate-keys-XvjPd",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "4. System Sorts",
+    "url": "https://www.coursera.org/lecture/algorithms-part1/system-sorts-QBNZ7",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "CS 61B Lecture 29: Sorting I (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_EiUvYS2DT6I",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "CS 61B Lecture 30: Sorting II (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_2hTY3t80Qsk",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "CS 61B Lecture 32: Sorting III (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_Y6LOLpxg6Dc",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "CS 61B Lecture 33: Sorting V (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_qNMQ4ly43p4",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "CS 61B 2014-04-21: Radix Sort(video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_pvbBMd-3NoI",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Bubble Sort (video)",
+    "url": "https://www.youtube.com/watch?v=P00xJgWzz2c&index=1&list=PL89B61F78B552C1AB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Analyzing Bubble Sort (video)",
+    "url": "https://www.youtube.com/watch?v=ni_zk257Nqo&index=7&list=PL89B61F78B552C1AB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Insertion Sort, Merge Sort (video)",
+    "url": "https://www.youtube.com/watch?v=Kg4bqzAqRBM&index=3&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Insertion Sort (video)",
+    "url": "https://www.youtube.com/watch?v=c4BRHC7kTaQ&index=2&list=PL89B61F78B552C1AB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Merge Sort (video)",
+    "url": "https://www.youtube.com/watch?v=GCae1WNvnZM&index=3&list=PL89B61F78B552C1AB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Quicksort (video)",
+    "url": "https://www.youtube.com/watch?v=y_G9BkAm6B8&index=4&list=PL89B61F78B552C1AB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Selection Sort (video)",
+    "url": "https://www.youtube.com/watch?v=6nDMgr0-Yyo&index=8&list=PL89B61F78B552C1AB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Using output array (C)",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/examples/sorting/mergesort.c",
+    "kind": "code",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Using output array (Python)",
+    "url": "https://github.com/jwasham/practice-python/blob/master/merge_sort/merge_sort.py",
+    "kind": "code",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "In-place (C++)",
+    "url": "https://github.com/jwasham/practice-cpp/blob/master/merge_sort/merge_sort.cc",
+    "kind": "code",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Implementation (C)",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/examples/randomization/quick.c",
+    "kind": "code",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Implementation (C)",
+    "url": "https://github.com/jwasham/practice-c/blob/master/quick_sort/quick_sort.c",
+    "kind": "code",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Implementation (Python)",
+    "url": "https://github.com/jwasham/practice-python/blob/master/quick_sort/quick_sort.py",
+    "kind": "code",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "[Review] Sorting (playlist) in 18 minutes",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZOZSbGAXAPIq1BeUf4j20pl",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Quick sort in 4 minutes (video)",
+    "url": "https://youtu.be/Hoixgm4-P4M",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Heap sort in 4 minutes (video)",
+    "url": "https://youtu.be/2DmK_H7IdTo",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Merge sort in 3 minutes (video)",
+    "url": "https://youtu.be/4VqmGXwpLqc",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Bubble sort in 2 minutes (video)",
+    "url": "https://youtu.be/xli_FI7CuzA",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Selection sort in 3 minutes (video)",
+    "url": "https://youtu.be/g-PGLbMth_g",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Insertion sort in 2 minutes (video)",
+    "url": "https://youtu.be/JU767SDMDvA",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Sedgewick - Radix Sorts (6 videos)",
+    "url": "https://www.coursera.org/learn/algorithms-part2/home/week/3",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "1. Strings in Java",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/vGHvb/strings-in-java",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "2. Key Indexed Counting",
+    "url": "https://www.coursera.org/lecture/algorithms-part2/key-indexed-counting-2pi1Z",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "3. Least Significant Digit First String Radix Sort",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/c1U7L/lsd-radix-sort",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "4. Most Significant Digit First String Radix Sort",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/gFxwG/msd-radix-sort",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "5. 3 Way Radix Quicksort",
+    "url": "https://www.coursera.org/lecture/algorithms-part2/3-way-radix-quicksort-crkd5",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "6. Suffix Arrays",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/TH18W/suffix-arrays",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Radix Sort",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#radixSort",
+    "kind": "lecture notes",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Radix Sort (video)",
+    "url": "https://www.youtube.com/watch?v=xhr26ia4k38",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Radix Sort, Counting Sort (linear time given constraints) (video)",
+    "url": "https://www.youtube.com/watch?v=Nz1KZXbghj8&index=7&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Randomization: Matrix Multiply, Quicksort, Freivalds' algorithm (video)",
+    "url": "https://www.youtube.com/watch?v=cNB2lADK3_s&index=8&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "Sorting in Linear Time (video)",
+    "url": "https://www.youtube.com/watch?v=pOKy3RZbSws&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf&index=14",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#sorting",
+    "title": "15 sorting algorithms",
+    "url": "https://www.youtube.com/watch?v=kPRA0W1kECg",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Breadth-First Search",
+    "url": "https://www.youtube.com/watch?v=oFVYVzlvk9c&t=14s&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Depth-First Search",
+    "url": "https://www.youtube.com/watch?v=IBfWDYSffUU&t=32s&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CSE373 2020 - Lecture 10 - Graph Data Structures (video)",
+    "url": "https://www.youtube.com/watch?v=Sjk0xqWWPCc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=10",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CSE373 2020 - Lecture 11 - Graph Traversal (video)",
+    "url": "https://www.youtube.com/watch?v=ZTwjXj81NVY&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=11",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CSE373 2020 - Lecture 12 - Depth First Search (video)",
+    "url": "https://www.youtube.com/watch?v=KyordYB3BOs&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=12",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CSE373 2020 - Lecture 13 - Minimum Spanning Trees (video)",
+    "url": "https://www.youtube.com/watch?v=oolm2VnJUKw&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=13",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CSE373 2020 - Lecture 14 - Minimum Spanning Trees (con't) (video)",
+    "url": "https://www.youtube.com/watch?v=RktgPx0MarY&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=14",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CSE373 2020 - Lecture 15 - Graph Algorithms (con't 2) (video)",
+    "url": "https://www.youtube.com/watch?v=MUe5DXRhyAo&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=15",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "6.006 Single-Source Shortest Paths Problem (video)",
+    "url": "https://www.youtube.com/watch?v=Aa2sqUhIn-E&index=15&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "6.006 Dijkstra (video)",
+    "url": "https://www.youtube.com/watch?v=NSHizBK9JD8&t=1731s&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "6.006 Bellman-Ford (video)",
+    "url": "https://www.youtube.com/watch?v=f9cVS_URPc0&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "6.006 Speeding Up Dijkstra (video)",
+    "url": "https://www.youtube.com/watch?v=CHvQ3q_gJ7E&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=18",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Aduni: Graph Algorithms I - Topological Sorting, Minimum Spanning Trees, Prim's Algorithm -  Lecture 6 (video)",
+    "url": "https://www.youtube.com/watch?v=i_AQT_XfvD8&index=6&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Aduni: Graph Algorithms II - DFS, BFS, Kruskal's Algorithm, Union Find Data Structure - Lecture 7 (video)",
+    "url": "https://www.youtube.com/watch?v=ufj5_bppBsA&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=7",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Aduni: Graph Algorithms III: Shortest Path - Lecture 8 (video)",
+    "url": "https://www.youtube.com/watch?v=DiedsPsMKXc&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Aduni: Graph Alg. IV: Intro to geometric algorithms - Lecture 9 (video)",
+    "url": "https://www.youtube.com/watch?v=XIAQRlNkJAw&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=9",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "CS 61B 2014: Weighted graphs (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_zFbq8vOZ_0k",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Greedy Algorithms: Minimum Spanning Tree (video)",
+    "url": "https://www.youtube.com/watch?v=tKwnms5iRBU&index=16&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Strongly Connected Components Kosaraju's Algorithm Graph Algorithm (video)",
+    "url": "https://www.youtube.com/watch?v=RpgcYiky7uw",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "[Review] Shortest Path Algorithms (playlist) in 16 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZO-Y-H3xIC9DGSfVYJng9Yw",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "[Review] Minimum Spanning Trees (playlist) in 4 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZObEi3Hf6lmyW-CBfs7nkOV",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#graphs",
+    "title": "Algorithms on Graphs (video)",
+    "url": "https://www.coursera.org/learn/algorithms-on-graphs/home/welcome",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Lecture 8 | Programming Abstractions (video)",
+    "url": "https://www.youtube.com/watch?v=gl3emqCuueQ&list=PLFE6E58F856038C69&index=8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Lecture 9 | Programming Abstractions (video)",
+    "url": "https://www.youtube.com/watch?v=uFJhEPrbycQ&list=PLFE6E58F856038C69&index=9",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Lecture 10 | Programming Abstractions (video)",
+    "url": "https://www.youtube.com/watch?v=NdF1QDTRkck&index=10&list=PLFE6E58F856038C69",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Lecture 11 | Programming Abstractions (video)",
+    "url": "https://www.youtube.com/watch?v=p-gpaIGRCQI&list=PLFE6E58F856038C69&index=11",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "What Is Tail Recursion Why Is It So Bad?",
+    "url": "https://www.quora.com/What-is-tail-recursion-Why-is-it-so-bad",
+    "kind": "article",
+    "host": "quora.com"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Tail Recursion (video)",
+    "url": "https://www.coursera.org/lecture/programming-languages/tail-recursion-YZic1",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "5 Simple Steps for Solving Any Recursive Problem(video)",
+    "url": "https://youtu.be/ngCos392W4w",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Java",
+    "url": "https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning)",
+    "kind": "article",
+    "host": "leetcode.com"
+  },
+  {
+    "topic_locator": "ciu:#recursion",
+    "title": "Python",
+    "url": "https://leetcode.com/problems/combination-sum/discuss/429538/General-Backtracking-questions-solutions-in-Python-for-reference-%3A",
+    "kind": "article",
+    "host": "leetcode.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Skiena: CSE373 2020 - Lecture 19 - Introduction to Dynamic Programming (video)",
+    "url": "https://www.youtube.com/watch?v=wAA0AMfcJHQ&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=18",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Skiena: CSE373 2020 - Lecture 20 - Edit Distance (video)",
+    "url": "https://www.youtube.com/watch?v=T3A4jlHlhtA&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=19",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Skiena: CSE373 2020 - Lecture 20 - Edit Distance (continued) (video)",
+    "url": "https://www.youtube.com/watch?v=iPnPVcZmRbE&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=20",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Skiena: CSE373 2020 - Lecture 21 - Dynamic Programming (video)",
+    "url": "https://www.youtube.com/watch?v=2xPE4Wq8coQ&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=21",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Skiena: CSE373 2020 - Lecture 22 - Dynamic Programming and Review (video)",
+    "url": "https://www.youtube.com/watch?v=Yh3RzqQGsyI&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=22",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Simonson: Dynamic Programming 0 (starts at 59:18) (video)",
+    "url": "https://youtu.be/J5aJEcOr6Eo?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3558",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Simonson: Dynamic Programming I - Lecture 11 (video)",
+    "url": "https://www.youtube.com/watch?v=0EzHjQ_SOeU&index=11&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Simonson: Dynamic programming II - Lecture 12 (video)",
+    "url": "https://www.youtube.com/watch?v=v1qiRwuJU7g&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=12",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Dynamic Programming (video)",
+    "url": "https://www.youtube.com/playlist?list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Dynamic Programming",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#dynamicProgramming",
+    "kind": "lecture notes",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "The RNA secondary structure problem (video)",
+    "url": "https://www.coursera.org/learn/algorithmic-thinking-2/lecture/80RrW/the-rna-secondary-structure-problem",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "A dynamic programming algorithm (video)",
+    "url": "https://www.coursera.org/lecture/algorithmic-thinking-2/a-dynamic-programming-algorithm-PSonq",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Illustrating the DP algorithm (video)",
+    "url": "https://www.coursera.org/lecture/algorithmic-thinking-2/illustrating-the-dp-algorithm-oUEK2",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Running time of the DP algorithm (video)",
+    "url": "https://www.coursera.org/learn/algorithmic-thinking-2/lecture/nfK2r/running-time-of-the-dp-algorithm",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "DP vs. recursive implementation (video)",
+    "url": "https://www.coursera.org/learn/algorithmic-thinking-2/lecture/M999a/dp-vs-recursive-implementation",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Global pairwise sequence alignment (video)",
+    "url": "https://www.coursera.org/lecture/algorithmic-thinking-2/global-pairwise-sequence-alignment-UZ7o6",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#dynamic-programming",
+    "title": "Local pairwise sequence alignment (video)",
+    "url": "https://www.coursera.org/learn/algorithmic-thinking-2/lecture/WnNau/local-pairwise-sequence-alignment",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#design-patterns",
+    "title": "Quick UML review (video)",
+    "url": "https://www.youtube.com/watch?v=3cmzqZzwNDM&list=PLGLfVvz_LVvQ5G-LdJ8RLqe-ndo7QITYc&index=3",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#design-patterns",
+    "title": "Series of videos (27 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLF206E906175C7E07",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#design-patterns",
+    "title": "Book: Head First Design Patterns",
+    "url": "https://www.amazon.com/Head-First-Design-Patterns-Freeman/dp/0596007124",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#design-patterns",
+    "title": "Handy reference: 101 Design Patterns & Tips for Developers",
+    "url": "https://sourcemaking.com/design-patterns-and-tips",
+    "kind": "article",
+    "host": "sourcemaking.com"
+  },
+  {
+    "topic_locator": "ciu:#combinatorics-n-choose-k--probability",
+    "title": "Math Skills: How to find Factorial, Permutation, and Combination (Choose) (video)",
+    "url": "https://www.youtube.com/watch?v=8RRo6Ti9d0U",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#combinatorics-n-choose-k--probability",
+    "title": "Make School: Probability (video)",
+    "url": "https://www.youtube.com/watch?v=sZkAAk9Wwa4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#combinatorics-n-choose-k--probability",
+    "title": "Make School: More Probability and Markov Chains (video)",
+    "url": "https://www.youtube.com/watch?v=dNaJg-mLobQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#combinatorics-n-choose-k--probability",
+    "title": "Basic Theoretical Probability",
+    "url": "https://www.khanacademy.org/math/probability/probability-and-combinatorics-topic",
+    "kind": "course",
+    "host": "khanacademy.org"
+  },
+  {
+    "topic_locator": "ciu:#combinatorics-n-choose-k--probability",
+    "title": "Probability Explained (video)",
+    "url": "https://www.youtube.com/watch?v=uzkc-qNVoOk&list=PLC58778F28211FA19",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "Computational Complexity (video)",
+    "url": "https://www.youtube.com/watch?v=moPtwq_cVH8&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=23",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "Greedy Algs. II & Intro to NP-Completeness (video)",
+    "url": "https://youtu.be/qcGnJ47Smlo?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=2939",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "NP Completeness II & Reductions (video)",
+    "url": "https://www.youtube.com/watch?v=e0tGC6ZQdQE&index=16&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "NP Completeness III (Video)",
+    "url": "https://www.youtube.com/watch?v=fCX1BGT3wjE&index=17&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "NP Completeness IV (video)",
+    "url": "https://www.youtube.com/watch?v=NKLDp3Rch3M&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=18",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "CSE373 2020 - Lecture 23 - NP-Completeness (video)",
+    "url": "https://www.youtube.com/watch?v=ItHp5laE1VE&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=23",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "CSE373 2020 - Lecture 24 - Satisfiability (video)",
+    "url": "https://www.youtube.com/watch?v=inaFJeCzGxU&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=24",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "CSE373 2020 - Lecture 25 - More NP-Completeness (video)",
+    "url": "https://www.youtube.com/watch?v=B-bhKxjZLlc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=25",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "CSE373 2020 - Lecture 26 - NP-Completeness Challenge (video)",
+    "url": "https://www.youtube.com/watch?v=_EzetTkG_Cc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=26",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "Complexity: P, NP, NP-completeness, Reductions (video)",
+    "url": "https://www.youtube.com/watch?v=eHZifpgyH_4&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=22",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "Complexity: Approximation Algorithms (video)",
+    "url": "https://www.youtube.com/watch?v=MEz1J9wY2iM&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=24",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "Complexity: Fixed-Parameter Algorithms (video)",
+    "url": "https://www.youtube.com/watch?v=4q-jmGrmxKs&index=25&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#np-np-complete-and-approximation-algorithms",
+    "title": "Jupyter Notebook",
+    "url": "http://nbviewer.jupyter.org/url/norvig.com/ipython/TSP.ipynb",
+    "kind": "notebook",
+    "host": "nbviewer.jupyter.org"
+  },
+  {
+    "topic_locator": "ciu:#how-computers-process-a-program",
+    "title": "How CPU executes a program (video)",
+    "url": "https://www.youtube.com/watch?v=XM4lGflQFvA",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#how-computers-process-a-program",
+    "title": "How computers calculate - ALU (video)",
+    "url": "https://youtu.be/1I5ZMmrOfnA",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#how-computers-process-a-program",
+    "title": "Registers and RAM (video)",
+    "url": "https://youtu.be/fpnE6UAfbtU",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#how-computers-process-a-program",
+    "title": "The Central Processing Unit (CPU) (video)",
+    "url": "https://youtu.be/FZGugFqdr60",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#how-computers-process-a-program",
+    "title": "Instructions and Programs (video)",
+    "url": "https://youtu.be/zltgXvg6r3k",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#caches",
+    "title": "The Magic of LRU Cache (100 Days of Google Dev) (video)",
+    "url": "https://www.youtube.com/watch?v=R5ON3iwx78M",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#caches",
+    "title": "Implementing LRU (video)",
+    "url": "https://www.youtube.com/watch?v=bq6N7Ym81iI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#caches",
+    "title": "LeetCode - 146 LRU Cache (C++) (video)",
+    "url": "https://www.youtube.com/watch?v=8-FZRAjR7qU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#caches",
+    "title": "MIT 6.004 L15: The Memory Hierarchy (video)",
+    "url": "https://www.youtube.com/watch?v=vjYF_fAZI5E&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-&index=24",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#caches",
+    "title": "MIT 6.004 L16: Cache Issues (video)",
+    "url": "https://www.youtube.com/watch?v=ajgC3-pyGlk&index=25&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Operating Systems and System Programming (video)",
+    "url": "https://archive.org/details/ucberkeley-webcast-PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "What Is The Difference Between A Process And A Thread?",
+    "url": "https://www.quora.com/What-is-the-difference-between-a-process-and-a-thread",
+    "kind": "article",
+    "host": "quora.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Paging, segmentation, and virtual memory (video)",
+    "url": "https://youtu.be/O4nwUqQodAg",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Interrupts (video)",
+    "url": "https://youtu.be/iKlAWIKEyuw",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "How context switching is initiated by the operating system and underlying hardware?",
+    "url": "https://www.javatpoint.com/what-is-the-context-switching-in-the-operating-system",
+    "kind": "article",
+    "host": "javatpoint.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "threads in C++ (series - 10 videos)",
+    "url": "https://www.youtube.com/playlist?list=PL5jc9xFGsL8E12so1wlMS0r0hTQoJL74M",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "CS 377 Spring '14: Operating Systems from University of Massachusetts",
+    "url": "https://www.youtube.com/playlist?list=PLacuG5pysFbDQU8kKxbUh4K5c1iL5_k7k",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Short series on threads",
+    "url": "https://www.youtube.com/playlist?list=PL1H1sBF1VAKVMONJWJkmUh6_p8g4F2oy1",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Python Threads",
+    "url": "https://www.youtube.com/watch?v=Bs7vPNbB9JM",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Understanding the Python GIL (2010)",
+    "url": "https://www.youtube.com/watch?v=Obt-vMVdM8s",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "reference",
+    "url": "https://www.dabeaz.com/GIL",
+    "kind": "article",
+    "host": "dabeaz.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "David Beazley - Python Concurrency From the Ground Up LIVE! - PyCon 2015",
+    "url": "https://www.youtube.com/watch?v=MCs5OvhV9S4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Keynote David Beazley - Topics of Interest (Python Asyncio)",
+    "url": "https://www.youtube.com/watch?v=ZzfHjytDceU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#processes-and-threads",
+    "title": "Mutex in Python",
+    "url": "https://www.youtube.com/watch?v=0zaPs8OtyKY",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "Agile Software Testing with James Bach (video)",
+    "url": "https://www.youtube.com/watch?v=SAhJf36_u5U",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "Open Lecture by James Bach on Software Testing (video)",
+    "url": "https://www.youtube.com/watch?v=ILkT_HV9DVU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "Steve Freeman - Test-Driven Development (that’s not what we meant) (video)",
+    "url": "https://vimeo.com/83960706",
+    "kind": "video",
+    "host": "vimeo.com"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "slides",
+    "url": "http://gotocon.com/dl/goto-berlin-2013/slides/SteveFreeman_TestDrivenDevelopmentThatsNotWhatWeMeant.pdf",
+    "kind": "slides",
+    "host": "gotocon.com"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "video",
+    "url": "https://www.youtube.com/watch?v=IKD2-MAkXyQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "Tao Of Testing",
+    "url": "https://jasonpolites.github.io/tao-of-testing/ch3-1.1.html",
+    "kind": "article",
+    "host": "jasonpolites.github.io"
+  },
+  {
+    "topic_locator": "ciu:#testing",
+    "title": "How to write tests",
+    "url": "https://jasonpolites.github.io/tao-of-testing/ch4-1.1.html",
+    "kind": "article",
+    "host": "jasonpolites.github.io"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "Sedgewick - Suffix Arrays (video)",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/TH18W/suffix-arrays",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "Sedgewick - Substring Search (videos)",
+    "url": "https://www.coursera.org/learn/algorithms-part2/home/week/4",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "1. Introduction to Substring Search",
+    "url": "https://www.coursera.org/lecture/algorithms-part2/introduction-to-substring-search-n3ZpG",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "2. Brute-Force Substring Search",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/2Kn5i/brute-force-substring-search",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "3. Knuth-Morris Pratt",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/TAtDr/knuth-morris-pratt",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "4. Boyer-Moore",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/CYxOT/boyer-moore",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "5. Rabin-Karp",
+    "url": "https://www.coursera.org/lecture/algorithms-part2/rabin-karp-3KiqT",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#string-searching--manipulations",
+    "title": "Search pattern in a text (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/tAfHI/search-pattern-in-text",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "Sedgewick - Tries (3 videos)",
+    "url": "https://www.coursera.org/learn/algorithms-part2/home/week/4",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "1. R Way Tries",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/CPVdr/r-way-tries",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "2. Ternary Search Tries",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/yQM8K/ternary-search-tries",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "3. Character Based Operations",
+    "url": "https://www.coursera.org/learn/algorithms-part2/lecture/jwNmV/character-based-operations",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "Notes on Data Structures and Programming Techniques",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#Tries",
+    "kind": "lecture notes",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "Introduction To Tries (video)",
+    "url": "https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/08Xyf/core-introduction-to-tries",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "Performance Of Tries (video)",
+    "url": "https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/PvlZW/core-performance-of-tries",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "Implementing A Trie (video)",
+    "url": "https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/DFvd3/core-implementing-a-trie",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "The Trie: A Neglected Data Structure",
+    "url": "https://www.toptal.com/java/the-trie-a-neglected-data-structure",
+    "kind": "article",
+    "host": "toptal.com"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "TopCoder - Using Tries",
+    "url": "https://www.topcoder.com/thrive/articles/Using%20Tries",
+    "kind": "article",
+    "host": "topcoder.com"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "Stanford Lecture (real-world use case) (video)",
+    "url": "https://www.youtube.com/watch?v=TJ8SkcUSdbU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#tries",
+    "title": "MIT, Advanced Data Structures, Strings (can get pretty obscure about halfway through) (video)",
+    "url": "https://www.youtube.com/watch?v=NinWEPPrkDQ&index=16&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#floating-point-numbers",
+    "title": "Representation of Floating Point Numbers - 1 (video - there is an error in calculations - see video description)",
+    "url": "https://www.youtube.com/watch?v=ji3SfClm8TU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#unicode",
+    "title": "The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets",
+    "url": "https://www.joelonsoftware.com/articles/Unicode.html",
+    "kind": "article",
+    "host": "joelonsoftware.com"
+  },
+  {
+    "topic_locator": "ciu:#unicode",
+    "title": "What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text",
+    "url": "https://kunststube.net/encoding/",
+    "kind": "article",
+    "host": "kunststube.net"
+  },
+  {
+    "topic_locator": "ciu:#endianness",
+    "title": "Big And Little Endian",
+    "url": "https://web.archive.org/web/20180107141940/http://www.cs.umd.edu:80/class/sum2003/cmsc311/Notes/Data/endian.html",
+    "kind": "article",
+    "host": "web.archive.org"
+  },
+  {
+    "topic_locator": "ciu:#endianness",
+    "title": "Big Endian Vs Little Endian (video)",
+    "url": "https://www.youtube.com/watch?v=JrNF0KRAlyo",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#endianness",
+    "title": "Big And Little Endian Inside/Out (video)",
+    "url": "https://www.youtube.com/watch?v=oBSuXP-1Tc0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "Khan Academy",
+    "url": "https://www.khanacademy.org/computing/code-org/computers-and-the-internet",
+    "kind": "course",
+    "host": "khanacademy.org"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "UDP and TCP: Comparison of Transport Protocols (video)",
+    "url": "https://www.youtube.com/watch?v=Vdc8TCESIg8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "TCP/IP and the OSI Model Explained! (video)",
+    "url": "https://www.youtube.com/watch?v=e5DEVa9eSN0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "Packet Transmission across the Internet. Networking & TCP/IP tutorial. (video)",
+    "url": "https://www.youtube.com/watch?v=nomyRJehhnM",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "HTTP (video)",
+    "url": "https://www.youtube.com/watch?v=WGJrLqtX7As",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "SSL and HTTPS (video)",
+    "url": "https://www.youtube.com/watch?v=S2iBR2ZlZf0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "SSL/TLS (video)",
+    "url": "https://www.youtube.com/watch?v=Rp3iZUvXWlM",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "HTTP 2.0 (video)",
+    "url": "https://www.youtube.com/watch?v=E9FxNzv1Tr8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "Video Series (21 videos) (video)",
+    "url": "https://www.youtube.com/playlist?list=PLEbnTDJUr_IegfoqO4iPnPYQui46QqT0j",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "Subnetting Demystified - Part 5 CIDR Notation (video)",
+    "url": "https://www.youtube.com/watch?v=t5xYI0jzOf4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "Java - Sockets - Introduction (video)",
+    "url": "https://www.youtube.com/watch?v=6G_W54zuadg&t=6s",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#networking",
+    "title": "Socket Programming (video)",
+    "url": "https://www.youtube.com/watch?v=G75vN2mnJeQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#final-review",
+    "title": "Videos",
+    "url": "https://www.youtube.com/watch?v=r4r1DZcx1cM&list=PLmVb1OknmNJuC5POdcDv5oCS7_OUkDgpj&index=22",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#final-review",
+    "title": "Videos",
+    "url": "https://www.youtube.com/@MichaelSambol",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#final-review",
+    "title": "Code Examples",
+    "url": "https://github.com/msambol/dsa",
+    "kind": "code",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#final-review",
+    "title": "Sedgewick Videos - Algorithms I",
+    "url": "https://www.coursera.org/learn/algorithms-part1",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#final-review",
+    "title": "Sedgewick Videos - Algorithms II",
+    "url": "https://www.coursera.org/learn/algorithms-part2",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#update-your-resume",
+    "title": "\"This Is What A GOOD Resume Should Look Like\" by Gayle McDowell (author of Cracking the Coding Interview)",
+    "url": "https://web.archive.org/web/20240515023235/https://www.careercup.com/resume",
+    "kind": "article",
+    "host": "web.archive.org"
+  },
+  {
+    "topic_locator": "ciu:#update-your-resume",
+    "title": "\"Step-by-step resume guide\" by Tech Interview Handbook",
+    "url": "https://www.techinterviewhandbook.org/resume/guide",
+    "kind": "article",
+    "host": "techinterviewhandbook.org"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "How to Pass the Engineering Interview in 2021",
+    "url": "https://davidbyttow.medium.com/how-to-pass-the-engineering-interview-in-2021-45f1b389a1",
+    "kind": "article",
+    "host": "davidbyttow.medium.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Demystifying Tech Recruiting",
+    "url": "https://www.youtube.com/watch?v=N233T0epWTs",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "How to Get a Job at the Big 4 - Amazon, Facebook, Google & Microsoft (video)",
+    "url": "https://www.youtube.com/watch?v=YJZCUhxNCv8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "How to Get a Job at the Big 4.1 (Follow-up video)",
+    "url": "https://www.youtube.com/watch?v=6790FVXWBw8&feature=youtu.be",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Gayle L McDowell - Cracking The Coding Interview (video)",
+    "url": "https://www.youtube.com/watch?v=rEJzOhC5ZtQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Cracking the Coding Interview with Author Gayle Laakmann McDowell (video)",
+    "url": "https://www.youtube.com/watch?v=aClxtDcdpsQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "The Approach",
+    "url": "https://www.youtube.com/watch?v=wCl9kvQGHPI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Problem Walkthrough",
+    "url": "https://www.youtube.com/watch?v=4UWDyJq8jZg",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Python for Data Structures, Algorithms, and Interviews (paid course)",
+    "url": "https://www.udemy.com/python-for-data-structures-algorithms-and-interviews/",
+    "kind": "course",
+    "host": "udemy.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Intro to Data Structures and Algorithms using Python (Udacity free course)",
+    "url": "https://www.udacity.com/course/data-structures-and-algorithms-in-python--ud513",
+    "kind": "course",
+    "host": "udacity.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Data Structures and Algorithms Nanodegree! (Udacity paid Nanodegree)",
+    "url": "https://www.udacity.com/course/data-structures-and-algorithms-nanodegree--nd256",
+    "kind": "course",
+    "host": "udacity.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Grokking the Behavioral Interview (Educative free course)",
+    "url": "https://www.educative.io/courses/grokking-the-behavioral-interview",
+    "kind": "course",
+    "host": "educative.io"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "AlgoMonster (paid course with free content)",
+    "url": "https://algo.monster/?utm_campaign=jwasham&utm_medium=referral&utm_content=coding-interview-university&utm_source=github",
+    "kind": "course",
+    "host": "algo.monster"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Pramp: Mock interviews from/with peers",
+    "url": "https://www.pramp.com/",
+    "kind": "practice site",
+    "host": "pramp.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "interviewing.io: Practice mock interview with senior engineers",
+    "url": "https://interviewing.io",
+    "kind": "practice site",
+    "host": "interviewing.io"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Meetapro: Mock interviews with top FAANG interviewers",
+    "url": "https://meetapro.com/?utm_source=ciu",
+    "kind": "practice site",
+    "host": "meetapro.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Hello Interview: Mock Interviews with Expert Coaches and AI",
+    "url": "https://www.hellointerview.com/?utm_source=ciu",
+    "kind": "practice site",
+    "host": "hellointerview.com"
+  },
+  {
+    "topic_locator": "ciu:#interview-process--general-interview-prep",
+    "title": "Codemia: Practice system design problems with AI or community solutions and feedback",
+    "url": "https://codemia.io/?utm_source=ciu",
+    "kind": "practice site",
+    "host": "codemia.io"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "The Unix Programming Environment",
+    "url": "https://www.amazon.com/dp/013937681X",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "The Linux Command Line: A Complete Introduction",
+    "url": "https://www.amazon.com/dp/1593273894/",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "TCP/IP Illustrated Series",
+    "url": "https://en.wikipedia.org/wiki/TCP/IP_Illustrated",
+    "kind": "book",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Head First Design Patterns",
+    "url": "https://www.amazon.com/gp/product/0596007124/",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "url": "https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Algorithm Design Manual",
+    "url": "https://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1849967202",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Solutions",
+    "url": "https://web.archive.org/web/20150404194210/http://www.algorithm.cs.sunysb.edu/algowiki/index.php/The_Algorithms_Design_Manual_(Second_Edition)",
+    "kind": "article",
+    "host": "web.archive.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Errata",
+    "url": "https://www3.cs.stonybrook.edu/~skiena/algorist/book/errata",
+    "kind": "article",
+    "host": "www3.cs.stonybrook.edu"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Algorithm",
+    "url": "http://jeffe.cs.illinois.edu/teaching/algorithms/",
+    "kind": "book",
+    "host": "jeffe.cs.illinois.edu"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Write Great Code: Volume 1: Understanding the Machine",
+    "url": "https://www.amazon.com/Write-Great-Code-Understanding-Machine/dp/1593270038",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "HLA",
+    "url": "https://en.wikipedia.org/wiki/High_Level_Assembly",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Introduction to Algorithms",
+    "url": "https://www.amazon.com/Introduction-Algorithms-fourth-Thomas-Cormen/dp/026204630X",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-books",
+    "title": "Computer Architecture, Sixth Edition: A Quantitative Approach",
+    "url": "https://www.amazon.com/dp/0128119055",
+    "kind": "book",
+    "host": "amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "The System Design Primer",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "kind": "article",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "System Design from HiredInTech",
+    "url": "https://www.hiredintech.com/system-design/",
+    "kind": "article",
+    "host": "hiredintech.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "How Do I Prepare To Answer Design Questions In A Technical Interview?",
+    "url": "https://www.quora.com/How-do-I-prepare-to-answer-design-questions-in-a-technical-interview?redirected_qid=1500023",
+    "kind": "article",
+    "host": "quora.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "8 steps guide to ace your system design interview",
+    "url": "https://javascript.plainenglish.io/8-steps-guide-to-ace-a-system-design-interview-7a5a797f4d7d",
+    "kind": "article",
+    "host": "javascript.plainenglish.io"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Database Normalization - 1NF, 2NF, 3NF and 4NF (video)",
+    "url": "https://www.youtube.com/watch?v=UrYLYV7WSHM",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "System Design Interview",
+    "url": "https://github.com/checkcheckzz/system-design-interview",
+    "kind": "reading list",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "How to ace a systems design interview",
+    "url": "https://web.archive.org/web/20120716060051/http://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/",
+    "kind": "article",
+    "host": "web.archive.org"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Numbers Everyone Should Know",
+    "url": "https://everythingisdata.wordpress.com/2009/10/17/numbers-everyone-should-know/",
+    "kind": "article",
+    "host": "everythingisdata.wordpress.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "How long does it take to make a context switch?",
+    "url": "https://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html",
+    "kind": "article",
+    "host": "blog.tsunanet.net"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Transactions Across Datacenters (video)",
+    "url": "https://www.youtube.com/watch?v=srOgpXECblk",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "A plain English introduction to CAP Theorem",
+    "url": "http://ksat.me/a-plain-english-introduction-to-cap-theorem",
+    "kind": "article",
+    "host": "ksat.me"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "MIT 6.824: Distributed Systems, Spring 2020 (20 videos)",
+    "url": "https://www.youtube.com/watch?v=cQP8WApzIQQ&list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Paxos Agreement - Computerphile (video)",
+    "url": "https://www.youtube.com/watch?v=s8JqcZtvnsM",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "An Introduction to the Raft Distributed Consensus Algorithm (video)",
+    "url": "https://www.youtube.com/watch?v=P9Ydif5_qvE",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Easy-to-read paper",
+    "url": "https://raft.github.io/",
+    "kind": "paper",
+    "host": "raft.github.io"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Infographic",
+    "url": "https://thesecretlivesofdata.com/raft/",
+    "kind": "interactive",
+    "host": "thesecretlivesofdata.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Consistent Hashing",
+    "url": "https://www.tom-e-white.com/2007/11/consistent-hashing.html",
+    "kind": "article",
+    "host": "tom-e-white.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "NoSQL Patterns",
+    "url": "https://horicky.blogspot.com/2009/11/nosql-patterns.html",
+    "kind": "article",
+    "host": "horicky.blogspot.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Great overview (video)",
+    "url": "https://www.youtube.com/watch?v=-W9F__D3oY4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Clones",
+    "url": "https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones",
+    "kind": "article",
+    "host": "lecloud.net"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Database",
+    "url": "https://www.lecloud.net/post/7994751381/scalability-for-dummies-part-2-database",
+    "kind": "article",
+    "host": "lecloud.net"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Cache",
+    "url": "https://www.lecloud.net/post/9246290032/scalability-for-dummies-part-3-cache",
+    "kind": "article",
+    "host": "lecloud.net"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Asynchronism",
+    "url": "https://www.lecloud.net/post/9699762917/scalability-for-dummies-part-4-asynchronism",
+    "kind": "article",
+    "host": "lecloud.net"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Scalable Web Architecture and Distributed Systems",
+    "url": "https://www.aosabook.org/en/distsys.html",
+    "kind": "article",
+    "host": "aosabook.org"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Fallacies of Distributed Computing Explained",
+    "url": "https://pages.cs.wisc.edu/~zuyu/files/fallacies.pdf",
+    "kind": "paper",
+    "host": "pages.cs.wisc.edu"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Jeff Dean - Building Software Systems At Google and Lessons Learned (video)",
+    "url": "https://www.youtube.com/watch?v=modXC5IWTJI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Introduction to Architecting Systems for Scale",
+    "url": "https://lethain.com/introduction-to-architecting-systems-for-scale/",
+    "kind": "article",
+    "host": "lethain.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Scaling mobile games to a global audience using App Engine and Cloud Datastore (video)",
+    "url": "https://www.youtube.com/watch?v=9nWyWwY2Onc",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "How Google Does Planet-Scale Engineering for Planet-Scale Infra (video)",
+    "url": "https://www.youtube.com/watch?v=H4vMcD7zKM0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "The Importance of Algorithms",
+    "url": "https://www.topcoder.com/thrive/articles/The%20Importance%20of%20Algorithms",
+    "kind": "article",
+    "host": "topcoder.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Sharding",
+    "url": "https://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Engineering for the Long Game - Astrid Atkinson Keynote(video)",
+    "url": "https://www.youtube.com/watch?v=p0jGmgIrf_M&list=PLRXxvay_m8gqVlExPC5DG3TGWJTaBgqSA&index=4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "7 Years Of YouTube Scalability Lessons In 30 Minutes",
+    "url": "https://highscalability.com/blog/2012/3/26/7-years-of-youtube-scalability-lessons-in-30-minutes.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "video",
+    "url": "https://www.youtube.com/watch?v=G-lGCC4KKok",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "How PayPal Scaled To Billions Of Transactions Daily Using Just 8VMs",
+    "url": "https://highscalability.com/blog/2016/8/15/how-paypal-scaled-to-billions-of-transactions-daily-using-ju.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "How to Remove Duplicates in Large Datasets",
+    "url": "https://blog.clevertap.com/how-to-remove-duplicates-in-large-datasets/",
+    "kind": "article",
+    "host": "blog.clevertap.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "A look inside Etsy's scale and engineering culture with Jon Cowie (video)",
+    "url": "https://www.youtube.com/watch?v=3vV4YiqKm1o",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "What Led Amazon to its Own Microservices Architecture",
+    "url": "https://thenewstack.io/led-amazon-microservices-architecture/",
+    "kind": "article",
+    "host": "thenewstack.io"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "To Compress Or Not To Compress, That Was Uber's Question",
+    "url": "https://eng.uber.com/trip-data-squeeze/",
+    "kind": "article",
+    "host": "eng.uber.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "When Should Approximate Query Processing Be Used?",
+    "url": "https://highscalability.com/blog/2016/2/25/when-should-approximate-query-processing-be-used.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Google's Transition From Single Datacenter To Failover, To A Native Multihomed Architecture",
+    "url": "https://highscalability.com/blog/2016/2/23/googles-transition-from-single-datacenter-to-failover-to-a-n.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "The Image Optimization Technology That Serves Millions Of Requests Per Day",
+    "url": "https://highscalability.com/blog/2016/6/15/the-image-optimization-technology-that-serves-millions-of-re.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "A Patreon Architecture Short",
+    "url": "https://highscalability.com/blog/2016/2/1/a-patreon-architecture-short.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Tinder: How Does One Of The Largest Recommendation Engines Decide Who You'll See Next?",
+    "url": "https://highscalability.com/blog/2016/1/27/tinder-how-does-one-of-the-largest-recommendation-engines-de.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design Of A Modern Cache",
+    "url": "https://highscalability.com/blog/2016/1/25/design-of-a-modern-cache.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Live Video Streaming At Facebook Scale",
+    "url": "https://highscalability.com/blog/2016/1/13/live-video-streaming-at-facebook-scale.html",
+    "kind": "video",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "A Beginner's Guide To Scaling To 11 Million+ Users On Amazon's AWS",
+    "url": "https://highscalability.com/blog/2016/1/11/a-beginners-guide-to-scaling-to-11-million-users-on-amazons.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "A 360 Degree View Of The Entire Netflix Stack",
+    "url": "https://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Latency Is Everywhere And It Costs You Sales - How To Crush It",
+    "url": "http://highscalability.com/latency-everywhere-and-it-costs-you-sales-how-crush-it",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "What Powers Instagram: Hundreds of Instances, Dozens of Technologies",
+    "url": "http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances",
+    "kind": "article",
+    "host": "instagram-engineering.tumblr.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Salesforce Architecture - How They Handle 1.3 Billion Transactions A Day",
+    "url": "https://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "ESPN's Architecture At Scale - Operating At 100,000 Duh Nuh Nuhs Per Second",
+    "url": "https://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "O'Reilly MySQL CE 2011: Jeremy Cole, \"Big and Small Data at @Twitter\" (video)",
+    "url": "https://www.youtube.com/watch?v=5cKTP36HVgI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Timelines at Scale",
+    "url": "https://www.infoq.com/presentations/Twitter-Timeline-Scalability",
+    "kind": "video",
+    "host": "infoq.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "The System Design Primer",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "kind": "article",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "System Design from HiredInTech",
+    "url": "https://www.hiredintech.com/system-design/",
+    "kind": "article",
+    "host": "hiredintech.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "cheat sheet",
+    "url": "https://github.com/jwasham/coding-interview-university/blob/main/extras/cheat%20sheets/system-design.pdf",
+    "kind": "cheat sheet",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design a random unique ID generation system",
+    "url": "https://blog.twitter.com/2010/announcing-snowflake",
+    "kind": "article",
+    "host": "blog.twitter.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design a key-value database",
+    "url": "https://www.slideshare.net/dvirsky/introduction-to-redis",
+    "kind": "slides",
+    "host": "slideshare.net"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design a picture sharing system",
+    "url": "https://highscalability.com/blog/2011/12/6/instagram-architecture-14-million-users-terabytes-of-photos.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design a recommendation system",
+    "url": "https://ijcai13.org/files/tutorial_slides/td3.pdf",
+    "kind": "slides",
+    "host": "ijcai13.org"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design a URL-shortener system: copied from above",
+    "url": "https://www.hiredintech.com/system-design/the-system-design-process/",
+    "kind": "article",
+    "host": "hiredintech.com"
+  },
+  {
+    "topic_locator": "ciu:#system-design-scalability-data-handling",
+    "title": "Design a cache system",
+    "url": "https://web.archive.org/web/20220217064329/https://adayinthelifeof.nl/2011/02/06/memcache-internals/",
+    "kind": "article",
+    "host": "web.archive.org"
+  },
+  {
+    "topic_locator": "ciu:#compilers",
+    "title": "How a Compiler Works in ~1 minute (video)",
+    "url": "https://www.youtube.com/watch?v=IhC7sdYe-Jg",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compilers",
+    "title": "Harvard CS50 - Compilers (video)",
+    "url": "https://www.youtube.com/watch?v=CSZLNYF4Klo",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compilers",
+    "title": "C++ (video)",
+    "url": "https://www.youtube.com/watch?v=twodd1KFfGk",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compilers",
+    "title": "Understanding Compiler Optimization (C++) (video)",
+    "url": "https://www.youtube.com/watch?v=FnGCDLhaxKU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Editing With Vim 01 - Installation, Setup, and The Modes (video)",
+    "url": "https://www.youtube.com/watch?v=5givLEMcINQ&index=1&list=PL13bz4SHGmRxlZVmWQ9DvXo1fEg4UdGkr",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "VIM Adventures",
+    "url": "https://vim-adventures.com/",
+    "kind": "practice site",
+    "host": "vim-adventures.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "The vi/vim editor - Lesson 1",
+    "url": "https://www.youtube.com/watch?v=SI8TeVMX8pk",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "The vi/vim editor - Lesson 2",
+    "url": "https://www.youtube.com/watch?v=F3OO7ZIOaJE",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "The vi/vim editor - Lesson 3",
+    "url": "https://www.youtube.com/watch?v=ZYEccA_nMaI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "The vi/vim editor - Lesson 4",
+    "url": "https://www.youtube.com/watch?v=1lYD5gwgZIA",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Using Vi Instead of Emacs",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#Using_Vi_instead_of_Emacs",
+    "kind": "lecture notes",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Basics Emacs Tutorial (video)",
+    "url": "https://www.youtube.com/watch?v=hbmV1bnQ-i0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Emacs Tutorial (Beginners) -Part 1- File commands, cut/copy/paste, cursor commands",
+    "url": "https://www.youtube.com/watch?v=ujODL7MD04Q",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Emacs Tutorial (Beginners) -Part 2- Buffer management, search, M-x grep and rgrep modes",
+    "url": "https://www.youtube.com/watch?v=XWpsRupJ4II",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Emacs Tutorial (Beginners) -Part 3- Expressions, Statements, ~/.emacs file, and packages",
+    "url": "https://www.youtube.com/watch?v=paSgzPso-yc",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Evil Mode: Or, How I Learned to Stop Worrying and Love Emacs (video)",
+    "url": "https://www.youtube.com/watch?v=JWD1Fpdd4Pc",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "Writing C Programs With Emacs",
+    "url": "https://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#Writing_C_programs_with_Emacs",
+    "kind": "lecture notes",
+    "host": "cs.yale.edu"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "The Absolute Beginner's Guide to Emacs (video by David Wilson)",
+    "url": "https://www.youtube.com/watch?v=48JlgiBpw_I&t=0s",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#emacs-and-vim",
+    "title": "The Absolute Beginner's Guide to Emacs (notes by David Wilson)",
+    "url": "https://systemcrafters.net/emacs-essentials/absolute-beginners-guide-to-emacs/",
+    "kind": "article",
+    "host": "systemcrafters.net"
+  },
+  {
+    "topic_locator": "ciu:#unixlinux-command-line-tools",
+    "title": "strace",
+    "url": "https://en.wikipedia.org/wiki/Strace",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#unixlinux-command-line-tools",
+    "title": "tcpdump",
+    "url": "https://danielmiessler.com/study/tcpdump/",
+    "kind": "article",
+    "host": "danielmiessler.com"
+  },
+  {
+    "topic_locator": "ciu:#unixlinux-command-line-tools",
+    "title": "Essential Linux Commands Tutorial",
+    "url": "https://labex.io/tutorials/practice-linux-commands-hands-on-labs-398420",
+    "kind": "practice site",
+    "host": "labex.io"
+  },
+  {
+    "topic_locator": "ciu:#devops",
+    "title": "DevOps Roadmap",
+    "url": "https://roadmap.sh/devops",
+    "kind": "reading list",
+    "host": "roadmap.sh"
+  },
+  {
+    "topic_locator": "ciu:#information-theory-videos",
+    "title": "Khan Academy",
+    "url": "https://www.khanacademy.org/computing/computer-science/informationtheory",
+    "kind": "course",
+    "host": "khanacademy.org"
+  },
+  {
+    "topic_locator": "ciu:#information-theory-videos",
+    "title": "Core Markov Text Generation",
+    "url": "https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/waxgx/core-markov-text-generation",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#information-theory-videos",
+    "title": "Core Implementing Markov Text Generation",
+    "url": "https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/gZhiC/core-implementing-markov-text-generation",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#information-theory-videos",
+    "title": "Project = Markov Text Generation Walk Through",
+    "url": "https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/EUjrq/project-markov-text-generation-walk-through",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#parity--hamming-code-videos",
+    "title": "Intro",
+    "url": "https://www.youtube.com/watch?v=q-3BctoUpHE",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#parity--hamming-code-videos",
+    "title": "Parity",
+    "url": "https://www.youtube.com/watch?v=DdMcAUlxh1M",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#parity--hamming-code-videos",
+    "title": "Error detection",
+    "url": "https://www.youtube.com/watch?v=1A_NcXxdoCc",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#parity--hamming-code-videos",
+    "title": "Error correction",
+    "url": "https://www.youtube.com/watch?v=JAMLuxdHH8o",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#parity--hamming-code-videos",
+    "title": "Error Checking",
+    "url": "https://www.youtube.com/watch?v=wbH2VxzmoZk",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#entropy",
+    "title": "Information Theory, Claude Shannon, Entropy, Redundancy, Data Compression & Bits (video)",
+    "url": "https://youtu.be/JnJq3Py0dyM?t=176",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#cryptography",
+    "title": "Khan Academy Series",
+    "url": "https://www.khanacademy.org/computing/computer-science/cryptography",
+    "kind": "course",
+    "host": "khanacademy.org"
+  },
+  {
+    "topic_locator": "ciu:#cryptography",
+    "title": "Cryptography: Hash Functions",
+    "url": "https://www.youtube.com/watch?v=KqqOXndnvic&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=30",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#cryptography",
+    "title": "Cryptography: Encryption",
+    "url": "https://www.youtube.com/watch?v=9TNI2wHmaeI&index=31&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "Compression",
+    "url": "https://www.youtube.com/watch?v=Lto-ajuqW3w",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "Entropy in Compression",
+    "url": "https://www.youtube.com/watch?v=M5c_RFKVkko",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "Upside Down Trees (Huffman Trees)",
+    "url": "https://www.youtube.com/watch?v=umTbivyJoiI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "EXTRA BITS/TRITS - Huffman Trees",
+    "url": "https://www.youtube.com/watch?v=DV8efuB3h2g",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "Elegant Compression in Text (The LZ 77 Method)",
+    "url": "https://www.youtube.com/watch?v=goOa3DGezUA",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "Text Compression Meets Probabilities",
+    "url": "https://www.youtube.com/watch?v=cCDCfoHTsaU",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "Compressor Head videos",
+    "url": "https://www.youtube.com/playlist?list=PLOU2XLYxmsIJGErt5rrCqaSGTMyyqNt2H",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#compression",
+    "title": "(optional) Google Developers Live: GZIP is not enough!",
+    "url": "https://www.youtube.com/watch?v=whGwm0Lky2s",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "MIT (23 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Introduction, Threat Models",
+    "url": "https://www.youtube.com/watch?v=GqmQg-cszw4&index=1&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Control Hijacking Attacks",
+    "url": "https://www.youtube.com/watch?v=6bwzNg5qQ0o&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh&index=2",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Buffer Overflow Exploits and Defenses",
+    "url": "https://www.youtube.com/watch?v=drQyrzRoRiA&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh&index=3",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Privilege Separation",
+    "url": "https://www.youtube.com/watch?v=6SIJmoE9L9g&index=4&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Capabilities",
+    "url": "https://www.youtube.com/watch?v=8VqTSY-11F4&index=5&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Sandboxing Native Code",
+    "url": "https://www.youtube.com/watch?v=VEV74hwASeU&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh&index=6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Web Security Model",
+    "url": "https://www.youtube.com/watch?v=chkFBigodIw&index=7&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Securing Web Applications",
+    "url": "https://www.youtube.com/watch?v=EBQIGy1ROLY&index=8&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Symbolic Execution",
+    "url": "https://www.youtube.com/watch?v=yRVZPvHYHzw&index=9&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Network Security",
+    "url": "https://www.youtube.com/watch?v=SIEVvk3NVuk&index=11&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Network Protocols",
+    "url": "https://www.youtube.com/watch?v=QOtA76ga_fY&index=12&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-security",
+    "title": "Side-Channel Attacks",
+    "url": "https://www.youtube.com/watch?v=PuVMkSEcPiI&index=15&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#garbage-collection",
+    "title": "GC in Python (video)",
+    "url": "https://www.youtube.com/watch?v=iHVs_HkjdmI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#garbage-collection",
+    "title": "Deep Dive Java: Garbage Collection is Good!",
+    "url": "https://www.infoq.com/presentations/garbage-collection-benefits",
+    "kind": "video",
+    "host": "infoq.com"
+  },
+  {
+    "topic_locator": "ciu:#garbage-collection",
+    "title": "Deep Dive Python: Garbage Collection in CPython (video)",
+    "url": "https://www.youtube.com/watch?v=P-8Z0-MhdQs&list=PLdzf4Clw0VbOEWOS_sLhT_9zaiQDrS5AR&index=3",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#parallel-programming",
+    "title": "Coursera (Scala)",
+    "url": "https://www.coursera.org/learn/parprog1/home/week/1",
+    "kind": "course",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#parallel-programming",
+    "title": "Efficient Python for High-Performance Parallel Computing (video)",
+    "url": "https://www.youtube.com/watch?v=uY85GkaYzBk",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Thrift",
+    "url": "https://thrift.apache.org/",
+    "kind": "docs",
+    "host": "thrift.apache.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Tutorial",
+    "url": "https://thrift-tutorial.readthedocs.io/en/latest/intro.html",
+    "kind": "docs",
+    "host": "thrift-tutorial.readthedocs.io"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Protocol Buffers",
+    "url": "https://developers.google.com/protocol-buffers/",
+    "kind": "docs",
+    "host": "developers.google.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Tutorials",
+    "url": "https://developers.google.com/protocol-buffers/docs/tutorials",
+    "kind": "docs",
+    "host": "developers.google.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "gRPC",
+    "url": "https://www.grpc.io/",
+    "kind": "docs",
+    "host": "grpc.io"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "gRPC 101 for Java Developers (video)",
+    "url": "https://www.youtube.com/watch?v=5tmPvSe7xXQ&list=PLcTqM9n_dieN0k1nSeN36Z_ppKnvMJoly&index=1",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Redis",
+    "url": "https://redis.io/",
+    "kind": "docs",
+    "host": "redis.io"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Tutorial",
+    "url": "http://try.redis.io/",
+    "kind": "practice site",
+    "host": "try.redis.io"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Amazon SQS (queue)",
+    "url": "https://aws.amazon.com/sqs/",
+    "kind": "docs",
+    "host": "aws.amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Amazon SNS (pub-sub)",
+    "url": "https://aws.amazon.com/sns/",
+    "kind": "docs",
+    "host": "aws.amazon.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "RabbitMQ",
+    "url": "https://www.rabbitmq.com/",
+    "kind": "docs",
+    "host": "rabbitmq.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Get Started",
+    "url": "https://www.rabbitmq.com/getstarted.html",
+    "kind": "docs",
+    "host": "rabbitmq.com"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Celery",
+    "url": "https://www.celeryproject.org/",
+    "kind": "docs",
+    "host": "celeryproject.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "First Steps With Celery",
+    "url": "https://docs.celeryproject.org/en/latest/getting-started/first-steps-with-celery.html",
+    "kind": "docs",
+    "host": "docs.celeryproject.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "ZeroMQ",
+    "url": "https://zeromq.org/",
+    "kind": "docs",
+    "host": "zeromq.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Intro - Read The Manual",
+    "url": "https://zeromq.org/intro:read-the-manual",
+    "kind": "docs",
+    "host": "zeromq.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "ActiveMQ",
+    "url": "https://activemq.apache.org/",
+    "kind": "docs",
+    "host": "activemq.apache.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Kafka",
+    "url": "https://kafka.apache.org/documentation.html#introduction",
+    "kind": "docs",
+    "host": "kafka.apache.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "MessagePack",
+    "url": "https://msgpack.org/index.html",
+    "kind": "docs",
+    "host": "msgpack.org"
+  },
+  {
+    "topic_locator": "ciu:#messaging-serialization-and-queueing-systems",
+    "title": "Avro",
+    "url": "https://avro.apache.org/",
+    "kind": "docs",
+    "host": "avro.apache.org"
+  },
+  {
+    "topic_locator": "ciu:#a",
+    "title": "A Search Algorithm",
+    "url": "https://en.wikipedia.org/wiki/A*_search_algorithm",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#a",
+    "title": "A* Pathfinding (E01: algorithm explanation) (video)",
+    "url": "https://www.youtube.com/watch?v=-L-WgKMFuhE",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#fast-fourier-transform",
+    "title": "An Interactive Guide To The Fourier Transform",
+    "url": "https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/",
+    "kind": "article",
+    "host": "betterexplained.com"
+  },
+  {
+    "topic_locator": "ciu:#fast-fourier-transform",
+    "title": "What is a Fourier transform? What is it used for?",
+    "url": "http://www.askamathematician.com/2012/09/q-what-is-a-fourier-transform-what-is-it-used-for/",
+    "kind": "article",
+    "host": "askamathematician.com"
+  },
+  {
+    "topic_locator": "ciu:#fast-fourier-transform",
+    "title": "What is the Fourier Transform? (video)",
+    "url": "https://www.youtube.com/watch?v=Xxut2PN-V8Q",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#fast-fourier-transform",
+    "title": "Divide & Conquer: FFT (video)",
+    "url": "https://www.youtube.com/watch?v=iTMn0Kt18tg&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=4",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#fast-fourier-transform",
+    "title": "Understanding The FFT",
+    "url": "https://jakevdp.github.io/blog/2013/08/28/understanding-the-fft/",
+    "kind": "article",
+    "host": "jakevdp.github.io"
+  },
+  {
+    "topic_locator": "ciu:#bloom-filter",
+    "title": "Bloom Filters (video)",
+    "url": "https://www.youtube.com/watch?v=-SuTGoFYjZs",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#bloom-filter",
+    "title": "Bloom Filters | Mining of Massive Datasets | Stanford University (video)",
+    "url": "https://www.youtube.com/watch?v=qBTdukbzc78",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#bloom-filter",
+    "title": "Tutorial",
+    "url": "https://billmill.org/bloomfilter-tutorial/",
+    "kind": "article",
+    "host": "billmill.org"
+  },
+  {
+    "topic_locator": "ciu:#bloom-filter",
+    "title": "How To Write A Bloom Filter App",
+    "url": "http://blog.michaelschmatz.com/2016/04/11/how-to-write-a-bloom-filter-cpp/",
+    "kind": "article",
+    "host": "blog.michaelschmatz.com"
+  },
+  {
+    "topic_locator": "ciu:#hyperloglog",
+    "title": "How To Count A Billion Distinct Objects Using Only 1.5KB Of Memory",
+    "url": "https://highscalability.com/blog/2012/4/5/big-data-counting-how-to-count-a-billion-distinct-objects-us.html",
+    "kind": "article",
+    "host": "highscalability.com"
+  },
+  {
+    "topic_locator": "ciu:#locality-sensitive-hashing",
+    "title": "Simhashing (hopefully) made simple",
+    "url": "https://ferd.ca/simhashing-hopefully-made-simple.html",
+    "kind": "article",
+    "host": "ferd.ca"
+  },
+  {
+    "topic_locator": "ciu:#van-emde-boas-trees",
+    "title": "Divide & Conquer: van Emde Boas Trees (video)",
+    "url": "https://www.youtube.com/watch?v=hmReJCupbNU&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#van-emde-boas-trees",
+    "title": "MIT Lecture Notes",
+    "url": "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-design-and-analysis-of-algorithms-spring-2012/lecture-notes/MIT6_046JS12_lec15.pdf",
+    "kind": "lecture notes",
+    "host": "ocw.mit.edu"
+  },
+  {
+    "topic_locator": "ciu:#augmented-data-structures",
+    "title": "CS 61B Lecture 39: Augmenting Data Structures",
+    "url": "https://archive.org/details/ucberkeley_webcast_zksIj9O8_jc",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Self-balancing binary search tree",
+    "url": "https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "MIT AVL Trees / AVL Sort (video)",
+    "url": "https://www.youtube.com/watch?v=FNeL18KsWPc&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "AVL Trees (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/Qq5E0/avl-trees",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "AVL Tree Implementation (video)",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/PKEBC/avl-tree-implementation",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Split And Merge",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/22BgE/split-and-merge",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "[Review] AVL Trees (playlist) in 19 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZOUFgdIeOPuH6cfSnNRMau-",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "CS 61B: Splay Trees (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_G5QIXywcJlY",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Video",
+    "url": "https://www.youtube.com/watch?v=QnPl_Y6EqMo",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Aduni - Algorithms - Lecture 4 (link jumps to the starting point) (video)",
+    "url": "https://youtu.be/1W3x0f_RmUo?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3871",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Aduni - Algorithms - Lecture 5 (video)",
+    "url": "https://www.youtube.com/watch?v=hm2GHwyKF1o&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=5",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Red-Black Tree",
+    "url": "https://en.wikipedia.org/wiki/Red%E2%80%93black_tree",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "An Introduction To Binary Search And Red Black Tree",
+    "url": "https://www.topcoder.com/thrive/articles/An%20Introduction%20to%20Binary%20Search%20and%20Red-Black%20Trees",
+    "kind": "article",
+    "host": "topcoder.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "[Review] Red-Black Trees (playlist) in 30 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZNqDI8qfOZgzbqahCUmUEin",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "23-Tree Intuition and Definition (video)",
+    "url": "https://www.youtube.com/watch?v=C3SsdUqasD4&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6&index=2",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Binary View of 23-Tree",
+    "url": "https://www.youtube.com/watch?v=iYvBtGKsqSg&index=3&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "2-3 Trees (student recitation) (video)",
+    "url": "https://www.youtube.com/watch?v=TOb1tuEZ2X4&index=5&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "CS 61B Lecture 26: Balanced Search Trees (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_zqrqYXkth6Q",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Bottom Up 234-Trees (video)",
+    "url": "https://www.youtube.com/watch?v=DQdMYevEyE4&index=4&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Top Down 234-Trees (video)",
+    "url": "https://www.youtube.com/watch?v=2679VQ26Fp4&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6&index=5",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "K-Ary Tree",
+    "url": "https://en.wikipedia.org/wiki/K-ary_tree",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "B-Tree",
+    "url": "https://en.wikipedia.org/wiki/B-tree",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "B-Tree Datastructure",
+    "url": "http://btechsmartclass.com/data_structures/b-trees.html",
+    "kind": "article",
+    "host": "btechsmartclass.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "Introduction to B-Trees (video)",
+    "url": "https://www.youtube.com/watch?v=I22wEC1tTGo&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6&index=6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "B-Tree Definition and Insertion (video)",
+    "url": "https://www.youtube.com/watch?v=s3bCdZGrgpA&index=7&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "B-Tree Deletion (video)",
+    "url": "https://www.youtube.com/watch?v=svfnVhJOfMc&index=8&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "MIT 6.851 - Memory Hierarchy Models (video)",
+    "url": "https://www.youtube.com/watch?v=V3omVLzI0WE&index=7&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#balanced-search-trees",
+    "title": "[Review] B-Trees (playlist) in 26 minutes (video)",
+    "url": "https://www.youtube.com/playlist?list=PL9xmBV_5YoZNFPPv98DjTdD9X6UI9KMHz",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#k-d-trees",
+    "title": "kNN K-d tree algorithm (video)",
+    "url": "https://www.youtube.com/watch?v=Y4ZgLlDfKDg",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#skip-lists",
+    "title": "Randomization: Skip Lists (video)",
+    "url": "https://www.youtube.com/watch?v=2g9OSRKJuzM&index=10&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#skip-lists",
+    "title": "For animations and a little more detail",
+    "url": "https://en.wikipedia.org/wiki/Skip_list",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#network-flows",
+    "title": "Ford-Fulkerson in 5 minutes — Step by step example (video)",
+    "url": "https://www.youtube.com/watch?v=Tl90tNtKvxs",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#network-flows",
+    "title": "Ford-Fulkerson Algorithm (video)",
+    "url": "https://www.youtube.com/watch?v=v1VgJmkEJW0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#network-flows",
+    "title": "Network Flows (video)",
+    "url": "https://www.youtube.com/watch?v=2vhN4Ice5jI",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#disjoint-sets--union-find",
+    "title": "UCB 61B - Disjoint Sets; Sorting & selection (video)",
+    "url": "https://archive.org/details/ucberkeley_webcast_MAEGXTwmUsI",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#disjoint-sets--union-find",
+    "title": "Sedgewick Algorithms - Union-Find (6 videos)",
+    "url": "https://www.coursera.org/learn/algorithms-part1/home/week/1",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#math-for-fast-processing",
+    "title": "Integer Arithmetic, Karatsuba Multiplication (video)",
+    "url": "https://www.youtube.com/watch?v=eCaXlAaN2uE&index=11&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#math-for-fast-processing",
+    "title": "The Chinese Remainder Theorem (used in cryptography) (video)",
+    "url": "https://www.youtube.com/watch?v=ru7mWZJlRQg",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#treap",
+    "title": "Treap",
+    "url": "https://en.wikipedia.org/wiki/Treap",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#treap",
+    "title": "Data Structures: Treaps explained (video)",
+    "url": "https://www.youtube.com/watch?v=6podLUYinH8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#treap",
+    "title": "Applications in set operations",
+    "url": "https://www.cs.cmu.edu/~scandal/papers/treaps-spaa98.pdf",
+    "kind": "paper",
+    "host": "cs.cmu.edu"
+  },
+  {
+    "topic_locator": "ciu:#linear-programming-videos",
+    "title": "Linear Programming",
+    "url": "https://www.youtube.com/watch?v=M4K6HYLHREQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linear-programming-videos",
+    "title": "Finding minimum cost",
+    "url": "https://www.youtube.com/watch?v=2ACJ9ewUC6U",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linear-programming-videos",
+    "title": "Finding maximum value",
+    "url": "https://www.youtube.com/watch?v=8AA_81xI3ik",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#linear-programming-videos",
+    "title": "Solve Linear Equations with Python - Simplex Algorithm",
+    "url": "https://www.youtube.com/watch?v=44pAWI7v5Zk",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#geometry-convex-hull-videos",
+    "title": "Graph Alg. IV: Intro to geometric algorithms - Lecture 9",
+    "url": "https://youtu.be/XIAQRlNkJAw?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3164",
+    "kind": "video",
+    "host": "youtu.be"
+  },
+  {
+    "topic_locator": "ciu:#geometry-convex-hull-videos",
+    "title": "Geometric Algorithms: Graham & Jarvis - Lecture 10",
+    "url": "https://www.youtube.com/watch?v=J5aJEcOr6Eo&index=10&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#geometry-convex-hull-videos",
+    "title": "Divide & Conquer: Convex Hull, Median Finding",
+    "url": "https://www.youtube.com/watch?v=EzeYI7p9MjU&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=2",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#discrete-math",
+    "title": "Computer Science 70, 001 - Spring 2015 - Discrete Mathematics and Probability Theory",
+    "url": "http://www.infocobuild.com/education/audio-video-courses/computer-science/cs70-spring2015-berkeley.html",
+    "kind": "course",
+    "host": "infocobuild.com"
+  },
+  {
+    "topic_locator": "ciu:#discrete-math",
+    "title": "Discrete Mathematics by Shai Simonson (19 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLWX710qNZo_sNlSWRMVIh6kfTjolNaZ8t",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#discrete-math",
+    "title": "Discrete Mathematics By IIT Ropar NPTEL",
+    "url": "https://nptel.ac.in/courses/106106183",
+    "kind": "course",
+    "host": "nptel.ac.in"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Bob Martin SOLID Principles of Object Oriented and Agile Design (video)",
+    "url": "https://www.youtube.com/watch?v=TMuno5RZNeE",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Single Responsibility Principle",
+    "url": "https://www.oodesign.com/single-responsibility-principle.html",
+    "kind": "article",
+    "host": "oodesign.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Single responsibility to each Object",
+    "url": "https://www.javacodegeeks.com/2011/11/solid-single-responsibility-principle.html",
+    "kind": "article",
+    "host": "javacodegeeks.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "more flavor",
+    "url": "https://docs.google.com/open?id=0ByOwmqah_nuGNHEtcU5OekdDMkk",
+    "kind": "article",
+    "host": "docs.google.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Open/Closed Principle",
+    "url": "https://www.oodesign.com/open-close-principle.html",
+    "kind": "article",
+    "host": "oodesign.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "On production level Objects are ready for extension but not for modification",
+    "url": "https://en.wikipedia.org/wiki/Open/closed_principle",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "more flavor",
+    "url": "http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgN2M5MTkwM2EtNWFkZC00ZTI3LWFjZTUtNTFhZGZiYmUzODc1&hl=en",
+    "kind": "article",
+    "host": "docs.google.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Liskov Substitution Principle",
+    "url": "https://www.oodesign.com/liskov-s-substitution-principle.html",
+    "kind": "article",
+    "host": "oodesign.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Base Class and Derived class follow ‘IS A’ Principle",
+    "url": "http://stackoverflow.com/questions/56860/what-is-the-liskov-substitution-principle",
+    "kind": "article",
+    "host": "stackoverflow.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "more flavor",
+    "url": "http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgNzAzZjA5ZmItNjU3NS00MzQ5LTkwYjMtMDJhNDU5ZTM0MTlh&hl=en",
+    "kind": "article",
+    "host": "docs.google.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Interface segregation principle",
+    "url": "https://www.oodesign.com/interface-segregation-principle.html",
+    "kind": "article",
+    "host": "oodesign.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Interface Segregation Principle in 5 minutes (video)",
+    "url": "https://www.youtube.com/watch?v=3CtAfl7aXAQ",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "more flavor",
+    "url": "http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgOTViYjJhYzMtMzYxMC00MzFjLWJjMzYtOGJiMDc5N2JkYmJi&hl=en",
+    "kind": "article",
+    "host": "docs.google.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Dependency Inversion principle",
+    "url": "https://www.oodesign.com/dependency-inversion-principle.html",
+    "kind": "article",
+    "host": "oodesign.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Why Is The Dependency Inversion Principle And Why Is It Important",
+    "url": "http://stackoverflow.com/questions/62539/what-is-the-dependency-inversion-principle-and-why-is-it-important",
+    "kind": "article",
+    "host": "stackoverflow.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "more flavor",
+    "url": "http://docs.google.com/a/cleancoder.com/viewer?a=v&pid=explorer&chrome=true&srcid=0BwhCYaYDn8EgMjdlMWIzNGUtZTQ0NC00ZjQ5LTkwYzQtZjRhMDRlNTQ3ZGMz&hl=en",
+    "kind": "article",
+    "host": "docs.google.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Overview",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/JssSY/overview",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Naive Implementation",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/EM5D0/naive-implementations",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Trees",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/Mxu0w/trees",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Union By Rank",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/qb4c2/union-by-rank",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Path Compression",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/Q9CVI/path-compression",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Analysis Options",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/GQQLN/analysis-optional",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.006: Dynamic Programming I: Fibonacci, Shortest Paths",
+    "url": "https://www.youtube.com/watch?v=r4-cftqTcdI&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.006: Dynamic Programming II: Text Justification, Blackjack",
+    "url": "https://www.youtube.com/watch?v=KLBCUx1is2c&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.006: DP III: Parenthesization, Edit Distance, Knapsack",
+    "url": "https://www.youtube.com/watch?v=TDo3r5M1LNo&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.006: DP IV: Guitar Fingering, Tetris, Super Mario Bros.",
+    "url": "https://www.youtube.com/watch?v=i9OAOk0CUQE&ab_channel=MITOpenCourseWare",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.046: Dynamic Programming & Advanced DP",
+    "url": "https://www.youtube.com/watch?v=Tw1k46ywN6E&index=14&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.046: Dynamic Programming: All-Pairs Shortest Paths",
+    "url": "https://www.youtube.com/watch?v=NzgFUwOaoIw&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=15",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "6.046: Dynamic Programming (student recitation)",
+    "url": "https://www.youtube.com/watch?v=krZI60lKPek&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=12",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Synchronous Distributed Algorithms: Symmetry-Breaking. Shortest-Paths Spanning Trees",
+    "url": "https://www.youtube.com/watch?v=mUBmcbbJNf4&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=27",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Asynchronous Distributed Algorithms: Shortest-Paths Spanning Trees",
+    "url": "https://www.youtube.com/watch?v=kQ-UQAzcnzA&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=28",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Probability Introduction",
+    "url": "https://www.youtube.com/watch?v=SmFwFdESMHI&index=18&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Conditional Probability",
+    "url": "https://www.youtube.com/watch?v=E6FbvM-FGZ8&index=19&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Independence",
+    "url": "https://www.youtube.com/watch?v=l1BCv3qqW4A&index=20&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Random Variables",
+    "url": "https://www.youtube.com/watch?v=MOfhhFaQdjw&list=PLB7540DEDD482705B&index=21",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Expectation I",
+    "url": "https://www.youtube.com/watch?v=gGlMSe7uEkA&index=22&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Expectation II",
+    "url": "https://www.youtube.com/watch?v=oI9fMUqgfxY&index=23&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Large Deviations",
+    "url": "https://www.youtube.com/watch?v=q4mwO2qS2z4&index=24&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "MIT 6.042J - Random Walks",
+    "url": "https://www.youtube.com/watch?v=56iFMY8QW2k&list=PLB7540DEDD482705B&index=25",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Simonson: Approximation Algorithms (video)",
+    "url": "https://www.youtube.com/watch?v=oDniZCmNmNw&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=19",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Rabin Karps Algorithm",
+    "url": "https://www.coursera.org/lecture/data-structures/rabin-karps-algorithm-c0Qkw",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Precomputing",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/nYrc8/optimization-precomputation",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Optimization: Implementation and Analysis",
+    "url": "https://www.coursera.org/learn/data-structures/lecture/h4ZLc/optimization-implementation-and-analysis",
+    "kind": "video",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Table Doubling, Karp-Rabin",
+    "url": "https://www.youtube.com/watch?v=BRO7mVIFt08&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=9",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Rolling Hashes, Amortized Analysis",
+    "url": "https://www.youtube.com/watch?v=w6nuXg0BISo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=32",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "The Knuth-Morris-Pratt (KMP) String Matching Algorithm",
+    "url": "https://www.youtube.com/watch?v=5i7oKodCRJo",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Boyer-Moore String Search Algorithm",
+    "url": "https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string_search_algorithm",
+    "kind": "article",
+    "host": "en.wikipedia.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Advanced String Searching Boyer-Moore-Horspool Algorithms (video)",
+    "url": "https://www.youtube.com/watch?v=QDZpzctPf10",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Coursera: Algorithms on Strings",
+    "url": "https://www.coursera.org/learn/algorithms-on-strings/home/week/1",
+    "kind": "course",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Lecture 15 | Programming Abstractions (video)",
+    "url": "https://www.youtube.com/watch?v=ENp00xylP7c&index=15&list=PLFE6E58F856038C69",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Lecture 16 | Programming Abstractions (video)",
+    "url": "https://www.youtube.com/watch?v=y4M9IVgrVKo&index=16&list=PLFE6E58F856038C69",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Algorithms - Sorting - Lecture 2 (video)",
+    "url": "https://www.youtube.com/watch?v=odNJmw5TOEE&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=2",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Algorithms - Sorting II - Lecture 3 (video)",
+    "url": "https://www.youtube.com/watch?v=hj8YKFTFKEE&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=3",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "CSE373 2020 - Mergesort/Quicksort (video)",
+    "url": "https://www.youtube.com/watch?v=jUf-UQ3a0kg&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "CSE373 2020 - Linear Sorting (video)",
+    "url": "https://www.youtube.com/watch?v=0ksyQKmre84&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=9",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#additional-detail-on-some-subjects",
+    "title": "Build a Modern Computer from First Principles",
+    "url": "https://www.coursera.org/learn/build-a-computer",
+    "kind": "course",
+    "host": "coursera.org"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "List of individual Dynamic Programming problems (each is short)",
+    "url": "https://www.youtube.com/playlist?list=PLrmLmBdmIlpsHaNTPP_jHHDx_os9ItYXr",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "x86 Architecture, Assembly, Applications (11 videos)",
+    "url": "https://www.youtube.com/playlist?list=PL038BE01D3BAEFDB0",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 18.06 Linear Algebra, Spring 2005 (35 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLE7DDD91010BC51F8",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Excellent - MIT Calculus Revisited: Single Variable Calculus",
+    "url": "https://www.youtube.com/playlist?list=PL3B08AE665AB9002A",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Skiena lectures from Algorithm Design Manual - CSE373 2020 - Analysis of Algorithms (26 videos)",
+    "url": "https://www.youtube.com/watch?v=22hwcnXIGgk&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=1",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "UC Berkeley 61B (Spring 2014): Data Structures (25 videos)",
+    "url": "https://archive.org/details/ucberkeley-webcast-PL-XXv-cvA_iAlnI-BQr9hjqADPBtujFJd",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "UC Berkeley 61B (Fall 2006): Data Structures (39 videos)",
+    "url": "https://archive.org/details/ucberkeley-webcast-PL4BBB74C7D2A1049C",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "UC Berkeley 61C: Machine Structures (26 videos)",
+    "url": "https://archive.org/details/ucberkeley-webcast-PL-XXv-cvA_iCl2-D-FS5mk0jFF6cYSJs_",
+    "kind": "video",
+    "host": "archive.org"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "OOSE: Software Dev Using UML and Java (21 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLJ9pm_Rc9HesnkwKlal_buSIHA-jTZMpO",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.004: Computation Structures (49 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLDSlqjcPpoL64CJdF0Qee5oWqGS6we_Yu",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Carnegie Mellon - Computer Architecture Lectures (39 videos)",
+    "url": "https://www.youtube.com/playlist?list=PL5PHm2jkkXmi5CxxI7b3JCL1TWybTDtKq",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.006: Intro to Algorithms (47 videos)",
+    "url": "https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&nohtml5=False",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.033: Computer System Engineering (22 videos)",
+    "url": "https://www.youtube.com/watch?v=zm2VP0kHl1M&list=PL6535748F59DCA484",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.034 Artificial Intelligence, Fall 2010 (30 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.042J: Mathematics for Computer Science, Fall 2010 (25 videos)",
+    "url": "https://www.youtube.com/watch?v=L3LMbpZIKhQ&list=PLB7540DEDD482705B",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.046: Design and Analysis of Algorithms (34 videos)",
+    "url": "https://www.youtube.com/watch?v=2P-yW7LQr08&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.824: Distributed Systems, Spring 2020 (20 videos)",
+    "url": "https://www.youtube.com/watch?v=cQP8WApzIQQ&list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.851: Advanced Data Structures (22 videos)",
+    "url": "https://www.youtube.com/watch?v=T0yzrZL1py0&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf&index=1",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.854: Advanced Algorithms, Spring 2016 (24 videos)",
+    "url": "https://www.youtube.com/playlist?list=PL6ogFv-ieghdoGKGg2Bik3Gl1glBTEu8c",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Harvard COMPSCI 224: Advanced Algorithms (25 videos)",
+    "url": "https://www.youtube.com/playlist?list=PL2SOU6wwxB0uP4rJgf5ayhHWgw7akUWSf",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "MIT 6.858 Computer Systems Security, Fall 2014",
+    "url": "https://www.youtube.com/watch?v=GqmQg-cszw4&index=1&list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Stanford: Programming Paradigms (27 videos)",
+    "url": "https://www.youtube.com/playlist?list=PL9D558D49CA734A02",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Introduction to Cryptography by Christof Paar",
+    "url": "https://www.youtube.com/playlist?list=PL6N5qY2nvvJE8X75VkXglSrVhLv1tVcfy",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Course Website along with Slides and Problem Sets",
+    "url": "https://www.crypto-textbook.com/",
+    "kind": "course",
+    "host": "crypto-textbook.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Mining Massive Datasets - Stanford University (94 videos)",
+    "url": "https://www.youtube.com/playlist?list=PLLssT5z_DsK9JDLcT8T62VtzwyW9LNepV",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#video-series",
+    "title": "Graph Theory by Sarada Herke (67 videos)",
+    "url": "https://www.youtube.com/user/DrSaradaHerke/playlists?shelf_id=5&view=50&sort=dd",
+    "kind": "video",
+    "host": "youtube.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-science-courses",
+    "title": "Directory of Online CS Courses",
+    "url": "https://github.com/open-source-society/computer-science",
+    "kind": "reading list",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#computer-science-courses",
+    "title": "Directory of CS Courses (many with online lectures)",
+    "url": "https://github.com/prakhar1989/awesome-courses",
+    "kind": "reading list",
+    "host": "github.com"
+  },
+  {
+    "topic_locator": "ciu:#algorithms-implementation",
+    "title": "Multiple Algorithms implementation by Princeton University",
+    "url": "https://algs4.cs.princeton.edu/code",
+    "kind": "code",
+    "host": "algs4.cs.princeton.edu"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "Love classic papers?",
+    "url": "https://www.cs.cmu.edu/~crary/819-f09/",
+    "kind": "reading list",
+    "host": "cs.cmu.edu"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "1978: Communicating Sequential Processes",
+    "url": "https://spinroot.com/courses/summer/Papers/hoare_1978.pdf",
+    "kind": "paper",
+    "host": "spinroot.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "implemented in Go",
+    "url": "https://godoc.org/github.com/thomas11/csp",
+    "kind": "code",
+    "host": "godoc.org"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2003: The Google File System",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2004: MapReduce: Simplified Data Processing on Large Clusters",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2006: Bigtable: A Distributed Storage System for Structured Data",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2006: The Chubby Lock Service for Loosely-Coupled Distributed Systems",
+    "url": "https://research.google.com/archive/chubby-osdi06.pdf",
+    "kind": "paper",
+    "host": "research.google.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2007: Dynamo: Amazon’s Highly Available Key-value Store",
+    "url": "https://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf",
+    "kind": "paper",
+    "host": "s3.amazonaws.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2007: What Every Programmer Should Know About Memory (very long, and the author encourages skipping of some sections)",
+    "url": "https://www.akkadia.org/drepper/cpumemory.pdf",
+    "kind": "paper",
+    "host": "akkadia.org"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "paper",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/37752.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "video",
+    "url": "https://www.usenix.org/conference/atc12/technical-sessions/presentation/serebryany",
+    "kind": "video",
+    "host": "usenix.org"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "paper",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "video",
+    "url": "https://www.usenix.org/node/170855",
+    "kind": "video",
+    "host": "usenix.org"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2015: Continuous Pipelines at Google",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43790.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2015: High-Availability at Massive Scale: Building Google’s Data Infrastructure for Ads",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44686.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "2015: How Developers Search for Code: A Case Study",
+    "url": "https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43835.pdf",
+    "kind": "paper",
+    "host": "static.googleusercontent.com"
+  },
+  {
+    "topic_locator": "ciu:#papers",
+    "title": "1,000 papers",
+    "url": "https://github.com/0voice/computer_expert_paper",
+    "kind": "reading list",
+    "host": "github.com"
+  }
+]

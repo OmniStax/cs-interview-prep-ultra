@@ -1,0 +1,3120 @@
+{
+  "source": "ciu",
+  "concepts": [
+    {
+      "id": "ciu:big-o",
+      "name": "Big-O notation",
+      "kind": "definition",
+      "statement": "f(n) is O(g(n)) when f grows no faster than a constant multiple of g for all large n; it states an upper bound on an algorithm's growth.",
+      "locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+      "prereqs": [],
+      "aliases": [
+        "asymptotic upper bound"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (5 video, 1 cheat sheet); 10 links under #algorithmic-complexity--big-o--asymptotic-analysis in all. CIU: nothing to implement; watch until you can express complexity in Big-O."
+    },
+    {
+      "id": "ciu:big-omega-theta",
+      "name": "Big-Omega and Big-Theta",
+      "kind": "definition",
+      "statement": "Omega gives an asymptotic lower bound and Theta a tight bound (both upper and lower); together with O they compare growth rates.",
+      "locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+      "prereqs": [
+        "ciu:big-o"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 10 links under #algorithmic-complexity--big-o--asymptotic-analysis in all."
+    },
+    {
+      "id": "ciu:complexity-analysis",
+      "name": "Analysing an algorithm's running time and space",
+      "kind": "skill",
+      "statement": "Derive the Big-O time and space cost of a piece of code by counting how its work grows with input size.",
+      "locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+      "prereqs": [
+        "ciu:big-o"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 article, 1 video); 10 links under #algorithmic-complexity--big-o--asymptotic-analysis in all. CIU points to the CtCI chapter and its end-of-chapter runtime quiz as the review."
+    },
+    {
+      "id": "ciu:recurrences-master-theorem",
+      "name": "Recurrence relations and the master theorem",
+      "kind": "result",
+      "statement": "The running time of a divide-and-conquer algorithm satisfies a recurrence T(n)=aT(n/b)+f(n); the master theorem gives its asymptotic solution by comparing f(n) with n^(log_b a).",
+      "locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+      "prereqs": [
+        "ciu:complexity-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 article); 10 links under #algorithmic-complexity--big-o--asymptotic-analysis in all. Only via the TopCoder articles, which CIU flags as covering recurrences and the master theorem."
+    },
+    {
+      "id": "ciu:amortized-analysis",
+      "name": "Amortized analysis",
+      "kind": "idea",
+      "statement": "The cost of an operation can be averaged over a worst-case sequence of operations, so occasional expensive steps (like a resize) still give a small per-operation bound.",
+      "locator": "ciu:#algorithmic-complexity--big-o--asymptotic-analysis",
+      "prereqs": [
+        "ciu:complexity-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 10 links under #algorithmic-complexity--big-o--asymptotic-analysis in all."
+    },
+    {
+      "id": "ciu:array",
+      "name": "Array",
+      "kind": "definition",
+      "statement": "A fixed-size block of contiguous memory holding items of one size, so any index is reached in O(1) by address arithmetic; includes multi-dimensional and jagged arrays.",
+      "locator": "ciu:#arrays",
+      "prereqs": [
+        "[memory and pointers]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 5 links under #arrays in all. Space: contiguous, so locality helps performance."
+    },
+    {
+      "id": "ciu:pointer-arithmetic",
+      "name": "Indexing by pointer arithmetic",
+      "kind": "skill",
+      "statement": "Reach an array element by adding an offset to the base pointer instead of using index syntax.",
+      "locator": "ciu:#arrays",
+      "prereqs": [
+        "ciu:array"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 5 links under #arrays in all. Practice item in CIU's vector task (C-oriented)."
+    },
+    {
+      "id": "ciu:dynamic-array",
+      "name": "Dynamic array (vector)",
+      "kind": "definition",
+      "statement": "An array that grows by allocating a larger block (CIU: double the capacity when full) and shrinks (halve when size falls to a quarter), separating size from capacity.",
+      "locator": "ciu:#arrays",
+      "prereqs": [
+        "ciu:array"
+      ],
+      "aliases": [
+        "vector",
+        "resizable array"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 5 links under #arrays in all."
+    },
+    {
+      "id": "ciu:dynamic-array-cost",
+      "name": "Cost of dynamic-array operations",
+      "kind": "result",
+      "statement": "Appending or removing at the end, indexing and updating are O(1) (append amortized over resizes); inserting or deleting elsewhere is O(n) because items shift; space is O(n) even at 2n capacity.",
+      "locator": "ciu:#arrays",
+      "prereqs": [
+        "ciu:dynamic-array",
+        "ciu:amortized-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 5 links under #arrays in all."
+    },
+    {
+      "id": "ciu:implement-vector",
+      "name": "Implement a vector",
+      "kind": "skill",
+      "statement": "Build a resizable array on raw memory with size, capacity, is_empty, at, push, insert, prepend, pop, delete, remove, find and a private resize.",
+      "locator": "ciu:#arrays",
+      "prereqs": [
+        "ciu:dynamic-array",
+        "ciu:pointer-arithmetic"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 5 links under #arrays in all. Implementation task; CIU gives the method list and resize policy (start at 16, powers of 2)."
+    },
+    {
+      "id": "ciu:singly-linked-list",
+      "name": "Singly linked list",
+      "kind": "definition",
+      "statement": "A sequence of nodes, each holding a value and a pointer to the next node, reached from a head pointer (optionally also a tail pointer).",
+      "locator": "ciu:#linked-lists",
+      "prereqs": [
+        "[memory and pointers]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (6 video); 11 links under #linked-lists in all."
+    },
+    {
+      "id": "ciu:linked-list-vs-array",
+      "name": "Linked lists versus arrays",
+      "kind": "result",
+      "statement": "Lists give O(1) insertion/removal at a known node but O(n) indexing and poor cache locality; arrays give O(1) indexing and locality but O(n) middle insertion, so arrays usually win in practice.",
+      "locator": "ciu:#linked-lists",
+      "prereqs": [
+        "ciu:singly-linked-list",
+        "ciu:array"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 11 links under #linked-lists in all."
+    },
+    {
+      "id": "ciu:pointer-to-pointer",
+      "name": "Pointer to pointer",
+      "kind": "skill",
+      "statement": "Pass the address of a pointer to a function so the function can change where the caller's pointer points (e.g. updating a list head).",
+      "locator": "ciu:#linked-lists",
+      "prereqs": [
+        "[memory and pointers]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 11 links under #linked-lists in all. CIU says this is for understanding only and discourages the traversal style."
+    },
+    {
+      "id": "ciu:implement-linked-list",
+      "name": "Implement a linked list",
+      "kind": "skill",
+      "statement": "Build a singly linked list (with and without a tail pointer) with size, empty, value_at, push/pop front and back, front, back, insert, erase, value_n_from_end, reverse and remove_value.",
+      "locator": "ciu:#linked-lists",
+      "prereqs": [
+        "ciu:singly-linked-list",
+        "ciu:pointer-to-pointer"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 11 links under #linked-lists in all. Implementation task."
+    },
+    {
+      "id": "ciu:doubly-linked-list",
+      "name": "Doubly linked list",
+      "kind": "definition",
+      "statement": "A linked list whose nodes also point to their predecessor, allowing O(1) removal of a known node and backward traversal.",
+      "locator": "ciu:#linked-lists",
+      "prereqs": [
+        "ciu:singly-linked-list"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 11 links under #linked-lists in all. CIU: no need to implement."
+    },
+    {
+      "id": "ciu:stack",
+      "name": "Stack",
+      "kind": "definition",
+      "statement": "A last-in, first-out collection with push, pop and peek, each O(1) when backed by an array or linked list.",
+      "locator": "ciu:#stack",
+      "prereqs": [
+        "ciu:dynamic-array"
+      ],
+      "aliases": [
+        "LIFO"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 2 links under #stack in all. CIU: will not implement; trivial on an array."
+    },
+    {
+      "id": "ciu:queue",
+      "name": "Queue",
+      "kind": "definition",
+      "statement": "A first-in, first-out collection: enqueue at the tail, dequeue at the front.",
+      "locator": "ciu:#queue",
+      "prereqs": [],
+      "aliases": [
+        "FIFO"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 3 links under #queue in all."
+    },
+    {
+      "id": "ciu:circular-buffer",
+      "name": "Circular buffer",
+      "kind": "definition",
+      "statement": "A fixed-size array used as a ring, with read and write indices that wrap around, giving a bounded FIFO queue.",
+      "locator": "ciu:#queue",
+      "prereqs": [
+        "ciu:queue",
+        "ciu:array"
+      ],
+      "aliases": [
+        "ring buffer"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 3 links under #queue in all."
+    },
+    {
+      "id": "ciu:queue-linked-list",
+      "name": "Queue on a linked list with a tail pointer",
+      "kind": "skill",
+      "statement": "Implement enqueue at the tail and dequeue at the head in O(1); enqueuing at the head and dequeuing at the tail would make dequeue O(n).",
+      "locator": "ciu:#queue",
+      "prereqs": [
+        "ciu:queue",
+        "ciu:singly-linked-list"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 3 links under #queue in all. Implementation task; CIU states the costs."
+    },
+    {
+      "id": "ciu:queue-fixed-array",
+      "name": "Queue on a fixed-size array",
+      "kind": "skill",
+      "statement": "Implement enqueue, dequeue, empty and full on a fixed array, all O(1).",
+      "locator": "ciu:#queue",
+      "prereqs": [
+        "ciu:circular-buffer"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 3 links under #queue in all. Implementation task."
+    },
+    {
+      "id": "ciu:hash-table",
+      "name": "Hash table",
+      "kind": "definition",
+      "statement": "A map that stores key-value pairs in an array of buckets chosen by a hash function of the key, giving expected O(1) lookup, insert and delete.",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:array"
+      ],
+      "aliases": [
+        "hash map",
+        "dictionary"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (6 video); 13 links under #hash-table in all."
+    },
+    {
+      "id": "ciu:hashing-with-chaining",
+      "name": "Hashing with chaining",
+      "kind": "result",
+      "statement": "Each bucket holds a list of colliding entries; with a good hash and load factor alpha, operations cost expected O(1+alpha).",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:hash-table",
+        "ciu:singly-linked-list"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 13 links under #hash-table in all."
+    },
+    {
+      "id": "ciu:open-addressing",
+      "name": "Open addressing and linear probing",
+      "kind": "definition",
+      "statement": "Collisions are resolved inside the array itself by probing a sequence of slots (linear probing: the next slot), with deletions needing care.",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 13 links under #hash-table in all."
+    },
+    {
+      "id": "ciu:table-doubling",
+      "name": "Table doubling",
+      "kind": "idea",
+      "statement": "Resize the table (and rehash) when the load factor passes a threshold, keeping operations O(1) amortized.",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:hash-table",
+        "ciu:amortized-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 13 links under #hash-table in all."
+    },
+    {
+      "id": "ciu:universal-perfect-hashing",
+      "name": "Universal and perfect hashing",
+      "kind": "idea",
+      "statement": "Choosing the hash function at random from a universal family bounds expected collisions for any input; perfect hashing builds a collision-free table for a static key set.",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:hashing-with-chaining"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 13 links under #hash-table in all. CIU labels both videos (Advanced)."
+    },
+    {
+      "id": "ciu:distributed-hash-table",
+      "name": "Distributed hash tables",
+      "kind": "idea",
+      "statement": "Spreading a key space across many machines by hashing keys to nodes, as in large storage systems.",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 13 links under #hash-table in all."
+    },
+    {
+      "id": "ciu:implement-hash-table",
+      "name": "Implement a hash table with linear probing",
+      "kind": "skill",
+      "statement": "Build hash(k,m), add (updating an existing key), exists, get and remove on an array using linear probing.",
+      "locator": "ciu:#hash-table",
+      "prereqs": [
+        "ciu:open-addressing"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 13 links under #hash-table in all. Implementation task."
+    },
+    {
+      "id": "ciu:binary-search",
+      "name": "Binary search",
+      "kind": "result",
+      "statement": "On a sorted array, comparing with the middle element and discarding half each step finds a target or its absence in O(log n) comparisons.",
+      "locator": "ciu:#binary-search",
+      "prereqs": [
+        "ciu:array",
+        "ciu:big-o"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (3 video, 1 article); 5 links under #binary-search in all."
+    },
+    {
+      "id": "ciu:binary-search-template",
+      "name": "Binary search as a general template",
+      "kind": "skill",
+      "statement": "Phrase a problem as finding the boundary of a monotone predicate so one binary-search template solves many variants.",
+      "locator": "ciu:#binary-search",
+      "prereqs": [
+        "ciu:binary-search"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 5 links under #binary-search in all. The LeetCode \"blueprint\" post."
+    },
+    {
+      "id": "ciu:implement-binary-search",
+      "name": "Implement binary search, iteratively and recursively",
+      "kind": "skill",
+      "statement": "Write binary search on a sorted integer array both with a loop and with recursion.",
+      "locator": "ciu:#binary-search",
+      "prereqs": [
+        "ciu:binary-search",
+        "ciu:recursion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 5 links under #binary-search in all. Implementation task."
+    },
+    {
+      "id": "ciu:powers-of-two-words",
+      "name": "Powers of two and machine words",
+      "kind": "definition",
+      "statement": "Know powers of 2 from 2^1 to 2^16 and 2^32, and that a word is the processor's natural unit of data.",
+      "locator": "ciu:#bitwise-operations",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 cheat sheet, 1 article); 19 links under #bitwise-operations in all."
+    },
+    {
+      "id": "ciu:bitwise-operators",
+      "name": "Bitwise operators",
+      "kind": "definition",
+      "statement": "AND, OR, XOR, NOT and left/right shift act on the bits of an integer; masks combine them to test, set, clear and toggle bits.",
+      "locator": "ciu:#bitwise-operations",
+      "prereqs": [
+        "ciu:powers-of-two-words"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 9 links for this concept (4 article, 3 video, 2 practice site); 19 links under #bitwise-operations in all."
+    },
+    {
+      "id": "ciu:twos-complement",
+      "name": "Ones' and two's complement",
+      "kind": "definition",
+      "statement": "Signed integers are stored so that negation is bitwise NOT (ones' complement) or NOT plus one (two's complement, used in practice because addition works unchanged and zero is unique).",
+      "locator": "ciu:#bitwise-operations",
+      "prereqs": [
+        "ciu:bitwise-operators"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 article, 1 video); 19 links under #bitwise-operations in all."
+    },
+    {
+      "id": "ciu:count-set-bits",
+      "name": "Counting set bits",
+      "kind": "skill",
+      "statement": "Count the 1 bits of an integer, e.g. by repeatedly clearing the lowest set bit with x & (x-1).",
+      "locator": "ciu:#bitwise-operations",
+      "prereqs": [
+        "ciu:bitwise-operators"
+      ],
+      "aliases": [
+        "popcount",
+        "Hamming weight"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 article, 1 video); 19 links under #bitwise-operations in all."
+    },
+    {
+      "id": "ciu:bit-tricks",
+      "name": "Branch-free bit tricks",
+      "kind": "skill",
+      "statement": "Swap two values with XOR and compute an absolute value with shifts and XOR, without branches.",
+      "locator": "ciu:#bitwise-operations",
+      "prereqs": [
+        "ciu:twos-complement"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 article); 19 links under #bitwise-operations in all."
+    },
+    {
+      "id": "ciu:tree",
+      "name": "Tree",
+      "kind": "definition",
+      "statement": "A connected acyclic structure of nodes with one root, where each node has children; binary trees have at most two.",
+      "locator": "ciu:#trees---intro",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 6 links under #trees---intro in all."
+    },
+    {
+      "id": "ciu:tree-bfs",
+      "name": "Level-order (breadth-first) tree traversal",
+      "kind": "result",
+      "statement": "Visiting a tree level by level with a queue takes O(n) time and O(width) extra space (O(n) worst case).",
+      "locator": "ciu:#trees---intro",
+      "prereqs": [
+        "ciu:tree",
+        "ciu:queue"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 6 links under #trees---intro in all."
+    },
+    {
+      "id": "ciu:tree-dfs-orders",
+      "name": "Depth-first tree traversals: preorder, inorder, postorder",
+      "kind": "result",
+      "statement": "Recursive traversal visiting self before (pre), between (in) or after (post) the children takes O(n) time and O(height) stack space.",
+      "locator": "ciu:#trees---intro",
+      "prereqs": [
+        "ciu:tree",
+        "ciu:recursion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 6 links under #trees---intro in all."
+    },
+    {
+      "id": "ciu:bst",
+      "name": "Binary search tree",
+      "kind": "definition",
+      "statement": "A binary tree in which every key in a node's left subtree is smaller and every key in its right subtree is larger.",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:tree"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 16 links under #binary-search-trees-bsts in all."
+    },
+    {
+      "id": "ciu:bst-search-insert",
+      "name": "BST search and insertion",
+      "kind": "result",
+      "statement": "Search and insertion follow one root-to-leaf path, costing O(h), which is O(log n) when the tree is balanced and O(n) when it degenerates.",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:bst"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 practice site); 16 links under #binary-search-trees-bsts in all."
+    },
+    {
+      "id": "ciu:bst-min-max-height",
+      "name": "BST minimum, maximum and height",
+      "kind": "skill",
+      "statement": "The minimum is the leftmost node, the maximum the rightmost; height is computed recursively as 1 + the larger child height.",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:bst"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 article); 16 links under #binary-search-trees-bsts in all."
+    },
+    {
+      "id": "ciu:validate-bst",
+      "name": "Checking whether a binary tree is a BST",
+      "kind": "skill",
+      "statement": "Verify the BST property by passing down allowed (min, max) bounds, or by checking an inorder traversal is increasing.",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:bst",
+        "ciu:tree-dfs-orders"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 practice site); 16 links under #binary-search-trees-bsts in all."
+    },
+    {
+      "id": "ciu:bst-delete",
+      "name": "BST deletion",
+      "kind": "skill",
+      "statement": "Delete a node by cases: leaf, one child (splice it out), two children (replace with inorder successor or predecessor and delete that).",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:bst-successor"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 16 links under #binary-search-trees-bsts in all."
+    },
+    {
+      "id": "ciu:bst-successor",
+      "name": "Inorder successor in a BST",
+      "kind": "skill",
+      "statement": "The next-larger key is the leftmost node of the right subtree, or else the nearest ancestor of which the node lies in the left subtree.",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:bst"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 16 links under #binary-search-trees-bsts in all."
+    },
+    {
+      "id": "ciu:implement-bst",
+      "name": "Implement a BST",
+      "kind": "skill",
+      "statement": "Build insert, get_node_count, print_values, delete_tree, is_in_tree, get_height, get_min, get_max, is_binary_search_tree, delete_value and get_successor.",
+      "locator": "ciu:#binary-search-trees-bsts",
+      "prereqs": [
+        "ciu:bst-delete",
+        "ciu:validate-bst",
+        "ciu:bst-min-max-height",
+        "ciu:bst-search-insert"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 16 links under #binary-search-trees-bsts in all. Implementation task; three of the listed C/C++ videos are traversal reviews."
+    },
+    {
+      "id": "ciu:priority-queue",
+      "name": "Priority queue",
+      "kind": "definition",
+      "statement": "An abstract collection supporting insert and removal of the highest-priority (max or min) item.",
+      "locator": "ciu:#heap--priority-queue--binary-heap",
+      "prereqs": [
+        "ciu:queue"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 14 links under #heap--priority-queue--binary-heap in all."
+    },
+    {
+      "id": "ciu:binary-heap",
+      "name": "Binary heap",
+      "kind": "definition",
+      "statement": "A complete binary tree stored in an array, where each parent is at least (max-heap) its children; children of index i sit at 2i+1 and 2i+2.",
+      "locator": "ciu:#heap--priority-queue--binary-heap",
+      "prereqs": [
+        "ciu:priority-queue",
+        "ciu:tree",
+        "ciu:array"
+      ],
+      "aliases": [
+        "heap"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (5 video, 1 article); 14 links under #heap--priority-queue--binary-heap in all."
+    },
+    {
+      "id": "ciu:heap-sift",
+      "name": "Sift up and sift down",
+      "kind": "result",
+      "statement": "Insert appends and sifts up; extract-max moves the last item to the root and sifts down; each is O(log n) because the tree height is O(log n).",
+      "locator": "ciu:#heap--priority-queue--binary-heap",
+      "prereqs": [
+        "ciu:binary-heap"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 14 links under #heap--priority-queue--binary-heap in all."
+    },
+    {
+      "id": "ciu:build-heap",
+      "name": "Linear-time heapify",
+      "kind": "result",
+      "statement": "Sifting down every internal node from the last to the root turns an arbitrary array into a heap in O(n), not O(n log n).",
+      "locator": "ciu:#heap--priority-queue--binary-heap",
+      "prereqs": [
+        "ciu:heap-sift"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 14 links under #heap--priority-queue--binary-heap in all."
+    },
+    {
+      "id": "ciu:heapsort",
+      "name": "Heapsort",
+      "kind": "result",
+      "statement": "Heapify the array, then repeatedly swap the max to the end and sift down, sorting in place in O(n log n); it is not stable.",
+      "locator": "ciu:#heap--priority-queue--binary-heap",
+      "prereqs": [
+        "ciu:build-heap"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 14 links under #heap--priority-queue--binary-heap in all. 1 of the 3 sit under #sorting. Also listed under Sorting (Heap sort in 4 minutes)."
+    },
+    {
+      "id": "ciu:implement-heap",
+      "name": "Implement a max-heap",
+      "kind": "skill",
+      "statement": "Build insert, sift_up, get_max, get_size, is_empty, extract_max, sift_down, remove(i), heapify and heap_sort.",
+      "locator": "ciu:#heap--priority-queue--binary-heap",
+      "prereqs": [
+        "ciu:heapsort"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 14 links under #heap--priority-queue--binary-heap in all. Implementation task."
+    },
+    {
+      "id": "ciu:balanced-bst-idea",
+      "name": "Balanced search trees (the general idea)",
+      "kind": "idea",
+      "statement": "Self-balancing BSTs restructure on insert and delete (rotations, splits) so height stays O(log n) and every operation stays O(log n).",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:bst-search-insert"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 27 links under #balanced-search-trees in all. The ToC lists \"balanced search trees (general concept, not details)\" under the required Trees section, but CIU's only body section for it is below the optional line. Tier set to core from the ToC; the specific trees are stretch."
+    },
+    {
+      "id": "ciu:sort-stability",
+      "name": "Stability in sorting",
+      "kind": "definition",
+      "statement": "A sort is stable if items with equal keys keep their original relative order (merge sort is; quicksort and heapsort usually are not).",
+      "locator": "ciu:#sorting",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (3 article, 1 lecture notes, 1 video); 54 links under #sorting in all."
+    },
+    {
+      "id": "ciu:selection-sort",
+      "name": "Selection sort",
+      "kind": "result",
+      "statement": "Repeatedly select the minimum of the unsorted suffix and swap it into place; O(n^2) in every case.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:complexity-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 54 links under #sorting in all."
+    },
+    {
+      "id": "ciu:insertion-sort",
+      "name": "Insertion sort",
+      "kind": "result",
+      "statement": "Insert each item into the sorted prefix by shifting larger items right; O(n^2) average and worst, O(n) on nearly sorted input, stable.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:complexity-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 54 links under #sorting in all."
+    },
+    {
+      "id": "ciu:bubble-sort",
+      "name": "Bubble sort",
+      "kind": "result",
+      "statement": "Repeatedly swap adjacent out-of-order pairs; O(n^2).",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:complexity-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 54 links under #sorting in all. CIU says not to implement it (\"terrible\") except for n <= 16, yet links three videos."
+    },
+    {
+      "id": "ciu:mergesort",
+      "name": "Merge sort",
+      "kind": "result",
+      "statement": "Split in halves, sort each recursively, and merge; O(n log n) in every case, stable, O(n) extra space; also bottom-up.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:recurrences-master-theorem",
+        "ciu:recursion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 9 links for this concept (6 video, 3 code); 54 links under #sorting in all. CIU links merge-sort code (C, Python, in-place C++)."
+    },
+    {
+      "id": "ciu:quicksort",
+      "name": "Quicksort",
+      "kind": "result",
+      "statement": "Partition around a pivot and recurse on both sides; O(n log n) average (with random pivots), O(n^2) worst; 3-way partitioning handles duplicate keys.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:recursion",
+        "ciu:complexity-analysis"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 10 links for this concept (7 video, 3 code); 54 links under #sorting in all. CIU links quicksort code (C, C, Python)."
+    },
+    {
+      "id": "ciu:quickselect",
+      "name": "Selection by partitioning (quickselect)",
+      "kind": "result",
+      "statement": "Partition as in quicksort but recurse only into the side holding the k-th smallest item; expected O(n).",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:quicksort"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 54 links under #sorting in all."
+    },
+    {
+      "id": "ciu:comparison-sort-lower-bound",
+      "name": "Lower bound for comparison sorting",
+      "kind": "result",
+      "statement": "Any comparison-based sort needs Omega(n log n) comparisons in the worst case, so merge sort and heapsort are asymptotically optimal.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:big-omega-theta"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 54 links under #sorting in all."
+    },
+    {
+      "id": "ciu:sorting-linked-lists",
+      "name": "Sorting linked lists versus arrays",
+      "kind": "idea",
+      "statement": "Which sorts suit which structures: merge sort works on linked lists without random access; quicksort and heapsort want arrays.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:mergesort",
+        "ciu:singly-linked-list"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 54 links under #sorting in all."
+    },
+    {
+      "id": "ciu:implement-sorts",
+      "name": "Implement merge sort and quicksort",
+      "kind": "skill",
+      "statement": "Write merge sort and quicksort and state the best, average and worst cost of each sort studied.",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:mergesort",
+        "ciu:quicksort"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 12 links for this concept (12 video); 54 links under #sorting in all. 5 of the 12 sit under #additional-detail-on-some-subjects. Implementation task; UC Berkeley lectures, review playlists, the Comparators video and Additional Detail sorting lectures are general."
+    },
+    {
+      "id": "ciu:linear-time-sorts",
+      "name": "Counting sort and radix sort",
+      "kind": "result",
+      "statement": "When keys are small integers or fixed-length strings, counting (key-indexed) sort and LSD/MSD radix sort beat the comparison bound, running in O(n + k) or O(w(n + R)).",
+      "locator": "ciu:#sorting",
+      "prereqs": [
+        "ciu:comparison-sort-lower-bound",
+        "ciu:sort-stability"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 12 links for this concept (11 video, 1 lecture notes); 54 links under #sorting in all. 1 of the 12 sit under #additional-detail-on-some-subjects. CIU marks these \"not required, but I recommended them\" inside the required section, so tier is stretch."
+    },
+    {
+      "id": "ciu:graph",
+      "name": "Graph (directed, undirected, weighted)",
+      "kind": "definition",
+      "statement": "A set of vertices joined by edges, which may be directed or undirected and may carry weights.",
+      "locator": "ciu:#graphs",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:graph-representations",
+      "name": "Graph representations",
+      "kind": "result",
+      "statement": "Objects and pointers, adjacency matrix (O(V^2) space, O(1) edge test), adjacency list (O(V+E) space) and adjacency map each trade space against edge-query and iteration speed.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph",
+        "ciu:array",
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:graph-bfs",
+      "name": "Breadth-first search on graphs",
+      "kind": "result",
+      "statement": "BFS explores vertices in order of edge distance from the source using a queue, in O(V+E) with lists, and finds shortest paths in unweighted graphs.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-representations",
+        "ciu:queue"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:graph-dfs",
+      "name": "Depth-first search on graphs",
+      "kind": "result",
+      "statement": "DFS follows each path as deep as possible before backtracking, recursively or with an explicit stack, in O(V+E) with lists.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-representations",
+        "ciu:stack",
+        "ciu:recursion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:implement-bfs-dfs",
+      "name": "Implement BFS and DFS on both representations",
+      "kind": "skill",
+      "statement": "Write recursive and iterative DFS and BFS on an adjacency list and on an adjacency matrix.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-bfs",
+        "ciu:graph-dfs"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 22 links under #graphs in all. Implementation task (6 variants)."
+    },
+    {
+      "id": "ciu:cycle-detection",
+      "name": "Cycle detection",
+      "kind": "skill",
+      "statement": "Detect a cycle with DFS by finding an edge back to a vertex still on the recursion stack (directed) or to a non-parent visited vertex (undirected).",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-dfs"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:topological-sort",
+      "name": "Topological sort",
+      "kind": "result",
+      "statement": "A directed acyclic graph can be linearly ordered so every edge points forward, e.g. by reverse DFS finishing order, in O(V+E).",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:cycle-detection"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:connected-components",
+      "name": "Counting connected components",
+      "kind": "skill",
+      "statement": "Run DFS or BFS from each unvisited vertex; the number of launches is the number of components.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-dfs"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:strongly-connected-components",
+      "name": "Strongly connected components (Kosaraju)",
+      "kind": "result",
+      "statement": "Two DFS passes, one on the graph and one on its reverse in decreasing finish order, list the strongly connected components in O(V+E).",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:topological-sort"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:bipartite-check",
+      "name": "Checking whether a graph is bipartite",
+      "kind": "skill",
+      "statement": "Two-colour the graph with BFS or DFS; it is bipartite exactly when no edge joins two vertices of the same colour.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-bfs"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:dijkstra",
+      "name": "Dijkstra's algorithm",
+      "kind": "result",
+      "statement": "With non-negative edge weights, repeatedly settling the closest unsettled vertex and relaxing its edges gives single-source shortest paths in O((V+E) log V) with a binary heap.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-representations",
+        "ciu:priority-queue"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:bellman-ford",
+      "name": "Bellman-Ford algorithm",
+      "kind": "result",
+      "statement": "Relaxing every edge V-1 times gives shortest paths with negative weights allowed, in O(VE), and one more pass detects a negative cycle.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:graph-representations"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:mst-prim",
+      "name": "Minimum spanning tree: Prim's algorithm",
+      "kind": "result",
+      "statement": "Grow one tree by repeatedly adding the cheapest edge leaving it; O(E log V) with a heap.",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:priority-queue",
+        "ciu:graph-representations"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:mst-kruskal",
+      "name": "Minimum spanning tree: Kruskal's algorithm",
+      "kind": "result",
+      "statement": "Add edges in increasing weight order, skipping any that would close a cycle (checked with union-find); O(E log E).",
+      "locator": "ciu:#graphs",
+      "prereqs": [
+        "ciu:union-find",
+        "ciu:mergesort"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 22 links under #graphs in all."
+    },
+    {
+      "id": "ciu:recursion",
+      "name": "Recursion",
+      "kind": "idea",
+      "statement": "A function solves a problem by calling itself on smaller instances until a base case; use it when the problem has self-similar structure.",
+      "locator": "ciu:#recursion",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 9 links under #recursion in all."
+    },
+    {
+      "id": "ciu:tail-recursion",
+      "name": "Tail recursion",
+      "kind": "definition",
+      "statement": "A recursive call that is the function's last action, which a compiler can turn into a loop so stack space stays constant.",
+      "locator": "ciu:#recursion",
+      "prereqs": [
+        "ciu:recursion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 article, 1 video); 9 links under #recursion in all."
+    },
+    {
+      "id": "ciu:backtracking",
+      "name": "Backtracking",
+      "kind": "idea",
+      "statement": "Build a solution incrementally, recursing on each choice and undoing it when it cannot lead to a valid answer (subsets, permutations, combination sum).",
+      "locator": "ciu:#recursion",
+      "prereqs": [
+        "ciu:recursion"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 article); 9 links under #recursion in all. CIU gives Java and Python \"blueprint\" posts; the Stanford lectures cover backtracking too."
+    },
+    {
+      "id": "ciu:dynamic-programming",
+      "name": "Dynamic programming",
+      "kind": "idea",
+      "statement": "Solve a problem defined by a recurrence over overlapping subproblems by computing each subproblem once, top-down with memoisation or bottom-up in a table.",
+      "locator": "ciu:#dynamic-programming",
+      "prereqs": [
+        "ciu:recursion"
+      ],
+      "aliases": [
+        "DP"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 16 links for this concept (15 video, 1 lecture notes); 17 links under #dynamic-programming in all. 7 of the 16 sit under #additional-detail-on-some-subjects. CIU says DP is unlikely in interviews but you should recognise candidates. Additional Detail adds 7 MIT videos."
+    },
+    {
+      "id": "ciu:dp-recognition",
+      "name": "Recognising a DP problem",
+      "kind": "skill",
+      "statement": "Spot optimal substructure and overlapping subproblems, and write the recurrence relation that defines the answer.",
+      "locator": "ciu:#dynamic-programming",
+      "prereqs": [
+        "ciu:dynamic-programming"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 17 links under #dynamic-programming in all."
+    },
+    {
+      "id": "ciu:edit-distance",
+      "name": "Edit distance and sequence alignment",
+      "kind": "result",
+      "statement": "The minimum number of insertions, deletions and substitutions between two strings satisfies a recurrence over prefixes and is computed in O(mn); global and local alignment are weighted variants.",
+      "locator": "ciu:#dynamic-programming",
+      "prereqs": [
+        "ciu:dynamic-programming"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 17 links under #dynamic-programming in all. 1 of the 5 sit under #additional-detail-on-some-subjects."
+    },
+    {
+      "id": "ciu:rna-secondary-structure",
+      "name": "RNA secondary structure",
+      "kind": "result",
+      "statement": "A worked interval DP example from the Coursera course: maximise base pairings over substrings, with running time analysed.",
+      "locator": "ciu:#dynamic-programming",
+      "prereqs": [
+        "ciu:dynamic-programming"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 17 links under #dynamic-programming in all."
+    },
+    {
+      "id": "ciu:uml",
+      "name": "UML class diagrams",
+      "kind": "skill",
+      "statement": "Read and sketch basic UML diagrams of classes and their relationships.",
+      "locator": "ciu:#design-patterns",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 4 links under #design-patterns in all."
+    },
+    {
+      "id": "ciu:creational-patterns",
+      "name": "Creational design patterns",
+      "kind": "definition",
+      "statement": "Singleton, factory and abstract factory, and prototype control how objects are created.",
+      "locator": "ciu:#design-patterns",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (1 video, 1 book, 1 article); 4 links under #design-patterns in all."
+    },
+    {
+      "id": "ciu:structural-patterns",
+      "name": "Structural design patterns",
+      "kind": "definition",
+      "statement": "Adapter, decorator, facade, proxy, composite and flyweight compose classes and objects into larger structures.",
+      "locator": "ciu:#design-patterns",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (1 video, 1 book, 1 article); 4 links under #design-patterns in all."
+    },
+    {
+      "id": "ciu:behavioral-patterns",
+      "name": "Behavioural design patterns",
+      "kind": "definition",
+      "statement": "Strategy, observer, visitor, command, state, memento, iterator and delegate assign responsibilities and communication between objects.",
+      "locator": "ciu:#design-patterns",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (1 video, 1 book, 1 article); 4 links under #design-patterns in all."
+    },
+    {
+      "id": "ciu:counting",
+      "name": "Factorials, permutations and combinations",
+      "kind": "result",
+      "statement": "There are n! orderings of n items, n!/(n-k)! ordered selections of k, and C(n,k)=n!/(k!(n-k)!) unordered ones.",
+      "locator": "ciu:#combinatorics-n-choose-k--probability",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 5 links under #combinatorics-n-choose-k--probability in all."
+    },
+    {
+      "id": "ciu:probability-basics",
+      "name": "Basic probability",
+      "kind": "definition",
+      "statement": "Probability of an event as favourable over equally likely outcomes, with sum and product rules for unions and independent events.",
+      "locator": "ciu:#combinatorics-n-choose-k--probability",
+      "prereqs": [
+        "ciu:counting"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 course); 5 links under #combinatorics-n-choose-k--probability in all."
+    },
+    {
+      "id": "ciu:markov-chains",
+      "name": "Markov chains",
+      "kind": "definition",
+      "statement": "A random process whose next state depends only on the current one, described by transition probabilities.",
+      "locator": "ciu:#combinatorics-n-choose-k--probability",
+      "prereqs": [
+        "ciu:probability-basics"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 5 links under #combinatorics-n-choose-k--probability in all."
+    },
+    {
+      "id": "ciu:p-np",
+      "name": "P, NP and NP-completeness",
+      "kind": "definition",
+      "statement": "P is the class of problems solvable in polynomial time; NP those whose solutions can be checked in polynomial time; NP-complete problems are the hardest in NP.",
+      "locator": "ciu:#np-np-complete-and-approximation-algorithms",
+      "prereqs": [
+        "ciu:big-o"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 13 links under #np-np-complete-and-approximation-algorithms in all."
+    },
+    {
+      "id": "ciu:reductions",
+      "name": "Polynomial-time reductions",
+      "kind": "idea",
+      "statement": "Showing problem A reduces to B in polynomial time transfers hardness from A to B; this is how NP-completeness is proved.",
+      "locator": "ciu:#np-np-complete-and-approximation-algorithms",
+      "prereqs": [
+        "ciu:p-np"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (6 video); 13 links under #np-np-complete-and-approximation-algorithms in all."
+    },
+    {
+      "id": "ciu:recognise-npc",
+      "name": "Recognising NP-complete problems in disguise",
+      "kind": "skill",
+      "statement": "Identify famous NP-complete problems such as travelling salesman, knapsack and satisfiability when an interview question restates them.",
+      "locator": "ciu:#np-np-complete-and-approximation-algorithms",
+      "prereqs": [
+        "ciu:p-np"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 notebook); 13 links under #np-np-complete-and-approximation-algorithms in all. CIU also cites CLRS pp. 1048-1140 (no link)."
+    },
+    {
+      "id": "ciu:approximation-algorithms",
+      "name": "Approximation algorithms",
+      "kind": "idea",
+      "statement": "For NP-hard optimisation problems, polynomial-time algorithms can guarantee a solution within a proven factor of optimal.",
+      "locator": "ciu:#np-np-complete-and-approximation-algorithms",
+      "prereqs": [
+        "ciu:p-np"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 notebook); 13 links under #np-np-complete-and-approximation-algorithms in all. 1 of the 3 sit under #additional-detail-on-some-subjects. Additional Detail adds a Simonson video."
+    },
+    {
+      "id": "ciu:fixed-parameter-algorithms",
+      "name": "Fixed-parameter algorithms",
+      "kind": "idea",
+      "statement": "Some NP-hard problems are fast when a chosen parameter k is small, running in f(k)*poly(n).",
+      "locator": "ciu:#np-np-complete-and-approximation-algorithms",
+      "prereqs": [
+        "ciu:p-np"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 13 links under #np-np-complete-and-approximation-algorithms in all."
+    },
+    {
+      "id": "ciu:cpu-components",
+      "name": "CPU components: ALU, registers and RAM",
+      "kind": "definition",
+      "statement": "The ALU does arithmetic and logic, registers hold the operands in use, and RAM holds program and data addressed by the CPU.",
+      "locator": "ciu:#how-computers-process-a-program",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 5 links under #how-computers-process-a-program in all."
+    },
+    {
+      "id": "ciu:instruction-cycle",
+      "name": "How a CPU executes a program",
+      "kind": "idea",
+      "statement": "The CPU repeatedly fetches an instruction from memory, decodes it and executes it, advancing the program counter.",
+      "locator": "ciu:#how-computers-process-a-program",
+      "prereqs": [
+        "ciu:cpu-components"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 5 links under #how-computers-process-a-program in all."
+    },
+    {
+      "id": "ciu:lru-cache",
+      "name": "LRU cache",
+      "kind": "skill",
+      "statement": "Evict the least recently used entry; implemented with a hash map into a doubly linked list so get and put are O(1).",
+      "locator": "ciu:#caches",
+      "prereqs": [
+        "ciu:hash-table",
+        "ciu:doubly-linked-list"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 5 links under #caches in all."
+    },
+    {
+      "id": "ciu:memory-hierarchy",
+      "name": "Memory hierarchy and CPU caches",
+      "kind": "idea",
+      "statement": "Small fast caches between registers and RAM exploit temporal and spatial locality; misses, lines and associativity determine performance.",
+      "locator": "ciu:#caches",
+      "prereqs": [
+        "ciu:cpu-components"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 5 links under #caches in all."
+    },
+    {
+      "id": "ciu:process-vs-thread",
+      "name": "Processes versus threads",
+      "kind": "definition",
+      "statement": "A process has its own address space (code, static data, heap, stack, file descriptors); threads in one process share all of it except each thread's stack, registers and program counter.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 article); 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:sync-primitives",
+      "name": "Locks, mutexes, semaphores and monitors",
+      "kind": "definition",
+      "statement": "Primitives that serialise access to shared state: a mutex admits one holder, a semaphore a counted number, a monitor bundles a lock with condition waiting.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:process-vs-thread"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:deadlock-livelock",
+      "name": "Deadlock and livelock",
+      "kind": "definition",
+      "statement": "Deadlock: threads wait forever on each other's resources; livelock: threads keep reacting to each other without progress.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:sync-primitives"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:context-switching",
+      "name": "Interrupts and context switching",
+      "kind": "idea",
+      "statement": "Interrupts let the OS take the CPU; a context switch saves one thread's registers and state and restores another's.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:process-vs-thread",
+        "ciu:cpu-components"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 article); 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:virtual-memory",
+      "name": "Paging, segmentation and virtual memory",
+      "kind": "idea",
+      "statement": "Each process sees its own virtual address space, mapped to physical memory in pages by the OS and hardware.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:process-vs-thread"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:fork-cow",
+      "name": "Fork and copy-on-write",
+      "kind": "idea",
+      "statement": "A forked child shares the parent's pages read-only and copies a page only when one of them writes to it.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:virtual-memory"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:python-concurrency",
+      "name": "Concurrency in Python and the GIL",
+      "kind": "idea",
+      "statement": "CPython's global interpreter lock lets only one thread run Python bytecode at a time, so threads help I/O-bound work; asyncio and processes are the alternatives.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:sync-primitives"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (5 video, 1 article); 14 links under #processes-and-threads in all."
+    },
+    {
+      "id": "ciu:os-courses",
+      "name": "Operating systems course material",
+      "kind": "idea",
+      "statement": "CIU's umbrella item: processes, threads, concurrency issues, CPU activity and multicore concurrency constructs from full OS lecture series.",
+      "locator": "ciu:#processes-and-threads",
+      "prereqs": [
+        "ciu:process-vs-thread"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 14 links under #processes-and-threads in all. Not a single concept; kept as a pointer row for the course-length links. Merge may drop it."
+    },
+    {
+      "id": "ciu:unit-testing",
+      "name": "Unit testing",
+      "kind": "definition",
+      "statement": "Tests that check one unit of code in isolation against expected results.",
+      "locator": "ciu:#testing",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 article); 7 links under #testing in all."
+    },
+    {
+      "id": "ciu:mock-objects",
+      "name": "Mock objects",
+      "kind": "definition",
+      "statement": "Stand-in objects that imitate a dependency and record how they are used, so a unit can be tested alone.",
+      "locator": "ciu:#testing",
+      "prereqs": [
+        "ciu:unit-testing"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 7 links under #testing in all."
+    },
+    {
+      "id": "ciu:integration-testing",
+      "name": "Integration testing",
+      "kind": "definition",
+      "statement": "Tests that check several units or services working together.",
+      "locator": "ciu:#testing",
+      "prereqs": [
+        "ciu:unit-testing"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 0 links for this concept; 7 links under #testing in all."
+    },
+    {
+      "id": "ciu:dependency-injection",
+      "name": "Dependency injection",
+      "kind": "idea",
+      "statement": "Pass a component its dependencies instead of having it build them, so tests can substitute fakes.",
+      "locator": "ciu:#testing",
+      "prereqs": [
+        "ciu:mock-objects"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 article); 7 links under #testing in all."
+    },
+    {
+      "id": "ciu:tdd",
+      "name": "Test-driven development",
+      "kind": "idea",
+      "statement": "Write a failing test first, then the code to pass it, then refactor.",
+      "locator": "ciu:#testing",
+      "prereqs": [
+        "ciu:unit-testing"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 slides); 7 links under #testing in all."
+    },
+    {
+      "id": "ciu:substring-search-brute-force",
+      "name": "Brute-force substring search",
+      "kind": "result",
+      "statement": "Try every alignment of the pattern against the text; O(mn) worst case.",
+      "locator": "ciu:#string-searching--manipulations",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 8 links under #string-searching--manipulations in all."
+    },
+    {
+      "id": "ciu:kmp",
+      "name": "Knuth-Morris-Pratt",
+      "kind": "result",
+      "statement": "Precompute, for each pattern prefix, the longest proper prefix that is also a suffix, so the text pointer never moves back; O(n+m).",
+      "locator": "ciu:#string-searching--manipulations",
+      "prereqs": [
+        "ciu:substring-search-brute-force"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 course); 8 links under #string-searching--manipulations in all. 2 of the 3 sit under #additional-detail-on-some-subjects."
+    },
+    {
+      "id": "ciu:boyer-moore",
+      "name": "Boyer-Moore (and Horspool)",
+      "kind": "result",
+      "statement": "Compare the pattern right to left and skip ahead using bad-character (and good-suffix) rules; sublinear on typical text.",
+      "locator": "ciu:#string-searching--manipulations",
+      "prereqs": [
+        "ciu:substring-search-brute-force"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 article); 8 links under #string-searching--manipulations in all. 2 of the 3 sit under #additional-detail-on-some-subjects."
+    },
+    {
+      "id": "ciu:rabin-karp",
+      "name": "Rabin-Karp",
+      "kind": "result",
+      "statement": "Compare a rolling hash of each text window with the pattern's hash and verify on a match; expected O(n+m).",
+      "locator": "ciu:#string-searching--manipulations",
+      "prereqs": [
+        "ciu:substring-search-brute-force",
+        "ciu:rolling-hash"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 8 links under #string-searching--manipulations in all. 4 of the 5 sit under #additional-detail-on-some-subjects."
+    },
+    {
+      "id": "ciu:suffix-array",
+      "name": "Suffix array",
+      "kind": "definition",
+      "statement": "The sorted array of all suffixes of a string, supporting substring search by binary search and many string queries.",
+      "locator": "ciu:#string-searching--manipulations",
+      "prereqs": [
+        "ciu:binary-search"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 8 links under #string-searching--manipulations in all. 1 of the 2 sit under #sorting. Also appears in the Sedgewick radix-sort list under Sorting."
+    },
+    {
+      "id": "ciu:trie",
+      "name": "Trie (R-way)",
+      "kind": "definition",
+      "statement": "A tree keyed by characters, where each path from the root spells a prefix, so lookup costs O(key length) regardless of how many keys are stored.",
+      "locator": "ciu:#tries",
+      "prereqs": [
+        "ciu:tree"
+      ],
+      "aliases": [
+        "prefix tree"
+      ],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 8 links for this concept (5 video, 2 article, 1 lecture notes); 12 links under #tries in all. CIU: read the code, will not implement."
+    },
+    {
+      "id": "ciu:ternary-search-trie",
+      "name": "Ternary search trie",
+      "kind": "definition",
+      "statement": "A trie whose nodes have three children (less, equal, greater) to save space over R-way nodes.",
+      "locator": "ciu:#tries",
+      "prereqs": [
+        "ciu:trie"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 12 links under #tries in all."
+    },
+    {
+      "id": "ciu:trie-operations",
+      "name": "Trie prefix operations and performance",
+      "kind": "result",
+      "statement": "Tries support prefix matching, longest-prefix and ordered key iteration; their cost depends on key length and alphabet size.",
+      "locator": "ciu:#tries",
+      "prereqs": [
+        "ciu:trie"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 12 links under #tries in all."
+    },
+    {
+      "id": "ciu:floating-point",
+      "name": "Floating-point representation",
+      "kind": "definition",
+      "statement": "A real number is stored as sign, exponent and mantissa (shown with a simple 8-bit format), which limits range and precision.",
+      "locator": "ciu:#floating-point-numbers",
+      "prereqs": [
+        "ciu:powers-of-two-words"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 1 links under #floating-point-numbers in all. CIU notes the linked video has a calculation error (see its description)."
+    },
+    {
+      "id": "ciu:character-encodings",
+      "name": "Unicode and character encodings",
+      "kind": "definition",
+      "statement": "Unicode assigns code points to characters; encodings such as UTF-8 and UTF-16 map them to bytes, and text is meaningless without knowing its encoding.",
+      "locator": "ciu:#unicode",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 article); 2 links under #unicode in all."
+    },
+    {
+      "id": "ciu:endianness",
+      "name": "Endianness",
+      "kind": "definition",
+      "statement": "Big-endian stores a multi-byte value's most significant byte at the lowest address; little-endian stores the least significant byte first.",
+      "locator": "ciu:#endianness",
+      "prereqs": [
+        "ciu:powers-of-two-words"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 video, 1 article); 3 links under #endianness in all."
+    },
+    {
+      "id": "ciu:network-layers",
+      "name": "OSI and TCP/IP models",
+      "kind": "definition",
+      "statement": "Network functions are split into layers (link, internet, transport, application) and packets are routed hop by hop across the internet.",
+      "locator": "ciu:#networking",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (3 video, 1 course); 12 links under #networking in all."
+    },
+    {
+      "id": "ciu:tcp-vs-udp",
+      "name": "TCP versus UDP",
+      "kind": "result",
+      "statement": "TCP gives reliable, ordered, connection-based byte streams with flow and congestion control; UDP sends independent datagrams with no guarantees and less overhead.",
+      "locator": "ciu:#networking",
+      "prereqs": [
+        "ciu:network-layers"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 12 links under #networking in all."
+    },
+    {
+      "id": "ciu:http",
+      "name": "HTTP and HTTP/2",
+      "kind": "definition",
+      "statement": "The request-response application protocol of the web; HTTP/2 adds binary framing, multiplexing and header compression.",
+      "locator": "ciu:#networking",
+      "prereqs": [
+        "ciu:tcp-vs-udp"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 12 links under #networking in all."
+    },
+    {
+      "id": "ciu:tls-https",
+      "name": "TLS and HTTPS",
+      "kind": "idea",
+      "statement": "TLS authenticates the server with certificates and encrypts the connection; HTTPS is HTTP over TLS.",
+      "locator": "ciu:#networking",
+      "prereqs": [
+        "ciu:http"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 12 links under #networking in all."
+    },
+    {
+      "id": "ciu:cidr",
+      "name": "Subnetting and CIDR notation",
+      "kind": "definition",
+      "statement": "An IP prefix a.b.c.d/n names the network whose addresses share the first n bits.",
+      "locator": "ciu:#networking",
+      "prereqs": [
+        "ciu:network-layers"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 12 links under #networking in all."
+    },
+    {
+      "id": "ciu:sockets",
+      "name": "Socket programming",
+      "kind": "skill",
+      "statement": "Open, bind, connect, send and receive over TCP or UDP sockets.",
+      "locator": "ciu:#networking",
+      "prereqs": [
+        "ciu:tcp-vs-udp"
+      ],
+      "aliases": [],
+      "tier": "core",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 12 links under #networking in all."
+    },
+    {
+      "id": "ciu:sd-process",
+      "name": "The system design interview process",
+      "kind": "skill",
+      "statement": "Scope the use cases, estimate constraints (requests, read/write ratio, storage over years), sketch layers and infrastructure, then find and fix bottlenecks.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 9 links for this concept (7 article, 1 reading list, 1 cheat sheet); 63 links under #system-design-scalability-data-handling in all. CIU: expect system design questions with 4+ years of experience. CIU's START HERE link is the System Design Primer (already in this book's corpus as sdp)."
+    },
+    {
+      "id": "ciu:back-of-envelope",
+      "name": "Back-of-the-envelope numbers",
+      "kind": "skill",
+      "statement": "Use known latencies and throughputs (memory, disk, network, context switch) to estimate a design's capacity.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:sd-process"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 article); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:db-normalization",
+      "name": "Database normalisation",
+      "kind": "definition",
+      "statement": "1NF to 4NF remove redundancy by splitting tables so every non-key fact depends on the key.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:cap-theorem",
+      "name": "CAP theorem",
+      "kind": "result",
+      "statement": "A distributed store facing a network partition must choose between consistency and availability.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:consensus",
+      "name": "Consensus: Paxos and Raft",
+      "kind": "result",
+      "statement": "Replicas can agree on a sequence of values despite failures of a minority, via Paxos or the more understandable Raft (leader election plus log replication).",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:cap-theorem"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (4 video, 1 paper, 1 interactive); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:consistent-hashing",
+      "name": "Consistent hashing",
+      "kind": "idea",
+      "statement": "Place nodes and keys on a hash ring so adding or removing a node moves only about 1/n of the keys.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:nosql-patterns",
+      "name": "NoSQL patterns",
+      "kind": "idea",
+      "statement": "Key-value, column and document stores scale by partitioning, replication and relaxed consistency.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:cap-theorem"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:scaling-basics",
+      "name": "Scaling a web service: clones, databases, caches, asynchrony",
+      "kind": "idea",
+      "statement": "Stateless app servers behind load balancers, database replication and denormalisation, caching and queued background work are the standard scaling steps.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:sd-process"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 8 links for this concept (7 article, 1 video); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:sharding",
+      "name": "Sharding",
+      "kind": "idea",
+      "statement": "Split a database horizontally across machines by key so each holds part of the data.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:scaling-basics"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:distributed-fallacies",
+      "name": "Fallacies of distributed computing",
+      "kind": "idea",
+      "statement": "Networks are not reliable, latency is not zero, bandwidth is not infinite, and so on; designs must assume the opposite.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 paper); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:real-world-architectures",
+      "name": "Real-world architecture case studies",
+      "kind": "idea",
+      "statement": "Write-ups of how YouTube, Netflix, Instagram, Twitter, PayPal, Etsy and others scaled.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:scaling-basics"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 27 links for this concept (18 article, 9 video); 63 links under #system-design-scalability-data-handling in all. Reading list rather than one concept; CIU says pick a few."
+    },
+    {
+      "id": "ciu:sd-exercises",
+      "name": "System design practice problems",
+      "kind": "skill",
+      "statement": "Design a unique ID generator, a key-value store, picture sharing, a recommender, a URL shortener and a cache.",
+      "locator": "ciu:#system-design-scalability-data-handling",
+      "prereqs": [
+        "ciu:sd-process"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (4 article, 2 slides); 63 links under #system-design-scalability-data-handling in all."
+    },
+    {
+      "id": "ciu:compilers",
+      "name": "How a compiler works",
+      "kind": "idea",
+      "statement": "A compiler lexes, parses, analyses and generates code for a program, translating source to machine code.",
+      "locator": "ciu:#compilers",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 4 links under #compilers in all."
+    },
+    {
+      "id": "ciu:compiler-optimization",
+      "name": "Compiler optimisation",
+      "kind": "idea",
+      "statement": "Compilers transform code (inlining, constant folding, loop optimisations) to run faster without changing behaviour.",
+      "locator": "ciu:#compilers",
+      "prereqs": [
+        "ciu:compilers"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 4 links under #compilers in all."
+    },
+    {
+      "id": "ciu:vim-emacs",
+      "name": "Using vi(m) and Emacs",
+      "kind": "skill",
+      "statement": "Edit code efficiently in a Unix editor: modes and motions in vim, buffers and commands in Emacs.",
+      "locator": "ciu:#emacs-and-vim",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 15 links for this concept (11 video, 2 lecture notes, 1 practice site, 1 article); 15 links under #emacs-and-vim in all."
+    },
+    {
+      "id": "ciu:unix-cli",
+      "name": "Unix command-line tools",
+      "kind": "skill",
+      "statement": "Use bash, cat, grep, sed, awk, curl/wget, sort, tr, uniq, strace and tcpdump.",
+      "locator": "ciu:#unixlinux-command-line-tools",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 article, 1 practice site); 3 links under #unixlinux-command-line-tools in all."
+    },
+    {
+      "id": "ciu:devops",
+      "name": "DevOps",
+      "kind": "idea",
+      "statement": "The practices and tooling for building, deploying and operating software.",
+      "locator": "ciu:#devops",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 reading list); 1 links under #devops in all. This heading exists in CIU's body but is missing from its table of contents."
+    },
+    {
+      "id": "ciu:information-theory",
+      "name": "Information theory",
+      "kind": "idea",
+      "statement": "Information measured in bits, as introduced by Shannon.",
+      "locator": "ciu:#information-theory-videos",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 course); 4 links under #information-theory-videos in all."
+    },
+    {
+      "id": "ciu:markov-text-generation",
+      "name": "Markov text generation",
+      "kind": "skill",
+      "statement": "Generate text by sampling each word from the words observed to follow the previous one.",
+      "locator": "ciu:#information-theory-videos",
+      "prereqs": [
+        "ciu:markov-chains"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 4 links under #information-theory-videos in all."
+    },
+    {
+      "id": "ciu:parity",
+      "name": "Parity bits",
+      "kind": "definition",
+      "statement": "An extra bit making the count of 1s even (or odd) detects any single-bit error.",
+      "locator": "ciu:#parity--hamming-code-videos",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 5 links under #parity--hamming-code-videos in all."
+    },
+    {
+      "id": "ciu:hamming-code",
+      "name": "Hamming code",
+      "kind": "result",
+      "statement": "Parity bits at power-of-two positions locate, and so correct, any single-bit error.",
+      "locator": "ciu:#parity--hamming-code-videos",
+      "prereqs": [
+        "ciu:parity"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 5 links under #parity--hamming-code-videos in all."
+    },
+    {
+      "id": "ciu:entropy",
+      "name": "Entropy",
+      "kind": "definition",
+      "statement": "The expected information of a source, H = -sum p log2 p bits per symbol, bounding lossless compression.",
+      "locator": "ciu:#entropy",
+      "prereqs": [
+        "ciu:information-theory",
+        "ciu:probability-basics"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 1 links under #entropy in all. 1 of the 2 sit under #compression."
+    },
+    {
+      "id": "ciu:crypto-hash",
+      "name": "Cryptographic hash functions",
+      "kind": "definition",
+      "statement": "Hash functions that are infeasible to invert or to find collisions for.",
+      "locator": "ciu:#cryptography",
+      "prereqs": [
+        "ciu:information-theory"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 course, 1 video); 3 links under #cryptography in all."
+    },
+    {
+      "id": "ciu:encryption",
+      "name": "Encryption",
+      "kind": "idea",
+      "statement": "Symmetric and public-key schemes keep messages secret given a key.",
+      "locator": "ciu:#cryptography",
+      "prereqs": [
+        "ciu:information-theory"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 course, 1 video); 3 links under #cryptography in all."
+    },
+    {
+      "id": "ciu:compression",
+      "name": "Lossless compression",
+      "kind": "idea",
+      "statement": "Remove redundancy to store data in fewer bits, up to the limit set by entropy.",
+      "locator": "ciu:#compression",
+      "prereqs": [
+        "ciu:entropy"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 8 links under #compression in all."
+    },
+    {
+      "id": "ciu:huffman",
+      "name": "Huffman coding",
+      "kind": "result",
+      "statement": "Repeatedly merge the two least frequent symbols into a tree to get an optimal prefix-free code.",
+      "locator": "ciu:#compression",
+      "prereqs": [
+        "ciu:compression",
+        "ciu:priority-queue"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 8 links under #compression in all."
+    },
+    {
+      "id": "ciu:lz77",
+      "name": "LZ77",
+      "kind": "idea",
+      "statement": "Replace repeated substrings with (distance, length) references back into a sliding window.",
+      "locator": "ciu:#compression",
+      "prereqs": [
+        "ciu:compression"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 8 links under #compression in all."
+    },
+    {
+      "id": "ciu:threat-models",
+      "name": "Threat models and privilege separation",
+      "kind": "idea",
+      "statement": "Security design starts from what an attacker can do; privilege separation, capabilities and sandboxing limit the damage of a compromise.",
+      "locator": "ciu:#computer-security",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 13 links under #computer-security in all."
+    },
+    {
+      "id": "ciu:control-hijacking",
+      "name": "Control hijacking and buffer overflows",
+      "kind": "idea",
+      "statement": "Overflowing a buffer can overwrite a return address and divert control; defences include stack canaries, non-executable memory and ASLR.",
+      "locator": "ciu:#computer-security",
+      "prereqs": [
+        "ciu:threat-models"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 13 links under #computer-security in all."
+    },
+    {
+      "id": "ciu:web-security",
+      "name": "Web security model",
+      "kind": "idea",
+      "statement": "Same-origin policy, and defending web applications against injection, XSS and CSRF.",
+      "locator": "ciu:#computer-security",
+      "prereqs": [
+        "ciu:threat-models"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 13 links under #computer-security in all."
+    },
+    {
+      "id": "ciu:network-security",
+      "name": "Network security and side channels",
+      "kind": "idea",
+      "statement": "Attacks on network protocols, and leaks through timing and other side channels.",
+      "locator": "ciu:#computer-security",
+      "prereqs": [
+        "ciu:threat-models",
+        "ciu:network-layers"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 13 links under #computer-security in all."
+    },
+    {
+      "id": "ciu:garbage-collection",
+      "name": "Garbage collection",
+      "kind": "idea",
+      "statement": "Automatic reclamation of unreachable memory, e.g. CPython's reference counting plus a cycle-detecting generational collector, and the JVM's collectors.",
+      "locator": "ciu:#garbage-collection",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 3 links under #garbage-collection in all."
+    },
+    {
+      "id": "ciu:parallel-programming",
+      "name": "Parallel programming",
+      "kind": "idea",
+      "statement": "Splitting work across cores (task and data parallelism) and reasoning about its speed-up.",
+      "locator": "ciu:#parallel-programming",
+      "prereqs": [
+        "ciu:process-vs-thread"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 course, 1 video); 2 links under #parallel-programming in all."
+    },
+    {
+      "id": "ciu:serialization",
+      "name": "Serialisation formats",
+      "kind": "definition",
+      "statement": "Thrift, Protocol Buffers, Avro and MessagePack encode structured data compactly with a schema.",
+      "locator": "ciu:#messaging-serialization-and-queueing-systems",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 6 links for this concept (6 docs); 20 links under #messaging-serialization-and-queueing-systems in all."
+    },
+    {
+      "id": "ciu:rpc",
+      "name": "Remote procedure calls (gRPC)",
+      "kind": "idea",
+      "statement": "Call a function on another machine as if it were local, using a generated stub over a serialised protocol.",
+      "locator": "ciu:#messaging-serialization-and-queueing-systems",
+      "prereqs": [
+        "ciu:serialization"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 docs, 1 video); 20 links under #messaging-serialization-and-queueing-systems in all."
+    },
+    {
+      "id": "ciu:message-queues",
+      "name": "Message queues and pub-sub",
+      "kind": "idea",
+      "statement": "Brokers such as SQS, SNS, RabbitMQ, Kafka, ZeroMQ, ActiveMQ and Celery decouple producers and consumers.",
+      "locator": "ciu:#messaging-serialization-and-queueing-systems",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 10 links for this concept (10 docs); 20 links under #messaging-serialization-and-queueing-systems in all."
+    },
+    {
+      "id": "ciu:redis",
+      "name": "Redis as an in-memory data store",
+      "kind": "idea",
+      "statement": "An in-memory key-value store with rich data types, used as a cache and message broker.",
+      "locator": "ciu:#messaging-serialization-and-queueing-systems",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 docs, 1 practice site); 20 links under #messaging-serialization-and-queueing-systems in all."
+    },
+    {
+      "id": "ciu:a-star",
+      "name": "A* search",
+      "kind": "result",
+      "statement": "Best-first search ordered by g(n)+h(n); with an admissible heuristic h it finds a shortest path, usually exploring far less than Dijkstra.",
+      "locator": "ciu:#a",
+      "prereqs": [
+        "ciu:dijkstra"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 article, 1 video); 2 links under #a in all."
+    },
+    {
+      "id": "ciu:fourier-transform",
+      "name": "Fourier transform",
+      "kind": "idea",
+      "statement": "Any signal can be expressed as a sum of sinusoids; the transform gives their amplitudes.",
+      "locator": "ciu:#fast-fourier-transform",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 article, 1 video); 5 links under #fast-fourier-transform in all."
+    },
+    {
+      "id": "ciu:fft",
+      "name": "Fast Fourier transform",
+      "kind": "result",
+      "statement": "Divide and conquer computes the discrete Fourier transform, and so polynomial multiplication, in O(n log n).",
+      "locator": "ciu:#fast-fourier-transform",
+      "prereqs": [
+        "ciu:fourier-transform",
+        "ciu:recurrences-master-theorem"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 article); 5 links under #fast-fourier-transform in all."
+    },
+    {
+      "id": "ciu:bloom-filter",
+      "name": "Bloom filter",
+      "kind": "result",
+      "statement": "A bit array of m bits with k hash functions answers set membership with no false negatives and a tunable false-positive rate; insert and query are O(k).",
+      "locator": "ciu:#bloom-filter",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (2 video, 2 article); 4 links under #bloom-filter in all."
+    },
+    {
+      "id": "ciu:hyperloglog",
+      "name": "HyperLogLog",
+      "kind": "idea",
+      "statement": "Estimate the number of distinct items in a stream from the maximum run of leading zeros in their hashes, using kilobytes of memory.",
+      "locator": "ciu:#hyperloglog",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 1 links under #hyperloglog in all."
+    },
+    {
+      "id": "ciu:simhash",
+      "name": "Locality-sensitive hashing (simhash)",
+      "kind": "idea",
+      "statement": "Hash so that similar documents get similar fingerprints, the opposite aim of MD5 or SHA.",
+      "locator": "ciu:#locality-sensitive-hashing",
+      "prereqs": [
+        "ciu:crypto-hash"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 1 links under #locality-sensitive-hashing in all."
+    },
+    {
+      "id": "ciu:van-emde-boas",
+      "name": "van Emde Boas trees",
+      "kind": "result",
+      "statement": "A recursive structure over a universe of size u gives predecessor and successor queries in O(log log u).",
+      "locator": "ciu:#van-emde-boas-trees",
+      "prereqs": [
+        "ciu:bst"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 lecture notes); 2 links under #van-emde-boas-trees in all."
+    },
+    {
+      "id": "ciu:augmented-ds",
+      "name": "Augmenting data structures",
+      "kind": "idea",
+      "statement": "Store extra information in each node (e.g. subtree size) and maintain it on updates to answer new queries such as order statistics.",
+      "locator": "ciu:#augmented-data-structures",
+      "prereqs": [
+        "ciu:bst"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 1 links under #augmented-data-structures in all."
+    },
+    {
+      "id": "ciu:avl-tree",
+      "name": "AVL tree",
+      "kind": "result",
+      "statement": "A BST where subtree heights differ by at most one, restored by rotations, so search, insert and delete are O(log n); more rigidly balanced than red-black trees.",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:balanced-bst-idea"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 27 links under #balanced-search-trees in all."
+    },
+    {
+      "id": "ciu:splay-tree",
+      "name": "Splay tree",
+      "kind": "result",
+      "statement": "A self-adjusting BST that rotates each accessed key to the root, giving O(log n) amortized operations.",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:balanced-bst-idea",
+        "ciu:amortized-analysis"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 27 links under #balanced-search-trees in all. CIU's author implemented this one."
+    },
+    {
+      "id": "ciu:red-black-tree",
+      "name": "Red-black tree",
+      "kind": "result",
+      "statement": "A BST with red/black node colouring rules that keep height at most 2 log n, giving worst-case O(log n) operations; equivalent to 2-3-4 trees.",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:2-3-4-tree"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (3 video, 2 article); 27 links under #balanced-search-trees in all."
+    },
+    {
+      "id": "ciu:2-3-tree",
+      "name": "2-3 search tree",
+      "kind": "definition",
+      "statement": "A perfectly balanced search tree whose nodes hold one or two keys (two or three children).",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:balanced-bst-idea"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 27 links under #balanced-search-trees in all."
+    },
+    {
+      "id": "ciu:2-3-4-tree",
+      "name": "2-3-4 tree",
+      "kind": "definition",
+      "statement": "A balanced search tree whose nodes hold one to three keys; its splits correspond to red-black colour flips and rotations.",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:2-3-tree"
+      ],
+      "aliases": [
+        "2-4 tree"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 27 links under #balanced-search-trees in all."
+    },
+    {
+      "id": "ciu:k-ary-tree",
+      "name": "K-ary tree",
+      "kind": "definition",
+      "statement": "A tree in which each node has at most k children (the branching factor).",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:tree"
+      ],
+      "aliases": [
+        "N-ary tree",
+        "M-ary tree"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 article); 27 links under #balanced-search-trees in all."
+    },
+    {
+      "id": "ciu:b-tree",
+      "name": "B-tree",
+      "kind": "result",
+      "statement": "A balanced k-ary search tree with large nodes sized to a disk block, keeping height O(log_B n); used by databases and filesystems.",
+      "locator": "ciu:#balanced-search-trees",
+      "prereqs": [
+        "ciu:k-ary-tree",
+        "ciu:2-3-4-tree"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 7 links for this concept (5 video, 2 article); 27 links under #balanced-search-trees in all. One link covers cache-oblivious B-trees."
+    },
+    {
+      "id": "ciu:kd-tree",
+      "name": "k-d tree",
+      "kind": "definition",
+      "statement": "A binary tree splitting space on alternating coordinates, for range and nearest-neighbour queries over points.",
+      "locator": "ciu:#k-d-trees",
+      "prereqs": [
+        "ciu:bst"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 1 links under #k-d-trees in all."
+    },
+    {
+      "id": "ciu:skip-list",
+      "name": "Skip list",
+      "kind": "result",
+      "statement": "Layers of linked lists, each keeping a random half of the one below, give expected O(log n) search and insertion.",
+      "locator": "ciu:#skip-lists",
+      "prereqs": [
+        "ciu:singly-linked-list",
+        "ciu:probability-basics"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (1 video, 1 article); 2 links under #skip-lists in all."
+    },
+    {
+      "id": "ciu:max-flow",
+      "name": "Maximum flow (Ford-Fulkerson)",
+      "kind": "result",
+      "statement": "Repeatedly push flow along augmenting paths in the residual graph until none remains; the result is a maximum flow equal to the minimum cut.",
+      "locator": "ciu:#network-flows",
+      "prereqs": [
+        "ciu:graph-bfs"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 3 links under #network-flows in all."
+    },
+    {
+      "id": "ciu:union-find",
+      "name": "Disjoint sets (union-find)",
+      "kind": "definition",
+      "statement": "A structure over disjoint sets supporting union of two sets and find of an element's representative, stored as a forest of trees.",
+      "locator": "ciu:#disjoint-sets--union-find",
+      "prereqs": [
+        "ciu:tree"
+      ],
+      "aliases": [
+        "disjoint set union",
+        "DSU"
+      ],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 5 links for this concept (5 video); 2 links under #disjoint-sets--union-find in all. 3 of the 5 sit under #additional-detail-on-some-subjects. Additional Detail adds a Coursera sequence on it."
+    },
+    {
+      "id": "ciu:union-find-optimisations",
+      "name": "Union by rank and path compression",
+      "kind": "result",
+      "statement": "Linking the shorter tree under the taller and flattening paths on find give amortized near-constant (inverse Ackermann) time per operation.",
+      "locator": "ciu:#disjoint-sets--union-find",
+      "prereqs": [
+        "ciu:union-find",
+        "ciu:amortized-analysis"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 2 links under #disjoint-sets--union-find in all. 3 of the 3 sit under #additional-detail-on-some-subjects."
+    },
+    {
+      "id": "ciu:karatsuba",
+      "name": "Karatsuba multiplication",
+      "kind": "result",
+      "statement": "Multiply n-digit numbers with three half-size multiplications instead of four, in O(n^1.585).",
+      "locator": "ciu:#math-for-fast-processing",
+      "prereqs": [
+        "ciu:recurrences-master-theorem"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 2 links under #math-for-fast-processing in all."
+    },
+    {
+      "id": "ciu:crt",
+      "name": "Chinese remainder theorem",
+      "kind": "result",
+      "statement": "For pairwise coprime moduli, a system of congruences has a unique solution modulo their product.",
+      "locator": "ciu:#math-for-fast-processing",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 2 links under #math-for-fast-processing in all."
+    },
+    {
+      "id": "ciu:treap",
+      "name": "Treap",
+      "kind": "definition",
+      "statement": "A BST on keys that is also a heap on random priorities, so its shape is that of a random BST and operations are expected O(log n).",
+      "locator": "ciu:#treap",
+      "prereqs": [
+        "ciu:bst",
+        "ciu:binary-heap"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (1 article, 1 video, 1 paper); 3 links under #treap in all."
+    },
+    {
+      "id": "ciu:linear-programming",
+      "name": "Linear programming and simplex",
+      "kind": "idea",
+      "statement": "Optimise a linear objective subject to linear inequalities; the simplex method walks vertices of the feasible region.",
+      "locator": "ciu:#linear-programming-videos",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 4 links under #linear-programming-videos in all."
+    },
+    {
+      "id": "ciu:convex-hull",
+      "name": "Convex hull (Graham scan, Jarvis march, divide and conquer)",
+      "kind": "result",
+      "statement": "The smallest convex polygon containing a point set, found in O(n log n) by Graham scan or divide and conquer, or O(nh) by Jarvis march.",
+      "locator": "ciu:#geometry-convex-hull-videos",
+      "prereqs": [
+        "ciu:mergesort"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 3 links under #geometry-convex-hull-videos in all. 1 of the 4 sit under #graphs."
+    },
+    {
+      "id": "ciu:discrete-math",
+      "name": "Discrete mathematics",
+      "kind": "idea",
+      "statement": "Logic, proofs, sets, counting, graphs and probability as a full course.",
+      "locator": "ciu:#discrete-math",
+      "prereqs": [],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (2 course, 1 video); 3 links under #discrete-math in all. Course-length links only."
+    },
+    {
+      "id": "ciu:solid-srp",
+      "name": "Single responsibility principle",
+      "kind": "definition",
+      "statement": "A class should have one reason to change.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (3 article, 1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:solid-ocp",
+      "name": "Open/closed principle",
+      "kind": "definition",
+      "statement": "Modules should be open for extension and closed for modification.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (3 article, 1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:solid-lsp",
+      "name": "Liskov substitution principle",
+      "kind": "definition",
+      "statement": "Objects of a subtype must be usable wherever the base type is expected without breaking correctness.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (3 article, 1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:solid-isp",
+      "name": "Interface segregation principle",
+      "kind": "definition",
+      "statement": "Clients should not be forced to depend on interfaces they do not use.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (2 video, 2 article); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:solid-dip",
+      "name": "Dependency inversion principle",
+      "kind": "definition",
+      "statement": "High-level modules should depend on abstractions, not on low-level modules.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "[object-oriented programming]"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (3 article, 1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:dp-classics",
+      "name": "Classic DP problems",
+      "kind": "skill",
+      "statement": "Fibonacci, shortest paths, text justification, parenthesisation and knapsack as DP exercises.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:dynamic-programming"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 4 links for this concept (4 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:apsp-dp",
+      "name": "All-pairs shortest paths by DP",
+      "kind": "result",
+      "statement": "Floyd-Warshall and matrix-multiplication-style DPs compute all shortest-path distances in O(V^3).",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:dynamic-programming",
+        "ciu:bellman-ford"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:distributed-graph-algorithms",
+      "name": "Distributed graph algorithms",
+      "kind": "idea",
+      "statement": "Synchronous and asynchronous distributed algorithms for symmetry breaking, BFS trees and shortest-path spanning trees.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:graph-bfs"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 2 links for this concept (2 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:conditional-probability",
+      "name": "Conditional probability and independence",
+      "kind": "definition",
+      "statement": "P(A|B)=P(A and B)/P(B); A and B are independent when P(A and B)=P(A)P(B).",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:probability-basics"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:random-variables-expectation",
+      "name": "Random variables and expectation",
+      "kind": "definition",
+      "statement": "A random variable maps outcomes to numbers; its expectation is the probability-weighted average, and is linear.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:conditional-probability"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 3 links for this concept (3 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:large-deviations",
+      "name": "Large deviations and tail bounds",
+      "kind": "result",
+      "statement": "Sums of independent random variables are unlikely to stray far from their mean, with exponentially small tails.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:random-variables-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:random-walks",
+      "name": "Random walks",
+      "kind": "idea",
+      "statement": "A walk that moves randomly at each step, e.g. gambler's ruin; hitting probabilities and times follow from recurrences.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:random-variables-expectation"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:rolling-hash",
+      "name": "Rolling hash",
+      "kind": "idea",
+      "statement": "A polynomial hash of a window that is updated in O(1) when the window slides by one character.",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:hash-table"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 video); 56 links under #additional-detail-on-some-subjects in all."
+    },
+    {
+      "id": "ciu:computer-from-gates",
+      "name": "Building a computer from logic gates",
+      "kind": "idea",
+      "statement": "From NAND gates up through an ALU, CPU, assembler and compiler (NAND to Tetris).",
+      "locator": "ciu:#additional-detail-on-some-subjects",
+      "prereqs": [
+        "ciu:cpu-components"
+      ],
+      "aliases": [],
+      "tier": "stretch",
+      "has_code": false,
+      "exercises": 0,
+      "notes": "CIU lists 1 link for this concept (1 course); 56 links under #additional-detail-on-some-subjects in all."
+    }
+  ]
+}
