@@ -696,9 +696,14 @@ The finder's first stops for code exercises (licences to confirm):
   regionals publish statements, test data and reference solutions), for
   Part IV.
 - **Kattis open problems** whose page states a CC BY-SA licence.
-- **TheAlgorithms/Python and /JavaScript** (MIT): these are
-  implementations with doctests, not exercises. Their doctests are a
-  source of test cases for a printed book exercise.
+- **TheAlgorithms/Python** (MIT): implementations with doctests, not
+  exercises. Their doctests are a source of test cases for a printed book
+  exercise. **TheAlgorithms/JavaScript is GPL-3.0**, so it is link-only;
+  `trekhleb/javascript-algorithms` (MIT, jest tests) supplies JS tests
+  instead.
+- **Kattis** states CC BY 3.0, CC BY-SA 3.0, CC0 or public domain on each
+  problem page. BY-SA 3.0 allows adaptation under 4.0. Problems marked
+  "For educational use only" are link-only. Only sample tests are public.
 
 **Decided: tests may be AI-written, exercises may not.** Every exercise
 statement comes from a source. Where the source has no tests, the tests

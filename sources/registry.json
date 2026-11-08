@@ -128,6 +128,494 @@
       "use": "code exercises: description.md plus canonical-data.json test cases",
       "format": "exercises/<slug>/",
       "locator": "exercism:<slug>"
+    },
+    {
+      "id": "kattis",
+      "title": "Open Kattis problems carrying an open licence badge",
+      "authors": [
+        "per problem (e.g. Per Austrin, Greg Hamerly, David Sturgill, Johan Sannemo)"
+      ],
+      "url": "https://open.kattis.com/problems",
+      "pin": "problem pages and sample zips fetched 2026-11-08 (325 open-licensed of 347 checked)",
+      "licence": "per problem: CC BY 3.0, CC BY-SA 3.0, CC0, or Public Domain Mark; problems marked 'For educational use only' or with no badge are link-only",
+      "licence_evidence": {
+        "url": "https://open.kattis.com/problems/10kindsofpeople",
+        "quote": "<a rel=\"license\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\"> <img class=\"problem-license\" alt=\"Creative Commons License (cc by-sa)\""
+      },
+      "use": "code exercises: statement + public sample data (hidden test data is not public, so tests beyond the samples are AI-written); check the badge per problem",
+      "format": "problems/<slug>.html (statement HTML), samples/<slug>.zip, index.json (slug, title, licence, source, authors, difficulty)",
+      "locator": "kattis:<slug>, e.g. kattis:shortestpath1"
+    },
+    {
+      "id": "icpc-kattis-export",
+      "title": "GCPC 2011-2026 and NWERC 2023-2025 problem packages (Kattis export)",
+      "authors": [
+        "GCPC and NWERC jury members (per problem.yaml author field)",
+        "Michael Zündorf (export)"
+      ],
+      "url": "https://github.com/mzuenni/kattis-export",
+      "pin": "bd404d38a43452581d642b4c332391342e247285",
+      "licence": "CC BY-SA (per problem, in problem.yaml; 221 of 233 packages state 'license: cc by-sa'; the repo has no LICENSE file)",
+      "licence_evidence": {
+        "url": "https://github.com/mzuenni/kattis-export/blob/bd404d38a43452581d642b4c332391342e247285/nwerc2023/arrangingadapters/problem.yaml",
+        "quote": "license: cc by-sa\nrights_owner: author"
+      },
+      "use": "code exercises with full test data and accepted reference submissions; 125 packages include solution.en.tex slides",
+      "format": "Kattis/BAPCtools problem package per <contest>/<problem>/: problem.yaml, problem_statement/*.tex, data/{sample,secret}, submissions/accepted. Cache is a sparse clone without data/secret and PDFs",
+      "locator": "icpc-kattis-export:<contest>/<problem>, e.g. icpc-kattis-export:nwerc2023/arrangingadapters"
+    },
+    {
+      "id": "icpc-mzuenni",
+      "title": "ICPC-style problem packages (NWERC, GCPC, Winter Contest)",
+      "authors": [
+        "Michael Zündorf and co-authors (per problem.yaml)"
+      ],
+      "url": "https://github.com/mzuenni/icpc-problems",
+      "pin": "351157eff315efd943a9613a316e06ffc9614e13",
+      "licence": "CC BY-SA (per problem.yaml; 38 of 38 state 'license: cc by-sa')",
+      "licence_evidence": {
+        "url": "https://github.com/mzuenni/icpc-problems/tree/351157eff315efd943a9613a316e06ffc9614e13",
+        "quote": "license: cc by-sa"
+      },
+      "use": "code exercises with test data and reference submissions",
+      "format": "problem package per top-level dir; sparse cache without data/secret",
+      "locator": "icpc-mzuenni:<problem>"
+    },
+    {
+      "id": "icpc-dapc",
+      "title": "DAPC / BAPC preliminaries 2022-2023 problem packages",
+      "authors": [
+        "BAPC/DAPC jury (per problem.yaml)"
+      ],
+      "url": "https://github.com/To5BG/dapc-problems",
+      "pin": "7e7028b8140d2c725bc1eb345fee81788f1171f9",
+      "licence": "CC BY-SA (per problem.yaml; 25 of 25)",
+      "licence_evidence": {
+        "url": "https://github.com/To5BG/dapc-problems/tree/7e7028b8140d2c725bc1eb345fee81788f1171f9",
+        "quote": "license: cc by-sa"
+      },
+      "use": "code exercises with test data, reference submissions and solution slides",
+      "format": "data2022/<problem>/, data2023/<problem>/ packages; sparse cache without data/secret",
+      "locator": "icpc-dapc:<year dir>/<problem>"
+    },
+    {
+      "id": "icpc-rmc",
+      "title": "ICPC Rocky Mountain Regional problem sets 2018-2026 (public repos)",
+      "authors": [
+        "Rocky Mountain Regional judges (Howard Cheng, Zachary Friggstad and others)"
+      ],
+      "url": "https://github.com/icpc/na-rocky-mountain-2020-public (one repo per year, see FETCHED.txt)",
+      "pin": "2018: icpc/na-rocky-mountain-2018-public @ 416a94258f99ab68ff7d9777faca55c94cdaf5f5; 2019: icpc/na-rocky-mountain-2019-public @ daff77263decd076147dda943d5720ced65b6f3a; 2020: icpc/na-rocky-mountain-2020-public @ 82ec342bf1d63541a6e513d2c6eaf6c0b81af351; 2021: icpc/na-rocky-mountain-2021-public @ 2c87d30f1195a201e69b24304e0adb8e928ff55e; 2022-2023: icpc/na-rocky-mountain-2022-2023-public @ f89e714870361724a4bd8359fb552464439a938d; 2023-2024: icpc/na-rocky-mountain-2023-2024-public @ e78402f08eed965de310029272de000b6add852a; 2024-2025: icpc/na-rocky-mountain-2024-2025-public @ dcff2587887b0e940d6d1de33c6a35bae84f1100; 2025-2026: icpc/na-rocky-mountain-2025-2026-public @ 29bb24a3f9f30a1773d1ba2164df20b99facd30d",
+      "licence": "CC BY-SA per problem.yaml (all 97 packages that have one); repos 2018/2020/2022-23/2023-24 also carry an MIT LICENSE file",
+      "licence_evidence": {
+        "url": "https://github.com/icpc/na-rocky-mountain-2020-public/blob/main/problems/antimatterrain/problem.yaml",
+        "quote": "source: Rocky Mountain Regional Programming Contest 2020\nlicense: cc by-sa"
+      },
+      "use": "code exercises with test data and accepted submissions; per-year solution slides",
+      "format": "<year>/problems/<problem>/ (2023-2024: <year>/<problem>/); sparse cache without secret data",
+      "locator": "icpc-rmc:<year>/<problem>"
+    },
+    {
+      "id": "icpc-ecna",
+      "title": "ICPC East-Central North America regional archive 2019-2026",
+      "authors": [
+        "ECNA judges (per problem.yaml)"
+      ],
+      "url": "https://github.com/icpc/na-ecna-archive",
+      "pin": "a6e190a1be63971cc5137b39188a9e5cae39f565",
+      "licence": "CC0 1.0",
+      "licence_evidence": {
+        "url": "https://github.com/icpc/na-ecna-archive/blob/a6e190a1be63971cc5137b39188a9e5cae39f565/LICENSE",
+        "quote": "CC0 1.0 Universal"
+      },
+      "use": "code exercises: 91 zipped problem packages with secret data and submissions; problem.yaml says 'license: cc0'",
+      "format": "<season>/<problem>.zip, plus problem-set PDFs",
+      "locator": "icpc-ecna:<season>/<problem>, e.g. icpc-ecna:2019-2020/outofsorts"
+    },
+    {
+      "id": "mitocw-6-006-spring2020",
+      "title": "6.006 Introduction to Algorithms, Spring 2020",
+      "authors": [
+        "Erik Demaine",
+        "Jason Ku",
+        "Justin Solomon"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 9 problem sets with solutions and Python templates (tests.py), 9 problem-session sets with solutions, 3 quizzes + reviews + final with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-006-spring2020:<file stem>#<problem number>, e.g. mitocw-6-006-spring2020:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-006-fall2011",
+      "title": "6.006 Introduction to Algorithms, Fall 2011",
+      "authors": [
+        "Erik Demaine",
+        "Srini Devadas"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-fall-2011/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 7 problem sets with written and code solutions (Python), 2 quizzes and final with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-006-fall2011:<file stem>#<problem number>, e.g. mitocw-6-006-fall2011:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-006-spring2008",
+      "title": "6.006 Introduction to Algorithms, Spring 2008",
+      "authors": [
+        "Srini Devadas",
+        "Erik Demaine",
+        "Ronald Rivest"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2008/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2008/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 6 problem sets (no solutions), quiz/final practice problems with solutions, lecture code; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-006-spring2008:<file stem>#<problem number>, e.g. mitocw-6-006-spring2008:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-046j-spring2015",
+      "title": "6.046J Design and Analysis of Algorithms, Spring 2015",
+      "authors": [
+        "Erik Demaine",
+        "Srini Devadas",
+        "Nancy Lynch"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 10 problem sets, 2 quizzes, final, all with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-046j-spring2015:<file stem>#<problem number>, e.g. mitocw-6-046j-spring2015:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-046j-spring2012",
+      "title": "6.046J Design and Analysis of Algorithms, Spring 2012",
+      "authors": [
+        "Dana Moshkovitz",
+        "Bruce Tidor"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2012/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2012/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 9 problem sets, quizzes, practice quizzes and finals, all with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-046j-spring2012:<file stem>#<problem number>, e.g. mitocw-6-046j-spring2012:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-046j-fall2005",
+      "title": "6.046J Introduction to Algorithms (SMA 5503), Fall 2005",
+      "authors": [
+        "Charles Leiserson",
+        "Erik Demaine"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-046j-introduction-to-algorithms-sma-5503-fall-2005/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 9 problem sets, quizzes, practice quizzes and finals with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-046j-fall2005:<file stem>#<problem number>, e.g. mitocw-6-046j-fall2005:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-851-spring2012",
+      "title": "6.851 Advanced Data Structures, Spring 2012",
+      "authors": [
+        "Erik Demaine"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-851-advanced-data-structures-spring-2012/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 10 problem sets with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-851-spring2012:<file stem>#<problem number>, e.g. mitocw-6-851-spring2012:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-854j-fall2008",
+      "title": "6.854J Advanced Algorithms, Fall 2008",
+      "authors": [
+        "David Karger"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2008/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2008/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): problem sets with solutions 1-6 (plus 2001 sets); prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-854j-fall2008:<file stem>#<problem number>, e.g. mitocw-6-854j-fall2008:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-854j-fall2005",
+      "title": "6.854J Advanced Algorithms, Fall 2005",
+      "authors": [
+        "David Karger"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-854j-advanced-algorithms-fall-2005/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 12 problem sets, 11 with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-854j-fall2005:<file stem>#<problem number>, e.g. mitocw-6-854j-fall2005:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-856j-fall2002",
+      "title": "6.856J Randomized Algorithms, Fall 2002",
+      "authors": [
+        "David Karger"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-856j-randomized-algorithms-fall-2002/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-856j-randomized-algorithms-fall-2002/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 13 homeworks with answers; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-856j-fall2002:<file stem>#<problem number>, e.g. mitocw-6-856j-fall2002:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-042j-fall2005",
+      "title": "6.042J Mathematics for Computer Science, Fall 2005",
+      "authors": [
+        "Albert Meyer",
+        "Adam Chlipala"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 10 problem sets, 2 quizzes, final, with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-042j-fall2005:<file stem>#<problem number>, e.g. mitocw-6-042j-fall2005:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-042j-fall2010",
+      "title": "6.042J Mathematics for Computer Science, Fall 2010",
+      "authors": [
+        "Tom Leighton",
+        "Marten van Dijk"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): problem sets (no solutions), recitation problems, midterm/finals with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-042j-fall2010:<file stem>#<problem number>, e.g. mitocw-6-042j-fall2010:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-890-fall2014",
+      "title": "6.890 Algorithmic Lower Bounds: Fun with Hardness Proofs, Fall 2014",
+      "authors": [
+        "Erik Demaine"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-890-algorithmic-lower-bounds-fun-with-hardness-proofs-fall-2014/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 4 problem sets with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-890-fall2014:<file stem>#<problem number>, e.g. mitocw-6-890-fall2014:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-824-spring2006",
+      "title": "6.824 Distributed Computer Systems Engineering, Spring 2006",
+      "authors": [
+        "Robert Morris"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-824-distributed-computer-systems-engineering-spring-2006/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-824-distributed-computer-systems-engineering-spring-2006/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 2 quizzes (2005) with answers; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-824-spring2006:<file stem>#<problem number>, e.g. mitocw-6-824-spring2006:ps3-solutions#3-2"
+    },
+    {
+      "id": "mitocw-6-830-fall2010",
+      "title": "6.830 Database Systems, Fall 2010",
+      "authors": [
+        "Sam Madden"
+      ],
+      "url": "https://ocw.mit.edu/courses/6-830-database-systems-fall-2010/",
+      "pin": "PDFs/ZIPs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://ocw.mit.edu/courses/6-830-database-systems-fall-2010/",
+        "quote": "\"license\": \"https://creativecommons.org/licenses/by-nc-sa/4.0/\""
+      },
+      "use": "NC exercise cards only (METHOD.md §0): 2 quizzes with solutions; prose is link-only",
+      "format": "PDF + pdftotext -layout .txt per handout; index.tsv maps file -> OCW title -> URL",
+      "locator": "mitocw-6-830-fall2010:<file stem>#<problem number>, e.g. mitocw-6-830-fall2010:ps3-solutions#3-2"
+    },
+    {
+      "id": "projecteuler",
+      "title": "Project Euler problems 1-200",
+      "authors": [
+        "Project Euler (Colin Hughes and contributors)"
+      ],
+      "url": "https://projecteuler.net/archives",
+      "pin": "problems 1-200 fetched 2026-11-08 via https://projecteuler.net/minimal=<n>",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://projecteuler.net/copyright",
+        "quote": "All of the main problem content that appears in the Archives and the Recent problems sections is licensed under a Creative Commons (CC) Licence: Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)"
+      },
+      "use": "NC exercise cards only; statements without answers, so reference solutions and tests are AI-written (tests_by: ai)",
+      "format": "problems/<n>.html (statement HTML with $...$ math), titles.tsv",
+      "locator": "projecteuler:<n>"
+    },
+    {
+      "id": "thealgorithms-python",
+      "title": "TheAlgorithms/Python",
+      "authors": [
+        "TheAlgorithms contributors"
+      ],
+      "url": "https://github.com/TheAlgorithms/Python",
+      "pin": "574d100b7181956e9c8384552fd078165e4cc326",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/TheAlgorithms/Python/blob/master/LICENSE.md",
+        "quote": "MIT License Copyright (c) 2016-2022 TheAlgorithms and contributors"
+      },
+      "use": "test cases: doctests in implementations, to test exercises whose statements come from other sources",
+      "format": "<topic dir>/<algorithm>.py with >>> doctests",
+      "locator": "thealgorithms-python:<path>::<function>"
+    },
+    {
+      "id": "thealgorithms-javascript",
+      "title": "TheAlgorithms/JavaScript",
+      "authors": [
+        "TheAlgorithms contributors"
+      ],
+      "url": "https://github.com/TheAlgorithms/JavaScript",
+      "pin": "5c39e87a9a31f279c60f830ad74a845e4788a517",
+      "licence": "GPL-3.0",
+      "licence_evidence": {
+        "url": "https://github.com/TheAlgorithms/JavaScript/blob/master/LICENSE",
+        "quote": "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007"
+      },
+      "use": "link-only: GPL-3.0, not MIT as METHOD.md §6.3 assumed; GPL code cannot be relicensed into CC BY-SA 4.0. Use trekhleb-jsalgo (MIT) for JS tests instead",
+      "format": "<Topic>/<algo>.js with test/*.test.js (vitest)",
+      "locator": "thealgorithms-javascript:<path>"
+    },
+    {
+      "id": "icc",
+      "title": "Interactive Coding Challenges",
+      "authors": [
+        "Donne Martin"
+      ],
+      "url": "https://github.com/donnemartin/interactive-coding-challenges",
+      "pin": "358f2cc60426d5c4c3d7d580910eec9a7b393fa9",
+      "licence": "Apache-2.0 (covers 'code and resources', i.e. the notebook text too)",
+      "licence_evidence": {
+        "url": "https://github.com/donnemartin/interactive-coding-challenges/blob/master/LICENSE",
+        "quote": "I am providing code and resources in this repository to you under an open source license. ... Licensed under the Apache License, Version 2.0"
+      },
+      "use": "code exercises: ~91 challenges with challenge notebook, solution notebook and unittest file; online_judges/ restates LeetCode/HackerRank problems and is link-only",
+      "format": "<topic>/<challenge>/{<c>_challenge.ipynb,<c>_solution.ipynb,test_<c>.py}",
+      "locator": "icc:<topic>/<challenge>, e.g. icc:graphs_trees/bst_validate"
+    },
+    {
+      "id": "opendsa-exercises",
+      "title": "OpenDSA exercises and proficiency exercises",
+      "authors": [
+        "OpenDSA project (Cliff Shaffer, Ville Karavirta and contributors)"
+      ],
+      "url": "https://github.com/OpenDSA/OpenDSA",
+      "pin": "40bf936603bdbed0d94a3354bc6aeb265ebf3ea1",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/OpenDSA/OpenDSA/blob/master/MIT-license.txt",
+        "quote": "OpenDSA Project Distributed under the MIT License"
+      },
+      "use": "keyed exercises: ~1650 Khan-style exercise HTML files (multiple choice / short answer with answers) and ~50 DSA proficiency exercises (simulate an algorithm step by step), a fit for the sequence and pick answer types",
+      "format": "Exercises/<topic>/*.html, AV/<topic>/*PRO.{js,html,json}",
+      "locator": "opendsa-exercises:<path without extension>"
+    },
+    {
+      "id": "trekhleb-jsalgo",
+      "title": "JavaScript Algorithms and Data Structures",
+      "authors": [
+        "Oleksii Trekhleb and contributors"
+      ],
+      "url": "https://github.com/trekhleb/javascript-algorithms",
+      "pin": "85293e3e2b88f4d2ce330d956b139cf628aa1e82",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/trekhleb/javascript-algorithms/blob/master/LICENSE",
+        "quote": "The MIT License (MIT) Copyright (c) 2018 Oleksii Trekhleb"
+      },
+      "use": "test cases (JS, jest): __test__ dirs for data structures and algorithms; the READMEs are not used",
+      "format": "src/{data-structures,algorithms}/<area>/<name>/__test__/*.test.js",
+      "locator": "trekhleb-jsalgo:<path>"
+    },
+    {
+      "id": "keon-algorithms",
+      "title": "keon/algorithms (Pythonic data structures and algorithms)",
+      "authors": [
+        "Keon Kim and contributors"
+      ],
+      "url": "https://github.com/keon/algorithms",
+      "pin": "bd1d152f9ec7331c69be662831610b003b10fc7a",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/keon/algorithms/blob/master/LICENSE",
+        "quote": "MIT License Copyright (c) 2017 Keon"
+      },
+      "use": "test cases (Python unittest, ~590 test methods in tests/)",
+      "format": "algorithms/<topic>/*.py, tests/test_<topic>.py",
+      "locator": "keon-algorithms:<path>::<test>"
     }
   ]
 }
