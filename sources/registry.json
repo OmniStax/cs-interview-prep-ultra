@@ -2,52 +2,131 @@
   "about": "The registered corpus. Each source is fetched into sources/_cache/<id>/ by tools/fetch_sources.sh at the pinned version. Licence evidence is quoted from where it was read.",
   "sources": [
     {
-      "id": "cpa", "title": "Algorithms for Competitive Programming (cp-algorithms)", "authors": ["cp-algorithms contributors", "e-maxx (original Russian articles)"],
-      "url": "https://github.com/cp-algorithms/cp-algorithms", "pin": "d55d3f50fcccba5b7d51503baf3099d88597cb77",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://raw.githubusercontent.com/cp-algorithms/cp-algorithms/main/LICENSE", "quote": "Attribution-ShareAlike 4.0 International"},
-      "use": "prose", "format": "Markdown under src/, navigation in src/navigation.md, C++ code",
+      "id": "cpa",
+      "title": "Algorithms for Competitive Programming (cp-algorithms)",
+      "authors": [
+        "cp-algorithms contributors",
+        "e-maxx (original Russian articles)"
+      ],
+      "url": "https://github.com/cp-algorithms/cp-algorithms",
+      "pin": "d55d3f50fcccba5b7d51503baf3099d88597cb77",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://raw.githubusercontent.com/cp-algorithms/cp-algorithms/main/LICENSE",
+        "quote": "Attribution-ShareAlike 4.0 International"
+      },
+      "use": "prose",
+      "format": "Markdown under src/, navigation in src/navigation.md, C++ code",
       "locator": "cpa:<path under src/ without .md>#<heading slug>, e.g. cpa:graph/dijkstra#implementation"
     },
     {
-      "id": "ciu", "title": "Coding Interview University", "authors": ["John Washam"],
-      "url": "https://github.com/jwasham/coding-interview-university", "pin": "2399df2f688ba9fafe11c399cc067d7270921bb1",
-      "licence": "CC BY-SA 4.0", "licence_evidence": {"url": "https://raw.githubusercontent.com/jwasham/coding-interview-university/main/LICENSE.txt", "quote": "Attribution-ShareAlike 4.0 International"},
-      "use": "syllabus and link lists; little prose of its own", "format": "README.md (one long Markdown file)",
+      "id": "ciu",
+      "title": "Coding Interview University",
+      "authors": [
+        "John Washam"
+      ],
+      "url": "https://github.com/jwasham/coding-interview-university",
+      "pin": "2399df2f688ba9fafe11c399cc067d7270921bb1",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://raw.githubusercontent.com/jwasham/coding-interview-university/main/LICENSE.txt",
+        "quote": "Attribution-ShareAlike 4.0 International"
+      },
+      "use": "syllabus and link lists; little prose of its own",
+      "format": "README.md (one long Markdown file)",
       "locator": "ciu:#<heading slug>"
     },
     {
-      "id": "sdp", "title": "The System Design Primer", "authors": ["Donne Martin"],
-      "url": "https://github.com/donnemartin/system-design-primer", "pin": "ae9bbd7b02d90b9866215de185217d33f39ab733",
-      "licence": "CC BY 4.0", "licence_evidence": {"url": "https://github.com/donnemartin/system-design-primer/blob/master/README.md#license", "quote": "Creative Commons Attribution 4.0 International License (CC BY 4.0)"},
-      "use": "prose (the only system design source)", "format": "README.md plus solutions/system_design/<name>/README.md",
+      "id": "sdp",
+      "title": "The System Design Primer",
+      "authors": [
+        "Donne Martin"
+      ],
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "pin": "ae9bbd7b02d90b9866215de185217d33f39ab733",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/donnemartin/system-design-primer/blob/master/README.md#license",
+        "quote": "Creative Commons Attribution 4.0 International License (CC BY 4.0)"
+      },
+      "use": "prose (the only system design source)",
+      "format": "README.md plus solutions/system_design/<name>/README.md",
       "locator": "sdp:#<heading slug> or sdp:solutions/<name>#<heading slug>"
     },
     {
-      "id": "jeffe", "title": "Algorithms (1st edition, June 2019)", "authors": ["Jeff Erickson"],
-      "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/", "pin": "PDFs fetched 2026-11-08",
-      "licence": "CC BY 4.0", "licence_evidence": {"url": "https://jeffe.cs.illinois.edu/teaching/algorithms/", "quote": "The textbook Algorithms (in both paper and electronic forms) is licensed under a Creative Commons Attribution 4.0 International license."},
-      "use": "prose and exercises (mostly unkeyed; the author asks not to be asked for solutions)", "format": "PDF per chapter; text via pdftotext -layout (small-caps algorithm names come out garbled; verbatim conversion needs a better pass)",
+      "id": "jeffe",
+      "title": "Algorithms (1st edition, June 2019)",
+      "authors": [
+        "Jeff Erickson"
+      ],
+      "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+      "pin": "PDFs fetched 2026-11-08",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+        "quote": "The textbook Algorithms (in both paper and electronic forms) is licensed under a Creative Commons Attribution 4.0 International license."
+      },
+      "use": "prose and exercises (mostly unkeyed; the author asks not to be asked for solutions)",
+      "format": "PDF per chapter; text via pdftotext -layout (small-caps algorithm names come out garbled; verbatim conversion needs a better pass)",
       "locator": "jeffe:<chapter number>.<section number>, e.g. jeffe:3.4; exercises jeffe:<chapter>.ex<number>"
     },
     {
-      "id": "jeffe-notes", "title": "Algorithms: extra lecture notes", "authors": ["Jeff Erickson"],
-      "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/", "pin": "PDFs fetched 2026-11-08",
-      "licence": "CC BY-NC-SA 4.0", "licence_evidence": {"url": "https://jeffe.cs.illinois.edu/teaching/algorithms/", "quote": "All other lecture notes are licensed under a more restrictive Attribution-NonCommercial-ShareAlike 4.0 International license."},
-      "use": "NC: prose is link-only; exercises may become NC exercise cards (METHOD.md §0)", "format": "PDF per note (hashing, amortisation, union-find, treaps, strings, ...)",
+      "id": "jeffe-notes",
+      "title": "Algorithms: extra lecture notes",
+      "authors": [
+        "Jeff Erickson"
+      ],
+      "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+      "pin": "PDFs fetched 2026-11-08",
+      "licence": "CC BY-NC-SA 4.0",
+      "licence_evidence": {
+        "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+        "quote": "All other lecture notes are licensed under a more restrictive Attribution-NonCommercial-ShareAlike 4.0 International license."
+      },
+      "use": "NC: prose is link-only; exercises may become NC exercise cards (METHOD.md §0)",
+      "format": "PDF per note (hashing, amortisation, union-find, treaps, strings, ...)",
       "locator": "jeffe-notes:<note file stem>.<section>, e.g. jeffe-notes:11-unionfind.2"
     },
     {
-      "id": "ods", "title": "Open Data Structures", "authors": ["Pat Morin"],
-      "url": "https://github.com/patmorin/ods", "pin": "9d22c44906dda2017b2ef0c762025bee644b58aa",
-      "licence": "CC BY (version to confirm from the edition's copyright page)", "licence_evidence": {"url": "https://opendatastructures.org/", "quote": "The book and accompanying source code are free (libre and gratis) and are released under a Creative Commons Attribution License. Users are free to copy, distribute, use, and adapt the text and source code, even commercially."},
-      "use": "prose and exercises (unkeyed)", "format": "LaTeX under latex/, code in java/ cpp/ python/",
-      "locator": "ods:<tex file stem>#<section label>, e.g. ods:arrays#sec:arraystack"
+      "id": "ods",
+      "title": "Open Data Structures",
+      "authors": [
+        "Pat Morin"
+      ],
+      "url": "https://github.com/patmorin/ods",
+      "pin": "9d22c44906dda2017b2ef0c762025bee644b58aa",
+      "licence": "CC BY 2.5 Canada",
+      "licence_evidence": {
+        "url": "https://opendatastructures.org/",
+        "quote": "The book and accompanying source code are free (libre and gratis) and are released under a Creative Commons Attribution License. Users are free to copy, distribute, use, and adapt the text and source code, even commercially."
+      },
+      "use": "prose and exercises (unkeyed)",
+      "format": "LaTeX under latex/, code in java/ cpp/ python/",
+      "locator": "ods:<tex file stem>#<section label>, e.g. ods:arrays#sec:arraystack",
+      "licence_version_evidence": {
+        "file": "COPYING (covers latex/ and java/ods/)",
+        "quote": "This code is released under a Creative Commons Attribution license. ... http://creativecommons.org/licenses/by/2.5/ca/"
+      },
+      "exclude": [
+        "java/test/acc/",
+        "java/test/jdk/ (Sun and Apache code under their own terms)"
+      ]
     },
     {
-      "id": "exercism", "title": "Exercism problem specifications", "authors": ["Exercism contributors"],
-      "url": "https://github.com/exercism/problem-specifications", "pin": "7b49ec415e9169cce4aa0206d2b51ce66d98b9aa",
-      "licence": "MIT", "licence_evidence": {"url": "https://github.com/exercism/problem-specifications/blob/main/LICENSE", "quote": "The MIT License (MIT) Copyright (c) 2014, 2019, 2021 Exercism"},
-      "use": "code exercises: description.md plus canonical-data.json test cases", "format": "exercises/<slug>/",
+      "id": "exercism",
+      "title": "Exercism problem specifications",
+      "authors": [
+        "Exercism contributors"
+      ],
+      "url": "https://github.com/exercism/problem-specifications",
+      "pin": "7b49ec415e9169cce4aa0206d2b51ce66d98b9aa",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/exercism/problem-specifications/blob/main/LICENSE",
+        "quote": "The MIT License (MIT) Copyright (c) 2014, 2019, 2021 Exercism"
+      },
+      "use": "code exercises: description.md plus canonical-data.json test cases",
+      "format": "exercises/<slug>/",
       "locator": "exercism:<slug>"
     }
   ]

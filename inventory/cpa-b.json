@@ -1,0 +1,5524 @@
+{
+ "source": "cpa",
+ "scope": "Part b of the cp-algorithms inventory: navigation categories Algebra, Linear Algebra, Combinatorics, Numerical Methods, Geometry and Miscellaneous, in navigation order. Article words are prose words with fenced code removed. Prereqs in brackets are concepts taught elsewhere (including cp-algorithms articles outside this scope) or assumed.",
+ "articles": [
+  {
+   "path": "algebra/binary-exp",
+   "title": "Binary Exponentiation",
+   "category": "Algebra",
+   "tier": "core",
+   "words": 2003
+  },
+  {
+   "path": "algebra/euclid-algorithm",
+   "title": "Euclidean algorithm for computing the greatest common divisor",
+   "category": "Algebra",
+   "tier": "core",
+   "words": 898
+  },
+  {
+   "path": "algebra/extended-euclid-algorithm",
+   "title": "Extended Euclidean Algorithm",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 782
+  },
+  {
+   "path": "algebra/linear-diophantine-equation",
+   "title": "Linear Diophantine Equations",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1289
+  },
+  {
+   "path": "algebra/fibonacci-numbers",
+   "title": "Fibonacci Numbers",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1296
+  },
+  {
+   "path": "algebra/sieve-of-eratosthenes",
+   "title": "Sieve of Eratosthenes",
+   "category": "Algebra",
+   "tier": "core",
+   "words": 2064
+  },
+  {
+   "path": "algebra/prime-sieve-linear",
+   "title": "Linear Sieve",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 816
+  },
+  {
+   "path": "algebra/primality_tests",
+   "title": "Primality tests",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1248
+  },
+  {
+   "path": "algebra/factorization",
+   "title": "Integer factorization",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 2084
+  },
+  {
+   "path": "algebra/phi-function",
+   "title": "Euler's totient function",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1587
+  },
+  {
+   "path": "algebra/divisors",
+   "title": "Number of divisors / sum of divisors",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 636
+  },
+  {
+   "path": "algebra/module-inverse",
+   "title": "Modular Inverse",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1049
+  },
+  {
+   "path": "algebra/linear_congruence_equation",
+   "title": "Linear Congruence Equation",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 495
+  },
+  {
+   "path": "algebra/chinese-remainder-theorem",
+   "title": "Chinese Remainder Theorem",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1382
+  },
+  {
+   "path": "algebra/garners-algorithm",
+   "title": "Garner's Algorithm",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 601
+  },
+  {
+   "path": "algebra/factorial-modulo",
+   "title": "Factorial modulo p",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 934
+  },
+  {
+   "path": "algebra/discrete-log",
+   "title": "Discrete Log",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 1009
+  },
+  {
+   "path": "algebra/primitive-root",
+   "title": "Primitive Root",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 733
+  },
+  {
+   "path": "algebra/discrete-root",
+   "title": "Discrete Root",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 472
+  },
+  {
+   "path": "algebra/montgomery_multiplication",
+   "title": "Montgomery Multiplication",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 1162
+  },
+  {
+   "path": "algebra/balanced-ternary",
+   "title": "Balanced Ternary",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 509
+  },
+  {
+   "path": "algebra/gray-code",
+   "title": "Gray code",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 555
+  },
+  {
+   "path": "algebra/bit-manipulation",
+   "title": "Bit manipulation",
+   "category": "Algebra",
+   "tier": "core",
+   "words": 1585
+  },
+  {
+   "path": "algebra/all-submasks",
+   "title": "Enumerating submasks of a bitmask",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 527
+  },
+  {
+   "path": "algebra/big-integer",
+   "title": "Arbitrary-Precision Arithmetic",
+   "category": "Algebra",
+   "tier": "stretch",
+   "words": 1136
+  },
+  {
+   "path": "algebra/fft",
+   "title": "Fast Fourier transform",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 4619
+  },
+  {
+   "path": "algebra/polynomial",
+   "title": "Operations on polynomials and series",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 3976
+  },
+  {
+   "path": "algebra/continued-fractions",
+   "title": "Continued fractions",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 7003
+  },
+  {
+   "path": "algebra/factoring-exp",
+   "title": "Factoring Exponentiation",
+   "category": "Algebra",
+   "tier": "contest",
+   "words": 914
+  },
+  {
+   "path": "linear_algebra/linear-system-gauss",
+   "title": "Gauss & System of Linear Equations",
+   "category": "Linear Algebra",
+   "tier": "contest",
+   "words": 1787
+  },
+  {
+   "path": "linear_algebra/determinant-gauss",
+   "title": "Gauss & Determinant",
+   "category": "Linear Algebra",
+   "tier": "contest",
+   "words": 200
+  },
+  {
+   "path": "linear_algebra/determinant-kraut",
+   "title": "Kraut & Determinant",
+   "category": "Linear Algebra",
+   "tier": "contest",
+   "words": 245
+  },
+  {
+   "path": "linear_algebra/rank-matrix",
+   "title": "Rank of a matrix",
+   "category": "Linear Algebra",
+   "tier": "contest",
+   "words": 228
+  },
+  {
+   "path": "algebra/factorial-divisors",
+   "title": "Finding Power of Factorial Divisor",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 256
+  },
+  {
+   "path": "combinatorics/binomial-coefficients",
+   "title": "Binomial Coefficients",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 1767
+  },
+  {
+   "path": "combinatorics/catalan-numbers",
+   "title": "Catalan Numbers",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 814
+  },
+  {
+   "path": "combinatorics/inclusion-exclusion",
+   "title": "The Inclusion-Exclusion Principle",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 4578
+  },
+  {
+   "path": "combinatorics/burnside",
+   "title": "Burnside's lemma / Pólya enumeration theorem",
+   "category": "Combinatorics",
+   "tier": "contest",
+   "words": 2350
+  },
+  {
+   "path": "combinatorics/stars_and_bars",
+   "title": "Stars and bars",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 556
+  },
+  {
+   "path": "combinatorics/generating_combinations",
+   "title": "Generating all K-combinations",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 714
+  },
+  {
+   "path": "combinatorics/bishops-on-chessboard",
+   "title": "Placing Bishops on a Chessboard",
+   "category": "Combinatorics",
+   "tier": "contest",
+   "words": 376
+  },
+  {
+   "path": "combinatorics/bracket_sequences",
+   "title": "Balanced bracket sequences",
+   "category": "Combinatorics",
+   "tier": "stretch",
+   "words": 1677
+  },
+  {
+   "path": "combinatorics/counting_labeled_graphs",
+   "title": "Counting labeled graphs",
+   "category": "Combinatorics",
+   "tier": "contest",
+   "words": 527
+  },
+  {
+   "path": "num_methods/binary_search",
+   "title": "Binary Search",
+   "category": "Numerical Methods",
+   "tier": "core",
+   "words": 2821
+  },
+  {
+   "path": "num_methods/ternary_search",
+   "title": "Ternary Search",
+   "category": "Numerical Methods",
+   "tier": "stretch",
+   "words": 1267
+  },
+  {
+   "path": "num_methods/roots_newton",
+   "title": "Newton's method for finding roots",
+   "category": "Numerical Methods",
+   "tier": "stretch",
+   "words": 606
+  },
+  {
+   "path": "num_methods/simulated_annealing",
+   "title": "Simulated Annealing",
+   "category": "Numerical Methods",
+   "tier": "contest",
+   "words": 1169
+  },
+  {
+   "path": "num_methods/simpson-integration",
+   "title": "Integration by Simpson's formula",
+   "category": "Numerical Methods",
+   "tier": "contest",
+   "words": 390
+  },
+  {
+   "path": "geometry/basic-geometry",
+   "title": "Basic Geometry",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 2201
+  },
+  {
+   "path": "geometry/segment-to-line",
+   "title": "Finding the equation of a line for a segment",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 787
+  },
+  {
+   "path": "geometry/lines-intersection",
+   "title": "Intersection Point of Lines",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 306
+  },
+  {
+   "path": "geometry/check-segments-intersection",
+   "title": "Check if two segments intersect",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 167
+  },
+  {
+   "path": "geometry/segments-intersection",
+   "title": "Intersection of Segments",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 376
+  },
+  {
+   "path": "geometry/circle-line-intersection",
+   "title": "Circle-Line Intersection",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 529
+  },
+  {
+   "path": "geometry/circle-circle-intersection",
+   "title": "Circle-Circle Intersection",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 297
+  },
+  {
+   "path": "geometry/tangents-to-two-circles",
+   "title": "Common tangents to two circles",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 949
+  },
+  {
+   "path": "geometry/length-of-segments-union",
+   "title": "Length of the union of segments",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 158
+  },
+  {
+   "path": "geometry/oriented-triangle-area",
+   "title": "Oriented area of a triangle",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 236
+  },
+  {
+   "path": "geometry/area-of-simple-polygon",
+   "title": "Area of simple polygon",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 168
+  },
+  {
+   "path": "geometry/point-in-convex-polygon",
+   "title": "Check if points belong to the convex polygon in O(log N)",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 766
+  },
+  {
+   "path": "geometry/minkowski",
+   "title": "Minkowski sum of convex polygons",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 663
+  },
+  {
+   "path": "geometry/picks-theorem",
+   "title": "Pick's Theorem - area of lattice polygons",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 522
+  },
+  {
+   "path": "geometry/lattice-points",
+   "title": "Lattice points of non-lattice polygon",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 798
+  },
+  {
+   "path": "geometry/convex-hull",
+   "title": "Convex hull construction",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 983
+  },
+  {
+   "path": "geometry/convex_hull_trick",
+   "title": "Convex hull trick and Li Chao tree",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 1203
+  },
+  {
+   "path": "geometry/intersecting_segments",
+   "title": "Search for a pair of intersecting segments",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 1078
+  },
+  {
+   "path": "geometry/planar",
+   "title": "Finding faces of a planar graph",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 1031
+  },
+  {
+   "path": "geometry/point-location",
+   "title": "Point location in O(log N)",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 822
+  },
+  {
+   "path": "geometry/nearest_points",
+   "title": "Finding the nearest pair of points",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 3034
+  },
+  {
+   "path": "geometry/delaunay",
+   "title": "Delaunay triangulation and Voronoi diagram",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 953
+  },
+  {
+   "path": "geometry/vertical_decomposition",
+   "title": "Vertical decomposition",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 878
+  },
+  {
+   "path": "geometry/halfplane-intersection",
+   "title": "Half-plane intersection - S&I Algorithm in O(N log N)",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 3301
+  },
+  {
+   "path": "geometry/manhattan-distance",
+   "title": "Manhattan Distance",
+   "category": "Geometry",
+   "tier": "stretch",
+   "words": 1731
+  },
+  {
+   "path": "geometry/enclosing-circle",
+   "title": "Minimum Enclosing Circle",
+   "category": "Geometry",
+   "tier": "contest",
+   "words": 1660
+  },
+  {
+   "path": "sequences/rmq",
+   "title": "RMQ task (Range Minimum Query - the smallest element in an interval)",
+   "category": "Miscellaneous",
+   "tier": "stretch",
+   "words": 361
+  },
+  {
+   "path": "others/maximum_average_segment",
+   "title": "Search the subsegment with the maximum/minimum sum",
+   "category": "Miscellaneous",
+   "tier": "core",
+   "words": 1455
+  },
+  {
+   "path": "sequences/k-th",
+   "title": "K-th order statistic in O(N)",
+   "category": "Miscellaneous",
+   "tier": "core",
+   "words": 195
+  },
+  {
+   "path": "sequences/mex",
+   "title": "MEX task (Minimal Excluded element in an array)",
+   "category": "Miscellaneous",
+   "tier": "stretch",
+   "words": 532
+  },
+  {
+   "path": "game_theory/games_on_graphs",
+   "title": "Games on arbitrary graphs",
+   "category": "Miscellaneous",
+   "tier": "contest",
+   "words": 1100
+  },
+  {
+   "path": "game_theory/sprague-grundy-nim",
+   "title": "Sprague-Grundy theorem. Nim",
+   "category": "Miscellaneous",
+   "tier": "contest",
+   "words": 2137
+  },
+  {
+   "path": "schedules/schedule_one_machine",
+   "title": "Scheduling jobs on one machine",
+   "category": "Miscellaneous",
+   "tier": "contest",
+   "words": 654
+  },
+  {
+   "path": "schedules/schedule_two_machines",
+   "title": "Scheduling jobs on two machines",
+   "category": "Miscellaneous",
+   "tier": "contest",
+   "words": 734
+  },
+  {
+   "path": "schedules/schedule-with-completion-duration",
+   "title": "Optimal schedule of jobs given their deadlines and durations",
+   "category": "Miscellaneous",
+   "tier": "stretch",
+   "words": 309
+  },
+  {
+   "path": "others/tortoise_and_hare",
+   "title": "Tortoise and Hare Algorithm (Linked List cycle detection)",
+   "category": "Miscellaneous",
+   "tier": "core",
+   "words": 783
+  },
+  {
+   "path": "others/josephus_problem",
+   "title": "Josephus problem",
+   "category": "Miscellaneous",
+   "tier": "stretch",
+   "words": 1139
+  },
+  {
+   "path": "others/15-puzzle",
+   "title": "15 Puzzle Game: Existence Of The Solution",
+   "category": "Miscellaneous",
+   "tier": "contest",
+   "words": 366
+  },
+  {
+   "path": "others/stern_brocot_tree_farey_sequences",
+   "title": "The Stern-Brocot Tree and Farey Sequences",
+   "category": "Miscellaneous",
+   "tier": "contest",
+   "words": 1800
+  }
+ ],
+ "concepts": [
+  {
+   "id": "cpa:binary-exponentiation",
+   "name": "Binary exponentiation",
+   "kind": "result",
+   "statement": "Writing the exponent n in binary and squaring repeatedly, a^n is the product of the squares a^(2^i) for the set bits of n, so it takes O(log n) multiplications instead of O(n).",
+   "locator": "cpa:algebra/binary-exp#algorithm",
+   "prereqs": [],
+   "aliases": [
+    "exponentiation by squaring",
+    "fast power"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 14 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:associative-power",
+   "name": "Binary exponentiation for any associative operation",
+   "kind": "idea",
+   "statement": "The squaring trick needs only associativity, so it applies to modular multiplication, matrix multiplication, permutation composition and other monoids, not just numbers.",
+   "locator": "cpa:algebra/binary-exp#binary-exponentiation",
+   "prereqs": [
+    "cpa:binary-exponentiation"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-exp-iterative",
+   "name": "Iterative binary exponentiation",
+   "kind": "skill",
+   "statement": "The loop version keeps a running square of a, multiplies it into the result whenever the low bit of n is set, and shifts n right; it does the same work as the recursion without call overhead.",
+   "locator": "cpa:algebra/binary-exp#implementation",
+   "prereqs": [
+    "cpa:binary-exponentiation"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:modular-exponentiation",
+   "name": "Modular exponentiation",
+   "kind": "skill",
+   "statement": "Because (a*b) mod m = ((a mod m)(b mod m)) mod m, x^n mod m is computed by binary exponentiation with every multiplication reduced mod m.",
+   "locator": "cpa:algebra/binary-exp#effective-computation-of-large-exponents-modulo-a-number",
+   "prereqs": [
+    "cpa:binary-exponentiation",
+    "[modular arithmetic]"
+   ],
+   "aliases": [
+    "powmod"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:permutation-power",
+   "name": "Applying a permutation k times",
+   "kind": "skill",
+   "statement": "Raising a permutation to the k-th power by binary exponentiation of composition applies it k times in O(n log k); decomposing into cycles does it in O(n).",
+   "locator": "cpa:algebra/binary-exp#applying-a-permutation-k-times",
+   "prereqs": [
+    "cpa:associative-power"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:transformation-matrix-power",
+   "name": "Geometric transformations as matrix powers",
+   "kind": "idea",
+   "statement": "Shifts, scalings and rotations are linear maps in homogeneous coordinates (4x4 matrices), so a nested loop of transformations is a matrix product raised to a power by binary exponentiation.",
+   "locator": "cpa:algebra/binary-exp#fast-application-of-a-set-of-geometric-operations-to-a-set-of-points",
+   "prereqs": [
+    "cpa:associative-power",
+    "[matrix multiplication]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:paths-length-k-matrix",
+   "name": "Counting paths of length k by adjacency-matrix power",
+   "kind": "result",
+   "statement": "Entry (u,v) of the k-th power of the adjacency matrix counts walks of length k from u to v, computable in O(n^3 log k).",
+   "locator": "cpa:algebra/binary-exp#number-of-paths-of-length-k-in-a-graph",
+   "prereqs": [
+    "cpa:associative-power",
+    "[adjacency matrix]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-multiplication-mod",
+   "name": "Binary multiplication modulo m",
+   "kind": "skill",
+   "statement": "a*b mod m without 128-bit overflow: the same doubling scheme with additions instead of multiplications gives the product in O(log b) steps.",
+   "locator": "cpa:algebra/binary-exp#variation-of-binary-exponentiation-multiplying-two-numbers-modulo-m",
+   "prereqs": [
+    "cpa:binary-exponentiation"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gcd-definition",
+   "name": "Greatest common divisor",
+   "kind": "definition",
+   "statement": "gcd(a,b) is the largest k > 0 dividing both a and b, with gcd(a,0)=a.",
+   "locator": "cpa:algebra/euclid-algorithm#euclidean-algorithm-for-computing-the-greatest-common-divisor",
+   "prereqs": [
+    "[divisibility]"
+   ],
+   "aliases": [
+    "GCD"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:euclidean-algorithm",
+   "name": "Euclidean algorithm",
+   "kind": "result",
+   "statement": "gcd(a,b) = gcd(b, a mod b) because the pairs share the same common divisors, and recursing until b = 0 yields the GCD.",
+   "locator": "cpa:algebra/euclid-algorithm#algorithm",
+   "prereqs": [
+    "cpa:gcd-definition"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 2 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:lame-theorem",
+   "name": "Lame's theorem: Euclid runs in O(log min(a,b))",
+   "kind": "result",
+   "statement": "If b < F_n the Euclidean algorithm makes at most n-2 recursive calls, with consecutive Fibonacci numbers as the worst case, so it takes O(log min(a,b)) steps.",
+   "locator": "cpa:algebra/euclid-algorithm#time-complexity",
+   "prereqs": [
+    "cpa:euclidean-algorithm",
+    "cpa:fibonacci-definition"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lcm-via-gcd",
+   "name": "Least common multiple via GCD",
+   "kind": "result",
+   "statement": "lcm(a,b) = a*b / gcd(a,b); computing a / gcd(a,b) * b first avoids overflow.",
+   "locator": "cpa:algebra/euclid-algorithm#least-common-multiple",
+   "prereqs": [
+    "cpa:euclidean-algorithm"
+   ],
+   "aliases": [
+    "LCM"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-gcd",
+   "name": "Binary GCD (Stein's algorithm)",
+   "kind": "result",
+   "statement": "Using gcd(2a,2b)=2gcd(a,b), gcd(2a,b)=gcd(a,b) for odd b and gcd(a,b)=gcd(a-b,b), the GCD can be computed with shifts and subtractions only, avoiding slow modulo.",
+   "locator": "cpa:algebra/euclid-algorithm#binary-gcd",
+   "prereqs": [
+    "cpa:euclidean-algorithm",
+    "[bit shifts]"
+   ],
+   "aliases": [
+    "Stein's algorithm"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bezout-identity",
+   "name": "Bezout's identity",
+   "kind": "result",
+   "statement": "For integers a and b there exist integers x, y with a*x + b*y = gcd(a,b), and gcd(a,b) is the smallest positive integer of that form.",
+   "locator": "cpa:algebra/extended-euclid-algorithm#extended-euclidean-algorithm",
+   "prereqs": [
+    "cpa:gcd-definition"
+   ],
+   "aliases": [
+    "Bezout's lemma"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:extended-euclidean",
+   "name": "Extended Euclidean algorithm",
+   "kind": "result",
+   "statement": "Back-substituting through the Euclidean recursion, from (x,y)=(1,0) at b=0 via x = y1, y = x1 - y1*floor(a/b), produces Bezout coefficients along with the GCD.",
+   "locator": "cpa:algebra/extended-euclid-algorithm#algorithm",
+   "prereqs": [
+    "cpa:euclidean-algorithm",
+    "cpa:bezout-identity"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 3 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:extended-euclidean-iterative",
+   "name": "Iterative extended Euclid",
+   "kind": "skill",
+   "statement": "Coefficient pairs are kept as invariants a1 = a*x + b*y alongside the iterative Euclid loop, so the extended version runs without recursion.",
+   "locator": "cpa:algebra/extended-euclid-algorithm#iterative-version",
+   "prereqs": [
+    "cpa:extended-euclidean"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:linear-diophantine",
+   "name": "Linear Diophantine equation in two variables",
+   "kind": "definition",
+   "statement": "An equation a*x + b*y = c in unknown integers x, y; a = b = 0 is degenerate (no or infinitely many solutions).",
+   "locator": "cpa:algebra/linear-diophantine-equation#linear-diophantine-equation",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 6 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:diophantine-solvability",
+   "name": "Solvability and one solution of ax+by=c",
+   "kind": "result",
+   "statement": "ax+by=c has a solution iff g = gcd(a,b) divides c; scaling the extended-Euclid coefficients by c/g gives one, with sign fixes for negative a, b.",
+   "locator": "cpa:algebra/linear-diophantine-equation#algorithmic-solution",
+   "prereqs": [
+    "cpa:linear-diophantine",
+    "cpa:extended-euclidean"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:diophantine-all-solutions",
+   "name": "General solution of a linear Diophantine equation",
+   "kind": "result",
+   "statement": "All solutions are x = x0 + k*b/g, y = y0 - k*a/g for integer k.",
+   "locator": "cpa:algebra/linear-diophantine-equation#getting-all-solutions",
+   "prereqs": [
+    "cpa:diophantine-solvability"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:diophantine-count-in-range",
+   "name": "Counting Diophantine solutions in a box",
+   "kind": "skill",
+   "statement": "Shifting a solution with the general form to the bounds [minx,maxx] and [miny,maxy] and intersecting the resulting ranges of k counts and lists the solutions in the box.",
+   "locator": "cpa:algebra/linear-diophantine-equation#finding-the-number-of-solutions-and-the-solutions-in-a-given-interval",
+   "prereqs": [
+    "cpa:diophantine-all-solutions"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:diophantine-min-sum",
+   "name": "Diophantine solution minimising x+y",
+   "kind": "skill",
+   "statement": "x+y changes by k(b-a)/g along the solution family, so the extreme is at an end of the allowed range of k.",
+   "locator": "cpa:algebra/linear-diophantine-equation#find-the-solution-with-minimum-value-of-x-y",
+   "prereqs": [
+    "cpa:diophantine-all-solutions"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fibonacci-definition",
+   "name": "Fibonacci numbers",
+   "kind": "definition",
+   "statement": "F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}.",
+   "locator": "cpa:algebra/fibonacci-numbers#fibonacci-numbers",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 14 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:fibonacci-identities",
+   "name": "Fibonacci identities",
+   "kind": "result",
+   "statement": "Cassini's identity F_{n-1}F_{n+1} - F_n^2 = (-1)^n, the addition rule F_{n+k} = F_k F_{n+1} + F_{k-1} F_n, F_{2n} divisibility facts and gcd(F_m,F_n) = F_{gcd(m,n)}.",
+   "locator": "cpa:algebra/fibonacci-numbers#properties",
+   "prereqs": [
+    "cpa:fibonacci-definition"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:zeckendorf-fibonacci-coding",
+   "name": "Zeckendorf representation and Fibonacci coding",
+   "kind": "result",
+   "statement": "Every natural number is uniquely a sum of non-consecutive Fibonacci numbers (found greedily), giving a prefix code terminated by \"11\".",
+   "locator": "cpa:algebra/fibonacci-numbers#fibonacci-coding",
+   "prereqs": [
+    "cpa:fibonacci-definition"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binet-formula",
+   "name": "Binet's formula",
+   "kind": "result",
+   "statement": "F_n = (phi^n - psi^n)/sqrt5 with phi = (1+sqrt5)/2; since |psi^n/sqrt5| < 1/2, F_n is phi^n/sqrt5 rounded, though floating precision limits its use.",
+   "locator": "cpa:algebra/fibonacci-numbers#closed-form-expression",
+   "prereqs": [
+    "cpa:fibonacci-definition"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fibonacci-iterative",
+   "name": "Fibonacci in linear time",
+   "kind": "skill",
+   "statement": "Keeping only the last two values, F_n is computed in O(n) time and O(1) memory.",
+   "locator": "cpa:algebra/fibonacci-numbers#fibonacci-in-linear-time",
+   "prereqs": [
+    "cpa:fibonacci-definition"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fibonacci-matrix",
+   "name": "Fibonacci via matrix exponentiation",
+   "kind": "result",
+   "statement": "[[1,1],[1,0]]^n = [[F_{n+1},F_n],[F_n,F_{n-1}]], so F_n is computed in O(log n) by binary exponentiation of a 2x2 matrix.",
+   "locator": "cpa:algebra/fibonacci-numbers#matrix-form",
+   "prereqs": [
+    "cpa:fibonacci-definition",
+    "cpa:associative-power"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fibonacci-fast-doubling",
+   "name": "Fast doubling for Fibonacci",
+   "kind": "result",
+   "statement": "F_{2k} = F_k(2F_{k+1} - F_k) and F_{2k+1} = F_{k+1}^2 + F_k^2 give (F_n, F_{n+1}) recursively in O(log n) with fewer multiplications than the matrix power.",
+   "locator": "cpa:algebra/fibonacci-numbers#fast-doubling-method",
+   "prereqs": [
+    "cpa:fibonacci-matrix"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:pisano-period",
+   "name": "Periodicity of Fibonacci modulo p",
+   "kind": "result",
+   "statement": "There are at most p^2 pairs of residues, so by pigeonhole the Fibonacci sequence mod p is periodic, with period at most p^2 (the Pisano period).",
+   "locator": "cpa:algebra/fibonacci-numbers#periodicity-modulo-p",
+   "prereqs": [
+    "cpa:fibonacci-definition",
+    "[pigeonhole principle]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sieve-of-eratosthenes",
+   "name": "Sieve of Eratosthenes",
+   "kind": "result",
+   "statement": "Marking the multiples of each prime as composite, starting from its square, leaves exactly the primes in [2, n].",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#sieve-of-eratosthenes",
+   "prereqs": [
+    "[prime numbers]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 19 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:sieve-complexity",
+   "name": "Sieve runs in O(n log log n)",
+   "kind": "result",
+   "statement": "The work is n times the sum of 1/p over primes p <= n, which is about n ln ln n by the prime number theorem; a cruder harmonic bound gives O(n log n).",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#asymptotic-analysis",
+   "prereqs": [
+    "cpa:sieve-of-eratosthenes",
+    "[harmonic series]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sieve-till-root",
+   "name": "Sieving only by primes up to sqrt(n)",
+   "kind": "idea",
+   "statement": "Every composite <= n has a prime factor <= sqrt(n), so sieving by those primes suffices; it saves operations without changing the asymptotics.",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#sieving-till-root",
+   "prereqs": [
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sieve-odd-only",
+   "name": "Odd-only sieve",
+   "kind": "skill",
+   "statement": "Storing and sieving only odd numbers halves memory and roughly halves the work.",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#sieving-by-the-odd-numbers-only",
+   "prereqs": [
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sieve-bit-packing",
+   "name": "Bit-packed sieve and memory trade-offs",
+   "kind": "skill",
+   "statement": "vector<bool> or bitset stores one bit per number, cutting memory eightfold at the cost of slower bit access; which is faster depends on cache behaviour.",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#memory-consumption-and-speed-of-operations",
+   "prereqs": [
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:segmented-sieve",
+   "name": "Segmented sieve",
+   "kind": "result",
+   "statement": "Using the primes up to sqrt(n), the range is sieved block by block of size about sqrt(n), giving O(sqrt n) memory and better cache use for the same total work.",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#segmented-sieve",
+   "prereqs": [
+    "cpa:sieve-till-root"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:primes-in-range",
+   "name": "Primes in a range [L, R]",
+   "kind": "skill",
+   "statement": "Primes up to sqrt(R) mark composites in [L,R] directly, finding all primes in a short interval with very large R in O((R-L+1) log log R + sqrt R).",
+   "locator": "cpa:algebra/sieve-of-eratosthenes#find-primes-in-range",
+   "prereqs": [
+    "cpa:segmented-sieve"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:linear-sieve",
+   "name": "Linear sieve",
+   "kind": "result",
+   "statement": "For each i, multiplying i by each found prime p <= lp[i] sets lp[i*p] = p; every composite is reached exactly once via its least prime factor, giving primes and least prime factors in O(n).",
+   "locator": "cpa:algebra/prime-sieve-linear#algorithm",
+   "prereqs": [
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [
+    "Euler sieve"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list. Overlaps sieve-of-eratosthenes#linear-time-modification (a pointer only)."
+  },
+  {
+   "id": "cpa:linear-sieve-proof",
+   "name": "Each composite is marked exactly once",
+   "kind": "result",
+   "statement": "Writing i = lp[i]*x uniquely with lp[i] <= lp[x], the sieve visits i only from x with prime lp[i], so every lp value is set once.",
+   "locator": "cpa:algebra/prime-sieve-linear#correctness-proof",
+   "prereqs": [
+    "cpa:linear-sieve"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:least-prime-factor-table",
+   "name": "Least prime factor table for fast factorisation",
+   "kind": "idea",
+   "statement": "The lp[] array costs more memory than a bit sieve but lets any number up to n be factored in O(number of prime factors) by repeated division.",
+   "locator": "cpa:algebra/prime-sieve-linear#runtime-and-memory",
+   "prereqs": [
+    "cpa:linear-sieve"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:primality-trial-division",
+   "name": "Primality by trial division",
+   "kind": "result",
+   "statement": "A composite n has a divisor d <= sqrt(n), so testing divisors up to sqrt(n) decides primality in O(sqrt n).",
+   "locator": "cpa:algebra/primality_tests#trial-division",
+   "prereqs": [
+    "[prime numbers]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 2 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:fermat-primality-test",
+   "name": "Fermat primality test",
+   "kind": "result",
+   "statement": "If a^(n-1) is not 1 mod n for some base a, n is composite; random bases make a probabilistic test, defeated by Carmichael numbers.",
+   "locator": "cpa:algebra/primality_tests#fermat-primality-test",
+   "prereqs": [
+    "cpa:modular-exponentiation",
+    "cpa:fermat-little-theorem"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:miller-rabin",
+   "name": "Miller-Rabin primality test",
+   "kind": "result",
+   "statement": "Writing n-1 = 2^s d, a prime n gives a^d = 1 or a^(2^r d) = -1 mod n for some r < s; a base violating this proves n composite, and a fixed base set (the first 12 primes) is deterministic for 64-bit n.",
+   "locator": "cpa:algebra/primality_tests#miller-rabin-primality-test",
+   "prereqs": [
+    "cpa:fermat-primality-test"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:factorization-trial-division",
+   "name": "Prime factorisation by trial division",
+   "kind": "result",
+   "statement": "Dividing out each d from 2 to sqrt(n) yields the prime factorisation in O(sqrt n); whatever remains above 1 is prime.",
+   "locator": "cpa:algebra/factorization#trial-division",
+   "prereqs": [
+    "cpa:primality-trial-division"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 4 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:wheel-factorization",
+   "name": "Wheel factorisation",
+   "kind": "skill",
+   "statement": "After removing small primes (2, 3, 5...), only candidates coprime to their product need testing, skipping a fixed pattern of residues.",
+   "locator": "cpa:algebra/factorization#wheel-factorization",
+   "prereqs": [
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:factor-by-precomputed-primes",
+   "name": "Trial division by precomputed primes",
+   "kind": "skill",
+   "statement": "Sieving primes up to sqrt(n) first and dividing only by them is the limit of the wheel idea.",
+   "locator": "cpa:algebra/factorization#precomputed-primes",
+   "prereqs": [
+    "cpa:factorization-trial-division",
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fermat-factorization",
+   "name": "Fermat's factorisation method",
+   "kind": "result",
+   "statement": "An odd n = pq is a difference of squares ((p+q)/2)^2 - ((p-q)/2)^2, so searching a >= sqrt(n) for square a^2 - n finds factors fast when they are close.",
+   "locator": "cpa:algebra/factorization#fermats-factorization-method",
+   "prereqs": [
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:pollard-p-minus-1",
+   "name": "Pollard's p-1 method",
+   "kind": "result",
+   "statement": "If p-1 is B-powersmooth for a prime factor p, then with M the product of prime powers up to B, gcd(a^M - 1, n) reveals p.",
+   "locator": "cpa:algebra/factorization#pollards-p-1-method",
+   "prereqs": [
+    "cpa:fermat-little-theorem",
+    "cpa:euclidean-algorithm",
+    "cpa:modular-exponentiation"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:pollard-rho",
+   "name": "Pollard's rho algorithm",
+   "kind": "result",
+   "statement": "The pseudo-random sequence x -> x^2 + c mod n cycles mod a factor p after about sqrt(p) steps, so a cycle-finding gcd(|x_i - x_j|, n) exposes p in expected O(n^(1/4)) evaluations.",
+   "locator": "cpa:algebra/factorization#pollards-rho-algorithm",
+   "prereqs": [
+    "cpa:euclidean-algorithm",
+    "cpa:floyd-cycle-detection"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:brent-cycle-finding",
+   "name": "Brent's cycle-finding in Pollard rho",
+   "kind": "skill",
+   "statement": "Advancing the reference pointer at powers of two and batching gcd computations over products of differences cuts function evaluations relative to Floyd's method.",
+   "locator": "cpa:algebra/factorization#brents-algorithm",
+   "prereqs": [
+    "cpa:pollard-rho"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:euler-totient",
+   "name": "Euler's totient function",
+   "kind": "definition",
+   "statement": "phi(n) counts integers in [1, n] coprime to n.",
+   "locator": "cpa:algebra/phi-function#eulers-totient-function",
+   "prereqs": [
+    "cpa:gcd-definition"
+   ],
+   "aliases": [
+    "phi function"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 23 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:totient-formula",
+   "name": "Totient product formula",
+   "kind": "result",
+   "statement": "phi(p^k) = p^k - p^(k-1) and phi is multiplicative, so phi(n) = n * prod over primes p | n of (1 - 1/p).",
+   "locator": "cpa:algebra/phi-function#properties",
+   "prereqs": [
+    "cpa:euler-totient",
+    "cpa:multiplicative-function"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:totient-by-factorization",
+   "name": "Computing phi(n) by factorisation",
+   "kind": "skill",
+   "statement": "Trial-dividing n and applying result -= result/p for each distinct prime factor gives phi(n) in O(sqrt n).",
+   "locator": "cpa:algebra/phi-function#implementation",
+   "prereqs": [
+    "cpa:totient-formula",
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:totient-sieve",
+   "name": "Totients of 1..n by sieve",
+   "kind": "skill",
+   "statement": "For each prime p, every multiple has phi[i] -= phi[i]/p, giving all totients up to n in O(n log log n).",
+   "locator": "cpa:algebra/phi-function#etf_1_to_n",
+   "prereqs": [
+    "cpa:totient-formula",
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:totient-divisor-sum",
+   "name": "Gauss's divisor-sum identity",
+   "kind": "result",
+   "statement": "Sum over d | n of phi(d) = n, which also gives an O(n log n) way to compute all totients by subtracting phi(i) from multiples of i.",
+   "locator": "cpa:algebra/phi-function#divsum",
+   "prereqs": [
+    "cpa:euler-totient"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:euler-theorem",
+   "name": "Euler's theorem",
+   "kind": "result",
+   "statement": "a^phi(m) = 1 mod m when gcd(a,m) = 1; consequently a^n = a^(n mod phi(m)) mod m for coprime a, m.",
+   "locator": "cpa:algebra/phi-function#application",
+   "prereqs": [
+    "cpa:euler-totient"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fermat-little-theorem",
+   "name": "Fermat's little theorem",
+   "kind": "result",
+   "statement": "For prime p and a not divisible by p, a^(p-1) = 1 mod p; the special case of Euler's theorem with phi(p) = p-1.",
+   "locator": "cpa:algebra/phi-function#application",
+   "prereqs": [
+    "cpa:euler-theorem"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:generalized-euler-theorem",
+   "name": "Exponent reduction for non-coprime bases",
+   "kind": "result",
+   "statement": "For any x, m and n >= log2 m, x^n = x^(phi(m) + (n mod phi(m))) mod m, which lets towers of exponents be reduced mod phi(m).",
+   "locator": "cpa:algebra/phi-function#generalization",
+   "prereqs": [
+    "cpa:euler-theorem"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:number-of-divisors",
+   "name": "Number of divisors formula",
+   "kind": "result",
+   "statement": "If n = prod p_i^e_i then d(n) = prod (e_i + 1), since a divisor picks an exponent 0..e_i for each prime.",
+   "locator": "cpa:algebra/divisors#number-of-divisors",
+   "prereqs": [
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 3 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:sum-of-divisors",
+   "name": "Sum of divisors formula",
+   "kind": "result",
+   "statement": "sigma(n) = prod (p_i^(e_i+1) - 1)/(p_i - 1), a product of geometric series over the prime powers.",
+   "locator": "cpa:algebra/divisors#sum-of-divisors",
+   "prereqs": [
+    "cpa:number-of-divisors"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:multiplicative-function",
+   "name": "Multiplicative functions",
+   "kind": "definition",
+   "statement": "f is multiplicative if f(ab) = f(a)f(b) for coprime a, b; d(n), sigma(n) and phi(n) are examples, and Dirichlet convolution preserves the property.",
+   "locator": "cpa:algebra/divisors#multiplicative-functions",
+   "prereqs": [
+    "cpa:gcd-definition"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:modular-inverse",
+   "name": "Modular multiplicative inverse",
+   "kind": "definition",
+   "statement": "x is an inverse of a mod m if a*x = 1 mod m; it exists iff gcd(a, m) = 1 and is then unique mod m.",
+   "locator": "cpa:algebra/module-inverse#definition",
+   "prereqs": [
+    "[modular arithmetic]",
+    "cpa:gcd-definition"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 6 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:inverse-by-extended-euclid",
+   "name": "Inverse via extended Euclid",
+   "kind": "skill",
+   "statement": "Solving a*x + m*y = 1 with the extended Euclidean algorithm gives x mod m as the inverse, in O(log m).",
+   "locator": "cpa:algebra/module-inverse#finding-the-modular-inverse-using-extended-euclidean-algorithm",
+   "prereqs": [
+    "cpa:modular-inverse",
+    "cpa:extended-euclidean"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:inverse-by-fermat",
+   "name": "Inverse via Fermat/Euler",
+   "kind": "skill",
+   "statement": "By Euler's theorem a^(phi(m)-1) is the inverse; for prime m this is a^(m-2) mod m by binary exponentiation.",
+   "locator": "cpa:algebra/module-inverse#finding-the-modular-inverse-using-binary-exponentiation",
+   "prereqs": [
+    "cpa:modular-inverse",
+    "cpa:fermat-little-theorem",
+    "cpa:modular-exponentiation"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:inverse-recurrence-prime",
+   "name": "Linear-time inverses of 1..m-1 mod prime",
+   "kind": "result",
+   "statement": "From m = k*a + r, inv[a] = -floor(m/a) * inv[m mod a] mod m, which fills a table of all inverses in O(m).",
+   "locator": "cpa:algebra/module-inverse#finding-the-modular-inverse-for-prime-moduli-using-euclidean-division",
+   "prereqs": [
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:batch-inverse",
+   "name": "Batch inversion with prefix products",
+   "kind": "skill",
+   "statement": "Inverting the product of all elements once and peeling off with prefix and suffix products gives every element's inverse with a single modular inversion and O(n) multiplications.",
+   "locator": "cpa:algebra/module-inverse#finding-the-modular-inverse-for-array-of-numbers-modulo-m",
+   "prereqs": [
+    "cpa:modular-inverse",
+    "[prefix products]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:linear-congruence",
+   "name": "Linear congruence a*x = b (mod n)",
+   "kind": "definition",
+   "statement": "Find x in [0, n-1] with a*x congruent to b mod n.",
+   "locator": "cpa:algebra/linear_congruence_equation#linear-congruence-equation",
+   "prereqs": [
+    "[modular arithmetic]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:linear-congruence-solution",
+   "name": "Solving a linear congruence",
+   "kind": "result",
+   "statement": "If gcd(a,n) = 1 the unique solution is x = b*a^-1 mod n; otherwise with g = gcd(a,n) there are no solutions unless g | b, and then exactly g solutions spaced n/g apart, from the reduced congruence.",
+   "locator": "cpa:algebra/linear_congruence_equation#solution-by-finding-the-inverse-element",
+   "prereqs": [
+    "cpa:linear-congruence",
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:linear-congruence-via-diophantine",
+   "name": "Linear congruence as a Diophantine equation",
+   "kind": "idea",
+   "statement": "a*x = b mod n is a*x + n*k = b, so extended Euclid gives a solution and the Diophantine general solution gives the rest.",
+   "locator": "cpa:algebra/linear_congruence_equation#solution-with-the-extended-euclidean-algorithm",
+   "prereqs": [
+    "cpa:linear-congruence",
+    "cpa:diophantine-all-solutions"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:crt-statement",
+   "name": "Chinese Remainder Theorem",
+   "kind": "result",
+   "statement": "For pairwise coprime m_1..m_k, a system a = a_i mod m_i has exactly one solution mod m = m_1*...*m_k; equivalently Z_m is isomorphic to the product of the Z_{m_i}.",
+   "locator": "cpa:algebra/chinese-remainder-theorem#formulation",
+   "prereqs": [
+    "[modular arithmetic]",
+    "cpa:gcd-definition"
+   ],
+   "aliases": [
+    "CRT"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 3 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:crt-two-moduli",
+   "name": "CRT for two moduli",
+   "kind": "skill",
+   "statement": "With Bezout coefficients n1*m1 + n2*m2 = 1, a = a1*n2*m2 + a2*n1*m1 mod m1*m2 satisfies both congruences.",
+   "locator": "cpa:algebra/chinese-remainder-theorem#solution-for-two-moduli",
+   "prereqs": [
+    "cpa:crt-statement",
+    "cpa:extended-euclidean"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:crt-inductive",
+   "name": "Inductive CRT for many moduli",
+   "kind": "skill",
+   "statement": "Merging congruences two at a time, the product of the first i moduli being coprime to the next, solves any number of congruences.",
+   "locator": "cpa:algebra/chinese-remainder-theorem#inductive-solution",
+   "prereqs": [
+    "cpa:crt-two-moduli"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:crt-direct-construction",
+   "name": "Direct CRT construction",
+   "kind": "result",
+   "statement": "a = sum a_i * M_i * (M_i^-1 mod m_i) mod m, with M_i the product of the other moduli (a Lagrange-interpolation-like formula).",
+   "locator": "cpa:algebra/chinese-remainder-theorem#direct-construction",
+   "prereqs": [
+    "cpa:crt-statement",
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:crt-non-coprime",
+   "name": "CRT with non-coprime moduli",
+   "kind": "result",
+   "statement": "A general system has a unique solution mod lcm(m_i) or none; two congruences are compatible iff a1 = a2 mod gcd(m1, m2), and can be merged by splitting moduli into prime powers or via extended Euclid.",
+   "locator": "cpa:algebra/chinese-remainder-theorem#solution-for-not-coprime-moduli",
+   "prereqs": [
+    "cpa:crt-two-moduli",
+    "cpa:lcm-via-gcd"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:mixed-radix",
+   "name": "Mixed radix representation",
+   "kind": "definition",
+   "statement": "a = x_1 + x_2 p_1 + x_3 p_1 p_2 + ... with digits x_i in [0, p_i), generalising positional number systems.",
+   "locator": "cpa:algebra/garners-algorithm#mixed-radix-representation",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list. Duplicates chinese-remainder-theorem#garners-algorithm and big-integer#long-integer-arithmetic-in-prime-modulos-garner-algorithm, which summarise this article."
+  },
+  {
+   "id": "cpa:garner-algorithm",
+   "name": "Garner's algorithm",
+   "kind": "result",
+   "statement": "From residues a_i = a mod p_i and inverses r_ij = p_i^-1 mod p_j, the mixed-radix digits x_i are found one at a time in O(k^2), reconstructing a without big-number division.",
+   "locator": "cpa:algebra/garners-algorithm#garners-algorithm_1",
+   "prereqs": [
+    "cpa:mixed-radix",
+    "cpa:crt-statement",
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:residue-number-system",
+   "name": "Residue number system for big integers",
+   "kind": "skill",
+   "statement": "Storing a big number as residues modulo many primes makes +, - and * componentwise; Garner converts back to an ordinary integer.",
+   "locator": "cpa:algebra/garners-algorithm#implementation-of-garners-algorithm",
+   "prereqs": [
+    "cpa:garner-algorithm"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:factorial-mod-p-modified",
+   "name": "Factorial with p-factors removed, mod p",
+   "kind": "definition",
+   "statement": "n!_%p is n! with all factors of p removed, taken mod p; it is what remains when the same p-powers cancel between numerator and denominator.",
+   "locator": "cpa:algebra/factorial-modulo#factorial-modulo-p",
+   "prereqs": [
+    "[modular arithmetic]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:factorial-mod-p-recursion",
+   "name": "Computing n! mod p without p-factors",
+   "kind": "result",
+   "statement": "The product splits into floor(n/p) full blocks, each (p-1)! = -1 mod p by Wilson's theorem, a partial block, and (floor(n/p))!_%p recursively, giving O(p + log_p n).",
+   "locator": "cpa:algebra/factorial-modulo#algorithm",
+   "prereqs": [
+    "cpa:factorial-mod-p-modified",
+    "[Wilson's theorem]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:legendre-formula",
+   "name": "Legendre's formula",
+   "kind": "result",
+   "statement": "The exponent of prime p in n! is the sum of floor(n/p^i) for i >= 1, computed in O(log_p n).",
+   "locator": "cpa:algebra/factorial-modulo#multiplicity-of-p",
+   "prereqs": [
+    "[prime factorization]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Same result as factorial-divisors#prime-k (legendre-prime-k there)."
+  },
+  {
+   "id": "cpa:discrete-log-problem",
+   "name": "Discrete logarithm problem",
+   "kind": "definition",
+   "statement": "Find x with a^x = b mod m; a solution need not exist.",
+   "locator": "cpa:algebra/discrete-log#discrete-logarithm",
+   "prereqs": [
+    "[modular arithmetic]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 5 external links (#practice-problems); 2 reference links."
+  },
+  {
+   "id": "cpa:baby-step-giant-step",
+   "name": "Baby-step giant-step",
+   "kind": "result",
+   "statement": "Writing x = n*p - q, the equation becomes (a^n)^p = b*a^q mod m; tabulating one side for all p and matching the other side for all q solves it in O(sqrt m log m) with n near sqrt m.",
+   "locator": "cpa:algebra/discrete-log#algorithm",
+   "prereqs": [
+    "cpa:discrete-log-problem",
+    "cpa:modular-exponentiation",
+    "cpa:meet-in-the-middle-idea"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:meet-in-the-middle-idea",
+   "name": "Meet in the middle (as used in BSGS)",
+   "kind": "idea",
+   "statement": "Splitting an unknown into two halves and matching tabulated values of one half against the other turns an O(m) search into O(sqrt m) work and memory.",
+   "locator": "cpa:algebra/discrete-log#algorithm",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "cp-algorithms has no standalone meet-in-the-middle article in this scope; the idea appears only inside baby-step giant-step."
+  },
+  {
+   "id": "cpa:bsgs-hash",
+   "name": "BSGS with incremental powers and hashing",
+   "kind": "skill",
+   "statement": "Updating powers by one multiplication per step and storing them in a hash table removes the log factors.",
+   "locator": "cpa:algebra/discrete-log#improved-implementation",
+   "prereqs": [
+    "cpa:baby-step-giant-step"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:discrete-log-non-coprime",
+   "name": "Discrete log for non-coprime a and m",
+   "kind": "result",
+   "statement": "Repeatedly dividing out g = gcd(a, m) (checking g | b) reduces the equation to a coprime one with an extra constant factor, which BSGS still handles.",
+   "locator": "cpa:algebra/discrete-log#when-a-and-m-are-not-coprime",
+   "prereqs": [
+    "cpa:baby-step-giant-step"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:primitive-root",
+   "name": "Primitive root modulo n",
+   "kind": "definition",
+   "statement": "g is a primitive root mod n if every number coprime to n is a power of g mod n; equivalently the multiplicative order of g is phi(n).",
+   "locator": "cpa:algebra/primitive-root#definition",
+   "prereqs": [
+    "cpa:euler-totient"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:primitive-root-existence",
+   "name": "Existence of primitive roots",
+   "kind": "result",
+   "statement": "A primitive root mod n exists iff n is 1, 2, 4, p^k or 2p^k for an odd prime p; when one exists there are phi(phi(n)) of them.",
+   "locator": "cpa:algebra/primitive-root#existence",
+   "prereqs": [
+    "cpa:primitive-root"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:find-primitive-root",
+   "name": "Finding a primitive root",
+   "kind": "result",
+   "statement": "g is a primitive root iff g^(phi(n)/p) is not 1 mod n for every prime p dividing phi(n); testing candidates in order finds one quickly.",
+   "locator": "cpa:algebra/primitive-root#algorithm-for-finding-a-primitive-root",
+   "prereqs": [
+    "cpa:primitive-root",
+    "cpa:modular-exponentiation",
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:discrete-root",
+   "name": "Discrete root via primitive root and discrete log",
+   "kind": "result",
+   "statement": "For prime n, writing x = g^y with g a primitive root turns x^k = a into (g^k)^y = a mod n, a discrete log problem.",
+   "locator": "cpa:algebra/discrete-root#the-algorithm",
+   "prereqs": [
+    "cpa:find-primitive-root",
+    "cpa:baby-step-giant-step"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:discrete-root-all-solutions",
+   "name": "All discrete roots from one",
+   "kind": "result",
+   "statement": "Since g has order phi(n), all solutions are x = g^(y0 + i*phi(n)/gcd(k, phi(n))) for integer i.",
+   "locator": "cpa:algebra/discrete-root#finding-all-solutions-from-one-known-solution",
+   "prereqs": [
+    "cpa:discrete-root"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:montgomery-space",
+   "name": "Montgomery representation",
+   "kind": "definition",
+   "statement": "With r = 2^k > n coprime to n, x is represented as x*r mod n; addition is unchanged and the product of representatives needs one division by r.",
+   "locator": "cpa:algebra/montgomery_multiplication#montgomery-representation",
+   "prereqs": [
+    "[modular arithmetic]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:montgomery-reduction",
+   "name": "Montgomery reduction (REDC)",
+   "kind": "result",
+   "statement": "x*r^-1 mod n is computed as (x - (x*n' mod r)*n)/r with n' = n^-1 mod r, using only multiplications, shifts and masks instead of division.",
+   "locator": "cpa:algebra/montgomery_multiplication#montgomery-reduction",
+   "prereqs": [
+    "cpa:montgomery-space",
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:newton-inverse-mod-2k",
+   "name": "Inverse modulo 2^k by Newton iteration",
+   "kind": "skill",
+   "statement": "If a*x = 1 mod 2^k then a*x*(2 - a*x) = 1 mod 2^2k, so a few iterations give n^-1 mod 2^64.",
+   "locator": "cpa:algebra/montgomery_multiplication#fast-inverse-trick",
+   "prereqs": [
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:montgomery-fast-transform",
+   "name": "Fast conversion into Montgomery form",
+   "kind": "skill",
+   "statement": "x*r mod n equals the Montgomery product of x and precomputed r^2 mod n.",
+   "locator": "cpa:algebra/montgomery_multiplication#fast-transformation",
+   "prereqs": [
+    "cpa:montgomery-reduction"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:balanced-ternary",
+   "name": "Balanced ternary",
+   "kind": "definition",
+   "statement": "A base-3 positional system with digits -1, 0, 1 (written Z, 0, 1) that represents negative numbers without a sign.",
+   "locator": "cpa:algebra/balanced-ternary#balanced-ternary",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:balanced-ternary-conversion",
+   "name": "Converting to balanced ternary",
+   "kind": "skill",
+   "statement": "From ordinary ternary, scanning from the lowest digit, a 2 becomes Z with a carry of 1 and a 3 becomes 0 with a carry.",
+   "locator": "cpa:algebra/balanced-ternary#conversion-algorithm",
+   "prereqs": [
+    "cpa:balanced-ternary"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gray-code",
+   "name": "Gray code",
+   "kind": "definition",
+   "statement": "An ordering of binary numbers in which consecutive values differ in exactly one bit.",
+   "locator": "cpa:algebra/gray-code#gray-code",
+   "prereqs": [
+    "[binary numbers]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:gray-code-formula",
+   "name": "G(n) = n xor (n >> 1)",
+   "kind": "result",
+   "statement": "Bit i of G(n) is set exactly when bits i and i+1 of n differ, so G(n) = n ^ (n >> 1).",
+   "locator": "cpa:algebra/gray-code#finding-gray-code",
+   "prereqs": [
+    "cpa:gray-code",
+    "cpa:bitwise-operators"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:inverse-gray-code",
+   "name": "Inverse Gray code",
+   "kind": "result",
+   "statement": "n is recovered from g by prefix xor from the top bit down: n_i = g_i xor n_{i+1}.",
+   "locator": "cpa:algebra/gray-code#finding-inverse-gray-code",
+   "prereqs": [
+    "cpa:gray-code-formula"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gray-code-applications",
+   "name": "Applications of Gray codes",
+   "kind": "idea",
+   "statement": "Gray codes trace a Hamiltonian cycle on the hypercube, reduce sensor and DAC errors, and give the move order in the Towers of Hanoi.",
+   "locator": "cpa:algebra/gray-code#practical-applications",
+   "prereqs": [
+    "cpa:gray-code"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-representation",
+   "name": "Binary representation and two's complement",
+   "kind": "definition",
+   "statement": "An integer is a sum of a_i 2^i; fixed-width signed integers use two's complement, where -x = ~x + 1.",
+   "locator": "cpa:algebra/bit-manipulation#binary-number",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 3 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:bitwise-operators",
+   "name": "Bitwise AND, OR, XOR, NOT",
+   "kind": "definition",
+   "statement": "&, |, ^ and ~ act on each bit position independently; they run as fast as addition on fixed-width integers.",
+   "locator": "cpa:algebra/bit-manipulation#bitwise-operators",
+   "prereqs": [
+    "cpa:binary-representation"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:shift-operators",
+   "name": "Shift operators",
+   "kind": "definition",
+   "statement": "x >> k is floor division by 2^k and x << k is multiplication by 2^k (within the word width).",
+   "locator": "cpa:algebra/bit-manipulation#shift-operators",
+   "prereqs": [
+    "cpa:binary-representation"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:set-clear-flip-bit",
+   "name": "Setting, clearing, flipping and testing a bit",
+   "kind": "skill",
+   "statement": "n | (1<<x) sets bit x, n & ~(1<<x) clears it, n ^ (1<<x) flips it, and (n >> x) & 1 reads it.",
+   "locator": "cpa:algebra/bit-manipulation#setflipclear-a-bit",
+   "prereqs": [
+    "cpa:bitwise-operators",
+    "cpa:shift-operators"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:power-of-two-check",
+   "name": "Power-of-two and divisibility-by-2^k tests",
+   "kind": "skill",
+   "statement": "n > 0 is a power of two iff n & (n-1) = 0, and n is divisible by 2^k iff n & ((1<<k)-1) = 0.",
+   "locator": "cpa:algebra/bit-manipulation#check-if-an-integer-is-a-power-of-2",
+   "prereqs": [
+    "cpa:bitwise-operators"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lowest-set-bit-tricks",
+   "name": "Lowest-set-bit tricks",
+   "kind": "skill",
+   "statement": "n & (n-1) clears the lowest set bit, n & -n isolates it, and n & (n+1) / n | (n+1) clear trailing ones / set the lowest clear bit.",
+   "locator": "cpa:algebra/bit-manipulation#clear-the-right-most-set-bit",
+   "prereqs": [
+    "cpa:bitwise-operators",
+    "cpa:binary-representation"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:kernighan-popcount",
+   "name": "Brian Kernighan's bit counting",
+   "kind": "result",
+   "statement": "Repeatedly clearing the lowest set bit counts set bits in as many iterations as there are ones.",
+   "locator": "cpa:algebra/bit-manipulation#brian-kernighans-algorithm",
+   "prereqs": [
+    "cpa:lowest-set-bit-tricks"
+   ],
+   "aliases": [
+    "popcount"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:count-bits-up-to-n",
+   "name": "Counting set bits over 0..n",
+   "kind": "result",
+   "statement": "Numbers below 2^x contain x*2^(x-1) ones, so the total for 0..n follows from the highest set bit recursively in O(log n).",
+   "locator": "cpa:algebra/bit-manipulation#count-set-bits-upto-n",
+   "prereqs": [
+    "cpa:kernighan-popcount"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:submask-enumeration",
+   "name": "Enumerating submasks",
+   "kind": "skill",
+   "statement": "s = (s-1) & m steps through all submasks of m in decreasing order, visiting 2^popcount(m) of them; the empty submask needs separate handling.",
+   "locator": "cpa:algebra/all-submasks#enumerating-all-submasks-of-a-given-mask",
+   "prereqs": [
+    "cpa:bitwise-operators"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 5 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:submasks-3-to-n",
+   "name": "All masks with all submasks is O(3^n)",
+   "kind": "result",
+   "statement": "Each bit is either absent from m, in m but not s, or in both, so iterating every submask of every n-bit mask takes 3^n steps in total.",
+   "locator": "cpa:algebra/all-submasks#iterating-through-all-masks-with-their-submasks-complexity-o3n",
+   "prereqs": [
+    "cpa:submask-enumeration",
+    "[bitmask DP]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bignum-representation",
+   "name": "Big integers as digit arrays",
+   "kind": "definition",
+   "statement": "A big integer is stored as a little-endian vector of digits in base 10^9, kept without leading zeros.",
+   "locator": "cpa:algebra/big-integer#classical-integer-long-arithmetic",
+   "prereqs": [],
+   "aliases": [
+    "long arithmetic",
+    "bignum"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 14 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:bignum-add-subtract",
+   "name": "Schoolbook big-integer addition and subtraction",
+   "kind": "skill",
+   "statement": "Digit-wise addition with carry, or subtraction with borrow for a >= b, runs in O(n), followed by stripping leading zeros.",
+   "locator": "cpa:algebra/big-integer#addition",
+   "prereqs": [
+    "cpa:bignum-representation"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bignum-multiply",
+   "name": "Big-integer multiplication",
+   "kind": "skill",
+   "statement": "Multiplying by a word-size integer propagates a carry in O(n); multiplying two big integers is the O(nm) schoolbook convolution with carries.",
+   "locator": "cpa:algebra/big-integer#multiplication-by-short-integer",
+   "prereqs": [
+    "cpa:bignum-representation"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bignum-divide-short",
+   "name": "Big integer divided by a short integer",
+   "kind": "skill",
+   "statement": "Long division from the most significant digit, carrying the remainder times the base, gives quotient and remainder in O(n).",
+   "locator": "cpa:algebra/big-integer#division-by-short-integer",
+   "prereqs": [
+    "cpa:bignum-representation"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:factorized-representation",
+   "name": "Numbers stored as prime factorisations",
+   "kind": "idea",
+   "statement": "Storing exponents of primes makes multiplication and division cheap (and suits non-prime moduli) but rules out addition.",
+   "locator": "cpa:algebra/big-integer#long-integer-arithmetic-for-factorization-representation",
+   "prereqs": [
+    "[prime factorization]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bignum-residues",
+   "name": "Big integers as residues modulo primes",
+   "kind": "idea",
+   "statement": "Residues modulo several primes determine a number below their product by CRT; Garner's algorithm restores it.",
+   "locator": "cpa:algebra/big-integer#long-integer-arithmetic-in-prime-modulos-garner-algorithm",
+   "prereqs": [
+    "cpa:crt-statement"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Short summary of the garners-algorithm article."
+  },
+  {
+   "id": "cpa:exact-fractions",
+   "name": "Exact fraction arithmetic",
+   "kind": "skill",
+   "statement": "Rationals are kept as numerator/denominator reduced by the GCD after each operation.",
+   "locator": "cpa:algebra/big-integer#arithmetic-in-irreducible-fractions",
+   "prereqs": [
+    "cpa:euclidean-algorithm"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:separate-exponent-float",
+   "name": "Floating point with a separate exponent",
+   "kind": "skill",
+   "statement": "Keeping the exponent in a separate integer and renormalising the mantissa avoids overflow and underflow beyond double's range.",
+   "locator": "cpa:algebra/big-integer#storing-floating-point-position-as-separate-type",
+   "prereqs": [
+    "[floating-point numbers]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dft",
+   "name": "Discrete Fourier transform",
+   "kind": "definition",
+   "statement": "The DFT of a degree-(n-1) polynomial is its values at the n complex n-th roots of unity.",
+   "locator": "cpa:algebra/fft#discrete-fourier-transform",
+   "prereqs": [
+    "[complex numbers]",
+    "[polynomials]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 12 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:convolution-via-dft",
+   "name": "Polynomial multiplication via pointwise products",
+   "kind": "idea",
+   "statement": "DFT(A*B) = DFT(A) . DFT(B) pointwise, so multiplying polynomials is a forward transform, a pointwise product and an inverse transform; big integers are polynomials in their base.",
+   "locator": "cpa:algebra/fft#application-of-the-dft-fast-multiplication-of-polynomials",
+   "prereqs": [
+    "cpa:dft"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fft",
+   "name": "Fast Fourier transform",
+   "kind": "result",
+   "statement": "Splitting A(x) = A0(x^2) + x A1(x^2) into even and odd coefficients and using w^(k+n/2) = -w^k computes the DFT by divide and conquer in O(n log n).",
+   "locator": "cpa:algebra/fft#fast-fourier-transform_1",
+   "prereqs": [
+    "cpa:dft",
+    "[divide and conquer]"
+   ],
+   "aliases": [
+    "FFT",
+    "Cooley-Tukey"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:inverse-fft",
+   "name": "Inverse FFT",
+   "kind": "result",
+   "statement": "The inverse DFT is the DFT with conjugated roots, divided by n, because the Vandermonde matrix of roots of unity has a scaled conjugate as its inverse.",
+   "locator": "cpa:algebra/fft#inverse-fft",
+   "prereqs": [
+    "cpa:fft"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fft-iterative",
+   "name": "In-place iterative FFT with bit reversal",
+   "kind": "skill",
+   "statement": "Permuting coefficients into bit-reversed order lets butterflies combine adjacent blocks in place, bottom up, avoiding recursion and temporary vectors.",
+   "locator": "cpa:algebra/fft#improved-implementation-in-place-computation",
+   "prereqs": [
+    "cpa:fft"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:ntt",
+   "name": "Number theoretic transform",
+   "kind": "result",
+   "statement": "In Z_p with p = c*2^k + 1 (e.g. 998244353) there are 2^k-th roots of unity, so the FFT runs exactly in modular arithmetic without rounding error.",
+   "locator": "cpa:algebra/fft#number-theoretic-transform",
+   "prereqs": [
+    "cpa:fft",
+    "cpa:primitive-root",
+    "cpa:modular-inverse"
+   ],
+   "aliases": [
+    "NTT"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fft-arbitrary-modulus",
+   "name": "Polynomial multiplication for an arbitrary modulus",
+   "kind": "skill",
+   "statement": "Splitting coefficients into high and low halves (or using three NTT primes and CRT) keeps floating-point FFT products exact for any modulus.",
+   "locator": "cpa:algebra/fft#multiplication-with-arbitrary-modulus",
+   "prereqs": [
+    "cpa:fft",
+    "cpa:crt-statement"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fft-applications",
+   "name": "Problems reduced to convolution",
+   "kind": "idea",
+   "statement": "Counting all pairwise sums a_i + b_j, all cyclic scalar products, stripe fitting, and string matching (with wildcards) via sum (p - t)^2 p t become one or a few polynomial multiplications.",
+   "locator": "cpa:algebra/fft#applications",
+   "prereqs": [
+    "cpa:convolution-via-dft"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:formal-power-series",
+   "name": "Formal power series",
+   "kind": "definition",
+   "statement": "An infinite sum of a_i x^i treated as a coefficient sequence regardless of convergence, with products as convolutions and work done modulo x^k.",
+   "locator": "cpa:algebra/polynomial#formal-power-series",
+   "prereqs": [
+    "[polynomials]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article problem list: 4 external links (#problems). Code is an external library link, not inline."
+  },
+  {
+   "id": "cpa:polynomial-division",
+   "name": "Polynomial Euclidean division",
+   "kind": "result",
+   "statement": "A = D*B + R with deg R < deg B; reversing coefficients turns finding D into a power-series inverse, giving O(n log n).",
+   "locator": "cpa:algebra/polynomial#long-polynomial-division",
+   "prereqs": [
+    "cpa:formal-power-series",
+    "cpa:power-series-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:power-series-inverse",
+   "name": "Power-series inverse by Newton/Hensel lifting",
+   "kind": "result",
+   "statement": "If A(0) != 0, iterating Q <- Q(2 - A Q) mod x^(2k) doubles the number of correct coefficients of 1/A each step, for O(n log n) total.",
+   "locator": "cpa:algebra/polynomial#sievekingkung-algorithm",
+   "prereqs": [
+    "cpa:formal-power-series",
+    "cpa:fft"
+   ],
+   "aliases": [
+    "Sieveking-Kung"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:newton-for-series",
+   "name": "Newton's method on power series",
+   "kind": "result",
+   "statement": "For F(Q) = 0, Q_{k+1} = Q_k - F(Q_k)/F'(Q_k) mod x^(2^(k+1)) (Hensel's lemma), which yields inverse, square root, exp and other functions of a series.",
+   "locator": "cpa:algebra/polynomial#newtons-method",
+   "prereqs": [
+    "cpa:power-series-inverse"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:series-log-exp",
+   "name": "Logarithm, exponent and powers of a series",
+   "kind": "result",
+   "statement": "ln P = integral of P'/P; exp is found by Newton on ln Q - P; and P^k = exp(k ln P) after normalising the lowest term, each in O(n log n).",
+   "locator": "cpa:algebra/polynomial#logarithm",
+   "prereqs": [
+    "cpa:newton-for-series"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:multipoint-evaluation",
+   "name": "Multipoint evaluation and interpolation",
+   "kind": "result",
+   "statement": "Reducing A modulo a segment tree of products (x - x_i) evaluates it at n points in O(n log^2 n); Lagrange interpolation is done in the same time by divide and conquer.",
+   "locator": "cpa:algebra/polynomial#multi-point-evaluation",
+   "prereqs": [
+    "cpa:polynomial-division",
+    "[segment tree]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:chirp-z",
+   "name": "Chirp-z transform",
+   "kind": "result",
+   "statement": "Evaluating at z^(2r) becomes one convolution via 2kr = r^2 + k^2 - (r-k)^2.",
+   "locator": "cpa:algebra/polynomial#chirp-z-transform",
+   "prereqs": [
+    "cpa:convolution-via-dft"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:resultant",
+   "name": "Polynomial GCD and resultant",
+   "kind": "result",
+   "statement": "The resultant (product of A at the roots of B, scaled) is zero iff A and B share a root and can be computed by a Euclid-like recursion; half-GCD brings GCD and resultant to O(n log^2 n).",
+   "locator": "cpa:algebra/polynomial#resultant",
+   "prereqs": [
+    "cpa:polynomial-division",
+    "cpa:euclidean-algorithm"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:continued-fraction",
+   "name": "Continued fraction representation",
+   "kind": "definition",
+   "statement": "r = [a0; a1, ..., ak] = a0 + 1/(a1 + 1/(...)); rationals have finite expansions (two of them), irrationals infinite ones.",
+   "locator": "cpa:algebra/continued-fractions#continued-fraction-representation",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 9 external links (#practice-problems); plus worked problem examples."
+  },
+  {
+   "id": "cpa:continued-fraction-euclid",
+   "name": "Computing a continued fraction by Euclid",
+   "kind": "skill",
+   "statement": "For p/q the next complete quotient is q/(p mod q), so the partial quotients are exactly the Euclidean algorithm's quotients.",
+   "locator": "cpa:algebra/continued-fractions#implementation",
+   "prereqs": [
+    "cpa:continued-fraction",
+    "cpa:euclidean-algorithm"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:convergents",
+   "name": "Convergents and their recurrence",
+   "kind": "result",
+   "statement": "The convergents p_k/q_k = [a0;...;ak] satisfy p_k = a_k p_{k-1} + p_{k-2} and likewise for q_k, with p_k q_{k-1} - p_{k-1} q_k = (-1)^(k-1).",
+   "locator": "cpa:algebra/continued-fractions#convergents",
+   "prereqs": [
+    "cpa:continued-fraction"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:best-rational-approximation",
+   "name": "Best rational approximation",
+   "kind": "result",
+   "statement": "|r - p_k/q_k| <= 1/(q_k q_{k+1}) <= 1/q_k^2, alternating sides; convergents and semiconvergents are the best approximations with bounded denominator.",
+   "locator": "cpa:algebra/continued-fractions#convergence",
+   "prereqs": [
+    "cpa:convergents"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:continued-fractions-stern-brocot",
+   "name": "Stern-Brocot path from a continued fraction",
+   "kind": "result",
+   "statement": "The path to p/q in the Stern-Brocot tree is a run-length encoding of its continued fraction: a0 right moves, a1 left moves and so on.",
+   "locator": "cpa:algebra/continued-fractions#stern-brocot-tree",
+   "prereqs": [
+    "cpa:continued-fraction",
+    "cpa:stern-brocot-tree"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Overlaps others/stern_brocot_tree_farey_sequences."
+  },
+  {
+   "id": "cpa:calkin-wilf-tree",
+   "name": "Calkin-Wilf tree",
+   "kind": "definition",
+   "statement": "A binary tree rooted at 1/1 where p/q has children p/(p+q) and (p+q)/q; it contains every positive rational once.",
+   "locator": "cpa:algebra/continued-fractions#calkin-wilf-tree",
+   "prereqs": [
+    "cpa:continued-fraction"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:linear-fractional-transformation",
+   "name": "Linear fractional transformations",
+   "kind": "result",
+   "statement": "Maps x -> (ax+b)/(cx+d) compose like 2x2 matrices, and a continued fraction is a composition of x -> a_k + 1/x, which gives algorithms for arithmetic on continued fractions.",
+   "locator": "cpa:algebra/continued-fractions#linear-fractional-transformations",
+   "prereqs": [
+    "cpa:convergents",
+    "[matrix multiplication]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:continued-fraction-geometry",
+   "name": "Geometric interpretation: convex hull of lattice points",
+   "kind": "result",
+   "statement": "Convergent vectors (q_k, p_k) alternate around the line y = r x and trace the convex hulls of lattice points above and below it, which solves floor-sum and lattice-hull problems.",
+   "locator": "cpa:algebra/continued-fractions#geometric-interpretation",
+   "prereqs": [
+    "cpa:convergents",
+    "cpa:cross-product"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:exp-by-factoring",
+   "name": "Exponentiation mod 2^d by factoring",
+   "kind": "result",
+   "statement": "Every x = 1 mod 4 is 5^L(x) mod 2^d, so a*x^y = a*5^(y L(x)) can be computed by writing x and 5^z as products of (2^k + 1) factors using O(d) additions and bit operations and one multiplication.",
+   "locator": "cpa:algebra/factoring-exp#binary-exponentiation-by-factoring",
+   "prereqs": [
+    "cpa:binary-exponentiation",
+    "cpa:primitive-root"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list; 1 reference link."
+  },
+  {
+   "id": "cpa:pohlig-hellman-power-of-2",
+   "name": "Logarithm table via Pohlig-Hellman for 2^d",
+   "kind": "skill",
+   "statement": "The values 4L(2^n + 1) are found bit by bit by squaring both sides k times, a Pohlig-Hellman variant for moduli that are powers of two.",
+   "locator": "cpa:algebra/factoring-exp#computing-logarithm-table",
+   "prereqs": [
+    "cpa:exp-by-factoring",
+    "cpa:discrete-log-problem"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gauss-jordan",
+   "name": "Gauss-Jordan elimination",
+   "kind": "result",
+   "statement": "Row swaps, scaling by non-zero numbers and adding multiples of one row to another preserve the solution set, so eliminating each variable from every other equation reduces the system to read-off form.",
+   "locator": "cpa:linear_algebra/linear-system-gauss#overview",
+   "prereqs": [
+    "[systems of linear equations]",
+    "[matrices]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 8 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:partial-pivoting",
+   "name": "Pivot selection (partial pivoting)",
+   "kind": "skill",
+   "statement": "Swapping in the row with the largest absolute value in the current column avoids division by zero and limits floating-point error growth.",
+   "locator": "cpa:linear_algebra/linear-system-gauss#search-for-the-pivoting-element",
+   "prereqs": [
+    "cpa:gauss-jordan"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gauss-solution-count",
+   "name": "Detecting no, one or infinitely many solutions",
+   "kind": "result",
+   "statement": "Columns without a pivot are free variables (infinitely many solutions if consistent); a row reduced to 0 = non-zero means no solution.",
+   "locator": "cpa:linear_algebra/linear-system-gauss#degenerate-cases",
+   "prereqs": [
+    "cpa:gauss-jordan"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gauss-complexity",
+   "name": "Complexity of Gaussian elimination",
+   "kind": "result",
+   "statement": "Elimination takes O(min(n,m) * n * m), i.e. O(n^3) for a square system; splitting into forward elimination and back substitution halves the constant.",
+   "locator": "cpa:linear_algebra/linear-system-gauss#complexity",
+   "prereqs": [
+    "cpa:gauss-jordan"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:gauss-mod-2-bitset",
+   "name": "Gaussian elimination mod 2 with bitsets",
+   "kind": "skill",
+   "statement": "Over GF(2) row addition is XOR, so rows stored as bitsets eliminate 32-64 entries per word operation; any prime modulus works with modular inverses.",
+   "locator": "cpa:linear_algebra/linear-system-gauss#solving-modular-slae",
+   "prereqs": [
+    "cpa:gauss-jordan",
+    "cpa:bitwise-operators"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:iterative-refinement",
+   "name": "Refining the solution numerically",
+   "kind": "idea",
+   "statement": "For ill-conditioned matrices, running a simple iteration method from the Gauss-Jordan answer reduces the error.",
+   "locator": "cpa:linear_algebra/linear-system-gauss#improve-the-solution",
+   "prereqs": [
+    "cpa:gauss-jordan"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:determinant-gauss",
+   "name": "Determinant by Gaussian elimination",
+   "kind": "result",
+   "statement": "Eliminating to triangular form, the determinant is the product of the pivots times -1 per row swap, in O(n^3).",
+   "locator": "cpa:linear_algebra/determinant-gauss#algorithm",
+   "prereqs": [
+    "cpa:gauss-jordan",
+    "[determinant]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 200 words). Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:lu-decomposition-crout",
+   "name": "Determinant via LU (Crout/Kraut) decomposition",
+   "kind": "result",
+   "statement": "Factoring A = L U with unit-diagonal L, det A is the product of U's diagonal; the factors are computed column by column in O(n^3).",
+   "locator": "cpa:linear_algebra/determinant-kraut#calculating-the-determinant-using-kraut-method-in-on3",
+   "prereqs": [
+    "[determinant]",
+    "[matrices]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 245 words), no practice list."
+  },
+  {
+   "id": "cpa:matrix-rank",
+   "name": "Rank of a matrix",
+   "kind": "definition",
+   "statement": "The maximum number of linearly independent rows (equivalently columns), or the largest order of a non-zero minor.",
+   "locator": "cpa:linear_algebra/rank-matrix#finding-the-rank-of-a-matrix",
+   "prereqs": [
+    "[linear independence]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 230 words). Problem list: 1 external link (#problems)."
+  },
+  {
+   "id": "cpa:rank-by-elimination",
+   "name": "Rank by Gaussian elimination",
+   "kind": "result",
+   "statement": "Running elimination and skipping columns with no available pivot, the number of pivots chosen is the rank, in O(n^3).",
+   "locator": "cpa:linear_algebra/rank-matrix#algorithm",
+   "prereqs": [
+    "cpa:matrix-rank",
+    "cpa:gauss-jordan"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:legendre-prime-k",
+   "name": "Largest power of a prime dividing n!",
+   "kind": "result",
+   "statement": "Every k-th factor contributes one k, every k^2-th another, so the answer is sum floor(n/k^i), computable by repeatedly dividing n by k.",
+   "locator": "cpa:algebra/factorial-divisors#prime-k",
+   "prereqs": [
+    "[prime factorization]"
+   ],
+   "aliases": [
+    "Legendre's formula",
+    "trailing zeros of n!"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 256 words), no practice list. Duplicates factorial-modulo#multiplicity-of-p (legendre-formula)."
+  },
+  {
+   "id": "cpa:factorial-power-composite-k",
+   "name": "Largest power of a composite k dividing n!",
+   "kind": "result",
+   "statement": "With k = prod k_i^p_i, the answer is the minimum over i of floor(a_i / p_i), where a_i is the exponent of k_i in n!.",
+   "locator": "cpa:algebra/factorial-divisors#composite-k",
+   "prereqs": [
+    "cpa:legendre-prime-k",
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binomial-coefficient",
+   "name": "Binomial coefficient and binomial theorem",
+   "kind": "definition",
+   "statement": "C(n,k) counts k-element subsets of an n-set and is the coefficient of a^(n-k) b^k in (a+b)^n.",
+   "locator": "cpa:combinatorics/binomial-coefficients#binomial-coefficients",
+   "prereqs": [],
+   "aliases": [
+    "n choose k"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 17 external links (#practice-problems); 3 reference links."
+  },
+  {
+   "id": "cpa:binomial-formula",
+   "name": "Factorial formula and Pascal recurrence",
+   "kind": "result",
+   "statement": "C(n,k) = n!/(k!(n-k)!) by counting ordered selections, and C(n,k) = C(n-1,k-1) + C(n-1,k) with C(n,0) = C(n,n) = 1.",
+   "locator": "cpa:combinatorics/binomial-coefficients#calculation",
+   "prereqs": [
+    "cpa:binomial-coefficient"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binomial-identities",
+   "name": "Binomial identities",
+   "kind": "result",
+   "statement": "Symmetry C(n,k) = C(n,n-k), absorption C(n,k) = n/k C(n-1,k-1), row sum 2^n, hockey-stick sum over n, Vandermonde's identity and sum of squares C(2n,n).",
+   "locator": "cpa:combinatorics/binomial-coefficients#properties",
+   "prereqs": [
+    "cpa:binomial-formula"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binomial-multiplicative",
+   "name": "Overflow-safe multiplicative computation",
+   "kind": "skill",
+   "statement": "Multiplying by (n-k+i)/i for i = 1..k keeps every intermediate value an integer (a binomial coefficient), avoiding large factorials.",
+   "locator": "cpa:combinatorics/binomial-coefficients#improved-implementation",
+   "prereqs": [
+    "cpa:binomial-identities"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:pascals-triangle",
+   "name": "Pascal's triangle table",
+   "kind": "skill",
+   "statement": "Filling C[n][k] by the recurrence uses only additions, never exceeds the answer and works under any modulus, in O(n^2).",
+   "locator": "cpa:combinatorics/binomial-coefficients#pascals-triangle",
+   "prereqs": [
+    "cpa:binomial-formula"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binomial-mod-prime",
+   "name": "Binomial coefficients modulo a large prime",
+   "kind": "skill",
+   "statement": "Precomputing factorials and inverse factorials mod prime m > n gives each C(n,k) in O(1).",
+   "locator": "cpa:combinatorics/binomial-coefficients#binomial-coefficient-modulo-large-prime",
+   "prereqs": [
+    "cpa:binomial-formula",
+    "cpa:modular-inverse"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binomial-mod-prime-power",
+   "name": "Binomial coefficients modulo a prime power or arbitrary m",
+   "kind": "result",
+   "statement": "Modulo p^b, track the exponent of p separately (Legendre) and invert the p-free factorial parts; for arbitrary m, combine prime-power results by CRT.",
+   "locator": "cpa:combinatorics/binomial-coefficients#mod-prime-pow",
+   "prereqs": [
+    "cpa:binomial-mod-prime",
+    "cpa:legendre-formula",
+    "cpa:factorial-mod-p-recursion",
+    "cpa:crt-statement"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lucas-theorem",
+   "name": "Lucas's theorem",
+   "kind": "result",
+   "statement": "For prime p, C(n,k) mod p is the product of C(n_i,k_i) over the base-p digits of n and k; a generalisation of Lucas handles prime-power moduli.",
+   "locator": "cpa:combinatorics/binomial-coefficients#binomial-coefficient-for-large-n-and-small-modulo",
+   "prereqs": [
+    "cpa:binomial-mod-prime"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:catalan-numbers",
+   "name": "Catalan numbers",
+   "kind": "definition",
+   "statement": "The sequence 1, 1, 2, 5, 14, 42, 132, ... counting many recursively defined structures.",
+   "locator": "cpa:combinatorics/catalan-numbers#catalan-numbers",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 7 external links (#practice-problems); 3 links in the applications list, 2 reference links."
+  },
+  {
+   "id": "cpa:catalan-interpretations",
+   "name": "Objects counted by Catalan numbers",
+   "kind": "result",
+   "statement": "C_n counts balanced bracket sequences with n pairs, full binary trees with n+1 leaves, parenthesisations of n+1 factors, triangulations of an (n+2)-gon, monotone lattice paths not crossing the diagonal, 231-avoiding permutations and more.",
+   "locator": "cpa:combinatorics/catalan-numbers#application-in-some-combinatorial-problems",
+   "prereqs": [
+    "cpa:catalan-numbers"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:catalan-recurrence",
+   "name": "Catalan recurrence",
+   "kind": "result",
+   "statement": "C_n = sum over k of C_k C_{n-1-k}, from splitting a bracket sequence at the partner of its first opening bracket; O(n^2) DP.",
+   "locator": "cpa:combinatorics/catalan-numbers#recursive-formula",
+   "prereqs": [
+    "cpa:catalan-numbers"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:catalan-closed-form",
+   "name": "Catalan closed form by reflection",
+   "kind": "result",
+   "statement": "C_n = C(2n,n)/(n+1) = C(2n,n) - C(2n,n-1), since paths crossing the diagonal are reflected one-to-one onto paths to a shifted endpoint.",
+   "locator": "cpa:combinatorics/catalan-numbers#analytical-formula",
+   "prereqs": [
+    "cpa:catalan-numbers",
+    "cpa:binomial-coefficient"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:inclusion-exclusion",
+   "name": "Inclusion-exclusion principle",
+   "kind": "result",
+   "statement": "|A_1 u ... u A_n| = sum over non-empty J of (-1)^(|J|-1) |intersection of A_j, j in J|; the same holds for probabilities of a union of events.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#the-formulation-in-terms-of-sets",
+   "prereqs": [
+    "[sets]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 19 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:inclusion-exclusion-proof",
+   "name": "Proof of inclusion-exclusion",
+   "kind": "result",
+   "statement": "An element lying in k of the sets is counted sum_{i>=1} (-1)^(i-1) C(k,i) = 1 time by the formula.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#proof",
+   "prereqs": [
+    "cpa:inclusion-exclusion",
+    "cpa:binomial-identities"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:inclusion-exclusion-exactly-r",
+   "name": "Counting elements in exactly r sets",
+   "kind": "result",
+   "statement": "The number of elements in exactly r of the sets is sum_{m>=r} (-1)^(m-r) C(m,r) S_m, where S_m sums the sizes of all m-wise intersections.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#generalization-for-calculating-number-of-elements-in-exactly-r-sets",
+   "prereqs": [
+    "cpa:inclusion-exclusion"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:complement-counting",
+   "name": "Counting via the complement of bad events",
+   "kind": "skill",
+   "statement": "To count objects satisfying every condition, count those violating at least one with inclusion-exclusion and subtract, e.g. sequences over {0,1,2} using each digit: 3^n - 3*2^n + 3.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#a-simple-task-on-0-1-2-sequences",
+   "prereqs": [
+    "cpa:inclusion-exclusion"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:coprime-count-interval",
+   "name": "Integers in [1, r] coprime to n",
+   "kind": "skill",
+   "statement": "Inclusion-exclusion over subsets of n's distinct prime factors, each term r / (product), counts numbers sharing a factor; subtract from r.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#the-number-of-relative-primes-in-a-given-interval",
+   "prereqs": [
+    "cpa:inclusion-exclusion",
+    "cpa:factorization-trial-division"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lattice-paths-obstacles",
+   "name": "Lattice paths avoiding obstacles",
+   "kind": "skill",
+   "statement": "Sorting the k forbidden cells and letting d[i] be paths to cell i avoiding earlier ones (total paths minus d[j] times paths from j to i) counts paths in O(k^2) for huge grids.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#the-number-of-ways-of-going-from-a-cell-to-another",
+   "prereqs": [
+    "cpa:inclusion-exclusion",
+    "cpa:binomial-mod-prime"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:mobius-style-ie",
+   "name": "Inclusion-exclusion over square-free divisors",
+   "kind": "skill",
+   "statement": "Counting tuples with gcd 1 by summing (-1)^(number of primes of d) times the tuples all divisible by d, over square-free d (a Mobius inversion).",
+   "locator": "cpa:combinatorics/inclusion-exclusion#the-number-of-coprime-quadruples",
+   "prereqs": [
+    "cpa:inclusion-exclusion",
+    "cpa:sieve-of-eratosthenes"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:derangements",
+   "name": "Derangements",
+   "kind": "result",
+   "statement": "The number of permutations with no fixed point is sum (-1)^k C(n,k)(n-k)! = n! sum (-1)^k / k!, the integer nearest to n!/e.",
+   "locator": "cpa:combinatorics/inclusion-exclusion#the-number-of-permutations-without-fixed-points-derangements",
+   "prereqs": [
+    "cpa:inclusion-exclusion"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:orbits-under-symmetry",
+   "name": "Counting objects up to symmetry",
+   "kind": "definition",
+   "statement": "Representations (e.g. colourings) are grouped into equivalence classes by a group of invariant permutations; the task is to count the classes.",
+   "locator": "cpa:combinatorics/burnside#objects-and-representations",
+   "prereqs": [
+    "[permutations]",
+    "[equivalence relations]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 14 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:burnside-lemma",
+   "name": "Burnside's lemma",
+   "kind": "result",
+   "statement": "The number of classes equals the average number of fixed points: (1/|G|) * sum over pi in G of I(pi).",
+   "locator": "cpa:combinatorics/burnside#the-statement-of-the-lemma",
+   "prereqs": [
+    "cpa:orbits-under-symmetry"
+   ],
+   "aliases": [
+    "Cauchy-Frobenius lemma"
+   ],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:polya-enumeration",
+   "name": "Polya enumeration theorem",
+   "kind": "result",
+   "statement": "A colouring with k colours is fixed by pi iff it is constant on pi's cycles, so the class count is (1/|G|) sum k^C(pi), C(pi) being the number of cycles.",
+   "locator": "cpa:combinatorics/burnside#polya-enumeration-theorem",
+   "prereqs": [
+    "cpa:burnside-lemma"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:necklace-counting",
+   "name": "Counting necklaces",
+   "kind": "result",
+   "statement": "Under rotations, the shift by i has gcd(i,n) cycles, so there are (1/n) sum_i k^gcd(i,n) necklaces.",
+   "locator": "cpa:combinatorics/burnside#application-coloring-necklaces",
+   "prereqs": [
+    "cpa:polya-enumeration",
+    "cpa:gcd-definition"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:burnside-by-generation",
+   "name": "Burnside by generating the group programmatically",
+   "kind": "skill",
+   "statement": "When the group is too large to analyse by hand, generate it from a few basic permutations by closure, count each element's cycles, and apply Polya.",
+   "locator": "cpa:combinatorics/burnside#application-coloring-a-torus",
+   "prereqs": [
+    "cpa:polya-enumeration"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:stars-and-bars",
+   "name": "Stars and bars",
+   "kind": "result",
+   "statement": "n identical objects go into k labelled boxes in C(n+k-1, n) ways: arrangements of n stars and k-1 bars.",
+   "locator": "cpa:combinatorics/stars_and_bars#theorem",
+   "prereqs": [
+    "cpa:binomial-coefficient"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 5 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:positive-integer-sums",
+   "name": "Compositions into positive parts",
+   "kind": "result",
+   "statement": "x_1 + ... + x_k = n with x_i >= 1 has C(n-1, k-1) solutions: choose k-1 of the n-1 gaps between stars.",
+   "locator": "cpa:combinatorics/stars_and_bars#number-of-positive-integer-sums",
+   "prereqs": [
+    "cpa:stars-and-bars"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:lower-bounded-sums",
+   "name": "Sums with lower bounds",
+   "kind": "skill",
+   "statement": "Substituting x_i' = x_i - a_i reduces lower bounds to the non-negative case, giving C(n - sum a_i + k - 1, k - 1).",
+   "locator": "cpa:combinatorics/stars_and_bars#number-of-lower-bound-integer-sums",
+   "prereqs": [
+    "cpa:stars-and-bars"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:upper-bounded-sums",
+   "name": "Sums with upper bounds",
+   "kind": "skill",
+   "statement": "Upper bounds are handled by inclusion-exclusion over the variables that exceed their bound, each case reduced to stars and bars.",
+   "locator": "cpa:combinatorics/stars_and_bars#number-of-upper-bound-integer-sums",
+   "prereqs": [
+    "cpa:stars-and-bars",
+    "cpa:inclusion-exclusion"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Stub section here (a pointer); the worked version is inclusion-exclusion#number-of-upper-bound-integer-sums."
+  },
+  {
+   "id": "cpa:next-combination",
+   "name": "Next k-combination in lexicographic order",
+   "kind": "skill",
+   "statement": "Find the rightmost element below its maximum (n-k+i), increment it, and reset the following elements to consecutive values; iterating from {1..k} lists all C(n,k) subsets.",
+   "locator": "cpa:combinatorics/generating_combinations#generate-next-lexicographical-k-combination",
+   "prereqs": [
+    "cpa:binomial-coefficient"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:combinations-gray-order",
+   "name": "k-combinations with minimal change via Gray codes",
+   "kind": "result",
+   "statement": "Taking the Gray codes with exactly k ones, or a recursive revolving-door construction, lists k-subsets so that consecutive ones differ by swapping one element.",
+   "locator": "cpa:combinatorics/generating_combinations#generate-all-k-combinations-such-that-adjacent-combinations-differ-by-one-element",
+   "prereqs": [
+    "cpa:next-combination",
+    "cpa:gray-code"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bishops-placement-dp",
+   "name": "Non-attacking bishops by diagonal DP",
+   "kind": "result",
+   "statement": "Black and white diagonals are independent; sorting diagonals of one colour by length, D[i][j] = D[i-1][j] + D[i-1][j-1](d_i - j + 1), and the answer convolves the two colours.",
+   "locator": "cpa:combinatorics/bishops-on-chessboard#algorithm",
+   "prereqs": [
+    "[dynamic programming]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Short article (about 376 words), no practice list."
+  },
+  {
+   "id": "cpa:balanced-bracket-sequence",
+   "name": "Balanced bracket sequence",
+   "kind": "definition",
+   "statement": "The empty string is balanced, and if s and t are balanced then so are (s) and st.",
+   "locator": "cpa:combinatorics/bracket_sequences#balanced-bracket-sequences",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:bracket-validation",
+   "name": "Checking bracket balance",
+   "kind": "skill",
+   "statement": "With one bracket type, a depth counter that never goes negative and ends at 0 suffices; with several types, a stack must match each closing bracket with the most recent unmatched opening one.",
+   "locator": "cpa:combinatorics/bracket_sequences#balance-validation",
+   "prereqs": [
+    "cpa:balanced-bracket-sequence",
+    "[stack]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bracket-count",
+   "name": "Number of balanced bracket sequences",
+   "kind": "result",
+   "statement": "There are C_n = C(2n,n)/(n+1) balanced sequences of n pairs, and C_n k^n with k bracket types.",
+   "locator": "cpa:combinatorics/bracket_sequences#formula",
+   "prereqs": [
+    "cpa:balanced-bracket-sequence",
+    "cpa:catalan-closed-form"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Duplicates catalan-numbers (bracket interpretation)."
+  },
+  {
+   "id": "cpa:next-bracket-sequence",
+   "name": "Next balanced sequence in lexicographic order",
+   "kind": "skill",
+   "statement": "Change the rightmost \"(\" that can become \")\" while keeping a non-negative prefix balance, then fill the rest with the smallest completion: all \"(\" then all \")\".",
+   "locator": "cpa:combinatorics/bracket_sequences#finding-the-lexicographical-next-balanced-sequence",
+   "prereqs": [
+    "cpa:bracket-validation"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:generate-bracket-sequences",
+   "name": "Generating all balanced sequences",
+   "kind": "skill",
+   "statement": "Start from ((...)) and repeatedly take the next sequence, or for small n filter permutations.",
+   "locator": "cpa:combinatorics/bracket_sequences#finding-all-balanced-sequences",
+   "prereqs": [
+    "cpa:next-bracket-sequence"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bracket-sequence-rank",
+   "name": "Index and k-th balanced sequence",
+   "kind": "skill",
+   "statement": "With d[i][j] the number of ways to finish a prefix of length i and balance j, ranking a sequence or unranking the k-th one walks character by character in O(n^2).",
+   "locator": "cpa:combinatorics/bracket_sequences#sequence-index",
+   "prereqs": [
+    "cpa:bracket-count",
+    "[dynamic programming]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:labeled-graph-count",
+   "name": "Number of labelled graphs",
+   "kind": "result",
+   "statement": "There are 2^(n(n-1)/2) labelled simple undirected graphs on n vertices, one per subset of possible edges.",
+   "locator": "cpa:combinatorics/counting_labeled_graphs#labeled-graphs",
+   "prereqs": [
+    "[graphs]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list; no code."
+  },
+  {
+   "id": "cpa:connected-labeled-graphs",
+   "name": "Number of connected labelled graphs",
+   "kind": "result",
+   "statement": "Counting disconnected graphs by the component of vertex 1, C_n = G_n - (1/n) sum_k k C(n,k) C_k G_{n-k}, an O(n^2) recurrence.",
+   "locator": "cpa:combinatorics/counting_labeled_graphs#connected-labeled-graphs",
+   "prereqs": [
+    "cpa:labeled-graph-count",
+    "cpa:binomial-coefficient"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:labeled-graphs-k-components",
+   "name": "Labelled graphs with k components",
+   "kind": "result",
+   "statement": "D[n][k] = sum_s C(n-1, s-1) C_s D[n-s][k-1], choosing the size s of the component containing vertex 1.",
+   "locator": "cpa:combinatorics/counting_labeled_graphs#labeled-graphs-with-k-connected-components",
+   "prereqs": [
+    "cpa:connected-labeled-graphs",
+    "[dynamic programming]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-search",
+   "name": "Binary search in a sorted array",
+   "kind": "result",
+   "statement": "Comparing the key with the middle element halves the candidate range each step, so a sorted array of n elements is searched in O(log n) comparisons.",
+   "locator": "cpa:num_methods/binary_search#search-in-sorted-arrays",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Practice lists: 15 external links (#binary-search_1, under the Practice Problems heading) and 2 for parallel binary search (#parallel-binary-search_1)."
+  },
+  {
+   "id": "cpa:lower-upper-bound",
+   "name": "Lower bound and upper bound",
+   "kind": "definition",
+   "statement": "lower_bound(k) is the first position with A_i >= k and upper_bound(k) the first with A_i > k; together they bound the range of elements equal to k.",
+   "locator": "cpa:num_methods/binary_search#lower-bound-and-upper-bound",
+   "prereqs": [
+    "cpa:binary-search"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-search-invariant",
+   "name": "Half-open interval invariant for binary search",
+   "kind": "skill",
+   "statement": "Keeping A_L <= k < A_R (with virtual A_-1 = -inf, A_n = +inf) and shrinking until R = L + 1 avoids off-by-one errors; M = L + (R-L)/2 avoids overflow.",
+   "locator": "cpa:num_methods/binary_search#implementation",
+   "prereqs": [
+    "cpa:binary-search"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-search-predicate",
+   "name": "Binary search on a monotone predicate",
+   "kind": "idea",
+   "statement": "Any monotone boolean f on 0..n-1 has a single 0-to-1 boundary that binary search finds in O(log n) evaluations of f.",
+   "locator": "cpa:num_methods/binary_search#search-on-arbitrary-predicate",
+   "prereqs": [
+    "cpa:binary-search-invariant"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-search-on-answer",
+   "name": "Binary search on the answer",
+   "kind": "skill",
+   "statement": "When it is easier to check \"is the answer at least x?\" than to compute the answer, binary search over x with that check as the predicate.",
+   "locator": "cpa:num_methods/binary_search#binary-search-on-the-answer",
+   "prereqs": [
+    "cpa:binary-search-predicate"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:bisection-method",
+   "name": "Bisection on real numbers",
+   "kind": "result",
+   "statement": "For continuous f on [L, R] the intermediate value theorem guarantees a solution of f(x) = y, and halving the interval a fixed number of times (or to precision eps) finds it.",
+   "locator": "cpa:num_methods/binary_search#continuous-search",
+   "prereqs": [
+    "cpa:binary-search-predicate",
+    "[intermediate value theorem]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:binary-search-powers-of-2",
+   "name": "Binary search by descending powers of two",
+   "kind": "skill",
+   "statement": "Advance a pointer by 2^k whenever the predicate is still 0 at i + 2^k, for k from high to low; this is the form used for binary lifting and Fenwick-tree descent.",
+   "locator": "cpa:num_methods/binary_search#search-with-powers-of-2",
+   "prereqs": [
+    "cpa:binary-search-predicate"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:parallel-binary-search",
+   "name": "Parallel binary search",
+   "kind": "skill",
+   "statement": "Advance the binary searches of all queries in lockstep, one level per round, processing query midpoints in sorted order so each round shares one sweep of the data (with a Fenwick or segment tree); the meteors example runs in O((N+K) log N log K).",
+   "locator": "cpa:num_methods/binary_search#parallel-binary-search",
+   "prereqs": [
+    "cpa:binary-search-on-answer"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:unimodal-function",
+   "name": "Unimodal function",
+   "kind": "definition",
+   "statement": "f increases then decreases on [l, r] (or the reverse), with a single maximum point or plateau.",
+   "locator": "cpa:num_methods/ternary_search#ternary-search",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 19 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:ternary-search",
+   "name": "Ternary search",
+   "kind": "result",
+   "statement": "Comparing f at two interior points m1 < m2 rules out [l, m1] or [m2, r] for a unimodal f, so the extremum is found in O(log((r-l)/eps)) evaluations.",
+   "locator": "cpa:num_methods/ternary_search#algorithm",
+   "prereqs": [
+    "cpa:unimodal-function"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:ternary-search-integer",
+   "name": "Ternary search over integers",
+   "kind": "skill",
+   "statement": "On integers, stop when r - l < 3 and check the remaining points directly; for strictly unimodal integer functions binary search on f(m) < f(m+1) also works.",
+   "locator": "cpa:num_methods/ternary_search#the-case-of-the-integer-arguments",
+   "prereqs": [
+    "cpa:ternary-search",
+    "cpa:binary-search-predicate"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:golden-section-search",
+   "name": "Golden-section search",
+   "kind": "result",
+   "statement": "Placing m1, m2 in the golden ratio lets one evaluation be reused each iteration, cutting function evaluations per step to one.",
+   "locator": "cpa:num_methods/ternary_search#golden-section-search",
+   "prereqs": [
+    "cpa:ternary-search"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:newton-method",
+   "name": "Newton's method for root finding",
+   "kind": "result",
+   "statement": "x_{i+1} = x_i - f(x_i)/f'(x_i), the x-intercept of the tangent, converges quadratically near a simple root from a good start.",
+   "locator": "cpa:num_methods/roots_newton#algorithm",
+   "prereqs": [
+    "[derivatives]"
+   ],
+   "aliases": [
+    "Newton-Raphson"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:newton-sqrt",
+   "name": "Square roots by Newton's method",
+   "kind": "skill",
+   "statement": "x_{i+1} = (x_i + n/x_i)/2 converges to sqrt(n); the integer version stops once the sequence stops decreasing, and it extends to big integers.",
+   "locator": "cpa:num_methods/roots_newton#application-for-calculating-the-square-root",
+   "prereqs": [
+    "cpa:newton-method"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:energy-minimisation",
+   "name": "State-space optimisation with an energy function",
+   "kind": "definition",
+   "statement": "Find the state s minimising E(s) over a discrete state space with many local minima, e.g. tour length for the travelling salesman problem.",
+   "locator": "cpa:num_methods/simulated_annealing#the-problem",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Problem list: 3 external links (#problems)."
+  },
+  {
+   "id": "cpa:neighbouring-state",
+   "name": "Neighbouring states",
+   "kind": "definition",
+   "statement": "A neighbour is produced from a state by a small random transformation, e.g. swapping two cities in a TSP tour.",
+   "locator": "cpa:num_methods/simulated_annealing#neighbouring-state",
+   "prereqs": [
+    "cpa:energy-minimisation"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:simulated-annealing",
+   "name": "Simulated annealing",
+   "kind": "result",
+   "statement": "Move to a random neighbour if better; otherwise accept it with probability exp(-(E_next - E)/T) while the temperature T decays geometrically, which lets the search escape local minima.",
+   "locator": "cpa:num_methods/simulated_annealing#algorithm",
+   "prereqs": [
+    "cpa:neighbouring-state",
+    "[randomized algorithms]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:annealing-parameters",
+   "name": "Tuning temperature and decay",
+   "kind": "skill",
+   "statement": "The initial T, the decay u < 1 (slower cooling usually gives better results) and a time-based stop control the trade-off; iterations are about log(T_min/T)/log(u).",
+   "locator": "cpa:num_methods/simulated_annealing#parameters",
+   "prereqs": [
+    "cpa:simulated-annealing"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:simpson-rule",
+   "name": "Composite Simpson's rule",
+   "kind": "result",
+   "statement": "Fitting a parabola on each pair of subintervals gives the integral of f over [a, b] as (h/3)(f(x_0) + 4f(x_1) + 2f(x_2) + 4f(x_3) + ... + f(x_2n)).",
+   "locator": "cpa:num_methods/simpson-integration#simpsons-formula",
+   "prereqs": [
+    "[definite integrals]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Short article (about 390 words). Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:simpson-error",
+   "name": "Error of Simpson's rule",
+   "kind": "result",
+   "statement": "One panel has error -(1/90)((b-a)/2)^5 f''''(xi), so the composite rule is O((b-a) h^4) for bounded fourth derivative.",
+   "locator": "cpa:num_methods/simpson-integration#error",
+   "prereqs": [
+    "cpa:simpson-rule"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:points-as-vectors",
+   "name": "Points as vectors",
+   "kind": "definition",
+   "statement": "A point is identified with its position vector; 2D and 3D points support addition and scalar multiplication.",
+   "locator": "cpa:geometry/basic-geometry#linear-operations",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list. The \"Exercises\" heading holds two worked examples, not exercises."
+  },
+  {
+   "id": "cpa:dot-product",
+   "name": "Dot product",
+   "kind": "definition",
+   "statement": "a . b = |a||b| cos theta = sum a_i b_i; it is the length of a times the length of b's projection onto a.",
+   "locator": "cpa:geometry/basic-geometry#definition",
+   "prereqs": [
+    "cpa:points-as-vectors"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:dot-product-uses",
+   "name": "Geometry with the dot product",
+   "kind": "result",
+   "statement": "Norms, lengths, projections and angles follow from the dot product; a . b = 0 iff the vectors are orthogonal, and its sign tells acute from obtuse.",
+   "locator": "cpa:geometry/basic-geometry#properties",
+   "prereqs": [
+    "cpa:dot-product"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:cross-product",
+   "name": "Cross product and triple product",
+   "kind": "definition",
+   "statement": "In 3D, a x b is the vector with (a x b) . c equal to the signed volume of the parallelepiped on a, b, c; in 2D the pseudo-scalar a x b = a_x b_y - a_y b_x is the signed parallelogram area.",
+   "locator": "cpa:geometry/basic-geometry#definition_1",
+   "prereqs": [
+    "cpa:dot-product"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:orientation-test",
+   "name": "Orientation and collinearity via cross product",
+   "kind": "result",
+   "statement": "a x b = 0 iff a and b are collinear and the triple product is 0 iff three vectors are coplanar; the sign of the 2D cross product says whether b turns left or right of a.",
+   "locator": "cpa:geometry/basic-geometry#properties_1",
+   "prereqs": [
+    "cpa:cross-product"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:line-intersection-parametric",
+   "name": "Intersecting parametric lines",
+   "kind": "skill",
+   "statement": "Writing lines as a + t d and crossing both sides with d_2 gives t = ((a_2 - a_1) x d_2)/(d_1 x d_2).",
+   "locator": "cpa:geometry/basic-geometry#line-intersection",
+   "prereqs": [
+    "cpa:cross-product"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:planes-intersection",
+   "name": "Intersecting three planes",
+   "kind": "skill",
+   "statement": "Three planes r . n_i = a_i . n_i meet at a point given by Cramer's rule with triple products.",
+   "locator": "cpa:geometry/basic-geometry#planes-intersection",
+   "prereqs": [
+    "cpa:cross-product",
+    "[Cramer's rule]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:line-through-two-points",
+   "name": "Line equation through two points",
+   "kind": "result",
+   "statement": "The line through P and Q is Ax + By + C = 0 with A = P_y - Q_y, B = Q_x - P_x, C = -A P_x - B P_y.",
+   "locator": "cpa:geometry/segment-to-line#two-dimensional-case",
+   "prereqs": [
+    "[coordinate geometry]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list, no code."
+  },
+  {
+   "id": "cpa:line-normalisation",
+   "name": "Normalising integer and real line equations",
+   "kind": "skill",
+   "statement": "For integer coordinates divide A, B, C by their GCD and fix the sign to get a canonical form; for reals, normalise (A, B) to unit length and compare with a tolerance.",
+   "locator": "cpa:geometry/segment-to-line#integer-case",
+   "prereqs": [
+    "cpa:line-through-two-points",
+    "cpa:euclidean-algorithm"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:parametric-line",
+   "name": "Parametric line in 3D and higher",
+   "kind": "definition",
+   "statement": "Beyond 2D a line is p + v t with v = Q - P, since no single equation describes it.",
+   "locator": "cpa:geometry/segment-to-line#three-dimensional-and-multidimensional-case",
+   "prereqs": [
+    "cpa:points-as-vectors"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:line-intersection-cramer",
+   "name": "Intersection of two lines by Cramer's rule",
+   "kind": "result",
+   "statement": "For a_i x + b_i y + c_i = 0 the lines are parallel iff a_1 b_2 - a_2 b_1 = 0; otherwise the point is given by Cramer's rule, with eps comparisons for reals.",
+   "locator": "cpa:geometry/lines-intersection#solution",
+   "prereqs": [
+    "cpa:line-through-two-points",
+    "[Cramer's rule]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 306 words), no practice list."
+  },
+  {
+   "id": "cpa:segments-intersect-test",
+   "name": "Do two segments intersect?",
+   "kind": "result",
+   "statement": "Collinear segments intersect iff their x- and y-projections overlap; otherwise c, d must not be strictly on the same side of line ab and vice versa, all checked with integer orientation signs.",
+   "locator": "cpa:geometry/check-segments-intersection#algorithm",
+   "prereqs": [
+    "cpa:orientation-test"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 167 words). Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:segment-intersection-points",
+   "name": "Computing the intersection of two segments",
+   "kind": "result",
+   "statement": "Intersect the supporting lines; if parallel and coincident the answer is the overlap of the projections (a segment or point), otherwise check that the crossing point lies on both segments.",
+   "locator": "cpa:geometry/segments-intersection#solution",
+   "prereqs": [
+    "cpa:line-intersection-cramer",
+    "cpa:segments-intersect-test"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Short article (about 376 words), no practice list."
+  },
+  {
+   "id": "cpa:circle-line-intersection",
+   "name": "Circle-line intersection",
+   "kind": "result",
+   "statement": "With the circle at the origin, the closest point of the line is (-AC, -BC)/(A^2+B^2) at distance d; there are 0, 1 or 2 points as d >r, = r or < r, the latter offset by sqrt(r^2 - d^2) along the line.",
+   "locator": "cpa:geometry/circle-line-intersection#solution",
+   "prereqs": [
+    "cpa:line-through-two-points"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:circle-circle-intersection",
+   "name": "Circle-circle intersection",
+   "kind": "result",
+   "statement": "Subtracting the two circle equations leaves the radical line Ax + By + C = 0, so the problem reduces to circle-line intersection (coincident circles handled separately).",
+   "locator": "cpa:geometry/circle-circle-intersection#solution",
+   "prereqs": [
+    "cpa:circle-line-intersection"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Thin article (about 297 words), no code. Article practice list: 7 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:common-tangent-count",
+   "name": "Number of common tangents of two circles",
+   "kind": "result",
+   "statement": "Two circles have 0, 1, 2, 3, 4 or infinitely many common tangents depending on their relative position.",
+   "locator": "cpa:geometry/tangents-to-two-circles#the-number-of-common-tangents",
+   "prereqs": [
+    "[circles]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:common-tangents",
+   "name": "Finding common tangents",
+   "kind": "result",
+   "statement": "With the first circle at the origin, a tangent ax + by + c = 0 (a^2+b^2 = 1) satisfies c = +-r1 and a v_x + b v_y + c = +-r2; solving the four sign cases gives all tangents, including point-circle tangents.",
+   "locator": "cpa:geometry/tangents-to-two-circles#algorithm",
+   "prereqs": [
+    "cpa:common-tangent-count",
+    "cpa:line-through-two-points"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:union-of-segments-length",
+   "name": "Length of a union of segments (Klee)",
+   "kind": "result",
+   "statement": "Sort all endpoints, sweep with a counter of open segments, and add the gap to the next endpoint whenever the counter is positive: O(n log n), which is optimal.",
+   "locator": "cpa:geometry/length-of-segments-union#solution",
+   "prereqs": [
+    "[sorting]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 158 words), no practice list."
+  },
+  {
+   "id": "cpa:oriented-triangle-area",
+   "name": "Signed area of a triangle",
+   "kind": "result",
+   "statement": "Half the 2D cross product (p2 - p1) x (p3 - p2) is the triangle's area, positive for counter-clockwise and negative for clockwise orientation.",
+   "locator": "cpa:geometry/oriented-triangle-area#calculation",
+   "prereqs": [
+    "cpa:cross-product"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 236 words). Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:shoelace-formula",
+   "name": "Area of a simple polygon (shoelace)",
+   "kind": "result",
+   "statement": "Summing signed trapezoids (p_x - q_x)(p_y + q_y)/2 over the edges, or signed triangles from any fixed point, gives the polygon's area; the sign gives the orientation.",
+   "locator": "cpa:geometry/area-of-simple-polygon#method-1",
+   "prereqs": [
+    "cpa:oriented-triangle-area"
+   ],
+   "aliases": [
+    "shoelace formula",
+    "trapezoid formula"
+   ],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 168 words), no practice list."
+  },
+  {
+   "id": "cpa:point-in-convex-polygon",
+   "name": "Point in convex polygon in O(log n)",
+   "kind": "result",
+   "statement": "From the lowest-leftmost vertex p0, the other vertices are sorted by angle; binary search finds the wedge p0 p_i p_{i+1} containing the query, then one orientation test decides inside or out.",
+   "locator": "cpa:geometry/point-in-convex-polygon#algorithm",
+   "prereqs": [
+    "cpa:orientation-test",
+    "cpa:binary-search"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Problem list: 3 external links (#problems)."
+  },
+  {
+   "id": "cpa:minkowski-sum",
+   "name": "Minkowski sum",
+   "kind": "definition",
+   "statement": "A + B = {a + b : a in A, b in B}; for convex polygons the sum is a convex polygon.",
+   "locator": "cpa:geometry/minkowski#definition",
+   "prereqs": [
+    "cpa:points-as-vectors"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Problem list: 3 external links (#problems)."
+  },
+  {
+   "id": "cpa:minkowski-sum-convex",
+   "name": "Minkowski sum of convex polygons in linear time",
+   "kind": "result",
+   "statement": "Starting at both lowest vertices, merge the two edge sequences by polar angle (comparing with cross products); the merged edges form the sum in O(|P| + |Q|).",
+   "locator": "cpa:geometry/minkowski#algorithm",
+   "prereqs": [
+    "cpa:minkowski-sum",
+    "cpa:orientation-test"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:polygon-distance-minkowski",
+   "name": "Distance between convex polygons via Minkowski sum",
+   "kind": "result",
+   "statement": "dist(P, Q) is the distance from the origin to P + (-Q), so the polygons intersect iff the origin lies in that sum.",
+   "locator": "cpa:geometry/minkowski#distance-between-two-polygons",
+   "prereqs": [
+    "cpa:minkowski-sum-convex"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:picks-theorem",
+   "name": "Pick's theorem",
+   "kind": "result",
+   "statement": "A lattice polygon has area S = I + B/2 - 1, with I interior and B boundary lattice points; B is the sum of gcd(|dx|, |dy|) over the edges.",
+   "locator": "cpa:geometry/picks-theorem#formula",
+   "prereqs": [
+    "cpa:shoelace-formula",
+    "cpa:gcd-definition"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list, no code."
+  },
+  {
+   "id": "cpa:picks-theorem-proof",
+   "name": "Proof of Pick's theorem",
+   "kind": "result",
+   "statement": "The formula is checked for unit squares, axis-aligned rectangles and right triangles, then shown additive when gluing polygons along an edge.",
+   "locator": "cpa:geometry/picks-theorem#proof",
+   "prereqs": [
+    "cpa:picks-theorem"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:reeve-tetrahedron",
+   "name": "No Pick formula in 3D (Reeve tetrahedron)",
+   "kind": "result",
+   "statement": "Reeve's tetrahedra (0,0,0), (1,0,0), (0,1,0), (1,1,k) all have the same lattice-point counts but volume k/6, so no analogue exists in higher dimensions.",
+   "locator": "cpa:geometry/picks-theorem#generalization-to-higher-dimensions",
+   "prereqs": [
+    "cpa:picks-theorem"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:floor-sum-lattice",
+   "name": "Lattice points under a line (floor sum)",
+   "kind": "result",
+   "statement": "The count of points with 0 <= x < n and 0 < y <= floor(kx + b) is reduced by peeling off floor(k) and floor(b) and swapping axes, a Euclid-like recursion running in O(log n) steps.",
+   "locator": "cpa:geometry/lattice-points#lattice-points-inside-non-lattice-polygon",
+   "prereqs": [
+    "cpa:euclidean-algorithm",
+    "cpa:exact-fractions"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:lattice-points-non-lattice-polygon",
+   "name": "Lattice points in a polygon with arbitrary vertices",
+   "kind": "skill",
+   "statement": "Summing the signed count of lattice points under each edge, as in the trapezoid area formula, counts points in a polygon whose vertices are not lattice points.",
+   "locator": "cpa:geometry/lattice-points#lattice-points-inside-non-lattice-polygon",
+   "prereqs": [
+    "cpa:floor-sum-lattice",
+    "cpa:shoelace-formula"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:convex-hull",
+   "name": "Convex hull",
+   "kind": "definition",
+   "statement": "The convex hull of a point set is the smallest convex polygon containing all the points.",
+   "locator": "cpa:geometry/convex-hull#convex-hull-construction",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 6 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:graham-scan",
+   "name": "Graham's scan",
+   "kind": "result",
+   "statement": "Sort points by polar angle around the bottom-most point and sweep with a stack, popping while the last two points and the new one do not make a counter-clockwise turn: O(n log n).",
+   "locator": "cpa:geometry/convex-hull#grahams-scan-algorithm",
+   "prereqs": [
+    "cpa:convex-hull",
+    "cpa:orientation-test",
+    "[stack]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:monotone-chain",
+   "name": "Andrew's monotone chain",
+   "kind": "result",
+   "statement": "Sort points by x, then build the upper and lower hulls by the same stack-and-orientation sweep, avoiding polar angles: O(n log n), with an option to keep collinear points.",
+   "locator": "cpa:geometry/convex-hull#monotone-chain-algorithm",
+   "prereqs": [
+    "cpa:convex-hull",
+    "cpa:orientation-test",
+    "[stack]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:line-min-query-dp",
+   "name": "Minimum over lines in DP transitions",
+   "kind": "idea",
+   "statement": "Transitions of the form dp_i = min_j (k_j x_i + b_j) ask for the minimum of a set of linear functions at a point, such as in the fuel-cost example.",
+   "locator": "cpa:geometry/convex_hull_trick#convex-hull-trick-and-li-chao-tree",
+   "prereqs": [
+    "[dynamic programming]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Problem list: 8 external links (#problems)."
+  },
+  {
+   "id": "cpa:convex-hull-trick",
+   "name": "Convex hull trick",
+   "kind": "result",
+   "statement": "Treating lines as points (k, b), only those on the lower convex hull can be minimal; with slopes added in order the hull is kept on a stack and queries are answered by binary search (or a pointer for monotone x).",
+   "locator": "cpa:geometry/convex_hull_trick#convex-hull-trick",
+   "prereqs": [
+    "cpa:line-min-query-dp",
+    "cpa:convex-hull",
+    "cpa:binary-search"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:li-chao-tree",
+   "name": "Li Chao tree",
+   "kind": "result",
+   "statement": "A segment tree over x stores in each node the line that wins at its midpoint and pushes the loser to the one child where it can still win, giving O(log C) insertion and point-minimum query for any functions that cross at most once.",
+   "locator": "cpa:geometry/convex_hull_trick#li-chao-tree",
+   "prereqs": [
+    "cpa:line-min-query-dp",
+    "[segment tree]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sweep-line-segment-intersection",
+   "name": "Detecting an intersecting pair by sweep line",
+   "kind": "result",
+   "statement": "Sweep a vertical line over the endpoints, keep the segments it crosses ordered by y in a balanced BST, and test only neighbours on insertion and deletion; the first intersection is found in O(n log n) (Shamos-Hoey).",
+   "locator": "cpa:geometry/intersecting_segments#algorithm",
+   "prereqs": [
+    "cpa:segments-intersect-test",
+    "[balanced binary search tree]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Problem list: 1 external link (#problems)."
+  },
+  {
+   "id": "cpa:euler-formula-planar",
+   "name": "Euler's formula for planar graphs",
+   "kind": "result",
+   "statement": "A connected planar embedding has n - m + f = 2 (n - m + f = 1 + k with k components), so m <= 3n - 6, f <= 2n - 4 and some vertex has degree at most 5.",
+   "locator": "cpa:geometry/planar#eulers-theorem",
+   "prereqs": [
+    "[planar graphs]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Facts stated without proof. Problem list: 2 external links (#problems)."
+  },
+  {
+   "id": "cpa:planar-faces-traversal",
+   "name": "Finding faces by next-edge traversal",
+   "kind": "result",
+   "statement": "With adjacency lists sorted by angle, repeatedly leaving each vertex by the edge after the one you arrived on traces each face once; the outer face is the one traversed counter-clockwise; O(m log m).",
+   "locator": "cpa:geometry/planar#the-algorithm",
+   "prereqs": [
+    "cpa:euler-formula-planar",
+    "cpa:orientation-test"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:planar-graph-from-segments",
+   "name": "Building a planar graph from segments",
+   "kind": "skill",
+   "statement": "Intersect each segment with all others, sort the points on it and connect consecutive ones, merging equal points by hashing, in O(n^2 log n).",
+   "locator": "cpa:geometry/planar#building-planar-graph-from-line-segments",
+   "prereqs": [
+    "cpa:segment-intersection-points",
+    "cpa:planar-faces-traversal"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:offline-point-location",
+   "name": "Offline point location in O(log n)",
+   "kind": "result",
+   "statement": "Sweep over x with events for edge insertions, deletions and queries, keeping edges ordered by y in a set; each query finds the edge just below it and hence its face.",
+   "locator": "cpa:geometry/point-location#algorithm",
+   "prereqs": [
+    "cpa:sweep-line-segment-intersection",
+    "[DCEL]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Problem list: 2 external links (#problems)."
+  },
+  {
+   "id": "cpa:online-point-location-persistent",
+   "name": "Online point location with persistent trees",
+   "kind": "idea",
+   "statement": "Making the sweep's ordered set persistent allows queries to be answered online.",
+   "locator": "cpa:geometry/point-location#notes",
+   "prereqs": [
+    "cpa:offline-point-location",
+    "[persistent data structures]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:closest-pair-divide-conquer",
+   "name": "Closest pair of points by divide and conquer",
+   "kind": "result",
+   "statement": "Split by median x, solve both halves, then check pairs across a strip of width 2h, merging by y; each point has O(1) candidates within h, giving O(n log n).",
+   "locator": "cpa:geometry/nearest_points#algorithm",
+   "prereqs": [
+    "[divide and conquer]",
+    "[merge sort]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 6 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:closest-pair-strip-bound",
+   "name": "Constant candidates in the strip",
+   "kind": "result",
+   "statement": "Points with pairwise distance at least h pack into an h x 2h rectangle only O(1) at a time, so each point is compared with a constant number of others.",
+   "locator": "cpa:geometry/nearest_points#evaluation-of-the-asymptotics",
+   "prereqs": [
+    "cpa:closest-pair-divide-conquer"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:closest-pair-grid",
+   "name": "Randomized expected-linear closest pair",
+   "kind": "result",
+   "statement": "Guess d as the minimum of n random pair distances, hash points into d x d cells, and compare only within neighbouring cells; the expected time is O(n).",
+   "locator": "cpa:geometry/nearest_points#a-randomized-algorithm-with-linear-expected-time",
+   "prereqs": [
+    "cpa:closest-pair-divide-conquer",
+    "[hash table]",
+    "[randomized algorithms]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:min-perimeter-triangle",
+   "name": "Minimum-perimeter triangle",
+   "kind": "result",
+   "statement": "The same divide and conquer with strip width about minper/2 finds three points of minimum total pairwise distance in O(n log n).",
+   "locator": "cpa:geometry/nearest_points#generalization-finding-a-triangle-with-minimal-perimeter",
+   "prereqs": [
+    "cpa:closest-pair-divide-conquer"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:voronoi-delaunay",
+   "name": "Voronoi diagram and Delaunay triangulation",
+   "kind": "definition",
+   "statement": "The Voronoi cell of p_i is the set of points closest to p_i; a Delaunay triangulation has no input point strictly inside any triangle's circumcircle.",
+   "locator": "cpa:geometry/delaunay#delaunay-triangulation-and-voronoi-diagram",
+   "prereqs": [
+    "[triangulation]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Problem list: 3 external links (#problems)."
+  },
+  {
+   "id": "cpa:delaunay-properties",
+   "name": "Delaunay properties and duality",
+   "kind": "result",
+   "statement": "The Delaunay triangulation maximises the minimum angle, contains the Euclidean MST, and is dual to the Voronoi diagram (in general position), so either is found from the other in O(n).",
+   "locator": "cpa:geometry/delaunay#properties",
+   "prereqs": [
+    "cpa:voronoi-delaunay"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:guibas-stolfi",
+   "name": "Guibas-Stolfi divide and conquer Delaunay",
+   "kind": "result",
+   "statement": "Sort points, triangulate halves recursively, and stitch them bottom-up with in-circle tests, using the quad-edge structure: O(n log n).",
+   "locator": "cpa:geometry/delaunay#algorithm",
+   "prereqs": [
+    "cpa:delaunay-properties",
+    "[quad-edge data structure]",
+    "[divide and conquer]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:vertical-decomposition",
+   "name": "Vertical decomposition",
+   "kind": "idea",
+   "statement": "Cutting the plane by vertical lines through all vertices and intersection points leaves stripes in which shapes are trapezoids, so each stripe is solved independently.",
+   "locator": "cpa:geometry/vertical_decomposition#overview",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Problem list: 2 external links (#problems)."
+  },
+  {
+   "id": "cpa:union-of-triangles-area",
+   "name": "Area of a union of triangles",
+   "kind": "result",
+   "statement": "In each stripe the union is a set of disjoint trapezoids; with per-segment processing and bracket balance, the total is O(n^2 log n) time and O(n) memory.",
+   "locator": "cpa:geometry/vertical_decomposition#area-of-the-union-of-triangles",
+   "prereqs": [
+    "cpa:vertical-decomposition",
+    "cpa:segment-intersection-points"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:convex-polygon-intersection-stripes",
+   "name": "Intersecting convex polygons by stripes",
+   "kind": "skill",
+   "statement": "Within each stripe two convex polygons are trapezoids, so their intersection is built stripe by stripe in linear time.",
+   "locator": "cpa:geometry/vertical_decomposition#intersection-of-convex-polygons",
+   "prereqs": [
+    "cpa:vertical-decomposition"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:half-plane",
+   "name": "Half-planes as point-plus-direction",
+   "kind": "definition",
+   "statement": "A half-plane is the region to the left of a directed line given by a point and a direction vector; the intersection of half-planes is a convex region, possibly empty or unbounded.",
+   "locator": "cpa:geometry/halfplane-intersection#initial-clarifications-and-definitions",
+   "prereqs": [
+    "cpa:cross-product"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Problem lists: 6 links (#classic-problems-direct-application) and 8 links (#harder-problems); 8 reference links."
+  },
+  {
+   "id": "cpa:halfplane-incremental",
+   "name": "Incremental O(n^2) half-plane intersection",
+   "kind": "result",
+   "statement": "Start from a bounding box and cut the convex polygon by one half-plane at a time.",
+   "locator": "cpa:geometry/halfplane-intersection#incremental-approach-on2",
+   "prereqs": [
+    "cpa:half-plane",
+    "cpa:segment-intersection-points"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sort-and-incremental",
+   "name": "Sort-and-incremental half-plane intersection",
+   "kind": "result",
+   "statement": "Sort half-planes by angle and sweep with a deque, popping from the back and front while the intersection of the last two lies outside the new half-plane; with a bounding box this gives O(n log n).",
+   "locator": "cpa:geometry/halfplane-intersection#sort-and-incremental-algorithm-on-log-n",
+   "prereqs": [
+    "cpa:halfplane-incremental",
+    "[deque]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:halfplane-applications",
+   "name": "Applications of half-plane intersection",
+   "kind": "idea",
+   "statement": "Intersecting convex polygons, finding a polygon's kernel (visibility), checking feasibility inside a binary search (largest inscribed circle), and two-variable linear programming.",
+   "locator": "cpa:geometry/halfplane-intersection#problems-tasks-and-applications",
+   "prereqs": [
+    "cpa:sort-and-incremental",
+    "cpa:binary-search-on-answer"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:manhattan-distance",
+   "name": "Manhattan distance",
+   "kind": "definition",
+   "statement": "d(p, q) = |x_p - x_q| + |y_p - y_q|, the taxicab metric; its ball is a diamond.",
+   "locator": "cpa:geometry/manhattan-distance#definition",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Problem list: 6 external links (#problems)."
+  },
+  {
+   "id": "cpa:manhattan-farthest-pair",
+   "name": "Farthest pair in Manhattan distance",
+   "kind": "result",
+   "statement": "Maximising over the 2^(d-1) sign patterns of +-x +-y, the answer is the max over patterns of (max - min) of the signed sums: O(n 2^d).",
+   "locator": "cpa:geometry/manhattan-distance#farthest-pair-of-points-in-manhattan-distance",
+   "prereqs": [
+    "cpa:manhattan-distance"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:manhattan-to-chebyshev",
+   "name": "Rotating Manhattan into Chebyshev distance",
+   "kind": "result",
+   "statement": "|m| + |n| = max(|m+n|, |m-n|), so mapping (x, y) to (x+y, x-y) turns Manhattan distance into Chebyshev distance.",
+   "locator": "cpa:geometry/manhattan-distance#rotating-the-points-and-chebyshev-distance",
+   "prereqs": [
+    "cpa:manhattan-distance"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:manhattan-mst",
+   "name": "Manhattan minimum spanning tree",
+   "kind": "result",
+   "statement": "Some MST uses only edges from each point to its nearest neighbour in each of 8 octants, so O(n) candidate edges found by sweeps and Kruskal give the MST in O(n log n).",
+   "locator": "cpa:geometry/manhattan-distance#manhattan-minimum-spanning-tree",
+   "prereqs": [
+    "cpa:manhattan-distance",
+    "[Kruskal's algorithm]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:min-enclosing-circle",
+   "name": "Minimum enclosing circle",
+   "kind": "definition",
+   "statement": "The circle of minimum radius containing all given points; it is determined by two or three of them.",
+   "locator": "cpa:geometry/enclosing-circle#minimum-enclosing-circle",
+   "prereqs": [
+    "[circles]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 2 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:welzl-algorithm",
+   "name": "Welzl's randomized algorithm",
+   "kind": "result",
+   "statement": "Shuffle the points; whenever p_i lies outside the current circle, rebuild with p_i on the boundary, nesting up to three levels; expected O(n) by backward analysis.",
+   "locator": "cpa:geometry/enclosing-circle#welzls-algorithm",
+   "prereqs": [
+    "cpa:min-enclosing-circle",
+    "[randomized algorithms]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:mec-point-tests",
+   "name": "In-circle tests for 2- and 3-point circles",
+   "kind": "skill",
+   "statement": "z is inside the circle with diameter ab iff angle azb is not acute; for the circumcircle of abc, compare signed angles azb and bca, all exactly with complex-number arithmetic.",
+   "locator": "cpa:geometry/enclosing-circle#checking-that-a-point-is-in-the-mec-of-2-or-3-points",
+   "prereqs": [
+    "cpa:min-enclosing-circle",
+    "cpa:dot-product",
+    "cpa:cross-product"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:rmq-problem",
+   "name": "Range minimum query problem",
+   "kind": "definition",
+   "statement": "Answer queries min(A[L..R]) on an array, possibly with updates; it also underlies LCA.",
+   "locator": "cpa:sequences/rmq#range-minimum-query",
+   "prereqs": [
+    "[arrays]"
+   ],
+   "aliases": [
+    "RMQ"
+   ],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Index page (about 361 words) that only lists approaches in other articles. Article practice list: 3 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:rmq-approaches",
+   "name": "Choosing an RMQ structure",
+   "kind": "idea",
+   "statement": "With updates: sqrt decomposition O(sqrt n) or segment tree O(log n); static: sparse table O(1) after O(n log n), sqrt tree, disjoint sparse table, Farach-Colton-Bender O(1) after O(n), or offline DSU / Arpa.",
+   "locator": "cpa:sequences/rmq#solution",
+   "prereqs": [
+    "cpa:rmq-problem",
+    "[segment tree]",
+    "[sparse table]",
+    "[sqrt decomposition]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:max-subarray-problem",
+   "name": "Maximum subarray sum problem",
+   "kind": "definition",
+   "statement": "Find l <= r maximising a[l] + ... + a[r] for an array that may contain negative numbers.",
+   "locator": "cpa:others/maximum_average_segment#problem-statement",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:max-subarray-prefix-min",
+   "name": "Maximum subarray via prefix sums and running minimum",
+   "kind": "result",
+   "statement": "The best sum ending at r is s[r] - min_{l<r} s[l], so one pass keeping the minimum prefix sum solves it in O(n).",
+   "locator": "cpa:others/maximum_average_segment#algorithm-description",
+   "prereqs": [
+    "cpa:max-subarray-problem",
+    "[prefix sums]"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:kadane",
+   "name": "Kadane's algorithm",
+   "kind": "result",
+   "statement": "Accumulate a running sum, reset it to 0 whenever it becomes negative, and track the maximum value seen; O(n) time and O(1) space.",
+   "locator": "cpa:others/maximum_average_segment#algorithm-description_1",
+   "prereqs": [
+    "cpa:max-subarray-problem"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:max-submatrix",
+   "name": "Maximum-sum submatrix",
+   "kind": "skill",
+   "statement": "Fixing a pair of rows and running Kadane on the column sums gives O(n^3).",
+   "locator": "cpa:others/maximum_average_segment#two-dimensional-case-of-the-problem-search-for-maximumminimum-submatrix",
+   "prereqs": [
+    "cpa:kadane"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:max-average-subarray",
+   "name": "Maximum-average subarray with a length bound",
+   "kind": "skill",
+   "statement": "Binary search on the average x, subtracting x from every element and checking for a subarray of length at least L with non-negative sum.",
+   "locator": "cpa:others/maximum_average_segment#search-for-a-subarray-with-a-maximumminimum-average",
+   "prereqs": [
+    "cpa:max-subarray-prefix-min",
+    "cpa:binary-search-on-answer"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:quickselect",
+   "name": "Quickselect for the k-th order statistic",
+   "kind": "result",
+   "statement": "Partition around a pivot as in quicksort and recurse into the side containing position k only; with random pivots the expected time is O(n).",
+   "locator": "cpa:sequences/k-th#kth-order-statistic-in-on",
+   "prereqs": [
+    "[quicksort partition]"
+   ],
+   "aliases": [
+    "k-th smallest element"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 195 words). Practice list: 2 external links (#practice-problems); notes mention median of medians and std::nth_element."
+  },
+  {
+   "id": "cpa:median-of-medians",
+   "name": "Deterministic linear selection",
+   "kind": "idea",
+   "statement": "Median of medians gives a worst-case O(n) pivot; std::nth_element provides selection in C++.",
+   "locator": "cpa:sequences/k-th#notes",
+   "prereqs": [
+    "cpa:quickselect"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Mentioned only, not explained."
+  },
+  {
+   "id": "cpa:mex",
+   "name": "MEX of a sequence",
+   "kind": "definition",
+   "statement": "mex(A) is the smallest non-negative integer not in A; for |A| = N it is at most N.",
+   "locator": "cpa:sequences/mex#mex-minimal-excluded-of-a-sequence",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Article practice list: 5 external links (#practice-problems)."
+  },
+  {
+   "id": "cpa:mex-linear",
+   "name": "Computing MEX in O(N)",
+   "kind": "skill",
+   "statement": "Mark values below N in a boolean array (ignoring larger ones) and scan for the first unmarked index.",
+   "locator": "cpa:sequences/mex#implementation",
+   "prereqs": [
+    "cpa:mex"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:mex-with-updates",
+   "name": "MEX under point updates",
+   "kind": "skill",
+   "statement": "Keep counts of values 0..N in a segment tree (or a set of missing values) and descend to the first zero count, giving O(log N) per update.",
+   "locator": "cpa:sequences/mex#mex-with-array-updates",
+   "prereqs": [
+    "cpa:mex",
+    "[segment tree]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:retrograde-analysis",
+   "name": "Win/lose/draw on arbitrary game graphs",
+   "kind": "result",
+   "statement": "Starting from known terminal positions, a vertex is winning if some move leads to a losing vertex and losing if all moves lead to winning ones; a reverse-edge BFS/DFS with out-degree counters labels all vertices in O(m), and the unlabelled ones are draws.",
+   "locator": "cpa:game_theory/games_on_graphs#description-of-the-algorithm",
+   "prereqs": [
+    "[graphs]",
+    "[BFS]"
+   ],
+   "aliases": [
+    "retrograde analysis"
+   ],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:policeman-thief",
+   "name": "Policeman and thief game",
+   "kind": "skill",
+   "statement": "Positions (policeman cell, thief cell, whose turn) form the game graph, which retrograde analysis solves.",
+   "locator": "cpa:game_theory/games_on_graphs#example-policeman-and-thief",
+   "prereqs": [
+    "cpa:retrograde-analysis"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:impartial-game",
+   "name": "Impartial games",
+   "kind": "definition",
+   "statement": "Two-player, perfect-information, finite acyclic games where available moves depend only on the position, and the player unable to move loses.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#introduction",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "Article practice list: 7 external links (#practice-problems). No code."
+  },
+  {
+   "id": "cpa:nim-xor",
+   "name": "Nim: winning iff the xor of pile sizes is non-zero",
+   "kind": "result",
+   "statement": "From a non-zero xor some move makes it zero, and from zero every move makes it non-zero (Bouton), so the first player wins iff the xor is non-zero.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#the-solution",
+   "prereqs": [
+    "cpa:impartial-game",
+    "cpa:bitwise-operators"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:misere-nim",
+   "name": "Misere Nim",
+   "kind": "result",
+   "statement": "Play as in normal Nim until every pile is at most 1, then leave an odd number of single-stone piles.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#misere-game",
+   "prereqs": [
+    "cpa:nim-xor"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:nim-with-increases",
+   "name": "Nim with increases",
+   "kind": "result",
+   "statement": "Allowing piles to grow (keeping the game acyclic) does not change winning positions, since an increase can be undone.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#lemma-about-nim-with-increases",
+   "prereqs": [
+    "cpa:nim-xor"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:sprague-grundy",
+   "name": "Sprague-Grundy theorem",
+   "kind": "result",
+   "statement": "Every impartial game position is equivalent to a Nim pile of size mex of the Grundy values of its successors; the position is losing iff its Grundy value is 0.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#sprague-grundy-theorem",
+   "prereqs": [
+    "cpa:nim-with-increases",
+    "cpa:mex"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:grundy-sum-of-games",
+   "name": "Grundy values of sums of games",
+   "kind": "result",
+   "statement": "A position that splits into independent games has Grundy value equal to the xor of the parts' values.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#application-of-the-theorem",
+   "prereqs": [
+    "cpa:sprague-grundy"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:grundy-patterns",
+   "name": "Finding patterns in Grundy tables",
+   "kind": "skill",
+   "statement": "Tabulate Grundy values by brute force and look for periodicity, then prove it by induction.",
+   "locator": "cpa:game_theory/sprague-grundy-nim#patterns-in-grundy-values",
+   "prereqs": [
+    "cpa:grundy-sum-of-games"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:exchange-argument-scheduling",
+   "name": "Single-machine scheduling with linear penalties",
+   "kind": "result",
+   "statement": "Swapping adjacent jobs shows that with penalties c_i t the optimal order sorts jobs by t_i / c_i (Smith's rule).",
+   "locator": "cpa:schedules/schedule_one_machine#linear-penalty-functions",
+   "prereqs": [
+    "[exchange argument]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list, no code."
+  },
+  {
+   "id": "cpa:exponential-penalty-scheduling",
+   "name": "Exponential and identical penalty cases",
+   "kind": "result",
+   "statement": "With c_i e^(alpha t) sort by (1 - e^(alpha t_i))/c_i; with one shared increasing penalty sort by processing time.",
+   "locator": "cpa:schedules/schedule_one_machine#exponential-penalty-function",
+   "prereqs": [
+    "cpa:exchange-argument-scheduling"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:livshits-kladov",
+   "name": "Livshits-Kladov theorem",
+   "kind": "result",
+   "statement": "The adjacent-exchange permutation method works only for linear, exponential and identical-monotone penalty functions.",
+   "locator": "cpa:schedules/schedule_one_machine#the-livshits-kladov-theorem",
+   "prereqs": [
+    "cpa:exponential-penalty-scheduling"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:johnson-rule",
+   "name": "Johnson's rule for two-machine flow shop",
+   "kind": "result",
+   "statement": "To minimise makespan when every job runs on machine 1 then machine 2, put jobs with a_i <= b_i first in increasing a_i, then the rest in decreasing b_i: O(n log n).",
+   "locator": "cpa:schedules/schedule_two_machines#construction-of-the-algorithm",
+   "prereqs": [
+    "[exchange argument]",
+    "[sorting]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:deadline-scheduling-greedy",
+   "name": "Maximum number of jobs meeting deadlines",
+   "kind": "result",
+   "statement": "Process deadlines in decreasing order, push each job into a priority queue keyed by duration, and fill each gap down to the next deadline with the shortest remaining jobs, running the last one partially and returning its remainder to the queue; O(n log n).",
+   "locator": "cpa:schedules/schedule-with-completion-duration#solving",
+   "prereqs": [
+    "[priority queue]",
+    "[greedy algorithms]"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Thin article (about 309 words), no practice list."
+  },
+  {
+   "id": "cpa:floyd-cycle-detection",
+   "name": "Floyd's cycle detection (tortoise and hare)",
+   "kind": "result",
+   "statement": "Move one pointer one step and another two steps at a time; they meet iff the linked list has a cycle, within O(length) steps.",
+   "locator": "cpa:others/tortoise_and_hare#step-1-presence-of-the-cycle",
+   "prereqs": [
+    "[linked list]"
+   ],
+   "aliases": [
+    "tortoise and hare"
+   ],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Problem list: 4 external links (#problems). Also taught in factorization#floyds-cycle-finding-algorithm for Pollard rho."
+  },
+  {
+   "id": "cpa:cycle-start",
+   "name": "Finding where the cycle starts",
+   "kind": "result",
+   "statement": "After the pointers meet, reset one to the head and advance both one step at a time; they meet at the cycle's first node.",
+   "locator": "cpa:others/tortoise_and_hare#step-2-starting-point-of-the-cycle",
+   "prereqs": [
+    "cpa:floyd-cycle-detection"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:cycle-start-proof",
+   "name": "Why the reset finds the cycle start",
+   "kind": "result",
+   "statement": "With a steps to the cycle and length L, the meeting point satisfies a + b = (y - 2x)L, so walking a more steps from it lands on the cycle start.",
+   "locator": "cpa:others/tortoise_and_hare#step-2-starting-point-of-the-cycle_1",
+   "prereqs": [
+    "cpa:cycle-start"
+   ],
+   "aliases": [],
+   "tier": "core",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:josephus-problem",
+   "name": "Josephus problem",
+   "kind": "definition",
+   "statement": "n people in a circle, every k-th is removed; find the last one remaining.",
+   "locator": "cpa:others/josephus_problem#statement",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list."
+  },
+  {
+   "id": "cpa:josephus-recurrence",
+   "name": "Josephus recurrence in O(n)",
+   "kind": "result",
+   "statement": "In 0-indexing, J(n,k) = (J(n-1,k) + k) mod n with J(1,k) = 0.",
+   "locator": "cpa:others/josephus_problem#modeling-a-on-solution",
+   "prereqs": [
+    "cpa:josephus-problem"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:josephus-k-log-n",
+   "name": "Josephus in O(k log n) for small k",
+   "kind": "result",
+   "statement": "Remove floor(n/k) people in one pass, recurse on the rest and map the index back, giving O(k log n).",
+   "locator": "cpa:others/josephus_problem#modeling-a-ok-log-n-solution",
+   "prereqs": [
+    "cpa:josephus-recurrence"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:josephus-k2",
+   "name": "Closed form for k = 2",
+   "kind": "result",
+   "statement": "J(2n) = 2J(n) - 1 and J(2n+1) = 2J(n) + 1 (1-indexed), so J(n) = 2(n - 2^floor(log2 n)) + 1: a left rotation of n's binary digits.",
+   "locator": "cpa:others/josephus_problem#analytical-solution-for-k-2",
+   "prereqs": [
+    "cpa:josephus-problem"
+   ],
+   "aliases": [],
+   "tier": "stretch",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:fifteen-puzzle-parity",
+   "name": "Solvability of the 15 puzzle",
+   "kind": "result",
+   "statement": "With N the number of inversions among the tiles and K the row of the blank, a position is solvable iff N + K is even.",
+   "locator": "cpa:others/15-puzzle#existence-of-the-solution",
+   "prereqs": [
+    "[permutation inversions]"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": "Short article (about 366 words). Article practice list: 1 external link (#practice-problems)."
+  },
+  {
+   "id": "cpa:stern-brocot-tree",
+   "name": "Stern-Brocot tree",
+   "kind": "definition",
+   "statement": "Starting from 0/1 and 1/0 and repeatedly inserting the mediant (a+c)/(b+d) between neighbours builds a binary search tree containing every positive rational exactly once, in lowest terms.",
+   "locator": "cpa:others/stern_brocot_tree_farey_sequences#stern-brocot-tree",
+   "prereqs": [],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": "No practice list. Overlaps continued-fractions#stern-brocot-tree."
+  },
+  {
+   "id": "cpa:stern-brocot-properties",
+   "name": "Ordering, irreducibility and completeness",
+   "kind": "result",
+   "statement": "The mediant lies between its parents, neighbours satisfy bc - ad = 1 (so every fraction is reduced), and a search for any p/q terminates, so every positive rational appears.",
+   "locator": "cpa:others/stern_brocot_tree_farey_sequences#proofs",
+   "prereqs": [
+    "cpa:stern-brocot-tree"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:stern-brocot-number-system",
+   "name": "Stern-Brocot path as a number system",
+   "kind": "skill",
+   "statement": "Comparing with the mediant and going left or right writes p/q as an L/R string; the naive search can take O(p+q) steps.",
+   "locator": "cpa:others/stern_brocot_tree_farey_sequences#naive-search",
+   "prereqs": [
+    "cpa:stern-brocot-properties"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:stern-brocot-log-search",
+   "name": "Logarithmic Stern-Brocot search",
+   "kind": "result",
+   "statement": "Taking runs of a same-direction steps at once (computing a by division) reduces the search to O(log(p+q)), the same as computing the continued fraction.",
+   "locator": "cpa:others/stern_brocot_tree_farey_sequences#logarithmic-search",
+   "prereqs": [
+    "cpa:stern-brocot-number-system",
+    "cpa:euclidean-algorithm"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": true,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:farey-sequence",
+   "name": "Farey sequences",
+   "kind": "definition",
+   "statement": "F_n is the sorted list of reduced fractions in [0, 1] with denominator at most n; each interior term is the mediant of its neighbours.",
+   "locator": "cpa:others/stern_brocot_tree_farey_sequences#farey-sequence",
+   "prereqs": [
+    "cpa:stern-brocot-properties"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  },
+  {
+   "id": "cpa:farey-length",
+   "name": "Length of a Farey sequence",
+   "kind": "result",
+   "statement": "|F_n| = |F_{n-1}| + phi(n) = 1 + sum_{k<=n} phi(k).",
+   "locator": "cpa:others/stern_brocot_tree_farey_sequences#length-of-a-farey-sequence",
+   "prereqs": [
+    "cpa:farey-sequence",
+    "cpa:euler-totient"
+   ],
+   "aliases": [],
+   "tier": "contest",
+   "has_code": false,
+   "exercises": 0,
+   "notes": ""
+  }
+ ]
+}
