@@ -616,6 +616,607 @@
       "use": "test cases (Python unittest, ~590 test methods in tests/)",
       "format": "algorithms/<topic>/*.py, tests/test_<topic>.py",
       "locator": "keon-algorithms:<path>::<test>"
+    },
+    {
+      "id": "kleppmann-ds",
+      "title": "Distributed Systems (Cambridge lecture notes, slides and exercises)",
+      "authors": [
+        "Martin Kleppmann"
+      ],
+      "url": "https://github.com/ept/dist-sys",
+      "pin": "b8167ac35e3f529b851460dfc0feacc9e2436c92",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/ept/dist-sys/blob/main/README.md",
+        "quote": "The material is published under a [Creative Commons BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/)."
+      },
+      "use": "prose and exercises (25 \\supervision exercises; solutions.tex builds the solution notes). Human-authored by the lecturer (2020-2024). Matching CC BY lecture videos on YouTube, captions not pulled (bot check).",
+      "format": "LaTeX: all content in dist-sys.tex (TikZ figures inline); build with make (pdflatex -shell-escape)",
+      "locator": "kleppmann-ds:<\\label of section>, e.g. kleppmann-ds:sec:quorums; exercises kleppmann-ds:ex<n> in order of \\supervision"
+    },
+    {
+      "id": "raft-thesis",
+      "title": "Consensus: Bridging Theory and Practice (PhD dissertation, includes the Raft paper)",
+      "authors": [
+        "Diego Ongaro"
+      ],
+      "url": "https://github.com/ongardie/dissertation",
+      "pin": "0c10ea1b53d73bf6d163bdde8e4141a1cbd8f36a",
+      "licence": "CC BY 3.0 US or CC BY 4.0 (choice)",
+      "licence_evidence": {
+        "url": "https://github.com/ongardie/dissertation/blob/master/LICENSE",
+        "quote": "This work is licensed under: - Creative Commons Attribution-3.0 United States License ... or - Creative Commons Attribution-4.0 International License ... Most of the paper's content is included in some form in this dissertation. It is reproduced in this dissertation and licensed under the Creative Commons Attribution licenses with permission from John Ousterhout."
+      },
+      "use": "prose (Raft: leader election, log replication, safety, membership changes, client interaction incl. linearizable reads and duplicate-request handling)",
+      "format": "LaTeX, one directory per chapter (basicraft/, leaderelection/, membership/, clients/, ...); book.pdf prebuilt",
+      "locator": "raft-thesis:<chapter dir>/<file stem>#<\\label>, e.g. raft-thesis:basicraft/consensus#basicraft:leaderelection"
+    },
+    {
+      "id": "aosa",
+      "title": "The Architecture of Open Source Applications (Vol. 1, Vol. 2, The Performance of Open Source Software, 500 Lines or Less)",
+      "authors": [
+        "Amy Brown and Greg Wilson (eds.)",
+        "chapter authors as named in each chapter"
+      ],
+      "url": "https://github.com/aosabook/aosabook",
+      "pin": "12308deff812eb3a4fa4e210ae5496e154961311",
+      "licence": "CC BY 3.0",
+      "licence_evidence": {
+        "url": "https://github.com/aosabook/aosabook/blob/main/docs/en/index.html",
+        "quote": "This work is made available under the Creative Commons Attribution 3.0 Unported license."
+      },
+      "use": "prose (v2/distsys: Kate Matsudaira, Scalable Web Architecture and Distributed Systems; v1/riak, v1/nosql, v1/hdfs, v2/nginx, v1/graphite, posa/infinispan, 500L web crawler, 500L clustering by consensus (Paxos), 500L dbdb). Code in 500L chapters: check each chapter's code licence before reuse.",
+      "format": "HTML under docs/en/{v1,v2,posa,500L}/",
+      "locator": "aosa:<book>/<chapter stem>#<h2 number>, e.g. aosa:v2/distsys#1.3"
+    },
+    {
+      "id": "azure-arch",
+      "title": "Azure Architecture Center: cloud design patterns, best practices, architecture guides",
+      "authors": [
+        "Microsoft and contributors"
+      ],
+      "url": "https://github.com/MicrosoftDocs/architecture-center",
+      "pin": "84311416842d32ccb09c6b322844ed1a1369c8ce",
+      "licence": "CC BY 4.0 (docs); MIT (code)",
+      "licence_evidence": {
+        "url": "https://github.com/MicrosoftDocs/architecture-center/blob/main/LICENSE",
+        "quote": "Attribution 4.0 International (LICENSE); LICENSE-CODE: The MIT License (MIT) Copyright (c) Microsoft Corporation"
+      },
+      "use": "prose. Pinned to the last commit on or before 2022-11-30 on purpose: at HEAD (629acf25, 2026-11-07) 19 of the fetched pages carry 'ai-usage: ai-assisted' front matter (e.g. patterns/rate-limiting-pattern.md, patterns/idempotent-consumer.md, best-practices/api-implementation.md); at the pin none do. Vendor-specific (Azure product) passages need stripping.",
+      "format": "Markdown (*-content.md bodies + .yml metadata) under docs/patterns, docs/best-practices, docs/antipatterns, docs/guide",
+      "locator": "azure-arch:<path under docs/ without -content.md>#<heading slug>, e.g. azure-arch:patterns/sharding#sharding-strategies"
+    },
+    {
+      "id": "mdn",
+      "title": "MDN Web Docs (HTTP caching, status 429, Retry-After, proxies, WebSockets, SSE, media streaming, glossary)",
+      "authors": [
+        "Mozilla Contributors"
+      ],
+      "url": "https://github.com/mdn/content",
+      "pin": "74e746825cb4ec4c9af3f3d89a69966719b6bfeb",
+      "licence": "CC BY-SA 2.5 (prose; adaptations may use a later BY-SA version per s.4(b))",
+      "licence_evidence": {
+        "url": "https://github.com/mdn/content/blob/main/LICENSE.md",
+        "quote": "All prose content is available under ([CC-BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/))."
+      },
+      "use": "prose. Pinned to the last commit on or before 2022-11-30 (pre-LLM-era text); HEAD 288e6441 also fetched earlier for comparison. Attribution: 'Mozilla Contributors'.",
+      "format": "Markdown: files/en-us/<path>/index.md",
+      "locator": "mdn:<path under files/en-us/>#<heading slug>, e.g. mdn:web/http/caching#heuristic-caching"
+    },
+    {
+      "id": "otel",
+      "title": "OpenTelemetry documentation: concepts (observability primer, traces, metrics, logs, baggage)",
+      "authors": [
+        "The OpenTelemetry Authors"
+      ],
+      "url": "https://github.com/open-telemetry/opentelemetry.io",
+      "pin": "82c8c644b1f39f0714beb6abcd7f34ef886ea75f",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/open-telemetry/opentelemetry.io/blob/main/LICENSE",
+        "quote": "Creative Commons Attribution 4.0 International"
+      },
+      "use": "prose (observability). Pinned to last commit on or before 2022-11-30.",
+      "format": "Markdown under content/en/docs/concepts/",
+      "locator": "otel:<path under content/en/docs/concepts/ without .md>#<heading slug>, e.g. otel:observability-primer#understanding-distributed-tracing"
+    },
+    {
+      "id": "redis-doc",
+      "title": "Redis documentation (legacy repo): INCR rate-limiter pattern, Twitter-clone pattern, distributed locks, replication, cluster spec",
+      "authors": [
+        "Redis contributors (Salvatore Sanfilippo and others)"
+      ],
+      "url": "https://github.com/redis/redis-doc",
+      "pin": "66c6e42b854c845eb98b2ac58c480fb2dd4c3cae",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/redis/redis-doc/blob/master/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose. The successor repo redis/docs is CC BY-NC-SA 4.0 and is NOT usable; only this legacy repo. Pinned to last commit on or before 2022-11-30.",
+      "format": "Markdown: commands/<cmd>.md, docs/<section>/<page>.md",
+      "locator": "redis-doc:<path without .md>#<heading slug>, e.g. redis-doc:commands/incr#pattern-rate-limiter"
+    },
+    {
+      "id": "crdb",
+      "title": "CockroachDB documentation: architecture (replication layer, distribution layer, transactions)",
+      "authors": [
+        "Cockroach Labs and contributors"
+      ],
+      "url": "https://github.com/cockroachdb/docs",
+      "pin": "a475d836697edef5cc17fcfcbe2ebe4851fcbc94",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/cockroachdb/docs/blob/main/LICENSE",
+        "quote": "Attribution 4.0 International"
+      },
+      "use": "prose (Raft replication, ranges as shards, leaseholders, range splits/rebalancing). Pinned to last commit on or before 2022-11-30 (paths v22.2/...). Product-specific.",
+      "format": "Markdown under v22.2/architecture/",
+      "locator": "crdb:v22.2/architecture/<page>#<heading slug>"
+    },
+    {
+      "id": "riak-docs",
+      "title": "Riak KV 2.2.3 documentation: concepts (clusters/ring, replication N/R/W, vnodes, eventual consistency, active anti-entropy, causal context)",
+      "authors": [
+        "Basho Technologies and contributors"
+      ],
+      "url": "https://github.com/basho/basho_docs",
+      "pin": "6409dd9c93b08f0a6e959a1874b5568c88172f3a",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/basho/basho_docs/blob/master/LICENSE.md",
+        "quote": "This license is a copy of the Creative Commons Attribution License 4.0 International Public License"
+      },
+      "use": "prose (Dynamo-style KV store). EXCEPT learn/dynamo.md: it reprints the Amazon Dynamo paper 'in its entirety'; the paper text is third-party copyright, so that file is link-only (Riak's own annotation boxes in it are CC BY).",
+      "format": "Markdown under content/riak/kv/2.2.3/",
+      "locator": "riak-docs:<path under content/riak/kv/2.2.3/ without .md>#<heading slug>, e.g. riak-docs:learn/concepts/replication#read-repair"
+    },
+    {
+      "id": "etcd-site",
+      "title": "etcd documentation v3.5: learning (why etcd, API guarantees, data model)",
+      "authors": [
+        "The etcd Authors"
+      ],
+      "url": "https://github.com/etcd-io/website",
+      "pin": "4e05e6f4a43ba471e4898ddaaf5a2c6a2ba05336",
+      "licence": "CC BY 4.0 (content); Apache 2.0 (code)",
+      "licence_evidence": {
+        "url": "https://github.com/etcd-io/website/blob/main/LICENSE",
+        "quote": "Except as otherwise noted, the content of this repository is licensed under the Creative Commons Attribution 4.0 License"
+      },
+      "use": "prose (consistency guarantees: linearizable vs serializable reads; Raft-backed KV; comparison with ZooKeeper/Consul/NewSQL). Pinned to last commit on or before 2022-11-30.",
+      "format": "Markdown under content/en/docs/v3.5/learning/",
+      "locator": "etcd-site:v3.5/learning/<page>#<heading slug>"
+    },
+    {
+      "id": "citus-docs",
+      "title": "Citus documentation: concepts, choosing a distribution column, data modelling",
+      "authors": [
+        "Citus Data / Microsoft and contributors"
+      ],
+      "url": "https://github.com/citusdata/citus_docs",
+      "pin": "74f978bccea9e64e744b117e3778820f8cc54a3a",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/citusdata/citus_docs/blob/master/LICENSE.md",
+        "quote": "Attribution 4.0 International"
+      },
+      "use": "prose (sharding a relational DB: distribution column, co-location, reference tables). LICENSE.md was added 2023-06-28 (commit cc037c6), so the pin is HEAD (2025-04-11), not a 2022 snapshot.",
+      "format": "reStructuredText under get_started/ and sharding/",
+      "locator": "citus-docs:<dir>/<file stem>#<heading slug>, e.g. citus-docs:sharding/data_modeling#choosing-distribution-column"
+    },
+    {
+      "id": "cloudflare-docs",
+      "title": "Cloudflare developer documentation: CDN reference architecture, cache, load balancing, rate limiting rules, Queues, KV",
+      "authors": [
+        "Cloudflare and contributors"
+      ],
+      "url": "https://github.com/cloudflare/cloudflare-docs",
+      "pin": "70626d4faed3a9be2c5a94924c5637319e674744",
+      "licence": "CC BY 4.0 (docs); MIT (code)",
+      "licence_evidence": {
+        "url": "https://github.com/cloudflare/cloudflare-docs/blob/production/README.md",
+        "quote": "Except as otherwise noted, Cloudflare and any contributors grant you a license to the Cloudflare Developer Documentation and other content in this repository under the Creative Commons Attribution 4.0 International Public License"
+      },
+      "use": "prose. Trademarks not licensed. Pinned to last commit on or before 2022-11-30 (paths under content/). Product-specific.",
+      "format": "Markdown under content/<product>/...",
+      "locator": "cloudflare-docs:<path under content/ without .md>#<heading slug>, e.g. cloudflare-docs:reference-architecture/cdn-reference-architecture#cdn-architecture"
+    },
+    {
+      "id": "syncthing-docs",
+      "title": "Syncthing documentation: Block Exchange Protocol v1, syncing, versioning, FAQ",
+      "authors": [
+        "The Syncthing Authors"
+      ],
+      "url": "https://github.com/syncthing/docs",
+      "pin": "b16206f3fa73a2e28a1d6755670dc8de776d5726",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/syncthing/docs/blob/main/README.rst",
+        "quote": "All documentation and protocol specifications are licensed under the Creative Commons Attribution 4.0 International License"
+      },
+      "use": "prose (file sync case study: block hashing, index exchange, version vectors, conflict handling). Pinned to last commit on or before 2022-11-30.",
+      "format": "reStructuredText under specs/ and users/",
+      "locator": "syncthing-docs:<dir>/<file stem>#<heading slug>, e.g. syncthing-docs:specs/bep-v1#index-and-index-update"
+    },
+    {
+      "id": "k8s-site",
+      "title": "Kubernetes documentation: Services, networking, horizontal autoscaling",
+      "authors": [
+        "The Kubernetes Authors"
+      ],
+      "url": "https://github.com/kubernetes/website",
+      "pin": "cca2543aa4492071b622e9c34e356d98e08e667c",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://github.com/kubernetes/website/blob/main/LICENSE",
+        "quote": "Attribution 4.0 International"
+      },
+      "use": "prose (service discovery, L4/L7 load balancing via Service/Ingress, autoscaling). Pinned to last commit on or before 2022-11-30.",
+      "format": "Markdown under content/en/docs/",
+      "locator": "k8s-site:<path under content/en/docs/ without .md>#<heading slug>"
+    },
+    {
+      "id": "aip",
+      "title": "Google API Improvement Proposals (AIPs): request identification/idempotency, retries, errors, pagination",
+      "authors": [
+        "Google LLC and contributors"
+      ],
+      "url": "https://github.com/aip-dev/google.aip.dev",
+      "pin": "6397a74a48fb2fc970b502d00dcd0e2d91e41384",
+      "licence": "CC BY 4.0 (content); Apache 2.0 (code samples)",
+      "licence_evidence": {
+        "url": "https://github.com/aip-dev/google.aip.dev/blob/master/LICENSE.md",
+        "quote": "Except as otherwise noted, the content of this repository is licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License."
+      },
+      "use": "prose (normative, terse: AIP-155 request IDs for idempotency, AIP-194 automatic retry, AIP-193 errors, AIP-158 pagination). Pinned to last commit on or before 2022-11-30.",
+      "format": "Markdown: aip/general/<4-digit number>.md",
+      "locator": "aip:<number>#<heading slug>, e.g. aip:0155#guidance"
+    },
+    {
+      "id": "sysapproach",
+      "title": "Computer Networks: A Systems Approach",
+      "authors": [
+        "Larry Peterson",
+        "Bruce Davie"
+      ],
+      "url": "https://github.com/SystemsApproach/book",
+      "pin": "ed40b37e5e5845ddc22671c231b57764753fb213",
+      "licence": "unclear",
+      "licence_evidence": {
+        "url": "https://github.com/SystemsApproach/book/blob/master/README.rst",
+        "quote": "Source for *Computer Networks: A Systems Approach* is available on GitHub under terms of the Creative Commons (CC BY 4.0) license. ... While this license does not automatically grant the right to make derivative works, we are keen to discuss derivative works (such as translations) with interested parties."
+      },
+      "use": "link-only until the user rules: LICENSE is the CC BY 4.0 legal code (which does grant adaptation), but the README states the authors' contrary reading. README carries a 'Written by humans, not by AI' badge. Relevant: congestion/qos (token bucket), congestion/queuing, applications/infrastructure (DNS), applications/overlays (CDN, consistent hashing, DHT), applications/traditional (HTTP, web caching), foundation/performance (latency, bandwidth, delay x bandwidth), e2e/rpc (at-most-once, idempotent), data/multimedia (HTTP adaptive streaming). Exercises not in repo. LibreTexts mirror labels it CC BY 4.0.",
+      "format": "reStructuredText (Sphinx) per chapter directory",
+      "locator": "sysapproach:<chapter dir>/<file stem>#<section number or heading>, e.g. sysapproach:congestion/qos#6.5.2"
+    },
+    {
+      "id": "cnp3",
+      "title": "Computer Networking: Principles, Protocols and Practice (3rd ed.)",
+      "authors": [
+        "Olivier Bonaventure and contributors"
+      ],
+      "url": "https://github.com/cnp3/ebook",
+      "pin": "5d270364790500fe58283be91329365835a69d66",
+      "licence": "CC BY 3.0 or CC BY-SA 3.0, per file header",
+      "licence_evidence": {
+        "url": "https://github.com/cnp3/ebook/blob/master/protocols/dns.rst",
+        "quote": ".. This file is licensed under a `creative commons licence <http://creativecommons.org/licenses/by/3.0/>`_ (README: 'All the files in this subversion repository are licensed under a Creative Commons Attribution-Share Alike 3.0 Unported License.'; principles/naming.rst and protocols/rpc.rst headers say by-sa/3.0)"
+      },
+      "use": "prose and exercises (exercises/dns.rst, exercises/http.rst, unkeyed). Check the header of each file used.",
+      "format": "reStructuredText under principles/, protocols/, exercises/",
+      "locator": "cnp3:<dir>/<file stem>#<heading slug>, e.g. cnp3:protocols/dns#the-domain-name-system"
+    },
+    {
+      "id": "aws-elasticache",
+      "title": "Amazon ElastiCache documentation (archived GitHub copy): caching strategies (lazy loading, write-through, TTL)",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-elasticache-docs",
+      "pin": "7ed0a8ac051dff26b488e7ffaeef5bc5942aa7c4",
+      "licence": "CC BY-SA 4.0 (docs); modified MIT (sample code)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-elasticache-docs/blob/main/LICENSE-SUMMARY",
+        "quote": "The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file."
+      },
+      "use": "prose. Repo archived 2023; HEAD deleted the content, so the pin is the commit before the deletion (2023-06-15).",
+      "format": "Markdown under doc_source/redis/ and doc_source/memcache/",
+      "locator": "aws-elasticache:<path under doc_source/ without .md>#<heading slug>, e.g. aws-elasticache:redis/Strategies#lazy-loading"
+    },
+    {
+      "id": "aws-apigw",
+      "title": "Amazon API Gateway developer guide (archived GitHub copy): request throttling (token bucket)",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-api-gateway-developer-guide",
+      "pin": "781597d7e2e5375258f6029786877eb8b435dd0f",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-api-gateway-developer-guide/blob/main/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose (short). Pin = last commit with content (2023-04-03).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-apigw:<file stem>#<heading slug>, e.g. aws-apigw:api-gateway-request-throttling"
+    },
+    {
+      "id": "aws-sqs",
+      "title": "Amazon SQS developer guide (archived GitHub copy): visibility timeout, at-least-once, FIFO exactly-once, dead-letter queues, long polling",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-sqs-developer-guide",
+      "pin": "39de636dd41007e232595165587ba162ddc491f4",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-sqs-developer-guide/blob/main/LICENSE-SUMMARY",
+        "quote": "The documentation is made available under the Creative Commons Attribution-ShareAlike 4.0 International License. See the LICENSE file."
+      },
+      "use": "prose. Pin = commit before content deletion (2023-06-15).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-sqs:<file stem>#<heading slug>, e.g. aws-sqs:sqs-visibility-timeout"
+    },
+    {
+      "id": "aws-sns",
+      "title": "Amazon SNS developer guide (archived GitHub copy): fan-out, delivery retries, FIFO dedup, mobile push",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-sns-developer-guide",
+      "pin": "d2d6700c0df4f5e8160a34f733697da525469803",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-sns-developer-guide/blob/main/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose (notification system case study). Pin = last commit with content (2022-12-02).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-sns:<file stem>#<heading slug>, e.g. aws-sns:sns-message-delivery-retries"
+    },
+    {
+      "id": "aws-dynamodb",
+      "title": "Amazon DynamoDB developer guide (archived GitHub copy): partitions, read consistency, partition-key design, write sharding",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-dynamodb-developer-guide",
+      "pin": "822948021fcd815a33c040fb6cce5fa0d4127df4",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-dynamodb-developer-guide/blob/main/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose. Pin = commit before content deletion (2023-06-15).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-dynamodb:<file stem>#<heading slug>, e.g. aws-dynamodb:bp-partition-key-sharding"
+    },
+    {
+      "id": "aws-cloudfront",
+      "title": "Amazon CloudFront developer guide (archived GitHub copy): how a CDN works, cache expiration, cache keys, hit ratio",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-cloudfront-developer-guide",
+      "pin": "1c964d49c912371ecc1b0fa1abc3ac7cdf374803",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-cloudfront-developer-guide/blob/main/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose. Pin = commit before content deletion (2023-06-15).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-cloudfront:<file stem>#<heading slug>, e.g. aws-cloudfront:HowCloudFrontWorks"
+    },
+    {
+      "id": "aws-route53",
+      "title": "Amazon Route 53 developer guide (archived GitHub copy): how DNS works, routing policies (latency, geo, failover, weighted)",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/amazon-route53-docs",
+      "pin": "b5a28eb358f9b71922c4a48677ccd17f0c4d873f",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/amazon-route53-docs/blob/main/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose. Pin = commit before content deletion (2023-06-15).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-route53:<file stem>#<heading slug>, e.g. aws-route53:welcome-dns-service"
+    },
+    {
+      "id": "aws-elb",
+      "title": "Elastic Load Balancing: Application Load Balancers user guide (archived GitHub copy): listeners, target groups, health checks, sticky sessions",
+      "authors": [
+        "Amazon Web Services"
+      ],
+      "url": "https://github.com/awsdocs/elb-application-load-balancers-user-guide",
+      "pin": "01a945e0dc61cc3ae8b50f9dc764c95502baf9f5",
+      "licence": "CC BY-SA 4.0 (docs)",
+      "licence_evidence": {
+        "url": "https://github.com/awsdocs/elb-application-load-balancers-user-guide/blob/master/LICENSE",
+        "quote": "Creative Commons Attribution-ShareAlike 4.0 International Public License"
+      },
+      "use": "prose (L7 load balancing). Pin = commit before content deletion (2023-06-15).",
+      "format": "Markdown under doc_source/",
+      "locator": "aws-elb:<file stem>#<heading slug>, e.g. aws-elb:sticky-sessions"
+    },
+    {
+      "id": "wp-sysdesign",
+      "title": "Wikipedia articles for Part V (system design)",
+      "authors": [
+        "Wikipedia contributors"
+      ],
+      "url": "https://en.wikipedia.org/",
+      "pin": "per article: revid (fetch-time) and revid_pre2023 (last revision before 2022-12-01) in sources/_cache/wp-sysdesign/_meta.json",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://en.wikipedia.org/wiki/Token_bucket",
+        "quote": "Text is available under the Creative Commons Attribution-ShareAlike 4.0 License; additional terms may apply."
+      },
+      "use": "prose. Each article fetched as rendered text (.txt) and wikitext (.wiki) at the current revision, plus a pre-2022-12-01 revision (.pre2023.*) for an LLM-free baseline.",
+      "format": "<Title>.txt / .wiki / .pre2023.txt / .pre2023.wiki, _meta.json",
+      "locator": "wp:<Article_title>#<section>, e.g. wp:Token_bucket#Algorithm"
+    },
+    {
+      "id": "wb-sysdesign",
+      "title": "Wikibooks pages for Part V (CDN, DNS, HTTP, replication)",
+      "authors": [
+        "Wikibooks contributors"
+      ],
+      "url": "https://en.wikibooks.org/",
+      "pin": "per page revid in sources/_cache/wb-sysdesign/_meta.json",
+      "licence": "CC BY-SA 4.0",
+      "licence_evidence": {
+        "url": "https://en.wikibooks.org/wiki/Routing_protocols_and_architectures/Content_Delivery_Networks",
+        "quote": "Text is available under the Creative Commons Attribution-ShareAlike License"
+      },
+      "use": "prose (thin). Note: the Wikibook titled 'Distributed Systems' is about Unix systems programming, not distributed systems.",
+      "format": "<Title>.txt / .wiki, _meta.json",
+      "locator": "wb:<Page_title>#<section>"
+    },
+    {
+      "id": "arxiv-consistency-survey",
+      "title": "Consistency models in distributed systems: A survey on definitions, disciplines, challenges and applications (arXiv:1902.03305v1)",
+      "authors": [
+        "Hesam Nejati Sharif Aldin",
+        "Hossein Deldari",
+        "Mohammad Hossein Moattar",
+        "Mostafa Razavi Ghods"
+      ],
+      "url": "https://arxiv.org/abs/1902.03305",
+      "pin": "v1 (2019-02-08)",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://arxiv.org/abs/1902.03305",
+        "quote": "License: http://creativecommons.org/licenses/by/4.0/ (abs page licence link)"
+      },
+      "use": "prose (survey of data-centric and client-centric consistency models)",
+      "format": "PDF + pdftotext -layout (sources/_cache/arxiv-1902.03305/)",
+      "locator": "arxiv-consistency-survey:<section number>"
+    },
+    {
+      "id": "arxiv-relaxed-paxos",
+      "title": "Relaxed Paxos: Quorum Intersection Revisited (Again) (arXiv:2203.03058v1)",
+      "authors": [
+        "Heidi Howard",
+        "Richard Mortier"
+      ],
+      "url": "https://arxiv.org/abs/2203.03058",
+      "pin": "v1 (2022-03-06)",
+      "licence": "CC BY 4.0",
+      "licence_evidence": {
+        "url": "https://arxiv.org/abs/2203.03058",
+        "quote": "License: http://creativecommons.org/licenses/by/4.0/ (abs page licence link)"
+      },
+      "use": "prose (quorum intersection in Paxos; advanced)",
+      "format": "PDF + pdftotext -layout (sources/_cache/arxiv-2203.03058/)",
+      "locator": "arxiv-relaxed-paxos:<section number>"
+    },
+    {
+      "id": "latency-colin",
+      "title": "Interactive latency numbers (latency model by year)",
+      "authors": [
+        "Colin Scott"
+      ],
+      "url": "https://github.com/colin-scott/interactive_latencies",
+      "pin": "f4d5d3bf35e36adc04eb394d729384fab0d57474",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/colin-scott/interactive_latencies/blob/master/LICENSE",
+        "quote": "MIT License Copyright (c) 2024 Colin Scott"
+      },
+      "use": "dataset/code: the JS functions in interactive_latency.html extrapolate each 'latency number' by year (a source for the latency-numbers figure). Check lib/ (third-party JS) separately.",
+      "format": "single HTML file with inline JS",
+      "locator": "latency-colin:interactive_latency.html#<function name>, e.g. latency-colin:interactive_latency.html#getMemLatency"
+    },
+    {
+      "id": "tinykv",
+      "title": "TinyKV (Talent Plan): build a Raft-replicated, sharded transactional key-value store, with tests",
+      "authors": [
+        "PingCAP / Talent Plan contributors"
+      ],
+      "url": "https://github.com/talent-plan/tinykv",
+      "pin": "cf7ed8da34fea520c7e2f909e23bd5c27414961a",
+      "licence": "Apache 2.0",
+      "licence_evidence": {
+        "url": "https://github.com/talent-plan/tinykv/blob/master/LICENSE",
+        "quote": "Apache License Version 2.0, January 2004"
+      },
+      "use": "code exercise (project-scale, Go, with test suites per project). The statements in doc/*.md fall under the same Apache 2.0 licence: the gate admits Apache for code only, so the statements' use needs a ruling.",
+      "format": "Go; doc/project1-StandaloneKV.md .. project4-Transaction.md",
+      "locator": "tinykv:doc/<project file stem>#<heading slug>; tests tinykv:<go package path>"
+    },
+    {
+      "id": "raft-site",
+      "title": "The Raft Consensus Algorithm (raft.github.io website)",
+      "authors": [
+        "Diego Ongaro and contributors"
+      ],
+      "url": "https://github.com/raft/raft.github.io",
+      "pin": "de64ee6f303cba3a0b00d68ef44bcca2e0e8e194",
+      "licence": "CC BY 3.0",
+      "licence_evidence": {
+        "url": "https://github.com/raft/raft.github.io/blob/main/README.md",
+        "quote": "This work is licensed under a Creative Commons Attribution 3.0 Unported License."
+      },
+      "use": "prose (short overview in index.html, ~2000 words incl. implementation table). raft.pdf in the repo is the USENIX ATC '14 paper and carries no licence of its own: use raft-thesis for that text. raftscope/ is a submodule, not fetched.",
+      "format": "HTML (index.html)",
+      "locator": "raft-site:index.html#<section id>"
+    },
+    {
+      "id": "sonyflake",
+      "title": "Sonyflake: distributed unique ID generator inspired by Twitter's Snowflake",
+      "authors": [
+        "Sony Corporation"
+      ],
+      "url": "https://github.com/sony/sonyflake",
+      "pin": "f167a9d53145b661d05ac28b5702b6f29ea9c502",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/sony/sonyflake/blob/master/LICENSE",
+        "quote": "The MIT License (MIT) Copyright 2015 Sony Corporation"
+      },
+      "use": "code (Go reference implementation of a Snowflake-style 64-bit ID: time | sequence | machine id). README prose is MIT too: the gate admits MIT for code only.",
+      "format": "Go",
+      "locator": "sonyflake:<file>#<func>"
+    },
+    {
+      "id": "ksuid",
+      "title": "KSUID: K-Sortable Globally Unique IDs",
+      "authors": [
+        "Segment.io"
+      ],
+      "url": "https://github.com/segmentio/ksuid",
+      "pin": "d33724947fcfba7949906c2b1821e96a1c8d06e7",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/segmentio/ksuid/blob/master/LICENSE.md",
+        "quote": "MIT License Copyright (c) 2017 Segment.io"
+      },
+      "use": "code (Go: 32-bit timestamp + 128-bit random payload, base62). README prose MIT: code-only per gate.",
+      "format": "Go",
+      "locator": "ksuid:<file>#<func>"
+    },
+    {
+      "id": "redis-cell",
+      "title": "redis-cell: GCRA rate limiting module for Redis",
+      "authors": [
+        "Brandur Leach and contributors"
+      ],
+      "url": "https://github.com/brandur/redis-cell",
+      "pin": "be8d93c2466ce8ba37037c31124a0cb4d4d1a80e",
+      "licence": "MIT",
+      "licence_evidence": {
+        "url": "https://github.com/brandur/redis-cell/blob/master/LICENSE",
+        "quote": "The MIT License (MIT) Copyright (c) 2016 Brandur and contributors"
+      },
+      "use": "code (Rust implementation of the generic cell rate algorithm, a token-bucket equivalent). README prose MIT: code-only per gate.",
+      "format": "Rust (src/cell/)",
+      "locator": "redis-cell:<file>#<fn>"
     }
   ]
 }

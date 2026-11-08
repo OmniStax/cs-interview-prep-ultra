@@ -1,0 +1,5644 @@
+{
+ "about": "Table of contents derived from concept-map/concepts.json: parts, chapters, sections; each section is one concept home (one page). Chapters with first_pass true are the first build pass. Section tier is the most common tier of its concepts (ties go to the more basic tier).",
+ "parts": [
+  {
+   "id": "foundations",
+   "number": "I",
+   "title": "Foundations",
+   "chapters": [
+    {
+     "id": "ch-cost",
+     "number": 1,
+     "title": "Algorithms and their cost",
+     "first_pass": true,
+     "sections": [
+      {
+       "id": "what-is-an-algorithm",
+       "number": "1.1",
+       "title": "What an algorithm is",
+       "concepts": [
+        "algorithm",
+        "underspecified-algorithm",
+        "describing-algorithms",
+        "need-for-efficiency",
+        "interface-vs-implementation",
+        "lattice-multiplication",
+        "peasant-multiplication"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "growth-functions",
+       "number": "1.2",
+       "title": "Logarithms, factorials and harmonic numbers",
+       "concepts": [
+        "logarithms",
+        "factorials-stirling",
+        "harmonic-numbers"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "asymptotic-notation",
+       "number": "1.3",
+       "title": "Asymptotic notation",
+       "concepts": [
+        "big-o",
+        "big-omega-theta",
+        "multivariate-big-o"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "big-omega-theta"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "analysing-algorithms",
+       "number": "1.4",
+       "title": "Analysing running time and space",
+       "concepts": [
+        "word-ram",
+        "complexity-analysis",
+        "running-time-guarantees"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "amortized-analysis",
+       "number": "1.5",
+       "title": "Amortized analysis",
+       "concepts": [
+        "amortized-analysis",
+        "aggregate-accounting",
+        "potential-method",
+        "counter-increment-decrement"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "amortized-analysis",
+        "aggregate-accounting",
+        "counter-increment-decrement"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "counting-expectation",
+       "number": "1.6",
+       "title": "Counting and expected value",
+       "concepts": [
+        "counting",
+        "probability-basics",
+        "conditional-probability",
+        "linearity-of-expectation",
+        "indicator-variables",
+        "geometric-expectation"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "counting",
+        "probability-basics",
+        "conditional-probability"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 16,
+      "stretch": 9,
+      "contest": 1
+     }
+    },
+    {
+     "id": "ch-arrays-lists",
+     "number": 2,
+     "title": "Arrays and linked lists",
+     "first_pass": true,
+     "sections": [
+      {
+       "id": "arrays",
+       "number": "2.1",
+       "title": "Arrays and the list interface",
+       "concepts": [
+        "array",
+        "pointer-arithmetic",
+        "list-interface"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "array",
+        "pointer-arithmetic"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "dynamic-arrays",
+       "number": "2.2",
+       "title": "Dynamic arrays",
+       "concepts": [
+        "dynamic-array",
+        "array-resize",
+        "dynamic-array-cost",
+        "block-copy",
+        "implement-vector"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "implement-vector"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "singly-linked-lists",
+       "number": "2.3",
+       "title": "Singly linked lists",
+       "concepts": [
+        "singly-linked-list",
+        "pointer-to-pointer",
+        "implement-linked-list",
+        "linked-list-vs-array"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "pointer-to-pointer",
+        "implement-linked-list"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "doubly-linked-lists",
+       "number": "2.4",
+       "title": "Doubly linked lists",
+       "concepts": [
+        "sentinel-node",
+        "doubly-linked-list"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "tortoise-and-hare",
+       "number": "2.5",
+       "title": "Cycles in linked lists: tortoise and hare",
+       "concepts": [
+        "floyd-cycle-detection",
+        "cycle-start",
+        "cycle-start-proof"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 16,
+      "stretch": 1
+     }
+    },
+    {
+     "id": "ch-stacks-queues",
+     "number": 3,
+     "title": "Stacks, queues and deques",
+     "first_pass": true,
+     "sections": [
+      {
+       "id": "stacks",
+       "number": "3.1",
+       "title": "Stacks and bracket matching",
+       "concepts": [
+        "stack",
+        "balanced-brackets",
+        "bracket-validation"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "queues",
+       "number": "3.2",
+       "title": "Queues and circular buffers",
+       "concepts": [
+        "queue",
+        "circular-buffer",
+        "queue-linked-list",
+        "array-queue"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "queue-linked-list"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "deques",
+       "number": "3.3",
+       "title": "Deques",
+       "concepts": [
+        "deque",
+        "array-deque",
+        "dual-array-deque"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "monotonic",
+       "number": "3.4",
+       "title": "Min-stacks and monotonic queues",
+       "concepts": [
+        "min-stack",
+        "queue-from-two-stacks",
+        "monotonic-queue-minimum",
+        "sliding-window-minimum",
+        "nearest-smaller-element",
+        "largest-zero-submatrix"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa data_structures/stack_queue_modification is the home article; cpa dynamic_programming/zero_matrix contributes its stack step."
+      },
+      {
+       "id": "expressions",
+       "number": "3.5",
+       "title": "Stack applications: expression evaluation",
+       "concepts": [
+        "rpn-evaluation",
+        "expression-parsing",
+        "unary-right-assoc"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "space-efficient-lists",
+       "number": "3.6",
+       "title": "Space-efficient lists",
+       "concepts": [
+        "rootish-array-stack",
+        "rootish-index-math",
+        "sqrt-space-lower-bound",
+        "space-efficient-list",
+        "selist-spread-gather"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 15,
+      "stretch": 8,
+      "contest": 1
+     }
+    },
+    {
+     "id": "ch-recursion",
+     "number": 4,
+     "title": "Recursion and induction",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "recursion",
+       "number": "4.1",
+       "title": "Recursion and reduction",
+       "concepts": [
+        "reduction",
+        "recursion",
+        "tail-recursion",
+        "tower-of-hanoi"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "tail-recursion"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "exponentiation",
+       "number": "4.2",
+       "title": "Exponentiation by squaring",
+       "concepts": [
+        "binary-exponentiation",
+        "binary-exp-iterative",
+        "modular-exponentiation",
+        "associative-power"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "induction",
+       "number": "4.3",
+       "title": "Induction and correctness proofs",
+       "concepts": [
+        "smallest-counterexample",
+        "induction",
+        "induction-practice",
+        "structural-induction",
+        "correctness-proof"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "smallest-counterexample",
+        "induction",
+        "induction-practice",
+        "structural-induction"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 12,
+      "stretch": 1
+     }
+    },
+    {
+     "id": "ch-hashing",
+     "number": 5,
+     "title": "Hash tables",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "sets-and-maps",
+       "number": "5.1",
+       "title": "Sets, maps and the dictionary problem",
+       "concepts": [
+        "uset-interface",
+        "map-interface",
+        "hash-table"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "hash-table"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "chaining",
+       "number": "5.2",
+       "title": "Hashing with chaining",
+       "concepts": [
+        "hashing-with-chaining",
+        "table-doubling"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "table-doubling"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "open-addressing",
+       "number": "5.3",
+       "title": "Open addressing",
+       "concepts": [
+        "open-addressing",
+        "tombstones",
+        "implement-hash-table"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "hash-families",
+       "number": "5.4",
+       "title": "Hash function families",
+       "concepts": [
+        "universal-hashing",
+        "multiplicative-hashing",
+        "tabulation-hashing",
+        "perfect-hashing"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "universal-hashing",
+        "perfect-hashing"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "hash-codes",
+       "number": "5.5",
+       "title": "Hash codes",
+       "concepts": [
+        "hash-code-properties",
+        "hash-primitives",
+        "hash-compound"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "hashing-analysis",
+       "number": "5.6",
+       "title": "Analysing hash tables",
+       "concepts": [
+        "chaining-analysis",
+        "balls-and-bins",
+        "linear-probing-analysis",
+        "cuckoo-hashing"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "chaining-analysis",
+        "balls-and-bins",
+        "cuckoo-hashing"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "lru-cache",
+       "number": "5.7",
+       "title": "Combining structures: the LRU cache",
+       "concepts": [
+        "lru-cache"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 14,
+      "stretch": 4,
+      "contest": 2
+     }
+    },
+    {
+     "id": "ch-binary-search",
+     "number": 6,
+     "title": "Binary search",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "binary-search",
+       "number": "6.1",
+       "title": "Binary search in a sorted array",
+       "concepts": [
+        "binary-search",
+        "binary-search-invariant",
+        "lower-upper-bound",
+        "implement-binary-search"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "implement-binary-search"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "binary-search-predicate",
+       "number": "6.2",
+       "title": "Binary search on a predicate and on the answer",
+       "concepts": [
+        "binary-search-predicate",
+        "binary-search-on-answer",
+        "binary-search-powers-of-two",
+        "parallel-binary-search"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "continuous-search",
+       "number": "6.3",
+       "title": "Bisection and ternary search",
+       "concepts": [
+        "bisection-method",
+        "unimodal-function",
+        "ternary-search",
+        "ternary-search-integer",
+        "golden-section-search"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 6,
+      "stretch": 5,
+      "contest": 2
+     }
+    },
+    {
+     "id": "ch-bits",
+     "number": 7,
+     "title": "Bits and data representation",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "binary-numbers",
+       "number": "7.1",
+       "title": "Binary numbers and machine words",
+       "concepts": [
+        "powers-of-two",
+        "binary-representation"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "bitwise-operators",
+       "number": "7.2",
+       "title": "Bitwise operators",
+       "concepts": [
+        "bitwise-operators",
+        "shift-operators",
+        "set-clear-flip-bit",
+        "power-of-two-check"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "bit-tricks",
+       "number": "7.3",
+       "title": "Bit tricks and counting bits",
+       "concepts": [
+        "lowest-set-bit-tricks",
+        "branch-free-tricks",
+        "popcount",
+        "count-bits-up-to-n"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "branch-free-tricks"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "submasks-gray-codes",
+       "number": "7.4",
+       "title": "Submasks and Gray codes",
+       "concepts": [
+        "submask-enumeration",
+        "submasks-three-to-n",
+        "gray-code",
+        "gray-code-formula",
+        "inverse-gray-code",
+        "gray-code-applications"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "data-representation",
+       "number": "7.5",
+       "title": "Representing numbers and text",
+       "concepts": [
+        "floating-point",
+        "endianness",
+        "character-encodings"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "floating-point",
+        "endianness",
+        "character-encodings"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 12,
+      "stretch": 6,
+      "contest": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "trees-sorting",
+   "number": "II",
+   "title": "Trees and sorting",
+   "chapters": [
+    {
+     "id": "ch-bst",
+     "number": 8,
+     "title": "Trees and binary search trees",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "trees",
+       "number": "8.1",
+       "title": "Trees and binary trees",
+       "concepts": [
+        "tree",
+        "binary-tree",
+        "binary-tree-recursion"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "tree"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "tree-traversals",
+       "number": "8.2",
+       "title": "Tree traversals: depth-first and level-order",
+       "concepts": [
+        "tree-dfs-orders",
+        "nonrecursive-traversal",
+        "tree-bfs"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "sorted-sets",
+       "number": "8.3",
+       "title": "Sorted sets and the BST property",
+       "concepts": [
+        "sset-interface",
+        "uset-vs-sset",
+        "bst"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "bst-search-insert",
+       "number": "8.4",
+       "title": "Search and insertion",
+       "concepts": [
+        "bst-search",
+        "bst-insert",
+        "bst-min-max-height",
+        "bst-successor"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "bst-min-max-height",
+        "bst-successor"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "bst-delete",
+       "number": "8.5",
+       "title": "Deletion, validation and cost",
+       "concepts": [
+        "bst-delete",
+        "validate-bst",
+        "implement-bst",
+        "unbalanced-bst-cost"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "validate-bst",
+        "implement-bst"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "balance-idea",
+       "number": "8.6",
+       "title": "Keeping a BST balanced",
+       "concepts": [
+        "balanced-bst-idea",
+        "tree-rotations",
+        "build-balanced-from-sorted",
+        "random-bst"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "balanced-bst-idea"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 19,
+      "stretch": 2
+     }
+    },
+    {
+     "id": "ch-heaps",
+     "number": 9,
+     "title": "Heaps and priority queues",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "priority-queues",
+       "number": "9.1",
+       "title": "Priority queues",
+       "concepts": [
+        "priority-queue",
+        "apportionment"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "binary-heaps",
+       "number": "9.2",
+       "title": "Binary heaps",
+       "concepts": [
+        "implicit-tree-layout",
+        "heap-property",
+        "binary-heap",
+        "heap-sift"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "heap-sift"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "heapify-heapsort",
+       "number": "9.3",
+       "title": "Heapify and heapsort",
+       "concepts": [
+        "build-heap",
+        "heapsort",
+        "implement-heap"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "implement-heap"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "meldable-heaps",
+       "number": "9.4",
+       "title": "Meldable heaps",
+       "concepts": [
+        "random-walk-binary-tree",
+        "meldable-heap"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa data_structures/randomized_heap duplicates ODS's MeldableHeap and is folded here."
+      }
+     ],
+     "tier_counts": {
+      "core": 8,
+      "stretch": 3
+     }
+    },
+    {
+     "id": "ch-sorting",
+     "number": 10,
+     "title": "Divide and conquer and sorting",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "elementary-sorts",
+       "number": "10.1",
+       "title": "Elementary sorts",
+       "concepts": [
+        "comparison-sorting",
+        "sort-stability",
+        "selection-sort",
+        "insertion-sort",
+        "bubble-sort"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "sort-stability",
+        "selection-sort",
+        "insertion-sort",
+        "bubble-sort"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "divide-and-conquer",
+       "number": "10.2",
+       "title": "Divide and conquer and recurrences",
+       "concepts": [
+        "divide-and-conquer",
+        "guess-and-confirm",
+        "recursion-trees",
+        "akra-bazzi",
+        "annihilators",
+        "karatsuba"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "guess-and-confirm",
+        "akra-bazzi",
+        "annihilators"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "mergesort",
+       "number": "10.3",
+       "title": "Merge sort",
+       "concepts": [
+        "mergesort",
+        "sorting-linked-lists"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "sorting-linked-lists"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "quicksort",
+       "number": "10.4",
+       "title": "Quicksort and partitioning",
+       "concepts": [
+        "partition",
+        "three-way-partition",
+        "quicksort",
+        "nuts-and-bolts",
+        "quicksort-expected-comparisons",
+        "implement-sorts"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "nuts-and-bolts",
+        "implement-sorts"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "selection",
+       "number": "10.5",
+       "title": "Selection",
+       "concepts": [
+        "quickselect",
+        "median-of-medians"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa sequences/k-th (195 words) duplicates quickselect and is folded here."
+      },
+      {
+       "id": "sorting-lower-bound",
+       "number": "10.6",
+       "title": "Lower bounds for sorting",
+       "concepts": [
+        "decision-tree-model",
+        "information-theoretic-bound",
+        "comparison-sort-lower-bound",
+        "sorting-reductions"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "decision-tree-model",
+        "information-theoretic-bound",
+        "sorting-reductions"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "linear-sorts",
+       "number": "10.7",
+       "title": "Counting sort and radix sort",
+       "concepts": [
+        "counting-sort",
+        "radix-sort"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 18,
+      "stretch": 7,
+      "contest": 2
+     }
+    },
+    {
+     "id": "ch-balanced",
+     "number": 11,
+     "title": "Balanced search trees",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "multiway-trees",
+       "number": "11.1",
+       "title": "AVL, 2-3 and 2-4 trees",
+       "concepts": [
+        "avl-tree",
+        "two-three-tree",
+        "two-four-tree",
+        "two-four-updates"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "avl-tree",
+        "two-three-tree"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "red-black",
+       "number": "11.2",
+       "title": "Red-black trees",
+       "concepts": [
+        "red-black-properties",
+        "red-black-as-2-4",
+        "left-leaning-red-black",
+        "red-black-insert",
+        "red-black-delete",
+        "red-black-tree"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "treaps",
+       "number": "11.3",
+       "title": "Treaps",
+       "concepts": [
+        "treap",
+        "treap-rotations",
+        "treap-depth",
+        "treap-split-merge",
+        "treap-linear-build",
+        "implicit-treap"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "treap-depth"
+       ],
+       "folds": "cpa data_structures/treap shares this home with ODS and jeffe-notes; its split/merge and implicit-key material is contest-tier."
+      },
+      {
+       "id": "amortized-trees",
+       "number": "11.4",
+       "title": "Scapegoat and splay trees",
+       "concepts": [
+        "partial-rebuilding",
+        "global-rebuilding",
+        "scapegoat-tree",
+        "scapegoat-amortized",
+        "splaying",
+        "splay-tree"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "global-rebuilding",
+        "splaying",
+        "splay-tree"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "skip-lists",
+       "number": "11.5",
+       "title": "Skip lists",
+       "concepts": [
+        "skiplist-structure",
+        "skiplist-search-path",
+        "skip-list",
+        "skiplist-list",
+        "skiplist-analysis"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "b-trees",
+       "number": "11.6",
+       "title": "B-trees",
+       "concepts": [
+        "external-memory-model",
+        "k-ary-tree",
+        "b-tree-structure",
+        "b-tree-search",
+        "b-tree-insert",
+        "b-tree-delete",
+        "b-tree"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "k-ary-tree"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 1,
+      "stretch": 30,
+      "contest": 3
+     }
+    },
+    {
+     "id": "ch-tries",
+     "number": 12,
+     "title": "Tries and other search structures",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "tries",
+       "number": "12.1",
+       "title": "Tries",
+       "concepts": [
+        "trie",
+        "trie-operations",
+        "ternary-search-trie"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "trie-operations",
+        "ternary-search-trie"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "integer-search",
+       "number": "12.2",
+       "title": "Integer search structures",
+       "concepts": [
+        "binary-trie",
+        "x-fast-trie",
+        "y-fast-trie",
+        "van-emde-boas"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "van-emde-boas"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "augmented-spatial",
+       "number": "12.3",
+       "title": "Augmented and spatial trees",
+       "concepts": [
+        "augmented-trees",
+        "kd-tree"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "augmented-trees",
+        "kd-tree"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 3,
+      "stretch": 4,
+      "contest": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "graphs",
+   "number": "III",
+   "title": "Graphs",
+   "chapters": [
+    {
+     "id": "ch-graph-search",
+     "number": 13,
+     "title": "Graphs and graph search",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "graphs",
+       "number": "13.1",
+       "title": "Graphs and modelling",
+       "concepts": [
+        "graph",
+        "graph-modeling",
+        "graph-operations"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "representations",
+       "number": "13.2",
+       "title": "Adjacency matrices and lists",
+       "concepts": [
+        "adjacency-matrix",
+        "adjacency-list",
+        "graph-representations"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "graph-representations"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "whatever-first",
+       "number": "13.3",
+       "title": "Whatever-first search",
+       "concepts": [
+        "whatever-first-search",
+        "traversal-variants"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "bfs",
+       "number": "13.4",
+       "title": "Breadth-first search",
+       "concepts": [
+        "graph-bfs",
+        "bfs-shortest-paths",
+        "bfs-path-restore",
+        "bfs-applications"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe",
+        "ods",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "dfs",
+       "number": "13.5",
+       "title": "Depth-first search",
+       "concepts": [
+        "graph-dfs",
+        "iterative-dfs",
+        "implement-bfs-dfs"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "implement-bfs-dfs"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "components",
+       "number": "13.6",
+       "title": "Components, flood fill and bipartiteness",
+       "concepts": [
+        "traversal-cost",
+        "connected-components",
+        "flood-fill",
+        "bipartite-check"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/search-for-connected-components (327 words, mostly BFS/DFS applications) and graph/bipartite-check (264 words) are thin and folded into this home."
+      }
+     ],
+     "tier_counts": {
+      "core": 18,
+      "stretch": 1
+     }
+    },
+    {
+     "id": "ch-dfs-structure",
+     "number": 14,
+     "title": "Depth-first structure",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "dfs-clocks",
+       "number": "14.1",
+       "title": "DFS clocks and edge classification",
+       "concepts": [
+        "dfs-clocks",
+        "edge-classification"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "topological-order",
+       "number": "14.2",
+       "title": "Cycles and topological order",
+       "concepts": [
+        "cycle-detection",
+        "topological-order",
+        "topological-sort"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/finding-cycle (292 words) is folded into this home."
+      },
+      {
+       "id": "bridges",
+       "number": "14.3",
+       "title": "Bridges and articulation points",
+       "concepts": [
+        "low-link",
+        "bridge",
+        "bridge-finding",
+        "articulation-point",
+        "articulation-point-finding"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/cutpoints shares the low-link method of graph/bridge-searching; both live here."
+      },
+      {
+       "id": "scc",
+       "number": "14.4",
+       "title": "Strongly connected components",
+       "concepts": [
+        "scc",
+        "kosaraju",
+        "tarjan-scc",
+        "condensation"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "euler-paths",
+       "number": "14.5",
+       "title": "Eulerian paths",
+       "concepts": [
+        "euler-path-existence",
+        "hierholzer"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 7,
+      "stretch": 9
+     }
+    },
+    {
+     "id": "ch-shortest-paths",
+     "number": 15,
+     "title": "Shortest paths",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "sssp",
+       "number": "15.1",
+       "title": "Shortest-path problems and relaxation",
+       "concepts": [
+        "sssp",
+        "edge-relaxation",
+        "ford-relaxation",
+        "negative-edges"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "dijkstra",
+       "number": "15.2",
+       "title": "Dijkstra's algorithm and A*",
+       "concepts": [
+        "dijkstra",
+        "dijkstra-heap",
+        "a-star"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "a-star"
+       ],
+       "folds": "cpa graph/dijkstra_sparse (the heap/set implementation) is folded into the Dijkstra home."
+      },
+      {
+       "id": "bellman-ford",
+       "number": "15.3",
+       "title": "Bellman-Ford and negative cycles",
+       "concepts": [
+        "bellman-ford",
+        "bellman-ford-negative-cycle",
+        "spfa"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "small-weights",
+       "number": "15.4",
+       "title": "Shortest paths with small weights",
+       "concepts": [
+        "zero-one-bfs",
+        "dial-algorithm",
+        "desopo-pape"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 7,
+      "stretch": 3,
+      "contest": 3
+     }
+    },
+    {
+     "id": "ch-mst",
+     "number": 16,
+     "title": "Disjoint sets and minimum spanning trees",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "union-find",
+       "number": "16.1",
+       "title": "Disjoint sets",
+       "concepts": [
+        "union-find",
+        "shallow-threaded-trees",
+        "dsu-connectivity"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "shallow-threaded-trees"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "dsu-heuristics",
+       "number": "16.2",
+       "title": "Union by rank and path compression",
+       "concepts": [
+        "union-by-rank",
+        "path-compression",
+        "inverse-ackermann"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "mst",
+       "number": "16.3",
+       "title": "Minimum spanning trees and safe edges",
+       "concepts": [
+        "mst",
+        "mst-unique",
+        "mst-properties",
+        "generic-mst"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "mst-algorithms",
+       "number": "16.4",
+       "title": "Prim, Kruskal and Boruvka",
+       "concepts": [
+        "prim",
+        "kruskal",
+        "boruvka"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/mst_kruskal_with_dsu (215 words) duplicates mst_kruskal's improved implementation and is folded into Kruskal."
+      }
+     ],
+     "tier_counts": {
+      "core": 5,
+      "stretch": 8
+     }
+    }
+   ]
+  },
+  {
+   "id": "paradigms",
+   "number": "IV",
+   "title": "Paradigms",
+   "chapters": [
+    {
+     "id": "ch-backtracking",
+     "number": 17,
+     "title": "Backtracking",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "backtracking-pattern",
+       "number": "17.1",
+       "title": "The backtracking pattern",
+       "concepts": [
+        "backtracking",
+        "n-queens",
+        "game-trees"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "subset-sum-segmentation",
+       "number": "17.2",
+       "title": "Subset sum and text segmentation",
+       "concepts": [
+        "subset-sum-backtracking",
+        "text-segmentation",
+        "index-formulation"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "recursive-formulations",
+       "number": "17.3",
+       "title": "Recursive formulations of optimisation problems",
+       "concepts": [
+        "lis-backtracking",
+        "obst-recurrence"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 6,
+      "stretch": 2
+     }
+    },
+    {
+     "id": "ch-dp",
+     "number": 18,
+     "title": "Dynamic programming",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "dp-idea",
+       "number": "18.1",
+       "title": "Memoization and tabulation",
+       "concepts": [
+        "overlapping-subproblems",
+        "memoization",
+        "bottom-up-dp",
+        "dp-smart-recursion",
+        "dp-recognition",
+        "classic-dp-problems"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "dp-recognition"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "fibonacci",
+       "number": "18.2",
+       "title": "Fibonacci numbers: from recursion to logarithmic time",
+       "concepts": [
+        "fibonacci-numbers",
+        "fibonacci-linear",
+        "fibonacci-matrix"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "dp-sequences",
+       "number": "18.3",
+       "title": "Text segmentation and longest increasing subsequence",
+       "concepts": [
+        "text-segmentation-dp",
+        "lis-dp",
+        "dp-reconstruction",
+        "lis-nlogn",
+        "lis-variants"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "max-subarray",
+       "number": "18.4",
+       "title": "Maximum subarray",
+       "concepts": [
+        "max-subarray-problem",
+        "max-subarray-prefix-min",
+        "kadane",
+        "max-submatrix",
+        "max-average-subarray"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "knapsack",
+       "number": "18.5",
+       "title": "Subset sum and knapsack",
+       "concepts": [
+        "subset-sum-dp",
+        "knapsack-01",
+        "knapsack-1d-order",
+        "knapsack-unbounded",
+        "knapsack-bounded-binary",
+        "knapsack-monotone-queue"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "string-dp",
+       "number": "18.6",
+       "title": "Edit distance and longest common subsequence",
+       "concepts": [
+        "edit-distance",
+        "longest-common-subsequence",
+        "rna-secondary-structure"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "rna-secondary-structure"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "dp-trees",
+       "number": "18.7",
+       "title": "DP on trees and optimal binary search trees",
+       "concepts": [
+        "dp-on-trees",
+        "obst-dp"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 21,
+      "stretch": 6,
+      "contest": 3
+     }
+    },
+    {
+     "id": "ch-graph-dp",
+     "number": 19,
+     "title": "Dynamic programming on graphs",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "dag-dp",
+       "number": "19.1",
+       "title": "DP in directed acyclic graphs",
+       "concepts": [
+        "dag-dp",
+        "dag-shortest-paths"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "apsp-sssp",
+       "number": "19.2",
+       "title": "All-pairs shortest paths from single-source runs",
+       "concepts": [
+        "apsp-problem",
+        "apsp-repeated-sssp",
+        "reweighting",
+        "johnson"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "floyd-warshall",
+       "number": "19.3",
+       "title": "Floyd-Warshall",
+       "concepts": [
+        "floyd-warshall",
+        "floyd-warshall-path",
+        "floyd-warshall-negative",
+        "negative-cycle-finding"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/finding-negative-cycle-in-graph largely duplicates the negative-cycle parts of bellman_ford and all-pair-shortest-path-floyd-warshall and is folded here."
+      },
+      {
+       "id": "path-length-dp",
+       "number": "19.4",
+       "title": "Path-length DP and matrix products",
+       "concepts": [
+        "apsp-dp",
+        "paths-fixed-length-count",
+        "min-plus-product"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 1,
+      "stretch": 9,
+      "contest": 3
+     }
+    },
+    {
+     "id": "ch-greedy",
+     "number": 20,
+     "title": "Greedy algorithms",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "greedy-idea",
+       "number": "20.1",
+       "title": "Greedy choices and exchange arguments",
+       "concepts": [
+        "greed-is-stupid",
+        "exchange-argument",
+        "tape-storage",
+        "interval-scheduling",
+        "stable-matching"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "huffman",
+       "number": "20.2",
+       "title": "Huffman codes",
+       "concepts": [
+        "prefix-free-code",
+        "huffman"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "scheduling",
+       "number": "20.3",
+       "title": "Greedy scheduling and matroids",
+       "concepts": [
+        "deadline-scheduling-greedy",
+        "matroid",
+        "scheduling-deadlines",
+        "exchange-argument-scheduling",
+        "exponential-penalty-scheduling",
+        "livshits-kladov",
+        "johnson-rule"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "matroid",
+        "scheduling-deadlines"
+       ],
+       "folds": "cpa schedules/schedule_one_machine and schedule_two_machines are contest-tier and share this home with jeffe-notes E-matroids."
+      }
+     ],
+     "tier_counts": {
+      "core": 3,
+      "stretch": 5,
+      "contest": 6
+     }
+    },
+    {
+     "id": "ch-strings",
+     "number": 21,
+     "title": "String searching",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "substring-search",
+       "number": "21.1",
+       "title": "Substring search: brute force and Boyer-Moore",
+       "concepts": [
+        "substring-search-brute-force",
+        "boyer-moore"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "substring-search-brute-force",
+        "boyer-moore"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "string-hashing",
+       "number": "21.2",
+       "title": "String hashing and Rabin-Karp",
+       "concepts": [
+        "polynomial-hash",
+        "prefix-hash-substring",
+        "hash-group-duplicates",
+        "hash-collisions",
+        "hash-distinct-substrings",
+        "rabin-karp"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes",
+        "ods"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa string/rabin-karp (176 words) is a thin application of string/string-hashing and is folded here."
+      },
+      {
+       "id": "kmp",
+       "number": "21.3",
+       "title": "Prefix function and Knuth-Morris-Pratt",
+       "concepts": [
+        "string-matching-automaton",
+        "prefix-function",
+        "prefix-function-linear",
+        "kmp",
+        "string-period",
+        "prefix-occurrence-counts",
+        "kmp-automaton",
+        "distinct-substrings-incremental"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "string-matching-automaton"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "z-function",
+       "number": "21.4",
+       "title": "The Z-function",
+       "concepts": [
+        "z-function",
+        "z-function-linear",
+        "z-pattern-search"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "suffix-arrays",
+       "number": "21.5",
+       "title": "Suffix arrays",
+       "concepts": [
+        "suffix-array",
+        "suffix-array-doubling",
+        "suffix-array-search"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 9,
+      "stretch": 8,
+      "contest": 5
+     }
+    },
+    {
+     "id": "ch-randomized",
+     "number": 22,
+     "title": "Probability and randomized algorithms",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "distributions",
+       "number": "22.1",
+       "title": "Distributions at work",
+       "concepts": [
+        "common-distributions",
+        "unbiasing-coins",
+        "coupon-collector"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "common-distributions",
+        "unbiasing-coins",
+        "coupon-collector"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "randomized-algorithms",
+       "number": "22.2",
+       "title": "Las Vegas and Monte Carlo algorithms",
+       "concepts": [
+        "las-vegas-monte-carlo",
+        "random-permutation"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "las-vegas-monte-carlo",
+        "random-permutation"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "tail-bounds",
+       "number": "22.3",
+       "title": "Tail bounds",
+       "concepts": [
+        "markov-inequality",
+        "chebyshev-inequality",
+        "chernoff-bound",
+        "treap-depth-whp"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "markov-inequality",
+        "chebyshev-inequality",
+        "chernoff-bound",
+        "treap-depth-whp"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "markov-chains",
+       "number": "22.4",
+       "title": "Markov chains and random walks",
+       "concepts": [
+        "markov-chains",
+        "random-walks",
+        "markov-text-generation"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "markov-chains",
+        "random-walks",
+        "markov-text-generation"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 2,
+      "stretch": 9,
+      "contest": 1
+     }
+    },
+    {
+     "id": "ch-intractability",
+     "number": 23,
+     "title": "Lower bounds and intractability",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "adversary",
+       "number": "23.1",
+       "title": "Adversary arguments",
+       "concepts": [
+        "max-lower-bound",
+        "adversary-argument",
+        "min-max-lower-bound",
+        "evasive-properties"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "max-lower-bound",
+        "adversary-argument",
+        "min-max-lower-bound",
+        "evasive-properties"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "p-np",
+       "number": "23.2",
+       "title": "P, NP and NP-hardness",
+       "concepts": [
+        "circuit-sat",
+        "p-np",
+        "np-hard",
+        "cook-levin",
+        "beyond-np"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "np-reductions",
+       "number": "23.3",
+       "title": "NP-hardness by reduction",
+       "concepts": [
+        "poly-time-reductions",
+        "np-hardness-proof-pattern",
+        "three-sat",
+        "max-independent-set-np",
+        "clique-vertex-cover",
+        "graph-coloring-np",
+        "hamiltonian-cycle-np",
+        "subset-sum-np"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "poly-time-reductions"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "recognising-np-hard",
+       "number": "23.4",
+       "title": "Recognising NP-hard problems",
+       "concepts": [
+        "recognise-np-hard",
+        "np-hard-catalog",
+        "choosing-reduction-source",
+        "draughts-np"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "recognise-np-hard"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "approximation",
+       "number": "23.5",
+       "title": "Approximation algorithms",
+       "concepts": [
+        "approximation-algorithms",
+        "load-balancing",
+        "vertex-cover-approx",
+        "set-cover-greedy",
+        "tsp-approx",
+        "k-center",
+        "subset-sum-fptas"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "approximation-algorithms",
+        "load-balancing",
+        "vertex-cover-approx",
+        "set-cover-greedy",
+        "tsp-approx",
+        "k-center",
+        "subset-sum-fptas"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "exponential-algorithms",
+       "number": "23.6",
+       "title": "Exact exponential and parameterised algorithms",
+       "concepts": [
+        "fixed-parameter-algorithms",
+        "faster-3sat",
+        "faster-mis"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "fixed-parameter-algorithms",
+        "faster-3sat",
+        "faster-mis"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 6,
+      "stretch": 18,
+      "contest": 7
+     }
+    }
+   ]
+  },
+  {
+   "id": "systems",
+   "number": "V",
+   "title": "Computer systems",
+   "chapters": [
+    {
+     "id": "ch-os",
+     "number": 24,
+     "title": "Computers and operating systems",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "cpu-memory",
+       "number": "24.1",
+       "title": "CPU, memory and caches",
+       "concepts": [
+        "cpu-components",
+        "instruction-cycle",
+        "memory-hierarchy",
+        "computer-from-gates"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "cpu-components",
+        "instruction-cycle",
+        "memory-hierarchy",
+        "computer-from-gates"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "compilers-runtimes",
+       "number": "24.2",
+       "title": "Compilers and runtimes",
+       "concepts": [
+        "compilers",
+        "compiler-optimization",
+        "garbage-collection"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "compilers",
+        "compiler-optimization",
+        "garbage-collection"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "processes-threads",
+       "number": "24.3",
+       "title": "Processes, threads and context switches",
+       "concepts": [
+        "process-vs-thread",
+        "context-switching"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "process-vs-thread",
+        "context-switching"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "virtual-memory",
+       "number": "24.4",
+       "title": "Virtual memory",
+       "concepts": [
+        "virtual-memory",
+        "fork-cow"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "virtual-memory",
+        "fork-cow"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "concurrency",
+       "number": "24.5",
+       "title": "Concurrency and synchronisation",
+       "concepts": [
+        "sync-primitives",
+        "deadlock-livelock",
+        "python-concurrency",
+        "parallel-programming"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "sync-primitives",
+        "deadlock-livelock",
+        "python-concurrency",
+        "parallel-programming"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 10,
+      "stretch": 5
+     }
+    },
+    {
+     "id": "ch-networking",
+     "number": 25,
+     "title": "Networking",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "network-layers",
+       "number": "25.1",
+       "title": "Network layers and addressing",
+       "concepts": [
+        "network-layers",
+        "cidr"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "network-layers",
+        "cidr"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "transport",
+       "number": "25.2",
+       "title": "TCP and UDP",
+       "concepts": [
+        "tcp",
+        "udp",
+        "tcp-vs-udp",
+        "connection-pooling",
+        "sockets"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "tcp-vs-udp",
+        "sockets"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "http",
+       "number": "25.3",
+       "title": "HTTP and TLS",
+       "concepts": [
+        "http",
+        "http-verbs",
+        "tls-https"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "tls-https"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "rpc-rest",
+       "number": "25.4",
+       "title": "RPC, REST and serialisation",
+       "concepts": [
+        "serialization",
+        "rpc",
+        "rest",
+        "rpc-vs-rest",
+        "hateoas"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "serialization"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 11,
+      "stretch": 4
+     }
+    },
+    {
+     "id": "ch-engineering",
+     "number": 26,
+     "title": "Software engineering practice",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "testing",
+       "number": "26.1",
+       "title": "Testing",
+       "concepts": [
+        "unit-testing",
+        "mock-objects",
+        "integration-testing",
+        "dependency-injection",
+        "tdd"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "unit-testing",
+        "mock-objects",
+        "integration-testing",
+        "dependency-injection",
+        "tdd"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "design-patterns",
+       "number": "26.2",
+       "title": "Design patterns and UML",
+       "concepts": [
+        "uml",
+        "creational-patterns",
+        "structural-patterns",
+        "behavioral-patterns"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "uml",
+        "creational-patterns",
+        "structural-patterns",
+        "behavioral-patterns"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "solid",
+       "number": "26.3",
+       "title": "SOLID principles",
+       "concepts": [
+        "solid-srp",
+        "solid-ocp",
+        "solid-lsp",
+        "solid-isp",
+        "solid-dip"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "solid-srp",
+        "solid-ocp",
+        "solid-lsp",
+        "solid-isp",
+        "solid-dip"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "ood",
+       "number": "26.4",
+       "title": "Object-oriented design exercises",
+       "concepts": [
+        "ood-parking-lot",
+        "ood-call-center",
+        "ood-deck-of-cards",
+        "ood-online-chat"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "developer-tools",
+       "number": "26.5",
+       "title": "Developer tools",
+       "concepts": [
+        "vim-emacs",
+        "unix-cli"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "vim-emacs",
+        "unix-cli"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 10,
+      "stretch": 10
+     }
+    },
+    {
+     "id": "ch-information-security",
+     "number": 27,
+     "title": "Information, coding and security",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "information",
+       "number": "27.1",
+       "title": "Information and entropy",
+       "concepts": [
+        "information-theory",
+        "entropy"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "information-theory",
+        "entropy"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "error-detection",
+       "number": "27.2",
+       "title": "Parity and Hamming codes",
+       "concepts": [
+        "parity",
+        "hamming-code"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "parity",
+        "hamming-code"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "compression",
+       "number": "27.3",
+       "title": "Compression",
+       "concepts": [
+        "compression",
+        "lz77"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "compression",
+        "lz77"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "cryptography",
+       "number": "27.4",
+       "title": "Cryptography",
+       "concepts": [
+        "crypto-hash",
+        "encryption"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "crypto-hash",
+        "encryption"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "security",
+       "number": "27.5",
+       "title": "Computer security",
+       "concepts": [
+        "threat-models",
+        "control-hijacking",
+        "web-security",
+        "network-security"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "threat-models",
+        "control-hijacking",
+        "web-security",
+        "network-security"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 12
+     }
+    }
+   ]
+  },
+  {
+   "id": "system-design",
+   "number": "VI",
+   "title": "System design",
+   "chapters": [
+    {
+     "id": "ch-sd-method",
+     "number": 28,
+     "title": "Approaching a system design question",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "approach",
+       "number": "28.1",
+       "title": "The four-step approach",
+       "concepts": [
+        "interview-approach",
+        "requirements-scoping",
+        "core-component-design",
+        "iterative-scaling"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "estimation",
+       "number": "28.2",
+       "title": "Back-of-the-envelope estimation",
+       "concepts": [
+        "latency-numbers",
+        "rate-conversion",
+        "back-of-envelope"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "trade-offs",
+       "number": "28.3",
+       "title": "Performance versus scalability, latency versus throughput",
+       "concepts": [
+        "performance-vs-scalability",
+        "latency-vs-throughput"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 9
+     }
+    },
+    {
+     "id": "ch-sd-availability",
+     "number": 29,
+     "title": "Availability and consistency",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "cap",
+       "number": "29.1",
+       "title": "Distributed systems and the CAP theorem",
+       "concepts": [
+        "distributed-fallacies",
+        "cap-theorem"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "distributed-fallacies"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "consistency",
+       "number": "29.2",
+       "title": "Consistency patterns",
+       "concepts": [
+        "weak-consistency",
+        "eventual-consistency",
+        "strong-consistency",
+        "cp-vs-ap",
+        "consensus"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "consensus"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "availability",
+       "number": "29.3",
+       "title": "Availability patterns",
+       "concepts": [
+        "active-passive-failover",
+        "active-active-failover",
+        "availability-nines",
+        "availability-composition"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 11
+     }
+    },
+    {
+     "id": "ch-sd-web",
+     "number": 30,
+     "title": "Scaling the web tier",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "dns-cdn",
+       "number": "30.1",
+       "title": "DNS and content delivery networks",
+       "concepts": [
+        "dns",
+        "dns-records",
+        "dns-traffic-routing",
+        "cdn",
+        "push-vs-pull-cdn"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "load-balancing",
+       "number": "30.2",
+       "title": "Load balancers and reverse proxies",
+       "concepts": [
+        "load-balancer",
+        "lb-routing-methods",
+        "l4-vs-l7-lb",
+        "reverse-proxy",
+        "lb-vs-reverse-proxy"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "horizontal-scaling",
+       "number": "30.3",
+       "title": "Horizontal scaling and stateless servers",
+       "concepts": [
+        "horizontal-scaling",
+        "stateless-servers",
+        "scaling-basics",
+        "autoscaling"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "scaling-basics"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "application-layer",
+       "number": "30.4",
+       "title": "The application layer and microservices",
+       "concepts": [
+        "application-layer",
+        "microservices",
+        "service-discovery"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "operations",
+       "number": "30.5",
+       "title": "Object storage, monitoring and security",
+       "concepts": [
+        "object-store",
+        "static-content-offload",
+        "monitoring",
+        "security-basics",
+        "network-hardening"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 22
+     }
+    },
+    {
+     "id": "ch-sd-data",
+     "number": 31,
+     "title": "Databases",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "rdbms",
+       "number": "31.1",
+       "title": "Relational databases",
+       "concepts": [
+        "acid",
+        "db-normalization",
+        "database-indexes",
+        "schema-tightening"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "db-normalization"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "replication",
+       "number": "31.2",
+       "title": "Replication",
+       "concepts": [
+        "master-slave-replication",
+        "master-master-replication",
+        "replication-drawbacks",
+        "read-write-split"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "partitioning",
+       "number": "31.3",
+       "title": "Federation, sharding and denormalisation",
+       "concepts": [
+        "federation",
+        "sharding",
+        "denormalization",
+        "sql-tuning",
+        "consistent-hashing",
+        "distributed-hash-table",
+        "data-tiering"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "consistent-hashing",
+        "distributed-hash-table"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "nosql",
+       "number": "31.4",
+       "title": "NoSQL stores",
+       "concepts": [
+        "nosql-base",
+        "key-value-store",
+        "document-store",
+        "wide-column-store",
+        "graph-database",
+        "nosql-patterns",
+        "sql-vs-nosql"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "nosql-patterns"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 1,
+      "stretch": 21
+     }
+    },
+    {
+     "id": "ch-sd-cache-async",
+     "number": 32,
+     "title": "Caching and asynchrony",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "caching",
+       "number": "32.1",
+       "title": "Caches and where to put them",
+       "concepts": [
+        "caching",
+        "cache-locations",
+        "application-cache",
+        "cache-granularity",
+        "redis",
+        "cache-cluster-partitioning"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "redis"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "cache-strategies",
+       "number": "32.2",
+       "title": "Cache update strategies",
+       "concepts": [
+        "cache-aside",
+        "write-through",
+        "write-behind",
+        "refresh-ahead",
+        "cache-invalidation"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "queues-back-pressure",
+       "number": "32.3",
+       "title": "Message queues and back pressure",
+       "concepts": [
+        "asynchronism",
+        "message-queue",
+        "task-queue",
+        "back-pressure"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "mapreduce",
+       "number": "32.4",
+       "title": "Batch processing with MapReduce",
+       "concepts": [
+        "mapreduce-aggregation",
+        "distributed-sort"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 17
+     }
+    },
+    {
+     "id": "ch-sd-cases",
+     "number": 33,
+     "title": "Worked designs",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "pastebin",
+       "number": "33.1",
+       "title": "Pastebin and Bit.ly",
+       "concepts": [
+        "base62",
+        "shortlink-generation",
+        "design-pastebin"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "twitter",
+       "number": "33.2",
+       "title": "Twitter timeline and search",
+       "concepts": [
+        "fanout-on-write",
+        "celebrity-fanout",
+        "timeline-cache-trimming",
+        "reverse-index",
+        "search-query-processing",
+        "design-twitter"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "web-crawler",
+       "number": "33.3",
+       "title": "A web crawler",
+       "concepts": [
+        "crawl-frontier",
+        "duplicate-detection",
+        "recrawl-policy",
+        "crawler-throughput",
+        "design-web-crawler"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "mint",
+       "number": "33.4",
+       "title": "Mint.com",
+       "concepts": [
+        "transaction-categorization",
+        "budget-template",
+        "design-mint"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "social-graph",
+       "number": "33.5",
+       "title": "A social graph",
+       "concepts": [
+        "sharded-graph-lookup",
+        "distributed-bfs-optimizations",
+        "distributed-graph-algorithms",
+        "design-social-graph"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "distributed-graph-algorithms"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "query-cache",
+       "number": "33.6",
+       "title": "A query cache",
+       "concepts": [
+        "design-query-cache"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "sales-rank",
+       "number": "33.7",
+       "title": "Sales rank by category",
+       "concepts": [
+        "design-sales-rank"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "scaling-aws",
+       "number": "33.8",
+       "title": "Scaling to millions of users on AWS",
+       "concepts": [
+        "design-scaling-aws"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "sdp"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 24
+     }
+    }
+   ]
+  },
+  {
+   "id": "beyond",
+   "number": "VII",
+   "title": "Beyond the interview",
+   "chapters": [
+    {
+     "id": "ch-range-queries",
+     "number": 34,
+     "title": "Range queries",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "sparse-tables",
+       "number": "34.1",
+       "title": "Range minimum and sparse tables",
+       "concepts": [
+        "rmq-problem",
+        "sparse-table",
+        "sparse-table-range-sum",
+        "sparse-table-rmq",
+        "disjoint-sparse-table"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa sequences/rmq (361 words) is an index of RMQ approaches and is folded here; its rmq-approaches row sits in the sqrt section, after the structures it compares."
+      },
+      {
+       "id": "fenwick",
+       "number": "34.2",
+       "title": "Fenwick trees",
+       "concepts": [
+        "fenwick",
+        "fenwick-sum",
+        "fenwick-linear-build",
+        "fenwick-prefix-min",
+        "fenwick-range-update"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "segment-trees",
+       "number": "34.3",
+       "title": "Segment trees",
+       "concepts": [
+        "segment-tree",
+        "segment-tree-query-update",
+        "segment-tree-custom-merge",
+        "segment-tree-descent"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "segment-tree-extensions",
+       "number": "34.4",
+       "title": "Segment tree extensions",
+       "concepts": [
+        "lazy-propagation",
+        "merge-sort-tree",
+        "segment-tree-2d",
+        "persistent-segment-tree",
+        "dynamic-segment-tree",
+        "lis-data-structure"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "sqrt-decomposition",
+       "number": "34.5",
+       "title": "Sqrt decomposition",
+       "concepts": [
+        "sqrt-decomposition",
+        "mo-algorithm",
+        "sqrt-tree",
+        "sqrt-tree-updates",
+        "rmq-approaches"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa data_structures/sqrt-tree builds on sqrt_decomposition and shares this home."
+      },
+      {
+       "id": "dsu-offline",
+       "number": "34.6",
+       "title": "DSU tricks and offline processing",
+       "concepts": [
+        "dsu-painting-offline",
+        "dsu-parity",
+        "arpa-trick",
+        "small-to-large",
+        "rollback-dsu",
+        "offline-deletion"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa data_structures/deleting_in_log_n (236 words) is folded here with the DSU applications."
+      },
+      {
+       "id": "mex",
+       "number": "34.7",
+       "title": "MEX queries",
+       "concepts": [
+        "mex",
+        "mex-linear",
+        "mex-with-updates"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 16,
+      "contest": 18
+     }
+    },
+    {
+     "id": "ch-tree-algorithms",
+     "number": 35,
+     "title": "Tree algorithms",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "lca",
+       "number": "35.1",
+       "title": "Lowest common ancestor",
+       "concepts": [
+        "lca",
+        "lca-euler-tour-rmq",
+        "binary-lifting-lca",
+        "binary-lifting-dynamic",
+        "lca-linear-jump-pointers"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "linear-lca",
+       "number": "35.2",
+       "title": "Linear-time LCA and RMQ",
+       "concepts": [
+        "farach-colton-bender",
+        "cartesian-tree-rmq",
+        "tarjan-offline-lca"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/rmq_linear and graph/lca_tarjan are short companions of lca_farachcoltonbender and share this home."
+      },
+      {
+       "id": "tree-decompositions",
+       "number": "35.3",
+       "title": "Heavy-light and centroid decomposition",
+       "concepts": [
+        "heavy-light-decomposition",
+        "hld-path-queries",
+        "centroid",
+        "centroid-decomposition",
+        "tree-edge-painting"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "pruefer",
+       "number": "35.4",
+       "title": "Prufer codes and counting trees",
+       "concepts": [
+        "pruefer-code",
+        "pruefer-linear",
+        "cayley-formula",
+        "ways-to-connect-graph"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 3,
+      "contest": 14
+     }
+    },
+    {
+     "id": "ch-flows",
+     "number": 36,
+     "title": "Network flow and matching",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "flow-basics",
+       "number": "36.1",
+       "title": "Flows, cuts and the max-flow min-cut theorem",
+       "concepts": [
+        "flow-network",
+        "st-cut",
+        "residual-graph",
+        "max-flow-min-cut",
+        "flow-decomposition"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "augmenting-paths",
+       "number": "36.2",
+       "title": "Augmenting paths: Ford-Fulkerson and Edmonds-Karp",
+       "concepts": [
+        "ford-fulkerson",
+        "integral-flow",
+        "edmonds-karp"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "faster-maxflow",
+       "number": "36.3",
+       "title": "Faster maximum flow",
+       "concepts": [
+        "dinic",
+        "dinic-unit-networks",
+        "mpm",
+        "preflow-labeling",
+        "push-relabel",
+        "push-relabel-highest",
+        "maxflow-survey"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/push-relabel-faster (168 words) is folded into push-relabel."
+      },
+      {
+       "id": "bipartite-matching",
+       "number": "36.4",
+       "title": "Bipartite matching",
+       "concepts": [
+        "matching-definitions",
+        "berge-lemma",
+        "kuhn-matching",
+        "bipartite-matching-flow"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa",
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "flow-applications",
+       "number": "36.5",
+       "title": "Reductions to flow",
+       "concepts": [
+        "edge-disjoint-paths",
+        "vertex-splitting",
+        "tuple-selection",
+        "disjoint-path-cover",
+        "baseball-elimination",
+        "project-selection"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "jeffe"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "min-cost-flow",
+       "number": "36.6",
+       "title": "Demands and minimum-cost flow",
+       "concepts": [
+        "unbalanced-flow",
+        "pseudoflow",
+        "flow-with-demands",
+        "minimal-flow-demands",
+        "min-cost-circulation",
+        "min-cost-flow",
+        "reduced-costs"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "unbalanced-flow",
+        "pseudoflow",
+        "min-cost-circulation",
+        "reduced-costs"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "assignment",
+       "number": "36.7",
+       "title": "The assignment problem",
+       "concepts": [
+        "assignment-problem",
+        "hungarian-algorithm",
+        "assignment-via-mcf"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa graph/Assignment-problem-min-flow (425 words) overlaps hungarian-algorithm and is folded here."
+      }
+     ],
+     "tier_counts": {
+      "stretch": 12,
+      "contest": 23
+     }
+    },
+    {
+     "id": "ch-advanced-graphs",
+     "number": 37,
+     "title": "More graph algorithms",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "two-sat",
+       "number": "37.1",
+       "title": "2-SAT",
+       "concepts": [
+        "implication-graph",
+        "two-sat"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "online-bridges",
+       "number": "37.2",
+       "title": "Online bridges and strong orientation",
+       "concepts": [
+        "bridges-online",
+        "strong-orientation"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "connectivity",
+       "number": "37.3",
+       "title": "Edge and vertex connectivity",
+       "concepts": [
+        "edge-vertex-connectivity",
+        "whitney-inequalities",
+        "connectivity-via-flow"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "global-min-cut",
+       "number": "37.4",
+       "title": "Global minimum cut",
+       "concepts": [
+        "global-min-cut",
+        "stoer-wagner",
+        "karger",
+        "karger-stein"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "karger",
+        "karger-stein"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "mst-variants",
+       "number": "37.5",
+       "title": "Second-best spanning trees",
+       "concepts": [
+        "mst-one-swap",
+        "second-best-mst"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 2,
+      "contest": 11
+     }
+    },
+    {
+     "id": "ch-advanced-strings",
+     "number": 38,
+     "title": "Advanced string algorithms",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "lcp",
+       "number": "38.1",
+       "title": "LCP arrays and substring counting",
+       "concepts": [
+        "lcp-array-kasai",
+        "sa-distinct-substrings"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "aho-corasick",
+       "number": "38.2",
+       "title": "Aho-Corasick",
+       "concepts": [
+        "aho-corasick-automaton",
+        "aho-corasick-matching",
+        "aho-corasick-dp"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "suffix-automata",
+       "number": "38.3",
+       "title": "Suffix trees and suffix automata",
+       "concepts": [
+        "suffix-tree-ukkonen",
+        "suffix-automaton",
+        "endpos-suffix-links",
+        "suffix-automaton-construction",
+        "suffix-automaton-size",
+        "suffix-automaton-applications"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa string/suffix-tree-ukkonen (213 words) is a code-only article and is folded here."
+      },
+      {
+       "id": "palindromes",
+       "number": "38.4",
+       "title": "Palindromes: Manacher's algorithm",
+       "concepts": [
+        "palindrome-radius",
+        "manacher",
+        "manacher-parity"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "repetitions-lyndon",
+       "number": "38.5",
+       "title": "Repetitions and Lyndon words",
+       "concepts": [
+        "repetition",
+        "main-lorentz",
+        "lyndon-word",
+        "duval-algorithm",
+        "smallest-cyclic-shift"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 3,
+      "contest": 16
+     }
+    },
+    {
+     "id": "ch-advanced-dp",
+     "number": 39,
+     "title": "Advanced dynamic programming",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "dp-optimizations",
+       "number": "39.1",
+       "title": "Divide-and-conquer and Knuth optimisations",
+       "concepts": [
+        "monotone-opt",
+        "dc-dp-optimization",
+        "quadrangle-inequality",
+        "knuth-optimization",
+        "smawk"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "smawk"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "dp-speedups",
+       "number": "39.2",
+       "title": "Saving space and time",
+       "concepts": [
+        "hirschberg",
+        "sparse-dp",
+        "four-russians"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "hirschberg",
+        "sparse-dp",
+        "four-russians"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "profile-dp",
+       "number": "39.3",
+       "title": "Profile and bitmask DP",
+       "concepts": [
+        "broken-profile-dp",
+        "bishops-placement-dp"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "automata-dp",
+       "number": "39.4",
+       "title": "DP over automata and grammars",
+       "concepts": [
+        "dfa-minimization",
+        "nfa-acceptance",
+        "cyk-parsing"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "dfa-minimization",
+        "nfa-acceptance",
+        "cyk-parsing"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "contest": 13
+     }
+    },
+    {
+     "id": "ch-sketches",
+     "number": 40,
+     "title": "Sketches and probabilistic data structures",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "bloom-filters",
+       "number": "40.1",
+       "title": "Bloom filters",
+       "concepts": [
+        "bloom-filter"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "bloom-filter"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "streaming",
+       "number": "40.2",
+       "title": "Streaming sketches",
+       "concepts": [
+        "streaming-model",
+        "count-min-sketch",
+        "hyperloglog"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "streaming-model",
+        "count-min-sketch",
+        "hyperloglog"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "similarity-hashing",
+       "number": "40.3",
+       "title": "Locality-sensitive hashing",
+       "concepts": [
+        "simhash"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "simhash"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 5
+     }
+    },
+    {
+     "id": "ch-number-theory-1",
+     "number": 41,
+     "title": "Number theory: divisibility and primes",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "gcd",
+       "number": "41.1",
+       "title": "Greatest common divisors",
+       "concepts": [
+        "gcd-definition",
+        "euclidean-algorithm",
+        "lame-theorem",
+        "lcm-via-gcd",
+        "binary-gcd"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "extended-euclid",
+       "number": "41.2",
+       "title": "Extended Euclid and Diophantine equations",
+       "concepts": [
+        "bezout-identity",
+        "extended-euclidean",
+        "extended-euclidean-iterative",
+        "linear-diophantine",
+        "diophantine-solvability",
+        "diophantine-all-solutions",
+        "diophantine-count-in-range",
+        "diophantine-min-sum"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "sieve",
+       "number": "41.3",
+       "title": "The sieve of Eratosthenes",
+       "concepts": [
+        "sieve-of-eratosthenes",
+        "sieve-complexity",
+        "sieve-till-root",
+        "sieve-odd-only",
+        "sieve-bit-packing"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "segmented-linear-sieve",
+       "number": "41.4",
+       "title": "Segmented and linear sieves",
+       "concepts": [
+        "segmented-sieve",
+        "primes-in-range",
+        "linear-sieve",
+        "linear-sieve-proof",
+        "least-prime-factor-table"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa algebra/prime-sieve-linear overlaps sieve-of-eratosthenes#linear-time-modification and shares this home."
+      },
+      {
+       "id": "trial-division",
+       "number": "41.5",
+       "title": "Primality and factorisation by trial division",
+       "concepts": [
+        "primality-trial-division",
+        "factorization-trial-division",
+        "wheel-factorization",
+        "factor-by-precomputed-primes",
+        "fermat-factorization"
+       ],
+       "tier": "core",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "divisors",
+       "number": "41.6",
+       "title": "Divisor functions",
+       "concepts": [
+        "multiplicative-function",
+        "number-of-divisors",
+        "sum-of-divisors"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "totient",
+       "number": "41.7",
+       "title": "Euler's totient function",
+       "concepts": [
+        "euler-totient",
+        "totient-formula",
+        "totient-by-factorization",
+        "totient-sieve",
+        "totient-divisor-sum"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "euler-fermat",
+       "number": "41.8",
+       "title": "Euler's and Fermat's theorems",
+       "concepts": [
+        "euler-theorem",
+        "fermat-little-theorem",
+        "generalized-euler-theorem"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "core": 7,
+      "stretch": 23,
+      "contest": 9
+     }
+    },
+    {
+     "id": "ch-number-theory-2",
+     "number": 42,
+     "title": "Number theory: modular arithmetic",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "modular-inverse",
+       "number": "42.1",
+       "title": "Modular inverses",
+       "concepts": [
+        "modular-inverse",
+        "inverse-by-extended-euclid",
+        "inverse-by-fermat",
+        "inverse-recurrence-prime",
+        "batch-inverse"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "linear-congruences",
+       "number": "42.2",
+       "title": "Linear congruences",
+       "concepts": [
+        "linear-congruence",
+        "linear-congruence-solution",
+        "linear-congruence-via-diophantine"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "primality-tests",
+       "number": "42.3",
+       "title": "Probabilistic primality and Pollard's methods",
+       "concepts": [
+        "fermat-primality-test",
+        "miller-rabin",
+        "pollard-p-minus-1",
+        "pollard-rho",
+        "brent-cycle-finding"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "crt",
+       "number": "42.4",
+       "title": "The Chinese remainder theorem",
+       "concepts": [
+        "crt",
+        "crt-two-moduli",
+        "crt-inductive",
+        "crt-direct-construction",
+        "crt-non-coprime"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "garner",
+       "number": "42.5",
+       "title": "Garner's algorithm and residue number systems",
+       "concepts": [
+        "mixed-radix",
+        "garner-algorithm",
+        "residue-number-system"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa algebra/garners-algorithm is summarised by chinese-remainder-theorem#garners-algorithm and big-integer; one home."
+      },
+      {
+       "id": "factorial-mod-p",
+       "number": "42.6",
+       "title": "Factorials modulo p",
+       "concepts": [
+        "legendre-formula",
+        "factorial-power-composite-k",
+        "factorial-mod-p-modified",
+        "factorial-mod-p-recursion"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa algebra/factorial-divisors (256 words) duplicates factorial-modulo#multiplicity-of-p and is folded here."
+      },
+      {
+       "id": "discrete-log",
+       "number": "42.7",
+       "title": "Discrete logarithms",
+       "concepts": [
+        "discrete-log-problem",
+        "meet-in-the-middle",
+        "baby-step-giant-step",
+        "bsgs-hash",
+        "discrete-log-non-coprime"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "primitive-roots",
+       "number": "42.8",
+       "title": "Primitive roots and discrete roots",
+       "concepts": [
+        "primitive-root",
+        "primitive-root-existence",
+        "find-primitive-root",
+        "discrete-root",
+        "discrete-root-all-solutions"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 12,
+      "contest": 23
+     }
+    },
+    {
+     "id": "ch-number-theory-3",
+     "number": 43,
+     "title": "Number theory: representations and fast arithmetic",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "modular-multiplication",
+       "number": "43.1",
+       "title": "Fast modular multiplication",
+       "concepts": [
+        "binary-multiplication-mod",
+        "montgomery-space",
+        "montgomery-reduction",
+        "newton-inverse-mod-2k",
+        "montgomery-fast-transform"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "exponent-tricks",
+       "number": "43.2",
+       "title": "Powers of permutations, matrices and 2^d",
+       "concepts": [
+        "permutation-power",
+        "transformation-matrix-power",
+        "exp-by-factoring",
+        "pohlig-hellman-power-of-2"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa algebra/factoring-exp shares this home with the binary-exp applications."
+      },
+      {
+       "id": "big-integers",
+       "number": "43.3",
+       "title": "Arbitrary-precision arithmetic",
+       "concepts": [
+        "bignum-representation",
+        "bignum-add-subtract",
+        "bignum-multiply",
+        "bignum-divide-short",
+        "exact-fractions",
+        "factorized-representation",
+        "bignum-residues",
+        "separate-exponent-float"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "balanced-ternary",
+       "number": "43.4",
+       "title": "Balanced ternary",
+       "concepts": [
+        "balanced-ternary",
+        "balanced-ternary-conversion"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "fibonacci-identities",
+       "number": "43.5",
+       "title": "Fibonacci identities",
+       "concepts": [
+        "fibonacci-identities",
+        "zeckendorf-fibonacci-coding",
+        "binet-formula",
+        "fibonacci-fast-doubling",
+        "pisano-period"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "continued-fractions",
+       "number": "43.6",
+       "title": "Continued fractions",
+       "concepts": [
+        "continued-fraction",
+        "continued-fraction-euclid",
+        "convergents",
+        "best-rational-approximation",
+        "calkin-wilf-tree",
+        "linear-fractional-transformation"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "stern-brocot",
+       "number": "43.7",
+       "title": "The Stern-Brocot tree and Farey sequences",
+       "concepts": [
+        "stern-brocot-tree",
+        "stern-brocot-properties",
+        "stern-brocot-number-system",
+        "stern-brocot-log-search",
+        "continued-fractions-stern-brocot",
+        "farey-sequence",
+        "farey-length"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa algebra/continued-fractions#stern-brocot-tree overlaps others/stern_brocot_tree_farey_sequences; one home."
+      }
+     ],
+     "tier_counts": {
+      "stretch": 7,
+      "contest": 30
+     }
+    },
+    {
+     "id": "ch-combinatorics",
+     "number": 44,
+     "title": "Combinatorics",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "binomial",
+       "number": "44.1",
+       "title": "Binomial coefficients",
+       "concepts": [
+        "binomial-coefficient",
+        "binomial-formula",
+        "binomial-identities",
+        "binomial-multiplicative",
+        "pascals-triangle",
+        "binomial-mod-prime",
+        "binomial-mod-prime-power",
+        "lucas-theorem"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "catalan",
+       "number": "44.2",
+       "title": "Catalan numbers",
+       "concepts": [
+        "catalan-numbers",
+        "catalan-interpretations",
+        "catalan-recurrence",
+        "catalan-closed-form",
+        "bracket-count"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa combinatorics/bracket_sequences#counting duplicates catalan-numbers' bracket interpretation; the two articles share this home and the next."
+      },
+      {
+       "id": "bracket-sequences",
+       "number": "44.3",
+       "title": "Generating bracket sequences",
+       "concepts": [
+        "next-bracket-sequence",
+        "generate-bracket-sequences",
+        "bracket-sequence-rank"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "inclusion-exclusion",
+       "number": "44.4",
+       "title": "Inclusion-exclusion",
+       "concepts": [
+        "inclusion-exclusion",
+        "inclusion-exclusion-proof",
+        "inclusion-exclusion-exactly-r",
+        "complement-counting",
+        "coprime-count-interval",
+        "lattice-paths-obstacles",
+        "mobius-style-ie",
+        "derangements"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "stars-bars",
+       "number": "44.5",
+       "title": "Stars and bars and k-combinations",
+       "concepts": [
+        "stars-and-bars",
+        "positive-integer-sums",
+        "lower-bounded-sums",
+        "upper-bounded-sums",
+        "next-combination",
+        "combinations-gray-order"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "burnside",
+       "number": "44.6",
+       "title": "Burnside's lemma and Polya enumeration",
+       "concepts": [
+        "orbits-under-symmetry",
+        "burnside-lemma",
+        "polya-enumeration",
+        "necklace-counting",
+        "burnside-by-generation"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "counting-structures",
+       "number": "44.7",
+       "title": "Counting graphs and puzzle states",
+       "concepts": [
+        "labeled-graph-count",
+        "connected-labeled-graphs",
+        "labeled-graphs-k-components",
+        "fifteen-puzzle-parity"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "josephus",
+       "number": "44.8",
+       "title": "The Josephus problem",
+       "concepts": [
+        "josephus-problem",
+        "josephus-recurrence",
+        "josephus-k-log-n",
+        "josephus-k2"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 25,
+      "contest": 18
+     }
+    },
+    {
+     "id": "ch-games",
+     "number": 45,
+     "title": "Game theory",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "games-on-graphs",
+       "number": "45.1",
+       "title": "Games on graphs",
+       "concepts": [
+        "retrograde-analysis",
+        "policeman-thief"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "nim",
+       "number": "45.2",
+       "title": "Nim",
+       "concepts": [
+        "impartial-game",
+        "nim-xor",
+        "misere-nim",
+        "nim-with-increases"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "sprague-grundy",
+       "number": "45.3",
+       "title": "The Sprague-Grundy theorem",
+       "concepts": [
+        "sprague-grundy",
+        "grundy-sum-of-games",
+        "grundy-patterns"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 2,
+      "contest": 7
+     }
+    },
+    {
+     "id": "ch-algebra",
+     "number": 46,
+     "title": "Linear algebra, polynomials and the FFT",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "gauss",
+       "number": "46.1",
+       "title": "Gaussian elimination",
+       "concepts": [
+        "gauss-jordan",
+        "partial-pivoting",
+        "gauss-solution-count",
+        "gauss-complexity",
+        "gauss-mod-2-bitset",
+        "iterative-refinement"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "determinant-rank",
+       "number": "46.2",
+       "title": "Determinants and rank",
+       "concepts": [
+        "determinant-gauss",
+        "lu-decomposition-crout",
+        "matrix-rank",
+        "rank-by-elimination",
+        "kirchhoff-matrix-tree"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa linear_algebra/determinant-gauss (200 words), determinant-kraut (245) and rank-matrix (228) are thin and share this home; graph/kirchhoff-theorem joins as the application."
+      },
+      {
+       "id": "dft",
+       "number": "46.3",
+       "title": "Polynomials and the discrete Fourier transform",
+       "concepts": [
+        "polynomial-representations",
+        "vandermonde",
+        "dft"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [
+        "polynomial-representations",
+        "vandermonde"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "fft",
+       "number": "46.4",
+       "title": "The fast Fourier transform",
+       "concepts": [
+        "fft",
+        "inverse-fft",
+        "fast-polynomial-multiplication",
+        "fft-iterative"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "ciu",
+        "cpa",
+        "jeffe-notes"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "fft-variants",
+       "number": "46.5",
+       "title": "FFT variants and applications",
+       "concepts": [
+        "ntt",
+        "fft-arbitrary-modulus",
+        "fft-applications"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "power-series",
+       "number": "46.6",
+       "title": "Operations on power series",
+       "concepts": [
+        "formal-power-series",
+        "power-series-inverse",
+        "polynomial-division",
+        "newton-for-series",
+        "series-log-exp",
+        "multipoint-evaluation",
+        "chirp-z",
+        "resultant"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 4,
+      "contest": 25
+     }
+    },
+    {
+     "id": "ch-numerical",
+     "number": 47,
+     "title": "Numerical methods and optimisation",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "newton",
+       "number": "47.1",
+       "title": "Newton's method",
+       "concepts": [
+        "newton-method",
+        "newton-sqrt"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "simpson",
+       "number": "47.2",
+       "title": "Numerical integration",
+       "concepts": [
+        "simpson-rule",
+        "simpson-error"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "annealing",
+       "number": "47.3",
+       "title": "Simulated annealing",
+       "concepts": [
+        "energy-minimisation",
+        "neighbouring-state",
+        "simulated-annealing",
+        "annealing-parameters"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "linear-programming",
+       "number": "47.4",
+       "title": "Linear programming and duality",
+       "concepts": [
+        "linear-programming",
+        "lp-geometry",
+        "lp-formulations",
+        "lp-duality",
+        "complementary-slackness"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "ciu",
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "linear-programming",
+        "lp-geometry",
+        "lp-formulations",
+        "lp-duality",
+        "complementary-slackness"
+       ],
+       "folds": ""
+      },
+      {
+       "id": "simplex",
+       "number": "47.5",
+       "title": "The simplex method and LP rounding",
+       "concepts": [
+        "simplex",
+        "network-simplex",
+        "seidel-lp",
+        "lp-rounding"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "jeffe-notes"
+       ],
+       "open_prose": false,
+       "no_open_prose": [
+        "simplex",
+        "network-simplex",
+        "seidel-lp",
+        "lp-rounding"
+       ],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 3,
+      "contest": 14
+     }
+    },
+    {
+     "id": "ch-geometry-primitives",
+     "number": 48,
+     "title": "Computational geometry: primitives",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "vectors",
+       "number": "48.1",
+       "title": "Points, vectors, dot and cross products",
+       "concepts": [
+        "points-as-vectors",
+        "dot-product",
+        "dot-product-uses",
+        "cross-product",
+        "orientation-test"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "lines",
+       "number": "48.2",
+       "title": "Lines and their intersections",
+       "concepts": [
+        "line-through-two-points",
+        "line-normalisation",
+        "parametric-line",
+        "line-intersection-parametric",
+        "line-intersection-cramer",
+        "planes-intersection"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa geometry/lines-intersection (306 words) and segment-to-line share this home."
+      },
+      {
+       "id": "segments",
+       "number": "48.3",
+       "title": "Segments",
+       "concepts": [
+        "segments-intersect-test",
+        "segment-intersection-points",
+        "union-of-segments-length"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa geometry/check-segments-intersection (167 words) and length-of-segments-union (158 words) are thin and share this home with segments-intersection."
+      },
+      {
+       "id": "circles",
+       "number": "48.4",
+       "title": "Circles and enclosing circles",
+       "concepts": [
+        "circle-line-intersection",
+        "circle-circle-intersection",
+        "common-tangent-count",
+        "common-tangents",
+        "min-enclosing-circle",
+        "mec-point-tests",
+        "welzl-algorithm"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "areas",
+       "number": "48.5",
+       "title": "Areas and Pick's theorem",
+       "concepts": [
+        "oriented-triangle-area",
+        "shoelace-formula",
+        "picks-theorem",
+        "picks-theorem-proof",
+        "reeve-tetrahedron"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": "cpa geometry/oriented-triangle-area (236 words) and area-of-simple-polygon (168 words) are thin and share this home."
+      },
+      {
+       "id": "lattice-points",
+       "number": "48.6",
+       "title": "Lattice points",
+       "concepts": [
+        "floor-sum-lattice",
+        "lattice-points-non-lattice-polygon",
+        "continued-fraction-geometry"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "manhattan",
+       "number": "48.7",
+       "title": "Manhattan distance",
+       "concepts": [
+        "manhattan-distance",
+        "manhattan-farthest-pair",
+        "manhattan-to-chebyshev",
+        "manhattan-mst"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 14,
+      "contest": 19
+     }
+    },
+    {
+     "id": "ch-geometry-algorithms",
+     "number": 49,
+     "title": "Computational geometry: algorithms",
+     "first_pass": false,
+     "sections": [
+      {
+       "id": "convex-hull",
+       "number": "49.1",
+       "title": "Convex hulls",
+       "concepts": [
+        "convex-hull",
+        "graham-scan",
+        "monotone-chain"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "ciu",
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "convex-polygons",
+       "number": "49.2",
+       "title": "Convex polygons and Minkowski sums",
+       "concepts": [
+        "point-in-convex-polygon",
+        "minkowski-sum",
+        "minkowski-sum-convex",
+        "polygon-distance-minkowski"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "convex-hull-trick",
+       "number": "49.3",
+       "title": "The convex hull trick and Li Chao trees",
+       "concepts": [
+        "line-min-query-dp",
+        "convex-hull-trick",
+        "li-chao-tree"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "sweep-line",
+       "number": "49.4",
+       "title": "Sweep lines and point location",
+       "concepts": [
+        "sweep-line-segment-intersection",
+        "offline-point-location",
+        "online-point-location-persistent",
+        "vertical-decomposition",
+        "union-of-triangles-area",
+        "convex-polygon-intersection-stripes"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "planar-graphs",
+       "number": "49.5",
+       "title": "Faces of planar graphs",
+       "concepts": [
+        "euler-formula-planar",
+        "planar-faces-traversal",
+        "planar-graph-from-segments"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "closest-pair",
+       "number": "49.6",
+       "title": "The closest pair of points",
+       "concepts": [
+        "closest-pair-divide-conquer",
+        "closest-pair-strip-bound",
+        "closest-pair-grid",
+        "min-perimeter-triangle"
+       ],
+       "tier": "stretch",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "delaunay",
+       "number": "49.7",
+       "title": "Delaunay triangulations and Voronoi diagrams",
+       "concepts": [
+        "voronoi-delaunay",
+        "delaunay-properties",
+        "guibas-stolfi"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      },
+      {
+       "id": "half-planes",
+       "number": "49.8",
+       "title": "Half-plane intersection",
+       "concepts": [
+        "half-plane",
+        "halfplane-incremental",
+        "sort-and-incremental",
+        "halfplane-applications"
+       ],
+       "tier": "contest",
+       "candidate_sources": [
+        "cpa"
+       ],
+       "open_prose": true,
+       "no_open_prose": [],
+       "folds": ""
+      }
+     ],
+     "tier_counts": {
+      "stretch": 5,
+      "contest": 25
+     }
+    }
+   ]
+  }
+ ],
+ "appendix": {
+  "id": "appendix-getting-the-job",
+  "title": "Appendix: Getting the job",
+  "built": false,
+  "kind": "reading",
+  "note": "CIU's career sections, kept as one reading page with CIU's own lists and links (in inventory/ciu-links.json). No concepts, no exercises. Not part of the first build pass.",
+  "locators": [
+   "ciu:#update-your-resume",
+   "ciu:#interview-process--general-interview-prep",
+   "ciu:#be-thinking-of-for-when-the-interview-comes",
+   "ciu:#have-questions-for-the-interviewer",
+   "ciu:#once-youve-got-the-job"
+  ]
+ }
+}
