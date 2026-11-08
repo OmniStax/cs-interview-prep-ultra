@@ -60,7 +60,7 @@ pros/cons list; **none** means no section, at most a mention or a link.
 | Replication | full (leader-based only) | sdp:#replication, sdp:#master-slave-replication | kleppmann-ds:sec:replication, sec:broadcast-replication; riak-docs:learn/concepts/replication; crdb:v22.2/architecture/replication-layer; redis-doc:docs/management/replication; wb:PostgreSQL/Replication, MySQL/Replication; wp:Replication_(computing), Multi-master_replication |
 | Sharding / partitioning | thin (29 lines) | sdp:#sharding | azure-arch:patterns/sharding (3.9k), best-practices/data-partitioning (+ -strategies); aws-dynamodb:HowItWorks.Partitions, bp-partition-key-design, bp-partition-key-sharding; citus-docs:sharding/data_modeling, get_started/concepts; crdb:v22.2/architecture/distribution-layer; redis-doc:docs/reference/cluster-spec (hash slots); wp:Shard_(database_architecture), Partition_(database) |
 | Consistent hashing | **none** (links only, sdp:#sharding) | — | wp:Consistent_hashing, Rendezvous_hashing, Distributed_hash_table, Chord_(peer-to-peer), Kademlia; riak-docs:learn/concepts/clusters (ring), vnodes; aosa:v1/riak; sysapproach:applications/overlays (consistent hashing for CDN URL→server, licence unclear); arxiv papers link-only (jump hash, bounded loads) |
-| CAP and consistency models | thin (62 lines) | sdp:#availability-vs-consistency, sdp:#consistency-patterns | kleppmann-ds:sec:linearizability, sec:eventual-consistency, sec:consistency; arxiv-consistency-survey (52 pp.); etcd-site:v3.5/learning/api_guarantees; riak-docs:learn/concepts/eventual-consistency, strong-consistency; aws-dynamodb:HowItWorks.ReadConsistency; wp:CAP_theorem, PACELC_design_principle, Consistency_model (6.9k), Linearizability, Eventual_consistency, Serializability, Isolation_(database_systems), Snapshot_isolation |
+| CAP and consistency models | thin (62 lines) | sdp:#availability-vs-consistency, sdp:#consistency-patterns | kleppmann-ds:sec:linearizability, sec:eventual-consistency, sec:consistency; arxiv-consistency-survey (52 pp.); etcd-site:v3.5/learning/api_guarantees; riak-docs:learn/concepts/eventual-consistency, strong-consistency; aws-dynamodb:HowItWorks.ReadConsistency; wp:CAP_theorem, PACELC_design_principle, Consistency_model (6.9k), Linearizability, Eventual_consistency, Database_transaction_schedule (Serializability redirects here), Isolation_(database_systems), Snapshot_isolation |
 | Quorums | **none** | — | kleppmann-ds:sec:quorums; riak-docs:developing/app-guide/replication-properties (N/R/W, PR/PW), learn/concepts/replication; arxiv-relaxed-paxos; wp:Quorum_(distributed_computing); raft-thesis (majority quorums) |
 | Consensus (Paxos, Raft, leader election) | none (one Raft link) | — | raft-thesis (whole dissertation); raft-site:index.html; kleppmann-ds:sec:consensus; aosa:500L/clustering-by-consensus (Paxos, with code); crdb:v22.2/architecture/replication-layer; azure-arch:patterns/leader-election; wp:Paxos_(computer_science), Raft_(algorithm), Consensus_(computer_science), Leader_election, Two-phase_commit_protocol, State_machine_replication, Split-brain_(computing) |
 | Message queues and back-pressure | thin (47 lines incl. task queues and back pressure) | sdp:#asynchronism, sdp:#back-pressure | aws-sqs:standard-queues, sqs-visibility-timeout, FIFO-queues-exactly-once-processing, sqs-dead-letter-queues, sqs-short-and-long-polling; azure-arch:patterns/queue-based-load-leveling, competing-consumers, publisher-subscriber, priority-queue, guide/technology-choices/messaging (3.6k); cloudflare-docs:queues/learning/{delivery-guarantees,batching-retries}; aosa:v2/zeromq; wp:Message_queue, Message_broker, Publish–subscribe_pattern, Dead_letter_queue, Backpressure_routing (network sense), Little's_law, Queueing_theory, M/M/1_queue |
@@ -71,10 +71,10 @@ pros/cons list; **none** means no section, at most a mention or a link.
 | Idempotency | **none** (HTTP verb table column only) | sdp:#hypertext-transfer-protocol-http | aip:0155 (request IDs), aip:0194 (retries); mdn:glossary/idempotent, web/http/methods/*; azure-arch:patterns/retry, competing-consumers, best-practices/api-design#idempotent; aws-sqs:FIFO-queues-exactly-once-processing; aws-sns:fifo-message-dedup; raft-thesis:clients (linearizable semantics via client sessions); wp:Idempotence (CS section) |
 | Observability | **none** ("monitoring" appears only as a bullet in solutions) | — | otel:observability-primer, signals/{traces,metrics,logs,baggage}; azure-arch:best-practices/monitoring (14k words), patterns/health-endpoint-monitoring; aosa:v1/graphite; wp:Observability_(software), Tracing_(software), Service-level_objective, Service_level_indicator, Service-level_agreement, Site_reliability_engineering |
 | Case: URL shortener | full | sdp:solutions/pastebin | wp:URL_shortening, Base64, Pastebin. |
-| Case: news feed | full | sdp:solutions/twitter | redis-doc:docs/manual/patterns/twitter-clone (4.3k words: fan-out on write with Redis lists); wp:News_feed |
-| Case: chat | **none** | — | mdn:web/api/websockets_api, web/api/server-sent_events; wp:Instant_messaging, XMPP, WebSocket, Push_technology, Comet_(programming), Server-sent_events, Long_polling; kleppmann-ds:sec:broadcast (ordering), sec:causality. Thin: no open end-to-end chat design. |
+| Case: news feed | full | sdp:solutions/twitter | redis-doc:docs/manual/patterns/twitter-clone (4.3k words: fan-out on write with Redis lists); wp:Web_feed (the "News feed" title redirects there; it is about RSS-style feeds) |
+| Case: chat | **none** | — | mdn:web/api/websockets_api, web/api/server-sent_events; wp:Instant_messaging, XMPP, WebSocket, Push_technology, Comet_(programming), Server-sent_events, Push_technology#Long_polling; kleppmann-ds:sec:broadcast (ordering), sec:causality. Thin: no open end-to-end chat design. |
 | Case: notification system | **none** | — | aws-sns:sns-common-scenarios (fan-out), sns-message-delivery-retries, mobile-push-notifications*; azure-arch:patterns/publisher-subscriber, priority-queue; wp:Push_technology, Apple_Push_Notification_service, Firebase_Cloud_Messaging. Thin: product docs only. |
-| Case: web crawler | full | sdp:solutions/web_crawler | aosa:500L/a-web-crawler-with-asyncio-coroutines (8.2k words, with code); wp:Web_crawler, Robots.txt, Focused_crawler, Spider_trap, URL_normalization, Sitemaps |
+| Case: web crawler | full | sdp:solutions/web_crawler | aosa:500L/a-web-crawler-with-asyncio-coroutines (8.2k words, with code); wp:Web_crawler, Robots.txt, Focused_crawler, Spider_trap, URI_normalization, Sitemaps |
 | Case: key-value store | thin (sdp:solutions/query_cache is a cache, not a store) | sdp:solutions/query_cache | riak-docs:learn/concepts/* (whole Dynamo-style design); kleppmann-ds (replication, quorums, eventual consistency); aosa:v1/riak, v1/bdb, 500L/dbdb; cloudflare-docs:workers/learning/how-kv-works; etcd-site:v3.5/learning/why; tinykv (code exercise with tests); wp:Dynamo_(storage_system), Bigtable, Log-structured_merge-tree, Write-ahead_logging, Merkle_tree, Vector_clock, Gossip_protocol, Bloom_filter |
 | Case: search autocomplete | **none** | — | wp:Autocomplete, Trie, Count–min_sketch, Inverted_index, Search_engine_indexing; ods/cpa tries already registered (DSA side). Thin: no open system-level design. arXiv CC BY items are ML ranking papers (e.g. 2411.04129 AmazonQAC dataset), off-scope for interview prose. |
 | Case: video streaming | **none** | — | mdn:web/media/dash_adaptive_streaming_for_html_5_video, web/guide/audio_and_video_delivery/{setting_up_adaptive_streaming_media_sources,live_streaming_web_audio_and_video}; wp:Adaptive_bitrate_streaming, HTTP_Live_Streaming, Dynamic_Adaptive_Streaming_over_HTTP, Transcoding, Video_on_demand; cloudflare-docs CDN reference architecture; sysapproach:data/multimedia#adaptive-streaming (unclear) |
@@ -220,7 +220,185 @@ length is the rendered-text word count at the current revision.
 `revid_pre2023` is the last revision before 2022-12-01, fetched as
 `<title>.pre2023.{txt,wiki}`.
 
-<!-- WP_TABLE -->
+| article | revid (current) | revid_pre2023 (date) | words |
+|---|---|---|---|
+| wp:ACID | 1381669262 | 1124557260 (09:10, 29 November 2022) | 1936 |
+| wp:Adaptive_bitrate_streaming | 1383584032 | 1120818982 (00:14, 9 November 2022) | 4382 |
+| wp:Anycast | 1384017898 | 1114166620 (04:38, 5 October 2022) | 1495 |
+| wp:Apache_Cassandra | 1381293162 | 1123203054 (14:20, 22 November 2022) | 2197 |
+| wp:Apache_Kafka | 1382882648 | 1116578283 (08:15, 17 October 2022) | 901 |
+| wp:Apache_ZooKeeper | 1346340908 | 1106535869 (03:29, 25 August 2022) | 755 |
+| wp:API_management | 1379737129 | 1076099310 (10:16, 9 March 2022) | 794 |
+| wp:Apple_Push_Notification_service | 1383391602 | 1124585727 (13:16, 29 November 2022) | 857 |
+| wp:Autocomplete | 1383224442 | 1118483615 (07:14, 27 October 2022) | 3795 |
+| wp:Autoscaling | 1384315884 | 1071395594 (11:27, 12 February 2022) | 2052 |
+| wp:Back-of-the-envelope_calculation | 1376805115 | 1088038676 (21:39, 15 May 2022) | 1292 |
+| wp:Backpressure_routing | 1333463650 | 1045657229 (18:42, 21 September 2021) | 4984 |
+| wp:Base64 | 1382521149 | 1124762714 (10:29, 30 November 2022) | 3643 |
+| wp:Bigtable | 1376009623 | 1121149749 (19:38, 10 November 2022) | 1456 |
+| wp:BitTorrent | 1383549646 | 1119883374 (22:59, 3 November 2022) | 9417 |
+| wp:Bloom_filter | 1381027200 | 1122201044 (10:40, 16 November 2022) | 10207 |
+| wp:Byzantine_fault | 1381560430 | 1121559471 (23:16, 12 November 2022) | 3974 |
+| wp:Cache_(computing) | 1377581139 | 1123536428 (07:52, 24 November 2022) | 3533 |
+| wp:Cache_invalidation | 1188797099 | 1049478470 (02:10, 12 October 2021) | 466 |
+| wp:Cache_replacement_policies | 1376205644 | 1114056358 (15:29, 4 October 2022) | 3821 |
+| wp:Cache_stampede | 1330515031 | 1075757765 (14:26, 7 March 2022) | 1007 |
+| wp:CAP_theorem | 1382061767 | 1115687117 (17:56, 12 October 2022) | 797 |
+| wp:Chord_(peer-to-peer) | 1371957200 | 1121298044 (15:28, 11 November 2022) | 2199 |
+| wp:Circuit_breaker_design_pattern | 1373541062 | 1121366083 (22:34, 11 November 2022) | 468 |
+| wp:Clock_synchronization | 1372144749 | 1116046226 (14:28, 14 October 2022) | 1305 |
+| wp:Comet_(programming) | 1384319543 | 1104579771 (19:21, 15 August 2022) | 2544 |
+| wp:Compensating_transaction | 1318840851 | 1032179395 (23:00, 5 July 2021) | 812 |
+| wp:Conflict-free_replicated_data_type | 1384255120 | 1117941241 (10:28, 24 October 2022) | 3745 |
+| wp:Consensus_(computer_science) | 1371790437 | 1116217697 (12:44, 15 October 2022) | 4592 |
+| wp:Consistency_model | 1372162129 | 1120580536 (19:18, 7 November 2022) | 6885 |
+| wp:Consistent_hashing | 1375814388 | 1119161613 (01:29, 31 October 2022) | 1915 |
+| wp:Content_delivery_network | 1384013960 | 1124163031 (17:24, 27 November 2022) | 2900 |
+| wp:Content_delivery_network_interconnection | 1372414601 | 1050480400 (02:57, 18 October 2021) | 3397 |
+| wp:Content-addressable_storage | 1368990452 | 1110294810 (17:30, 14 September 2022) | 3240 |
+| wp:Count–min_sketch | 1368880919 | 1120830003 (01:33, 9 November 2022) | 1187 |
+| wp:Data_deduplication | 1356642234 | 1063566238 (18:49, 3 January 2022) | 2743 |
+| wp:Database_index | 1357770109 | 1120580139 (19:15, 7 November 2022) | 2529 |
+| wp:Database_transaction_schedule (from 'Serializability') | 1373785308 | 1028188697 (12:12, 12 June 2021) | 2393 |
+| wp:Dead_letter_queue | 1339507037 | 1026578228 (02:50, 3 June 2021) | 413 |
+| wp:Delta_encoding | 1366131806 | 1116969537 (07:50, 19 October 2022) | 2418 |
+| wp:Denormalization | 1260730598 | 1041768115 (11:03, 1 September 2021) | 709 |
+| wp:Disaster_recovery | 1286358618 | none (created later)  | 85 |
+| wp:Distributed_cache | 1381238137 | 1115645494 (13:39, 12 October 2022) | 353 |
+| wp:Distributed_computing | 1382756877 | 1120769255 (18:45, 8 November 2022) | 6514 |
+| wp:Distributed_file_system_for_cloud | 1374941482 | 1085117454 (14:22, 28 April 2022) | 7042 |
+| wp:Distributed_hash_table | 1376764733 | 1121781275 (03:14, 14 November 2022) | 3011 |
+| wp:Distributed_lock_manager | 1305048094 | 1089002778 (09:36, 21 May 2022) | 1526 |
+| wp:Distributed_transaction | 1379749848 | 1111363225 (16:24, 20 September 2022) | 549 |
+| wp:Document-oriented_database | 1374552421 | 1120853433 (04:53, 9 November 2022) | 1550 |
+| wp:Domain_Name_System | 1382061679 | 1124417624 (20:39, 28 November 2022) | 8422 |
+| wp:Dynamic_Adaptive_Streaming_over_HTTP | 1374898019 | 1107549766 (15:54, 30 August 2022) | 2515 |
+| wp:Dynamo_(storage_system) | 1324513513 | 1031113149 (21:58, 29 June 2021) | 531 |
+| wp:Edge_computing | 1383454674 | 1124276251 (04:11, 28 November 2022) | 2439 |
+| wp:Elasticity_(computing) | 1347231136 | 1091097728 (05:35, 2 June 2022) | 1273 |
+| wp:Erlang_(unit) | 1303140867 | 1117249230 (18:15, 20 October 2022) | 3145 |
+| wp:Event-driven_architecture | 1379585711 | 1115201196 (08:21, 10 October 2022) | 2805 |
+| wp:Eventual_consistency | 1374379428 | 1111258214 (02:34, 20 September 2022) | 571 |
+| wp:Exponential_backoff | 1384322428 | 1106690929 (23:33, 25 August 2022) | 3141 |
+| wp:Failover | 1367992837 | 1087316478 (18:33, 11 May 2022) | 645 |
+| wp:Fallacies_of_distributed_computing | 1332248533 | 1123861198 (02:51, 26 November 2022) | 596 |
+| wp:Fencing_(computing) | 1376703720 | 1088660733 (12:07, 19 May 2022) | 931 |
+| wp:Fermi_problem | 1376729362 | 1118905767 (16:42, 29 October 2022) | 1924 |
+| wp:File_synchronization | 1383109255 | 1068154811 (22:43, 26 January 2022) | 811 |
+| wp:Firebase_Cloud_Messaging | 1384325061 | 1093840634 (03:53, 19 June 2022) | 2367 |
+| wp:Focused_crawler | 1324240043 | 1119838584 (17:46, 3 November 2022) | 1156 |
+| wp:Generic_cell_rate_algorithm | 1310767055 | 1013924784 (06:02, 24 March 2021) | 2134 |
+| wp:GeoDNS | 1341102853 | 1104917471 (14:42, 17 August 2022) | 344 |
+| wp:Geohash | 1383574635 | 1121497607 (16:17, 12 November 2022) | 2618 |
+| wp:Google_File_System | 1373951261 | 1121867898 (15:42, 14 November 2022) | 1388 |
+| wp:Gossip_protocol | 1367841355 | 1095030259 (00:28, 26 June 2022) | 1531 |
+| wp:GRPC (from 'gRPC') | 1383168356 | 1124757476 (09:45, 30 November 2022) | 597 |
+| wp:Hash_function | 1381471264 | 1123870368 (04:10, 26 November 2022) | 7515 |
+| wp:Hash_table | 1384236591 | 1124674828 (23:12, 29 November 2022) | 6493 |
+| wp:Heartbeat_(computing) | 1379094654 | 1115456769 (15:20, 11 October 2022) | 1165 |
+| wp:High_availability | 1382476870 | 1117981469 (15:28, 24 October 2022) | 3450 |
+| wp:HTTP | 1377007807 | 1124860497 (22:15, 30 November 2022) | 7905 |
+| wp:HTTP_Live_Streaming | 1375304206 | 1124176668 (18:36, 27 November 2022) | 2678 |
+| wp:HTTP/2 | 1373081544 | 1104270716 (22:04, 13 August 2022) | 3691 |
+| wp:HyperLogLog | 1375654375 | 1118377112 (17:52, 26 October 2022) | 1168 |
+| wp:Idempotence | 1382059785 | 1122770405 (16:33, 19 November 2022) | 2717 |
+| wp:Instant_messaging | 1384064709 | 1123698825 (05:24, 25 November 2022) | 7238 |
+| wp:Inverted_index | 1354610034 | 1060313151 (19:06, 14 December 2021) | 654 |
+| wp:Isolation_(database_systems) | 1380380517 | 1122456713 (17:45, 17 November 2022) | 2116 |
+| wp:Kademlia | 1378564784 | 1123211793 (15:36, 22 November 2022) | 3877 |
+| wp:Key–value_database | 1374632217 | 1113952539 (01:29, 4 October 2022) | 613 |
+| wp:Lamport_timestamp | 1381539505 | 1085873974 (22:34, 2 May 2022) | 1641 |
+| wp:Latency_(engineering) | 1382111961 | 1122992065 (03:13, 21 November 2022) | 2447 |
+| wp:Leader_election | 1341681953 | 1114331128 (23:53, 5 October 2022) | 3519 |
+| wp:Leaky_bucket | 1351218966 | 1113649277 (15:26, 2 October 2022) | 6579 |
+| wp:Linearizability | 1366605625 | 1122023445 (12:29, 15 November 2022) | 3096 |
+| wp:Little's_law | 1370351232 | 1117885777 (02:26, 24 October 2022) | 1801 |
+| wp:Load_balancing_(computing) | 1374334633 | 1119414906 (13:17, 1 November 2022) | 5897 |
+| wp:Load_shedding | 1380633396 | 538280062 (20:04, 14 February 2013) | 470 |
+| wp:Locality-sensitive_hashing | 1382893169 | 1121220653 (04:37, 11 November 2022) | 3077 |
+| wp:Log-structured_merge-tree | 1374573576 | 1120239072 (23:19, 5 November 2022) | 1785 |
+| wp:Logical_clock | 1359048597 | 1072010149 (14:14, 15 February 2022) | 338 |
+| wp:M/M/1_queue | 1312917014 | 1083414153 (17:50, 18 April 2022) | 1439 |
+| wp:Memcached | 1379813237 | 1117350566 (07:11, 21 October 2022) | 1951 |
+| wp:Merkle_tree | 1383668961 | 1123544588 (08:58, 24 November 2022) | 1765 |
+| wp:Message_broker | 1348235643 | 1122952171 (21:10, 20 November 2022) | 859 |
+| wp:Message_queue | 1378747794 | 1118983292 (03:14, 30 October 2022) | 1964 |
+| wp:Message_queuing_service | 1379708522 | 1118983261 (03:14, 30 October 2022) | 838 |
+| wp:Microservices | 1378518139 | 1122416285 (13:27, 17 November 2022) | 3346 |
+| wp:Multi-master_replication | 1382389043 | 1124834819 (19:21, 30 November 2022) | 1761 |
+| wp:Multiversion_concurrency_control | 1381199953 | 1121379891 (00:20, 12 November 2022) | 1452 |
+| wp:Network_Time_Protocol | 1382737971 | 1124509575 (02:26, 29 November 2022) | 4518 |
+| wp:NoSQL | 1357603487 | 1123949416 (15:46, 26 November 2022) | 1648 |
+| wp:Observability_(software) | 1369990303 | 1120332911 (12:55, 6 November 2022) | 1987 |
+| wp:Operational_transformation | 1373192703 | 1084900873 (07:10, 27 April 2022) | 4886 |
+| wp:Optimistic_concurrency_control | 1383954345 | 1091159570 (15:27, 2 June 2022) | 853 |
+| wp:PACELC_design_principle | 1382061636 | 1122732991 (09:50, 19 November 2022) | 1128 |
+| wp:Partition_(database) | 1350458844 | 1100523210 (10:31, 26 July 2022) | 1090 |
+| wp:Pastebin | 1379125564 | 1087951113 (11:53, 15 May 2022) | 569 |
+| wp:Paxos_(computer_science) | 1380699655 | 1120605099 (21:57, 7 November 2022) | 7016 |
+| wp:Peer-to-peer | 1383611899 | 1123796320 (19:03, 25 November 2022) | 6953 |
+| wp:Publish–subscribe_pattern | 1360730651 | 1119303630 (20:02, 31 October 2022) | 1525 |
+| wp:Push_technology (from 'Long polling') | 1372862985 | 1121829242 (10:21, 14 November 2022) | 2513 |
+| wp:Quadtree | 1376267579 | 1115215433 (10:22, 10 October 2022) | 4703 |
+| wp:Queueing_theory | 1383596220 | 1122738523 (11:00, 19 November 2022) | 4243 |
+| wp:Quorum_(distributed_computing) | 1382507090 | 999689185 (12:51, 11 January 2021) | 542 |
+| wp:Raft_(algorithm) | 1381284725 | 1124836334 (19:31, 30 November 2022) | 2291 |
+| wp:Rate_limiting | 1372842478 | 1113920411 (21:43, 3 October 2022) | 770 |
+| wp:Rate-monotonic_scheduling | 1339685267 | 1105643462 (04:14, 21 August 2022) | 2614 |
+| wp:Redis | 1384343938 | 1115152231 (02:09, 10 October 2022) | 2676 |
+| wp:Relational_database | 1375508962 | 1116718100 (00:16, 18 October 2022) | 3199 |
+| wp:Remote_procedure_call | 1383559226 | 1122759694 (14:59, 19 November 2022) | 1826 |
+| wp:Rendezvous_hashing | 1384056162 | 1124809129 (16:32, 30 November 2022) | 3137 |
+| wp:Replication_(computing) | 1380029215 | 1113529115 (23:18, 1 October 2022) | 2788 |
+| wp:REST | 1380036165 | 1124435026 (22:31, 28 November 2022) | 1887 |
+| wp:Reverse_proxy | 1383549418 | 1114110462 (21:27, 4 October 2022) | 1114 |
+| wp:Robots.txt | 1383443513 | 1116592516 (10:20, 17 October 2022) | 3760 |
+| wp:Round-robin_DNS | 1334865412 | 1046790621 (12:42, 27 September 2021) | 572 |
+| wp:Rsync | 1370677477 | 1123625660 (19:30, 24 November 2022) | 2009 |
+| wp:Scalability | 1369996964 | 1110510136 (22:20, 15 September 2022) | 1730 |
+| wp:Search_engine_(computing) | 1380766394 | 1121602004 (04:31, 13 November 2022) | 2575 |
+| wp:Search_engine_indexing | 1383251652 | 1122178256 (07:17, 16 November 2022) | 4268 |
+| wp:Server-sent_events | 1379794477 | 1121428323 (07:02, 12 November 2022) | 475 |
+| wp:Service_discovery | 1293238527 | 1119256118 (14:24, 31 October 2022) | 453 |
+| wp:Service_level_indicator | 1353927134 | 1078702134 (21:58, 22 March 2022) | 151 |
+| wp:Service_mesh | 1362403702 | 1123588420 (15:05, 24 November 2022) | 259 |
+| wp:Service-level_agreement | 1362923384 | 1122924064 (17:18, 20 November 2022) | 1858 |
+| wp:Service-level_objective | 1375493603 | 1089474535 (00:59, 24 May 2022) | 671 |
+| wp:Shard_(database_architecture) | 1384144620 | 1118907386 (16:52, 29 October 2022) | 1585 |
+| wp:Single_point_of_failure | 1384123072 | 1117794939 (16:36, 23 October 2022) | 1414 |
+| wp:Site_reliability_engineering | 1378351869 | 1120392960 (19:34, 6 November 2022) | 1663 |
+| wp:Sitemaps | 1383561230 | 1121406473 (03:42, 12 November 2022) | 2208 |
+| wp:Snapshot_isolation | 1265461945 | 1099535994 (08:20, 21 July 2022) | 1335 |
+| wp:Snowflake_ID | 1380690787 | 1122737836 (10:51, 19 November 2022) | 510 |
+| wp:Spider_trap | 1383252843 | 1120586813 (19:55, 7 November 2022) | 414 |
+| wp:Split-brain_(computing) | 1371632674 | 964293205 (17:26, 24 June 2020) | 663 |
+| wp:State_machine_replication | 1375989403 | 1115458341 (15:29, 11 October 2022) | 3152 |
+| wp:Stateless_protocol | 1382656567 | 1070213596 (09:07, 6 February 2022) | 565 |
+| wp:Strong_consistency | 1301306883 | 1031941338 (16:30, 4 July 2021) | 83 |
+| wp:Thundering_herd_problem | 1356321785 | 1123948055 (15:36, 26 November 2022) | 325 |
+| wp:Time_to_live | 1339733291 | 1112268988 (13:58, 25 September 2022) | 945 |
+| wp:Token_bucket | 1374879767 | 1118411592 (21:47, 26 October 2022) | 1492 |
+| wp:Tracing_(software) | 1383788011 | 1094758736 (10:19, 24 June 2022) | 1405 |
+| wp:Transcoding | 1370882281 | 1123925949 (12:46, 26 November 2022) | 1577 |
+| wp:Transmission_Control_Protocol | 1382108671 | 1124312705 (08:43, 28 November 2022) | 13286 |
+| wp:Trie | 1357162034 | 1123115896 (23:04, 21 November 2022) | 3063 |
+| wp:Two_Generals'_Problem | 1376663237 | 1117902361 (04:32, 24 October 2022) | 1861 |
+| wp:Two-phase_commit_protocol | 1321432957 | 1078983413 (10:48, 24 March 2022) | 1794 |
+| wp:Universally_unique_identifier | 1381302778 | 1122041043 (14:48, 15 November 2022) | 6013 |
+| wp:Unix_time | 1384167586 | 1123781365 (17:20, 25 November 2022) | 5668 |
+| wp:URI_normalization (from 'URL normalization') | 1359957963 | 1120098126 (04:05, 5 November 2022) | 1215 |
+| wp:URL_shortening | 1384315582 | 1124465619 (00:42, 29 November 2022) | 3940 |
+| wp:Vector_clock | 1382371396 | 1121141841 (18:44, 10 November 2022) | 849 |
+| wp:Video_on_demand | 1383616297 | 1123294958 (23:48, 22 November 2022) | 6066 |
+| wp:Web_cache | 1375431709 | 1121781458 (03:16, 14 November 2022) | 503 |
+| wp:Web_crawler | 1383789668 | 1124235168 (00:03, 28 November 2022) | 6892 |
+| wp:Web_feed (from 'News feed') | 1383616555 | 1116868125 (19:12, 18 October 2022) | 1481 |
+| wp:WebSocket | 1381019123 | 1120212787 (19:43, 5 November 2022) | 4109 |
+| wp:Wide-column_store | 1379481309 | 1098683298 (00:55, 17 July 2022) | 371 |
+| wp:Write-ahead_logging | 1383770856 | 1106977525 (13:02, 27 August 2022) | 467 |
+| wp:XMPP | 1378343147 | 1120094990 (03:36, 5 November 2022) | 4305 |
+
+175 articles. No article exists for 'Exactly-once delivery' or 'Sticky session' (404). 'Push notification' redirects to Push technology, which is listed (the entry records the redirect). The first 42 entries were fetched through the API before it rate-limited (their .txt is the plain extract, without `##` headings); the rest are fetched as rendered HTML text.
 
 ## 3. Link-only (fails the gate), with the reason
 
