@@ -1311,14 +1311,15 @@
       ],
       "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Introduction_to_Computer_Science_(OpenStax)/03%3A_Data_Structures_and_Algorithms",
       "pin": "pages fetched 2026-11-08 via LibreTexts (openstax.org itself not on the allowlist)",
-      "licence": "CC BY 4.0 (text); figures carry per-caption attribution",
+      "licence": "CC BY-NC-SA 4.0 per the publisher (openstax.org); the LibreTexts copy says CC BY 4.0",
       "licence_evidence": {
         "url": "https://eng.libretexts.org/Bookshelves/Computer_Science/Programming_and_Computation_Fundamentals/Introduction_to_Computer_Science_(OpenStax)/03%3A_Data_Structures_and_Algorithms",
         "quote": "is shared under a CC BY 4.0 license"
       },
       "use": "prose; figures where the caption says 'Copyright Rice University, OpenStax, under CC BY 4.0 license' (check each caption)",
       "format": "plain text per section page",
-      "locator": "openstax-introcs:3.<section>, e.g. openstax-introcs:3.4"
+      "locator": "openstax-introcs:3.<section>, e.g. openstax-introcs:3.4",
+      "excluded": "Not used, 2026-11-08: the publisher licenses it CC BY-NC-SA 4.0 and asks that anyone incorporating it into large language models or AI offerings first get permission. OmniStax builds with AI agents, so it stays out unless OpenStax grants permission. See dossiers/ch01.md."
     },
     {
       "id": "lt-csbu",
@@ -1783,7 +1784,7 @@
       ],
       "url": "https://openstax.org/books/introduction-computer-science/pages/3-review-questions",
       "pin": "pages fetched 2026-11-08 (book archive version 20260604.144757, content version 8440644, revised 2026-04-23)",
-      "licence": "unclear: openstax.org states CC BY-NC-SA 4.0 for the book, the LibreTexts copy (openstax-introcs) states CC BY 4.0, figure captions on both say CC BY 4.0; openstax.org also forbids ingestion into LLMs or generative AI offerings without written permission",
+      "licence": "CC BY-NC-SA 4.0 per the publisher (openstax.org); the LibreTexts copy says CC BY 4.0",
       "licence_evidence": {
         "url": "https://openstax.org/books/introduction-computer-science/pages/3-review-questions",
         "quote": "Textbook content produced by OpenStax is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike License.",
@@ -1792,7 +1793,8 @@
       "use": "link-only pending a ruling (licence conflict plus the AI-ingestion notice). Would otherwise be NC exercise cards: 18 review (multiple choice), 18 conceptual, 5 practice, 10 problem set A, 15 problem set B, 10 thought-provoker questions on algorithms, ADTs, analysis and Big O. The same conflict bears on the registered openstax-introcs prose row.",
       "format": "HTML pages; tag-stripped text cached as 3-*.txt",
       "locator": "openstax-introcs-ex:<page stem>#<question number>, e.g. openstax-introcs-ex:3-conceptual-questions#1",
-      "added_by": "ch01 finder 2026-11-08"
+      "added_by": "ch01 finder 2026-11-08",
+      "excluded": "Not used, 2026-11-08: the publisher licenses it CC BY-NC-SA 4.0 and asks that anyone incorporating it into large language models or AI offerings first get permission. OmniStax builds with AI agents, so it stays out unless OpenStax grants permission. See dossiers/ch01.md."
     }
   ]
 }
