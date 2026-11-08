@@ -84,7 +84,9 @@ The rules for NC units:
   exercise.
 - Each unit wears its own licence in its footer and on its card. The
   schema needs a `licence` field on sections and exercises, since today
-  the footer comes only from `book.json`.
+  the footer comes only from `book.json`. There is a precedent:
+  `exercise_sources` rows already carry `license` and `license_url`, and
+  Modern AMO II uses them for MIT 8.422's CC BY-NC-SA exercises.
 - OmniStax's own additions (concept map, ToC, figures) are licensed
   however OmniStax licenses its own work.
 
@@ -535,7 +537,7 @@ because prerequisites force the order and each concept gets one home.
 2. Erickson and ODS come in, and so does anything else the finder turns up.
    The judge (§6) picks per topic: lucidity first, then cohesive style,
    then comprehensiveness.
-3. Languages: proposed in §1.5, awaiting your answer.
+3. Languages: Python and JavaScript in the first pass, C++ later (§1.5).
 4. Code exercises: pulled from open sources first. No exercise is
    AI-written. Tests and reference solutions may be AI-written, and are
    marked (§6.3).
