@@ -685,8 +685,8 @@ The finder's first stops for code exercises (licences to confirm):
 **Decided: tests may be AI-written, exercises may not.** Every exercise
 statement comes from a source. Where the source has no tests, the tests
 are AI-written: `tests_by: "ai"`, AI-marked on the card. The same goes for
-the reference solution, unless the source supplies one (OCW solutions,
-ICPC reference solutions). The reference must pass every test and the
+the reference solution, unless the source supplies one (ICPC reference solutions,
+Exercism example solutions). The reference must pass every test and the
 complexity check before the exercise ships. Tests should cover what the
 statement implies: the empty input, one element, duplicates, the worst
 case at the stated bound. A test may never add a requirement the
