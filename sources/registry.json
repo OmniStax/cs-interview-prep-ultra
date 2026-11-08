@@ -1577,7 +1577,7 @@
         "url": "https://github.com/doocs/leetcode/blob/main/README_EN.md",
         "quote": "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
       },
-      "use": "solution write-ups only (ruled usable, 2026-11-08); LeetCode problem statements are link-only. A write-up is paired with an open exercise that poses the same problem.",
+      "use": "solution write-ups only (ruled usable, 2026-11-08); LeetCode problem statements are link-only. A write-up is paired with an open exercise that poses the same problem. The \"Thinking\" blockquotes (bulk-added 2026-09-12) are excluded as likely AI-written (user ruling 2026-11-08).",
       "format": "Markdown, solution/<range>/<nnnn>.<Title>/README_EN.md with code tabs",
       "locator": "doocs-leetcode:<nnnn>#<solution heading>, e.g. doocs-leetcode:0239#Solution 2: Monotonic Queue"
     },
@@ -1674,7 +1674,8 @@
       "use": "prose: interview-pattern chapters (two pointers opposite/same direction, fixed and variable sliding windows, prefix sums incl. 2D and difference arrays, prefix sum + hash, linked-list fundamentals with sentinel, cycle detection, merging lists, arrays, dynamic-array internals, array vs linked list). LeetCode statements and sample inputs it quotes stay link-only. Provenance note for the judge/user: no AI mark found in commits, front matter or README (so the current version is used per METHOD.md 6.1), but ~1,236 files appeared between 2026-05-11 and 2026-10-20 from one author.",
       "format": "Markdown with YAML front matter; code tabs in Python, Java, C++, Go",
       "locator": "eh-dsa:<part>/<chapter stem>#<heading>, e.g. eh-dsa:part-3-pointers-window-prefix/03-sliding-window-variable#The pattern",
-      "added_by": "ch02 finder 2026-11-08"
+      "added_by": "ch02 finder 2026-11-08",
+      "excluded": "Excluded by the user 2026-11-08: likely AI-written though not marked (see dossiers/ch02.md)."
     },
     {
       "id": "algowiki",
@@ -1694,7 +1695,8 @@
       "use": "prose: Sliding window technique (variable and fixed windows, sliding min/max, two pointers vs sliding window). Version rule applied per page: the current page is AI-marked, so a3d8448 is used. Note: a3d8448 was committed on 2026-06-06 by the human maintainer three days after the repo added an AI agent skill 'flesh-out-wiki-page' (52214e6); it is not itself marked. Problem links in it (CSES, Codeforces) are link-only.",
       "format": "Markdown (GFM + KaTeX), one file per page under wiki/",
       "locator": "algowiki:<page title>@<commit>#<heading>, e.g. algowiki:Sliding window technique@a3d8448#Variable-size windows",
-      "added_by": "ch02 finder 2026-11-08"
+      "added_by": "ch02 finder 2026-11-08",
+      "excluded": "Excluded by the user 2026-11-08: likely AI-written though not marked (see dossiers/ch02.md)."
     },
     {
       "id": "lt-morelli",

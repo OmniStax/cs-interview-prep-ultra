@@ -18,6 +18,11 @@ the registered corpus is a failed run. You never rank quality; the judge does.
   page.
 - **Never use** *Computer Networks: A Systems Approach*, not even as a
   link.
+- **Flag likely AI-written text** even when unmarked: commits authored by
+  a model, an AI skill or tool added just before the version, a volume of
+  writing no one person produces, bulk-added blocks. Record the evidence
+  in the dossier as `provenance: flagged`; the user rules. Never use a
+  source the registry marks `excluded`.
 - **Exercises:** the same, plus CC BY-NC and CC BY-NC-SA, which are
   allowed as NC exercise cards only (METHOD.md §0). Mark them `nc: true`.
 - **Everything else** (all rights reserved, ND, no licence stated, a

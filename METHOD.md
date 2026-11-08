@@ -617,6 +617,13 @@ Decide page by page, never by pinning a whole site to a date.
 **Excluded outright:** *Computer Networks: A Systems Approach* (Peterson
 and Davie). Not used, not linked.
 
+**Likely AI-written, though not marked:** excluded too, when the evidence
+is strong (commits by a model, a model's skill added just before the
+version, a volume of writing no one person produces, bulk-added blocks).
+The finder flags such a source with its evidence and the user rules.
+Excluded so far: `eh-dsa`, `algowiki`, and doocs' "Thinking" blocks
+(2026-11-08).
+
 **Where it looks, in order:**
 1. The registered corpus: cp-algorithms, the primer, Erickson, ODS, CIU.
    This is a cheap local search.
