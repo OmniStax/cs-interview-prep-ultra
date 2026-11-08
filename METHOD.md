@@ -577,6 +577,12 @@ because prerequisites force the order and each concept gets one home.
 17. Downloaded reference solutions and tests may be run (2026-11-08),
     isolated: copied into a fresh scratch directory, run with `python -I`,
     never from inside the cache.
+18. Rulings on chapters 1–3 (2026-11-08): "random variable" becomes its own
+    concept in 1.6, explained by *Mathematics for Computer Science* (2018,
+    CC BY-SA); Erickson's §0.3 apportionment example is kept whole as the
+    worked example for "algorithm"; doocs code may be used without a twin
+    exercise (the twin rule covers its explanations only); *DSA for
+    Dummies* is excluded as likely AI-written.
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 

@@ -1404,7 +1404,8 @@
       },
       "use": "short prose (Big O README) and Python code",
       "format": "Markdown plus Python",
-      "locator": "dsa-dummies:<path>"
+      "locator": "dsa-dummies:<path>",
+      "excluded": "Excluded by the user 2026-11-08: likely AI-written (its Two Pointers file opens \"Certainly, the Two Pointers algorithm is...\")."
     },
     {
       "id": "addiscoder",
@@ -1578,7 +1579,7 @@
         "url": "https://github.com/doocs/leetcode/blob/main/README_EN.md",
         "quote": "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License."
       },
-      "use": "solution write-ups only (ruled usable, 2026-11-08); LeetCode problem statements are link-only. A write-up is paired with an open exercise that poses the same problem. The \"Thinking\" blockquotes (bulk-added 2026-09-12) are excluded as likely AI-written (user ruling 2026-11-08).",
+      "use": "solution write-ups only (ruled usable, 2026-11-08); LeetCode problem statements are link-only. A write-up is paired with an open exercise that poses the same problem. The \"Thinking\" blockquotes (bulk-added 2026-09-12) are excluded as likely AI-written (user ruling 2026-11-08). Its code may be used without a twin exercise (user ruling 2026-11-08); the twin rule applies to its explanations only.",
       "format": "Markdown, solution/<range>/<nnnn>.<Title>/README_EN.md with code tabs",
       "locator": "doocs-leetcode:<nnnn>#<solution heading>, e.g. doocs-leetcode:0239#Solution 2: Monotonic Queue"
     },
