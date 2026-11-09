@@ -102,7 +102,7 @@ $$\begin{aligned}
 \end{aligned}$$
 <p>When calculating the next mean $\textit{SMA}_{k,\text{next}}$ with the same sampling width $k$ the range from $n - k + 2$ to $n+1$ is considered. A new value $p_{n+1}$ comes into the sum and the oldest value $p_{n-k+1}$ drops out. This simplifies the calculations by reusing the previous mean $\textit{SMA}_{k,\text{prev}}$.</p>
 <figure class="dv" id="drv-sma-next"></figure>
-<p>This means that the <span data-concept="sliding-window-fixed">moving average</span> filter can be computed quite cheaply on real time data with a FIFO / circular buffer and only 3 arithmetic steps.</p>
+<p>This means that the <span data-concept="sliding-window-fixed">moving average</span> filter can be computed quite cheaply on real time data with a FIFO / <span data-concept="circular-buffer">circular buffer</span> and only 3 arithmetic steps.</p>
 <figure class="sim" id="sim-moving-window">
   <div class="sim-head"><span class="eyebrow">Sim</span><span>The window holds the last <em>k</em> points. Each move adds the point that comes in and subtracts the one that drops out, three arithmetic steps whatever <em>k</em> is, against <em>k</em> to add the window up again. A larger <em>k</em> gives a smoother line that lags further behind the data.</span></div>
 </figure>
