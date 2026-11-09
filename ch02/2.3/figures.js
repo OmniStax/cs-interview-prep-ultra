@@ -38,7 +38,16 @@ function cells(ctx, o) {
   if (o.name) text(ctx, o.name, l - 22, o.y, o.nameColor ?? PAL.ink, { size: 34, weight: 600, align: 'right', italic: true });
   return S;
 }
-const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || 'above', size: 30 });
+/* pointers into a strip; the names are drawn here, so that two pointers sharing a cell (low and high on one element)
+   put their names on either side of the pair instead of running them together over its middle */
+const ptr = (ctx, S, list, side) => {
+  const placed = F.ds.pointer(ctx, S, list.map((p) => Object.assign({}, p, { name: '' })), { side: side || 'above', size: 30 });
+  placed.forEach((q, k) => {
+    const lean = q.lean < -1e-6 ? 'right' : q.lean > 1e-6 ? 'left' : 'center';
+    text(ctx, list[k].name, q.x + (lean === 'right' ? 6 : lean === 'left' ? -6 : 0), q.y, list[k].color, { size: 30, weight: 600, align: lean });
+  });
+  return placed;
+};
 
 /* ================================================================ sim-two-pointers: TheAlgorithms two_pointer */
 (function () {
@@ -468,7 +477,7 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
     { value: 'ties', label: 'equal keys', A: [2, 2, 5], B: [2, 3] },
     { value: 'empty', label: 'B empty', A: [1, 3], B: [] },
   ];
-  const d = sim('sim-merge', 720);
+  const d = sim('sim-merge', 790);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS3,
     lineMap: { java: MAPJ, cpp: MAPC, javascript: MAPC },
@@ -504,8 +513,8 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
       topline(ctx, head);
       const cell = Math.min(100, 1000 / Math.max(N, 1)), x0 = 220;
       const SA = cells(ctx, { values: A, y: 200, cell, x0, name: 'A', nameColor: ca, state: (k) => (k < i || (L >= 25 && L <= 28 && ev[0] !== 'returnA') ? 'faded' : k === i && L >= 13 ? 'hot' : 'live'), index: true });
-      const SB = cells(ctx, { values: B.length ? B : [], y: 350, cell, x0, name: 'B', nameColor: cb, state: (k) => (k < j || (L >= 26 && L <= 28 && ev[0] !== 'returnB') ? 'faded' : k === j && L >= 13 ? 'hot' : 'live') });
-      if (!B.length) text(ctx, '(empty)', x0 + 10, 350, PAL.muted, { size: 28 });
+      const SB = cells(ctx, { values: B.length ? B : [], y: 400, cell, x0, name: 'B', nameColor: cb, state: (k) => (k < j || (L >= 26 && L <= 28 && ev[0] !== 'returnB') ? 'faded' : k === j && L >= 13 ? 'hot' : 'live') });
+      if (!B.length) text(ctx, '(empty)', x0 + 10, 400, PAL.muted, { size: 28 });
       if (L >= 13 && L <= 22) {
         if (i < A.length) ptr(ctx, SA, [{ at: g.num('i'), name: 'i', color: ca }]);
         if (j < B.length) ptr(ctx, SB, [{ at: g.num('j'), name: 'j', color: cb }]);
@@ -513,7 +522,7 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
       /* C: the merged prefix is sorted and holds exactly A[0..i) and B[0..j) */
       const out = ev[0] === 'returnA' ? A : ev[0] === 'returnB' ? B : merged;
       const shown = out.length ? out : [];
-      const SC = cells(ctx, { values: shown.concat(new Array(Math.max(0, N - shown.length)).fill('')), y: 540, cell, x0, name: 'C', nameColor: cc, state: (k) => (k < shown.length ? 'live' : 'hollow') });
+      const SC = cells(ctx, { values: shown.concat(new Array(Math.max(0, N - shown.length)).fill('')), y: 590, cell, x0, name: 'C', nameColor: cc, state: (k) => (k < shown.length ? 'live' : 'hollow') });
       if (shown.length) F.ds.region(ctx, SC, { from: 0, to: shown.length - 1, color: idx, alpha: 0.14 });
       /* the head just taken travels down into C */
       if ((ev[0] === 'takeA' || ev[0] === 'takeB') && g.k < 1) {
@@ -522,8 +531,8 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
         arrow(ctx, fx, fy + 40, tx, ty - 40, ev[0] === 'takeA' ? ca : cb, 4);
         text(ctx, String(merged[to]), fx + (tx - fx) * e, fy + (ty - fy) * e, key, { size: 32, align: 'center', weight: 600 });
       }
-      text(ctx, `C sorted, holding A[0..${i}) and B[0..${j})`, x0, 640, idx, { size: 26 });
-      text(ctx, `comparisons ${v.comps || 0} ≤ m + n − 1 = ${Math.max(0, N - 1)}`, 1340, 690, C('cost'), { size: 28, align: 'right' });
+      text(ctx, `C sorted, holding A[0..${i}) and B[0..${j})`, x0, 690, idx, { size: 26 });
+      text(ctx, `comparisons ${v.comps || 0} ≤ m + n − 1 = ${Math.max(0, N - 1)}`, 1340, 760, C('cost'), { size: 28, align: 'right' });
     },
   });
 })();
