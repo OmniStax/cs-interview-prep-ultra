@@ -104,9 +104,10 @@ HTML = {
     'sim-big-o-witness': sim(
         'sim-big-o-witness',
         '<span data-type="cost"><em>f</em>(<em>n</em>) = 5<em>n</em> log <em>n</em> + 8<em>n</em> − 200</span> against '
-        '<span data-type="cost"><em>c</em> · <em>n</em> log <em>n</em></span>: past <em>n</em><sub>0</sub>, the shaded stretch, '
-        'the line <em>c</em> · <em>n</em> log <em>n</em> must stay on or above <em>f</em>. With <em>c</em> = 13 it does from '
-        '<em>n</em><sub>0</sub> = 2 on. Lower <em>c</em> and a larger <em>n</em><sub>0</sub> is needed; at <em>c</em> = 5 or below '
+        '<span data-type="cost"><em>c</em> · <em>n</em> log <em>n</em></span>: past <em>n</em><sub>0</sub>, the tinted stretch, '
+        'the line <em>c</em> · <em>n</em> log <em>n</em> must stay on or above <em>f</em>, and any gap where <em>f</em> rises '
+        'above it is shaded as a failure. With <em>c</em> = 13 it does from '
+        '<em>n</em><sub>0</sub> = 2 on. A smaller <em>c</em> needs a larger <em>n</em><sub>0</sub>, and for <em>c</em> = 5 or less '
         'no <em>n</em><sub>0</sub> works, because <em>f</em>(<em>n</em>) − 5<em>n</em> log <em>n</em> = 8<em>n</em> − 200 is '
         'positive for every <em>n</em> from 26 on.'),
     'sim-loop-count': sim(
@@ -119,10 +120,10 @@ HTML = {
         '<span data-type="cost"><em>O</em>(<em>n</em>)</span>.'),
     'sim-crossover': sim(
         'sim-crossover',
-        '<span data-type="cost">15<em>n</em></span> against <span data-type="cost">2<em>n</em> log <em>n</em></span> on a '
+        '<span data-ref="f1">15<em>n</em></span> against <span data-ref="f2">2<em>n</em> log <em>n</em></span> on a '
         'window that widens from <span data-type="size"><em>n</em></span> = 100 to 10 000. On the first window 15<em>n</em> '
         'is ahead all the way; the two meet where log <em>n</em> = 7.5, at <em>n</em> = 2<sup>7.5</sup> ≈ 181, and past '
-        'that 2<em>n</em> log <em>n</em> is larger and the gap keeps widening.',
+        'that <span data-ref="f2">2<em>n</em> log <em>n</em></span> is larger and the gap keeps widening.',
         '/media/ch01/ods-bigoh-1.png, /media/ch01/ods-bigoh-2.png', '{{caption-text intro-asymptotics}}'),
     'sim-limit-test': sim(
         'sim-limit-test',
@@ -157,9 +158,14 @@ MARKS = [
     # the loop variable sim-loop-count draws, in the counts of the bulleted list
     ('big-o', '$int\\, i\\,\\gets\\, 0$', '$int\\, \\htmlData{ref=i}{i}\\,\\gets\\, 0$'),
     ('big-o', '$i &lt; n$', '$\\htmlData{ref=i}{i} &lt; n$'),
-    ('big-o', '$i++$', '$\\htmlData{ref=i}{i}++$'),
+    ('big-o', '$i{+}{+}$', '$\\htmlData{ref=i}{i}{+}{+}$'),
     ('big-o', '$a[i]$', '$a[\\htmlData{ref=i}{i}]$'),
     ('big-o', '$a[i]\\gets i$', '$a[\\htmlData{ref=i}{i}]\\gets \\htmlData{ref=i}{i}$'),
+    # the two functions sim-crossover draws, wherever the paragraph names them
+    ('big-o', '$f_1(n)=15n$', '$\\htmlData{ref=f1}{f_1}(n)=15n$'),
+    ('big-o', '$f_2(n)=2n\\log n$', '$\\htmlData{ref=f2}{f_2}(n)=2n\\log n$'),
+    ('big-o', '$f_1(n)$', '$\\htmlData{ref=f1}{f_1}(n)$', 3),
+    ('big-o', '$f_2(n)$', '$\\htmlData{ref=f2}{f_2}(n)$', 2),
 ]
 
 # ---------------------------------------------------------------- section.json (tools/build_section.py)
@@ -167,8 +173,8 @@ MODEL = {'model': 'claude-opus-5-5', 'effort': 'high'}
 FIG_AI = [{'model': 'claude-opus-5-5', 'effort': 'high', 'part': 'built'}]
 
 # The derivation that replaces ODS's chain 5n log n + 8n − 200 ≤ … ≤ 13n log n (plan, derivation candidates; root
-# item 29.2). The book's three lines are node 1's steps; node 0 is the condition's "so that log n ≥ 1", which the book
-# states in a parenthesis; node 2 is the sentence after the chain ("using the constants c = 13 and n_0 = 2").
+# item 29.2). The book's three lines are node 1's steps; node 0 is its condition "for n ≥ 2 (so that log n ≥ 1)", which
+# it states in a parenthesis; node 2 is the sentence after the chain ("using the constants c = 13 and n_0 = 2").
 DRV_BIG_O = {
     'id': 'big-o-example',
     'what': '5n log n + 8n − 200 is in O(n log n)',
@@ -176,13 +182,13 @@ DRV_BIG_O = {
     'nodes': [
         {
             'assumes': [
-                {'text': '$n \\ge 2$.'},
-                {'tex': '\\log 2 = 1', 'src': '1.2, Exponentials and Logarithms'},
+                {'tex': '\\log 2 = 1', 'src': '1.2'},
             ],
-            'then': {'tex': '\\mk{l}{\\log n} \\ge \\mk{r}{\\log 2}', 'uses': [0],
-                     'why': 'The logarithm grows with its argument, so $n \\ge 2$ gives $\\log n \\ge \\log 2$.'},
+            'then': {'tex': '\\mk{l}{n} \\ge \\mk{r}{2}'},
             'steps': [
-                {'tex': '\\mk{l}{\\log n} \\ge \\mk{r}{1}', 'uses': [1]},
+                {'tex': '\\mk{l}{\\log n} \\ge \\mk{r}{\\log 2}', 'uses': [],
+                 'cap': 'The logarithm grows with its argument, so taking it of both sides keeps the inequality.'},
+                {'tex': '\\mk{l}{\\log n} \\ge \\mk{r}{1}', 'uses': [0]},
             ],
         },
         {
@@ -201,9 +207,9 @@ DRV_BIG_O = {
                         'g(n) \\le c\\cdot f(n) \\text{ for all } n \\ge n_0 \\,\\}'},
                 {'step': 1},
             ],
-            'then': {'tex': '\\mk{f}{f(n)} \\le \\mk{c}{13}\\,\\mk{g}{n\\log n}', 'uses': [1]},
+            'then': {'tex': '\\mk{f}{f(n)} \\le \\mk{a}{13n\\log n}'},
             'steps': [
-                {'tex': '\\mk{f}{f(n)} \\in O(\\mk{g}{n\\log n})', 'uses': [0],
+                {'tex': '\\mk{f}{f(n)} \\in O(\\mk{a}{n\\log n})', 'uses': [0],
                  'cap': 'The inequality holds for every $n \\ge 2$, so the definition is met with $c = 13$ and $n_0 = 2$.'},
             ],
         },
@@ -239,6 +245,8 @@ SECTION = {
     ],
     'referents': [
         {'id': 'i', 'label': 'i, the loop variable of the snippet', 'figures': ['sim-loop-count']},
+        {'id': 'f1', 'label': 'f₁(n) = 15n, a complicated linear time algorithm', 'figures': ['sim-crossover']},
+        {'id': 'f2', 'label': 'f₂(n) = 2n log n, a simpler divide-and-conquer algorithm', 'figures': ['sim-crossover']},
     ],
     'coverage': [
         {'span': 'big-o', 'concept': 'big-o', 'verb': 'introduces'},

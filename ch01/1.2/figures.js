@@ -6,7 +6,7 @@
    integral or the exact value apart from the ink it is compared with. */
 window.OMNISTAX_FIGURES = window.OMNISTAX_FIGURES || {};
 window.OMNISTAX_FIGURES['1.2'] = function (root, F) {
-const { PAL, alpha, text, line, dot, begin, tex, ctl, choice, register, fmt, topline, axes, plot, shade, hover, readout, tween } = F;
+const { PAL, alpha, text, line, dot, begin, tex, ctl, choice, register, fmt, topline, axes, plot, shade, hover, tween } = F;
 const sim = (id, H) => F.sim(root, id, H);
 const SUP = (s) => String(s).split('').map((c) => '⁰¹²³⁴⁵⁶⁷⁸⁹⁻'['0123456789-'.indexOf(c)] ?? c).join('');
 const SUB = (s) => String(s).split('').map((c) => '₀₁₂₃₄₅₆₇₈₉'['0123456789'.indexOf(c)] ?? c).join('');
@@ -19,10 +19,11 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2) => {
 /* a number to s significant digits, as plain text and without a trailing ".0" */
 const sig = (x, s = 3) => {
   if (x === 0) return '0';
+  if (Number.isInteger(x) && Math.abs(x) < 1e7) return String(x);
   if (Math.abs(x) >= 10 ** s && Math.abs(x) < 1e7) return String(Math.round(x));
   const e = Math.floor(Math.log10(Math.abs(x)));
   if (e >= 7) { const m = x / 10 ** e; return `${m.toFixed(s - 1)} × 10${SUP(e)}`; }
-  return x.toFixed(Math.max(0, s - 1 - e));
+  return x.toFixed(Math.max(0, s - 1 - e)).replace(/(\.\d*?)0+$/, '$1').replace(/\.$/, '');
 };
 
 /* ================================================================ sim-halving: log_b k as a count of divisions (still) */
@@ -34,10 +35,8 @@ const sig = (x, s = 3) => {
   const BASES = { two: { b: 2, name: '2', tex: '2', verb: 'halved' }, e: { b: Math.E, name: 'e', tex: 'e', verb: 'divided by e' }, ten: { b: 10, name: '10', tex: '10', verb: 'divided by 10' } };
   const base = choice(d.controls, { label: 'b', key: 'base', value: 'two',
     options: [{ value: 'two', label: '2' }, { value: 'e', label: 'e' }, { value: 'ten', label: '10' }] });
-  /* the x-axis spans the most divisions any k up to 10⁶ needs in this base: 20 halvings, 14 divisions by e, 6 by 10 */
-  const XMAX = { two: 20, e: 14, ten: 6 };
-  const R = readout(d);
-  let hits = [];
+  const xs = tween(d, 11), ys = tween(d, 3.6), want = { x: 0, y: 0 };
+  let hits = [], first = true;
   hover(d.stage, () => hits);
   function draw() {
     const { ctx } = begin(d.c);
@@ -50,52 +49,49 @@ const sig = (x, s = 3) => {
       ? `1 is already at most 1: no division is needed, and log${SUB(B.name === 'e' ? '' : B.name)}${B.name === 'e' ? 'ₑ' : ''} 1 = 0.`
       : `${k} ${B.verb} ${times} is ${sig(last, 3)}, the first value at most 1: log${B.name === 'e' ? 'ₑ' : SUB(B.name)} ${k} = ${fmt(L, 2)}.`);
 
-    /* the frame: values on a log scale, so every division by b is the same step down */
-    const box = { l: 130, r: 1340, t: 110, b: 540 }, xmax = base.mix((v) => XMAX[v]);
-    const ax = axes(ctx, box, [-0.6, xmax + 0.6], [-1.15, 6.6], { nx: 0, ny: 0, xl: 'divisions by b', yl: 'value (log scale)' });
-    const { X, Y } = ax;
-    for (let e = -1; e <= 6; e += 1) {
+    /* the frame: values on a log scale, so every division by b is the same step down. It fits the bars drawn:
+       the x-axis runs one slot past the last division and the y-axis just over k, easing when either changes. */
+    const wx = Math.max(3, n + 1), wy = Math.max(1, Math.log10(k)) + 0.8;
+    if (wx !== want.x) { want.x = wx; if (first) xs.set(wx); else xs.to(wx, 450); }
+    if (wy !== want.y) { want.y = wy; if (first) ys.set(wy); else ys.to(wy, 450); }
+    first = false;
+    const box = { l: 130, r: 1340, t: 110, b: 540 };
+    const ax = axes(ctx, box, [0, xs.v + 0.2], [-1.15, ys.v], { nx: 0, ny: 0, xl: 'divisions by b', yl: 'value (log scale)' });
+    const X = (i) => ax.X(i + 0.6), Y = ax.Y;
+    for (let e = -1; e <= Math.floor(ys.v); e += 1) {
       if (e > -1) line(ctx, box.l, Y(e), box.r, Y(e), PAL.rule, 1.5);
       text(ctx, e === 0 ? '1' : e === 1 ? '10' : e === 2 ? '100' : e === 3 ? '1000' : `10${SUP(e)}`, box.l - 14, Y(e), PAL.muted, { size: 17, align: 'right' });
     }
-    const every = xmax > 14 ? 2 : 1;
-    for (let i = 0; i <= Math.round(xmax); i += every) text(ctx, String(i), X(i), box.b + 26, PAL.muted, { size: 17, align: 'center' });
+    const every = xs.v > 14 ? 2 : 1;
+    for (let i = 0; i <= Math.floor(xs.v - 0.4); i += every) text(ctx, String(i), X(i), box.b + 26, PAL.muted, { size: 17, align: 'center' });
     /* the level 1, dashed */
     line(ctx, box.l, Y(0), box.r, Y(0), PAL.ink, 2.5, [10, 10]);
 
     /* the bars: value k / bⁱ after i divisions, standing on the level 1 (the last one at or below it) */
-    const slot = X(1) - X(0), w = Math.min(70, slot * 0.62), top = (v) => Y(Math.log10(v));
+    const slot = X(1) - X(0), w = Math.min(90, slot * 0.62), top = (v) => Y(Math.log10(v));
     hits = [];
     const labelAll = n <= 10;
     vals.forEach((v, i) => {
       const x = X(i) - w / 2, y0 = Y(0), y1 = top(v), isLast = i === n;
       rect(ctx, x, Math.min(y0, y1), w, Math.max(2, Math.abs(y1 - y0)), alpha(PAL.ink, isLast ? 0.42 : 0.12), PAL.ink, 2);
-      const name = `${i === 0 ? 'k' : `k / ${B.name === '2' ? '2' : B.name}${i > 1 ? SUP(i) : ''}`} = ${sig(v, 3)}`;
+      const name = `${i === 0 ? 'k' : `k / ${B.name}${i > 1 ? SUP(i) : ''}`} = ${sig(v, 3)}`;
       hits.push({ x: X(i), y: (y0 + y1) / 2, r: Math.max(w / 2, 18), name });
       if (labelAll || i === 0 || isLast) {
         const above = v > 1;
         text(ctx, sig(v, 3), X(i), above ? y1 - 18 : Math.max(y0, y1) + 22, PAL.ink, { size: 20, align: 'center', weight: isLast ? 600 : 400, bg: PAL.panel });
       }
     });
-    /* one division, measured: the same height between every pair of bars */
-    if (n >= 2) {
-      const xa = X(0) + w / 2 + 10;
-      line(ctx, xa, top(vals[0]), xa, top(vals[1]), PAL.ink, 2);
-      line(ctx, xa - 6, top(vals[0]), xa + 6, top(vals[0]), PAL.ink, 2);
-      line(ctx, xa - 6, top(vals[1]), xa + 6, top(vals[1]), PAL.ink, 2);
-      text(ctx, `÷ ${B.name}`, xa + 12, (top(vals[0]) + top(vals[1])) / 2, PAL.ink, { size: 20, bg: PAL.panel });
-    }
-    /* the same fall as a straight line, crossing the level 1 at x = log_b k */
+    /* the same fall as a straight line, crossing the level 1 at x = log_b k; its value is written below the
+       level, left of the crossing, clear of the last bar's label */
     if (k > 1) {
       const col = F.cat(0);
       line(ctx, X(0), top(k), X(L), Y(0), col, 3, [6, 8]);
       dot(ctx, X(L), Y(0), col, true, 9);
       const lab = `log${B.name === 'e' ? 'ₑ' : SUB(B.name)} k = ${fmt(L, 2)}`;
-      const right = X(L) + 160 < box.r;
-      text(ctx, lab, right ? X(L) + 14 : X(L) - 14, Y(0) + 30, col, { size: 22, weight: 600, align: right ? 'left' : 'right', bg: PAL.panel });
+      text(ctx, lab, Math.min(X(L) - 14, X(n) - 48), Y(0) + 34, col, { size: 22, weight: 600, align: 'right', bg: PAL.panel });
     }
     const lk = Math.log(k), lb = Math.log(b);
-    R.set(`\\log_{${B.tex}} ${k} = \\frac{\\ln ${k}}{\\ln ${B.tex}} = \\frac{${sig(lk, 4)}}{${sig(lb, 4)}} = ${fmt(L, 2)},\\qquad \\lceil ${fmt(L, 2)} \\rceil = ${n} \\text{ division${n === 1 ? '' : 's'}}`);
+    tex(d.readout, `\\log_{${B.tex}} ${k} = \\frac{\\ln ${k}}{\\ln ${B.tex}} = \\frac{${sig(lk, 4)}}{${sig(lb, 4)}} = ${fmt(L, 2)},\\qquad \\lceil ${fmt(L, 2)} \\rceil = ${n} \\text{ division${n === 1 ? '' : 's'}}`);
   }
   register(d.fig, { update: () => {}, draw });
 })();
@@ -104,7 +100,6 @@ const sig = (x, s = 3) => {
 (function () {
   const d = sim('sim-stirling', 600);
   const sN = ctl(d.controls, { label: 'n', cls: '', key: 'n', min: 1, max: 60, step: 1, value: 10, unit: '', dec: 0 });
-  const R = readout(d);
   /* ln n! summed exactly enough (the last bit of 189 is 3·10⁻¹⁴, against an α of 1.4·10⁻³ at n = 60) */
   const lnFact = [0];
   for (let i = 1; i <= 60; i += 1) lnFact.push(lnFact[i - 1] + Math.log(i));
@@ -116,12 +111,13 @@ const sig = (x, s = 3) => {
   hover(d.stage, () => hits);
   const big = (lnv) => {
     const e = Math.floor(lnv / Math.LN10), m = Math.exp(lnv - e * Math.LN10);
-    return e < 7 ? fmt(Math.exp(lnv), e < 6 ? 1 : 0) : `${m.toFixed(4)} × 10${SUP(e)}`;
+    return e < 7 ? String(Number(Math.exp(lnv).toPrecision(7))) : `${m.toFixed(4)} × 10${SUP(e)}`;
   };
   function draw() {
     const { ctx } = begin(d.c);
     const n = Math.round(sN.v), a = alphaOf(n), factor = Math.exp(a);
-    const exact = n <= 20 ? String([1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600, 6227020800, 87178291200, 1307674368000, 20922789888000, 355687428096000, 6402373705728000, 121645100408832000, 2432902008176640000][n]) : big(lnFact[n]);
+    let f = 1n; for (let i = 2n; i <= BigInt(n); i += 1n) f *= i;     /* n! exactly, written out up to 20! */
+    const exact = n <= 20 ? String(f) : big(lnFact[n]);
     topline(ctx, `At n = ${n}, Stirling’s formula gives ${big(lnS(n))} for ${n}! = ${exact}, off by a factor e^{α(${n})} = ${factor.toFixed(4)}.`);
 
     const box = { l: 130, r: 1080, t: 130, b: 510 };
@@ -150,8 +146,9 @@ const sig = (x, s = 3) => {
     const lab = `${fmt(g, 3)}`, right = X(n) + 90 < box.r;
     text(ctx, lab, right ? X(n) + 16 : X(n) - 16, Y(g) - 22, col, { size: 22, weight: 600, align: right ? 'left' : 'right', bg: PAL.panel });
 
-    R.set(`\\frac{${n}!}{\\sqrt{2\\pi\\cdot ${n}}\\,(${n}/e)^{${n}}} = e^{\\alpha(${n})} = ${factor.toFixed(7)}`,
-      `$\\alpha(${n}) = ${a.toFixed(7)}$, between $1/${12 * n + 1} = ${(1 / (12 * n + 1)).toFixed(7)}$ and $1/${12 * n} = ${(1 / (12 * n)).toFixed(7)}$`);
+    /* one display, two rows: the ratio, then α(n) between its bounds with enough digits to see it inside them */
+    tex(d.readout, `\\begin{gathered}\\frac{${n}!}{\\sqrt{2\\pi\\cdot ${n}}\\,(${n}/e)^{${n}}} = e^{\\alpha(${n})} = ${factor.toFixed(7)} \\\\[4pt]`
+      + ` \\tfrac{1}{${12 * n + 1}} = ${(1 / (12 * n + 1)).toPrecision(7)} < \\alpha(${n}) = ${a.toPrecision(7)} < \\tfrac{1}{${12 * n}} = ${(1 / (12 * n)).toPrecision(7)}\\end{gathered}`, true);
   }
   register(d.fig, { update: () => {}, draw });
 })();
@@ -163,7 +160,6 @@ const sig = (x, s = 3) => {
     specials: [{ at: 1, label: 'H₁ = ln 1 + 1' }] });
   const bound = choice(d.controls, { label: '\\text{bound}', key: 'bound', value: 'lower',
     options: [{ value: 'lower', label: 'lower' }, { value: 'upper', label: 'upper' }] });
-  const R = readout(d);
   /* the x-axis runs to k + 1, where the last lower-bound rectangle ends; it eases to a new k rather than jumping */
   const xr = tween(d, 6);
   let want = 6, hits = [];
@@ -206,9 +202,9 @@ const sig = (x, s = 3) => {
     const cx = Math.min(1.6, xr.v * 0.2) + 1;
     text(ctx, 'y = 1/x', X(cx) + 12, Y(1 / cx) - 14, col, { size: 22, weight: 600, bg: PAL.panel });
 
-    R.set(bound.value === 'lower'
+    tex(d.readout, bound.value === 'lower'
       ? `H_{${k}} = ${fmt(Hk, 2)} > \\int_1^{${k}} \\frac{\\mathrm{d}x}{x} = \\ln ${k} = ${fmt(lk, 2)}`
-      : `H_{${k}} = 1 + ${fmt(Hk - 1, 2)} \\le 1 + \\int_1^{${k}} \\frac{\\mathrm{d}x}{x} = 1 + \\ln ${k} = ${fmt(1 + lk, 2)}`, undefined, { form: bound.value });
+      : `H_{${k}} = 1 + ${fmt(Hk - 1, 2)} \\le 1 + \\int_1^{${k}} \\frac{\\mathrm{d}x}{x} = 1 + \\ln ${k} = ${fmt(1 + lk, 2)}`);
   }
   register(d.fig, { update: () => {}, draw });
 })();

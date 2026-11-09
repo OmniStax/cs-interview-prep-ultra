@@ -192,7 +192,7 @@ DERIVATIONS = [
              {'tex': r'\mk{E}{\mathrm{E}[X]} = \mk{k}{k}\cdot \mk{S}{\sum_{i=0}^{k-1}\binom{k-1}{i}/2^k}', 'uses': [],
               'cap': 'The factor $k$ comes out of the sum, and the index is shifted down by one.', 'map': {'S': ['k', 'S']}},
              {'tex': r'\mk{E}{\mathrm{E}[X]} = \mk{k}{k}\cdot \mk{S}{2^{k-1}/2^k}', 'uses': [3],
-              'cap': 'Fact 4 with $k - 1$ in place of $k$.'},
+              'cap': 'With $k - 1$ in place of $k$.'},
              {'tex': r'\mk{E}{\mathrm{E}[X]} = \mk{S}{k/2}', 'uses': [], 'map': {'k': 'S'}},
          ],
          'src': 'Randomization and Probability'}]},
@@ -234,3 +234,309 @@ DERIVATIONS = [
                  '$I_i$ is non-negative, so the expectation of the sum is the sum of the expectations (monotone convergence); '
                  'the work keeps the step and says why.'}]},
 ]
+
+
+# ---------------------------------------------------------------- exercises (tools/build_section.py)
+def _brisk_items(fname):
+    """Brisk Walk's exercise table, item by item: (question HTML, answer HTML, footnotes), read by tools/read_latex.py.
+    Each row of the longtable is `\\item question & answer`, rows parted by \\hline."""
+    import re
+    path = os.path.join(_BOOK, BRISK, fname)
+    s = read_latex.strip_comments(open(path, encoding='utf-8').read())
+    a = s.index('\\begin{longtable}')
+    b = s.index('\\end{longtable}')
+    body = s[s.index('\\hline', a):b]
+    labels, _ = read_latex.scan_labels(path, 0)
+    refs = {'license plates': (' [the license plates, under “The Fundamental Theorem”]', ''),
+            'one minus trick': ('[“A simple trick”]', ''), 'prj': ('10', ''), 'prnotu': ('11', ''), 'pru': ('9', '')}
+    out = []
+    for row in re.split(r'\\hline', body):
+        row = row.replace('\\vspace{-.2in}', '').strip()
+        if '\\item' not in row:
+            continue
+        row = row[row.index('\\item') + len('\\item'):]
+        # the column separator: the first & outside braces and maths
+        depth, inmath, cut = 0, False, None
+        for i, c in enumerate(row):
+            if c == '\\':
+                continue
+            if i and row[i - 1] == '\\':
+                continue
+            if c == '$':
+                inmath = not inmath
+            elif c == '{':
+                depth += 1
+            elif c == '}':
+                depth -= 1
+            elif c == '&' and depth == 0 and not inmath:
+                cut = i
+                break
+        q, ans = row[:cut], row[cut + 1:]
+        ans = re.sub(r'\\\\\s*$', '', ans.strip()).strip()
+        q = re.sub(r'\\label\{[^}]*\}', '', q)
+        ctx = read_latex.Ctx('brisk', labels, refs)
+        qh = re.sub(r'(<br>\s*)+', '\n\n', read_latex.inline(q, ctx, [])).strip()
+        ah = read_latex.inline(ans, ctx, ['*'] * ans.count('\\footnote{'))
+        ah = re.sub(r'(\s*<br>)+\s*$', '', ah)
+        out.append({'q': qh, 'a': ah, 'notes': ctx.notes})
+    return out
+
+
+def _para(h):
+    return h.strip()
+
+
+EXERCISM = 'sources/_cache/exercism/exercises/'
+EXERCISM_PY = 'sources/_cache/exercism-python/exercises/practice/'
+
+PASCAL_JS = '''function rows(count) {
+  const out = [];
+  for (let n = 0; n < count; n++) {
+    const prev = out[n - 1] || [];
+    const row = [];
+    for (let k = 0; k <= n; k++) row.push(k === 0 || k === n ? 1 : prev[k - 1] + prev[k]);
+    out.push(row);
+  }
+  return out;
+}
+'''
+BIRTHDAY_PY = '''import random
+
+
+def estimated_probability_of_shared_birthday(group_size):
+    """The percentage of many random groups of group_size people in which two share a birthday."""
+    trials = 20000
+    shared = 0
+    for _ in range(trials):
+        seen = set()
+        for _ in range(group_size):
+            day = random.randrange(365)
+            if day in seen:
+                shared += 1
+                break
+            seen.add(day)
+    return 100 * shared / trials
+'''
+BIRTHDAY_JS = '''function estimatedProbabilityOfSharedBirthday(groupSize) {
+  const trials = 20000;
+  let shared = 0;
+  for (let t = 0; t < trials; t++) {
+    const seen = new Set();
+    for (let p = 0; p < groupSize; p++) {
+      const day = Math.floor(Math.random() * 365);
+      if (seen.has(day)) { shared++; break; }
+      seen.add(day);
+    }
+  }
+  return (100 * shared) / trials;
+}
+'''
+
+
+def _exercism_prompt(slug):
+    import html
+    import re
+    t = open(os.path.join(_BOOK, EXERCISM, slug, 'instructions.md'), encoding='utf-8').read()
+    t = re.sub(r'^# Instructions\s*', '', t)
+    t = re.sub(r'^\[[^\]]+\]: \S+\s*$', '', t, flags=re.M)             # link definitions
+    t = re.sub(r'\[([^\]]+)\]\[[^\]]*\]', r'\1', t)                      # [text][ref] -> text
+    t = re.sub(r'~~~~exercism/(note|caution)\n(.*?)~~~~', lambda m: m.group(2), t, flags=re.S)
+    blocks = []
+    for p in re.split(r'\n\s*\n', t.strip()):
+        if p.startswith('```'):
+            code = re.sub(r'^```\w*\n|\n?```$', '', p)
+            blocks.append('<pre>' + html.escape(code, quote=False) + '</pre>')
+        elif re.match(r'^- ', p):
+            items = [html.escape(x[2:].strip(), quote=False) for x in p.split('\n') if x.startswith('- ')]
+            blocks.append('<ul>' + ''.join(f'<li>{x}</li>' for x in items) + '</ul>')
+        else:
+            x = html.escape(' '.join(p.split()), quote=False)
+            x = re.sub(r'`([^`]+)`', r'<code>\1</code>', x)
+            x = re.sub(r'_([^_]+)_', r'<em>\1</em>', x)
+            blocks.append(x.replace('$', '&#36;'))
+    return '\n\n'.join(blocks)
+
+
+def _canonical(slug, prop):
+    import json
+    d = json.load(open(os.path.join(_BOOK, EXERCISM, slug, 'canonical-data.json'), encoding='utf-8'))
+    out = []
+
+    def walk(c):
+        for x in c.get('cases', []):
+            if 'cases' in x:
+                walk(x)
+            elif x['property'] == prop:
+                out.append(x)
+    walk(d)
+    return out
+
+
+def EXERCISES(exercism, book):
+    ex, con = [], []
+    C = _brisk_items('countingEx.tex')
+    P = _brisk_items('probabilityEx.tex')
+
+    def card(i, cid, num, src_file, prompt, answer, concepts, bloom='Apply', changes=None, cite=None):
+        row = {'id': cid, 'source_id': f'brisk:{src_file}#{num}', 'source_number': f'Exercise {num}', 'origin': 'brisk',
+               'kind': 'exercise', 'bloom': bloom, 'place': {'at': 'end'}, 'cite': cite, 'prompt': prompt, 'answer': answer}
+        if changes:
+            row['changes'] = changes
+        if not cite:
+            row.pop('cite')
+        ex.append(row)
+        con.extend({'exercise': cid, 'concept': c} for c in concepts)
+
+    def num(v, sol, tol=None):
+        a = {'type': 'number', 'value': v, 'solution': sol, 'generated_by': 'source'}
+        if tol:
+            a['tol'] = tol
+        return a
+
+    def yesno(correct, sol):
+        return {'type': 'choice', 'options': ['Yes', 'No'], 'correct': correct, 'solution': sol, 'generated_by': 'source'}
+    with_setup = 'Brisk Walk asks it after the set-up of its item 1, which is printed before it.'
+    # counting: items 1–5 (the judge's order; config.md)
+    card(0, 'b1', 1, 'countingEx', C[0]['q'], num(180, C[0]['a']), ['counting'], cite='counting')
+    sol2 = C[1]['a'].replace('<sup class="fn" data-note="fn-*"></sup>', '').replace('= 300$', '= 300$<sup class="fn" data-note="err-costume"></sup>', 1)
+    sol2 += '\n\n' + C[1]['notes'][0]['html']
+    card(1, 'b2', 2, 'countingEx', C[0]['q'] + '\n\n' + C[1]['q'], num(300, sol2), ['counting'],
+         changes=with_setup + ' Its footnote to the answer is printed after the answer.', cite='counting')
+    card(2, 'b3', 3, 'countingEx', C[0]['q'] + '\n\n' + C[2]['q'], num(10240, C[2]['a']), ['counting'], changes=with_setup, cite='counting')
+    card(3, 'b4', 4, 'countingEx', C[0]['q'] + '\n\n' + C[2]['q'] + '\n\n' + C[3]['q'], num(2580, C[3]['a']), ['counting'],
+         changes='Brisk Walk asks it after its items 1 and 3, which are printed before it.', cite='counting')
+    card(4, 'b5', 5, 'countingEx', C[4]['q'], num(8250, C[4]['a']), ['counting'], bloom='Analyze', cite='counting')
+    # probability-basics: items 1, 4, 6, 7, 8
+    setup = P[0]['q'].split('\n\n')[0]
+    card(5, 'p1', 1, 'probabilityEx', P[0]['q'], yesno(0, P[0]['a']), ['probability-basics'], bloom='Remember', cite='probability')
+    card(6, 'p4', 4, 'probabilityEx', setup + '\n\n' + P[3]['q'], yesno(0, P[3]['a']), ['probability-basics'], bloom='Understand',
+         changes=with_setup, cite='probability')
+    card(7, 'p6', 6, 'probabilityEx', setup + '\n\n' + P[5]['q'], yesno(1, P[5]['a']), ['probability-basics'], bloom='Understand',
+         changes=with_setup, cite='probability')
+    card(8, 'p7', 7, 'probabilityEx', setup + '\n\n' + P[6]['q'], num(0.1, P[6]['a']), ['probability-basics'],
+         changes=with_setup, cite='probability')
+    card(9, 'p8', 8, 'probabilityEx', setup + '\n\n' + P[6]['q'] + '\n\n' + P[7]['q'], num(0.8, P[7]['a']), ['probability-basics'],
+         changes='Brisk Walk asks it after its items 1 and 7, which are printed before it.', cite='probability')
+    # conditional-probability: items 16 and 17 with item 9's set-up (item 18 needs Bayes' Theorem: left out)
+    s9 = P[8]['q'].rsplit('\n\n', 1)[0]
+    card(10, 'p16', 16, 'probabilityEx', s9 + '\n\n' + P[15]['q'], num(1 / 7, P[15]['a'], tol=0.01), ['conditional-probability'],
+         changes='Brisk Walk asks it after the set-up of its item 9, which is printed before it; its key is 1/7 ≈ .143.', cite='conditional')
+    card(11, 'p17', 17, 'probabilityEx', s9 + '\n\n' + P[16]['q'], num(0.75, P[16]['a']), ['conditional-probability'],
+         changes='Brisk Walk asks it after the set-up of its item 9, which is printed before it.', cite='conditional')
+    # code: Exercism pascals-triangle (canonical data; the Python track's example as reference) and baffling-birthdays
+    pas = _canonical('pascals-triangle', 'rows')
+    py = open(os.path.join(_BOOK, EXERCISM_PY, 'pascals-triangle/.meta/example.py'), encoding='utf-8').read()
+    ex.append({
+        'id': 'c1', 'source_id': 'exercism:pascals-triangle', 'source_number': 'pascals-triangle', 'origin': 'exercism',
+        'kind': 'code', 'bloom': 'Apply', 'place': {'at': 'end'}, 'cite': 'counting',
+        'prompt': _exercism_prompt('pascals-triangle'),
+        'answer': {'type': 'code',
+                   'python': {'entry': 'rows', 'starter': 'def rows(row_count):\n    pass\n', 'reference': py, 'generated_by': 'source'},
+                   'javascript': {'entry': 'rows', 'starter': 'function rows(count) {\n}\n', 'reference': PASCAL_JS, 'generated_by': 'ai'},
+                   'tests': [{'args': list(c['input'].values()), 'expect': c['expected'], 'visible': i == 0, 'generated_by': 'source'}
+                             for i, c in enumerate(pas)],
+                   'generated_by': 'source'}})
+    con.append({'exercise': 'c1', 'concept': 'counting'})
+    bd = _canonical('baffling-birthdays', 'estimatedProbabilityOfSharedBirthday')
+    ex.append({
+        'id': 'c2', 'source_id': 'exercism:baffling-birthdays', 'source_number': 'baffling-birthdays', 'origin': 'exercism',
+        'kind': 'code', 'bloom': 'Apply', 'place': {'at': 'end'}, 'cite': 'probability',
+        'changes': 'Only the estimate is asked for and tested, as a percentage; the canonical data’s cases for the shared-birthday '
+                   'check and the random birthdates are left out, and the estimate is checked to within 10 percent of the canonical value.',
+        'prompt': _exercism_prompt('baffling-birthdays'),
+        'answer': {'type': 'code', 'tol': 0.1,
+                   'python': {'entry': 'estimated_probability_of_shared_birthday',
+                              'starter': 'def estimated_probability_of_shared_birthday(group_size):\n    pass\n',
+                              'reference': BIRTHDAY_PY, 'generated_by': 'ai'},
+                   'javascript': {'entry': 'estimatedProbabilityOfSharedBirthday',
+                                  'starter': 'function estimatedProbabilityOfSharedBirthday(groupSize) {\n}\n',
+                                  'reference': BIRTHDAY_JS, 'generated_by': 'ai'},
+                   'tests': [{'args': list(c['input'].values()), 'expect': c['expected'], 'visible': i == 0, 'generated_by': 'source'}
+                             for i, c in enumerate(bd)],
+                   'generated_by': 'source'}})
+    con.append({'exercise': 'c2', 'concept': 'probability-basics'})
+    return ex, con
+
+
+# ---------------------------------------------------------------- section.json (tools/build_section.py)
+MODEL = {'model': 'claude-opus-5-5', 'effort': 'high'}
+FIG_AI = [{'model': 'claude-opus-5-5', 'effort': 'high', 'part': 'built'}]
+SECTION = {
+    'id': '1.6', 'chapter': '1', 'title': 'Counting and expected value', 'short': 'Counting and expectation',
+    'lead': ('An Essential section on <span data-concept="counting">counting</span>, probability, conditional probability, '
+             'random variables and expectation; <span data-concept="indicator-variables">indicator random variables</span> are '
+             'Advanced. The three sources write probability three ways that mean the same thing: Pr(<em>A</em>) and '
+             'Pr(<em>A</em>|<em>K</em>), with sample space Ω; then Pr[<em>C</em> = 2] for the event that <em>C</em> equals 2, '
+             'with sample space 𝒮; then Pr{<em>X</em> = <em>i</em>}, with E[<em>X</em>] for an expected value. Coin tosses and '
+             'indicator variables are numbered from 1.'),
+    'objectives': [], 'summary_html': '',
+    'notes': ('Brisk Walk’s chapter openings, its “Enumerating permutations”, “Total probability” and “Bayes’ Theorem” sections and '
+              'its counting summary, the opening of MCS chapter 19 and the rest of its 19.2, and the skip-list analysis around '
+              'ODS’s coin-tosses lemma are left out here.'),
+    'built': '2026-11-09',
+    'ai': {'text': [MODEL], 'figures': [MODEL]},
+    'exercise_notes': (
+        'The written exercises are Brisk Walk’s, with its answers: counting items 1–5 and probability items 1, 4, 6, 7, 8, 16 and 17, '
+        'each printed after the set-up it is asked under; item 18 is left out, since it needs Bayes’ Theorem, which this page does '
+        'not carry. Wikibooks’ keyed exercises on conditional probability and random variables and Aspnes’s C.9.3, F.5.3 and F.5.4 '
+        'are not here yet: the Wikibooks items lean on worked examples of their own pages, and two of Aspnes’s use conditional '
+        'expectation, which this page does not define. The pascals-triangle tests are Exercism’s canonical data and its Python '
+        'reference the Exercism Python track’s example (MIT); its JavaScript reference is written by the AI that built the '
+        'section. The baffling-birthdays tests are the canonical data’s estimates, checked to within 10 percent; both its '
+        'references are the AI’s, since the Python track has no example for it. The Kattis items the judge ranked '
+        '(anagramcounting, dicecup, fruitbaskets) wait for their AI-written tests. The NC cards are kept in exercises-nc.json: '
+        'MIT 6.042J (Fall 2005) problem set 7 problem 1, problem set 9 problems 2–5 and problem set 10 problems 1, 3, 4 and 5, '
+        'each keyed by a link to MIT’s worked solution; the other problems the plan names from those sets (7: 2–5; 9: 1, 6, 7; '
+        '10: 2, 6–8) and MIT 6.006 (Spring 2020) problem set 0, problem 0-2, wait for a reading of their PDFs, since the cached '
+        'text loses their mathematics. The partly keyed Levin and Applied Combinatorics sets, MCS’s unkeyed problems '
+        'for chapters 15–19, OpenIntro’s exercises and the unkeyed Erickson-notes probability exercises are left out, as are '
+        'Project Euler 15 and 53 (statement only).'),
+    'figures': [
+        {'id': 'sim-pascal', 'kind': 'sim', 'originals': ['/media/ch01/brisk-6-1-pascal.png'], 'original_caption': CAPTIONS['pascal']['text'],
+         'draws': ['size'], 'ai': FIG_AI},
+        {'id': 'sim-idol-venn', 'kind': 'sim', 'originals': ['/media/ch01/brisk-4-1-venn.png'], 'original_caption': CAPTIONS['venn']['text'],
+         'draws': [], 'ai': FIG_AI},
+        {'id': 'sim-coin-tosses', 'kind': 'sim', 'draws': ['size'], 'ai': FIG_AI},
+    ],
+    'referents': [
+        {'id': 'kelly', 'label': 'Kelly, an outcome of All-time Idol', 'figures': ['sim-idol-venn']},
+        {'id': 'fantasia', 'label': 'Fantasia, an outcome of All-time Idol', 'figures': ['sim-idol-venn']},
+        {'id': 'carrie', 'label': 'Carrie, an outcome of All-time Idol', 'figures': ['sim-idol-venn']},
+        {'id': 'david', 'label': 'David, an outcome of All-time Idol', 'figures': ['sim-idol-venn']},
+        {'id': 'F', 'label': 'F, the event that a woman wins', 'figures': ['sim-idol-venn']},
+        {'id': 'R', 'label': 'R, the event that a rock singer wins', 'figures': ['sim-idol-venn']},
+        {'id': 'U', 'label': 'U, the event that an underage singer wins', 'figures': ['sim-idol-venn']},
+        {'id': 'C', 'label': 'C, the event that a country singer wins', 'figures': ['sim-idol-venn']},
+    ],
+    'coverage': [
+        {'span': 'counting', 'concept': 'counting', 'verb': 'introduces'},
+        {'span': 'probability', 'concept': 'probability-basics', 'verb': 'introduces'},
+        {'span': 'interlude', 'concept': 'probability-basics', 'verb': 'reinforces'},
+        {'span': 'conditional', 'concept': 'conditional-probability', 'verb': 'introduces'},
+        {'span': 'conditional', 'concept': 'probability-basics', 'verb': 'uses'},
+        {'span': 'random-variable', 'concept': 'random-variable', 'verb': 'introduces'},
+        {'span': 'random-variable', 'concept': 'probability-basics', 'verb': 'uses'},
+        {'span': 'linearity', 'concept': 'linearity-of-expectation', 'verb': 'introduces'},
+        {'span': 'linearity', 'concept': 'random-variable', 'verb': 'uses'},
+        {'span': 'indicators', 'concept': 'indicator-variables', 'verb': 'introduces'},
+        {'span': 'indicators', 'concept': 'linearity-of-expectation', 'verb': 'uses'},
+        {'span': 'indicators', 'concept': 'counting', 'verb': 'uses'},
+        {'span': 'coin-tosses', 'concept': 'geometric-expectation', 'verb': 'introduces'},
+        {'span': 'coin-tosses', 'concept': 'indicator-variables', 'verb': 'uses'},
+        {'span': 'coin-tosses', 'concept': 'linearity-of-expectation', 'verb': 'uses'},
+    ],
+    'footnotes_extra': [
+        {'id': 'err-52', 'kind': 'correction',
+         'html': 'The number printed for 52! is right only in its first thirteen digits. 52! = 80,658,175,170,943,878,571,660,636,856,'
+                 '403,766,975,289,505,440,883,277,824,000,000,000,000.'},
+        {'id': 'err-p-r', 'kind': 'correction',
+         'html': 'Here the event that a rock singer wins is called <em>P</em>; from the next paragraph on, and in Figure 4.1, the same '
+                 'event is called <em>R</em>.'},
+        {'id': 'err-outcomes', 'kind': 'correction',
+         'html': 'The book prints “the total number of events”; it means the total number of outcomes, <em>N</em> = |Ω|.'},
+        {'id': 'err-costume', 'kind': 'correction',
+         'html': 'The 300 counts one choice that is no costume at all: skipping the outfit, the headgear and the accessory together. '
+                 'If “skip one or more of the items” is read as keeping at least one, the count is 299.'},
+    ],
+    'derivations': DERIVATIONS,
+}

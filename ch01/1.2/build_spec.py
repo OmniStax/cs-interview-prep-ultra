@@ -53,18 +53,17 @@ def dv(did):
 HTML = {
     'sim-halving': sim(
         'sim-halving',
-        'Dividing <em>k</em> by <em>b</em> again and again, on a scale where every division by <em>b</em> is the same '
-        'step down: the steps from <em>k</em> to 1 number log<sub><em>b</em></sub> <em>k</em>, which is '
-        'ln <em>k</em> / ln <em>b</em>, and the bars are counted until one reaches 1 or less. Halving takes the most '
-        'steps and dividing by 10 the fewest, while every base keeps the same shape.'),
+        'Dividing <em>k</em> by <em>b</em> again and again. Each division is the same step down on a logarithmic '
+        'scale, and the steps from <em>k</em> down to 1 number log<sub><em>b</em></sub> <em>k</em> = '
+        'ln <em>k</em> / ln <em>b</em>, so ⌈log<sub><em>b</em></sub> <em>k</em>⌉ divisions bring <em>k</em> to 1 '
+        'or less. Halving takes the most divisions and dividing by 10 the fewest.'),
     'drv-change-of-base': dv('change-of-base'),
     'sim-stirling': sim(
         'sim-stirling',
-        'Stirling’s Approximation against the exact <em>n</em>!: the factor e<sup>α(<em>n</em>)</sup> between them '
-        'falls towards 1 as <em>n</em> grows. The bounds 1/(12<em>n</em> + 1) &lt; α(<em>n</em>) &lt; 1/(12<em>n</em>) '
-        'say the same as 12<em>n</em> &lt; 1/α(<em>n</em>) &lt; 12<em>n</em> + 1, so the graph plots '
-        '1/α(<em>n</em>) − 12<em>n</em>, which must stay strictly between 0 and 1, and it hugs 0: α(<em>n</em>) is '
-        'very nearly 1/(12<em>n</em>).'),
+        'Stirling’s Approximation against the exact <em>n</em>!: their ratio e<sup>α(<em>n</em>)</sup> falls towards 1 '
+        'as <em>n</em> grows. The bounds 1/(12<em>n</em> + 1) &lt; α(<em>n</em>) &lt; 1/(12<em>n</em>) say the same as '
+        '0 &lt; 1/α(<em>n</em>) − 12<em>n</em> &lt; 1, and 1/α(<em>n</em>) − 12<em>n</em> stays near 0 for every '
+        '<em>n</em>: α(<em>n</em>) is very nearly 1/(12<em>n</em>).'),
     'sim-harmonic': sim(
         'sim-harmonic',
         '<em>H<sub>k</sub></em> as the area of <em>k</em> rectangles of width 1 under or over the curve 1/<em>x</em>, '
@@ -96,7 +95,8 @@ MARKS = [
     ('factorials', 'n\\ln n - n +1$.)', 'n\\ln n - n +1$' + FN_INT + '.)'),
     ('harmonic', '<em>harmonic number</em>', '<span data-concept="harmonic-numbers"><em>harmonic number</em></span>'),
     ('harmonic', 'the natural logarithm of $k$', 'the <span data-concept="logarithms">natural logarithm</span> of $k$'),
-    ('harmonic', '\\ln k < H_k \\le \\ln k + 1 \\enspace .$$', '\\ln k < H_k \\le \\ln k + 1 \\enspace .$$' + FN_K),
+    # the erratum's marker after the words it qualifies: a marker after the display stands alone on a line of its own
+    ('harmonic', 'For a non-negative integer, $k$,', 'For a non-negative integer, $k$,' + FN_K),
 ]
 
 # ---------------------------------------------------------------- derivations (root item 29, docs/prompts/derivations.md)
@@ -119,7 +119,7 @@ DERIVATIONS = [
               'cap': 'The same rule changes $\\log e$ back to base $e$, with $b = 2$, $a = e$ and $e$ in place of $k$.'},
              {'tex': '\\mk{L}{\\ln k} = \\frac{\\mk{N}{\\log k}}{\\mk{D}{1/(\\ln 2)}}', 'uses': [2], 'cap': 'Since $e^1 = e$, $\\ln e = 1$.'},
              {'tex': '\\mk{L}{\\ln k} = \\mk{D}{(\\ln 2)}\\mk{N}{(\\log k)}'},
-             {'tex': '\\mk{L}{\\ln k} \\approx \\mk{D}{0.693147}\\mk{N}{\\log k}'},
+             {'tex': '\\mk{L}{\\ln k} \\approx \\mk{D}{0.693147}\\,\\mk{N}{\\log k}'},
          ],
      }]},
     {'id': 'harmonic-bounds', 'what': 'the bounds on Hₖ', 'source': '1.2, Harmonic Numbers',
@@ -127,7 +127,7 @@ DERIVATIONS = [
          {   # the lower bound: rectangles over the curve, standing on [i, i + 1]
              'assumes': [
                  {'text': 'An integral can be interpreted as the area between a curve and the $x$-axis.'},
-                 {'tex': INT_K + ' = \\ln k', 'src': '1.2, Exponentials and Logarithms'},
+                 {'tex': INT_K + ' = \\ln k'},
              ],
              'then': {'tex': '\\mk{H}{H_k} = \\mk{S}{1 + 1/2 + 1/3 + \\cdots + 1/k}'},
              'steps': [
@@ -141,7 +141,7 @@ DERIVATIONS = [
          {   # the upper bound: the first rectangle, then the rest under the curve, standing on [i − 1, i]
              'assumes': [
                  {'text': 'An integral can be interpreted as the area between a curve and the $x$-axis.'},
-                 {'tex': INT_K + ' = \\ln k', 'src': '1.2, Exponentials and Logarithms'},
+                 {'tex': INT_K + ' = \\ln k'},
              ],
              'then': {'tex': '\\mk{H}{H_k} = \\mk{S}{1 + 1/2 + 1/3 + \\cdots + 1/k}'},
              'steps': [
@@ -213,8 +213,8 @@ SECTION = {
          'html': 'The integral is printed with $n$ as its variable of integration as well as its upper limit; it reads '
                  '$\\int_1^n \\ln x\\,\\mathrm{d}x = n\\ln n - n + 1$.'},
         {'id': 'err-harmonic-k', 'kind': 'correction',
-         'html': 'The bound holds for every integer $k \\ge 1$. The definition is printed for a non-negative integer $k$, '
-                 'but at $k = 0$ the sum is empty and $\\ln 0$ is undefined, so the bound says nothing there.'},
+         'html': 'The definition holds for every non-negative integer $k$, with $H_0 = 0$, but the bound '
+                 '$\\ln k < H_k \\le \\ln k + 1$ that follows needs $k \\ge 1$: at $k = 0$, $\\ln 0$ is undefined.'},
     ],
     'derivations': DERIVATIONS,
 }

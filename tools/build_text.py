@@ -526,6 +526,7 @@ def ods_pcode(code):
     """Any other #code# (a statement, a comparison) as the pseudocode edition sets it in maths: an
     assignment's = is \\gets (latex/snarf-python.py, translate_code); comparisons and ++ stand as written."""
     code = code.replace('\u202f', '\\,')    # a thin space of the code is maths' own again
+    code = code.replace('++', '{+}{+}')       # i++ is one operator, not two binary pluses
     return re.sub(r'\s*(?<![=<>!])=(?!=)\s*', r'\\gets ', code).replace('\\gets \\,', '\\gets\\,')
 
 

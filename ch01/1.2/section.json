@@ -340,7 +340,7 @@
   {
    "id": "err-harmonic-k",
    "kind": "correction",
-   "html": "The bound holds for every integer $k \\ge 1$. The definition is printed for a non-negative integer $k$, but at $k = 0$ the sum is empty and $\\ln 0$ is undefined, so the bound says nothing there."
+   "html": "The definition holds for every non-negative integer $k$, with $H_0 = 0$, but the bound $\\ln k < H_k \\le \\ln k + 1$ that follows needs $k \\ge 1$: at $k = 0$, $\\ln 0$ is undefined."
   }
  ],
  "derivations": [
@@ -402,7 +402,7 @@
        "tex": "\\mk{L}{\\ln k} = \\mk{D}{(\\ln 2)}\\mk{N}{(\\log k)}"
       },
       {
-       "tex": "\\mk{L}{\\ln k} \\approx \\mk{D}{0.693147}\\mk{N}{\\log k}"
+       "tex": "\\mk{L}{\\ln k} \\approx \\mk{D}{0.693147}\\,\\mk{N}{\\log k}"
       }
      ]
     }
@@ -419,8 +419,7 @@
        "text": "An integral can be interpreted as the area between a curve and the $x$-axis."
       },
       {
-       "tex": "\\int_1^{k} (1/x)\\,\\mathrm{d}x = \\ln k",
-       "src": "1.2, Exponentials and Logarithms"
+       "tex": "\\int_1^{k} (1/x)\\,\\mathrm{d}x = \\ln k"
       }
      ],
      "then": {
@@ -455,8 +454,7 @@
        "text": "An integral can be interpreted as the area between a curve and the $x$-axis."
       },
       {
-       "tex": "\\int_1^{k} (1/x)\\,\\mathrm{d}x = \\ln k",
-       "src": "1.2, Exponentials and Logarithms"
+       "tex": "\\int_1^{k} (1/x)\\,\\mathrm{d}x = \\ln k"
       }
      ],
      "then": {

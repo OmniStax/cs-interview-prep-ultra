@@ -1,0 +1,1068 @@
+{
+ "id": "1.6",
+ "chapter": "1",
+ "title": "Counting and expected value",
+ "short": "Counting and expectation",
+ "lead": "An Essential section on <span data-concept=\"counting\">counting</span>, probability, conditional probability, random variables and expectation; <span data-concept=\"indicator-variables\">indicator random variables</span> are Advanced. The three sources write probability three ways that mean the same thing: Pr(<em>A</em>) and Pr(<em>A</em>|<em>K</em>), with sample space Ω; then Pr[<em>C</em> = 2] for the event that <em>C</em> equals 2, with sample space 𝒮; then Pr{<em>X</em> = <em>i</em>}, with E[<em>X</em>] for an expected value. Coin tosses and indicator variables are numbered from 1.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "Brisk Walk’s chapter openings, its “Enumerating permutations”, “Total probability” and “Bayes’ Theorem” sections and its counting summary, the opening of MCS chapter 19 and the rest of its 19.2, and the skip-list analysis around ODS’s coin-tosses lemma are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The written exercises are Brisk Walk’s, with its answers: counting items 1–5 and probability items 1, 4, 6, 7, 8, 16 and 17, each printed after the set-up it is asked under; item 18 is left out, since it needs Bayes’ Theorem, which this page does not carry. Wikibooks’ keyed exercises on conditional probability and random variables and Aspnes’s C.9.3, F.5.3 and F.5.4 are not here yet: the Wikibooks items lean on worked examples of their own pages, and two of Aspnes’s use conditional expectation, which this page does not define. The pascals-triangle tests are Exercism’s canonical data and its Python reference the Exercism Python track’s example (MIT); its JavaScript reference is written by the AI that built the section. The baffling-birthdays tests are the canonical data’s estimates, checked to within 10 percent; both its references are the AI’s, since the Python track has no example for it. The Kattis items the judge ranked (anagramcounting, dicecup, fruitbaskets) wait for their AI-written tests. The NC cards are kept in exercises-nc.json: MIT 6.042J (Fall 2005) problem set 7 problem 1, problem set 9 problems 2–5 and problem set 10 problems 1, 3, 4 and 5, each keyed by a link to MIT’s worked solution; the other problems the plan names from those sets (7: 2–5; 9: 1, 6, 7; 10: 2, 6–8) and MIT 6.006 (Spring 2020) problem set 0, problem 0-2, wait for a reading of their PDFs, since the cached text loses their mathematics. The partly keyed Levin and Applied Combinatorics sets, MCS’s unkeyed problems for chapters 15–19, OpenIntro’s exercises and the unkeyed Erickson-notes probability exercises are left out, as are Project Euler 15 and 53 (statement only).",
+ "figures": [
+  {
+   "id": "sim-pascal",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/brisk-6-1-pascal.png"
+   ],
+   "original_caption": "The first six rows of Pascal’s triangle.",
+   "draws": [
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-idol-venn",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/brisk-4-1-venn.png"
+   ],
+   "original_caption": "Various events, and their overlap.",
+   "draws": [],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-coin-tosses",
+   "kind": "sim",
+   "draws": [
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "counting",
+   "concept": "counting",
+   "verb": "introduces"
+  },
+  {
+   "span": "probability",
+   "concept": "probability-basics",
+   "verb": "introduces"
+  },
+  {
+   "span": "interlude",
+   "concept": "probability-basics",
+   "verb": "reinforces"
+  },
+  {
+   "span": "conditional",
+   "concept": "conditional-probability",
+   "verb": "introduces"
+  },
+  {
+   "span": "conditional",
+   "concept": "probability-basics",
+   "verb": "uses"
+  },
+  {
+   "span": "random-variable",
+   "concept": "random-variable",
+   "verb": "introduces"
+  },
+  {
+   "span": "random-variable",
+   "concept": "probability-basics",
+   "verb": "uses"
+  },
+  {
+   "span": "linearity",
+   "concept": "linearity-of-expectation",
+   "verb": "introduces"
+  },
+  {
+   "span": "linearity",
+   "concept": "random-variable",
+   "verb": "uses"
+  },
+  {
+   "span": "indicators",
+   "concept": "indicator-variables",
+   "verb": "introduces"
+  },
+  {
+   "span": "indicators",
+   "concept": "linearity-of-expectation",
+   "verb": "uses"
+  },
+  {
+   "span": "indicators",
+   "concept": "counting",
+   "verb": "uses"
+  },
+  {
+   "span": "coin-tosses",
+   "concept": "geometric-expectation",
+   "verb": "introduces"
+  },
+  {
+   "span": "coin-tosses",
+   "concept": "indicator-variables",
+   "verb": "uses"
+  },
+  {
+   "span": "coin-tosses",
+   "concept": "linearity-of-expectation",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "b1",
+   "source_id": "brisk:countingEx#1",
+   "source_number": "Exercise 1",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "counting",
+   "prompt": "Inside a dusty chest marked “Halloween costumes” in the family attic, there are four different outfits (a wizard’s cape, army fatigues, and two others), five different headgears (a batman helmet, a headband, a tiara, <em>etc.</em>), and nine different accessories (a wand, a lightsaber, a pipe, and many others). If a child were to choose a costume by selecting one outfit, one headgear, and one accessory, how many costume choices would he/she have?",
+   "answer": {
+    "type": "number",
+    "value": 180,
+    "solution": "$4 \\times 5 \\times 9 = 180$.",
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "b2",
+   "source_id": "brisk:countingEx#2",
+   "source_number": "Exercise 2",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "counting",
+   "prompt": "Inside a dusty chest marked “Halloween costumes” in the family attic, there are four different outfits (a wizard’s cape, army fatigues, and two others), five different headgears (a batman helmet, a headband, a tiara, <em>etc.</em>), and nine different accessories (a wand, a lightsaber, a pipe, and many others). If a child were to choose a costume by selecting one outfit, one headgear, and one accessory, how many costume choices would he/she have?\n\nWhat if the child were permitted to skip one or more of the items (for instance, choosing a costume with an outfit and accessory, but no headgear)?",
+   "answer": {
+    "type": "number",
+    "value": 300,
+    "solution": "$5 \\times 6 \\times 10 = 300$<sup class=\"fn\" data-note=\"err-costume\"></sup>, since now “no choice at all” is effectively another choice for each of the categories. Kind of amazing how much that increases the total!\n\nNote, by the way, that this approach does <em>not</em> work for situations like the license plate example on p. [the license plates, under “The Fundamental Theorem”]. Namely, you can’t say “if a license plate can have fewer than 7 characters, we can just add ‘no character at this position’ as one of the options for that position,” and calculate $37^7 =$ 94,931,877,133 possible plates. That number is too high. Why? (Hint: for some of those choices, you can get the same license plate in more than one way. Hint 2: if we choose ’A’ for the first license plate character, ‘no character’ for the second, followed by ’NTMAN’ we get the license plate ’ANTMAN’. But what other choices could we have made, that would also have resulted in ’ANTMAN’?)",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 1, which is printed before it. Its footnote to the answer is printed after the answer."
+  },
+  {
+   "id": "b3",
+   "source_id": "brisk:countingEx#3",
+   "source_number": "Exercise 3",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "counting",
+   "prompt": "Inside a dusty chest marked “Halloween costumes” in the family attic, there are four different outfits (a wizard’s cape, army fatigues, and two others), five different headgears (a batman helmet, a headband, a tiara, <em>etc.</em>), and nine different accessories (a wand, a lightsaber, a pipe, and many others). If a child were to choose a costume by selecting one outfit, one headgear, and one accessory, how many costume choices would he/she have?\n\nGo back to when the child did have to choose something from each category, but now say they can have <em>any</em> number of accessories (so they could have the wizard’s cape, a batman helmet, plus a lightsaber, pipe, and scepter). Now how many costumes are there?",
+   "answer": {
+    "type": "number",
+    "value": 10240,
+    "solution": "This is $4 \\times 5 \\times 2^9$, or a whopping 10,240 for those of you keeping score. The 9 changed to a $2^9$ because now for <em>each</em> accessory, a costume might include it, or exclude it. That’s two independent choices for each accessory.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 1, which is printed before it."
+  },
+  {
+   "id": "b4",
+   "source_id": "brisk:countingEx#4",
+   "source_number": "Exercise 4",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "counting",
+   "prompt": "Inside a dusty chest marked “Halloween costumes” in the family attic, there are four different outfits (a wizard’s cape, army fatigues, and two others), five different headgears (a batman helmet, a headband, a tiara, <em>etc.</em>), and nine different accessories (a wand, a lightsaber, a pipe, and many others). If a child were to choose a costume by selecting one outfit, one headgear, and one accessory, how many costume choices would he/she have?\n\nGo back to when the child did have to choose something from each category, but now say they can have <em>any</em> number of accessories (so they could have the wizard’s cape, a batman helmet, plus a lightsaber, pipe, and scepter). Now how many costumes are there?\n\nOkay, that’s overkill. A kid only has two hands, after all, so handling nine accessories would be a dextrous challenge. Let’s say instead that a child can choose <em>up to three</em> accessories (but must have at least one). Now how many costume choices are there?",
+   "answer": {
+    "type": "number",
+    "value": 2580,
+    "solution": "Now it’s $4 \\times 5 \\times (\\binom{9}{1} + \\binom{9}{2} + \\binom{9}{3})$, which is equal to $4 \\times 5 \\times (9 + 36 + 84)$, or 2,580 possible costumes.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after its items 1 and 3, which are printed before it."
+  },
+  {
+   "id": "b5",
+   "source_id": "brisk:countingEx#5",
+   "source_number": "Exercise 5",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "cite": "counting",
+   "prompt": "When it’s finally time to go trick-or-treating, we join up with our next-door neighbors and split up the families into somewhat haphazard groups. There are eleven total children, and six adults. Now let’s say each group must have between 3 and 5 members, and must have at least one adult (to stay safe) and at least one kid (otherwise what’s the point?) How many different groups are possible?",
+   "answer": {
+    "type": "number",
+    "value": 8250,
+    "solution": "Ignoring the at-least-one-child-and-adult constraint for the moment, the total number of groups would seem to be $\\binom{17}{3} + \\binom{17}{4} + \\binom{17}{5} = 680 + 2380 + 6188 = 9,248$ possible groups. But of course this is an overcount, since it includes groups with no children and groups with no adults. We’ll use the trick from p. [“A simple trick”] to subtract those out. How many size-3-to-5 groups with no adults (all kids) are there? $\\binom{11}{3} + \\binom{11}{4} + \\binom{11}{5} = 957$. And how many size-3-to-5 groups with no kids (all adults)? $\\binom{6}{3} + \\binom{6}{4} + \\binom{6}{5} = 41$. Therefore, by the p. [“A simple trick”] trick, the total number of legal groups is $9248 - 957 - 41 = 8,250$. Final answer.",
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "p1",
+   "source_id": "brisk:probabilityEx#1",
+   "source_number": "Exercise 1",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Remember",
+   "place": {
+    "at": "end"
+   },
+   "cite": "probability",
+   "prompt": "At a swim meet, the competitors in the 100-m freestyle are Ben, Chad, Grover, and Tim. These four swimmers make up our sample space $\\Omega$ for the winner of this heat. \n\nIs Chad $\\in \\Omega$?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "Yes",
+     "No"
+    ],
+    "correct": 0,
+    "solution": "Yes.",
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "p4",
+   "source_id": "brisk:probabilityEx#4",
+   "source_number": "Exercise 4",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Understand",
+   "place": {
+    "at": "end"
+   },
+   "cite": "probability",
+   "prompt": "At a swim meet, the competitors in the 100-m freestyle are Ben, Chad, Grover, and Tim. These four swimmers make up our sample space $\\Omega$ for the winner of this heat. \n\nIs { Chad, Grover } an event?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "Yes",
+     "No"
+    ],
+    "correct": 0,
+    "solution": "Yes.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 1, which is printed before it."
+  },
+  {
+   "id": "p6",
+   "source_id": "brisk:probabilityEx#6",
+   "source_number": "Exercise 6",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Understand",
+   "place": {
+    "at": "end"
+   },
+   "cite": "probability",
+   "prompt": "At a swim meet, the competitors in the 100-m freestyle are Ben, Chad, Grover, and Tim. These four swimmers make up our sample space $\\Omega$ for the winner of this heat. \n\nSuppose I told you that Pr({Ben})=.1, Pr({Chad})=.2, Pr({Grover})=.3, and Pr({Tim})=.3. Would you believe me?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "Yes",
+     "No"
+    ],
+    "correct": 1,
+    "solution": "Better not. This is not a valid probability measure, since the sum of the probabilities of all the outcomes, Pr($\\Omega$), is not equal to 1.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 1, which is printed before it."
+  },
+  {
+   "id": "p7",
+   "source_id": "brisk:probabilityEx#7",
+   "source_number": "Exercise 7",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "probability",
+   "prompt": "At a swim meet, the competitors in the 100-m freestyle are Ben, Chad, Grover, and Tim. These four swimmers make up our sample space $\\Omega$ for the winner of this heat. \n\nSuppose I told you that Pr({Ben, Chad})=.3, and Pr({Ben, Tim})=.4, and Pr({Grover})=.4. Could you tell me the probability that Ben wins the heat?",
+   "answer": {
+    "type": "number",
+    "value": 0.1,
+    "solution": "Yes. If Pr({Ben, Chad})=.3 and Pr({Grover})=.4, that leaves .3 probability left over for Tim. And if Pr({Ben, Tim})=.4, this implies that Pr({Ben})=.1.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 1, which is printed before it."
+  },
+  {
+   "id": "p8",
+   "source_id": "brisk:probabilityEx#8",
+   "source_number": "Exercise 8",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "probability",
+   "prompt": "At a swim meet, the competitors in the 100-m freestyle are Ben, Chad, Grover, and Tim. These four swimmers make up our sample space $\\Omega$ for the winner of this heat. \n\nSuppose I told you that Pr({Ben, Chad})=.3, and Pr({Ben, Tim})=.4, and Pr({Grover})=.4. Could you tell me the probability that Ben wins the heat?\n\nAnd what’s the probability that someone besides Chad wins?",
+   "answer": {
+    "type": "number",
+    "value": 0.8,
+    "solution": "Pr($\\overline{\\{\\text{Chad}\\}}$) = $1 -$Pr({Chad}), so we just need to figure out the probability that Chad wins, and take one minus that. Clearly if Pr({Ben, Chad})=.3 (as we were told), and Pr({Ben})=.1 (as we computed), then Pr({Chad})=.2, and the probability of a non-Chad winner is .8.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after its items 1 and 7, which are printed before it."
+  },
+  {
+   "id": "p16",
+   "source_id": "brisk:probabilityEx#16",
+   "source_number": "Exercise 16",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "conditional",
+   "prompt": "Okay, so we have the probabilities of our four swimmers Ben, Chad, Grover, and Tim each winning the heat at .1, .2, .4, and .3, respectively.\n\nNow suppose Ben, Chad, and Grover are UMW athletes, Tim is from Marymount, Ben and Tim are juniors, and Chad and Grover are sophomores. We’ll define $U$={Ben,Chad,Grover}, $M$={Tim}, $J$={Ben,Tim}, and $S$={Chad,Grover}. \n\nWhat’s Pr($J|U$)?",
+   "answer": {
+    "type": "number",
+    "value": 0.14285714285714285,
+    "solution": "By the definition of conditional probability, $\\textrm{Pr}(J|U) = \\frac{\\textrm{Pr}(J \\cap U)}{\\textrm{Pr}(U)}$ or $\\frac{.1}{.7} = \\frac{1}{7} \\approx \\textbf{.143}.$ This is quite a bit lower than the .4 we computed for Pr($J$) in item 10. So if you knew nothing about the winner other than the swimmers’ baseline probabilities, you’d estimate a 40% chance of a junior winning...but if you learned the winner was a UMW student, your estimate of a junior winner would drop down to nearly 14%.",
+    "generated_by": "source",
+    "tol": 0.01
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 9, which is printed before it; its key is 1/7 ≈ .143."
+  },
+  {
+   "id": "p17",
+   "source_id": "brisk:probabilityEx#17",
+   "source_number": "Exercise 17",
+   "origin": "brisk",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "conditional",
+   "prompt": "Okay, so we have the probabilities of our four swimmers Ben, Chad, Grover, and Tim each winning the heat at .1, .2, .4, and .3, respectively.\n\nNow suppose Ben, Chad, and Grover are UMW athletes, Tim is from Marymount, Ben and Tim are juniors, and Chad and Grover are sophomores. We’ll define $U$={Ben,Chad,Grover}, $M$={Tim}, $J$={Ben,Tim}, and $S$={Chad,Grover}. \n\nWhat’s Pr($\\overline{U}|J$)?",
+   "answer": {
+    "type": "number",
+    "value": 0.75,
+    "solution": "$\\textrm{Pr}(\\overline{U}|J) = \\frac{\\textrm{Pr}(\\overline{U} \\cap J)}{\\textrm{Pr}(J)}$ or $\\frac{.3}{.4} = \\frac{3}{4} = \\textbf{.75}$, way higher than the .3 from item 11. Learning that the swimmer is a junior makes the likelihood of a non-UMW winner leap sky high.",
+    "generated_by": "source"
+   },
+   "changes": "Brisk Walk asks it after the set-up of its item 9, which is printed before it."
+  },
+  {
+   "id": "c1",
+   "source_id": "exercism:pascals-triangle",
+   "source_number": "pascals-triangle",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "counting",
+   "prompt": "Your task is to output the first N rows of Pascal's triangle.\n\nPascal's triangle is a triangular array of positive integers.\n\nIn Pascal's triangle, the number of values in a row is equal to its row number (which starts at one). Therefore, the first row has one value, the second row has two values, and so on.\n\nThe first (topmost) row has a single value: <code>1</code>. Subsequent rows' values are computed by adding the numbers directly to the right and left of the current position in the previous row.\n\nIf the previous row does <em>not</em> have a value to the left or right of the current position (which only happens for the leftmost and rightmost positions), treat that position's value as zero (effectively \"ignoring\" it in the summation).\n\n## Example\n\nLet's look at the first 5 rows of Pascal's Triangle:\n\n<pre>    1\n   1 1\n  1 2 1\n 1 3 3 1\n1 4 6 4 1</pre>\n\nThe topmost row has one value, which is <code>1</code>.\n\nThe leftmost and rightmost values have only one preceding position to consider, which is the position to its right respectively to its left. With the topmost value being <code>1</code>, it follows from this that all the leftmost and rightmost values are also <code>1</code>.\n\nThe other values all have two positions to consider. For example, the fifth row's (<code>1 4 6 4 1</code>) middle value is <code>6</code>, as the values to its left and right in the preceding row are <code>3</code> and <code>3</code>:",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "rows",
+     "starter": "def rows(row_count):\n    pass\n",
+     "reference": "def rows(row_count, previous_row=[1]):\n    if row_count < 0:\n        raise ValueError(\"number of rows is negative\")\n    elif row_count == 0:\n        return []\n    temp_row = previous_row + [0]\n    new_row = list(map(sum, zip(temp_row, temp_row[::-1])))\n    return [previous_row] + rows(row_count - 1, new_row)\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "rows",
+     "starter": "function rows(count) {\n}\n",
+     "reference": "function rows(count) {\n  const out = [];\n  for (let n = 0; n < count; n++) {\n    const prev = out[n - 1] || [];\n    const row = [];\n    for (let k = 0; k <= n; k++) row.push(k === 0 || k === n ? 1 : prev[k - 1] + prev[k]);\n    out.push(row);\n  }\n  return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       0
+      ],
+      "expect": [],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1
+      ],
+      "expect": [
+       [
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       2
+      ],
+      "expect": [
+       [
+        1
+       ],
+       [
+        1,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       3
+      ],
+      "expect": [
+       [
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        1,
+        2,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       4
+      ],
+      "expect": [
+       [
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        1,
+        2,
+        1
+       ],
+       [
+        1,
+        3,
+        3,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       5
+      ],
+      "expect": [
+       [
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        1,
+        2,
+        1
+       ],
+       [
+        1,
+        3,
+        3,
+        1
+       ],
+       [
+        1,
+        4,
+        6,
+        4,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       6
+      ],
+      "expect": [
+       [
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        1,
+        2,
+        1
+       ],
+       [
+        1,
+        3,
+        3,
+        1
+       ],
+       [
+        1,
+        4,
+        6,
+        4,
+        1
+       ],
+       [
+        1,
+        5,
+        10,
+        10,
+        5,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       10
+      ],
+      "expect": [
+       [
+        1
+       ],
+       [
+        1,
+        1
+       ],
+       [
+        1,
+        2,
+        1
+       ],
+       [
+        1,
+        3,
+        3,
+        1
+       ],
+       [
+        1,
+        4,
+        6,
+        4,
+        1
+       ],
+       [
+        1,
+        5,
+        10,
+        10,
+        5,
+        1
+       ],
+       [
+        1,
+        6,
+        15,
+        20,
+        15,
+        6,
+        1
+       ],
+       [
+        1,
+        7,
+        21,
+        35,
+        35,
+        21,
+        7,
+        1
+       ],
+       [
+        1,
+        8,
+        28,
+        56,
+        70,
+        56,
+        28,
+        8,
+        1
+       ],
+       [
+        1,
+        9,
+        36,
+        84,
+        126,
+        126,
+        84,
+        36,
+        9,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "exercism:baffling-birthdays",
+   "source_number": "baffling-birthdays",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "probability",
+   "changes": "Only the estimate is asked for and tested, as a percentage; the canonical data’s cases for the shared-birthday check and the random birthdates are left out, and the estimate is checked to within 10 percent of the canonical value.",
+   "prompt": "Your task is to estimate the birthday paradox's probabilities.\n\nTo do this, you need to:\n\n<ul><li>Generate random birthdates.</li><li>Check if a collection of randomly generated birthdates contains at least two with the same birthday.</li><li>Estimate the probability that at least two people in a group share the same birthday for different group sizes.</li></ul>\n\nA birthdate includes the full date of birth (year, month, and day), whereas a birthday refers only to the month and day, which repeat each year. Two birthdates with the same month and day correspond to the same birthday.\n\nThe birthday paradox assumes that:\n\n<ul><li>There are 365 possible birthdays (no leap years).</li><li>Each birthday is equally likely (uniform distribution).</li></ul>\n\nYour implementation must follow these assumptions.",
+   "answer": {
+    "type": "code",
+    "tol": 0.1,
+    "python": {
+     "entry": "estimated_probability_of_shared_birthday",
+     "starter": "def estimated_probability_of_shared_birthday(group_size):\n    pass\n",
+     "reference": "import random\n\n\ndef estimated_probability_of_shared_birthday(group_size):\n    \"\"\"The percentage of many random groups of group_size people in which two share a birthday.\"\"\"\n    trials = 20000\n    shared = 0\n    for _ in range(trials):\n        seen = set()\n        for _ in range(group_size):\n            day = random.randrange(365)\n            if day in seen:\n                shared += 1\n                break\n            seen.add(day)\n    return 100 * shared / trials\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "estimatedProbabilityOfSharedBirthday",
+     "starter": "function estimatedProbabilityOfSharedBirthday(groupSize) {\n}\n",
+     "reference": "function estimatedProbabilityOfSharedBirthday(groupSize) {\n  const trials = 20000;\n  let shared = 0;\n  for (let t = 0; t < trials; t++) {\n    const seen = new Set();\n    for (let p = 0; p < groupSize; p++) {\n      const day = Math.floor(Math.random() * 365);\n      if (seen.has(day)) { shared++; break; }\n      seen.add(day);\n    }\n  }\n  return (100 * shared) / trials;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       1
+      ],
+      "expect": 0.0,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       10
+      ],
+      "expect": 11.694818,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       23
+      ],
+      "expect": 50.729723,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       70
+      ],
+      "expect": 99.915958,
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "b1",
+   "concept": "counting"
+  },
+  {
+   "exercise": "b2",
+   "concept": "counting"
+  },
+  {
+   "exercise": "b3",
+   "concept": "counting"
+  },
+  {
+   "exercise": "b4",
+   "concept": "counting"
+  },
+  {
+   "exercise": "b5",
+   "concept": "counting"
+  },
+  {
+   "exercise": "p1",
+   "concept": "probability-basics"
+  },
+  {
+   "exercise": "p4",
+   "concept": "probability-basics"
+  },
+  {
+   "exercise": "p6",
+   "concept": "probability-basics"
+  },
+  {
+   "exercise": "p7",
+   "concept": "probability-basics"
+  },
+  {
+   "exercise": "p8",
+   "concept": "probability-basics"
+  },
+  {
+   "exercise": "p16",
+   "concept": "conditional-probability"
+  },
+  {
+   "exercise": "p17",
+   "concept": "conditional-probability"
+  },
+  {
+   "exercise": "c1",
+   "concept": "counting"
+  },
+  {
+   "exercise": "c2",
+   "concept": "probability-basics"
+  }
+ ],
+ "referents": [
+  {
+   "id": "kelly",
+   "label": "Kelly, an outcome of All-time Idol",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "fantasia",
+   "label": "Fantasia, an outcome of All-time Idol",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "carrie",
+   "label": "Carrie, an outcome of All-time Idol",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "david",
+   "label": "David, an outcome of All-time Idol",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "F",
+   "label": "F, the event that a woman wins",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "R",
+   "label": "R, the event that a rock singer wins",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "U",
+   "label": "U, the event that an underage singer wins",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  },
+  {
+   "id": "C",
+   "label": "C, the event that a country singer wins",
+   "figures": [
+    "sim-idol-venn"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "brisk-fn-6-1",
+   "kind": "book",
+   "number": "1",
+   "html": "How many other “Fundamental Theorems” of math do you know? Here are a few: the Fundamental Theorem of Arithmetic says that any natural number can be broken down into its prime factors in only one way. The Fundamental Theorem of Algebra says that the highest power of a polynomial is how many roots (zeroes) it has. The Fundamental Theorem of <em>Linear</em> Algebra says that the row space and the column space of a matrix have the same dimension. The Fundamental Theorem of Calculus says that integration and differentiation are the inverse of each other."
+  },
+  {
+   "id": "brisk-fn-6-2",
+   "kind": "book",
+   "number": "2",
+   "html": "“War” is a mindless card game which involves no strategy or decision-making on the part of the players. Once you shuffle the initial deck, the entire outcome of the game is fixed."
+  },
+  {
+   "id": "err-52",
+   "kind": "correction",
+   "html": "The number printed for 52! is right only in its first thirteen digits. 52! = 80,658,175,170,943,878,571,660,636,856,403,766,975,289,505,440,883,277,824,000,000,000,000."
+  },
+  {
+   "id": "err-p-r",
+   "kind": "correction",
+   "html": "Here the event that a rock singer wins is called <em>P</em>; from the next paragraph on, and in Figure 4.1, the same event is called <em>R</em>."
+  },
+  {
+   "id": "err-outcomes",
+   "kind": "correction",
+   "html": "The book prints “the total number of events”; it means the total number of outcomes, <em>N</em> = |Ω|."
+  },
+  {
+   "id": "err-costume",
+   "kind": "correction",
+   "html": "The 300 counts one choice that is no costume at all: skipping the outfit, the headgear and the accessory together. If “skip one or more of the items” is read as keeping at least one, the count is 299."
+  }
+ ],
+ "derivations": [
+  {
+   "id": "heads-sum",
+   "what": "the expected number of heads in k tosses, from the definition of expected value",
+   "source": "Open Data Structures, 1.3.4 Randomization and Probability",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "\\mathrm{E}[X] = \\sum_{x\\in U} x\\cdot\\Pr\\{X=x\\}",
+       "src": "Randomization and Probability"
+      },
+      {
+       "tex": "\\Pr\\{X=i\\} = \\binom{k}{i}/2^k"
+      },
+      {
+       "tex": "i\\binom{k}{i} = k\\binom{k-1}{i-1}"
+      },
+      {
+       "tex": "\\sum_{i=0}^{k}\\binom{k}{i} = 2^{k}"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{\\sum_{i=0}^k i\\cdot\\Pr\\{X=i\\}}",
+      "uses": [
+       0
+      ],
+      "why": "The number of heads $X$ takes the values $0, 1, \\ldots, k$."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{\\sum_{i=0}^k i\\cdot\\binom{k}{i}/2^k}",
+       "uses": [
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{\\sum_{i=1}^k k\\binom{k-1}{i-1}/2^k}",
+       "uses": [
+        2
+       ],
+       "cap": "The term for $i = 0$ is zero, so the sum may start at $i = 1$."
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{k}{k}\\cdot \\mk{S}{\\sum_{i=0}^{k-1}\\binom{k-1}{i}/2^k}",
+       "uses": [],
+       "cap": "The factor $k$ comes out of the sum, and the index is shifted down by one.",
+       "map": {
+        "S": [
+         "k",
+         "S"
+        ]
+       }
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{k}{k}\\cdot \\mk{S}{2^{k-1}/2^k}",
+       "uses": [
+        3
+       ],
+       "cap": "With $k - 1$ in place of $k$."
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{k/2}",
+       "uses": [],
+       "map": {
+        "k": "S"
+       }
+      }
+     ],
+     "src": "Randomization and Probability"
+    }
+   ]
+  },
+  {
+   "id": "heads",
+   "what": "the expected number of heads in k tosses, with indicator variables",
+   "source": "Open Data Structures, 1.3.4 Randomization and Probability",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "$X = \\sum_{i=1}^k I_i$, where $I_i$ is 1 if the $i$th toss is heads and 0 otherwise."
+      },
+      {
+       "tex": "\\mathrm{E}[I_i] = (1/2)1 + (1/2)0 = 1/2"
+      },
+      {
+       "tex": "\\mathrm{E}\\left[\\sum_{i=1}^k X_i\\right] = \\sum_{i=1}^k \\mathrm{E}[X_i]",
+       "src": "Randomization and Probability, linearity of expectation"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{\\mathrm{E}\\left[\\sum_{i=1}^k I_i\\right]}",
+      "uses": [
+       0
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{\\sum_{i=1}^k \\mathrm{E}[I_i]}",
+       "uses": [
+        2
+       ]
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{\\sum_{i=1}^k 1/2}",
+       "uses": [
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[X]} = \\mk{S}{k/2}",
+       "uses": []
+      }
+     ],
+     "src": "Randomization and Probability"
+    }
+   ]
+  },
+  {
+   "id": "coin-tosses",
+   "what": "the expected number of tosses until the first head",
+   "source": "Open Data Structures, 4.4 Analysis of Skiplists, the coin-tosses lemma",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "$T = \\sum_{i=1}^{\\infty} I_i$, where $I_i$ is 1 if the coin is tossed $i$ or more times and 0 otherwise."
+      },
+      {
+       "text": "$I_i = 1$ if and only if the first $i - 1$ coin tosses are tails, so $\\mathrm{E}[I_i] = \\Pr\\{I_i = 1\\} = 1/2^{i-1}$."
+      },
+      {
+       "tex": "\\mathrm{E}\\left[\\sum_{i=1}^k X_i\\right] = \\sum_{i=1}^k \\mathrm{E}[X_i]",
+       "src": "Randomization and Probability, linearity of expectation"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{E}{\\mathrm{E}[T]} = \\mk{S}{\\mathrm{E}\\left[\\sum_{i=1}^\\infty I_i\\right]}",
+      "uses": [
+       0
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[T]} = \\mk{S}{\\sum_{i=1}^\\infty \\mathrm{E}\\left[I_i\\right]}",
+       "uses": [
+        2
+       ],
+       "cap": "Linearity is stated for finitely many random variables; it carries over to this infinite sum because every $I_i$ is non-negative."
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[T]} = \\mk{S}{\\sum_{i=1}^\\infty 1/2^{i-1}}",
+       "uses": [
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[T]} = \\mk{S}{1 + 1/2 + 1/4 + 1/8 + \\cdots}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{E}{\\mathrm{E}[T]} = \\mk{S}{2}",
+       "uses": [],
+       "cap": "A geometric series with first term 1 and ratio $1/2$ sums to $1/(1 - 1/2) = 2$."
+      }
+     ],
+     "src": "4.4, the coin-tosses lemma",
+     "note": "Open Data Structures takes the second line from the first by linearity of expectation, which it states for finitely many random variables, without remarking that the sum here is infinite. The step holds because every $I_i$ is non-negative, so the expectation of the sum is the sum of the expectations (monotone convergence); the work keeps the step and says why."
+    }
+   ]
+  }
+ ]
+}

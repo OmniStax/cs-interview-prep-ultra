@@ -1,0 +1,255 @@
+{
+ "id": "1.3",
+ "chapter": "1",
+ "title": "Asymptotic notation",
+ "short": "Asymptotic notation",
+ "lead": "An Essential section on <span data-concept=\"big-o\">big-O</span>, <span data-concept=\"big-omega-theta\">Ω and Θ</span>, the notations that compare how fast functions grow once constant factors and small inputs are set aside; <span data-concept=\"multivariate-big-o\">analysis with several parameters</span> is Advanced. ODS’s loop example fills its array from <em>a</em>[0] to <em>a</em>[<em>n</em> − 1].",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "ODS’s definition of asymptotic notation in several variables, OpenDSA’s slideshow on lower bounds and best cases of sequential search, and OpenDSA’s summary exercises are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The OpenDSA items the chapter config lists for this section (AnalPairMCQ1–AnalPairMCQ11 with UpperBoundsSumm; ThetaUpperMCQ and AlgAnlsTFbgthta with LowerThetaSumm; AlgAnlsFIBsmlintgr2 from 1.2, tagged with big-o and logarithms) wait for the converter of OpenDSA’s Khan-format exercises, and its CompareGrowth and GrowthRatesPRO wait for the sequence answer type; MisunderstandingsTF1–6 go with 1.4. Aspnes’s keyed A.6.2 (an approximate sum) and A.6.3 (a stretched function) wait for a reader of his PDF’s mathematics, and the four MIT OpenCourseWare cards (6.006 S20 ps1 1-1, 6.046J F05 ps1 1-1, 6.006 F11 ps1 1-1, 6.042J F05 ps6 #8) for the app to read exercises-nc.json. MCS 14.18–14.42, the Applied Combinatorics items and Erickson’s chapter 0 exercise 2 have no published answers and are left out. No open exercise tests analysis with several parameters.",
+ "figures": [
+  {
+   "id": "sim-big-o-witness",
+   "kind": "sim",
+   "draws": [
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-loop-count",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-crossover",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/ods-bigoh-1.png",
+    "/media/ch01/ods-bigoh-2.png"
+   ],
+   "original_caption": "Plots of 15n versus 2n log n.",
+   "draws": [
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-limit-test",
+   "kind": "sim",
+   "draws": [
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "big-o",
+   "concept": "big-o",
+   "verb": "introduces"
+  },
+  {
+   "span": "omega-theta",
+   "concept": "big-omega-theta",
+   "verb": "introduces"
+  },
+  {
+   "span": "omega-theta",
+   "concept": "big-o",
+   "verb": "uses"
+  },
+  {
+   "span": "multivariate",
+   "concept": "multivariate-big-o",
+   "verb": "introduces"
+  },
+  {
+   "span": "multivariate",
+   "concept": "big-omega-theta",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [
+  {
+   "id": "i",
+   "label": "i, the loop variable of the snippet",
+   "figures": [
+    "sim-loop-count"
+   ]
+  },
+  {
+   "id": "f1",
+   "label": "f₁(n) = 15n, a complicated linear time algorithm",
+   "figures": [
+    "sim-crossover"
+   ]
+  },
+  {
+   "id": "f2",
+   "label": "f₂(n) = 2n log n, a simpler divide-and-conquer algorithm",
+   "figures": [
+    "sim-crossover"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "anallower-fn-1",
+   "kind": "book",
+   "number": "1",
+   "html": "<p>An alternate (non-equivalent) definition for $\\Omega$ is</p>\n<blockquote><p>$\\mathbf{T}(n)$ is in the set $\\Omega(g(n))$ if there exists a positive constant $c$ such that $\\mathbf{T}(n) \\geq c g(n)$ for an infinite number of values for $n$.</p></blockquote>\n<p>This definition says that for an “interesting” number of cases, the algorithm takes at least $c g(n)$ time. Note that this definition is <em>not</em> symmetric with the definition of big-Oh. For $g(n)$ to be a lower bound, this definition <em>does not</em> require that $\\mathbf{T}(n) \\geq c g(n)$ for all values of $n$ greater than some constant. It only requires that this happen often enough, in particular that it happen for an infinite number of values for $n$. Motivation for this alternate definition can be found in the following example.</p>\n<p>Assume a particular algorithm has the following behavior:</p>\n$$\\mathbf{T}(n) = \\left\\{ \\begin{array}{ll}\nn  &amp; \\text{for all odd}\\ n \\geq 1\\\\\nn^2/100 &amp; \\text{for all even}\\ n \\geq 0\n\\end{array}\n\\right.$$\n<p>From this definition, $n^2/100 \\geq \\frac{1}{100} n^2$ for all even $n \\geq 0$. So, $\\mathbf{T}(n) \\geq c n^2$ for an infinite number of values of $n$ (i.e., for all even $n$) for $c = 1/100$. Therefore, $\\mathbf{T}(n)$ is in $\\Omega(n^2)$ by the definition.</p>\n<p>For this equation for $\\mathbf{T}(n)$, it is true that all inputs of size $n$ take at least $cn$ time. But an infinite number of inputs of size $n$ take $cn^2$ time, so we would like to say that the algorithm is in $\\Omega(n^2)$. Unfortunately, using our first definition will yield a lower bound of $\\Omega(n)$ because it is not possible to pick constants $c$ and $n_0$ such that $\\mathbf{T}(n) \\geq c n^2$ for all $n&gt;n_0$. The alternative definition does result in a lower bound of $\\Omega(n^2)$ for this algorithm, which seems to fit common sense more closely. Fortunately, few real algorithms or computer programs display the pathological behavior of this example. Our first definition for $\\Omega$ generally yields the expected result.</p>\n<p>As you can see from this discussion, asymptotic bounds notation is not a law of nature. It is merely a powerful modeling tool used to describe the behavior of algorithms.</p>"
+  },
+  {
+   "id": "err-inclusions",
+   "kind": "correction",
+   "html": "The chain holds as printed only for $c > 1$. For $c \\le 1$ the function $c^n$ does not grow (it is 1, or it falls towards 0), so $n^b$ is not in $O(c^n)$ and the last inclusion fails; the same goes for the last inclusion of the chain multiplied by $n$."
+  },
+  {
+   "id": "err-faster",
+   "kind": "correction",
+   "html": "A big-Oh running time is only an upper bound, so two different big-Oh bounds do not show which algorithm is faster: an algorithm whose running time is in $O(n)$ is in $O(n^2)$ too. The conclusion holds when each running time is known to within a constant factor from above and below, which is $\\Theta$ notation (<a href=\"#omega-theta\">Lower Bounds and Θ Notation</a>)."
+  },
+  {
+   "id": "err-bounds-meet",
+   "kind": "correction",
+   "html": "Not every such equation has matching bounds. The footnote’s own example, $\\mathbf{T}(n) = n$ for odd $n$ and $n^2/100$ for even $n$, is an algebraic equation for the time requirement whose upper bound is $O(n^2)$ and whose lower bound, by the first definition, is only $\\Omega(n)$, so it has no $\\Theta$ bound."
+  }
+ ],
+ "derivations": [
+  {
+   "id": "big-o-example",
+   "what": "5n log n + 8n − 200 is in O(n log n)",
+   "source": "Open Data Structures, Asymptotic Notation",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "\\log 2 = 1",
+       "src": "1.2"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{l}{n} \\ge \\mk{r}{2}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{l}{\\log n} \\ge \\mk{r}{\\log 2}",
+       "uses": [],
+       "cap": "The logarithm grows with its argument, so taking it of both sides keeps the inequality."
+      },
+      {
+       "tex": "\\mk{l}{\\log n} \\ge \\mk{r}{1}",
+       "uses": [
+        0
+       ]
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "step": 0
+      }
+     ],
+     "then": {
+      "tex": "\\mk{f}{f(n)} = \\mk{a}{5n\\log n} + \\mk{b}{8n} - \\mk{k}{200}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{f}{f(n)} \\le \\mk{a}{5n\\log n} + \\mk{b}{8n}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{f}{f(n)} \\le \\mk{a}{5n\\log n} + \\mk{b}{8n\\log n}",
+       "uses": [
+        0
+       ],
+       "cap": "Multiplying $8n$ by $\\log n$, which is at least 1, cannot make it smaller."
+      },
+      {
+       "tex": "\\mk{f}{f(n)} \\le \\mk{a}{13n\\log n}",
+       "uses": [],
+       "map": {
+        "b": "a"
+       }
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "tex": "O(f(n)) = \\{\\, g(n) : \\text{there exists } c > 0 \\text{ and } n_0 \\text{ such that } g(n) \\le c\\cdot f(n) \\text{ for all } n \\ge n_0 \\,\\}"
+      },
+      {
+       "step": 1
+      }
+     ],
+     "then": {
+      "tex": "\\mk{f}{f(n)} \\le \\mk{a}{13n\\log n}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{f}{f(n)} \\in O(\\mk{a}{n\\log n})",
+       "uses": [
+        0
+       ],
+       "cap": "The inequality holds for every $n \\ge 2$, so the definition is met with $c = 13$ and $n_0 = 2$."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,13 +1,13 @@
 <section id="big-o" data-source="ods" data-locator="ods:intro#asymptotic-notation, up to (not including) “In a few cases, we will use asymptotic notation on functions with more than one variable”">
 <h2>Asymptotic Notation</h2>
 <p>When analyzing data structures in this book, we want to talk about the running times of various operations. The exact running times will, of course, vary from computer to computer and even from run to run on an individual computer. When we talk about the running time of an operation we are referring to the number of computer instructions performed during the operation. Even for simple code, this quantity can be difficult to compute exactly. Therefore, instead of analyzing running times exactly, we will use the so-called <span data-concept="big-o"><em>big-Oh notation</em></span>: For a function $f(n)$, $O(f(n))$ denotes a set of functions,</p>
-$$O(f(n)) = \left\{ \begin{array}{l} g(n):\mbox{there exists $c>0$, and $n_0$ such that} \\ \quad\mbox{$g(n) \le c\cdot f(n)$ for all $n\ge n_0$} \end{array} \right\} \enspace .$$
+$$O(f(n)) = \left\{ \begin{array}{l} g(n):\text{there exists $c>0$, and $n_0$ such that} \\ \quad\text{$g(n) \le c\cdot f(n)$ for all $n\ge n_0$} \end{array} \right\} \enspace .$$
 <p>Thinking graphically, this set consists of the functions $g(n)$ where $c\cdot f(n)$ starts to dominate $g(n)$ when $n$ is sufficiently large.</p>
 <p>We generally use asymptotic notation to simplify functions. For example, in place of $5n\log n + 8n - 200$ we can write $O(n\log n)$. This is proven as follows:</p>
 <figure class="dv" id="drv-big-o-example"></figure>
 <p>This demonstrates that the function $f(n)=5n\log n + 8n - 200$ is in the set $O(n\log n)$ using the constants $c=13$ and $n_0 = 2$.</p>
 <figure class="sim" id="sim-big-o-witness">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-type="cost"><em>f</em>(<em>n</em>) = 5<em>n</em> log <em>n</em> + 8<em>n</em> − 200</span> against <span data-type="cost"><em>c</em> · <em>n</em> log <em>n</em></span>: past <em>n</em><sub>0</sub>, the shaded stretch, the line <em>c</em> · <em>n</em> log <em>n</em> must stay on or above <em>f</em>. With <em>c</em> = 13 it does from <em>n</em><sub>0</sub> = 2 on. Lower <em>c</em> and a larger <em>n</em><sub>0</sub> is needed; at <em>c</em> = 5 or below no <em>n</em><sub>0</sub> works, because <em>f</em>(<em>n</em>) − 5<em>n</em> log <em>n</em> = 8<em>n</em> − 200 is positive for every <em>n</em> from 26 on.</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-type="cost"><em>f</em>(<em>n</em>) = 5<em>n</em> log <em>n</em> + 8<em>n</em> − 200</span> against <span data-type="cost"><em>c</em> · <em>n</em> log <em>n</em></span>: past <em>n</em><sub>0</sub>, the tinted stretch, the line <em>c</em> · <em>n</em> log <em>n</em> must stay on or above <em>f</em>, and any gap where <em>f</em> rises above it is shaded as a failure. With <em>c</em> = 13 it does from <em>n</em><sub>0</sub> = 2 on. A smaller <em>c</em> needs a larger <em>n</em><sub>0</sub>, and for <em>c</em> = 5 or less no <em>n</em><sub>0</sub> works, because <em>f</em>(<em>n</em>) − 5<em>n</em> log <em>n</em> = 8<em>n</em> − 200 is positive for every <em>n</em> from 26 on.</span></div>
 </figure>
 <p>A number of useful shortcuts can be applied when using asymptotic notation. First:</p>
 $$O(n^{c_1}) \subset O(n^{c_2}) \enspace ,$$
@@ -19,7 +19,7 @@ $$O(n) \subset O(n\log n) \subset O(n^{1+b}) \subset O(n{c}^n) \enspace .$$
 <p>A particularly strange example of this occurs when we write statements like</p>
 $$T(n) = 2\log n + O(1) \enspace .$$
 <p>Again, this would be more correctly written as</p>
-$$T(n) \le 2\log n + [\mbox{some member of $O(1)$]} \enspace .$$
+$$T(n) \le 2\log n + [\text{some member of $O(1)$]} \enspace .$$
 <p>The expression $O(1)$ also brings up another issue. Since there is no variable in this expression, it may not be clear which variable is getting arbitrarily large. Without context, there is no way to tell. In the example above, since the only variable in the rest of the equation is $n$, we can assume that this should be read as $T(n) = 2\log n + O(f(n))$, where $f(n) = 1$.</p>
 <p>Big-Oh notation is not new or unique to computer science. It was used by the number theorist Paul Bachmann as early as 1894, and is immensely useful for describing the running times of computer algorithms. Consider the following piece of code:</p>
 <figure class="sim" id="sim-loop-count">
@@ -29,7 +29,7 @@ $$T(n) \le 2\log n + [\mbox{some member of $O(1)$]} \enspace .$$
 <ul>
 <li>$1$ assignment ($int\, \htmlData{ref=i}{i}\,\gets\, 0$),</li>
 <li>$n+1$ comparisons ($\htmlData{ref=i}{i} &lt; n$),</li>
-<li>$n$ increments ($\htmlData{ref=i}{i}++$),</li>
+<li>$n$ increments ($\htmlData{ref=i}{i}{+}{+}$),</li>
 <li>$n$ array offset calculations ($a[\htmlData{ref=i}{i}]$), and</li>
 <li>$n$ indirect assignments ($a[\htmlData{ref=i}{i}]\gets \htmlData{ref=i}{i}$).</li>
 </ul>
@@ -39,9 +39,9 @@ $$T(n)=a + b(n+1) + cn + dn + en \enspace ,$$
 $$T(n)= O(n) \enspace .$$
 <p>Not only is this more compact, but it also gives nearly as much information. The fact that the running time depends on the constants $a$, $b$, $c$, $d$, and $e$ in the above example means that, in general, it will not be possible to compare two running times to know which is faster without knowing the values of these constants. Even if we make the effort to determine these constants (say, through timing tests), then our conclusion will only be valid for the machine we run our tests on.</p>
 <p>Big-Oh notation allows us to reason at a much higher level, making it possible to analyze more complicated functions. If two algorithms have the same big-Oh running time, then we won’t know which is faster, and there may not be a clear winner. One may be faster on one machine, and the other may be faster on a different machine. However, if the two algorithms have demonstrably different big-Oh running times, then we can be certain that the one with the smaller running time will be faster <em>for large enough values of $n$</em>.<sup class="fn" data-note="err-faster"></sup></p>
-<p>An example of how big-Oh notation allows us to compare two different functions is shown in <a href="#sim-crossover">Figure 1.5</a>, which compares the rate of growth of $f_1(n)=15n$ versus $f_2(n)=2n\log n$. It might be that $f_1(n)$ is the running time of a complicated linear time algorithm while $f_2(n)$ is the running time of a considerably simpler algorithm based on the divide-and-conquer paradigm. This illustrates that, although $f_1(n)$ is greater than $f_2(n)$ for small values of $n$, the opposite is true for large values of $n$. Eventually $f_1(n)$ wins out, by an increasingly wide margin. Analysis using big-Oh notation told us that this would happen, since $O(n)\subset O(n\log n)$.</p>
+<p>An example of how big-Oh notation allows us to compare two different functions is shown in <a href="#sim-crossover">Figure 1.5</a>, which compares the rate of growth of $\htmlData{ref=f1}{f_1}(n)=15n$ versus $\htmlData{ref=f2}{f_2}(n)=2n\log n$. It might be that $\htmlData{ref=f1}{f_1}(n)$ is the running time of a complicated linear time algorithm while $\htmlData{ref=f2}{f_2}(n)$ is the running time of a considerably simpler algorithm based on the divide-and-conquer paradigm. This illustrates that, although $\htmlData{ref=f1}{f_1}(n)$ is greater than $\htmlData{ref=f2}{f_2}(n)$ for small values of $n$, the opposite is true for large values of $n$. Eventually $\htmlData{ref=f1}{f_1}(n)$ wins out, by an increasingly wide margin. Analysis using big-Oh notation told us that this would happen, since $O(n)\subset O(n\log n)$.</p>
 <figure class="sim" id="sim-crossover" data-original="/media/ch01/ods-bigoh-1.png, /media/ch01/ods-bigoh-2.png" data-original-caption="Plots of 15n versus 2n log n.">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-type="cost">15<em>n</em></span> against <span data-type="cost">2<em>n</em> log <em>n</em></span> on a window that widens from <span data-type="size"><em>n</em></span> = 100 to 10 000. On the first window 15<em>n</em> is ahead all the way; the two meet where log <em>n</em> = 7.5, at <em>n</em> = 2<sup>7.5</sup> ≈ 181, and past that 2<em>n</em> log <em>n</em> is larger and the gap keeps widening.</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-ref="f1">15<em>n</em></span> against <span data-ref="f2">2<em>n</em> log <em>n</em></span> on a window that widens from <span data-type="size"><em>n</em></span> = 100 to 10 000. On the first window 15<em>n</em> is ahead all the way; the two meet where log <em>n</em> = 7.5, at <em>n</em> = 2<sup>7.5</sup> ≈ 181, and past that <span data-ref="f2">2<em>n</em> log <em>n</em></span> is larger and the gap keeps widening.</span></div>
 </figure>
 </section>
 

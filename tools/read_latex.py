@@ -304,20 +304,25 @@ class Ctx:
         self.unknown = set()
 
 
-def inline(tex, ctx, fn_numbers=None):
-    """Inline LaTeX to HTML. fn_numbers: the printed numbers for the footnotes in this text, in order."""
+def inline(tex, ctx, fn_numbers=None, _maths=None):
+    """Inline LaTeX to HTML. fn_numbers: the printed numbers for the footnotes in this text, in order.
+    (_maths: the maths of the text a nested call is part of, already taken out.)"""
     fn_numbers = list(fn_numbers or [])
-    maths = []
+    nested = _maths is not None
+    notes_before = len(ctx.notes)
+    maths = _maths if nested else []
 
     def keep_math(t):
         maths.append(math_tex(t, ctx.dialect))
         return f'\x00{len(maths) - 1}\x01'
     # maths first, so nothing inside it is touched; an escaped dollar is text
-    s = tex.replace('\\$', '\x02')
-    s = re.sub(r'\$([^$]+)\$', lambda m: keep_math(m.group(1)), s)
-    s = re.sub(r'\\\((.+?)\\\)', lambda m: keep_math(m.group(1)), s)
-    s = s.replace('\x02', '\\$')
-    if ctx.dialect == 'ods':
+    s = tex
+    if not nested:
+        s = s.replace('\\$', '\x02')
+        s = re.sub(r'\$([^$]+)\$', lambda m: keep_math(m.group(1)), s)
+        s = re.sub(r'\\\((.+?)\\\)', lambda m: keep_math(m.group(1)), s)
+        s = s.replace('\x02', '\\$')
+    if ctx.dialect == 'ods' and not nested:
         # the pseudocode edition: a capitalised #Name# is plain text, any other #name# maths
         s = re.sub(r'#([A-Z]\w*)#', r'\1', s)
         s = re.sub(r'#(\w+)#', lambda m: keep_math(m.group(1)), s)
@@ -351,14 +356,14 @@ def inline(tex, ctx, fn_numbers=None):
             if name in TEXT_CMDS:
                 body, j = arg(s, j)
                 o, cl = TEXT_CMDS[name]
-                out.append(o + inline(body, ctx_child(ctx), []) + cl)
+                out.append(o + inline(body, ctx_child(ctx), [], maths) + cl)
                 i = j
                 continue
             if name == 'footnote':
                 body, j = arg(s, j)
                 num = fn_numbers.pop(0) if fn_numbers else str(len(ctx.notes) + 1)
                 nid = f'{ctx.fn_prefix}-{num}'
-                ctx.notes.append({'id': nid, 'number': num, 'html': inline(body, ctx, [])})
+                ctx.notes.append({'id': nid, 'number': num, 'html': inline(body, ctx, [], maths)})
                 out.append(f'<sup class="fn" data-note="{nid}"></sup>')
                 i = j
                 continue
@@ -414,7 +419,11 @@ def inline(tex, ctx, fn_numbers=None):
         p = html.escape(p, quote=False).replace('&amp;amp;', '&amp;').replace('&amp;#36;', '&#36;')
         parts[k] = p
     h = ''.join(parts)
-    h = re.sub(r'\x00(\d+)\x01', lambda m: '$' + maths[int(m.group(1))] + '$', h)
+    if not nested:
+        put = lambda t: re.sub(r'\x00(\d+)\x01', lambda m: '$' + maths[int(m.group(1))] + '$', t)  # noqa: E731
+        h = put(h)
+        for n in ctx.notes[notes_before:]:
+            n['html'] = put(n['html'])
     h = re.sub(r'[ \t\n]+', ' ', h)
     return h.strip()
 

@@ -201,7 +201,7 @@ def parse(lines, ctx, quote=False):
                     k += 1
             content = body[k:]
             if name == 'math':
-                tex = '\n'.join(l for l in content).strip()
+                tex = '\n'.join(l for l in content).strip().replace('\\mbox{', '\\text{')    # KaTeX has no \mbox
                 els.append({'kind': 'display', 'tex': tex})
             elif name == 'topic':
                 els.append({'kind': 'topic', 'title': arg, 'children': parse(content, ctx)})

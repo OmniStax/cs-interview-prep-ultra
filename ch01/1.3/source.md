@@ -6,13 +6,13 @@
 
 When analyzing data structures in this book, we want to talk about the running times of various operations. The exact running times will, of course, vary from computer to computer and even from run to run on an individual computer. When we talk about the running time of an operation we are referring to the number of computer instructions performed during the operation. Even for simple code, this quantity can be difficult to compute exactly. Therefore, instead of analyzing running times exactly, we will use the so-called *big-Oh notation*: For a function $f(n)$, $O(f(n))$ denotes a set of functions,
 
-$$O(f(n)) = \left\{ \begin{array}{l} g(n):\mbox{there exists $c>0$, and $n_0$ such that} \\ \quad\mbox{$g(n) \le c\cdot f(n)$ for all $n\ge n_0$} \end{array} \right\} \enspace .$$
+$$O(f(n)) = \left\{ \begin{array}{l} g(n):\text{there exists $c>0$, and $n_0$ such that} \\ \quad\text{$g(n) \le c\cdot f(n)$ for all $n\ge n_0$} \end{array} \right\} \enspace .$$
 
 Thinking graphically, this set consists of the functions $g(n)$ where $c\cdot f(n)$ starts to dominate $g(n)$ when $n$ is sufficiently large.
 
 We generally use asymptotic notation to simplify functions. For example, in place of $5n\log n + 8n - 200$ we can write $O(n\log n)$. This is proven as follows:
 
-$$\begin{aligned} 5n\log n + 8n - 200 & \le 5n\log n + 8n \\ & \le 5n\log n + 8n\log n & \mbox{ for $n\ge 2$ (so that $\log n \ge 1$)} \\ & \le 13n\log n \enspace . \end{aligned}$$
+$$\begin{aligned} 5n\log n + 8n - 200 & \le 5n\log n + 8n \\ & \le 5n\log n + 8n\log n & \text{ for $n\ge 2$ (so that $\log n \ge 1$)} \\ & \le 13n\log n \enspace . \end{aligned}$$
 
 This demonstrates that the function $f(n)=5n\log n + 8n - 200$ is in the set $O(n\log n)$ using the constants $c=13$ and $n_0 = 2$.
 
@@ -36,7 +36,7 @@ $$T(n) = 2\log n + O(1) \enspace .$$
 
 Again, this would be more correctly written as
 
-$$T(n) \le 2\log n + [\mbox{some member of $O(1)$]} \enspace .$$
+$$T(n) \le 2\log n + [\text{some member of $O(1)$]} \enspace .$$
 
 The expression $O(1)$ also brings up another issue. Since there is no variable in this expression, it may not be clear which variable is getting arbitrarily large. Without context, there is no way to tell. In the example above, since the only variable in the rest of the equation is $n$, we can assume that this should be read as $T(n) = 2\log n + O(f(n))$, where $f(n) = 1$.
 
@@ -48,7 +48,7 @@ One execution of this method involves
 
 - $n+1$ comparisons ($i < n$),
 
-- $n$ increments ($i++$),
+- $n$ increments ($i{+}{+}$),
 
 - $n$ array offset calculations ($a[i]$), and
 
@@ -169,8 +169,8 @@ This definition says that for an “interesting” number of cases, the algorith
 Assume a particular algorithm has the following behavior:
 
 $$\mathbf{T}(n) = \left\{ \begin{array}{ll}
-n  & \mbox{for all odd}\ n \geq 1\\
-n^2/100 & \mbox{for all even}\ n \geq 0
+n  & \text{for all odd}\ n \geq 1\\
+n^2/100 & \text{for all even}\ n \geq 0
 \end{array}
 \right.$$
 

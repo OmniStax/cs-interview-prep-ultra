@@ -1,0 +1,223 @@
+{
+ "section": "1.6",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-ps7-1",
+   "source_id": "mitocw-6-042j-fall2005:ps7sol#1",
+   "source_number": "Problem Set 7, Problem 1",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "There are 20 books arranged in a row on a shelf.\n\n(a) Describe a bijection between ways of choosing 6 of these books so that no two adjacent books are selected and 15-bit sequences with exactly 6 ones.\n\n(b) How many ways are there to select 6 books so that no two adjacent books are selected?",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/908f6c3c87842d1a47ded755a8a6f843_ps7sol.pdf\">Solutions to Problem Set 7</a>, Problem 1."
+   }
+  },
+  {
+   "id": "nc-ps9-2",
+   "source_id": "mitocw-6-042j-fall2005:ps9sol#2",
+   "source_number": "Problem Set 9, Problem 2",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Evaluate",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "There are three prisoners in a maximum-security prison for fictional villains: the Evil Wizard Voldemort, the Dark Lord Sauron, and Little Bunny Foo-Foo. The parole board has declared that it will release two of the three, chosen uniformly at random, but has not yet released their names. Naturally, Sauron figures that he will be released to his home in Mordor, where the shadows lie, with probability 2/3. A guard offers to tell Sauron the name of one of the other prisoners who will be released (either Voldemort or Foo-Foo). However, Sauron declines this offer. He reasons that if the guard says, for example, “Little Bunny Foo-Foo will be released”, then his own probability of release will drop to 1/2. This is because he will then know that either he or Voldemort will also be released, and these two events are equally likely. Using a tree diagram and the four-step method, either prove that the Dark Lord Sauron has reasoned correctly or prove that he is wrong. Assume that if the guard has a choice of naming either Voldemort or Foo-Foo (because both are to be released), then he names one of the two uniformly at random.",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3561070a378dc4e1b18657f64bf88db4_ps9sol.pdf\">Solutions to Problem Set 9</a>, Problem 2."
+   }
+  },
+  {
+   "id": "nc-ps9-3",
+   "source_id": "mitocw-6-042j-fall2005:ps9sol#3",
+   "source_number": "Problem Set 9, Problem 3",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "You shuffle a deck of cards and deal your friend a 5-card hand.\n\n(a) Suppose your friend says, “I have the ace of spades.” What is the probablity that she has another ace?\n\n(b) Suppose your friend says, “I have an ace.” What is the probability that she has another ace?\n\n(c) Are your answers to (a) and (b) the same? Explain why.",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3561070a378dc4e1b18657f64bf88db4_ps9sol.pdf\">Solutions to Problem Set 9</a>, Problem 3."
+   }
+  },
+  {
+   "id": "nc-ps9-4",
+   "source_id": "mitocw-6-042j-fall2005:ps9sol#4",
+   "source_number": "Problem Set 9, Problem 4",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "Finalphobia is a rare disease in which the victim has the delusion that he or she is being subjected to an intense mathematical examination.\n\n<ul><li>A person selected uniformly at random has finalphobia with probability 1/100.</li><li>A person with finalphobia has shaky hands with probability 9/10.</li><li>A person without finalphobia has shaky hands with probability 1/20.</li></ul>\n\nWhat is the probablility that a person selected uniformly at random has finalphobia, given that he or she has shaky hands?",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3561070a378dc4e1b18657f64bf88db4_ps9sol.pdf\">Solutions to Problem Set 9</a>, Problem 4."
+   }
+  },
+  {
+   "id": "nc-ps9-5",
+   "source_id": "mitocw-6-042j-fall2005:ps9sol#5",
+   "source_number": "Problem Set 9, Problem 5",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "Outside of their hum-drum duties as 6.042 TAs, Sayan is trying to learn to levitate using only intense concentration and Jelani is launching a “Nelson 2008” presidential campaign. Suppose that Sayan’s probability of levitating is 1/6, Jelani’s chance of becoming president is 1/4, and the success of one does not alter the other’s chances.\n\n(a) If at least one of them succeeds, what is the probability that Sayan learns to levitate?\n\n(b) If at most one of them succeeds, what is the probability that Jelani becomes the president of the United States?\n\n(c) If exactly one of them succeeds, what is the probability that it is Sayan?",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3561070a378dc4e1b18657f64bf88db4_ps9sol.pdf\">Solutions to Problem Set 9</a>, Problem 5."
+   }
+  },
+  {
+   "id": "nc-ps10-1",
+   "source_id": "mitocw-6-042j-fall2005:ps10sol#1",
+   "source_number": "Problem Set 10, Problem 1",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "MIT students sometimes delay laundry for a few days. Assume all random values described below are mutually independent.\n\n(a) A busy student must complete 3 problem sets before doing laundry. Each problem set requires 1 day with probability 2/3 and 2 days with probability 1/3. Let B be the number of days a busy student delays laundry. What is E[B]? Example: If the first problem set requires 1 day and the second and third problem sets each require 2 days, then the student delays for B = 5 days.\n\n(b) A relaxed student rolls a fair, 6-sided die in the morning. If he rolls a 1, then he does his laundry immediately (with zero days of delay). Otherwise, he delays for one day and repeats the experiment the following morning. Let R be the number of days a relaxed student delays laundry. What is E[R]? Example: If the student rolls a 2 the first morning, a 5 the second morning, and a 1 the third morning, then he delays for R = 2 days.\n\n(c) Before doing laundry, an unlucky student must recover from illness for a number of days equal to the product of the numbers rolled on two fair, 6-sided dice. Let U be the expected number of days an unlucky student delays laundry. What is E[U]? Example: If the rolls are 5 and 3, then the student delays for U = 15 days.\n\n(d) A student is busy with probability 1/2, relaxed with probability 1/3, and unlucky with probability 1/6. Let D be the number of days the student delays laundry. What is E[D]?",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3b77d698563a1c8cd13e77a429cdaa03_ps10sol.pdf\">Solutions to Problem Set 10</a>, Problem 1."
+   }
+  },
+  {
+   "id": "nc-ps10-3",
+   "source_id": "mitocw-6-042j-fall2005:ps10sol#3",
+   "source_number": "Problem Set 10, Problem 3",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "We are given a set of n distinct positive integers. We then determine the maximum of these numbers by the following procedure: Randomly arrange the numbers in a sequence. Let the “current maximum” initially be the first number in the sequence and the “current element” be the second element of the sequence. If the current element is greater than the current maximum, perform an “update”: that is, change the current maximum to be the current element. Either way, change the current element to be the next element of the sequence. Repeat this process until there is no next element. Prove that the expected number of updates is ∼ ln n. Hint: Let M<sub>i</sub> be the indicator variable for the event that the ith element of the sequence is bigger than all the previous elements in the sequence.",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3b77d698563a1c8cd13e77a429cdaa03_ps10sol.pdf\">Solutions to Problem Set 10</a>, Problem 3."
+   }
+  },
+  {
+   "id": "nc-ps10-4",
+   "source_id": "mitocw-6-042j-fall2005:ps10sol#4",
+   "source_number": "Problem Set 10, Problem 4",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "In a certain card game, each card has a point value.\n\n<ul><li>Numbered cards in the range 2 to 9 are worth five points each.</li><li>The card numbered 10 and the face cards (jack, queen, king) are worth ten points each.</li><li>Aces are worth fifteen points each.</li></ul>\n\n(a) Suppose that you thoroughly shuffle a 52-card deck. What is the expected total point value of the three cards on the top of the deck after the shuffle?\n\n(b) Suppose that you throw out all the red cards and shuffle the remaining 26-card, allblack deck. Now what is the expected total point value of the top three cards? (Note that drawing three aces, for example, is now impossible!)",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3b77d698563a1c8cd13e77a429cdaa03_ps10sol.pdf\">Solutions to Problem Set 10</a>, Problem 4."
+   }
+  },
+  {
+   "id": "nc-ps10-5",
+   "source_id": "mitocw-6-042j-fall2005:ps10sol#5",
+   "source_number": "Problem Set 10, Problem 5",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "A true story from World War II: The army needs to identify soldiers with a disease called “klep”. There is a way to test blood to determine whether it came from someone with klep. The straightforward approach is to test each soldier individually. This requires n tests, where n is the number of soldiers. A better approach is the following: group the soldiers into groups of k. Blend the blood samples of each group and apply the test once to each blended sample. If the group-blend doesn’t have klep, we are done with that group after one test. If the groupblend fails the test, then someone in the group has klep, and we individually test all the soldiers in the group. Assume each soldier has klep with probability, p, independently of all the other soldiers.\n\n(a) What is the expected number of tests as a function of n, p, and k? (Assume for simplicity that n is divisible by k.)\n\n(b) How should k be chosen to minimize the expected number of test performed, and what is the resulting expectation?\n\n(c) What fraction of the work does the grouping method expect to save over the straightforward approach in a million-strong army where 1% have klep?",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/3b77d698563a1c8cd13e77a429cdaa03_ps10sol.pdf\">Solutions to Problem Set 10</a>, Problem 5."
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-ps7-1",
+   "concept": "counting"
+  },
+  {
+   "exercise": "nc-ps9-2",
+   "concept": "conditional-probability"
+  },
+  {
+   "exercise": "nc-ps9-2",
+   "concept": "probability-basics"
+  },
+  {
+   "exercise": "nc-ps9-3",
+   "concept": "conditional-probability"
+  },
+  {
+   "exercise": "nc-ps9-3",
+   "concept": "counting"
+  },
+  {
+   "exercise": "nc-ps9-4",
+   "concept": "conditional-probability"
+  },
+  {
+   "exercise": "nc-ps9-5",
+   "concept": "conditional-probability"
+  },
+  {
+   "exercise": "nc-ps10-1",
+   "concept": "linearity-of-expectation"
+  },
+  {
+   "exercise": "nc-ps10-1",
+   "concept": "geometric-expectation"
+  },
+  {
+   "exercise": "nc-ps10-3",
+   "concept": "linearity-of-expectation"
+  },
+  {
+   "exercise": "nc-ps10-3",
+   "concept": "indicator-variables"
+  },
+  {
+   "exercise": "nc-ps10-4",
+   "concept": "linearity-of-expectation"
+  },
+  {
+   "exercise": "nc-ps10-5",
+   "concept": "linearity-of-expectation"
+  }
+ ]
+}

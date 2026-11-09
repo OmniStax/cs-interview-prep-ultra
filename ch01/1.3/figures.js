@@ -25,6 +25,7 @@ const dashed = (ctx, ax, f, a, b, color, w = 4) => {
   ctx.stroke(); ctx.restore();
 };
 const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size}{${s}}`;
+const tn = (n) => commas(n).replace(/,/g, '{,}');
 
 /* ================================================================ sim-big-o-witness: c and n₀ for ODS's example */
 (function () {
@@ -73,20 +74,26 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
     ctx.save(); ctx.fillStyle = alpha(size, 0.09); ctx.fillRect(ax.X(n0), box.t, box.r - ax.X(n0), box.b - box.t); ctx.restore();
     line(ctx, ax.X(n0), box.t, ax.X(n0), box.b, size, 3, [6, 8]);
     text(ctx, `n₀ = ${n0}`, Math.min(box.r - 60, ax.X(n0) + 10), box.t + 18, size, { size: 22, weight: 600 });
+    /* where f rises above c · n log n past n₀, the gap between them is the broken part, shaded */
+    let run = null;
+    const runs = [];
+    for (let n = Math.max(1, n0); n <= 128; n += 0.25) { if (over(n, c)) { if (!run) run = [n, n]; run[1] = n; } else if (run) { runs.push(run); run = null; } }
+    if (run) runs.push(run);
+    runs.forEach(([a, b]) => F.shade(ctx, ax, f, (n) => c * g(n), a, Math.max(b, a + 0.25), PAL.bad, { alpha: 0.3 }));
     plot(ctx, ax, f, cost, { w: 5, x: [0.5, 128] });
     dashed(ctx, ax, (n) => c * g(n), 1, 128, cost, 4);
     /* names at the right edge, kept apart */
-    const yf = ax.Y(f(128)), yg = Math.max(box.t + 14, ax.Y(c * g(128)));
-    const [ya, yb] = Math.abs(yf - yg) < 34 ? (yf > yg ? [yf + 17, yg - 17] : [yf - 17, yg + 17]) : [yf, yg];
-    text(ctx, 'f(n)', box.r - 8, Math.min(box.b - 12, ya), cost, { size: 22, weight: 600, align: 'right', bg: PAL.panel });
-    text(ctx, `${fmt(c, 1)} · n log n`, box.r - 8, yb - (yg <= box.t + 14 ? -8 : 0), cost, { size: 22, weight: 600, align: 'right', bg: PAL.panel });
+    /* names at n = 100, f's below its curve and c · n log n's above, or the other way round where they have crossed */
+    const yf = ax.Y(f(100)), yg = ax.Y(c * g(100)), fUp = yf < yg;
+    text(ctx, 'f(n)', ax.X(100), Math.min(box.b - 14, yf + (fUp ? -30 : 30)), cost, { size: 22, weight: 600, align: 'center', bg: PAL.panel });
+    text(ctx, `${fmt(c, 1)} · n log n`, ax.X(100), Math.max(box.t + 14, yg + (fUp ? 30 : -30)), cost, { size: 22, weight: 600, align: 'center', bg: PAL.panel });
     if (fail !== null) {
       const p = F.pinned(ctx, box, ax.X, ax.Y, fail, f(fail), PAL.bad, fail > 128 ? `n = ${commas(fail)}` : undefined);
-      if (!p.out) { line(ctx, p.x, p.y, p.x, box.b, PAL.bad, 2, [4, 8]); text(ctx, `n = ${fail}`, p.x, box.b - 16, PAL.bad, { size: 20, weight: 600, align: 'center', bg: PAL.panel }); }
+      if (!p.out) { line(ctx, p.x, p.y, p.x, box.b, PAL.bad, 2, [4, 8]); text(ctx, `first n past n₀ where it fails: ${fail}`, Math.min(box.r - 170, Math.max(box.l + 170, p.x)), Math.max(box.t + 40, p.y - 40), PAL.bad, { size: 22, weight: 600, align: 'center', bg: PAL.panel }); }
     }
     const tail = fail === null
       ? `\\text{for all } ${ks('n \\ge n_0')}:\\ \\text{holds}`
-      : `\\text{fails at } n = ${fail}:\\ ${kc(`f(${fail}) = ${commas(f(fail))}`)} > ${kc(`${fmt(c, 1)}\\cdot ${fail}\\log ${fail} = ${commas(c * g(fail))}`)}`;
+      : `\\text{fails at } n = ${tn(fail)}:\\ ${kc(`f(${tn(fail)}) = ${tn(f(fail))}`)} > ${kc(`${fmt(c, 1)}\\cdot ${tn(fail)}\\log ${tn(fail)} = ${tn(c * g(fail))}`)}`;
     tex(d.readout, `${kc('f(n)')} \\le c\\cdot ${kc('n\\log n')}\\ ${tail}`);
   }
   register(d.fig, { update: () => {}, draw });
@@ -125,7 +132,7 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
       i += 1; inc += 1; at(5, { i, n, a, asg, cmp, inc, off, sto }, ['increment']);
     }
   });
-  const d = sim('sim-loop-count', 940);
+  const d = sim('sim-loop-count', 860);
   const code = F.code(d, {
     src: { python: PY, java: ODS_JAVA, cpp: ODS_CPP, javascript: JS }, ai: { python: AI, javascript: AI },
     lineMap: { java: MAP_J, cpp: MAP_C, javascript: MAP_J },
@@ -168,10 +175,12 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
       const at = Math.min(g.num('i'), n);
       F.ds.pointer(ctx, S, [{ at, name: 'i', color: ci }], { side: 'above', size: 30 });
       if (g.frame.line === 4) rect(ctx, S.x(i) - S.cell / 2 + 3, S.t + 3, S.cell - 6, S.b - S.t - 6, null, key, 5);
-      text(ctx, `a[0..${filled}) filled`, S.l, S.b + 70, idx, { size: 26 });
-      text(ctx, `n = ${n}`, S.r, S.b + 70, size, { size: 26, weight: 600, align: 'right' });
+      text(ctx, `a[0..${filled}) filled`, 90, S.b + 70, idx, { size: 26 });
+      text(ctx, `n = ${n}`, 1310, S.b + 70, size, { size: 26, weight: 600, align: 'right' });
       /* the five counts, each against what it reaches when the loop is done */
-      const hot = [].concat(HOT[ev[0]] || []);
+      /* the counts the step raised: one at the finest level, every count a whole pass raised at the coarsest */
+      const pv = g.prev.vars, hot = ['asg', 'cmp', 'inc', 'off', 'sto'].filter((k) => g.prev !== g.frame && (v[k] || 0) > (pv[k] || 0));
+      if (!hot.length) [].concat(HOT[ev[0]] || []).forEach((k) => hot.push(k));
       const y0 = 430, row = 62;
       text(ctx, 'operation', 90, y0 - 50, PAL.muted, { size: 26 });
       text(ctx, 'count', 640, y0 - 50, PAL.muted, { size: 26, align: 'right' });
@@ -205,7 +214,7 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
     const N = 10 ** sw.v, c1 = F.ref('f1'), c2 = F.ref('f2'), size = C('size');
     const top = Math.max(f1(N), f2(N));
     if (N < CROSS - 0.5) topline(ctx, `Up to n = ${commas(N)}, 15n stays above 2n log n.`);
-    else if (N < CROSS + 0.5) topline(ctx, 'At n = 2^7.5 ≈ 181, 15n and 2n log n are equal: log n = 7.5.');
+    else if (N < CROSS + 0.5) topline(ctx, 'At n = 2^{7.5} ≈ 181, 15n and 2n log n are equal: log n = 7.5.');
     else topline(ctx, `15n and 2n log n cross at n ≈ 181; by n = ${commas(N)}, 2n log n is ${fmt(f2(N) / f1(N), 2)} times 15n.`);
     const box = { l: 170, r: 1330, t: 100, b: 500 };
     /* the zoom: both axes follow the window (interactive-figures §2, a zoom the plan line names) */
@@ -216,15 +225,16 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
       const x = ax.X(CROSS), y = ax.Y(f1(CROSS));
       ctx.save(); ctx.setLineDash([6, 6]); ctx.strokeStyle = PAL.ink; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.arc(x, y, 16, 0, 2 * Math.PI); ctx.stroke(); ctx.restore();
       line(ctx, x, y + 16, x, box.b, alpha(PAL.ink, 0.35), 2, [4, 8]);
-      text(ctx, 'n ≈ 181', x + (x > box.r - 140 ? -22 : 22), y - 30, PAL.ink, { size: 22, weight: 600, align: x > box.r - 140 ? 'right' : 'left', bg: PAL.panel });
+      const right = x > box.r - 160;
+      line(ctx, x + (right ? -12 : 12), y - 12, x + (right ? -40 : 40), y - 60, alpha(PAL.ink, 0.5), 2);
+      text(ctx, 'n ≈ 181', x + (right ? -46 : 46), Math.max(box.t + 16, y - 72), PAL.ink, { size: 22, weight: 600, align: right ? 'right' : 'left', bg: PAL.panel });
     }
-    /* each curve named at its right end, the two names kept apart */
-    let ya = ax.Y(f1(N)), yb = ax.Y(f2(N));
-    if (Math.abs(ya - yb) < 34) { const m = (ya + yb) / 2, s = ya < yb ? -1 : 1; ya = m + s * 17; yb = m - s * 17; }
-    text(ctx, '15n', box.r - 10, Math.max(box.t + 12, ya - 18), c1, { size: 24, weight: 600, align: 'right', bg: PAL.panel });
-    text(ctx, '2n log n', box.r - 10, Math.max(box.t + 12, yb - 18), c2, { size: 24, weight: 600, align: 'right', bg: PAL.panel });
+    /* each curve named at 70 % of the window, the upper one above its curve and the lower one below */
+    const nx = 1 + 0.7 * (N - 1), up1 = f1(nx) >= f2(nx), lx = ax.X(nx);
+    text(ctx, '15n', lx, ax.Y(f1(nx)) + (up1 ? -36 : 36), c1, { size: 24, weight: 600, align: 'center', bg: PAL.panel });
+    text(ctx, '2n log n', lx, ax.Y(f2(nx)) + (up1 ? 36 : -36), c2, { size: 24, weight: 600, align: 'center', bg: PAL.panel });
     const rel = f1(N) > f2(N) + 0.5 ? '>' : f1(N) < f2(N) - 0.5 ? '<' : '=';
-    tex(d.readout, `\\text{at } ${ks(`n = ${commas(N)}`)}:\\ ${kc(`f_1(n) = 15n = ${commas(f1(N))}`)}\\ ${rel}\\ ${kc(`f_2(n) = 2n\\log n = ${commas(f2(N))}`)}`);
+    tex(d.readout, `\\text{at } ${ks(`n = ${tn(N)}`)}:\\ ${kc(`f_1(n) = 15n = ${tn(f1(N))}`)}\\ ${rel}\\ ${kc(`f_2(n) = 2n\\log n = ${tn(f2(N))}`)}`);
   }
   register(d.fig, { update: () => {}, draw });
 })();
@@ -240,7 +250,7 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
       ft: '15n', gt: '2n\\log n', head: '15n/(2n log n) = 7.5/log n sinks towards 0: 15n is in O(2n log n).' },
   };
   const d = sim('sim-limit-test', 600);
-  const pick = choice(d.controls, { label: '\\text{pair}', key: 'pair', value: 'sq',
+  const pick = F.select(d.controls, { label: '\\text{pair}', key: 'pair', value: 'sq',
     options: Object.entries(PAIRS).map(([value, p]) => ({ value, label: p.label })) });
   const sw = ctl(d.controls, { label: '\\log_{10} n_{\\max}', cls: 'size', key: 'window', min: 1, max: 6, step: 0.01, value: 2, unit: '', dec: 2,
     detents: [{ v: 2, label: '100' }, { v: 6, label: '10⁶' }] });
@@ -257,17 +267,19 @@ const kc = (s) => `\\htmlClass{kv-cost}{${s}}`, ks = (s) => `\\htmlClass{kv-size
     lo = Math.max(lo, -10);
     const box = { l: 170, r: 1330, t: 100, b: 500 };
     const ax = axes(ctx, box, [T0, T1], [lo, hi * 1.08 || 1], { nx: Math.max(1, Math.round(T1 - T0)), ny: 4, nice: true, xl: 'n', xc: size, yl: 'f(n)/g(n)', yc: cost,
-      fx: (t) => { const v = 10 ** t; return v >= 1e4 ? `10${'⁰¹²³⁴⁵⁶⁷⁸⁹'[Math.round(t)] || ''}` : commas(v); }, fy: (v) => fmt(v, Math.abs(hi) < 10 ? 1 : 0) });
+      fx: (t) => { const v = 10 ** t; return v >= 1e3 ? `10${'⁰¹²³⁴⁵⁶⁷⁸⁹'[Math.round(t)] || ''}` : commas(v); }, fy: (v) => commas(v) === String(Math.round(v)) && Math.abs(hi) >= 10 ? commas(v) : fmt(v, 1) });
     if (Number.isFinite(p.lim)) {
       dashed(ctx, ax, () => p.lim, T0, T1, cost, 3);
-      text(ctx, `limit ${p.lim}`, box.r - 10, ax.Y(p.lim) - 20, cost, { size: 22, weight: 600, align: 'right', bg: PAL.panel });
+      text(ctx, `limit ${p.lim}`, box.l + 0.82 * (box.r - box.l), ax.Y(p.lim) + (p.lim === 0 ? -22 : 24), cost, { size: 22, weight: 600, align: 'center', bg: PAL.panel });
     }
+    ctx.save(); ctx.beginPath(); ctx.rect(box.l, box.t - 6, box.r - box.l, box.b - box.t + 6); ctx.clip();
     pick.curve(ctx, (v) => ratioAt(PAIRS[v]), T0, T1, ax.X, ax.Y, cost, 5, 200);
+    ctx.restore();
     const r = p.f(N) / p.g(N);
     dot(ctx, ax.X(T1), ax.Y(Math.max(lo, Math.min(r, hi * 1.08))), cost, true, 9);
-    const goes = p.lim === Infinity ? '\\to \\infty' : `\\to ${p.lim}`;
-    const verdict = p.lim === Infinity ? `${kc(p.ft)} \\in \\Omega(${kc(p.gt)})` : p.lim === 0 ? `${kc(p.ft)} \\in O(${kc(p.gt)})` : `${kc(p.ft)} = \\Theta(${kc(p.gt)})`;
-    tex(d.readout, `${kc('\\dfrac{f(n)}{g(n)}')} = ${fmt(r, r < 100 ? 2 : 0)} \\text{ at } ${ks(`n = ${commas(N)}`)},\\quad ${goes},\\quad ${verdict}`);
+    const goes = `\\text{tending to } ${p.lim === Infinity ? '\\infty' : p.lim}`;
+    const verdict = p.lim === Infinity ? `${kc('f(n)')} \\in \\Omega(${kc('g(n)')})` : p.lim === 0 ? `${kc('f(n)')} \\in O(${kc('g(n)')})` : `${kc('f(n)')} = \\Theta(${kc('g(n)')})`;
+    tex(d.readout, `${kc('\\tfrac{f(n)}{g(n)}')} = ${r < 100 ? fmt(r, 2) : tn(r)} \\text{ at } ${ks(`n = ${tn(N)}`)},\\ ${goes}:\\quad ${verdict}`);
   }
   register(d.fig, { update: () => {}, draw });
 })();
