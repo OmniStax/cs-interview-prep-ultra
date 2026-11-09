@@ -9,7 +9,7 @@ Status: **agreed** (2026-11-08, METHOD §4.4 decision 19: every recommendation a
 5. Worked example and Huntington–Hill: `jeffe:0.3` (ApportionCongress) carried whole in 1.1 (decision 18), the home of `apportionment` (decision 19).
 6. Erickson's 0.2 "Compass and Straightedge": carried whole with the 0.2 blocks, no concept row (decision 19).
 7. Erickson text: transcribed from the PDF, never from the cached `.txt`.
-8. Translation: the three 1.5 blocks from OI Wiki (≈1,420 words) under `docs/prompts/translate.md`, AI-marked as translations; no OI Wiki code copied.
+8. Translation: the three 1.5 blocks from OI Wiki (≈1,420 words) under `docs/prompts/translate.md`, AI-marked as translations; no OI Wiki code copied. Terms in the book's `glossary.en.json`; forced scenarios below and in `translation-notes.md`.
 9. Bridges: B2 and B3 in the leads, B5 as links; B1 is settled by item 6; no bridge in the text. A bridge that does not fit the lead goes back to the user.
 10. Errata: notes 1–12 and 14 of `exploration.md` as correction footnotes, AI-marked; the source text unchanged.
 11. Leads: one or two sentences, AI-marked, naming the section's tier (all six sections Essential) and the concepts of another tier (1.1 lattice and Huntington–Hill Advanced; 1.2 harmonic Advanced; 1.3 multivariate Big-O Advanced; 1.5 potential Advanced; 1.6 indicators Advanced), the indexing convention, and the section's bridges, within 80 words. 1.6's lead carries one sentence on the three probability notations (decision 19).
@@ -80,4 +80,12 @@ Per kind: **check** items, the judge's top three ranked entries per concept (an 
 | 1.6 | indicator-variables | none | none (MCS 19.x unkeyed) | kattis fruitbaskets (AI tests) | 6.042J F05 ps10 #8 (above) |
 | 1.6 | geometric-expectation | none | none (MCS 19.x unkeyed) | none | 6.042J F05 ps10 #1 (above) |
 
+Numbering (chapter 1 pass): this file numbers Erickson's chapter 0 exercises one higher than his PDF prints them (0 to 4), so its ex. 1, 2, 3, 4 and 5 are his printed 0, 1, 2, 3 and 4; the sections' `exercise_notes` use the printed numbers.
+
 Trace items deferred: OpenDSA CompareGrowth and GrowthRatesPRO (1.3). Every Kattis card here is CC BY-SA 3.0 (`kattis-by-sa`); its tests and reference are AI-written and marked. Left out and named in `exercise_notes`: every unkeyed written item above, the partly keyed Levin and Applied Combinatorics sets, the unkeyed NC cards (jeffe-notes 01 and 09) and the statement-only Project Euler cards.
+
+## Forced scenarios (translation, `docs/prompts/translate.md` §4)
+
+| section | where | what was done | why |
+|---|---|---|---|
+| 1.5 | the first sentence of 引入, 聚合分析, 记账分析 and 势能分析 | OI Wiki's parenthesised English glosses after its Chinese terms are not repeated after the English term | §4.3: the gloss reads as a repetition in English |

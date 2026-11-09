@@ -462,16 +462,30 @@ These are notes on kept-whole text. The source words are not changed silently.
    `for i ← 1 to n − R` should be R − n. Only if 0.3 is carried.
 7. Erickson 0.6, "T(x, y) ≤ T(⌊x/2⌋, 2y) + 2": up to 4 operations per step (the O(log x)
    conclusion stands).
-8. Erickson 0.6, "*unsorted* array" contradicts 0.3's "*sorted* array".
+8. Erickson 0.6, "The Census Bureau implements the priority queue as an *unsorted* array"
+   contradicts 0.3's "the Census Bureau uses a sorted array, stored in a single column of an
+   Excel spreadsheet, which is recalculated from scratch at every iteration" (worded so in
+   1.4's note, which links back to 1.1's block).
 9. Erickson 0.6, "twice much time": missing "as".
 10. OpenDSA AnalLower, "the upper and lower bounds always meet": contradicted by its own
     footnote example.
-11. brisk counting: the printed digits of 52! are wrong after the eleventh digit.
+11. brisk counting: the printed digits of 52! are right in their first thirteen digits
+    (80,658,175,170,94…) and wrong from the fourteenth on (corrected in the chapter 1 pass;
+    1.6's note had it right).
 12. brisk probability, "total number of events": should be outcomes.
 13. brisk "Pr(Sonic) = 1500/…": the numerator should be 1000. Only if #Total probability
     is added; it is not in the locator.
 14. OI Wiki amortized-analysis: m means the array size in 聚合分析 and the capacity in
     势能分析 (a notation note, new in this pass).
+
+**Chapter 1, found while building (added in the chapter 1 pass, 2026-11-09)**
+
+32. Erickson 0.6, "some underlying data structure of subroutine": should be "or" (1.4,
+    note `err-or`).
+33. brisk probability, "Pr(P) = .7" names the event that a rock singer wins *P*; from the
+    next paragraph on, and in its Figure 4.1, it is *R* (1.6, note `err-p-r`).
+34. brisk counting exercise (costume): the key's 300 counts skipping all three items; read as
+    "keep at least one" it is 299 (1.6, note `err-costume`).
 
 **Chapter 2**
 

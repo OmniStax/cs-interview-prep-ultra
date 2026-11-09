@@ -8,7 +8,7 @@
  "concepts": [
   {
    "id": "algorithm",
-   "name": "What an algorithm is",
+   "name": "Algorithm",
    "kind": "definition",
    "statement": "An algorithm is an explicit, precise, unambiguous, mechanically executable sequence of elementary instructions, usually intended to accomplish a specific purpose.",
    "tier": "core",
@@ -24,6 +24,7 @@
     }
    ],
    "aliases": [
+    "What an algorithm is",
     "algorithm definition"
    ],
    "open_prose": true,
@@ -31,9 +32,9 @@
   },
   {
    "id": "underspecified-algorithm",
-   "name": "What makes a description not an algorithm",
+   "name": "Underspecified algorithm",
    "kind": "idea",
-   "statement": "Steve Martin's 'how to be a millionaire and never pay taxes' (step one: get a million dollars) is not an algorithm because its first step is not an elementary, unambiguous instruction, though it is a perfectly good reduction.",
+   "statement": "Martin’s “how to become a millionaire and never pay taxes” is not an algorithm, because its first step, get a million dollars, is not an elementary, unambiguous instruction; it is a perfectly good reduction.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -48,15 +49,17 @@
      "inventory": "jeffe"
     }
    ],
-   "aliases": [],
+   "aliases": [
+    "What makes a description not an algorithm"
+   ],
    "open_prose": true,
    "notes": ""
   },
   {
    "id": "describing-algorithms",
-   "name": "Describing an algorithm: what, how, why, how fast",
+   "name": "Describing an algorithm",
    "kind": "skill",
-   "statement": "A complete algorithm description gives a precise problem specification, the algorithm itself in pseudocode/structured English (loops written as loops, recursion as recursion), a correctness proof, and a running-time analysis.",
+   "statement": "A complete description of an algorithm gives what (a precise specification of the problem), how (the algorithm itself, loops written as loops and recursion as recursion), why (a proof that it solves the problem) and how fast (an analysis of its running time).",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -72,6 +75,7 @@
     }
    ],
    "aliases": [
+    "Describing an algorithm: what, how, why, how fast",
     "problem specification",
     "pseudocode"
    ],
@@ -82,7 +86,7 @@
    "id": "need-for-efficiency",
    "name": "The need for efficiency",
    "kind": "idea",
-   "statement": "Naive array/list implementations that scan every element do not scale: 10^6 searches over 10^6 items is 10^12 inspections, about 1000 seconds at 10^9 operations per second, and far worse at web scale, so the structure must avoid inspecting most of the data.",
+   "statement": "Scanning every item does not scale: 10^6 searches over 10^6 items is 10^12 inspections, about 1000 seconds at 10^9 operations a second, so a data structure must be organised so that most operations inspect few items.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -101,9 +105,9 @@
   },
   {
    "id": "interface-vs-implementation",
-   "name": "Interface versus implementation",
+   "name": "Interface and implementation",
    "kind": "definition",
-   "statement": "An interface (abstract data type) specifies the operations a data structure supports and their semantics; an implementation gives the internal representation and the algorithms. One interface can have many implementations.",
+   "statement": "An interface, or abstract data type, names the operations a data structure supports and what they mean; an implementation gives its internal representation and the algorithms for the operations. One interface can have many implementations.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -117,6 +121,7 @@
     }
    ],
    "aliases": [
+    "Interface versus implementation",
     "abstract data type",
     "ADT"
    ],
@@ -125,9 +130,9 @@
   },
   {
    "id": "lattice-multiplication",
-   "name": "Lattice (grade-school) multiplication",
+   "name": "Lattice multiplication",
    "kind": "result",
-   "statement": "Multiplying an m-digit number by an n-digit number digit by digit, summing partial products by place value, takes O(mn) time.",
+   "statement": "Multiplying an m-digit number by an n-digit number by summing the partial products X[i] · Y[j] · 10^(i+j), in whatever order and with whatever handling of the carries, takes O(mn) time, dominated by the single-digit multiplications.",
    "tier": "stretch",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -143,6 +148,7 @@
     }
    ],
    "aliases": [
+    "Lattice (grade-school) multiplication",
     "grade-school multiplication",
     "long multiplication"
    ],
@@ -151,9 +157,9 @@
   },
   {
    "id": "peasant-multiplication",
-   "name": "Duplation and mediation (peasant multiplication)",
+   "name": "Peasant multiplication",
    "kind": "result",
-   "statement": "x*y can be computed using only halving, doubling, parity tests and addition: halve x and double y repeatedly, summing the y values for which x is odd; it takes O(mn) digit operations.",
+   "statement": "x · y can be computed with only parity tests, addition, doubling (duplation) and halving (mediation): halve x and double y, adding y to the product whenever x is odd; this takes O(log x) such steps and O(mn) time for an m-digit and an n-digit number.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -169,6 +175,7 @@
     }
    ],
    "aliases": [
+    "Duplation and mediation (peasant multiplication)",
     "Russian peasant multiplication",
     "Egyptian multiplication",
     "PeasantMultiply"
@@ -178,9 +185,9 @@
   },
   {
    "id": "apportionment",
-   "name": "Huntington-Hill apportionment",
+   "name": "Huntington–Hill apportionment",
    "kind": "result",
-   "statement": "Seats can be apportioned by repeatedly giving the next seat to the state with the largest priority P/sqrt(r(r+1)), kept in a priority queue that the algorithm uses only through its operations (NewPriorityQueue, Insert, ExtractMax); the output, and so the algorithm's correctness, does not depend on how the queue is implemented.",
+   "statement": "Huntington–Hill gives each state one representative, then each next seat to the state of highest priority P/√(r(r+1)), held in a priority queue used only through NewPriorityQueue, Insert and ExtractMax; the output, and so its correctness, does not depend on how the queue is implemented.",
    "tier": "stretch",
    "chapter": "ch-cost",
    "section": "what-is-an-algorithm",
@@ -196,6 +203,7 @@
     }
    ],
    "aliases": [
+    "Huntington-Hill apportionment",
     "congressional apportionment"
    ],
    "open_prose": true,
@@ -203,9 +211,9 @@
   },
   {
    "id": "logarithms",
-   "name": "Logarithms and exponentials",
+   "name": "Logarithms",
    "kind": "definition",
-   "statement": "log_b k is the x with b^x = k; log without a base means base 2 in this book and ln is the natural log. log_b k is roughly the number of times k can be divided by b before reaching 1; change of base: ln k = (ln 2)(log k).",
+   "statement": "log_b k is the unique x with b^x = k; log with no base means log₂, and ln k is log_e k, the natural logarithm, with e ≈ 2.71828. log_b k is roughly the number of times k must be divided by b before the result is at most 1. A logarithm changes base as log_b k = log_a k / log_a b, so ln k = (ln 2)(log k).",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "growth-functions",
@@ -219,6 +227,7 @@
     }
    ],
    "aliases": [
+    "Logarithms and exponentials",
     "binary logarithm"
    ],
    "open_prose": true,
@@ -226,9 +235,9 @@
   },
   {
    "id": "factorials-stirling",
-   "name": "Factorials and Stirling's approximation",
+   "name": "Factorials and Stirling’s approximation",
    "kind": "result",
-   "statement": "n! = sqrt(2 pi n)(n/e)^n e^{alpha(n)} with 1/(12n+1) < alpha(n) < 1/(12n), so ln(n!) = n ln n - n + (1/2) ln(2 pi n) + alpha(n); binomial coefficients are defined from factorials.",
+   "statement": "n! = 1·2·…·n counts the orderings of n distinct elements, and 0! = 1. Stirling’s Approximation gives n! = √(2πn)(n/e)ⁿ e^α(n) with 1/(12n + 1) < α(n) < 1/(12n), and so ln(n!) = n ln n − n + ½ ln(2πn) + α(n). The binomial coefficient n!/(k!(n − k)!) counts the k-element subsets of an n-element set.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "growth-functions",
@@ -244,6 +253,7 @@
     }
    ],
    "aliases": [
+    "Factorials and Stirling's approximation",
     "Stirling's formula"
    ],
    "open_prose": true,
@@ -253,7 +263,7 @@
    "id": "harmonic-numbers",
    "name": "Harmonic numbers",
    "kind": "definition",
-   "statement": "H_k = 1 + 1/2 + ... + 1/k, with ln k < H_k <= ln k + 1.",
+   "statement": "The k-th harmonic number is H_k = 1 + 1/2 + 1/3 + … + 1/k. It has no simple closed form, but ln k < H_k ≤ ln k + 1 for k ≥ 1, because H_k is the area of k unit-width rectangles that lie over the curve 1/x from 1, or, after the first, under it.",
    "tier": "stretch",
    "chapter": "ch-cost",
    "section": "growth-functions",
@@ -276,7 +286,7 @@
    "id": "big-o",
    "name": "Big-O notation",
    "kind": "definition",
-   "statement": "f(n) is O(g(n)) when f grows no faster than a constant multiple of g for all large n; it states an upper bound on an algorithm's growth.",
+   "statement": "For a function f(n), O(f(n)) is the set of functions g(n) for which there exist c > 0 and n₀ such that g(n) ≤ c·f(n) for all n ≥ n₀: an upper bound on growth, with constant factors and small n set aside.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "asymptotic-notation",
@@ -310,7 +320,7 @@
    "id": "big-omega-theta",
    "name": "Big-Omega and Big-Theta",
    "kind": "definition",
-   "statement": "Omega gives an asymptotic lower bound and Theta a tight bound (both upper and lower); together with O they compare growth rates.",
+   "statement": "T(n) is in Ω(g(n)) when there exist positive constants c and n₀ such that T(n) ≥ c·g(n) for all n > n₀, a lower bound; it is Θ(h(n)) when it is in both O(h(n)) and Ω(h(n)); and the limit of f(n)/g(n) as n grows (∞, 0 or a constant other than zero) puts f(n) in Ω(g(n)), O(g(n)) or Θ(g(n)).",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "asymptotic-notation",
@@ -346,14 +356,14 @@
   },
   {
    "id": "multivariate-big-o",
-   "name": "Big-Oh in several variables",
+   "name": "Analysis with multiple parameters",
    "kind": "definition",
-   "statement": "O(f(n_1,...,n_k)) is the set of g with g <= c f for all (n_1,...,n_k) where g >= z, for some c > 0 and z; this agrees with the one-variable definition and is used for bounds such as O(n+m) and O(b + n/b).",
+   "statement": "When an algorithm’s cost depends on several parameters, the analysis keeps each one for the steps that depend on it (Θ(P + C log C) for P pixels and C colours) rather than folding them into one input size.",
    "tier": "stretch",
    "chapter": "ch-cost",
    "section": "asymptotic-notation",
    "prereqs": [
-    "big-o"
+    "big-omega-theta"
    ],
    "treatments": [
     {
@@ -370,16 +380,17 @@
     }
    ],
    "aliases": [
+    "Big-Oh in several variables",
     "Analysing problems with multiple parameters"
    ],
    "open_prose": true,
-   "notes": "Merged 2 rows (ods:multivariate-big-oh, opendsa:AlgAnal/AnalMultiple). OpenDSA AnalMultiple is the winner (judgements/ch01-03-reconciled.md); added from the reconciliation pass."
+   "notes": "Merged 2 rows (ods:multivariate-big-oh, opendsa:AlgAnal/AnalMultiple). OpenDSA AnalMultiple is the winner (judgements/ch01-03-reconciled.md); added from the reconciliation pass. Edge to big-omega-theta added: OpenDSA's Multiple Parameters (the winner) states its bound as Θ(P + C log C), so it rests on Θ, which the same section introduces just before it (1.3; synced with book.json in the chapter 1 pass)."
   },
   {
    "id": "word-ram",
    "name": "The w-bit word-RAM model",
    "kind": "definition",
-   "statement": "Memory is cells holding w-bit words; arithmetic, comparisons and bitwise operations on words take constant time, allocating k words takes O(k) time, and the only assumption is w >= log n. Space is counted in words, and an element occupies one word.",
+   "statement": "Memory is cells, each holding a w-bit word; arithmetic, comparisons and bitwise operations on words take constant time, any cell is read or written in constant time, allocating a block of k words takes O(k) time, and the only assumption about the word size is w ≥ log n. Space is measured in words.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "analysing-algorithms",
@@ -403,9 +414,9 @@
   },
   {
    "id": "complexity-analysis",
-   "name": "Analysing an algorithm's running time and space",
+   "name": "Analysing running time and space",
    "kind": "skill",
-   "statement": "Derive the Big-O time and space cost of a piece of code by counting how its work grows with input size.",
+   "statement": "Measure an algorithm’s running time by counting how often it executes an instruction or reaches a milestone, as a function of its input: nested loops give nested sums, a recursive algorithm a recurrence, and the count may depend on how an underlying data structure is implemented; space and other resources are counted the same way.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "analysing-algorithms",
@@ -428,6 +439,7 @@
     }
    ],
    "aliases": [
+    "Analysing an algorithm's running time and space",
     "Asymptotic running-time analysis",
     "worst-case analysis",
     "Big-O"
@@ -439,7 +451,7 @@
    "id": "running-time-guarantees",
    "name": "Worst-case, amortized and expected running times",
    "kind": "definition",
-   "statement": "Worst-case f(n): no operation takes longer. Amortized f(n): any sequence of m operations takes at most m f(n) total. Expected f(n): the running time is a random variable over the structure's own random choices with mean at most f(n). Illustrated by mortgage payments versus buying outright, and fire insurance versus self-insuring.",
+   "statement": "A worst-case running time f(n) means no single operation ever takes longer than f(n); an amortized running time f(n) means any sequence of m operations takes at most m f(n); an expected running time f(n) means the running time is a random variable, over the data structure’s own random choices, whose expected value is at most f(n).",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "analysing-algorithms",
@@ -465,7 +477,7 @@
    "id": "amortized-analysis",
    "name": "Amortized analysis",
    "kind": "idea",
-   "statement": "The cost of an operation can be averaged over a worst-case sequence of operations, so occasional expensive steps (like a resize) still give a small per-operation bound.",
+   "statement": "Amortized analysis bounds the average cost per operation over a worst-case sequence of operations, spreading the cost of occasional expensive operations (a resize) over the cheap ones; it involves no probability.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "amortized-analysis",
@@ -513,9 +525,9 @@
   },
   {
    "id": "aggregate-accounting",
-   "name": "Summation, taxation and charging methods",
+   "name": "Aggregate analysis and the accounting method",
    "kind": "skill",
-   "statement": "Bound total cost by summing over operations, by charging each operation a fixed 'tax' that prepays future work, or by charging each unit of work to an earlier event that pays for it.",
+   "statement": "Bound the total cost of a sequence of operations by summing it and averaging it over the operations (aggregate analysis), or by charging each operation a fixed amortized cost whose surplus is stored as credit to pay for later expensive operations (the accounting method).",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "amortized-analysis",
@@ -543,6 +555,7 @@
     }
    ],
    "aliases": [
+    "Summation, taxation and charging methods",
     "aggregate method",
     "accounting method",
     "banker's method",
@@ -554,9 +567,9 @@
   },
   {
    "id": "potential-method",
-   "name": "The potential method",
+   "name": "Potential method",
    "kind": "skill",
-   "statement": "Define a non-negative potential Phi on data-structure states with Phi(initial)=0; the amortized cost of an operation is its actual cost plus the change in Phi, and total amortized cost bounds total actual cost.",
+   "statement": "Define a potential Φ on the states of a data structure with Φ(S) ≥ Φ(S₀) for every reachable state; an operation’s amortized cost is its actual cost plus the change in Φ, and the total amortized cost of any sequence bounds its total actual cost.",
    "tier": "stretch",
    "chapter": "ch-cost",
    "section": "amortized-analysis",
@@ -584,10 +597,10 @@
     }
    ],
    "aliases": [
+    "The potential method",
     "physicist's method",
     "Potential method of amortized analysis",
-    "potential function",
-    "Potential method"
+    "potential function"
    ],
    "open_prose": true,
    "notes": "Merged 3 rows (jeffe-notes:potential-method, ods:potential-method, oiwiki:basic/amortized-analysis#势能分析). OI Wiki (in translation) is the winner; Winner and locator: judgements/ch01-03-reconciled.md, final winner table. The ODS treatment (ods:arrays#lem:dualarraydeque-amortized) is the lemma that dual-array-deque's winning passage holds whole (3.3); a later run must not pick it for this concept too. Bridge B14a links the two uses of \"potential\". Edge to dynamic-array-cost dropped: ODS states the potential method inside its DualArrayDeque lemma; the method itself rests on amortized analysis, not on array resizing. Keeps amortized analysis in chapter 1 as CIU orders it."
@@ -596,7 +609,7 @@
    "id": "counting",
    "name": "Factorials, permutations and combinations",
    "kind": "result",
-   "statement": "There are n! orderings of n items, n!/(n-k)! ordered selections of k, and C(n,k)=n!/(k!(n-k)!) unordered ones.",
+   "statement": "If a whole can be divided into k parts with n_i choices for the i-th part, there are n₁ × n₂ × … × n_k ways of doing the whole; so there are n! orderings of n items, n!/(n − k)! ordered selections of k of them, and (n choose k) = n!/((n − k)! k!) unordered ones.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "counting-expectation",
@@ -653,7 +666,7 @@
    "id": "probability-basics",
    "name": "Basic probability",
    "kind": "definition",
-   "statement": "Probability of an event as favourable over equally likely outcomes, with sum and product rules for unions and independent events.",
+   "statement": "The outcomes form the sample space Ω and an event is a subset of it; a probability measure Pr gives each event a number in [0, 1] with Pr(Ω) = 1, Pr(A) ≥ 0 and Pr(A ∪ B) = Pr(A) + Pr(B) − Pr(A ∩ B). When all N outcomes are equally likely, Pr(A) = |A|/N.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "counting-expectation",
@@ -764,7 +777,7 @@
    "id": "conditional-probability",
    "name": "Conditional probability and independence",
    "kind": "definition",
-   "statement": "P(A|B)=P(A and B)/P(B); A and B are independent when P(A and B)=P(A)P(B).",
+   "statement": "Pr(A|K) = Pr(A ∩ K)/Pr(K) is the probability of A once K is known to have occurred; A and B are independent when Pr(A|B) = Pr(A), so that knowing one tells nothing about the other.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "counting-expectation",
@@ -938,7 +951,7 @@
    "id": "linearity-of-expectation",
    "name": "Expected value and linearity of expectation",
    "kind": "result",
-   "statement": "For any random variables X_i and constants a_i, E[sum a_i X_i] = sum a_i E[X_i], with no independence required; indicator variables turn counting questions into sums of probabilities.",
+   "statement": "The expected value of a discrete random variable is E[X] = Σ_x x·Pr{X = x}; for any random variables, E[X + Y] = E[X] + E[Y] and E[Σ X_i] = Σ E[X_i], so a complicated random variable can be broken into a sum of simpler ones.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "counting-expectation",
@@ -980,7 +993,7 @@
    "id": "indicator-variables",
    "name": "Indicator random variables",
    "kind": "skill",
-   "statement": "Write a count as a sum of 0/1 indicator variables I_i; then E[sum I_i] = sum Pr{I_i = 1}. Example: the expected number of heads in k fair tosses is k/2.",
+   "statement": "Write a count as a sum of indicator variables I_i, each 1 if its event happens and 0 otherwise; then E[Σ I_i] = Σ Pr{I_i = 1}, as for the k/2 expected heads in k fair tosses.",
    "tier": "stretch",
    "chapter": "ch-cost",
    "section": "counting-expectation",
@@ -1003,7 +1016,7 @@
    "id": "geometric-expectation",
    "name": "Expected tosses until the first head",
    "kind": "result",
-   "statement": "If T counts fair coin tosses up to and including the first head, E[T] = 2 (equivalently sum_{i>=1} i/2^i = 2). Reused for skiplist heights and bottom-up heap construction.",
+   "statement": "If T is the number of times a fair coin is tossed up to and including the first time it comes up heads, then E[T] = 2.",
    "tier": "core",
    "chapter": "ch-cost",
    "section": "counting-expectation",

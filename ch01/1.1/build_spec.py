@@ -225,6 +225,11 @@ MARKS = [
     # running times, which are costs
     ('lattice', '<strong><em>O</em>(<em>mn</em>) <em>time</em></strong>', '<span data-type="cost"><strong><em>O</em>(<em>mn</em>) <em>time</em></strong></span>'),
     ('peasant', '<strong><em>O</em>(<em>mn</em>) <em>time</em></strong>', '<span data-type="cost"><strong><em>O</em>(<em>mn</em>) <em>time</em></strong></span>'),
+    # the other cost bounds of the peasant passage, as 1.4 marks Erickson's (chapter 1 pass)
+    ('peasant', 'performs <em>O</em>(log <em>x</em>) parity', 'performs <span data-type="cost"><em>O</em>(log <em>x</em>)</span> parity'),
+    ('peasant', 'this bound to <em>O</em>(log min{<em>x</em>, <em>y</em>})', 'this bound to <span data-type="cost"><em>O</em>(log min{<em>x</em>, <em>y</em>})</span>'),
+    ('peasant', 'at most <em>O</em>(log(<em>xy</em>)) = <em>O</em>(log max{<em>x</em>, <em>y</em>}) single-digit operations', 'at most <span data-type="cost"><em>O</em>(log(<em>xy</em>)) = <em>O</em>(log max{<em>x</em>, <em>y</em>}) single-digit operations</span>'),
+    ('peasant', 'algorithm is <em>O</em>(log min{<em>x</em>, <em>y</em>} · log max{<em>x</em>, <em>y</em>}) = <em>O</em>(log <em>x</em> · log <em>y</em>).', 'algorithm is <span data-type="cost"><em>O</em>(log min{<em>x</em>, <em>y</em>} · log max{<em>x</em>, <em>y</em>}) = <em>O</em>(log <em>x</em> · log <em>y</em>)</span>.'),
     # referents the figures draw
     ('peasant', 'non-negative integers <em>x</em> and <em>y</em>', 'non-negative integers <span data-ref="x"><em>x</em></span> and <span data-ref="y"><em>y</em></span>'),
     ('compass', '<em>C</em>, and <em>D</em>, and the goal is to construct a point <em>Z</em>',
@@ -250,7 +255,7 @@ SECTION = {
         'The OpenDSA items the chapter config lists for this section (ProblemAlgorithmProgramTF1–TF11 with AnalPrelimSumm, '
         'AlgAnlsMCQrelalgprb, IntroMCQeff and IntroMCQeff2, ADTMCQadt, ADTMCQinter and ADTMCQds with IntroADTSumm) wait for the '
         'converter of OpenDSA’s Khan-format exercises and are not here yet; AlgAnlsMCQalgdfn is not used, since its key contradicts '
-        'Erickson’s definition. Erickson’s chapter 0 exercises 1 and 5 have no published answers and are left out. ODS chapter 1 '
+        'Erickson’s definition. Erickson’s chapter 0 exercises 0 and 4 (the chess player, and Huntington–Hill by divisor) have no published answers and are left out. ODS chapter 1 '
         'exercises 1, 5, 6 and 7 are held for chapters 3, 5 and 8, which define the interfaces they use, and Erickson’s chapter 1 '
         'Factorial item, which uses lattice and peasant multiplication, for chapter 4. Peasant multiplication has open test cases '
         '(TheAlgorithms, trekhleb) but no open exercise statement, so it has no card. The difference-of-squares tests are '

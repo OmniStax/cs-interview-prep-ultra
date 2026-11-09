@@ -188,7 +188,7 @@ SECTION = {
              '<span data-concept="factorials-stirling">factorials</span> and '
              '<span data-concept="harmonic-numbers">harmonic numbers</span>; harmonic numbers are Advanced. '
              'log with no base means log<sub>2</sub>, and ln is the natural logarithm. Harmonic numbers return with '
-             'random binary search trees in <a href="/cs-interview-prep-ultra/ch08/8.6/">8.6</a>.'),
+             'random binary search trees in <a href="/cs-interview-prep-ultra/ch08/8.6/">Section 8.6</a>.'),
     'objectives': [], 'summary_html': '',
     'notes': ('The opening of ODS’s Mathematical Background, which points to Lehman, Leighton and Meyer’s textbook, and '
               'the rest of its random binary search tree section are left out here.'),

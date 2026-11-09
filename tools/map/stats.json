@@ -286,7 +286,7 @@
    "graham-scan"
   ]
  },
- "hasse_removed": 107,
+ "hasse_removed": 108,
  "secsizes": {
   "1": 7,
   "2": 38,
@@ -369,6 +369,10 @@
   "openintro-stats": "openintro"
  },
  "addedge": [
+  [
+   "multivariate-big-o",
+   "big-omega-theta"
+  ],
   [
    "binary-tree",
    "tree"

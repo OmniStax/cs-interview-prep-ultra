@@ -165,6 +165,7 @@ CS = lambda s: f'<span data-type="cost">{s}</span>'  # noqa: E731
 MARKS = [
     # errata 7, 8, 9 (correction notes)
     ('running-time', 'twice much time', 'twice much time' + FN('err-twice')),
+    ('running-time', 'underlying data structure of subroutine.', 'underlying data structure of subroutine.' + FN('err-or')),
     ('running-time', '+ 2 with base case', '+ 2' + FN('err-peasant') + ' with base case'),
     ('running-time', 'runs in <strong><em>O</em>(<em>Rn</em>) <em>time</em></strong>.',
      'runs in ' + CS('<strong><em>O</em>(<em>Rn</em>) <em>time</em></strong>') + '.' + FN('err-census')),
@@ -252,10 +253,14 @@ SECTION = {
                  '<em>T</em>(<em>x</em>, <em>y</em>) ≤ <em>T</em>(⌊<em>x</em>/2⌋, 2<em>y</em>) + 4. The bound '
                  '<em>T</em>(<em>x</em>, <em>y</em>) = <em>O</em>(log <em>x</em>) is unchanged.'},
         {'id': 'err-census', 'kind': 'correction',
-         'html': 'Here the Census Bureau’s priority queue is an unsorted array; in Erickson’s Congressional Apportionment '
-                 '(1.1) it is a <em>sorted</em> array, kept in one spreadsheet column and recalculated from scratch at every '
-                 'iteration. With the unsorted array, ExtractMax scans all <em>n</em> states and the <em>O</em>(<em>Rn</em>) '
-                 'bound follows as stated; the sorted column recalculated for every seat costs at least Θ(<em>n</em>) a seat '
-                 'as well, so either way the Bureau’s implementation is no faster than Θ(<em>Rn</em>).'},
+         'html': 'Here the Census Bureau’s priority queue is an <em>unsorted</em> array; in Erickson’s '
+                 '<a href="/cs-interview-prep-ultra/ch01/1.1/#apportionment">Congressional Apportionment</a> (Section 1.1) '
+                 'the Bureau uses a <em>sorted</em> array, stored in a single column of an Excel spreadsheet and recalculated '
+                 'from scratch at every iteration. With the unsorted array, ExtractMax scans all <em>n</em> states and the '
+                 '<em>O</em>(<em>Rn</em>) bound follows as stated; recalculating the sorted column for every seat takes '
+                 'Ω(<em>n</em>) time a seat as well, so either way the Bureau’s implementation takes Ω(<em>Rn</em>) time.'},
+        {'id': 'err-or', 'kind': 'correction',
+         'html': '“some underlying data structure of subroutine” should read “some underlying data structure '
+                 '<em>or</em> subroutine”.'},
     ],
 }

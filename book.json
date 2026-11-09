@@ -17,44 +17,88 @@
   "source_url": "https://github.com/OmniStax/cs-interview-prep-ultra",
   "sources": [
     {
+      "id": "ods",
       "title": "Open Data Structures",
-      "url": "https://github.com/patmorin/ods"
+      "url": "https://github.com/patmorin/ods",
+      "author": "Pat Morin",
+      "license": "CC BY 2.5 Canada",
+      "license_url": "https://creativecommons.org/licenses/by/2.5/ca/"
     },
     {
+      "id": "cpa",
       "title": "Algorithms for Competitive Programming (cp-algorithms)",
-      "url": "https://github.com/cp-algorithms/cp-algorithms"
+      "url": "https://github.com/cp-algorithms/cp-algorithms",
+      "author": "cp-algorithms contributors",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     {
+      "id": "wikipedia",
       "title": "Wikipedia",
-      "url": "https://en.wikipedia.org/"
+      "url": "https://en.wikipedia.org/",
+      "author": "Wikipedia contributors",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     {
+      "id": "oiwiki",
       "title": "OI Wiki",
-      "url": "https://github.com/OI-wiki/OI-wiki"
+      "url": "https://github.com/OI-wiki/OI-wiki",
+      "language": "zh",
+      "author": "OI Wiki Team",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "notice": "Also shared under <a href=\"https://github.com/zTrix/sata-license\">The Star And Thank Author License</a>: with thanks to the <a href=\"https://github.com/OI-wiki/OI-wiki/graphs/contributors\">OI Wiki Team and its contributors</a>."
     },
     {
+      "id": "jeffe",
       "title": "Algorithms (Jeff Erickson, 1st edition, June 2019)",
-      "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/"
+      "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
+      "author": "Jeff Erickson",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
     },
     {
+      "id": "brisk",
       "title": "A Cool Brisk Walk Through Discrete Mathematics",
-      "url": "https://github.com/divilian/cool-brisk-walk"
+      "url": "https://github.com/divilian/cool-brisk-walk",
+      "author": "Stephen Davies",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     {
+      "id": "opendsa",
       "title": "OpenDSA eTextbook",
-      "url": "https://github.com/OpenDSA/OpenDSA"
+      "url": "https://github.com/OpenDSA/OpenDSA",
+      "author": "Cliff Shaffer and the OpenDSA Project Contributors",
+      "copyright": "Copyright (c) 2012-2020 by the OpenDSA Project Contributors",
+      "license": "MIT",
+      "license_url": "https://opensource.org/license/mit"
     },
     {
+      "id": "mcs2018",
       "title": "Mathematics for Computer Science (2018)",
-      "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf"
+      "url": "https://courses.csail.mit.edu/6.042/spring18/mcs.pdf",
+      "author": "Eric Lehman, F. Thomson Leighton, Albert R. Meyer",
+      "copyright": "© 2018 Eric Lehman, F Tom Leighton, Albert R Meyer",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/"
     },
     {
+      "id": "ciu",
       "title": "Coding Interview University",
-      "url": "https://github.com/jwasham/coding-interview-university"
+      "url": "https://github.com/jwasham/coding-interview-university",
+      "author": "John Washam",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
     },
     {
+      "id": "sdp",
       "title": "The System Design Primer",
-      "url": "https://github.com/donnemartin/system-design-primer"
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "author": "Donne Martin",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
     }
   ],
   "license": "CC BY-SA 4.0",

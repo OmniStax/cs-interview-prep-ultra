@@ -40,7 +40,7 @@ Taking the dynamic array as the example, each insert operation can be assigned a
 
 2.  **Spending credit**:
     -   When the array is full, a resize must be performed, with actual cost $O(m)$, where $m$ is the current size of the array.
-    -   Suppose the array holds $n$ elements before the resize; since the $n/2$ elements of the latter half of the original array prestored $n$ units of amortized cost in all when they were inserted, this is exactly enough to pay for the cost of the resize.
+    -   Suppose the array holds $n$ elements before the resize; since the $n/2$ elements of the latter half of the original array saved $n$ units of amortized cost in all when they were inserted, this is exactly enough to pay for the cost of the resize.
 
 Here is a concrete example:
 
@@ -96,7 +96,7 @@ $$
 \Phi(h) = 2n - m
 $$
 
-where $n$ is the number of elements in the array and $m$ is the current capacity of the array. The changes of this potential function reflect the rise and fall of the prestored credit used to pay for future resizes. In the initial state, the empty array of capacity $1$, $\Phi(h_0)=-1$; in the non-empty reachable states where elements are only inserted and the array doubles when full, $m\leq 2n$, so $\Phi(h)\geq 0>\Phi(h_0)$.
+where $n$ is the number of elements in the array and $m$ is the current capacity of the array. The changes of this potential function reflect the rise and fall of the saved credit used to pay for future resizes. In the initial state, the empty array of capacity $1$, $\Phi(h_0)=-1$; in the non-empty reachable states where elements are only inserted and the array doubles when full, $m\leq 2n$, so $\Phi(h)\geq 0>\Phi(h_0)$.
 
 1.  **Insert (no resize needed)**:
     -   **Operation cost**: $O(1)$, since only one element is inserted.
@@ -142,10 +142,10 @@ The total number of operations is $n=n_{\text{push}}+n_{\text{pop}}+n_{\text{mul
 The accounting method sets aside part of the credit at each `push(x)` operation, to pay for possible future `pop()` or `multi-pop(k)` operations.
 
 1.  **`S.push(x)`**: suppose the amortized cost of each `push(x)` operation is $2$, of which $1$ unit is used for the current operation and the other $1$ unit is stored as credit, to pay for a future `pop()` or `multi-pop(k)` operation;
-2.  **`S.pop()`**: the actual cost is $1$, but since an earlier `push(x)` operation has already prestored $1$ unit of credit for it, the amortized cost is $0$;
-3.  **`S.multi-pop(k)`**: the actual cost of each popped element is $1$, which can be paid by the credit prestored by that element's earlier `push(x)` operation, so the amortized cost is $0$.
+2.  **`S.pop()`**: the actual cost is $1$, but since an earlier `push(x)` operation has already saved $1$ unit of credit for it, the amortized cost is $0$;
+3.  **`S.multi-pop(k)`**: the actual cost of each popped element is $1$, which can be paid by the credit saved by that element's earlier `push(x)` operation, so the amortized cost is $0$.
 
-From the analysis above, the credit prestored by push operations is enough to pay for the future pop operations of those elements, so the amortized cost of each operation is $O(1)$.
+From the analysis above, the credit saved by push operations is enough to pay for the future pop operations of those elements, so the amortized cost of each operation is $O(1)$.
 
 <!-- block stack-potential · source oiwiki · oiwiki:basic/amortized-analysis#扩展示例：堆栈操作, its #势能分析法 -->
 
