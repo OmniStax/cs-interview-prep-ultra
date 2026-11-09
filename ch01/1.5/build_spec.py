@@ -102,12 +102,12 @@ DERIVATIONS = [
         'source': 'OI Wiki, amortized analysis, the potential method (principle)',
         'nodes': [{
             'assumes': [
-                {'tex': r"\hat{c} = c + \Phi(S') - \Phi(S)"},
+                {'text': r'The $i$-th operation takes the data structure from the state $S_{i-1}$ to the state $S_i$, at actual cost $c_i$; its amortized cost is written $p_i$.'},
                 {'text': r'Every reachable state $S$ satisfies $\Phi(S) \geq \Phi(S_0)$.'},
             ],
-            'then': {'tex': r'\mk{p}{p_i} = \mk{c}{c_i} + \mk{a}{\Phi(S_i)} - \mk{b}{\Phi(S_{i-1})}', 'uses': [0],
-                     'why': r'The $i$-th operation takes the data structure from the state $S_{i-1}$ to the state $S_i$.'},
+            'then': {'tex': r"\mk{p}{\hat{c}} = \mk{c}{c} + \mk{a}{\Phi(S')} - \mk{b}{\Phi(S)}"},
             'steps': [
+                {'tex': r'\mk{p}{p_i} = \mk{c}{c_i} + \mk{a}{\Phi(S_i)} - \mk{b}{\Phi(S_{i-1})}', 'uses': [0]},
                 {'tex': rf'\mk{{p}}{{{PHI_SUM} p_i}} = \mk{{c}}{{{PHI_SUM} c_i}} + \mk{{d}}{{{PHI_SUM} \bigl(\Phi(S_i) - \Phi(S_{{i-1}})\bigr)}}',
                  'uses': [], 'map': {'a': 'd', 'b': 'd'}},
                 {'tex': rf'\mk{{p}}{{{PHI_SUM} p_i}} = \mk{{c}}{{{PHI_SUM} c_i}} + \mk{{e}}{{\Phi(S_m)}} - \mk{{z}}{{\Phi(S_0)}}',
@@ -126,47 +126,43 @@ DERIVATIONS = [
         'nodes': [
             {   # 0: the change in potential, no resize
                 'assumes': [
-                    {'tex': r'\Phi(h) = 2n - m'},
                     {'text': r'An insert that needs no resize adds one element and keeps the capacity: $n$ becomes $n + 1$ and $m$ stays $m$.'},
                 ],
-                'then': {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{a}{\Phi(h')} - \mk{b}{\Phi(h)}"},
+                'then': {'tex': r'\mk{L}{\Phi(h)} = \mk{b}{2n - m}'},
                 'steps': [
-                    {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{a}{2(n + 1) - m} - \mk{b}{(2n - m)}", 'uses': [0, 1]},
+                    {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{a}{2(n + 1) - m} - \mk{b}{(2n - m)}", 'uses': [0]},
                     {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{r}{2}", 'uses': [], 'map': {'a': 'r', 'b': 'r'}},
                 ],
             },
             {   # 1: its amortized cost
                 'assumes': [
-                    {'tex': r"\hat{c} = c + \Phi(S') - \Phi(S)"},
                     {'text': r'An insert that needs no resize writes one element, at actual cost $1$.'},
                     {'step': 0},
                 ],
-                'then': {'tex': r"\mk{h}{\hat{c}} = \mk{c}{c} + \mk{d}{\Phi(h') - \Phi(h)}", 'uses': [0]},
+                'then': {'tex': r"\mk{h}{\hat{c}} = \mk{c}{c} + \mk{d}{\Phi(S') - \Phi(S)}"},
                 'steps': [
-                    {'tex': r'\mk{h}{\hat{c}} = \mk{c}{1} + \mk{d}{2}', 'uses': [1, 2]},
+                    {'tex': r'\mk{h}{\hat{c}} = \mk{c}{1} + \mk{d}{2}', 'uses': [0, 1]},
                     {'tex': r'\mk{h}{\hat{c}} = \mk{r}{3}', 'uses': [], 'map': {'c': 'r', 'd': 'r'}},
                 ],
             },
             {   # 2: the change in potential, with a resize
                 'assumes': [
-                    {'tex': r'\Phi(h) = 2n - m'},
                     {'text': r'The insert that triggers a resize finds the capacity $m = n$; after it there are $n + 1$ elements and the capacity is $2n$.'},
                 ],
-                'then': {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{a}{\Phi(h')} - \mk{b}{\Phi(h)}"},
+                'then': {'tex': r'\mk{L}{\Phi(h)} = \mk{b}{2n - m}'},
                 'steps': [
-                    {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{a}{2(n + 1) - 2n} - \mk{b}{(2n - n)}", 'uses': [0, 1]},
+                    {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{a}{2(n + 1) - 2n} - \mk{b}{(2n - n)}", 'uses': [0]},
                     {'tex': r"\mk{L}{\Phi(h') - \Phi(h)} = \mk{r}{2 - n}", 'uses': [], 'map': {'a': 'r', 'b': 'r'}},
                 ],
             },
             {   # 3: its amortized cost
                 'assumes': [
-                    {'tex': r"\hat{c} = c + \Phi(S') - \Phi(S)"},
                     {'text': r'The insert that triggers a resize copies all $n$ elements into the new array and inserts the new one, at actual cost $n + 1$.'},
                     {'step': 2},
                 ],
-                'then': {'tex': r"\mk{h}{\hat{c}} = \mk{c}{c} + \mk{d}{\Phi(h') - \Phi(h)}", 'uses': [0]},
+                'then': {'tex': r"\mk{h}{\hat{c}} = \mk{c}{c} + \mk{d}{\Phi(S') - \Phi(S)}"},
                 'steps': [
-                    {'tex': r'\mk{h}{\hat{c}} = \mk{c}{n + 1} + \mk{d}{(2 - n)}', 'uses': [1, 2]},
+                    {'tex': r'\mk{h}{\hat{c}} = \mk{c}{n + 1} + \mk{d}{(2 - n)}', 'uses': [0, 1]},
                     {'tex': r'\mk{h}{\hat{c}} = \mk{r}{3}', 'uses': [], 'map': {'c': 'r', 'd': 'r'}},
                 ],
             },
@@ -183,11 +179,12 @@ SECTION = {
     'built': '2026-11-09',
     'ai': {'text': [MODEL], 'figures': [MODEL]},
     'exercise_notes': (
-        'No open exercise tests this section’s concepts. Its exercises are MIT OpenCourseWare problems with their published solutions, '
-        'under CC BY-NC-SA, and are kept apart from the book’s CC BY-SA content: 6.046J Fall 2005 problem 6-1 (Electronic Billboard) and '
-        '6.046J Spring 2012 problem 6-1 (Amortization in Balanced Binary Trees). 6.046J Spring 2015 problem 4-1 (Extreme FIFO Queues), '
-        'which needs queues, is held for Section 3.4. The exercises of Erickson’s lecture notes on amortized analysis have no published '
-        'answers and are left out.'),
+        'No open exercise tests this section’s concepts. Its one exercise is an MIT OpenCourseWare problem with its published solution, '
+        'under CC BY-NC-SA and kept apart from the book’s CC BY-SA content: 6.046J Spring 2012 problem 6-1 (Amortization in Balanced '
+        'Binary Trees). 6.046J Fall 2005 problem 6-1 (Electronic Billboard) waits until its formulas, which its handout sets in fonts '
+        'that cannot be read as text, are transcribed and checked. 6.046J Spring 2015 problem 4-1 (Extreme FIFO Queues), which needs '
+        'queues, is held for Section 3.4. The exercises of Erickson’s lecture notes on amortized analysis have no published answers and '
+        'are left out.'),
     'figures': [
         {'id': 'sim-pay-for-doubling', 'kind': 'sim', 'draws': ['key', 'cost'], 'ai': FIG_AI},
     ],

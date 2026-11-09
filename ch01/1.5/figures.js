@@ -18,6 +18,7 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
   ctx.restore();
 };
 const lerp = (a, b, k) => a + (b - a) * k;
+const neg = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphen */
 
 /* ================================================================ sim-pay-for-doubling */
 (function () {
@@ -100,7 +101,7 @@ const lerp = (a, b, k) => a + (b - a) * k;
     }
   });
 
-  const d = sim('sim-pay-for-doubling', 1000);
+  const d = sim('sim-pay-for-doubling', 960);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
     lineMap: { java: MAP, cpp: MAP, javascript: MAP },
@@ -151,13 +152,13 @@ const lerp = (a, b, k) => a + (b - a) * k;
       let head;
       if (!v.x) head = 'An empty array of capacity m = 1: Φ(h₀) = 2·0 − 1 = −1.';
       else if (meth === 'aggregate') head = growing || (cur && cur.copies && ln >= 14)
-        ? `Insert ${v.x} copies all ${cur.copies} elements: the copies so far are the powers of two below ${v.x}.`
+        ? `Insert ${v.x} copies ${cur.copies === 1 ? 'its 1 element' : `all ${cur.copies} elements`}: the copies so far are the powers of two below ${v.x}.`
         : `${done} insert${done === 1 ? '' : 's'} cost ${last ? last.total : 0} in all, under 3n = ${3 * done}.`;
       else if (meth === 'accounting') head = cur && cur.copies
         ? `Insert ${v.x} pays 3, and the credit banked by the newer half pays for its ${cur.copies} cop${cur.copies === 1 ? 'y' : 'ies'}.`
         : `Insert ${v.x} pays 3: 1 for itself and 2 banked; the bank never runs dry.`;
       else head = cur && cur.copies
-        ? `Insert ${v.x}: actual cost ${cur.c}, potential change 2 − n = ${2 - cur.copies}, amortized cost 3.`
+        ? `Insert ${v.x}: actual cost ${cur.c}, potential change 2 − n = ${neg(2 - cur.copies)}, amortized cost 3.`
         : `Insert ${v.x}: actual cost 1, potential change 2, amortized cost 3.`;
       topline(ctx, head);
 
@@ -209,11 +210,12 @@ const lerp = (a, b, k) => a + (b - a) * k;
           const i = v.i, t = ln === 11 ? (g.prev.line === 10 && pv.i === i ? k : 1) : 0;
           const x0 = Lo.x(i) + Lo.cw / 2, y0 = ROW + CH / 2 + 4, x1 = Ln.x(i) + Ln.cw / 2, y1 = Ln.y - CH / 2 - 4;
           arrow(ctx, x0, y0, lerp(x0, x1, Math.max(0.15, t)), lerp(y0, y1, Math.max(0.15, t)), ci, 4);
-          text(ctx, 'i', x0 - 16, y0 + 18, ci, { size: 24, weight: 600, italic: true, align: 'right' });
+          text(ctx, 'i', x0 + 14, y0 + 14, ci, { size: 24, weight: 600, italic: true, align: 'left' });
           if (ln === 10) dot(ctx, x0, ROW, ci, false, 12);
         }
         /* the capacities */
-        hbracket(ctx, Lo.x0, Lo.x1, ROW - CH / 2 - (showCoins ? 66 : 14), cm, ln < 13 ? `m = ${v.m}` : `m = ${v.m}`, { side: 'above' });
+        const Lm = ln === 13 ? Ln : Lo;
+        hbracket(ctx, Lm.x0, Lm.x1, ROW - CH / 2 - (showCoins ? 66 : 14), cm, `m = ${v.m}`, { side: 'above' });
         if (ln < 13) text(ctx, `2m = ${2 * v.m}`, Ln.x1 + 14, Ln.y, cm, { size: 22, weight: 600, base: 'middle' });
       } else {
         /* one row; between two inserts the cells slide from the old layout to the new */
@@ -227,8 +229,8 @@ const lerp = (a, b, k) => a + (b - a) * k;
       }
 
       /* ---------------- the ledger: each insert's actual cost as a bar, and what each method keeps */
-      const box = { l: 150, r: 1300, t: 560, b: 900 };
-      const ys = { aggregate: [0, 3 * N], accounting: [0, N + 1], potential: [-2, N + 1] };
+      const box = { l: 150, r: 1300, t: 500, b: 860 };
+      const ys = { aggregate: [0, 3 * N], accounting: [0, N + 2], potential: [-3, N + 2] };
       const yr = method.mix((x) => ys[x]);
       const ax = axes(ctx, box, [0, N], yr, { xl: 'insert k', yl: meth === 'aggregate' ? 'cost, and the total so far' : meth === 'accounting' ? 'cost, and the credit in the bank' : 'cost, and the potential Φ', yc: cost, nx: N, ny: meth === 'aggregate' ? 3 : (N + 1 > 12 ? 3 : 4), nice: true });
       const { X, Y } = ax;
@@ -245,23 +247,23 @@ const lerp = (a, b, k) => a + (b - a) * k;
       const poly = (pts, w, dash) => { ctx.save(); ctx.strokeStyle = cost; ctx.lineWidth = w; if (dash) ctx.setLineDash(dash); ctx.beginPath(); pts.forEach(([x, y], j) => (j ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke(); ctx.restore(); };
       method.only(ctx, 'aggregate', () => {
         poly([[X(0), Y(0)], [X(N), Y(3 * N)]], 3, [10, 10]);
-        text(ctx, '3n', X(N) - 10, Y(3 * N) + 6, cost, { size: 22, weight: 600, align: 'right', base: 'top' });
+        text(ctx, '3n', X(N / 2) - 12, Y(1.5 * N) - 16, cost, { size: 22, weight: 600, align: 'right', bg: PAL.panel });
         const pts = [[X(0), Y(0)], ...upto.map((r) => [X(r.k), Y(r.total)])];
         if (pts.length > 1) poly(pts, 5);
         upto.forEach((r) => { dot(ctx, X(r.k), Y(r.total), cost, true, 7); hits.push({ x: X(r.k), y: Y(r.total), r: 10, name: `total actual cost after ${r.k} inserts: ${r.total}` }); });
       });
       method.only(ctx, 'accounting', () => {
         poly([[X(0), Y(3)], [X(N), Y(3)]], 3, [10, 10]);
-        text(ctx, 'charge 3', X(N) + 8, Y(3), cost, { size: 20, base: 'middle' });
+        text(ctx, 'charge 3', X(0) + 12, Y(3) - 16, cost, { size: 20, bg: PAL.panel });
         const pts = [[X(0), Y(0)], ...upto.map((r) => [X(r.k), Y(r.bank)])];
         if (pts.length > 1) poly(pts, 5);
         upto.forEach((r) => { dot(ctx, X(r.k), Y(r.bank), cost, true, 7); hits.push({ x: X(r.k), y: Y(r.bank), r: 10, name: `credit in the bank after ${r.k} inserts: ${r.bank}` }); });
       });
       method.only(ctx, 'potential', () => {
         poly([[X(0), Y(3)], [X(N), Y(3)]], 3, [10, 10]);
-        text(ctx, 'ĉ = 3', X(N) + 8, Y(3), cost, { size: 20, base: 'middle' });
+        text(ctx, 'ĉ = 3', X(0) + 12, Y(3) - 16, cost, { size: 20, bg: PAL.panel });
         poly([[X(0), Y(-1)], [X(N), Y(-1)]], 2, [4, 8]);
-        text(ctx, 'Φ(h₀) = −1', X(N) + 8, Y(-1), cost, { size: 20, base: 'middle' });
+        text(ctx, 'Φ(h₀) = −1', X(N) - 8, Y(-1) + 18, cost, { size: 20, align: 'right', bg: PAL.panel });
         const pts = [[X(0), Y(-1)], ...upto.map((r) => [X(r.k), Y(r.phi)])];
         if (pts.length > 1) poly(pts, 5);
         dot(ctx, X(0), Y(-1), cost, false, 7);
@@ -279,10 +281,10 @@ const lerp = (a, b, k) => a + (b - a) * k;
       else {
         const dPhi = last.phi - (done > 1 ? L[done - 2].phi : -1);
         ro = last.copies
-          ? `ĉ = c + ΔΦ = (n + 1) + (2 − n) = ${last.c} + (${dPhi}) = 3 · Φ = 2·${done} − ${last.m} = ${last.phi} ≥ −1`
+          ? `ĉ = c + ΔΦ = (n + 1) + (2 − n) = ${last.c} + (${neg(dPhi)}) = 3 · Φ = 2·${done} − ${last.m} = ${last.phi} ≥ −1`
           : `ĉ = c + ΔΦ = 1 + ${dPhi} = ${1 + dPhi} · Φ = 2·${done} − ${last.m} = ${last.phi} ≥ −1`;
       }
-      text(ctx, ro, 700, 975, cost, { size: 24, align: 'center', bg: PAL.panel });
+      text(ctx, ro, 700, 935, cost, { size: 24, align: 'center', bg: PAL.panel });
       tip.hits = hits;
     },
   });
