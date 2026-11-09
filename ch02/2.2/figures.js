@@ -80,7 +80,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
     javascript: { ...BRACED, 21: [26, 27, 28], 22: 29 },
   };
   /* Python's lines: set 1–4, add 6–10, remove 12–17, _resize 19–22 */
-  const L = { start: 5, setY: 2, setA: 3, setR: 4, grow: 7, shift: 8, store: 9, count: 10, take: 13, close: 14, dec: 15, shrink: 16, ret: 17, alloc: 20, copy: 21, swap: 22 };
+  const L = { start: 5, defSet: 1, defAdd: 6, defRemove: 12, defResize: 19, setY: 2, setA: 3, setR: 4, grow: 7, shift: 8, store: 9, count: 10, take: 13, close: 14, dec: 15, shrink: 16, ret: 17, alloc: 20, copy: 21, swap: 22 };
 
   /* The inputs. Figure 2.1 of ODS starts from b r e d in an array of length 6; the rest start empty, at length 1. */
   const LET = 'abcdefghijklmnop'.split('');
@@ -110,6 +110,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
       moves: moves.slice(), log: log.map((e) => ({ ...e })), stars: stars.slice() }, b ? { b: b.slice() } : {}, extra || {});
     const resize = () => {
       at.enter('_resize');
+      at(L.defResize, snap());
       b = new Array(Math.max(1, 2 * n)).fill(null); at(L.alloc, snap());
       const ni = n;
       if (!n) at(L.copy, snap());
@@ -123,6 +124,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
       k = kk; moves = [];
       if (o[0] === 'set') {
         i = o[1]; x = o[2];
+        at(L.defSet, snap());
         at(L.setY, snap({ y: a[i] }));
         a[i] = x; at(L.setA, snap(), ['put', i]);
         at(L.setR, snap());
@@ -131,6 +133,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
       m += 1; since += 1;
       if (o[0] === 'add') {
         i = o[1]; x = o[2];
+        at(L.defAdd, snap());
         if (n === a.length) resize();
         at(L.grow, snap());
         if (n === i) at(L.shift, snap());
@@ -138,7 +141,9 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
         a[i] = x; at(L.store, snap(), ['put', i]);
         n += 1; at(L.count, snap());
       } else {
-        i = o[1]; x = a[i];
+        i = o[1]; x = null;
+        at(L.defRemove, snap());
+        x = a[i];
         at(L.take, snap());
         if (i === n - 1) at(L.close, snap());
         for (let j = i; j < n - 1; j += 1) { a[j] = a[j + 1]; shifts += 1; moves.push([j + 1, j, 'a']); at(L.close, snap({ mv: [j + 1, j, 'a'] }), ['shift', j + 1, j]); }
@@ -150,7 +155,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
     });
   });
 
-  const d = sim('sim-arraystack', 930);
+  const d = sim('sim-arraystack', 950);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI }, lineMap: MAP,
     blocks: [
@@ -254,7 +259,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
         const Lb = layout(v.b.length, ROWB);
         const nb = v.b.filter((y) => y !== null).length;
         cellRow(Lb, v.b, nb, 'b', cb, ln === L.alloc && g.prev.line !== L.alloc ? k : 1, false);
-        hbracket(ctx, Lb.x0, Lb.x1, ROWB + CH / 2 + 50, size, `length(b) = 2n = ${v.b.length}`, { side: 'below' });
+        hbracket(ctx, Lb.x0, Lb.x1, ROWB + CH / 2 + 44, size, `length(b) = 2n = ${v.b.length}`, { side: 'below' });
         v.moves.filter((mv) => mv[2] === 'b').forEach((mv) => {
           const cur = v.mv && v.mv[0] === mv[0] && v.mv[2] === 'b';
           const t = cur && !(g.prev.vars.mv && g.prev.vars.mv[0] === mv[0]) ? k : 1;
@@ -283,7 +288,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
       }
 
       /* ---------------- the brackets and the pointer: length(a) over the whole array, n over a[0..n−1], i under its cell */
-      if (ln !== L.swap) {
+      if (ln !== L.swap || swapK >= 1) {
         const Lc = La;
         hbracket(ctx, Lc.x0, Lc.x1, ROWA - CH / 2 - 112, size, `length(a) = ${cap}`, { side: 'above' });
         if (v.n > 0) hbracket(ctx, Lc.x0, Lc.x0 + v.n * Lc.cw, ROWA - CH / 2 - 56, cn, `n = ${v.n}`, { side: 'above' });
@@ -296,7 +301,7 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
       }
 
       /* ---------------- the counts: the invariant, then the lemma's sum against its bound */
-      const Y0 = ROWA + 330;
+      const Y0 = ROWA + 350;
       const seg = (parts, y) => {
         /* one line of runs, each in its own colour, centred */
         const ws = parts.map(([s, , o]) => measure(ctx, s, { size: 28, weight: (o && o.weight) || 400 }));

@@ -160,8 +160,8 @@ function drawList(ctx, A, B, k, o) {
     hits = [];
     lay.chain.forEach((id, s) => {
       const p = posOf(id);
-      if (id === 0) text(ctx, 'dummy', p.x, p.y + 56, F.ref('dummy'), { size: 28, weight: 600, align: 'center', bg: PAL.panel });
-      else text(ctx, String(s - 1), p.x, p.y + 52, C('index'), { size: 24, align: 'center', bg: PAL.panel });
+      if (id === 0) text(ctx, 'dummy', p.x - CW, p.y - CH / 2 - 22, F.ref('dummy'), { size: 28, weight: 600, align: 'center', bg: PAL.panel });
+      else text(ctx, String(s - 1), p.x - CW, p.y - CH / 2 - 20, C('index'), { size: 24, align: 'center', bg: PAL.panel });
       hits.push({ x: p.x, y: p.y, r: 66, name: id === 0 ? 'the dummy node, which holds no data' : `node ${s - 1}, holding ${LABEL[id]}` });
     });
     const nm = (id) => (id === 0 ? '\\text{dummy}' : `\\text{${LABEL[id]}}`);
@@ -322,10 +322,10 @@ function drawList(ctx, A, B, k, o) {
       const n0 = v.op === 'add' ? v.n - (f.line >= 18 ? 1 : 0) : v.n + (f.line >= 24 ? 1 : 0);
       chainB.forEach((id, s) => {
         const p = posOf(id), idx = s - 1;
-        if (id === 0) text(ctx, 'dummy', p.x, p.y + 52, F.ref('dummy'), { size: 28, weight: 600, align: 'center', bg: PAL.panel });
+        if (id === 0) text(ctx, 'dummy', p.x - CW, p.y - CH / 2 - 22, F.ref('dummy'), { size: 28, weight: 600, align: 'center', bg: PAL.panel });
         else {
           const isI = finding && idx === v.i;
-          text(ctx, isI ? `i = ${idx}` : String(idx), p.x, p.y + 52, isI ? F.ref('i') : C('index'), { size: isI ? 28 : 26, weight: isI ? 600 : 400, align: 'center', bg: PAL.panel });
+          text(ctx, isI ? `i = ${idx}` : String(idx), p.x - CW, p.y - CH / 2 - 20, isI ? F.ref('i') : C('index'), { size: isI ? 28 : 26, weight: isI ? 600 : 400, align: 'center', bg: PAL.panel });
         }
         hits.push({ x: p.x, y: p.y, r: 66, name: id === 0 ? 'the dummy node, which holds no data' : `node ${idx}, holding ${LABEL[id]}` });
       });

@@ -7,6 +7,8 @@ The places where a translated block of this book could not follow its source wor
 | file | where | what was done | why |
 |---|---|---|---|
 | `ch01/1.5/translation.md`, `text.html` | the first sentence of 引入, 聚合分析, 记账分析 and 势能分析 (blocks `amortized`, `accounting`, `potential`) | OI Wiki's English glosses in parentheses after its Chinese terms (均摊分析（Amortized Analysis）…) are not repeated after the English term | translate.md §4.3: a parenthesis that gives the English word reads as a repetition in English |
+| `ch02/2.3/translation.md`, `text.html` | 例题 4 (block `sorted-pair`) and 例题 1 (block `variable-window`) | the box's heading prints "Example", without OI Wiki's number | the page carries only two of the source's four 例题, so its numbers 4 and 1 would count examples the reader never sees |
+| `ch02/2.3/translation.md`, `text.html` | the same two boxes | each box, which restates a LeetCode problem, becomes a link to the English LeetCode page of the same problem (leetcode.com, not leetcode-cn.com), with LeetCode's English title | LeetCode's statements are link-only (RULES.md, Source), and the reader of the English book is sent to the English site |
 
 ## Terms decided in a chapter pass
 

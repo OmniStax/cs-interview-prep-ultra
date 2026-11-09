@@ -1,0 +1,870 @@
+{
+ "id": "2.3",
+ "chapter": "2",
+ "title": "Two pointers and sliding windows",
+ "short": "Two pointers",
+ "lead": "An Essential section on <span data-concept=\"two-pointers\">two pointers</span>: indices that close in on a pair with a given sum, find 3SUM’s triples, merge two sorted lists, and bound windows of fixed and changing length. OI Wiki counts from 1 (num[1..n]), the 3SUM pseudocode from 0 (S[0..n−1]), the moving average by time (p<sub>n−k+1</sub> … p<sub>n</sub>). 3SUM’s sort is a library call (Chapter 10) and its hash table Chapter 5’s. These windows keep a sum, product or count, never a hash set.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "OI Wiki’s code, its LeetCode statements, its second window example and its exercise lists, and the 3SUM article’s lead after its first sentence, are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "3SUM and merging have no open exercise here: keon’s and TheAlgorithms’ versions are tests with no printed statement. TheAlgorithms’ two_pointer, max_sum_sliding_window and sliding_window, keon’s two_sum and longest_non_repeat, and tryalgo’s windows_k_distinct are left out for the same reason. The Kattis problems closestsums, cd, hothike and snowflakes and the ICPC problems tiredterry and slidecount publish only their sample tests. Merging two linked lists comes in Section 2.5 and Kattis kayaking in Chapter 6. Project Euler 8 has no published tests. The largest-series-product card asks for linear time, which Exercism does not, and the longest-substring card tests the cases icc’s solution notebook lists and a few more. The two MIT 6.006 cards are in this section’s NC file.",
+ "figures": [
+  {
+   "id": "sim-two-pointers",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-three-sum",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-merge",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-moving-window",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-variable-window",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "two-pointers",
+   "concept": "two-pointers",
+   "verb": "introduces"
+  },
+  {
+   "span": "sorted-pair",
+   "concept": "two-pointers",
+   "verb": "reinforces"
+  },
+  {
+   "span": "three-sum",
+   "concept": "three-sum",
+   "verb": "introduces"
+  },
+  {
+   "span": "three-sum",
+   "concept": "two-pointers",
+   "verb": "uses"
+  },
+  {
+   "span": "merge",
+   "concept": "merge-sorted-sequences",
+   "verb": "introduces"
+  },
+  {
+   "span": "merge",
+   "concept": "two-pointers",
+   "verb": "uses"
+  },
+  {
+   "span": "moving-average",
+   "concept": "sliding-window-fixed",
+   "verb": "introduces"
+  },
+  {
+   "span": "variable-window",
+   "concept": "sliding-window-variable",
+   "verb": "introduces"
+  },
+  {
+   "span": "variable-window",
+   "concept": "two-pointers",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "exercism:reverse-string",
+   "source_number": "reverse-string",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "two-pointers",
+   "prompt": "Your task is to reverse a given string.\n\nSome examples:\n\n<ul><li>Turn <code>\"stressed\"</code> into <code>\"desserts\"</code>.</li><li>Turn <code>\"strops\"</code> into <code>\"sports\"</code>.</li><li>Turn <code>\"racecar\"</code> into <code>\"racecar\"</code>.</li></ul>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "reverse",
+     "starter": "def reverse(text):\n    pass\n",
+     "reference": "def reverse(text=\"\"):\n    return text[::-1]\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "reverse",
+     "starter": "function reverse(text) {\n}\n",
+     "reference": "function reverse(text) {\n  const a = Array.from(text);\n  let i = 0, j = a.length - 1;\n  while (i < j) {\n    [a[i], a[j]] = [a[j], a[i]];\n    i += 1;\n    j -= 1;\n  }\n  return a.join('');\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       ""
+      ],
+      "expect": "",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "robot"
+      ],
+      "expect": "tobor",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "Ramen"
+      ],
+      "expect": "nemaR",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "I'm hungry!"
+      ],
+      "expect": "!yrgnuh m'I",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "racecar"
+      ],
+      "expect": "racecar",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "drawer"
+      ],
+      "expect": "reward",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "子猫"
+      ],
+      "expect": "猫子",
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n, rand) => [Array.from({ length: n }, () => String.fromCharCode(rand.int(97, 122))).join('')]",
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "exercism:series",
+   "source_number": "series",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "moving-average",
+   "changes": "The tests expect a ValueError for an empty series and for a length that is zero, negative or longer than the series.",
+   "prompt": "Given a string of digits, output all the contiguous substrings of length <code>n</code> in that string in the order that they appear.\n\nFor example, the string \"49142\" has the following 3-digit series:\n\n<ul><li>\"491\"</li><li>\"914\"</li><li>\"142\"</li></ul>\n\nAnd the following 4-digit series:\n\n<ul><li>\"4914\"</li><li>\"9142\"</li></ul>\n\nAnd if you ask for a 6-digit series from a 5-digit string, you deserve whatever you get.\n\nNote that these series are only required to occupy <em>adjacent positions</em> in the input; the digits need not be <em>numerically consecutive</em>.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "slices",
+     "starter": "def slices(series, length):\n    pass\n",
+     "reference": "def slices(series, length):\n    if not series:\n        raise ValueError('series cannot be empty')\n    elif length == 0:\n        raise ValueError('slice length cannot be zero')\n    elif length < 0:\n        raise ValueError('slice length cannot be negative')\n    elif len(series) < length:\n        raise ValueError('slice length cannot be greater than series length')\n\n    return [series[idx:idx + length] for idx in range(len(series) - length + 1)]\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "slices",
+     "starter": "class ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nfunction slices(series, length) {\n}\n",
+     "reference": "class ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nfunction slices(series, length) {\n  if (series.length === 0) throw new ValueError('series cannot be empty');\n  if (length === 0) throw new ValueError('slice length cannot be zero');\n  if (length < 0) throw new ValueError('slice length cannot be negative');\n  if (series.length < length) throw new ValueError('slice length cannot be greater than series length');\n  const out = [];\n  for (let i = 0; i + length <= series.length; i += 1) out.push(series.slice(i, i + length));\n  return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       "1",
+       1
+      ],
+      "expect": [
+       "1"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "12",
+       1
+      ],
+      "expect": [
+       "1",
+       "2"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "35",
+       2
+      ],
+      "expect": [
+       "35"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "9142",
+       2
+      ],
+      "expect": [
+       "91",
+       "14",
+       "42"
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "777777",
+       3
+      ],
+      "expect": [
+       "777",
+       "777",
+       "777",
+       "777"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "918493904243",
+       5
+      ],
+      "expect": [
+       "91849",
+       "18493",
+       "84939",
+       "49390",
+       "93904",
+       "39042",
+       "90424",
+       "04243"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "12345",
+       6
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "12345",
+       42
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "12345",
+       0
+      ],
+      "raises": "ValueError",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "123",
+       -1
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "",
+       1
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c3",
+   "source_id": "exercism:largest-series-product",
+   "source_number": "largest-series-product",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "moving-average",
+   "changes": "A solution must run in time linear in the length of the input; the source asks for no bound. The tests expect a ValueError for a negative span, a span longer than the input and a character that is not a digit.",
+   "prompt": "Your task is to look for patterns in the long sequence of digits in the encrypted signal.\n\nThe technique you're going to use here is called the largest series product.\n\nLet's define a few terms, first.\n\n<ul><li><strong>input</strong>: the sequence of digits that you need to analyze</li><li><strong>series</strong>: a sequence of adjacent digits (those that are next to each other) that is contained within the input</li><li><strong>span</strong>: how many digits long each series is</li><li><strong>product</strong>: what you get when you multiply numbers together</li></ul>\n\nLet's work through an example, with the input <code>\"63915\"</code>.\n\n<ul><li>To form a series, take adjacent digits in the original input.</li><li>If you are working with a span of <code>3</code>, there will be three possible series:<ul><li><code>\"639\"</code></li><li><code>\"391\"</code></li><li><code>\"915\"</code></li></ul></li><li>Then we need to calculate the product of each series:<ul><li>The product of the series <code>\"639\"</code> is 162 (<code>6 × 3 × 9 = 162</code>)</li><li>The product of the series <code>\"391\"</code> is 27 (<code>3 × 9 × 1 = 27</code>)</li><li>The product of the series <code>\"915\"</code> is 45 (<code>9 × 1 × 5 = 45</code>)</li></ul></li><li>162 is bigger than both 27 and 45, so the largest series product of <code>\"63915\"</code> is from the series <code>\"639\"</code>. So the answer is <strong>162</strong>.</li></ul>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "largest_product",
+     "starter": "def largest_product(series, size):\n    pass\n",
+     "reference": "def largest_product(series, size):\n    if size < 0:\n        raise ValueError('span must not be negative')\n    if size > len(series):\n        raise ValueError('span must not exceed string length')\n    if any(c not in '0123456789' for c in series):\n        raise ValueError('digits input must only contain digits')\n    if size == 0:\n        return 1\n    digits = [int(c) for c in series]\n    best = 0\n    product = 1  # the product of the window's nonzero digits\n    zeros = 0    # how many zeros the window holds\n    for r, d in enumerate(digits):\n        if d == 0:\n            zeros += 1\n        else:\n            product *= d\n        if r >= size:\n            out = digits[r - size]\n            if out == 0:\n                zeros -= 1\n            else:\n                product //= out\n        if r >= size - 1 and zeros == 0 and product > best:\n            best = product\n    return best\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "largestProduct",
+     "starter": "class ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nfunction largestProduct(series, size) {\n}\n",
+     "reference": "class ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nfunction largestProduct(series, size) {\n  if (size < 0) throw new ValueError('span must not be negative');\n  if (size > series.length) throw new ValueError('span must not exceed string length');\n  if (!/^[0-9]*$/.test(series)) throw new ValueError('digits input must only contain digits');\n  if (size === 0) return 1;\n  const digits = Array.from(series, (c) => BigInt(c));\n  let best = 0n, product = 1n, zeros = 0;\n  for (let r = 0; r < digits.length; r += 1) {\n    if (digits[r] === 0n) zeros += 1; else product *= digits[r];\n    if (r >= size) {\n      const out = digits[r - size];\n      if (out === 0n) zeros -= 1; else product /= out;\n    }\n    if (r >= size - 1 && zeros === 0 && product > best) best = product;\n  }\n  return Number(best);\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       "29",
+       2
+      ],
+      "expect": 18,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "0123456789",
+       2
+      ],
+      "expect": 72,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "576802143",
+       2
+      ],
+      "expect": 48,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "0123456789",
+       3
+      ],
+      "expect": 504,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1027839564",
+       3
+      ],
+      "expect": 270,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "0123456789",
+       5
+      ],
+      "expect": 15120,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "73167176531330624919225119674426574742355349194934",
+       6
+      ],
+      "expect": 23520,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "0000",
+       2
+      ],
+      "expect": 0,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "99099",
+       3
+      ],
+      "expect": 0,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "123",
+       4
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "",
+       1
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1234a5",
+       2
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "12345",
+       -1
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n, rand) => [Array.from({ length: n }, () => (rand() < 0.9 ? '1' : String(rand.int(2, 9)))).join(''), Math.floor(n / 2)]",
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c4",
+   "source_id": "icc:recursion_dynamic/longest_substr_k_distinct",
+   "source_number": "longest_substr_k_distinct",
+   "origin": "icc",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "variable-window",
+   "changes": "The tests call longest_substr(string, k), which the starter defines over your Solution class, and a string that is not a str raises a TypeError.",
+   "prompt": "Find the longest substring with at most k distinct characters.\n\nCan we assume the inputs are valid? No.\n\nCan we assume the strings are ASCII? Yes.\n\nIs this case sensitive? Yes.\n\nIs a substring a contiguous block of chars? Yes.\n\nDo we expect an int as a result? Yes.\n\nCan we assume this fits memory? Yes.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "longest_substr",
+     "starter": "class Solution(object):\n\n    def longest_substr(self, string, k):\n        pass\n\n\ndef longest_substr(string, k):\n    # Calls your method the way icc's tests do. Leave it as it is.\n    return Solution().longest_substr(string, k)\n",
+     "reference": "class Solution(object):\n\n    def longest_substr(self, string, k):\n        if not isinstance(string, str):\n            raise TypeError('string must be of type str')\n        if not isinstance(k, int):\n            raise TypeError('k must be of type int')\n        low_index = 0\n        max_length = 0\n        chars_to_index_map = {}\n        for index, char in enumerate(string):\n            chars_to_index_map[char] = index\n            if len(chars_to_index_map) > k:\n                low_index = min(chars_to_index_map.values())\n                del chars_to_index_map[string[low_index]]\n                low_index += 1\n            max_length = max(max_length, index - low_index + 1)\n        return max_length\n\n\ndef longest_substr(string, k):\n    # Calls your method the way icc's tests do. Leave it as it is.\n    return Solution().longest_substr(string, k)\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "longestSubstr",
+     "starter": "function longestSubstr(string, k) {\n}\n",
+     "reference": "function longestSubstr(string, k) {\n  if (typeof string !== 'string') throw new TypeError('string must be of type str');\n  if (!Number.isInteger(k)) throw new TypeError('k must be of type int');\n  const count = new Map();  // how many times each character occurs in the window\n  let l = 0, best = 0;\n  for (let r = 0; r < string.length; r += 1) {\n    count.set(string[r], (count.get(string[r]) ?? 0) + 1);\n    while (count.size > k) {\n      const c = string[l];\n      count.set(c, count.get(c) - 1);\n      if (count.get(c) === 0) count.delete(c);\n      l += 1;\n    }\n    best = Math.max(best, r - l + 1);\n  }\n  return best;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       null,
+       3
+      ],
+      "raises": "TypeError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "",
+       3
+      ],
+      "expect": 0,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "abcabcdefgghiij",
+       3
+      ],
+      "expect": 6,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "abcabcdefgghighij",
+       3
+      ],
+      "expect": 7,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "abc",
+       0
+      ],
+      "expect": 0,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       "a",
+       1
+      ],
+      "expect": 1,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       "aaaa",
+       1
+      ],
+      "expect": 4,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       "abcab",
+       10
+      ],
+      "expect": 5,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       "aabbbbbbcc",
+       1
+      ],
+      "expect": 6,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       "eceba",
+       2
+      ],
+      "expect": 3,
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n, rand) => [Array.from({ length: n }, () => 'abc'[rand.int(0, 2)]).join(''), 3]",
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "two-pointers"
+  },
+  {
+   "exercise": "c2",
+   "concept": "sliding-window-fixed"
+  },
+  {
+   "exercise": "c3",
+   "concept": "sliding-window-fixed"
+  },
+  {
+   "exercise": "c4",
+   "concept": "sliding-window-variable"
+  }
+ ],
+ "referents": [
+  {
+   "id": "pair-l",
+   "label": "l, the left pointer (i in the code)",
+   "figures": [
+    "sim-two-pointers"
+   ]
+  },
+  {
+   "id": "pair-r",
+   "label": "r, the right pointer (j in the code)",
+   "figures": [
+    "sim-two-pointers"
+   ]
+  },
+  {
+   "id": "ts-i",
+   "label": "i, the index of a",
+   "figures": [
+    "sim-three-sum"
+   ]
+  },
+  {
+   "id": "ts-start",
+   "label": "start, the pointer after i (low in the code)",
+   "figures": [
+    "sim-three-sum"
+   ]
+  },
+  {
+   "id": "ts-end",
+   "label": "end, the pointer from the right (high in the code)",
+   "figures": [
+    "sim-three-sum"
+   ]
+  },
+  {
+   "id": "list-a",
+   "label": "A, the first input list",
+   "figures": [
+    "sim-merge"
+   ]
+  },
+  {
+   "id": "list-b",
+   "label": "B, the second input list",
+   "figures": [
+    "sim-merge"
+   ]
+  },
+  {
+   "id": "list-c",
+   "label": "C, the merged list",
+   "figures": [
+    "sim-merge"
+   ]
+  },
+  {
+   "id": "win-l",
+   "label": "l, the window’s left end",
+   "figures": [
+    "sim-variable-window"
+   ]
+  },
+  {
+   "id": "win-r",
+   "label": "r, the window’s right end",
+   "figures": [
+    "sim-variable-window"
+   ]
+  },
+  {
+   "id": "win-tmp",
+   "label": "tmp, the product of the window (p in the code)",
+   "figures": [
+    "sim-variable-window"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "wp-three-sum-1",
+   "kind": "book",
+   "number": "1",
+   "html": "<a href=\"http://www.ti.inf.ethz.ch/ew/courses/CG09/materials/v12.pdf\">Visibility Graphs and 3-Sum</a> by Michael Hoffmann"
+  },
+  {
+   "id": "wp-merge-2",
+   "kind": "book",
+   "number": "2",
+   "html": "Skiena, Steven (2010). <em>The Algorithm Design Manual</em> (2nd ed.). Springer Science+Business Media. p.&nbsp;123. ISBN&nbsp;978-1-849-96720-4."
+  },
+  {
+   "id": "wp-merge-3",
+   "kind": "book",
+   "number": "3",
+   "html": "Kurt Mehlhorn; Peter Sanders (2008). <em><a href=\"http://people.mpi-inf.mpg.de/~mehlhorn/ftp/Toolbox/\">Algorithms and Data Structures: The Basic Toolbox</a></em>. Springer. ISBN&nbsp;978-3-540-77978-0. p.&nbsp;104."
+  },
+  {
+   "id": "wp-merge-4",
+   "kind": "book",
+   "number": "4",
+   "html": "Skiena, Steven (2010). <em>The Algorithm Design Manual</em> (2nd ed.). Springer Science+Business Media. p.&nbsp;123. ISBN&nbsp;978-1-849-96720-4."
+  },
+  {
+   "id": "wp-merge-5",
+   "kind": "book",
+   "number": "5",
+   "html": "Katajainen, Jyrki; Pasanen, Tomi; Teuhola, Jukka (1996). \"<a href=\"https://dl.acm.org/doi/10.5555/642136.642138\">Practical in-place mergesort</a>\". <em>Nordic J. Computing</em> 3 (1): 27–40."
+  },
+  {
+   "id": "wp-merge-6",
+   "kind": "book",
+   "number": "6",
+   "html": "Kim, Pok-Son; Kutzner, Arne (2004). \"Stable Minimum Storage Merging by Symmetric Comparisons\". <em>European Symp. Algorithms</em>. Lecture Notes in Computer Science 3221. pp.&nbsp;714–723. doi:10.1007/978-3-540-30140-0_63."
+  }
+ ],
+ "derivations": [
+  {
+   "id": "sma-next",
+   "what": "the next simple moving average from the previous one",
+   "source": "Wikipedia, Moving average, Simple moving average",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "The previous mean is the mean over the last $k$ data points, $\\textit{SMA}_{k,\\text{prev}} = \\frac{1}{k} \\sum_{i=n-k+1}^{n} p_{i}$."
+      },
+      {
+       "text": "The next mean is taken over the range from $n-k+2$ to $n+1$: $p_{n+1}$ comes in and $p_{n-k+1}$ drops out."
+      }
+     ],
+     "then": {
+      "tex": "\\mk{L}{\\textit{SMA}_{k,\\text{next}}} = \\mk{s}{\\frac{1}{k} \\sum_{i=n-k+2}^{n+1} p_{i}}",
+      "uses": [
+       1
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{L}{\\textit{SMA}_{k,\\text{next}}} = \\mk{s}{\\frac{1}{k} \\Big( p_{n-k+2} + \\dots + p_{n} + p_{n+1} + p_{n-k+1} - p_{n-k+1} \\Big)}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{L}{\\textit{SMA}_{k,\\text{next}}} = \\mk{a}{\\frac{1}{k} \\Big( p_{n-k+1} + p_{n-k+2} + \\dots + p_{n} \\Big)} - \\mk{o}{\\frac{p_{n-k+1}}{k}} + \\mk{i}{\\frac{p_{n+1}}{k}}",
+       "uses": [],
+       "map": {
+        "s": [
+         "a",
+         "o",
+         "i"
+        ]
+       }
+      },
+      {
+       "tex": "\\mk{L}{\\textit{SMA}_{k,\\text{next}}} = \\mk{a}{\\textit{SMA}_{k,\\text{prev}}} - \\mk{o}{\\frac{p_{n-k+1}}{k}} + \\mk{i}{\\frac{p_{n+1}}{k}}",
+       "uses": [
+        0
+       ]
+      },
+      {
+       "tex": "\\mk{L}{\\textit{SMA}_{k,\\text{next}}} = \\mk{a}{\\textit{SMA}_{k,\\text{prev}}} + \\mk{d}{\\frac{1}{k} \\Big( p_{n+1} - p_{n-k+1} \\Big)}",
+       "uses": [],
+       "map": {
+        "o": "d",
+        "i": "d"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

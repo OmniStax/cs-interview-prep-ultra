@@ -22,8 +22,10 @@ const letters = (n) => Array.from({ length: n }, (_, i) => String.fromCharCode(6
 /* a tail of a nodes into a cycle of L nodes (L = 0: no cycle, a nodes ending in null), centred in [left, right] */
 function layout(a, L, o) {
   const n = a + L;
-  const R = L >= 3 ? Math.max(o.rmin || 110, L * (o.arc || 150) / TAU) : L === 2 ? 100 : 0;
+  const R0 = L >= 3 ? Math.min(o.rmax || 1e9, Math.max(o.rmin || 110, L * (o.arc || 150) / TAU)) : L === 2 ? (o.r2 || 100) : 0;
   const loopR = 44;
+  const Rfit = (o.right - o.left - BW / 2 - 170 - BW / 2 - (o.smin || 0) * a) / 2;
+  const R = L >= 3 && o.smin ? Math.min(R0, Rfit) : R0;
   const right = L >= 2 ? 2 * R + BW / 2 : L === 1 ? BW / 2 + 2 * loopR : BW / 2 + 130;    /* past the tail's last stop */
   const headRoom = BW / 2 + 170;
   const tailN = L === 0 ? n - 1 : a;
@@ -135,10 +137,11 @@ function pointer(ctx, p, name, color, side) {
 /* a referent's name beside a node that shows another name (C or G on a numbered list) */
 function tag(ctx, lay, i, name, color) {
   const p = lay.pts[i];
-  const out = lay.L >= 2 && i >= lay.a ? { x: Math.cos(p.th), y: Math.sin(p.th) } : { x: 0, y: 1 };
-  const inward = lay.L >= 2 && i >= lay.a;
-  const k = inward ? -1 : 1;
-  const x = p.x + k * out.x * (BW / 2 + 26), y = p.y + k * out.y * (BH / 2 + 26);
+  /* C at the upper left, clear of the link that enters it and of the pointers above and below; any other node on the
+     cycle beside it, away from the centre; a tail node above its upper left */
+  let x, y;
+  if (i === lay.a || lay.L < 2 || i < lay.a) { x = p.x - BW / 2 - 14; y = p.y - BH / 2 - 16; }
+  else { const k = p.x >= lay.cx ? 1 : -1; x = p.x + k * (BW / 2 + 16 + 8 * name.length); y = p.y; }
   text(ctx, name, x, y, color, { size: 30, weight: 600, align: 'center' });
 }
 
@@ -239,7 +242,7 @@ function tag(ctx, lay, i, name, color) {
   });
   const lays = {};
   const layOf = (v) => {
-    if (!lays[v]) { const [, , a, L] = INPUTS.find((x) => x[0] === v); lays[v] = layout(a, L, { left: 30, right: 1370, cy: 355, arc: 175, s: 165 }); }
+    if (!lays[v]) { const [, , a, L] = INPUTS.find((x) => x[0] === v); lays[v] = layout(a, L, { left: 30, right: 1370, cy: 355, arc: 175, s: 165, rmin: 150 }); }
     return lays[v];
   };
   /* where slow and fast first meet, for the brackets and the headline */
@@ -314,16 +317,16 @@ function tag(ctx, lay, i, name, color) {
 
 /* ================================================================ sim-rho-proof: the distances where they meet */
 (function () {
-  const d = sim('sim-rho-proof', 660);
-  const sA = ctl(d.controls, { label: 'a', cls: 'size', key: 'a', min: 0, max: 8, step: 1, value: 2, unit: '', dec: 0,
+  const d = sim('sim-rho-proof', 700);
+  const sA = ctl(d.controls, { label: 'a', cls: 'size', key: 'a', min: 0, max: 7, step: 1, value: 2, unit: '', dec: 0,
     specials: [{ at: 0, label: 'a = 0' }] });
-  const sL = ctl(d.controls, { label: 'L', cls: 'size', key: 'L', min: 1, max: 8, step: 1, value: 6, unit: '', dec: 0 });
+  const sL = ctl(d.controls, { label: 'L', cls: 'size', key: 'L', min: 1, max: 7, step: 1, value: 6, unit: '', dec: 0 });
   function draw() {
     const { ctx } = begin(d.c);
     const a = Math.round(sA.v), L = Math.round(sL.v);
     let k = 1; while (k * L < a) k += 1;
     const m = k * L, b = (m - a) % L, x = Math.floor((m - a) / L), y = Math.floor((2 * m - a) / L), laps = y - 2 * x;
-    const lay = layout(a, L, { left: 30, right: 1370, cy: 360, arc: 140, s: 140 });
+    const lay = layout(a, L, { left: 30, right: 1370, cy: 370, arc: 190, s: 160, rmin: 150, rmax: 175, r2: 130, smin: 112 });
     const book = a === 2 && L === 6, N = book ? letters(8) : Array.from({ length: a + L }, (_, i) => String(i));
     const gIdx = a + b, cC = F.ref('C'), cG = F.ref('G'), sz = C('size');
     /* the walk of a steps on from G, drawn once: round the cycle outside it, a lap further out each time it passes C */
@@ -333,7 +336,7 @@ function tag(ctx, lay, i, name, color) {
       const steps = Math.ceil(span * 40);
       let last = null, prev = null;
       for (let i = 0; i <= steps; i += 1) {
-        const ph = span * i / steps, r = lay.R + BH / 2 + 22 + 16 * (ph / TAU), th = t0 + ph;
+        const ph = span * i / steps, r = Math.max(46, lay.R - BH / 2 - 14 - 14 * (ph / TAU)), th = t0 + ph;
         const p = { x: lay.cx + r * Math.cos(th), y: lay.cy + r * Math.sin(th) };
         if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
         prev = last; last = p;
@@ -341,22 +344,23 @@ function tag(ctx, lay, i, name, color) {
       ctx.stroke(); ctx.restore();
       if (prev) arrow(ctx, prev.x, prev.y, last.x, last.y, sz, 3);
     } else if (a > 0 && L === 1) {
-      text(ctx, `${a} lap${a === 1 ? '' : 's'} of the one-node cycle`, lay.cx + 60, lay.cy - 70, sz, { size: 26, align: 'left' });
+      text(ctx, `${a} lap${a === 1 ? '' : 's'} of the one-node cycle`, lay.cx, lay.cy - 80, sz, { size: 26, align: 'center' });
     }
     drawList(ctx, lay, (i) => N[i], (i) => (i === a ? cC : i === gIdx && gIdx !== a ? cG : null));
-    if (!book) { tag(ctx, lay, a, gIdx === a ? 'C = G' : 'C', cC); if (gIdx !== a) tag(ctx, lay, gIdx, 'G', cG); }
+    if (!book || gIdx === a) { const c = lay.pts[a]; text(ctx, gIdx === a ? 'C = G' : 'C', c.x - BW / 2 - 14, c.y + BH / 2 + 24, cC, { size: 30, weight: 600, align: 'center' }); }
+    if (!book && gIdx !== a) { const g = lay.pts[gIdx]; text(ctx, 'G', g.x, g.y + BH / 2 + 24, cG, { size: 30, weight: 600, align: 'center' }); }
     /* a along the tail, b from C to G inside the cycle, L at the centre */
     if (a > 0) {
       const p0 = lay.pts[0], pc = lay.pts[a];
-      F.hbracket(ctx, p0.x, pc.x, lay.cy + BH / 2 + 46, sz, `a = ${a}`, { side: 'below', size: 30 });
+      F.hbracket(ctx, p0.x, pc.x, lay.cy + BH / 2 + 74, sz, `a = ${a}`, { side: 'below', size: 30 });
     }
     if (L >= 2) {
       if (b > 0) {
-        const r = lay.R - 46, t0 = Math.PI, t1 = Math.PI + TAU * b / L, tm = (t0 + t1) / 2;
-        ctx.save(); ctx.strokeStyle = sz; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(lay.cx, lay.cy, r, t0 + 0.06, t1 - 0.06, false); ctx.stroke(); ctx.restore();
-        text(ctx, `b = ${b}`, lay.cx + (r - 44) * Math.cos(tm), lay.cy + (r - 44) * Math.sin(tm), sz, { size: 30, weight: 600, align: 'center' });
+        const r = lay.R + BH / 2 + 26, t0 = Math.PI + 0.3, t1 = Math.PI + TAU * b / L - 0.12, tm = (Math.PI + Math.PI + TAU * b / L) / 2;
+        ctx.save(); ctx.strokeStyle = sz; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(lay.cx, lay.cy, r, t0, t1, false); ctx.stroke(); ctx.restore();
+        text(ctx, `b = ${b}`, lay.cx + (r + 34) * Math.cos(tm), lay.cy + (r + 34) * Math.sin(tm), sz, { size: 30, weight: 600, align: 'center' });
       }
-      text(ctx, `L = ${L}`, lay.cx + (b > 0 ? 0 : 0), lay.cy + (b > 0 ? 34 : 0), sz, { size: 30, weight: 600, align: 'center' });
+      text(ctx, `L = ${L}`, lay.cx, lay.cy, sz, { size: 30, weight: 600, align: 'center' });
     } else text(ctx, 'L = 1', lay.cx + lay.loopR + 30, lay.cy, sz, { size: 30, weight: 600, align: 'left' });
     const head = a === 0
       ? `With a = 0 the cycle starts at the head, and slow and fast meet there, at C itself, after slow's first lap.`

@@ -1,0 +1,270 @@
+{
+ "section": "2.3",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-ps0-6",
+   "source_id": "mitocw-6-006-spring2020:ps0-questions#0-6",
+   "source_number": "Problem Set 0, Problem 0-6",
+   "origin": "mitocw-6-006-spring2020",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "two-pointers",
+   "changes": "The tests are those of MIT’s code template; the worked solution is MIT’s, linked.",
+   "prompt": "An increasing subarray of an integer array is any consecutive sequence of array integers whose values strictly increase. Write Python function <code>count_long_subarray(A)</code> which accepts Python Tuple $A = (a_0, a_1, \\ldots, a_{n-1})$ of $n > 0$ positive integers, and returns the number of longest increasing subarrays of A, i.e., the number of increasing subarrays with length at least as large as every other increasing subarray. For example, if A = (1,3,4,2,7,5,6,9,8), your program should return 2 since the maximum length of any increasing subarray of A is three and there are two increasing subarrays with that length: specifically, subarrays (1,3,4) and (5,6,9).",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "count_long_subarray",
+     "starter": "def count_long_subarray(A):\n    '''\n    Input:  A     | Python Tuple of positive integers\n    Output: count | number of longest increasing subarrays of A\n    '''\n    count = 0\n    ##################\n    # YOUR CODE HERE #\n    ##################\n    return count\n",
+     "reference": "def count_long_subarray(A):\n    n = len(A)\n    current = 1   # length of longest increasing subarray ending at A[i - 1]\n    length = 1    # length of longest increasing subarray in A[:i]\n    count = 1     # number of longest increasing subarrays in A[:i]\n    for i in range(1, n):\n        if A[i - 1] < A[i]:\n            current = current + 1\n        else:\n            current = 1\n        if current == length:\n            count = count + 1\n        elif current > length:\n            length = current\n            count = 1\n    return count\n",
+     "generated_by": "source"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        2,
+        2,
+        4,
+        1,
+        4
+       ]
+      ],
+      "expect": 2,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        7,
+        8,
+        5,
+        7,
+        7,
+        3,
+        2,
+        8
+       ]
+      ],
+      "expect": 3,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        7,
+        7,
+        9,
+        1,
+        2,
+        11,
+        9,
+        6,
+        2,
+        8,
+        9
+       ]
+      ],
+      "expect": 2,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        4,
+        18,
+        10,
+        8,
+        13,
+        16,
+        18,
+        1,
+        9,
+        6,
+        11,
+        13,
+        12,
+        5,
+        7,
+        17,
+        13,
+        3
+       ]
+      ],
+      "expect": 1,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        11,
+        16,
+        10,
+        19,
+        20,
+        18,
+        3,
+        19,
+        2,
+        1,
+        8,
+        17,
+        7,
+        13,
+        1,
+        11,
+        1,
+        18,
+        19,
+        9,
+        7,
+        19,
+        24,
+        2,
+        12
+       ]
+      ],
+      "expect": 4,
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/cfc7d2d5bc3b9f4df35b5bdc7aa49284_MIT6_006S20_ps0-solutions.pdf\">Solutions to Problem Set 0</a>, Problem 0-6."
+   }
+  },
+  {
+   "id": "nc-ps3-5",
+   "source_id": "mitocw-6-006-spring2020:ps3-questions#3-5",
+   "source_number": "Problem Set 3, Problem 3-5",
+   "origin": "mitocw-6-006-spring2020",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "moving-average",
+   "changes": "The tests are those of MIT’s code template; the worked solution is MIT’s, linked. Parts (a) and (b) are answered in words; the tests check part (c).",
+   "prompt": "String A is an anagram of another string B if A is a permutation of the letters in B; for example, (indicatory, dictionary) and (brush, shrub) are pairs of words that are anagrams of each other. In this problem, all strings will be ASCII strings containing only the lowercase English letters a to z.\n\nGiven two strings A and B, the anagram substring count of B in A is the number of contiguous substrings of A that are anagrams of B. For example, if A = 'esleastealaslatet' and B = 'tesla', then, of the 13 contiguous substrings in A of length |B| = 5, exactly 3 of them are anagrams of B, namely ('least', 'steal', 'slate'), so the anagram substring count of B in A is 3.\n\n(a) Given string A and a positive integer k, describe a data structure that can be built in $O(|A|)$ time, which will then support a single operation: given a different string B with $|B| = k$, return the anagram substring count of B in A in $O(k)$ time.\n\n(b) Given string T and an array of n length-k strings $S = (S_0, \\ldots, S_{n-1})$ satisfying $0 < k < |T|$, describe an $O(|T| + nk)$-time algorithm to return an array $A = (a_0, \\ldots, a_{n-1})$ for which $a_i$ is the anagram substring count of $S_i$ in $T$ for all $i \\in \\{0, \\ldots, n - 1\\}$.\n\n(c) Write a Python function <code>count_anagram_substrings(T, S)</code> that implements your algorithm from part (b). Note the built-in Python function ord(c) returns the ASCII integer corresponding to ASCII character c in $O(1)$ time.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "count_anagram_substrings",
+     "starter": "def count_anagram_substrings(T, S):\n    '''\n    Input:  T | String\n            S | Tuple of strings S_i of equal length k < |T|\n    Output: A | Tuple of integers a_i:\n              | the anagram substring count of S_i in T\n    '''\n    A = []\n    ##################\n    # YOUR CODE HERE #\n    ##################\n    return tuple(A)\n",
+     "reference": "ORD_A = ord('a')\ndef lower_ord(c):                # map a lowercase letter to range(26)\n    return ord(c) - ORD_A\n\ndef count_anagram_substrings(T, S):\n    m, n, k = len(T), len(S), len(S[0])\n    D = {}                  # map from freq tables to occurances\n    F = [0] * 26            # initial freq table\n    for i in range(m):      # compute T freq tables\n        F[lower_ord(T[i])] += 1           # add character\n        if i > k - 1:\n            F[lower_ord(T[i - k])] -= 1   # remove character\n        if i >= k - 1:\n            key = tuple(F)\n            if key in D:                  # increment occurance\n                D[key] += 1\n            else:                         # add freq table to map\n                D[key] = 1\n    A = [0] * n             # compute anagram substring counts\n    for i in range(n):\n        F = [0] * 26\n        for c in S[i]:      # compute S_i freq table\n            F[lower_ord(c)] += 1\n        key = tuple(F)\n        if key in D:        # check in dictionary\n            A[i] = D[key]\n    return tuple(A)\n",
+     "generated_by": "source"
+    },
+    "tests": [
+     {
+      "args": [
+       "esleastealaslatet",
+       [
+        "tesla"
+       ]
+      ],
+      "expect": [
+       3
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "lrldrrrllddrrlllrddd",
+       [
+        "ldl",
+        "rld"
+       ]
+      ],
+      "expect": [
+       1,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "kkkkkvvuvkvkkkvuuvkuukkuvvkukkvkkvuvukuk",
+       [
+        "vkuk",
+        "uvku",
+        "kukk"
+       ]
+      ],
+      "expect": [
+       5,
+       6,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "trhtrthtrthhhrtthrtrhhhtrrrhhrthrrrttrrttrthhrrrrtrtthhhhrrrtrtthrttthrthhthrhrh",
+       [
+        "rrrht",
+        "tttrr",
+        "rttrr",
+        "rhrrr"
+       ]
+      ],
+      "expect": [
+       6,
+       5,
+       6,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "hjjijjhhhihhjjhjjhijjihjjihijiiihhihjjjihjjiijjijjhhjijjiijhjihiijjiiiijhihihhiihhiiihhiijhhhiijhijj",
+       [
+        "jihjhj",
+        "hhjiii",
+        "ihjhhh",
+        "jjjiji"
+       ]
+      ],
+      "expect": [
+       10,
+       6,
+       2,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/9aede1539e086a709a75d604a89f08b6_MIT6_006S20_ps3-solutions.pdf\">Solutions to Problem Set 3</a>, Problem 3-5."
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-ps0-6",
+   "concept": "two-pointers"
+  },
+  {
+   "exercise": "nc-ps0-6",
+   "concept": "complexity-analysis"
+  },
+  {
+   "exercise": "nc-ps3-5",
+   "concept": "sliding-window-fixed"
+  }
+ ]
+}

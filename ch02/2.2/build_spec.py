@@ -197,8 +197,8 @@ SIM_CAPTION = (
     f'remove, resize() copies the {R("n")} elements into a new array {R("b")} of length 2{R("n")}. Each resize copies '
     f'<em>n</em><sub><em>i</em></sub> elements and comes at least <em>n</em><sub><em>i</em></sub>/2 − 1 calls after the one '
     'before it, so the copies never pass <span data-type="cost">2<em>m</em> + 2<em>r</em></span> for <em>m</em> calls and '
-    '<em>r</em> resizes. Adding at the front shifts every element each time; at the boundary the array does not resize '
-    'at all, because it shrinks only once it is two-thirds empty. The same doubling, paid for by the aggregate, accounting '
+    '<em>r</em> resizes. Adding at the front shifts every element each time; at the boundary the array resizes once '
+    'and then keeps its length, because it shrinks only once it is two-thirds empty. The same doubling, paid for by the aggregate, accounting '
     'and potential methods, is in <a href="/cs-interview-prep-ultra/ch01/1.5/#sim-pay-for-doubling">Section 1.5</a>.'
 )
 

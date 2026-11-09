@@ -21,13 +21,15 @@ def write(section, cards):
     exercises, concepts = [], []
     for c in cards:
         sol = url_of(c['origin'], c['handout'])
+        link = f'MIT’s worked solution: <a href="{sol}">Solutions to {c["set_"]}</a>, Problem {c["n"]}.'
+        # a card may bring its own answer (a code card: MIT's tests and solution code, ch02/2.3); else the open card, keyed by the link
+        answer = dict(c['answer'], solution=link) if 'answer' in c else {'type': 'open', 'generated_by': 'source', 'solution': link}
         exercises.append({
             'id': c['id'], 'source_id': c['source_id'], 'source_number': f"{c['set_']}, Problem {c['n']}",
-            'origin': c['origin'], 'kind': 'exercise', 'bloom': c['bloom'], 'place': {'at': 'end'}, 'cite': c['cite'],
-            'changes': 'The worked solution is MIT’s, linked rather than copied.',
+            'origin': c['origin'], 'kind': c.get('kind', 'exercise'), 'bloom': c['bloom'], 'place': {'at': 'end'}, 'cite': c['cite'],
+            'changes': c.get('changes', 'The worked solution is MIT’s, linked rather than copied.'),
             'prompt': c['prompt'],
-            'answer': {'type': 'open', 'generated_by': 'source',
-                       'solution': f'MIT’s worked solution: <a href="{sol}">Solutions to {c["set_"]}</a>, Problem {c["n"]}.'},
+            'answer': answer,
         })
         concepts += [{'exercise': c['id'], 'concept': k} for k in c['concepts']]
     out = {'section': section, 'license': LICENSE, 'license_url': LICENSE_URL, 'exercises': exercises, 'exercise_concepts': concepts}

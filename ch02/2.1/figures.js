@@ -34,7 +34,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     topline(ctx, `a[${i}] is at ${B} + ${c} · ${i} = ${addr}.`);
     /* the bytes from one element before the array to one after it; each byte the same width whatever c is */
     const lo = A0 - c, hi = A0 + (VALUES.length + 1) * c, x0 = 100, x1 = 1300, bw = (x1 - x0) / (hi - lo);
-    const X = (a) => x0 + (a - lo) * bw, y = 250, h = 76;
+    const X = (a) => x0 + (a - lo) * bw, y = 190, h = 76;
     const ci = C('index'), ck = C('key'), cs = C('size');
     /* memory outside the array, faint */
     rect(ctx, X(lo), y, X(A0) - X(lo), h, null, alpha(PAL.ink, 0.25), 2, [6, 6]);
@@ -54,10 +54,10 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     hbracket(ctx, X(A0 + k * c), X(A0 + (k + 1) * c), y - 50, cs, `c = ${c}`, { side: 'above' });
     /* the address of element i, from below */
     const ax = X(addr);
-    arrow(ctx, ax, y + h + 120, ax, y + h + 4, ci, 4);
+    arrow(ctx, ax, y + h + 120, ax, y + h + 44, ci, 4);
     text(ctx, `B + c · i = ${addr}`, ax, y + h + 146, ci, { size: 24, align: 'center', weight: 600 });
     /* B: the address element 0 would have; past the left edge when the numbering starts far from 0 */
-    const by = y + h + 196;
+    const by = y + h + 210;
     if (B >= lo) {
       arrow(ctx, X(B), by + 30, X(B), y + h + 44, ci, 3);
       text(ctx, `B = ${B}`, X(B), by + 56, ci, { size: 22, align: f ? 'left' : 'center', weight: 600 });
@@ -73,7 +73,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
 
 /* ================================================================ sim-row-major: a two-dimensional array in memory */
 (function () {
-  const d = sim('sim-row-major', 640);
+  const d = sim('sim-row-major', 600);
   const SHAPES = { a: { name: 'a', rows: 2, cols: 3, i: 1, j: 2 }, A: { name: 'A', rows: 3, cols: 4, i: 1, j: 3 } };
   const B = 2000, SIZE = 4;
   const shape = choice(d.controls, { label: '\\text{array}', key: 'shape', value: 'a',
@@ -86,8 +86,13 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     const s = SHAPES[shape.value], i = Math.round(sI.v), j = Math.round(sJ.v), cr = s.cols * SIZE, addr = B + cr * i + SIZE * j;
     const ci = C('index'), ck = C('key'), cs = C('size');
     topline(ctx, `${s.name}[${i}][${j}] is at ${B} + ${cr} · ${i} + ${SIZE} · ${j} = ${addr}.`);
+    const n = s.rows * s.cols, mw = Math.min(100, 1160 / n), mx = 700 - (n * mw) / 2, mh = 60;
+    const gw = 96, gh = 56, gx = 700 - (s.cols * gw) / 2, gy = 120, my = gy + s.rows * gh + 150;
+    /* where the chosen element lands */
+    const tt = i * s.cols + j, fx = gx + j * gw + gw / 2, fy = gy + (i + 1) * gh, tx = mx + tt * mw + mw / 2;
+    line(ctx, fx, fy + 4, tx, my - 70, alpha(ci, 0.7), 3, [8, 8]);
+    arrow(ctx, tx, my - 70, tx, my - 4, ci, 3);
     /* the array as the program sees it */
-    const gw = 96, gh = 56, gx = 700 - (s.cols * gw) / 2, gy = 120;
     for (let r = 0; r < s.rows; r += 1) {
       text(ctx, String(r), gx - 22, gy + r * gh + gh / 2 + 7, r === i ? ci : PAL.muted, { size: 20, align: 'right', weight: r === i ? 600 : 400 });
       for (let q = 0; q < s.cols; q += 1) {
@@ -100,7 +105,6 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     text(ctx, 'i', gx - 52, gy + (s.rows * gh) / 2 + 7, PAL.muted, { size: 20, align: 'right' });
     text(ctx, 'j', gx + (s.cols * gw) / 2, gy - 40, PAL.muted, { size: 20, align: 'center' });
     /* the same elements in memory, row after row */
-    const n = s.rows * s.cols, mw = Math.min(100, 1160 / n), mx = 700 - (n * mw) / 2, my = gy + s.rows * gh + 150, mh = 60;
     for (let t = 0; t < n; t += 1) {
       const r = Math.floor(t / s.cols), q = t % s.cols, on = r === i && q === j;
       rect(ctx, mx + t * mw, my, mw, mh, on ? alpha(ci, 0.16) : PAL.panel, on ? ci : PAL.ink, on ? 4 : 3);
@@ -109,10 +113,6 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     }
     for (let r = 0; r < s.rows; r += 1) hbracket(ctx, mx + r * s.cols * mw + 4, mx + (r + 1) * s.cols * mw - 4, my - 14, r === i ? cs : PAL.muted, `row ${r}`, { side: 'above' });
     text(ctx, 'address', mx - 12, my + mh + 26, PAL.muted, { size: 17, align: 'right' });
-    /* where the chosen element lands */
-    const t = i * s.cols + j, fx = gx + j * gw + gw / 2, fy = gy + (i + 1) * gh, tx = mx + t * mw + mw / 2;
-    line(ctx, fx, fy + 4, tx, my - 70, alpha(ci, 0.7), 3, [8, 8]);
-    arrow(ctx, tx, my - 70, tx, my - 4, ci, 3);
     tex(d.readout, `\\text{address} = B + c\\cdot i + d\\cdot j = ${B} + ${cr}\\cdot ${i} + ${SIZE}\\cdot ${j} = ${addr}`
       + `\\\\ c = ${s.cols}\\cdot ${SIZE} = ${cr}\\\\ d = ${SIZE}`);
   }
@@ -122,7 +122,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
 /* ================================================================ sim-list: the List interface's operations on
    ODS Figure 1.4's sequence, each one played as the values it moves */
 (function () {
-  const d = sim('sim-list', 560);
+  const d = sim('sim-list', 460);
   const XS = ['a', 'b', 'c', 'd', 'e', 'f', 'b', 'k', 'c'], N = XS.length;
   const OPS = {
     get: { label: 'get(i)', base: 'get' }, set: { label: 'set(i, x)', base: 'set' },
@@ -150,7 +150,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     const { ctx } = begin(d.c);
     const o = OPS[opSel.value], i = Math.round(sI.v), t = cy.now(), T = beats();
     const ci = C('index'), ck = C('key'), cc = C('cost'), cs = C('size');
-    const cell = 104, slots = N + 1, x0 = 700 - (slots * cell) / 2, y = 290, h = 70;
+    const cell = 104, slots = N + 1, x0 = 700 - (slots * cell) / 2, y = 220, h = 70;
     const cx = (p) => x0 + (p + 0.5) * cell;
     /* moved so far, and where each value stands */
     let moved = 0, n = N;

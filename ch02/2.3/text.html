@@ -16,7 +16,7 @@
 <p>Likewise, if we find that $num[1]+num[n]\lt \mathit{target}$, we need to make one of the elements larger, but $\mathit{num}[n]$ cannot get any larger, so we increase <span data-ref="pair-l">the pointer at 1</span> by one, making the smaller number larger.</p>
 <p>Generalising, if <span data-ref="pair-l pair-r">our two pointers</span> are now at $\htmlData{ref=pair-l}{l},\htmlData{ref=pair-r}{r}$, with $\htmlData{ref=pair-l}{l}\lt \htmlData{ref=pair-r}{r}$, then if $num[\htmlData{ref=pair-l}{l}]+num[\htmlData{ref=pair-r}{r}]\gt \mathit{target}$ we decrease $\htmlData{ref=pair-r}{r}$ by one, and if $num[\htmlData{ref=pair-l}{l}]+num[\htmlData{ref=pair-r}{r}]\lt \mathit{target}$ we increase $\htmlData{ref=pair-l}{l}$ by one. In this way $\htmlData{ref=pair-l}{l}$ keeps moving right and $\htmlData{ref=pair-r}{r}$ keeps moving left, until each of them has closed in on one number of the answer.</p>
 <figure class="sim" id="sim-two-pointers" data-source="thealgorithms-python" data-locator="thealgorithms-python:maths/two_pointer.py::two_pointer">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>On a sorted array, <span data-ref="pair-l"><em>l</em></span> starts at the first element and <span data-ref="pair-r"><em>r</em></span> at the last. When a[<span data-ref="pair-l"><em>l</em></span>] + a[<span data-ref="pair-r"><em>r</em></span>] is too big, no pair with a[<span data-ref="pair-r"><em>r</em></span>] can reach the target, so <span data-ref="pair-r"><em>r</em></span> moves left and its column of the pair-sum table drops out; when it is too small, <span data-ref="pair-l"><em>l</em></span> moves right and its row drops out. The pairs still possible are the triangle between <span data-ref="pair-l"><em>l</em></span> and <span data-ref="pair-r"><em>r</em></span>, and at most <em>n</em> − 1 checks settle the question. The code calls <span data-ref="pair-l"><em>l</em></span> and <span data-ref="pair-r"><em>r</em></span> i and j and counts from 0; the text counts from 1.</span></div>
 </figure>
 </section>
 
@@ -57,7 +57,7 @@ end</pre>
  -25 <span style="color:red">-10</span> -7 -3 <span style="color:magenta">2</span> 4 <span style="color:magenta">8</span> 10  (a+b+c==0)</pre>
 <p>The correctness of the algorithm can be seen as follows. Suppose we have a solution a + b + c = 0. Since the pointers only move in one direction, we can run the algorithm until <span data-ref="ts-i">the leftmost pointer</span> points to a. Run the algorithm until either <span data-ref="ts-start ts-end">one of the remaining pointers</span> points to b or c, whichever occurs first. Then the algorithm will run until <span data-ref="ts-start ts-end">the last pointer</span> points to the remaining term, giving the affirmative solution.</p>
 <figure class="sim" id="sim-three-sum" data-source="thealgorithms-python" data-locator="thealgorithms-python:maths/three_sum.py::three_sum">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>After the sort, each a = S[<span data-ref="ts-i"><em>i</em></span>] is fixed in turn, and <span data-ref="ts-start">start</span> and <span data-ref="ts-end">end</span> close in on b + c = −a from both sides: at most <em>n</em> − <em>i</em> − 2 checks for each a, (<em>n</em> − 1)(<em>n</em> − 2)/2 in all. Where the array holds equal values the code passes over equal neighbours, so it reports (−1, 0, 1) once where the pseudocode reports it twice. The code calls <span data-ref="ts-start">start</span> and <span data-ref="ts-end">end</span> low and high.</span></div>
 </figure>
 </section>
 
@@ -87,7 +87,7 @@ end</pre>
 
     return C</pre>
 <figure class="sim" id="sim-merge" data-source="thealgorithms-python" data-locator="thealgorithms-python:data_structures/arrays/merge_sorted.py::merge_sorted_arrays">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-ref="list-c"><em>C</em></span> grows by one element a step: the smaller of the heads of <span data-ref="list-a"><em>A</em></span> and <span data-ref="list-b"><em>B</em></span>, <span data-ref="list-a"><em>A</em></span>’s on a tie, so equal keys keep their order. Once one list runs out, the rest of the other goes on the end with no more comparisons, so lists of lengths <em>m</em> and <em>n</em> take at most <em>m</em> + <em>n</em> − 1. The code calls <span data-ref="list-a"><em>A</em></span>, <span data-ref="list-b"><em>B</em></span> and <span data-ref="list-c"><em>C</em></span> nums1, nums2 and merged.</span></div>
 </figure>
 <p>When the inputs are linked lists, this algorithm can be implemented to use only a constant amount of working space; the pointers in the lists' nodes can be reused for bookkeeping and for constructing the final merged list.</p>
 <p>In the merge sort algorithm, this subroutine is typically used to merge two sub-arrays <code>A[lo..mid]</code>, <code>A[mid+1..hi]</code> of a single array <code>A</code>. This can be done by copying the sub-arrays into a temporary array, then applying the merge algorithm above.<sup class="fn" data-note="wp-merge-4"></sup> The allocation of a temporary array can be avoided, but at the expense of speed and programming ease. Various in-place merge algorithms have been devised,<sup class="fn" data-note="wp-merge-5"></sup> sometimes sacrificing the linear-time bound to produce an <em>O</em>(<em>n</em> log <em>n</em>) algorithm;<sup class="fn" data-note="wp-merge-6"></sup> see [<em>Merge sort</em> §Variants] for discussion.</p>
@@ -104,7 +104,7 @@ $$\begin{aligned}
 <figure class="dv" id="drv-sma-next"></figure>
 <p>This means that the moving average filter can be computed quite cheaply on real time data with a FIFO / circular buffer and only 3 arithmetic steps.</p>
 <figure class="sim" id="sim-moving-window">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The window holds the last <em>k</em> points. Each move adds the point that comes in and subtracts the one that drops out, three arithmetic steps whatever <em>k</em> is, against <em>k</em> to add the window up again. A larger <em>k</em> gives a smoother line that lags further behind the data.</span></div>
 </figure>
 </section>
 
@@ -116,6 +116,6 @@ $$\begin{aligned}
 <h4>Procedure</h4>
 <p>Let <span data-ref="win-l win-r">the two pointers</span> be $\htmlData{ref=win-l}{l},\htmlData{ref=win-r}{r}$, and keep in addition a variable $\htmlData{ref=win-tmp}{\mathit{tmp}}$ that records the product of all the numbers in $[\htmlData{ref=win-l}{l},\htmlData{ref=win-r}{r}]$. At the start $\htmlData{ref=win-l}{l},\htmlData{ref=win-r}{r}$ are both at the far left. First move $\htmlData{ref=win-r}{r}$ to the right until we find $\htmlData{ref=win-tmp}{\mathit{tmp}}\geq k$ for the first time; then fix $\htmlData{ref=win-r}{r}$ and move $\htmlData{ref=win-l}{l}$ to the right until $\htmlData{ref=win-tmp}{\mathit{tmp}}\lt k$. Then for each $\htmlData{ref=win-r}{r}$, $\htmlData{ref=win-l}{l}$ is the left boundary it can extend to, and by the monotonicity of products of positive integers, the number of intervals with right endpoint $\htmlData{ref=win-r}{r}$ that satisfy the problem's condition is $\htmlData{ref=win-r}{r}-\htmlData{ref=win-l}{l}+1$.</p>
 <figure class="sim" id="sim-variable-window" data-source="doocs-leetcode" data-locator="doocs-leetcode:0713#Solution 1: Two Pointers">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-ref="win-r"><em>r</em></span> takes in one element a step and multiplies it into the product; while the product is at least <em>k</em>, <span data-ref="win-l"><em>l</em></span> drops elements from the left. For each <span data-ref="win-r"><em>r</em></span>, <span data-ref="win-l"><em>l</em></span> is then the leftmost start of a window whose product is below <em>k</em>, so <span data-ref="win-r"><em>r</em></span> − <span data-ref="win-l"><em>l</em></span> + 1 windows end at <span data-ref="win-r"><em>r</em></span>. Each pointer moves right at most <em>n</em> times, 2<em>n</em> moves in all, where a double loop tries <em>n</em>(<em>n</em> + 1)/2 windows. OI Wiki’s <span data-ref="win-tmp"><em>tmp</em></span> is the code’s p.</span></div>
 </figure>
 </section>
