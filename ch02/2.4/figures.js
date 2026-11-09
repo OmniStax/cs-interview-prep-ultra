@@ -75,7 +75,7 @@ const DOOCS_0370 = {
     { value: 'all', label: 'the whole matrix', q: [0, 0, 2, 3] },
   ];
 
-  const d = sim('sim-prefix-2d', 760);
+  const d = sim('sim-prefix-2d', 720);
   const code = F.code(d, {
     src: DOOCS_0304, lineMap: MAP,
     blocks: [
@@ -91,7 +91,7 @@ const DOOCS_0370 = {
   });
 
   /* the two grids: A on the left with the text's indices 1..m, 1..n; S on the right with its row and column 0 */
-  const CELL = 88, AX = 150, AY = 272, SX = 1400 - 120 - (N + 1) * CELL, SY = AY - CELL;
+  const CELL = 88, AX = 150, AY = 236, SX = 1400 - 120 - (N + 1) * CELL, SY = AY - CELL;
   const ax = (j) => AX + (j - 1) * CELL, ay = (i) => AY + (i - 1) * CELL;     /* A_{i,j}, 1-based */
   const sx = (j) => SX + j * CELL, sy = (i) => SY + i * CELL;                 /* S_{i,j}, 0-based = the text's */
   const sub = (i, j) => `${i},${j}`;
@@ -196,7 +196,7 @@ const DOOCS_0370 = {
         eq = [[`${S_(I, J)} = ${A_(I, J)} + `, PAL.ink], [S_(I - 1, J), RED, 600], [' + ', PAL.ink], [S_(I, J - 1), BLUE, 600], [` − ${S_(I - 1, J - 1)} = ${a} + `, PAL.ink],
           [num(up), RED, 600], [' + ', PAL.ink], [num(left), BLUE, 600], [` − ${num(ov)} = `, PAL.ink], [num(ln === 7 ? res : '?'), key, 600]];
         const filled = (I - 1) * N + J - (ln === 7 ? 0 : 1);
-        counter = `lookups: 3 a cell, ${3 * filled} for the ${filled} of mn = ${M * N} cells written · summing this cell's rectangle afresh: ${I * J - 1} additions`;
+        counter = `lookups: 3 a cell, ${3 * filled} for the ${filled} of mn = ${M * N} cells written · summing this cell's rectangle afresh: ${I * J - 1} addition${I * J - 1 === 1 ? '' : 's'}`;
       } else if (Q) {
         const { I1, J1, I2, J2, t } = Q;
         const terms = [[S_(I2, J2), PAL.ink, sv(I2, J2), '+'], [S_(I2, J1 - 1), BLUE, sv(I2, J1 - 1), '−'], [S_(I1 - 1, J2), RED, sv(I1 - 1, J2), '−'], [S_(I1 - 1, J1 - 1), PAL.ink, sv(I1 - 1, J1 - 1), '+']];
@@ -217,9 +217,9 @@ const DOOCS_0370 = {
         counter = `lookups: ${upto + 1} of 4 · adding the ${cells} cell${cells === 1 ? '' : 's'} one by one: ${cells - 1} addition${cells === 2 ? '' : 's'}`;
       }
       topline(ctx, headline);
-      if (eq) runs(ctx, eq, 700, 636, 30);
-      text(ctx, counter, 700, 690, cost, { size: 26, align: 'center' });
-      text(ctx, 'filled: written · faint: still 0 · dashed: the zero padding', 700, 734, PAL.muted, { size: 26, align: 'center' });
+      if (eq) runs(ctx, eq, 700, 600, 30);
+      text(ctx, counter, 700, 652, cost, { size: 26, align: 'center' });
+      text(ctx, 'filled: written · faint: still 0 · dashed: the zero padding', 700, 696, PAL.muted, { size: 26, align: 'center' });
       tip.hits = hits;
     },
   });
@@ -264,15 +264,15 @@ const DOOCS_0370 = {
     blocks: [
       { id: 'init', lines: [3, 3], label: 'an array of zeros', touches: ['d'] },
       { id: 'update', lines: [5, 9], label: 'add c at l and take it away after r', touches: ['l', 'r', 'c', 'd'] },
-      { id: 'left', lines: [6, 6], label: 'd[l] += c', touches: ['l', 'c', 'd'] },
-      { id: 'right', lines: [7, 9], label: 'd[r + 1] −= c, unless r is the last index', touches: ['r', 'c', 'd'] },
+      { id: 'left', lines: [6, 6], label: 'add c at l', touches: ['l', 'c', 'd'] },
+      { id: 'right', lines: [7, 9], label: 'take c away at r + 1, unless r is the last index', touches: ['r', 'c', 'd'] },
       { id: 'pass', lines: [11, 13], label: 'prefix sums of d', touches: ['i', 'd'] },
       { id: 'carry', lines: [12, 12], label: 'carry the running total into d[i]', touches: ['i', 'd'] },
     ],
     refs: { l: () => F.ref('l'), r: () => F.ref('r'), c: () => F.ref('c'), i: () => F.ref('i') },
   });
 
-  const CELL = 112, X0 = (1400 - (LEN + 1) * CELL) / 2, AY = 250, DY = 430, H = 76;
+  const CELL = 112, X0 = (1400 - (LEN + 1) * CELL) / 2, AY = 210, DY = 390, H = 76;
   const cx = (k) => X0 + (k + 0.5) * CELL;
   const tip = { hits: [] };
   F.hover(d.stage, () => tip.hits, d.c);
@@ -344,23 +344,23 @@ const DOOCS_0370 = {
       if (ln === 3) head = 'd starts as zeros, and so does the array a its prefix sums give.';
       else if (upd) {
         const two = v.r + 1 < LEN;
-        head = two ? `Add ${num(v.c)} to ${range(v.l, v.r)}: d[${v.l}] += ${num(v.c)} and d[${v.r + 1}] −= ${num(v.c)}, two writes for ${v.r - v.l + 1} cells.`
-          : `Add ${num(v.c)} to ${range(v.l, v.r)}: d[${v.l}] += ${num(v.c)}; r + 1 = ${LEN} is past the end, so nothing is taken away.`;
-        rule = [['D_l ← D_l + c', cc, 600], [two ? ',   D_{r+1} ← D_{r+1} − c' : '   (D_{r+1} is past the end)', two ? cc : PAL.muted, 600],
-          [`      l = ${v.l}, r = ${v.r}, c = ${num(v.c)}`, PAL.ink]];
+        head = two ? `Add ${num(v.c)} to ${range(v.l, v.r)}: d[${v.l}] gains ${num(v.c)} and d[${v.r + 1}] loses it, two writes for ${v.r - v.l + 1} cells.`
+          : `Add ${num(v.c)} to ${range(v.l, v.r)}: d[${v.l}] gains ${num(v.c)}; r + 1 = ${LEN} is past the end, so nothing loses it.`;
+        rule = [['D_l ← D_l + c', PAL.ink], [two ? ',   D_{r+1} ← D_{r+1} − c' : '   (D_{r+1} is past the end)', two ? PAL.ink : PAL.muted],
+          ['      ', PAL.ink], [`l = ${v.l}`, cl, 600], [',  ', PAL.ink], [`r = ${v.r}`, cr, 600], [',  ', PAL.ink], [`c = ${num(v.c)}`, cc, 600]];
       } else if (inPass && !v.done) {
         const i = v.i;
         head = ln === 11 ? 'Every add is written. The prefix pass now turns d into the array, left to right.'
-          : `d[${i}] = d[${i}] + d[${i - 1}] = ${num(dv[i] - dv[i - 1])} + ${num(dv[i - 1])} = ${num(dv[i])}, which is a[${i}].`;
+          : `d[${i}] = d[${i}] + d[${i - 1}] = ${num(dv[i] - dv[i - 1])} + ${dv[i - 1] < 0 ? `(${num(dv[i - 1])})` : dv[i - 1]} = ${num(dv[i])}, which is a[${i}].`;
         if (ln === 12) rule = [['a_i = a_{i−1} + D_i', key, 600], [`      i = ${i}`, ci, 600]];
       } else head = 'd now holds the array: each add is spread back over its range.';
       topline(ctx, head);
-      if (rule) runs(ctx, rule, 700, 560, 30);
+      if (rule) runs(ctx, rule, 700, 572, 30);
       const W = v.writes, D = v.direct;
       const counter = inPass ? `writes to d: ${W}, where adding to every cell of each range takes ${D} · prefix pass: ${Math.max(0, passed)} of n − 1 = ${LEN - 1} additions`
-        : `writes to d: ${W} (2 an add) · adding to every cell of each range: ${D} writes`;
-      text(ctx, counter, 700, 616, cost, { size: 26, align: 'center' });
-      text(ctx, 'dashed a: what a prefix pass over d would give now · indices from 0, as the code', 700, 662, PAL.muted, { size: 26, align: 'center' });
+        : `writes to d: ${W} (at most 2 an add) · adding to every cell of each range: ${D} writes`;
+      text(ctx, counter, 700, 624, cost, { size: 26, align: 'center' });
+      text(ctx, 'dashed a: what a prefix pass over d would give now · indices from 0, as the code', 700, 668, PAL.muted, { size: 26, align: 'center' });
       tip.hits = hits;
     },
   });
