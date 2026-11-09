@@ -77,3 +77,16 @@ The OpenDSA check items whose model the book does not teach (2.1's current-posit
 | 2.7 | cycle-start-proof | none | none | none |
 
 Written items left out (unkeyed): ODS Exercises 2.1, 2.2, 3.1. Code items left out under this choice and named in `exercise_notes`: the statements without source tests (ODS Exercises 1.7, 3.2–3.12; CIU's two checklists), Exercism spiral-matrix, transpose, saddle-points, sublist and pythagorean-triplet (over the cap or unranked), and every Kattis and ICPC item.
+
+## Forced scenarios (translation, `docs/prompts/translate.md` §4; chapter 2–3 pass)
+
+The terms are in the book's `glossary.en.json` (every row of 2.3 and 2.4 decided; 区间 is "range" in both) and the
+scenarios in `translation-notes.md`.
+
+| section | where | what was done | why |
+|---|---|---|---|
+| 2.3 | 例题 4 (`sorted-pair`) and 例题 1 (`variable-window`) | the boxes' heading prints "Example", without OI Wiki's number | the page carries two of the source's four 例题, so its numbers would skip |
+| 2.3 | the same two boxes | each box, a LeetCode problem restated, becomes a link to LeetCode's English page of that problem | RULES.md, Source: 例题 boxes that restate LeetCode problems become links |
+| 2.4 | `std::partial_sum`, `std::inclusive_scan`, `std::adjacent_difference` | links to zh.cppreference.com point at en.cppreference.com | an English reader's reference |
+| 2.4 | 容斥原理, 树状数组 | OI Wiki's own links become links to Sections 40.4 and 30.2 (not yet built) | RULES.md, Cross-references |
+

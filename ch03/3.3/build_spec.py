@@ -412,10 +412,10 @@ FIG_AI = [{'model': 'claude-opus-5-5', 'effort': 'high', 'part': 'built'}]
 LEAD = ('An Essential section on the <span data-concept="deque">deque</span>, a sequence that grows and shrinks at both '
         'ends, and on two ways to keep one in arrays; the <span data-concept="dual-array-deque">DualArrayDeque</span> is '
         'Advanced. Lists are indexed from 0. ODS’s “LIFO Queue” is the stack of '
-        '<a href="/cs-interview-prep-ultra/ch03/3.1/">Section 3.1</a>. Its lemma on balance() uses '
+        '<a href="/cs-interview-prep-ultra/ch03/3.1/">Section 3.1</a>. The DualArrayDeque lemma’s “potential method” is '
         '<a href="/cs-interview-prep-ultra/ch01/1.5/#potential">Section 1.5</a>’s '
-        '<span data-concept="potential-method">potential method</span> as a counter: each call that does not rebalance '
-        'raises Φ by at most 1, so the calls before a costly balance() pay for it.')
+        '<span data-concept="potential-method">method</span> used as a counter: each call that does not rebalance '
+        'raises Φ by at most 1, and so the calls before a costly balance() pay for it.')
 
 FOOTNOTES = [
     {'id': 'err-positions', 'kind': 'correction',

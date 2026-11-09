@@ -30,9 +30,9 @@ Generalising, if our two pointers are now at $l,r$, with $l\lt r$, then if $num[
 
 <!-- block variable-window · source oiwiki · oiwiki:misc/two-pointer#维护区间信息 (its opening, 例题 1 as a link, and its 过程) -->
 
-## Maintaining information over an interval
+## Maintaining information over a range
 
-If two pointers are not combined with other data structures, the simplest pattern for maintaining information over an interval with them is to maintain information that has a certain monotonicity and in which adding or removing one element is easy to handle, such as a sum of positive numbers or a product of positive integers.
+If two pointers are not combined with other data structures, the simplest pattern for maintaining information over a range with them is to maintain information that has a certain monotonicity and in which adding or removing one element is easy to handle, such as a sum of positive numbers or a product of positive integers.
 
 ### Example
 
@@ -40,4 +40,4 @@ If two pointers are not combined with other data structures, the simplest patter
 
 #### Procedure
 
-Let the two pointers be $l,r$, and keep in addition a variable $\mathit{tmp}$ that records the product of all the numbers in $[l,r]$. At the start $l,r$ are both at the far left. First move $r$ to the right until we find $\mathit{tmp}\geq k$ for the first time; then fix $r$ and move $l$ to the right until $\mathit{tmp}\lt k$. Then for each $r$, $l$ is the left boundary it can extend to, and by the monotonicity of products of positive integers, the number of intervals with right endpoint $r$ that satisfy the problem's condition is $r-l+1$.
+Let the two pointers be $l,r$, and keep in addition a variable $\mathit{tmp}$ that records the product of all the numbers in $[l,r]$. At the start $l,r$ are both at the far left. First move $r$ to the right until we find $\mathit{tmp}\geq k$ for the first time; then fix $r$ and move $l$ to the right until $\mathit{tmp}\lt k$. Then for each $r$, $l$ is the left boundary it can extend to, and by the monotonicity of products of positive integers, the number of ranges with right endpoint $r$ that satisfy the problem's condition is $r-l+1$.

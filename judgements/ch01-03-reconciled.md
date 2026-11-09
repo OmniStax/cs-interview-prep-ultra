@@ -410,12 +410,12 @@ winner leans on.
 | B11 | 3.2 lead, queue-linked-list | SLList (see 2.6); its pop() removes the head node, as in 3.1's linked-list stack; the closing paragraph's Deque is 3.3 | Queue Operations and closing paragraph (item 5) |
 | B12 | 3.1 lead | 2.2's ArrayStack is an array-backed stack; Wikipedia's array pseudocode here is the same idea | ch03.md item 7 |
 | B13 | 3.3 lead | "LIFO Queue" in the Deque paragraph means the stack of 3.1 (ODS's LIFO paragraph is not used) | ODS Deque paragraph |
-| B14a | 3.3 lead, dual-array-deque | ODS's "potential method" here is 1.5's method used as a counter: each cheap operation raises Φ by at most 1, so the expensive balance() is paid for by the operations before it | two uses of "potential" (item 10) |
-| B14b | 3.6 lead, selist-spread-gather | the same, for Φ = the number of fragile nodes | as B14a |
+| B14a | 3.3 lead, dual-array-deque | ODS's "potential method" here is 1.5's method used as a counter: each cheap operation raises Φ by at most 1, so the expensive balance() is paid for by the operations before it. Built (chapter 2–3 pass, worded as B14b): "The DualArrayDeque lemma's “potential method” is Section 1.5's method used as a counter: each call that does not rebalance raises Φ by at most 1, and so the calls before a costly balance() pay for it." | two uses of "potential" (item 10) |
+| B14b | 3.6 lead, selist-spread-gather | the same, for Φ = the number of fragile nodes. Built: "The SEList proof's “potential method” is Section 1.5's method used as a counter: Φ is the number of fragile nodes, each add that does not spread raises it by at most 1, and so the adds before a spread pay for it." Both leads mark "method" `potential-method` and link Section 1.5's `#potential` | as B14a |
 | B15 | 3.2 lead, circular-buffer | ODS's ArrayQueue resizes rather than bounding; the exercise's bounded buffer with overwrite is the fixed-size variant the row names | comprehensiveness gap (ch03.md) |
 | B16 | 2.3 lead, sliding-window-fixed | the example is a running mean; in the exercises the window holds a sum or a count | ch02.md builder note |
-| B17 | 2.6 lead | DLList's Summary names Deque operations (3.3) | forward reference |
-| B18 | 3.2, 3.3, 3.6 | map ODS's \lemref{arraystack-amortized} and the "resize() of ArrayStack" mentions to book §2.2 | reference fix; ch03.md item 3 is resolved, since the lemma is in 2.2 |
+| ~~B17~~ | ~~2.6 lead~~ | ~~DLList's Summary names Deque operations (3.3)~~ Struck in the chapter 2–3 pass: the pseudocode edition's Summary names no Deque operation (2.6's build), so no bridge is needed | forward reference |
+| B18 | 3.2, 3.3, 3.6 | map ODS's \lemref{arraystack-amortized} and the "resize() of ArrayStack" mentions to book §2.2. Built (chapter 2–3 pass, one rule for the three): a `\lemref` prints as ODS prints it, "Lemma 2.1" (its own number, as a source's figure number stays as printed, RULES Cross-references), linked to the lemma's note, `/ch02/2.2/#arraystack-cost` (3.3; 3.6's "Lemma 2.3" is its own lemma, `#rootish-sqrt`); a "resize() of ArrayStack" mention wraps ODS's words in a link to `/ch02/2.2/#resize` (3.2 "the resize() operation of ArrayStack", 3.6 "a resize() operation on an ArrayStack" and "the ArrayStack.resize() operation") | reference fix; ch03.md item 3 is resolved, since the lemma is in 2.2 |
 
 ---
 
@@ -489,38 +489,72 @@ These are notes on kept-whole text. The source words are not changed silently.
 
 **Chapter 2**
 
-15. Wikipedia Array, ===One-dimensional arrays===: "B + 30c" should be "B − 30c".
+15. Wikipedia Array, ===One-dimensional arrays===: "B + 30c" should be "B − 30c". (2.1, `err-rebase`)
 16. Wikipedia Array, ===Multidimensional arrays===: 1-based labels a₁₁, a₁₂ on a 0-based
-    C array.
+    C array. (2.1, `err-a11`)
 17. Wikipedia Pointer, "declared obsolescent as of C29": unverifiable from the cache, and
-    the next C revision's working name is C2y. Needs a human check.
+    the next C revision's working name is C2y. Needs a human check. 2.1's build read Wikipedia's
+    "C29 (C standard revision)" (revision 1382563440), which supports the sentence; it stands
+    unnoted. A person should still read WG14 N3517 (open-std.org is refused by the proxy).
 18. Wikipedia Pointer #Multiple indirection, the comment "where all earlier elements have
-    lesser or equal value": loose; the code is a correct sorted insert.
-19. ODS `lem:arraystack-amortized`, "at least n_i/2": the bound proved is n_i/2 − 1.
+    lesser or equal value": loose; the code is a correct sorted insert. (2.5, `err-sorted-comment`)
+19. ODS `lem:arraystack-amortized`, "at least n_i/2": the bound proved is n_i/2 − 1. (2.2, `err-half`)
 20. OI Wiki prefix-sum 2D example: the terms read S_{2,3} + S_{3,2} but the numbers are
     listed as 18 + 15. Per the figure, S_{2,3} = 15 and S_{3,2} = 18. The sum is
-    unaffected.
-21. Wikipedia Moving average: the locator stops before the confused "k = n" sentence.
+    unaffected (2.4, `err-2d-example`, worded: "The numbers are listed in the other order
+    from the terms: by the figure, S2,3 = 15 and S3,2 = 18. The sum, 29, is right.").
+21. Wikipedia Moving average: the locator stops before the confused "k = n" sentence (2.3:
+    the block is cut after "…and only 3 arithmetic steps.", so no note).
 
 **Chapter 3**
 
 22. ODS DualArrayDeque prose, `front.add(front.size()-i-1,x)`: the code is
-    `front.size()-i`.
+    `front.size()-i`. (3.3, `err-front-add`)
 23. ODS DualArrayDeque lemma, "a technique knows as": should be "known as" (new in this
-    pass, `arrays.tex` line 596).
+    pass, `arrays.tex` line 596). (3.3, `err-knows`)
 24. ODS ArrayQueue theorem, "m add(i,x) and remove(i) operations": the Queue has add(x)
-    and remove().
-25. ODS ArrayQueue prose, resize to "size 2n": the code uses max(1, 2n).
+    and remove(). (3.2, `err-theorem-ops`)
+25. ODS ArrayQueue prose, resize to "size 2n": the code uses max(1, 2n). (3.2, `err-resize-size`)
 26. ODS ArrayDeque, "shift the elements a[0],…,a[i−1] left": means list positions, not
-    raw slots (harmless).
-27. ODS RootishArrayStack space usage, "wasting at least in √n": a typo.
-28. cpa zero_matrix step 1, d[i][j] "from 0 to i − 1": the code includes row i.
+    raw slots (harmless). (3.3, `err-positions`)
+27. ODS RootishArrayStack space usage, "wasting at least in √n": a typo. (3.6, `err-wasting`)
+28. cpa zero_matrix step 1, d[i][j] "from 0 to i − 1": the code includes row i. (3.4, `err-d-row`)
 29. cpa queue-from-two-stacks: the minimum on an empty queue reads `s2.top()`, which is
-    undefined. An edge case for the exercise.
+    undefined. An edge case for the exercise. (3.4, `err-empty-min`)
 30. cpa unary operators: unary priority above `^` gives −2^2 = 4. An exercise must not
-    combine the two.
+    combine the two. (3.5, `err-unary-pow`)
 31. cpa C++ negating a `char` to flag unary operators: implementation-defined where `char`
-    is unsigned. Matters only for the C++ pass.
+    is unsigned. Matters only for the C++ pass. Not noted (3.5's config).
+
+**Chapters 2 and 3, found while building (added in the chapter 2–3 pass, 2026-11-09)**
+
+35. cpa zero_matrix, "d[i], i = 1...m − 1" for the array of the stack step: it is indexed by
+    the column, d[j] for j = 0, …, m − 1, as the code's `vector<int> d(m, -1)` declares it
+    (3.4, `err-d-index`; numbered 35 by 3.4's builder).
+36. ODS Exercise 2.5 (rotate), the index set "{0, …, a.length}": the last index of a is
+    a.length − 1 (2.1, `err-rotate`, in the card's prompt).
+37. Wikipedia Stack, Array implementation, "top … the number of items pushed so far": top
+    counts the items on the stack now, the number pushed less the number popped, which is
+    also the cell the next push writes to (3.1, `err-top`).
+38. ODS Figure 2.2's caption, "add(x) and remove(i) operations": the calls drawn are add(x)
+    and remove(), the Queue's operations (3.2, `err-caption-ops`, through the figure row's
+    `figure` field).
+39. (26b) ODS ArrayDeque, "shift … min{i, n − i}": holds where n/2 is the real quotient, as in
+    the prose, Figure 2.3 and the Python listing; ODS's Java and C++ divide n by 2 in whole
+    numbers and, for odd n and i = (n − 1)/2, shift (n + 1)/2 elements, one more than
+    min{i, n − i} (3.3, `err-half`).
+40. (26c) ODS Figure 2.4's prose, "remove(x)": the operation is remove(i), as the figure's own
+    caption says (3.3, `err-remove-x`).
+41. ODS Figure 3.5(b) (SEList remove, Case 2): with b = 3 its three blocks of b − 1 = 2
+    elements are b such blocks, so remove(1) finds Case 3 and gathers; Case 2 needs the end of
+    the list within b − 1 blocks (3.6, `err-case2`).
+42. ODS FastSqrt `inittabs()` as printed: tables of 2^(r/2) = 2^14 entries for r = 29, but
+    sqrt(x) reads sqrttab at xp >> (r/2), up to 2^16 − 1, and the text speaks of tables of size
+    2^16, as ODS's working code builds them; the C++ `1<<d+k` parses as 1 << (d + k) (3.6,
+    `err-inittabs`).
+
+Every correction note of chapters 1–3 is in this list under its number (chapters 2–3: 15,
+16, 18–20, 22–30 and 35–42; 17, 21 and 31 carry no note, as their items say).
 
 ---
 

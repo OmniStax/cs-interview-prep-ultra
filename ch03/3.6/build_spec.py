@@ -837,7 +837,7 @@ FIG_AI = [{'model': 'claude-opus-5-5', 'effort': 'high', 'part': 'built'}]
 LEAD = ('An Advanced section on lists that waste little space: ODS’s RootishArrayStack, the √<em>n</em> lower bound on '
         'wasted space, and the SEList; <span data-concept="rootish-index-math">computing square roots in constant '
         'time</span> is Beyond. Blocks and list indices count from 0. The SEList proof’s “potential method” is '
-        '<a href="/cs-interview-prep-ultra/ch01/1.5/#potential">Section 1.5</a>’s method used as a counter: Φ is the '
+        '<a href="/cs-interview-prep-ultra/ch01/1.5/#potential">Section 1.5</a>’s <span data-concept="potential-method">method</span> used as a counter: Φ is the '
         'number of fragile nodes, each add that does not spread raises it by at most 1, and so the adds before a spread '
         'pay for it.')
 

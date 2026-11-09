@@ -122,8 +122,8 @@ MARKS = [
     ('three-sum', '<strong>3SUM</strong> problem', '<strong>' + CONCEPT('three-sum', '3SUM') + '</strong> problem'),
     ('merge', 'Merging two sorted lists into one', CONCEPT('merge-sorted-sequences', 'Merging two sorted lists') + ' into one'),
     ('moving-average', '<strong>simple moving average</strong>', '<strong>' + CONCEPT('sliding-window-fixed', 'simple moving average') + '</strong>'),
-    ('variable-window', 'maintaining information over an interval with them',
-     CONCEPT('sliding-window-variable', 'maintaining information over an interval') + ' with them'),
+    ('variable-window', 'maintaining information over a range with them',
+     CONCEPT('sliding-window-variable', 'maintaining information over a range') + ' with them'),
     # referents in words
     ('sorted-pair', 'the pointer at $n$', ref('pair-r', 'the pointer at $n$')),
     ('sorted-pair', 'the pointer at 1', ref('pair-l', 'the pointer at 1')),
