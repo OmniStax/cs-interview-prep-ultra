@@ -1,0 +1,16 @@
+[
+ {
+  "id": "brisk-fn-6-1",
+  "kind": "book",
+  "number": "1",
+  "html": "How many other “Fundamental Theorems” of math do you know? Here are a few: the Fundamental Theorem of Arithmetic says that any natural number can be broken down into its prime factors in only one way. The Fundamental Theorem of Algebra says that the highest power of a polynomial is how many roots (zeroes) it has. The Fundamental Theorem of <em>Linear</em> Algebra says that the row space and the column space of a matrix have the same dimension. The Fundamental Theorem of Calculus says that integration and differentiation are the inverse of each other.",
+  "source": "brisk"
+ },
+ {
+  "id": "brisk-fn-6-2",
+  "kind": "book",
+  "number": "2",
+  "html": "“War” is a mindless card game which involves no strategy or decision-making on the part of the players. Once you shuffle the initial deck, the entire outcome of the game is fixed.",
+  "source": "brisk"
+ }
+]

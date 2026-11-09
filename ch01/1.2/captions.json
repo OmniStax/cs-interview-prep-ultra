@@ -1,0 +1,6 @@
+{
+ "harmonic-integral": {
+  "html": "The $k$th harmonic number $H_k=\\sum_{i=1}^k 1/i$ is upper- and lower-bounded by two integrals. The value of these integrals is given by the area of the shaded region, while the value of $H_k$ is given by the area of the rectangles.",
+  "text": "The kth harmonic number Hₖ = ∑ᵢ₌₁ᵏ 1/i is upper- and lower-bounded by two integrals. The value of these integrals is given by the area of the shaded region, while the value of Hₖ is given by the area of the rectangles."
+ }
+}

@@ -35,6 +35,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 BOOK = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import extract_jeffe  # noqa: E402
+import extract_opendsa  # noqa: E402
 
 SC_STYLE = 'font-variant:small-caps'
 
@@ -401,12 +402,100 @@ def footnotes(items, keep_hyphen, joined):
 
 # ---------------------------------------------------------------- ODS LaTeX
 
+# The edition macros of ODS's LaTeX (latex/Makefile, %HEADCOMMAND): the book reads the pseudocode edition
+# (METHOD decision 20), which prints \pcodeonly{…} and drops \javaonly{…}, \cpponly{…} and \notpcode{…}.
+ODS_EDITION = {'pcodeonly': True, 'javaonly': False, 'cpponly': False, 'notpcode': False}
+
+
+def ods_edition(text):
+    """Apply the edition macros, braces balanced."""
+    out, i = [], 0
+    pat = re.compile(r'\\(' + '|'.join(ODS_EDITION) + r')\{')
+    while True:
+        m = pat.search(text, i)
+        if not m:
+            out.append(text[i:])
+            return ''.join(out)
+        out.append(text[i:m.start()])
+        depth, j = 1, m.end()
+        while depth and j < len(text):
+            depth += {'{': 1, '}': -1}.get(text[j], 0) if text[j - 1] != '\\' else 0
+            j += 1
+        if ODS_EDITION[m.group(1)]:
+            out.append(ods_edition(text[m.end():j - 1]))
+        i = j
+
+
+def ods_macros(text):
+    """A \\newcommand the passage defines for itself (ODS's \\hint in its harmonic digression) is expanded
+    where it is used, and its definition dropped."""
+    defs = {}
+
+    def define(m):
+        defs[m.group(1)] = m.group(2)
+        return ''
+    text = re.sub(r'\\newcommand\{(\\[A-Za-z]+)\}\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}%?\n?', define, text)
+    for k, v in defs.items():
+        text = re.sub(re.escape(k) + r'(?![A-Za-z])', lambda m: v, text)
+    return text
+
+
+def ods_figures(path, first, last):
+    """The figure environments in lines first..last of an ODS .tex file: {label: caption in LaTeX}."""
+    src = open(path, encoding='utf-8').read().split('\n')[first - 1:last]
+    text = ods_macros('\n'.join(l for l in src if not l.lstrip().startswith('%')))
+    out = {}
+    for f in re.findall(r'\\begin\{figure\}(.*?)\\end\{figure\}', text, flags=re.S):
+        lab = re.search(r'\\figlabel\{([^}]*)\}', f)
+        cap = re.search(r'\\caption\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}', f, flags=re.S)
+        if lab and cap:
+            out[lab.group(1)] = ' '.join(cap.group(1).split())
+    return out
+
+
+SUB = dict(zip('0123456789+-=()aeoxhklmnpstij', '₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₒₓₕₖₗₘₙₚₛₜᵢⱼ'))
+SUP = dict(zip('0123456789+-=()nik', '⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱᵏ'))
+
+
+def tex_plain(tex):
+    """Simple inline maths as plain text, for a caption that stands in an attribute (root item 19: no
+    maths in an attribute): Unicode sub- and superscripts where every character has one."""
+    t = re.sub(r'(?<=[\w}])\\(log|ln)\b', r' \\\1', tex)    # 2n\log n reads "2n log n"
+    t = t.replace('\\sum', '∑').replace('\\int', '∫').replace('\\ln', 'ln').replace('\\log', 'log')
+    t = t.replace('\\le', '≤').replace('\\ge', '≥').replace('\\cdot', '·').replace('\\ldots', '…')
+
+    def script(m, table):
+        body = m.group(1) or m.group(2)
+        return ''.join(table[c] for c in body) if all(c in table for c in body) else m.group(0)
+    t = re.sub(r'_\{([^{}]*)\}|_(\w)', lambda m: script(m, SUB), t)
+    t = re.sub(r'\^\{([^{}]*)\}|\^(\w)', lambda m: script(m, SUP), t)
+    t = re.sub(r'\s*=\s*', ' = ', t)
+    return t
+
+
 def ods_tex(path, first, last, spec):
-    """Lines first..last (1-based, inclusive) of an ODS .tex file to elements."""
+    """Lines first..last (1-based, inclusive) of an ODS .tex file to elements: headings, paragraphs, a
+    description list as its items (`li`, each opened by its bold label), and display maths."""
     src = open(path, encoding='utf-8').read().split('\n')[first - 1:last]
     text = '\n'.join(l for l in src if not l.lstrip().startswith('%'))
+    text = ods_macros(text)
+    # a figure environment is the figure's, not the prose's: its caption is read by ods_figures
+    text = re.sub(r'\\begin\{figure\}.*?\\end\{figure\}\n?', '', text, flags=re.S)
     text = re.sub(r'\\index\{[^{}]*(\{[^{}]*\}[^{}]*)*\}%?\n?', '', text)
     text = re.sub(r'\\(sec|fig)label\{[^}]*\}\n?', '', text)
+    text = ods_edition(text)
+    # \paragraph opens a paragraph of its own, whether or not a blank line stands before it
+    text = re.sub(r'\n(?=\\paragraph\{)', '\n\n', text)
+    # a description list is its items, each a paragraph of its own
+    text = re.sub(r'\\(begin|end)\{description\}', '\n\n', text)
+    text = text.replace('\\item[', '\n\n\\item[')
+    # an itemize list likewise, its items unlabelled; an align* is a display of aligned lines; an imported
+    # listing (\javaimport, \cppimport) is printed by no edition the book reads (the pseudocode edition
+    # comments both out, latex/snarf-python.py), and the paragraph breaks where it stood
+    text = re.sub(r'\\(begin|end)\{itemize\}', '\n\n', text)
+    text = re.sub(r'\\item(?=\s)', '\n\n\\\\item[]', text)
+    text = re.sub(r'\\begin\{align\*\}(.*?)\\end\{align\*\}', r'\\[\\begin{aligned}\1\\end{aligned}\\]', text, flags=re.S)
+    text = re.sub(r'^\\(java|cpp)import\{[^}]*\}\s*$', '\n', text, flags=re.M)
     paras = [p.strip() for p in re.split(r'\n\s*\n', text) if p.strip()]
     els = []
     for p in paras:
@@ -416,18 +505,43 @@ def ods_tex(path, first, last, spec):
             p = m.group(2).strip()
             if not p:
                 continue
-        els.append({'kind': 'p', 'tex': ' '.join(p.split())})
+        m = re.match(r'\\item\[(.*?)\]\s*(.*)', p, re.S)
+        if m:
+            els.append({'kind': 'li', 'label': m.group(1), 'tex': ' '.join(m.group(2).split())})
+            continue
+        # a display inside a paragraph splits it: the text before, the display, the text after
+        for k, part in enumerate(re.split(r'\\\[(.*?)\\\]', p, flags=re.S)):
+            part = ' '.join(part.split())
+            if not part:
+                continue
+            els.append({'kind': 'display', 'tex': part} if k % 2 else {'kind': 'p', 'tex': part})
     return els
+
+
+# An operator in #code# as the pseudocode edition sets it (latex/snarf-python.py, translate_code).
+ODS_OPS = {'+': '+', '-': '-', '*': '\\cdot', '/': '/', '%': '\\bmod', '//': '\\bdiv'}
+
+
+def ods_pcode(code):
+    """Any other #code# (a statement, a comparison) as the pseudocode edition sets it in maths: an
+    assignment's = is \\gets (latex/snarf-python.py, translate_code); comparisons and ++ stand as written."""
+    code = code.replace('\u202f', '\\,')    # a thin space of the code is maths' own again
+    return re.sub(r'\s*(?<![=<>!])=(?!=)\s*', r'\\gets ', code).replace('\\gets \\,', '\\gets\\,')
 
 
 def ods_inline(tex, spec, notes, ctx):
     """ODS's inline LaTeX to HTML, and to Markdown. #x# is ODS's mark for code; in maths it is the
     variable itself."""
+    # a dollar sign of the prose is no maths delimiter (root item 19: &#36; in the prose); a thin space
+    # inside a number (\$120\,000) is the narrow no-break space
+    tex = tex.replace('\\$', '\x06')
+    tex = ''.join(p if k % 2 else p.replace('\\,', '\u202f') for k, p in enumerate(re.split(r'(\$.+?\$)', tex)))
     md = tex
     h = tex
 
     def math(m):
         body = m.group(1)
+        body = re.sub(r'(\\[A-Za-z]+)#', r'\1 #', body)    # \log#n# is \log n, not \logn
         body = re.sub(r'#(\w+)#', r'\1', body)
         return '\x00' + body + '\x01'
     h = re.sub(r'\$(.+?)\$', math, h)
@@ -449,22 +563,85 @@ def ods_inline(tex, spec, notes, ctx):
     # #code# as maths (latex/snarf-python.py, code_subs)
     h = re.sub(r'#([A-Z]\w*)#', r'\1', h)
     h = re.sub(r'#(\w+)#', r'$\1$', h)
+    h = re.sub(r'#([^#\s\w]+)#', lambda m: '$' + ODS_OPS.get(m.group(1), m.group(1)) + '$', h)
+    h = re.sub(r'#([^#]+)#', lambda m: '$' + ods_pcode(m.group(1)) + '$', h)
     h = h.replace('``', '“').replace("''", '”').replace('---', '—').replace('--', '–').replace('~', ' ')
     h = re.sub(r"(\w)'(\w)", r'\1’\2', h)
     h = re.sub(r'\x00(.*?)\x01', lambda m: '$' + m.group(1) + '$', h)
     h = re.sub(r'\x02(.*?)\x03', r'<sup class="fn" data-note="\1"></sup>', h)
     h = re.sub(r'\x04(.*?)\x05', lambda m: spec['ODS_REFS'][m.group(1)][0], h)
+    h = h.replace('\x06', '&#36;')
     md = re.sub(r'\x00(.*?)\x01', lambda m: '$' + m.group(1) + '$', md)
     md = re.sub(r'\\footnote\{((?:[^{}]|\{[^{}]*\})*)\}', lambda m: '[^ods]', md)
     md = re.sub(r'\\paragraph\{(.*?)\}', r'**\1**', md)
     md = re.sub(r'\\emph\{(.*?)\}', r'*\1*', md)
     md = re.sub(r'#([A-Z]\w*)#', r'\1', md)
     md = re.sub(r'#(\w+)#', r'$\1$', md)
+    md = re.sub(r'#([^#\s\w]+)#', lambda m: '$' + ODS_OPS.get(m.group(1), m.group(1)) + '$', md)
+    md = re.sub(r'#([^#]+)#', lambda m: '$' + ods_pcode(m.group(1)) + '$', md)
+    md = md.replace('\x06', '$')
     for k, v in spec.get('ODS_REFS', {}).items():
         md = md.replace(k, v[1])
     md = md.replace('``', '“').replace("''", '”').replace('~', ' ')
     md = re.sub(r"(\w)'(\w)", r'\1’\2', md)
     return h.strip(), md.strip()
+
+
+# ---------------------------------------------------------------- OpenDSA reStructuredText
+
+def code_set(variants, ai):
+    """A code listing in several languages (root item 19): one <pre data-lang> per language present, in
+    the order Python, Java, C++, JavaScript; a variant the source does not print carries data-ai."""
+    pres = []
+    for lang in ('python', 'java', 'cpp', 'javascript'):
+        if lang in variants:
+            mark = f' data-ai="{ai}"' if lang in variants.get('_ai', ()) else ''
+            pres.append(f'<pre data-lang="{lang}"{mark}><code>{esc(variants[lang].strip(chr(10)))}</code></pre>')
+    return '<div class="code-set">\n' + '\n'.join(pres) + '\n</div>'
+
+
+def opendsa_block(b, spec, fixes, used):
+    """One block of an OpenDSA module (tools/extract_opendsa.py): the elements from the heading `from` up
+    to the heading `to` (or the module's end), the spec's h2 over them, headings at or above `top` left
+    out. A codeinclude becomes a code set: the source's Java and C++ read from the fragment's ODSATag
+    region in the opendsa-code cache, Python and JavaScript the spec's CODE_TRANSLATIONS (AI-marked). An
+    inlineav stands as the spec's AV figure, or is left out; an avembed (an exercise) is left out. The
+    footnotes whose markers the block keeps go to spec['_opendsa_notes']."""
+    path = os.path.join(BOOK, b['file'])
+    note_id = b.get('note_id', f'{b["id"]}-fn')
+    els, notes = extract_opendsa.read_module(path, refs=spec.get('OPENDSA_REFS', {}), note_id=note_id)
+    heads = [i for i, e in enumerate(els) if e['kind'] == 'heading']
+    start = next(i for i in heads if els[i]['text'] == b['from']) if b.get('from') else 0
+    stop = next((i for i in heads if i > start and els[i]['text'] == b['to']), len(els)) if b.get('to') else len(els)
+    els = [e for e in els[start:stop] if not (e['kind'] == 'heading' and e['level'] < b.get('top', 3))]
+    code_root = os.path.join(BOOK, spec.get('OPENDSA_CODE', 'sources/_cache/opendsa-code'))
+
+    def hooks(e, md):
+        if e['kind'] == 'code':
+            tr = spec.get('CODE_TRANSLATIONS', {}).get(e['tag'], {})
+            v = {'java': extract_opendsa.code_region(code_root, 'Java', e['path'], e['tag']),
+                 'cpp': extract_opendsa.code_region(code_root, 'C++', e['path'], e['tag'])}
+            v.update(tr)
+            v['_ai'] = set(tr)
+            if md:
+                return ['```java\n' + v['java'] + '\n```']
+            return [code_set(v, spec.get('AI', ''))]
+        if e['kind'] == 'inlineav':
+            key = spec.get('AV', {}).get(e['name'])
+            return ([f'[{key}]'] if md else [spec['HTML'][key]]) if key else []
+        if e['kind'] == 'avembed':
+            return []
+        return None
+    hparts = [f'<h2>{esc(b["h2"])}</h2>'] + [apply_fixes(x, fixes, b['id'], used) for x in extract_opendsa.render(els, False, hooks)]
+    mparts = [f'## {b["h2"]}'] + [apply_fixes(x, fixes, b['id'], used) for x in extract_opendsa.render(els, True, hooks)]
+    body = '\n'.join(hparts)
+    for n in notes:
+        if f'data-note="{n["id"]}"' in body:
+            spec.setdefault('_opendsa_notes', []).append({
+                'id': n['id'], 'number': n['number'],
+                'html': apply_fixes('\n'.join(extract_opendsa.render(n['children'])), fixes, 'fn', used),
+                'md': '\n\n'.join(extract_opendsa.render(n['children'], True))})
+    return hparts, mparts
 
 
 # ---------------------------------------------------------------- assembly
@@ -527,10 +704,17 @@ def build(sec_dir, check=False):
                 h = apply_fixes(runs_html(runs), fixes, 'caption', used)
                 h = re.sub(r'^<strong>Figure \d+\.\d+\.\s*</strong>\s*', '', h)
                 captions[m.group(1)] = {'html': h, 'text': re.sub(r'<[^>]+>', '', h)}
+    # ODS's figures, by their \figlabel: the caption in HTML (maths as $…$) and as plain text
+    for b in spec['BLOCKS']:
+        if b['source'] == 'ods' and 'lines' in b:
+            for lab, cap in ods_figures(os.path.join(BOOK, b['file']), *b['lines']).items():
+                h, _ = ods_inline(cap, spec, [], {'fn': 0, 'fn_id': 1})
+                t = re.sub(r'\$(.+?)\$', lambda m: tex_plain(m.group(1)), re.sub(r'<[^>]+>', '', h))
+                captions[lab] = {'html': h, 'text': t}
 
     def fill(s):
-        s = re.sub(r'\{\{caption-text ([\d.]+)\}\}', lambda m: html.escape(captions[m.group(1)]['text']), s)
-        return re.sub(r'\{\{caption ([\d.]+)\}\}', lambda m: captions[m.group(1)]['html'], s)
+        s = re.sub(r'\{\{caption-text ([\w.:-]+)\}\}', lambda m: html.escape(captions[m.group(1)]['text']), s)
+        return re.sub(r'\{\{caption ([\w.:-]+)\}\}', lambda m: captions[m.group(1)]['html'], s)
     spec['HTML'] = {k: fill(v) for k, v in spec.get('HTML', {}).items()}
     used_notes = []
     md_blocks, html_blocks, ods_notes = [], [], []
@@ -539,7 +723,11 @@ def build(sec_dir, check=False):
 
     for b in spec['BLOCKS']:
         hparts, mparts = [], []
-        if b['source'] == 'jeffe':
+        if b.get('reader') in ('latex', 'mcs'):
+            # a LaTeX passage (tools/read_latex.py) or an MCS page (tools/extract_mcs.py): tools/build_blocks.py
+            import build_blocks
+            hparts, mparts = build_blocks.block(b, spec, BOOK)
+        elif b['source'] == 'jeffe':
             # slice the elements from the one whose text holds `from` to the one before `to`
             def text_of(e):
                 if e['kind'] in ('p', 'li', 'quote', 'heading', 'caption'):
@@ -619,15 +807,39 @@ def build(sec_dir, check=False):
         elif b['source'] == 'ods':
             path = os.path.join(BOOK, b['file'])
             first, last = b['lines']
+            list_open = False
             for e in ods_tex(path, first, last, spec):
                 if e['kind'] == 'heading':
                     continue
+                if e['kind'] != 'li' and list_open:
+                    hparts.append('</ul>')
+                    list_open = False
+                if e['kind'] == 'display':
+                    # a dollar sign in a display is set as text, so that no $ stands in the page
+                    tex = re.sub(r'#(\w+)#', r'\1', re.sub(r'(\\[A-Za-z]+)#', r'\1 #', e['tex']).replace('\\$', '\\text{\\textdollar}'))
+                    # a display a derivation replaces (root item 29.2): the spec's DISPLAY_AS names it by a piece of its TeX
+                    swap = next((k for piece, k in spec.get('DISPLAY_AS', {}).items() if piece in tex), None)
+                    hparts.append(spec['HTML'][swap] if swap else f'$${tex}$$')
+                    mparts.append(f'$${tex}$$')
+                    continue
                 h, m = ods_inline(e['tex'], spec, ods_notes, ctx)
                 h = apply_fixes(h, fixes, b['id'], used)
+                if e['kind'] == 'li':
+                    lh, lm = ods_inline(e['label'], spec, ods_notes, ctx)
+                    if not list_open:
+                        hparts.append('<ul>')
+                        list_open = True
+                    hparts.append(f'<li><strong>{lh}</strong> {h}</li>' if lh else f'<li>{h}</li>')
+                    mparts.append(f'- **{lm}** {m}' if lm else f'- {m}')
+                    continue
                 hparts.append(f'<p>{h}</p>')
                 mparts.append(m)
+            if list_open:
+                hparts.append('</ul>')
             hparts.insert(0, f'<h2>{esc(b["h2"])}</h2>')
             mparts.insert(0, f'## {b["h2"]}')
+        elif b['source'] == 'opendsa':
+            hparts, mparts = opendsa_block(b, spec, fixes, used)
         # figures placed after a paragraph
         body = '\n'.join(hparts)
         placed = {}
@@ -668,6 +880,10 @@ def build(sec_dir, check=False):
     for n in ods_notes:
         h, _ = ods_inline(n['tex'], spec, [], dict(ctx))
         fn_rows.append({'id': n['id'], 'kind': 'book', 'number': n['number'], 'html': h, 'source': 'ods'})
+    for n in spec.get('_latex_notes', []):
+        fn_rows.append({'id': n['id'], 'kind': 'book', 'number': n['number'], 'html': n['html'], 'source': n['source']})
+    for n in spec.get('_opendsa_notes', []):
+        fn_rows.append({'id': n['id'], 'kind': 'book', 'number': n['number'], 'html': n['html'], 'source': 'opendsa'})
 
     md_notes = []
     for nid in seen:
@@ -675,6 +891,10 @@ def build(sec_dir, check=False):
         md_notes.append(f'[^{num}]: ' + apply_fixes(runs_md(jeffe_notes[num]['runs']), fixes, 'fn', used))
     for n in ods_notes:
         md_notes.append(f'[^ods]: ' + n['tex'])
+    for n in spec.get('_latex_notes', []):
+        md_notes.append(f'[^{n["number"]}]: ' + n['md'])
+    for n in spec.get('_opendsa_notes', []):
+        md_notes.append(f'[^{n["number"]}]: ' + n['md'])
 
     title = spec['TITLE']
     md = f'# {title}\n\n' + '\n\n'.join(md_blocks) + '\n\n## Footnotes\n\n' + '\n\n'.join(md_notes) + '\n'

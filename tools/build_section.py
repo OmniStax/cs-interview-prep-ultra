@@ -66,7 +66,7 @@ def build(sec_dir, force=False):
 
     def fill(v):
         if isinstance(v, str):
-            return re.sub(r'\{\{caption-text ([\d.]+)\}\}', lambda m: captions[m.group(1)]['text'], v)
+            return re.sub(r'\{\{caption-text ([\w.:-]+)\}\}', lambda m: captions[m.group(1)]['text'], v)
         if isinstance(v, list):
             return [fill(x) for x in v]
         if isinstance(v, dict):

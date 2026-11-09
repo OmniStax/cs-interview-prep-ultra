@@ -1,0 +1,30 @@
+[
+ {
+  "id": "oiwiki-fn-clemson",
+  "kind": "book",
+  "number": "1",
+  "html": "<a href=\"https://people.computing.clemson.edu/~srimani/8380_F22/Course_Materials_Web/5_F22_Amortized%20Analysis%2BSplay%20Trees.pdf#page=8\">Clemson University - Amortized Analysis + Splay Trees</a>",
+  "source": "oiwiki"
+ },
+ {
+  "id": "oiwiki-fn-uci",
+  "kind": "book",
+  "number": "2",
+  "html": "<a href=\"https://ics.uci.edu/~goodrich/teach/cs263/notes/02-Amortized.pdf#page=5\">UC Irvine - Amortized Analysis</a>",
+  "source": "oiwiki"
+ },
+ {
+  "id": "oiwiki-fn-stanford",
+  "kind": "book",
+  "number": "3",
+  "html": "<a href=\"https://web.stanford.edu/class/archive/cs/cs166/cs166.1206/lectures/07/Small07.pdf#page=69\">Stanford CS166 - Amortized Analysis</a>",
+  "source": "oiwiki"
+ },
+ {
+  "id": "oiwiki-fn-cornell",
+  "kind": "book",
+  "number": "4",
+  "html": "<a href=\"https://www.cs.cornell.edu/courses/cs3110/2011sp/Lectures/lec20-amortized/amortized.htm\">Cornell CS 3110 - Lecture 20: Amortized Analysis</a>",
+  "source": "oiwiki"
+ }
+]

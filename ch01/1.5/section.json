@@ -1,0 +1,343 @@
+{
+ "id": "1.5",
+ "chapter": "1",
+ "title": "Amortized analysis",
+ "short": "Amortized analysis",
+ "lead": "An Essential section on <span data-concept=\"amortized-analysis\">amortized analysis</span>: one dynamic array, doubled when full, analysed by the aggregate, accounting and potential methods, then a stack analysed the same three ways; <span data-concept=\"potential-method\">the potential method</span> is Advanced. Here n counts the elements and m the array’s capacity, except in the aggregate analysis, where m is the size of the full array being copied. The stack’s push, pop and multi-pop are defined in its own table; stacks are the subject of <a href=\"/cs-interview-prep-ultra/ch03/3.1/\">Section 3.1</a>.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "OI Wiki’s prerequisite line, its list of further reading and its code are not included here; with thanks to the <a href=\"https://github.com/OI-wiki/OI-wiki/graphs/contributors\">OI Wiki Team and its contributors</a>.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "No open exercise tests this section’s concepts. Its exercises are MIT OpenCourseWare problems with their published solutions, under CC BY-NC-SA, and are kept apart from the book’s CC BY-SA content: 6.046J Fall 2005 problem 6-1 (Electronic Billboard) and 6.046J Spring 2012 problem 6-1 (Amortization in Balanced Binary Trees). 6.046J Spring 2015 problem 4-1 (Extreme FIFO Queues), which needs queues, is held for Section 3.4. The exercises of Erickson’s lecture notes on amortized analysis have no published answers and are left out.",
+ "figures": [
+  {
+   "id": "sim-pay-for-doubling",
+   "kind": "sim",
+   "draws": [
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "amortized",
+   "concept": "amortized-analysis",
+   "verb": "introduces"
+  },
+  {
+   "span": "amortized",
+   "concept": "aggregate-accounting",
+   "verb": "uses"
+  },
+  {
+   "span": "accounting",
+   "concept": "aggregate-accounting",
+   "verb": "introduces"
+  },
+  {
+   "span": "accounting",
+   "concept": "amortized-analysis",
+   "verb": "uses"
+  },
+  {
+   "span": "potential",
+   "concept": "potential-method",
+   "verb": "introduces"
+  },
+  {
+   "span": "potential",
+   "concept": "amortized-analysis",
+   "verb": "uses"
+  },
+  {
+   "span": "stack-example",
+   "concept": "amortized-analysis",
+   "verb": "reinforces"
+  },
+  {
+   "span": "stack-example",
+   "concept": "aggregate-accounting",
+   "verb": "reinforces"
+  },
+  {
+   "span": "stack-potential",
+   "concept": "potential-method",
+   "verb": "reinforces"
+  }
+ ],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [
+  {
+   "id": "n",
+   "label": "n, the number of elements in the array",
+   "figures": [
+    "sim-pay-for-doubling"
+   ]
+  },
+  {
+   "id": "m",
+   "label": "m, the capacity of the array",
+   "figures": [
+    "sim-pay-for-doubling"
+   ]
+  },
+  {
+   "id": "i",
+   "label": "i, the element being copied",
+   "figures": [
+    "sim-pay-for-doubling"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "oiwiki-fn-clemson",
+   "kind": "book",
+   "number": "1",
+   "html": "<a href=\"https://people.computing.clemson.edu/~srimani/8380_F22/Course_Materials_Web/5_F22_Amortized%20Analysis%2BSplay%20Trees.pdf#page=8\">Clemson University - Amortized Analysis + Splay Trees</a>"
+  },
+  {
+   "id": "oiwiki-fn-uci",
+   "kind": "book",
+   "number": "2",
+   "html": "<a href=\"https://ics.uci.edu/~goodrich/teach/cs263/notes/02-Amortized.pdf#page=5\">UC Irvine - Amortized Analysis</a>"
+  },
+  {
+   "id": "oiwiki-fn-stanford",
+   "kind": "book",
+   "number": "3",
+   "html": "<a href=\"https://web.stanford.edu/class/archive/cs/cs166/cs166.1206/lectures/07/Small07.pdf#page=69\">Stanford CS166 - Amortized Analysis</a>"
+  },
+  {
+   "id": "oiwiki-fn-cornell",
+   "kind": "book",
+   "number": "4",
+   "html": "<a href=\"https://www.cs.cornell.edu/courses/cs3110/2011sp/Lectures/lec20-amortized/amortized.htm\">Cornell CS 3110 - Lecture 20: Amortized Analysis</a>"
+  },
+  {
+   "id": "err-m",
+   "kind": "correction",
+   "html": "Here <em>m</em> is the size of the full array, the number of elements a resize copies. Later in the section <em>m</em> stands for other things: the capacity of the array, beside <em>n</em> for the number of elements, in the potential method’s example and in its starting value <em>m</em> = 1 above, and the number of operations in the potential method’s principle. Where a resize happens the full array’s size and its capacity are equal, so every count in the section is right in each reading."
+  }
+ ],
+ "derivations": [
+  {
+   "id": "potential-sum",
+   "what": "the total time cost of m operations and its upper bound",
+   "source": "OI Wiki, amortized analysis, the potential method (principle)",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "\\hat{c} = c + \\Phi(S') - \\Phi(S)"
+      },
+      {
+       "text": "Every reachable state $S$ satisfies $\\Phi(S) \\geq \\Phi(S_0)$."
+      }
+     ],
+     "then": {
+      "tex": "\\mk{p}{p_i} = \\mk{c}{c_i} + \\mk{a}{\\Phi(S_i)} - \\mk{b}{\\Phi(S_{i-1})}",
+      "uses": [
+       0
+      ],
+      "why": "The $i$-th operation takes the data structure from the state $S_{i-1}$ to the state $S_i$."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{p}{\\sum_{i=1}^m p_i} = \\mk{c}{\\sum_{i=1}^m c_i} + \\mk{d}{\\sum_{i=1}^m \\bigl(\\Phi(S_i) - \\Phi(S_{i-1})\\bigr)}",
+       "uses": [],
+       "map": {
+        "a": "d",
+        "b": "d"
+       }
+      },
+      {
+       "tex": "\\mk{p}{\\sum_{i=1}^m p_i} = \\mk{c}{\\sum_{i=1}^m c_i} + \\mk{e}{\\Phi(S_m)} - \\mk{z}{\\Phi(S_0)}",
+       "uses": [],
+       "map": {
+        "d": [
+         "e",
+         "z"
+        ]
+       },
+       "cap": "The sum telescopes: each $\\Phi(S_i)$ with $0 < i < m$ is added once and subtracted once, so only $\\Phi(S_m) - \\Phi(S_0)$ is left."
+      },
+      {
+       "tex": "\\mk{c}{\\sum_{i=1}^m c_i} = \\mk{p}{\\sum_{i=1}^m p_i} + \\mk{z}{\\Phi(S_0)} - \\mk{e}{\\Phi(S_m)}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{p}{\\sum_{i=1}^m p_i} \\geq \\mk{c}{\\sum_{i=1}^m c_i}",
+       "uses": [
+        1
+       ],
+       "cap": "Since $\\Phi(S_m) \\geq \\Phi(S_0)$, the term $\\Phi(S_0) - \\Phi(S_m)$ is at most $0$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "doubling-potential",
+   "what": "the amortized cost of an insert",
+   "source": "OI Wiki, amortized analysis, the potential method (example: analysing the resizing of a dynamic array)",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "\\Phi(h) = 2n - m"
+      },
+      {
+       "text": "An insert that needs no resize adds one element and keeps the capacity: $n$ becomes $n + 1$ and $m$ stays $m$."
+      }
+     ],
+     "then": {
+      "tex": "\\mk{L}{\\Phi(h') - \\Phi(h)} = \\mk{a}{\\Phi(h')} - \\mk{b}{\\Phi(h)}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{L}{\\Phi(h') - \\Phi(h)} = \\mk{a}{2(n + 1) - m} - \\mk{b}{(2n - m)}",
+       "uses": [
+        0,
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{L}{\\Phi(h') - \\Phi(h)} = \\mk{r}{2}",
+       "uses": [],
+       "map": {
+        "a": "r",
+        "b": "r"
+       }
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "tex": "\\hat{c} = c + \\Phi(S') - \\Phi(S)"
+      },
+      {
+       "text": "An insert that needs no resize writes one element, at actual cost $1$."
+      },
+      {
+       "step": 0
+      }
+     ],
+     "then": {
+      "tex": "\\mk{h}{\\hat{c}} = \\mk{c}{c} + \\mk{d}{\\Phi(h') - \\Phi(h)}",
+      "uses": [
+       0
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{h}{\\hat{c}} = \\mk{c}{1} + \\mk{d}{2}",
+       "uses": [
+        1,
+        2
+       ]
+      },
+      {
+       "tex": "\\mk{h}{\\hat{c}} = \\mk{r}{3}",
+       "uses": [],
+       "map": {
+        "c": "r",
+        "d": "r"
+       }
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "tex": "\\Phi(h) = 2n - m"
+      },
+      {
+       "text": "The insert that triggers a resize finds the capacity $m = n$; after it there are $n + 1$ elements and the capacity is $2n$."
+      }
+     ],
+     "then": {
+      "tex": "\\mk{L}{\\Phi(h') - \\Phi(h)} = \\mk{a}{\\Phi(h')} - \\mk{b}{\\Phi(h)}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{L}{\\Phi(h') - \\Phi(h)} = \\mk{a}{2(n + 1) - 2n} - \\mk{b}{(2n - n)}",
+       "uses": [
+        0,
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{L}{\\Phi(h') - \\Phi(h)} = \\mk{r}{2 - n}",
+       "uses": [],
+       "map": {
+        "a": "r",
+        "b": "r"
+       }
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "tex": "\\hat{c} = c + \\Phi(S') - \\Phi(S)"
+      },
+      {
+       "text": "The insert that triggers a resize copies all $n$ elements into the new array and inserts the new one, at actual cost $n + 1$."
+      },
+      {
+       "step": 2
+      }
+     ],
+     "then": {
+      "tex": "\\mk{h}{\\hat{c}} = \\mk{c}{c} + \\mk{d}{\\Phi(h') - \\Phi(h)}",
+      "uses": [
+       0
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{h}{\\hat{c}} = \\mk{c}{n + 1} + \\mk{d}{(2 - n)}",
+       "uses": [
+        1,
+        2
+       ]
+      },
+      {
+       "tex": "\\mk{h}{\\hat{c}} = \\mk{r}{3}",
+       "uses": [],
+       "map": {
+        "c": "r",
+        "d": "r"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

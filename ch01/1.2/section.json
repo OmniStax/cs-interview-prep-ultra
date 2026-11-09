@@ -1,0 +1,514 @@
+{
+ "id": "1.2",
+ "chapter": "1",
+ "title": "Logarithms, factorials and harmonic numbers",
+ "short": "Logarithms and factorials",
+ "lead": "An Essential section on three functions that turn up in running times, <span data-concept=\"logarithms\">logarithms</span>, <span data-concept=\"factorials-stirling\">factorials</span> and <span data-concept=\"harmonic-numbers\">harmonic numbers</span>; harmonic numbers are Advanced. log with no base means log<sub>2</sub>, and ln is the natural logarithm. Harmonic numbers return with random binary search trees in <a href=\"/cs-interview-prep-ultra/ch08/8.6/\">8.6</a>.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "The opening of ODS’s Mathematical Background, which points to Lehman, Leighton and Meyer’s textbook, and the rest of its random binary search tree section are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The OpenDSA items the chapter config lists for this section (logarithms_1, logarithms_1.5 and logarithms_2 with MathLogSumm, MthBgFIBlgbs1 and MthBgFIBlgbs2) wait for the converter of OpenDSA’s Khan-format exercises; AlgAnlsFIBsmlintgr2 asks for a Big-O bound and is held for 1.3. Aspnes’s A.5.2, comparing products, waits for a transcription of its displayed products from the PDF. The keyed MIT 6.042J card on integral bounds for sums (Fall 2005, problem set 6, problem 7) waits for the app to read a section’s NC card file. MCS problems 14.12–14.17 have no published answers and are built on block stacking, and are left out; Aspnes’s B.1.1 and Erickson’s Factorial item are held for chapter 4, Kattis inversefactorial is over the cap of two code items per concept, and Project Euler 20 and 34 print no answers. The grains tests are Exercism’s canonical data and its references are written by the AI that built the section; the Kattis items keep their sample as the visible test, and their other tests and references are written by the same AI.",
+ "figures": [
+  {
+   "id": "sim-halving",
+   "kind": "sim",
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-stirling",
+   "kind": "sim",
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-harmonic",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/ods-harmonic-2.png",
+    "/media/ch01/ods-harmonic-3.png"
+   ],
+   "original_caption": "The kth harmonic number Hₖ = ∑ᵢ₌₁ᵏ 1/i is upper- and lower-bounded by two integrals. The value of these integrals is given by the area of the shaded region, while the value of Hₖ is given by the area of the rectangles.",
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "logarithms",
+   "concept": "logarithms",
+   "verb": "introduces"
+  },
+  {
+   "span": "factorials",
+   "concept": "factorials-stirling",
+   "verb": "introduces"
+  },
+  {
+   "span": "factorials",
+   "concept": "logarithms",
+   "verb": "uses"
+  },
+  {
+   "span": "harmonic",
+   "concept": "harmonic-numbers",
+   "verb": "introduces"
+  },
+  {
+   "span": "harmonic",
+   "concept": "logarithms",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "exercism:grains",
+   "source_number": "grains",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "logarithms",
+   "changes": "Only the number of grains on a given square is asked for and tested; the total is left out.",
+   "prompt": "Calculate the number of grains of wheat on a chessboard.\n\nA chessboard has 64 squares. Square 1 has one grain, square 2 has two grains, square 3 has four grains, and so on, doubling each time.\n\nWrite code that calculates:\n\n<ul><li>the number of grains on a given square</li><li>the total number of grains on the chessboard</li></ul>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "square",
+     "starter": "def square(number):\n    pass\n",
+     "reference": "def square(number):\n    if not 1 <= number <= 64:\n        raise ValueError(\"square must be between 1 and 64\")\n    return 2 ** (number - 1)\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "square",
+     "starter": "function square(number) {\n}\n",
+     "reference": "class ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nfunction square(number) {\n  if (!(number >= 1 && number <= 64)) throw new ValueError('square must be between 1 and 64');\n  return 2 ** (number - 1);\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       1
+      ],
+      "visible": true,
+      "generated_by": "source",
+      "expect": 1
+     },
+     {
+      "args": [
+       2
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "expect": 2
+     },
+     {
+      "args": [
+       3
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "expect": 4
+     },
+     {
+      "args": [
+       4
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "expect": 8
+     },
+     {
+      "args": [
+       16
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "expect": 32768
+     },
+     {
+      "args": [
+       32
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "expect": 2147483648
+     },
+     {
+      "args": [
+       64
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "expect": 9223372036854775808
+     },
+     {
+      "args": [
+       0
+      ],
+      "visible": true,
+      "generated_by": "source",
+      "raises": "ValueError"
+     },
+     {
+      "args": [
+       -1
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "raises": "ValueError"
+     },
+     {
+      "args": [
+       65
+      ],
+      "visible": false,
+      "generated_by": "source",
+      "raises": "ValueError"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "kattis:howmanydigits",
+   "source_number": "How Many Digits?",
+   "origin": "kattis-by-sa",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "factorials",
+   "prompt": "Often times it is sufficient to know the rough size of a number, rather than its exact value. For example, a human can reason about which store to visit to buy milk if one store is roughly $1$ kilometer away, and another store is roughly $100$ kilometers away. The exact distance to each store is irrelevant to the decision at hand; only the sizes of the numbers matter.\n\nFor this problem, determine the ‘size’ of the factorial of an integer. By size, we mean the number of digits required to represent the answer in base-$10$.\n\n<strong>Input</strong>\n\nInput consists of up to $10\\,000$ integers, one per line. Each is in the range $[0,1\\,000\\,000]$. Input ends at end of file.\n\n<strong>Output</strong>\n\nFor each integer $n$, print the number of digits required to represent $n!$ in base-$10$.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "starter": "import sys\n\nfor token in sys.stdin.read().split():\n    n = int(token)\n",
+     "reference": "import math\nimport sys\n\n\ndef digits_of_factorial(n):\n    # n! has floor(log10 n!) + 1 digits; lgamma(n + 1) is ln n!\n    if n <= 1:\n        return 1\n    return math.floor(math.lgamma(n + 1) / math.log(10)) + 1\n\n\nfor token in sys.stdin.read().split():\n    print(digits_of_factorial(int(token)))\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "starter": "const fs = require('fs');\nconst ns = fs.readFileSync(0, 'utf8').split(/\\s+/).filter(Boolean).map(Number);\n",
+     "reference": "const fs = require('fs');\nconst ns = fs.readFileSync(0, 'utf8').split(/\\s+/).filter(Boolean).map(Number);\n// log10 n! for every n up to the largest asked, summed with compensation so the floor is exact\nconst top = Math.max(1, ...ns);\nconst log10Fact = new Float64Array(top + 1);\nlet sum = 0, carry = 0;\nfor (let i = 2; i <= top; i++) {\n  const y = Math.log10(i) - carry, t = sum + y;\n  carry = (t - sum) - y; sum = t; log10Fact[i] = sum;\n}\nconsole.log(ns.map((n) => (n <= 1 ? 1 : Math.floor(log10Fact[n]) + 1)).join('\\n'));\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "stdin": "0\n1\n3\n10\n20\n",
+      "stdout": "1\n1\n1\n7\n19\n",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "2\n4\n5\n6\n9\n11\n100\n1000\n",
+      "stdout": "1\n2\n3\n3\n6\n8\n158\n2568\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "1000000\n",
+      "stdout": "5565709\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "549545\n999999\n123456\n",
+      "stdout": "2915730\n5565703\n574965\n",
+      "generated_by": "ai"
+     }
+    ],
+    "compare": "tokens",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "c3",
+   "source_id": "kattis:stirlingsapproximation",
+   "source_number": "Stirling’s Approximation",
+   "origin": "kattis-by-sa",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "factorials",
+   "prompt": "The value of $n! = 1\\cdot 2 \\cdot 3 \\cdot \\ldots \\cdot (n-1) \\cdot n$ can be quite large, and it can be tedious to calculate. Fortunately for us, the French mathematician Abraham de Moivre (1667-1754) and the Scottish mathematician James Stirling (1692-1770) came up with a nice approximation:\n\n$$ n!\\approx S(n)=\\sqrt {2\\pi n}\\frac{n^ n}{e^ n}. $$\n\nThis is known as Stirling’s approximation.\n\nFor this problem, determine how good Stirling’s approximation is for various $n$.\n\n<strong>Input</strong>\n\nInput consists of up to $500$ test cases, one per line. Each test case has a single integer $0 \\lt n \\leq 10^5$. Input ends when $n=0$.\n\n<strong>Output</strong>\n\nFor each test case, print out $n! / S(n)$ with an absolute error at most $10^{-8}$.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "starter": "import sys\n\nfor token in sys.stdin.read().split():\n    n = int(token)\n    if n == 0:\n        break\n",
+     "reference": "import math\nimport sys\n\n\ndef ratio(n):\n    # n! / S(n) = e^alpha(n): alpha from lgamma for small n, from its series for large n\n    if n <= 100:\n        alpha = math.lgamma(n + 1) - (0.5 * math.log(2 * math.pi * n) + n * math.log(n) - n)\n    else:\n        alpha = 1 / (12 * n) - 1 / (360 * n ** 3) + 1 / (1260 * n ** 5)\n    return math.exp(alpha)\n\n\nfor token in sys.stdin.read().split():\n    n = int(token)\n    if n == 0:\n        break\n    print(f\"{ratio(n):.12f}\")\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "starter": "const fs = require('fs');\nconst ns = fs.readFileSync(0, 'utf8').split(/\\s+/).filter(Boolean).map(Number);\n",
+     "reference": "const fs = require('fs');\nconst ns = fs.readFileSync(0, 'utf8').split(/\\s+/).filter(Boolean).map(Number);\nconst out = [];\nfor (const n of ns) {\n  if (n === 0) break;\n  let alpha;\n  if (n <= 100) {\n    let lnFact = 0;\n    for (let i = 2; i <= n; i++) lnFact += Math.log(i);\n    alpha = lnFact - (0.5 * Math.log(2 * Math.PI * n) + n * Math.log(n) - n);\n  } else {\n    alpha = 1 / (12 * n) - 1 / (360 * n ** 3) + 1 / (1260 * n ** 5);\n  }\n  out.push(Math.exp(alpha).toFixed(12));\n}\nconsole.log(out.join('\\n'));\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "stdin": "1\n10\n150\n0\n",
+      "stdout": "1.084437551419227546611577313\n1.008365359132400245905553271\n1.000555709081632955425046604\n",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "2\n3\n4\n5\n0\n",
+      "stdout": "1.042207120817\n1.028064517919\n1.021008303746\n1.016783985828\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "100\n101\n1000\n0\n",
+      "stdout": "1.000833677872\n1.000825420284\n1.000083336803\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "99999\n100000\n0\n",
+      "stdout": "1.000000833342\n1.000000833334\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "7\n0\n",
+      "stdout": "1.011967757263\n",
+      "generated_by": "ai"
+     }
+    ],
+    "compare": "tokens",
+    "tol": 1e-08,
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "logarithms"
+  },
+  {
+   "exercise": "c2",
+   "concept": "logarithms"
+  },
+  {
+   "exercise": "c2",
+   "concept": "factorials-stirling"
+  },
+  {
+   "exercise": "c3",
+   "concept": "factorials-stirling"
+  }
+ ],
+ "referents": [],
+ "footnotes": [
+  {
+   "id": "err-integral-n",
+   "kind": "correction",
+   "html": "The integral is printed with $n$ as its variable of integration as well as its upper limit; it reads $\\int_1^n \\ln x\\,\\mathrm{d}x = n\\ln n - n + 1$."
+  },
+  {
+   "id": "err-harmonic-k",
+   "kind": "correction",
+   "html": "The bound holds for every integer $k \\ge 1$. The definition is printed for a non-negative integer $k$, but at $k = 0$ the sum is empty and $\\ln 0$ is undefined, so the bound says nothing there."
+  }
+ ],
+ "derivations": [
+  {
+   "id": "change-of-base",
+   "what": "ln k in terms of log k",
+   "source": "1.2, Exponentials and Logarithms",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "\\log_b k = \\frac{\\log_a k}{\\log_a b}"
+      },
+      {
+       "text": "$\\log k$ is shorthand for $\\log_2 k$."
+      },
+      {
+       "text": "$\\log_b k$ is the unique value $x$ that satisfies $b^x = k$."
+      }
+     ],
+     "then": {
+      "tex": "\\mk{L}{\\ln k} = \\mk{R}{\\log_e k}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{L}{\\ln k} = \\frac{\\mk{N}{\\log_2 k}}{\\mk{D}{\\log_2 e}}",
+       "uses": [
+        0
+       ],
+       "map": {
+        "R": [
+         "N",
+         "D"
+        ]
+       },
+       "cap": "Change the base from $e$ to $2$: the rule with $b = e$ and $a = 2$."
+      },
+      {
+       "tex": "\\mk{L}{\\ln k} = \\frac{\\mk{N}{\\log k}}{\\mk{D}{\\log e}}",
+       "uses": [
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{L}{\\ln k} = \\frac{\\mk{N}{\\log k}}{\\mk{D}{(\\ln e)/(\\ln 2)}}",
+       "uses": [
+        0
+       ],
+       "cap": "The same rule changes $\\log e$ back to base $e$, with $b = 2$, $a = e$ and $e$ in place of $k$."
+      },
+      {
+       "tex": "\\mk{L}{\\ln k} = \\frac{\\mk{N}{\\log k}}{\\mk{D}{1/(\\ln 2)}}",
+       "uses": [
+        2
+       ],
+       "cap": "Since $e^1 = e$, $\\ln e = 1$."
+      },
+      {
+       "tex": "\\mk{L}{\\ln k} = \\mk{D}{(\\ln 2)}\\mk{N}{(\\log k)}"
+      },
+      {
+       "tex": "\\mk{L}{\\ln k} \\approx \\mk{D}{0.693147}\\mk{N}{\\log k}"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "harmonic-bounds",
+   "what": "the bounds on Hₖ",
+   "source": "1.2, Harmonic Numbers",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "An integral can be interpreted as the area between a curve and the $x$-axis."
+      },
+      {
+       "tex": "\\int_1^{k} (1/x)\\,\\mathrm{d}x = \\ln k",
+       "src": "1.2, Exponentials and Logarithms"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{H}{H_k} = \\mk{S}{1 + 1/2 + 1/3 + \\cdots + 1/k}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{H}{H_k} \\ge \\mk{S}{\\int_1^{k+1} (1/x)\\,\\mathrm{d}x}",
+       "uses": [
+        0
+       ],
+       "cap": "Stand a rectangle of width 1 and height $1/i$ on $[i, i+1]$ for $i = 1, \\ldots, k$. Since $1/x \\le 1/i$ there, the rectangles, of total area $H_k$, cover the area under the curve from $1$ to $k + 1$."
+      },
+      {
+       "tex": "\\mk{H}{H_k} > \\mk{S}{\\int_1^{k} (1/x)\\,\\mathrm{d}x}",
+       "uses": [
+        0
+       ],
+       "cap": "The area under the curve from $k$ to $k + 1$ is more than zero."
+      },
+      {
+       "tex": "\\mk{H}{H_k} > \\mk{S}{\\ln k}",
+       "uses": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "text": "An integral can be interpreted as the area between a curve and the $x$-axis."
+      },
+      {
+       "tex": "\\int_1^{k} (1/x)\\,\\mathrm{d}x = \\ln k",
+       "src": "1.2, Exponentials and Logarithms"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{H}{H_k} = \\mk{S}{1 + 1/2 + 1/3 + \\cdots + 1/k}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{H}{H_k} = \\mk{one}{1} + \\mk{S}{(1/2 + 1/3 + \\cdots + 1/k)}",
+       "map": {
+        "S": [
+         "one",
+         "S"
+        ]
+       }
+      },
+      {
+       "tex": "\\mk{H}{H_k} \\le \\mk{one}{1} + \\mk{S}{\\int_1^{k} (1/x)\\,\\mathrm{d}x}",
+       "uses": [
+        0
+       ],
+       "cap": "Stand a rectangle of width 1 and height $1/i$ on $[i-1, i]$ for $i = 2, \\ldots, k$. Since $1/x \\ge 1/i$ there, these rectangles fit under the curve from $1$ to $k$."
+      },
+      {
+       "tex": "\\mk{H}{H_k} \\le \\mk{one}{1} + \\mk{S}{\\ln k}",
+       "uses": [
+        1
+       ]
+      }
+     ]
+    },
+    {
+     "assumes": [
+      {
+       "step": 0
+      },
+      {
+       "step": 1
+      }
+     ],
+     "then": {
+      "tex": "\\mk{H}{H_k} > \\mk{S}{\\ln k}"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{S}{\\ln k} < \\mk{H}{H_k} \\le \\mk{hi}{\\ln k + 1}",
+       "uses": [
+        1
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

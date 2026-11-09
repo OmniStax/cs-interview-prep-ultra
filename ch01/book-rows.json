@@ -77,6 +77,239 @@
     "implementation"
    ],
    "statement": "An interface, or abstract data type, names the operations a data structure supports and what they mean; an implementation gives its internal representation and the algorithms for the operations. One interface can have many implementations."
+  },
+  {
+   "id": "logarithms",
+   "kind": "definition",
+   "section": "1.2",
+   "name": "Logarithms",
+   "terms": [
+    "base-b logarithm",
+    "binary logarithm",
+    "binary logarithms",
+    "natural logarithm",
+    "logarithm",
+    "logarithms"
+   ],
+   "statement": "log_b k is the unique x with b^x = k; log with no base means log₂, and ln k is log_e k, the natural logarithm, with e ≈ 2.71828. log_b k is roughly the number of times k must be divided by b before the result is at most 1. A logarithm changes base as log_b k = log_a k / log_a b, so ln k = (ln 2)(log k).",
+   "forms": [
+    {
+     "id": "eq-change-of-base",
+     "latex": "\\log_b k = \\frac{\\log_a k}{\\log_a b}",
+     "anchor": "1.2-logarithms"
+    },
+    {
+     "id": "eq-ln-from-log",
+     "latex": "\\ln k = (\\ln 2)(\\log k) \\approx 0.693147\\log k",
+     "anchor": "1.2-logarithms"
+    },
+    {
+     "id": "eq-ln-integral",
+     "latex": "\\int_{1}^{k} 1/x\\,\\mathrm{d}x = \\ln k",
+     "anchor": "1.2-logarithms"
+    }
+   ]
+  },
+  {
+   "id": "factorials-stirling",
+   "kind": "result",
+   "section": "1.2",
+   "name": "Factorials and Stirling’s approximation",
+   "terms": [
+    "factorial",
+    "Stirling’s Approximation",
+    "binomial coefficients",
+    "binomial coefficient"
+   ],
+   "statement": "n! = 1·2·…·n counts the orderings of n distinct elements, and 0! = 1. Stirling’s Approximation gives n! = √(2πn)(n/e)ⁿ e^α(n) with 1/(12n + 1) < α(n) < 1/(12n), and so ln(n!) = n ln n − n + ½ ln(2πn) + α(n). The binomial coefficient n!/(k!(n − k)!) counts the k-element subsets of an n-element set.",
+   "forms": [
+    {
+     "id": "eq-stirling",
+     "latex": "n! = \\sqrt{2\\pi n}\\left(\\frac{n}{e}\\right)^{n}e^{\\alpha(n)}",
+     "condition": "where 1/(12n + 1) < α(n) < 1/(12n)",
+     "anchor": "1.2-factorials"
+    },
+    {
+     "id": "eq-ln-factorial",
+     "latex": "\\ln(n!) = n\\ln n - n + \\frac{1}{2}\\ln(2\\pi n) + \\alpha(n)",
+     "anchor": "1.2-factorials"
+    },
+    {
+     "id": "eq-binomial",
+     "latex": "\\binom{n}{k} = \\frac{n!}{k!(n-k)!}",
+     "condition": "for an integer k in {0, …, n}",
+     "anchor": "1.2-factorials"
+    }
+   ]
+  },
+  {
+   "id": "harmonic-numbers",
+   "kind": "definition",
+   "section": "1.2",
+   "name": "Harmonic numbers",
+   "terms": [
+    "harmonic number",
+    "harmonic numbers"
+   ],
+   "statement": "The k-th harmonic number is H_k = 1 + 1/2 + 1/3 + … + 1/k. It has no simple closed form, but ln k < H_k ≤ ln k + 1 for k ≥ 1, because H_k is the area of k unit-width rectangles that lie over the curve 1/x from 1, or, after the first, under it.",
+   "forms": [
+    {
+     "id": "eq-harmonic",
+     "latex": "H_k = 1 + 1/2 + 1/3 + \\cdots + 1/k",
+     "anchor": "1.2-harmonic"
+    },
+    {
+     "id": "eq-harmonic-bounds",
+     "latex": "\\ln k < H_k \\le \\ln k + 1",
+     "condition": "for an integer k ≥ 1",
+     "anchor": "1.2-harmonic"
+    }
+   ]
+  },
+  {
+   "id": "word-ram",
+   "kind": "definition",
+   "section": "1.4",
+   "name": "The w-bit word-RAM model",
+   "terms": [
+    "word-RAM",
+    "w-bit word-RAM"
+   ],
+   "statement": "Memory is cells, each holding a w-bit word; arithmetic, comparisons and bitwise operations on words take constant time, any cell is read or written in constant time, allocating a block of k words takes O(k) time, and the only assumption about the word size is w ≥ log n. Space is measured in words."
+  },
+  {
+   "id": "complexity-analysis",
+   "kind": "skill",
+   "section": "1.4",
+   "name": "Analysing running time and space",
+   "statement": "Measure an algorithm’s running time by counting how often it executes an instruction or reaches a milestone, as a function of its input: nested loops give nested sums, a recursive algorithm a recurrence, and the count may depend on how an underlying data structure is implemented; space and other resources are counted the same way."
+  },
+  {
+   "id": "running-time-guarantees",
+   "kind": "definition",
+   "section": "1.4",
+   "name": "Worst-case, amortized and expected running times",
+   "type": "cost",
+   "terms": [
+    "worst-case running time",
+    "amortized running time",
+    "expected running time"
+   ],
+   "statement": "A worst-case running time f(n) means no single operation ever takes longer than f(n); an amortized running time f(n) means any sequence of m operations takes at most m f(n); an expected running time f(n) means the running time is a random variable, over the data structure’s own random choices, whose expected value is at most f(n)."
+  },
+  {
+   "id": "amortized-analysis",
+   "kind": "idea",
+   "section": "1.5",
+   "name": "Amortized analysis",
+   "terms": [
+    "amortized analysis",
+    "amortized cost",
+    "amortized complexity"
+   ],
+   "statement": "Amortized analysis bounds the average cost per operation over a worst-case sequence of operations, spreading the cost of occasional expensive operations (a resize) over the cheap ones; it involves no probability."
+  },
+  {
+   "id": "aggregate-accounting",
+   "kind": "skill",
+   "section": "1.5",
+   "name": "Aggregate analysis and the accounting method",
+   "terms": [
+    "aggregate analysis",
+    "aggregate method",
+    "accounting method",
+    "credit"
+   ],
+   "statement": "Bound the total cost of a sequence of operations by summing it and averaging it over the operations (aggregate analysis), or by charging each operation a fixed amortized cost whose surplus is stored as credit to pay for later expensive operations (the accounting method)."
+  },
+  {
+   "id": "potential-method",
+   "kind": "skill",
+   "section": "1.5",
+   "name": "Potential method",
+   "terms": [
+    "potential method",
+    "potential function",
+    "potential"
+   ],
+   "statement": "Define a potential Φ on the states of a data structure with Φ(S) ≥ Φ(S₀) for every reachable state; an operation’s amortized cost is its actual cost plus the change in Φ, and the total amortized cost of any sequence bounds its total actual cost."
+  },
+  {
+   "id": "counting",
+   "kind": "result",
+   "section": "1.6",
+   "name": "Factorials, permutations and combinations",
+   "terms": [
+    "Fundamental Theorem of Counting",
+    "permutation",
+    "partial permutation",
+    "combination",
+    "binomial coefficients"
+   ],
+   "statement": "If a whole can be divided into k parts with n_i choices for the i-th part, there are n₁ × n₂ × … × n_k ways of doing the whole; so there are n! orderings of n items, n!/(n − k)! ordered selections of k of them, and (n choose k) = n!/((n − k)! k!) unordered ones."
+  },
+  {
+   "id": "probability-basics",
+   "kind": "definition",
+   "section": "1.6",
+   "name": "Basic probability",
+   "terms": [
+    "outcome",
+    "sample space",
+    "event",
+    "probability measure"
+   ],
+   "statement": "The outcomes form the sample space Ω and an event is a subset of it; a probability measure Pr gives each event a number in [0, 1] with Pr(Ω) = 1, Pr(A) ≥ 0 and Pr(A ∪ B) = Pr(A) + Pr(B) − Pr(A ∩ B). When all N outcomes are equally likely, Pr(A) = |A|/N."
+  },
+  {
+   "id": "conditional-probability",
+   "kind": "definition",
+   "section": "1.6",
+   "name": "Conditional probability and independence",
+   "terms": [
+    "conditional probability",
+    "prior probability",
+    "independent"
+   ],
+   "statement": "Pr(A|K) = Pr(A ∩ K)/Pr(K) is the probability of A once K is known to have occurred; A and B are independent when Pr(A|B) = Pr(A), so that knowing one tells nothing about the other."
+  },
+  {
+   "id": "random-variable",
+   "kind": "definition",
+   "section": "1.6",
+   "name": "Random variable",
+   "terms": [
+    "random variable"
+   ],
+   "statement": "A random variable R on a probability space is a total function whose domain is the sample space, usually real-valued: every outcome determines its value, and an assertion about its value, such as [C = 2], is an event."
+  },
+  {
+   "id": "linearity-of-expectation",
+   "kind": "result",
+   "section": "1.6",
+   "name": "Expected value and linearity of expectation",
+   "terms": [
+    "expected value",
+    "linearity of expectation"
+   ],
+   "statement": "The expected value of a discrete random variable is E[X] = Σ_x x·Pr{X = x}; for any random variables, E[X + Y] = E[X] + E[Y] and E[Σ X_i] = Σ E[X_i], so a complicated random variable can be broken into a sum of simpler ones."
+  },
+  {
+   "id": "indicator-variables",
+   "kind": "skill",
+   "section": "1.6",
+   "name": "Indicator random variables",
+   "terms": [
+    "indicator random variables"
+   ],
+   "statement": "Write a count as a sum of indicator variables I_i, each 1 if its event happens and 0 otherwise; then E[Σ I_i] = Σ Pr{I_i = 1}, as for the k/2 expected heads in k fair tosses."
+  },
+  {
+   "id": "geometric-expectation",
+   "kind": "result",
+   "section": "1.6",
+   "name": "Expected tosses until the first head",
+   "statement": "If T is the number of times a fair coin is tossed up to and including the first time it comes up heads, then E[T] = 2."
   }
  ],
  "concept_prereqs": [
@@ -99,6 +332,62 @@
   {
    "concept": "apportionment",
    "prereq": "algorithm"
+  },
+  {
+   "concept": "factorials-stirling",
+   "prereq": "logarithms"
+  },
+  {
+   "concept": "harmonic-numbers",
+   "prereq": "logarithms"
+  },
+  {
+   "concept": "word-ram",
+   "prereq": "logarithms"
+  },
+  {
+   "concept": "complexity-analysis",
+   "prereq": "describing-algorithms"
+  },
+  {
+   "concept": "amortized-analysis",
+   "prereq": "complexity-analysis"
+  },
+  {
+   "concept": "aggregate-accounting",
+   "prereq": "amortized-analysis"
+  },
+  {
+   "concept": "potential-method",
+   "prereq": "aggregate-accounting"
+  },
+  {
+   "concept": "probability-basics",
+   "prereq": "counting"
+  },
+  {
+   "concept": "conditional-probability",
+   "prereq": "probability-basics"
+  },
+  {
+   "concept": "random-variable",
+   "prereq": "probability-basics"
+  },
+  {
+   "concept": "linearity-of-expectation",
+   "prereq": "conditional-probability"
+  },
+  {
+   "concept": "linearity-of-expectation",
+   "prereq": "random-variable"
+  },
+  {
+   "concept": "indicator-variables",
+   "prereq": "linearity-of-expectation"
+  },
+  {
+   "concept": "geometric-expectation",
+   "prereq": "linearity-of-expectation"
   }
  ]
 }
