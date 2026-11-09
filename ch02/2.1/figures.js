@@ -26,7 +26,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
     options: [{ value: '0', label: '0' }, { value: '1', label: '1' }, { value: '31', label: '31' }],
     onInput: () => { const f = +first.value; sI.range({ min: f, max: f + 4, step: 1, value: f + 3 }); } });
   const sI = ctl(d.controls, { label: 'i', cls: 'index', key: 'i', min: 0, max: 4, step: 1, value: 3, dec: 0 });
-  const sC = ctl(d.controls, { label: 'c', cls: 'size', key: 'c', min: 1, max: 8, step: 1, value: 4, dec: 0, unit: 'bytes',
+  const sC = ctl(d.controls, { label: 'c', cls: 'size', key: 'c', min: 1, max: 8, step: 1, value: 4, fmt: (v) => `${Math.round(v)} byte${Math.round(v) === 1 ? '' : 's'}`,
     detents: [1, 2, 4, 8], snap: true });
   function draw() {
     const { ctx } = begin(d.c);

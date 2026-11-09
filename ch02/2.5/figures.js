@@ -354,7 +354,7 @@ function drawLinks(ctx, N, from, prevTo, curTo, k, color, w, alphaOf, nullLabel)
       const order = chain(S.next.head, S.next);
       const upto = S.p === 'head' ? [] : order.slice(0, order.findIndex((v) => String(v) === S.p) + 1).filter((v) => v !== 'item');
 
-      const items = [{ id: 'head', x: XS.head, y: ROW, name: 'head', nameSide: 'below', nameColor: cHead, color: cHead }];
+      const items = [{ id: 'head', x: XS.head, y: ROW, name: 'head', nameSide: 'left', nameColor: cHead, color: cHead }];
       LIST.forEach((v) => items.push({ id: String(v), x: XS[v], y: ROW, value: v, valueColor: cKey }));
       const linked = order.includes('item');
       items.push({ id: 'item', x: inp.x, y: 175, value: inp.item, valueColor: cKey, color: cItem, status: linked ? 'live' : 'unreached' });
