@@ -1,6 +1,6 @@
 # Chapter 1 plans: summary and questions
 
-Status: **for review**, 2026-11-08 (root item 5: each plan is reviewed before its page is written; root item 16: the loop waits for every answer). Six plans, `ch01/1.1/plan.md` to `ch01/1.6/plan.md`, folders named as the model books name theirs. Nothing else was written: no `source.md`, `text.html`, `figures.js` or `section.json`, and no commit.
+Status: **agreed** 2026-11-09. Answers: 1 Python-first, with code in four languages (METHOD decision 20; ODS prose from its pseudocode edition); 5 (a) set notation accepted as widely known; 6 yes, Brisk Walk's interlude carried whole; 21 colour only C, D and Z, the rest labelled in ink; 29 the three derivations are not built; every other question takes its recommendation. (Originally for review, 2026-11-08 (root item 5: each plan is reviewed before its page is written; root item 16: the loop waits for every answer). Six plans, `ch01/1.1/plan.md` to `ch01/1.6/plan.md`, folders named as the model books name theirs. Nothing else was written: no `source.md`, `text.html`, `figures.js` or `section.json`, and no commit.
 
 ## The six sections
 

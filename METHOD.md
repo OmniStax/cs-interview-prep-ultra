@@ -621,6 +621,11 @@ because prerequisites force the order and each concept gets one home.
     JavaScript. Code fonts show no ligatures. "Correct but too slow" stays
     red. Brisk Walk's set notation is accepted as widely known (no sets
     concept); its Philosophical interlude is carried whole.
+21. Chapter 1 plans agreed (2026-11-09): every question in
+    ch01/plans-summary.md takes its recommendation, except that sim-compass
+    colours only C, D and Z (inputs and answer) and labels the other points
+    and lines in ink. The user delegated these calls ("do whatever you think
+    is right").
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
