@@ -1,0 +1,32 @@
+{
+ "section": "1.2",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-6042-ps6-7",
+   "source_id": "mitocw-6-042j-fall2005:ps6#7",
+   "source_number": "Problem Set 6, Problem 7",
+   "origin": "mitocw-6-042j-fall2005",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "harmonic",
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "<p>Use the integral method to find upper and lower bounds for the following summation that differ by at most 0.05.</p>\n$$\\sum_{i=1}^{\\infty} \\frac{1}{i^3}$$\n<p><em>Hint:</em> Try adding the first few terms explicitly and then use integrals to bound the sum of the remaining terms.</p>",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2005/95bc73322f92032ed45db4dc34924e34_ps6sol.pdf\">Solutions to Problem Set 6</a>, Problem 7."
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-6042-ps6-7",
+   "concept": "harmonic-numbers"
+  }
+ ]
+}

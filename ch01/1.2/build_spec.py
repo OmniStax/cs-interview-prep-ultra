@@ -71,7 +71,7 @@ HTML = {
         'reach above the curve and cover more than ln <em>k</em>; slid one place left, the rectangles after the first '
         'fit under it, so <em>H<sub>k</sub></em> is at most 1 + ln <em>k</em>, with equality only at '
         '<em>k</em> = 1.',
-        '/media/ch01/ods-harmonic-2.png, /media/ch01/ods-harmonic-3.png', '{{caption-text harmonic-integral}}'),
+        '/media/ch01/ods-harmonic-2.png,/media/ch01/ods-harmonic-3.png', '{{caption-text harmonic-integral}}'),
     'drv-harmonic-bounds': dv('harmonic-bounds'),
 }
 
@@ -224,7 +224,8 @@ SECTION['exercise_notes'] = (
     'MathLogSumm, MthBgFIBlgbs1 and MthBgFIBlgbs2) wait for the converter of OpenDSA’s Khan-format exercises; '
     'AlgAnlsFIBsmlintgr2 asks for a Big-O bound and is held for 1.3. Aspnes’s A.5.2, comparing products, waits for a '
     'transcription of its displayed products from the PDF. The keyed MIT 6.042J card on integral bounds for sums '
-    '(Fall 2005, problem set 6, problem 7) waits for the app to read a section’s NC card file. MCS problems 14.12–14.17 '
+    '(Fall 2005, problem set 6, problem 7) is an NC card, kept in exercises-nc.json apart from the book’s CC BY-SA '
+    'content and keyed by a link to MIT’s worked solution. MCS problems 14.12–14.17 '
     'have no published answers and are built on block stacking, and are left out; Aspnes’s B.1.1 and Erickson’s '
     'Factorial item are held for chapter 4, Kattis inversefactorial is over the cap of two code items per concept, and '
     'Project Euler 20 and 34 print no answers. The grains tests are Exercism’s canonical data and its references are '

@@ -1,0 +1,225 @@
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 1, "term": "independent", "hash": "3580b6fb2b2c", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 2, "term": "combination", "hash": "3580b6fb2b2c", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 3, "term": "combination", "hash": "3580b6fb2b2c", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 4, "term": "combinations", "hash": "3580b6fb2b2c", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 5, "term": "event", "hash": "3580b6fb2b2c", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 6, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 8, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 9, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 10, "term": "Fundamental Theorem of Counting", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 11, "term": "factorial", "hash": "3580b6fb2b2c", "concept": "factorials-stirling"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 12, "term": "factorial", "hash": "3580b6fb2b2c", "concept": "factorials-stirling"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 13, "term": "factorial", "hash": "3580b6fb2b2c", "concept": "factorials-stirling"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 14, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 15, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 17, "term": "permutation", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 18, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 19, "term": "factorials", "hash": "3580b6fb2b2c", "concept": "factorials-stirling"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 20, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 21, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 22, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 23, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 24, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 26, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 27, "term": "potential", "hash": "3580b6fb2b2c", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 28, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 29, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 30, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 31, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 32, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 33, "term": "combination", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 34, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 35, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 36, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 37, "term": "permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 38, "term": "combination", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 39, "term": "partial permutations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 40, "term": "permutation", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 41, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 42, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 43, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 45, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 46, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 47, "term": "binomial coefficients", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 48, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 49, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 50, "term": "combinations", "hash": "3580b6fb2b2c", "concept": "counting"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 52, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 53, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 55, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 56, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 57, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 58, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 59, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 60, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 61, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 63, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 64, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 65, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 66, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 67, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 68, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 69, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 70, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 71, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 72, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 73, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 74, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 75, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 76, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 77, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 78, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 79, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 80, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 81, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 82, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 83, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 84, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 85, "term": "sample spaces", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 86, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 88, "term": "probability measure", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 89, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 90, "term": "probability measure", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 91, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 92, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 93, "term": "probability measure", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 94, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 95, "term": "probability measures", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 96, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 97, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 98, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 99, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 100, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 101, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 102, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 103, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 104, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 105, "term": "probability measure", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 106, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 107, "term": "probability measure", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 108, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 109, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 110, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 111, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 112, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 113, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 114, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 115, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 116, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 117, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 118, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 119, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 120, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 121, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 122, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 123, "term": "probability measures", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 124, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 125, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 126, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 127, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 128, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 129, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 130, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 131, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 132, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 134, "term": "conditional probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 135, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 136, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 137, "term": "conditional probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 138, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 139, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 140, "term": "conditional probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 141, "term": "conditional probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 142, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 143, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 144, "term": "conditional probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 145, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 146, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 147, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 149, "term": "prior probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 150, "term": "conditional probability", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 151, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 152, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 153, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 154, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 155, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 156, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 157, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 158, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 159, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 160, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 161, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 162, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 163, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 164, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 165, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 166, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 167, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 168, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 169, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 170, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 171, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 172, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 173, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 174, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 175, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 176, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 178, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 179, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 180, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 181, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 182, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 183, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 184, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 185, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 186, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 187, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 188, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 189, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 190, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 191, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 192, "term": "outcome", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 193, "term": "Indicator random variables", "hash": "3580b6fb2b2c", "concept": "indicator-variables"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 194, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 195, "term": "Indicator random variables", "hash": "3580b6fb2b2c", "concept": "indicator-variables"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 196, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 197, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 198, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 199, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 200, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 201, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 202, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 203, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 204, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 205, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 206, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 207, "term": "outcomes", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 208, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 209, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 210, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 211, "term": "events", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 212, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 213, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 214, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 215, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 216, "term": "sample space", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 217, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 218, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 219, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 220, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 221, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 222, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 223, "term": "independent", "hash": "3580b6fb2b2c", "concept": "conditional-probability"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 224, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 226, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 227, "term": "expected value", "hash": "3580b6fb2b2c", "concept": "linearity-of-expectation"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 228, "term": "event", "hash": "3580b6fb2b2c", "concept": "probability-basics"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 229, "term": "expected values", "hash": "3580b6fb2b2c", "concept": "linearity-of-expectation"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 231, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 232, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 233, "term": "Linearity of expectation", "hash": "3580b6fb2b2c", "concept": "linearity-of-expectation"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 234, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 235, "term": "random variables", "hash": "3580b6fb2b2c", "concept": "random-variable"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 237, "term": "expected value", "hash": "3580b6fb2b2c", "concept": "linearity-of-expectation"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 238, "term": "linearity of expectation", "hash": "3580b6fb2b2c", "concept": "linearity-of-expectation"}
+{"book": "cs-interview-prep-ultra", "section": "1.6", "idx": 239, "term": "random variable", "hash": "3580b6fb2b2c", "concept": "random-variable"}

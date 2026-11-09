@@ -6,7 +6,7 @@
  "lead": "An Essential section on <span data-concept=\"amortized-analysis\">amortized analysis</span>: one dynamic array, doubled when full, analysed by the aggregate, accounting and potential methods, then a stack analysed the same three ways; <span data-concept=\"potential-method\">the potential method</span> is Advanced. Here n counts the elements and m the array’s capacity, except in the aggregate analysis, where m is the size of the full array being copied. The stack’s push, pop and multi-pop are defined in its own table; stacks are the subject of <a href=\"/cs-interview-prep-ultra/ch03/3.1/\">Section 3.1</a>.",
  "objectives": [],
  "summary_html": "",
- "notes": "OI Wiki’s prerequisite line, its list of further reading and its code are not included here; with thanks to the <a href=\"https://github.com/OI-wiki/OI-wiki/graphs/contributors\">OI Wiki Team and its contributors</a>.",
+ "notes": "OI Wiki’s prerequisite line, its list of further reading and its code are not included here.",
  "ai": {
   "text": [
    {

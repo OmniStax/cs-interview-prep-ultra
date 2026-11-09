@@ -460,7 +460,11 @@ def build(sec_dir, check=False):
 
     md = f'# {spec["TITLE"]}\n\n' + '\n\n'.join(md_blocks) + '\n\n## Footnotes\n\n' + '\n\n'.join(md_notes) + '\n'
     open(os.path.join(sec_dir, 'source.md'), 'w', encoding='utf-8').write(md)
-    open(os.path.join(sec_dir, 'text.html'), 'w', encoding='utf-8').write('\n\n'.join(html_blocks) + '\n')
+    with open(os.path.join(sec_dir, 'text.html'), 'w', encoding='utf-8') as _f:
+        _f.write('\n\n'.join(html_blocks) + '\n')
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import apply_terms  # the judged concept mentions, after the page is written (tools/apply_terms.py)
+    apply_terms.apply(sec_dir)
     json.dump(fn_rows, open(os.path.join(sec_dir, 'footnotes.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     json.dump({}, open(os.path.join(sec_dir, 'captions.json'), 'w', encoding='utf-8'))
     print(f'{sec_dir}: {len(html_blocks)} blocks, {len(fn_rows)} footnotes, parity clean', file=sys.stderr)

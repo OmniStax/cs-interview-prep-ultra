@@ -174,8 +174,8 @@ SECTION = {
     'id': '1.5', 'chapter': '1', 'title': 'Amortized analysis', 'short': 'Amortized analysis',
     'lead': LEAD,
     'objectives': [], 'summary_html': '',
-    'notes': ('OI Wiki’s prerequisite line, its list of further reading and its code are not included here; with thanks to the '
-              '<a href="https://github.com/OI-wiki/OI-wiki/graphs/contributors">OI Wiki Team and its contributors</a>.'),
+    # the SATA thanks to the OI Wiki Team is printed by the footer from book.json's oiwiki source row (its notice)
+    'notes': 'OI Wiki’s prerequisite line, its list of further reading and its code are not included here.',
     'built': '2026-11-09',
     'ai': {'text': [MODEL], 'figures': [MODEL]},
     'exercise_notes': (

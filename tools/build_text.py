@@ -902,7 +902,10 @@ def build(sec_dir, check=False):
     title = spec['TITLE']
     md = f'# {title}\n\n' + '\n\n'.join(md_blocks) + '\n\n## Footnotes\n\n' + '\n\n'.join(md_notes) + '\n'
     open(os.path.join(sec_dir, 'source.md'), 'w').write(md)
-    open(os.path.join(sec_dir, 'text.html'), 'w').write('\n\n'.join(html_blocks) + '\n')
+    with open(os.path.join(sec_dir, 'text.html'), 'w') as _f:
+        _f.write('\n\n'.join(html_blocks) + '\n')
+    import apply_terms  # the judged concept mentions, after the page is written (tools/apply_terms.py)
+    apply_terms.apply(sec_dir)
     json.dump(fn_rows, open(os.path.join(sec_dir, 'footnotes.json'), 'w'), ensure_ascii=False, indent=1)
     json.dump(captions, open(os.path.join(sec_dir, 'captions.json'), 'w'), ensure_ascii=False, indent=1)
 

@@ -291,7 +291,9 @@
       "author": "OpenDSA Project (Cliff Shaffer, Ville Karavirta and contributors)",
       "url": "https://github.com/OpenDSA/OpenDSA",
       "license": "MIT",
-      "license_url": "https://opensource.org/license/mit"
+      "license_url": "https://opensource.org/license/mit",
+      "copyright": "Copyright (c) 2011-2025 - Ville Karavirta and Cliff Shaffer",
+      "notice": "<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p><p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p><p>THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>"
     },
     {
       "id": "lt-busbee",
@@ -336,7 +338,9 @@
       "author": "Exercism contributors",
       "url": "https://github.com/exercism/problem-specifications",
       "license": "MIT",
-      "license_url": "https://opensource.org/license/mit"
+      "license_url": "https://opensource.org/license/mit",
+      "copyright": "Copyright (c) 2014, 2019, 2021 Exercism",
+      "notice": "<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p><p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p><p>THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>"
     },
     {
       "id": "icc",
@@ -345,7 +349,9 @@
       "author": "Donne Martin",
       "url": "https://github.com/donnemartin/interactive-coding-challenges",
       "license": "Apache-2.0",
-      "license_url": "https://www.apache.org/licenses/LICENSE-2.0"
+      "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "copyright": "Copyright 2015 Donne Martin",
+      "notice": "<p>Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</p>"
     },
     {
       "id": "kattis-by-sa",
@@ -949,5 +955,93 @@
       "prereq": "big-o"
     }
   ],
-  "sheets": []
+  "sheets": [],
+  "colours": {
+    "palette": "families",
+    "vision": "normal",
+    "assign": {
+      "index": {
+        "light": "#84039E",
+        "dark": "#E47CFF"
+      },
+      "key": {
+        "light": "#677806",
+        "dark": "#899E01"
+      },
+      "cost": {
+        "light": "#CB0283",
+        "dark": "#F12CA0"
+      },
+      "size": {
+        "light": "#774AFF",
+        "dark": "#856FF7"
+      },
+      "weight": {
+        "light": "#A43A3C",
+        "dark": "#E97875"
+      },
+      "stateless": {
+        "light": "#743A04",
+        "dark": "#FD9F5B"
+      },
+      "stateful": {
+        "light": "#017336",
+        "dark": "#0EC360"
+      },
+      "async": {
+        "light": "#443303",
+        "dark": "#FFCD4F"
+      },
+      "traffic": {
+        "light": "#B806DC",
+        "dark": "#A274AE"
+      },
+      "latency": {
+        "light": "#003D7B",
+        "dark": "#A6CCFD"
+      },
+      "bytes": {
+        "light": "#065154",
+        "dark": "#13D9E1"
+      }
+    },
+    "referentOrder": [
+      0,
+      5,
+      6,
+      7,
+      8,
+      10,
+      14,
+      15,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      29,
+      30,
+      32,
+      34,
+      35,
+      1,
+      11,
+      12,
+      19,
+      23,
+      33,
+      2,
+      13,
+      25,
+      3,
+      9,
+      17,
+      27,
+      31,
+      4,
+      21
+    ]
+  }
 }

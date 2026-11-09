@@ -124,7 +124,7 @@ HTML = {
         'window that widens from <span data-type="size"><em>n</em></span> = 100 to 10 000. On the first window 15<em>n</em> '
         'is ahead all the way; the two meet where log <em>n</em> = 7.5, at <em>n</em> = 2<sup>7.5</sup> ≈ 181, and past '
         'that <span data-ref="f2">2<em>n</em> log <em>n</em></span> is larger and the gap keeps widening.',
-        '/media/ch01/ods-bigoh-1.png, /media/ch01/ods-bigoh-2.png', '{{caption-text intro-asymptotics}}'),
+        '/media/ch01/ods-bigoh-1.png,/media/ch01/ods-bigoh-2.png', '{{caption-text intro-asymptotics}}'),
     'sim-limit-test': sim(
         'sim-limit-test',
         'The ratio <span data-type="cost"><em>f</em>(<em>n</em>)/<em>g</em>(<em>n</em>)</span> as <em>n</em> grows, for three '
@@ -232,8 +232,9 @@ SECTION = {
         'ThetaUpperMCQ and AlgAnlsTFbgthta with LowerThetaSumm; AlgAnlsFIBsmlintgr2 from 1.2, tagged with big-o and '
         'logarithms) wait for the converter of OpenDSA’s Khan-format exercises, and its CompareGrowth and GrowthRatesPRO '
         'wait for the sequence answer type; MisunderstandingsTF1–6 go with 1.4. Aspnes’s keyed A.6.2 (an approximate sum) '
-        'and A.6.3 (a stretched function) wait for a reader of his PDF’s mathematics, and the four MIT OpenCourseWare cards '
-        '(6.006 S20 ps1 1-1, 6.046J F05 ps1 1-1, 6.006 F11 ps1 1-1, 6.042J F05 ps6 #8) for the app to read exercises-nc.json. '
+        'and A.6.3 (a stretched function) wait for a reader of his PDF’s mathematics, and the four MIT OpenCourseWare problems '
+        '(6.006 S20 ps1 1-1, 6.046J F05 ps1 1-1, 6.006 F11 ps1 1-1, 6.042J F05 ps6 #8) are NC cards, kept in exercises-nc.json '
+        'apart from the book’s CC BY-SA content and keyed by links to MIT’s worked solutions. '
         'MCS 14.18–14.42, the Applied Combinatorics items and Erickson’s chapter 0 exercise 2 have no published answers and '
         'are left out. No open exercise tests analysis with several parameters.'),
     'figures': [
