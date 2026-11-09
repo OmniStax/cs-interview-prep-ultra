@@ -609,6 +609,18 @@ because prerequisites force the order and each concept gets one home.
     good, at most two per concept; NC cards keyed only; the two rejected icc
     items stay out. Open: a person checks Wikipedia's "obsolescent as of C29"
     before 2.1 is built.
+20. Code languages (2026-11-09): every code listing the book shows (in the
+    text and in a figure's code panel) is offered in four languages, Python,
+    Java, C++ and JavaScript, with Python the default and a button group to
+    switch; the reader's choice persists. A language the source prints is
+    the source's code; a language it lacks is translated by AI and carries
+    the AI mark. For Open Data Structures, the prose comes from its
+    pseudocode edition (language-neutral, written from its Python code),
+    and its code from its own Java and C++ sources plus a Python port
+    (AI-marked where changed). Runnable exercises stay Python and
+    JavaScript. Code fonts show no ligatures. "Correct but too slow" stays
+    red. Brisk Walk's set notation is accepted as widely known (no sets
+    concept); its Philosophical interlude is carried whole.
 5. First pass: the concept map and the ToC for the whole book, then the
    first three chapters.
 
