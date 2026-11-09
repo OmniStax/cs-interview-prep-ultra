@@ -22,7 +22,7 @@
   ]
  },
  "built": "2026-11-09",
- "exercise_notes": "No open exercise tests this section’s concepts. Its one exercise is an MIT OpenCourseWare problem with its published solution, under CC BY-NC-SA and kept apart from the book’s CC BY-SA content: 6.046J Spring 2012 problem 6-1 (Amortization in Balanced Binary Trees). 6.046J Fall 2005 problem 6-1 (Electronic Billboard) waits until its formulas, which its handout sets in fonts that cannot be read as text, are transcribed and checked. 6.046J Spring 2015 problem 4-1 (Extreme FIFO Queues), which needs queues, is held for Section 3.4. The exercises of Erickson’s lecture notes on amortized analysis have no published answers and are left out.",
+ "exercise_notes": "No open exercise tests this section’s concepts. Its one exercise is an MIT OpenCourseWare problem with its published solution, under CC BY-NC-SA and kept apart from the book’s CC BY-SA content: 6.046J Spring 2012 problem 6-1 (Amortization in Balanced Binary Trees). 6.046J Fall 2005 problem 6-1 (Electronic Billboard) waits until its formulas, which its handout sets in fonts that cannot be read as text, are transcribed and checked. 6.046J Spring 2015 problem 4-1 (Extreme FIFO Queues), which needs queues, is set in Section 3.4. The exercises of Erickson’s lecture notes on amortized analysis have no published answers and are left out.",
  "figures": [
   {
    "id": "sim-pay-for-doubling",

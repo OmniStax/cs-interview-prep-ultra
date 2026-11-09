@@ -38,7 +38,7 @@ Counted from `dossiers/ch03.md` and `judgements/ch03.md`, with excluded sources 
   - statement, no tests: 19 (ODS 14: Exercises 1.1 in three parts, 2.3, 2.4, 2.6, 2.8 (may move to chapter 7), 2.9, 2.10–2.13, 3.14, 3.15, 3.16, 3.18; SICP 3.21–3.23, 3, written for Scheme; CIU 2, the queue checklists). Available with AI tests and an AI reference, or with the ODS harness where it applies; the judge ranks ODS 3.14 (MinStack) as the statement for TheAlgorithms' min/max stack tests and ODS 3.15–3.16 (MinQueue, MinDeque) as the only minimum-queue statements.
   - samples only (Kattis, ICPC): 16 here (3.1: 9; 3.2: 1; 3.3: 2; 3.4: 1; 3.5: 3), 3 held. No reference on file; two are ICPC packages (gcpc2023 loopinvariant, gcpc2021 harbour2) whose secret data can be fetched and which carry accepted submissions. Available only with AI tests (or after fetching the ICPC data).
   - test cases whose only statement is a docstring (TheAlgorithms, keon, tryalgo): about 15 ranked by the judge, passing. Test sources, not exercises (decision 19): used only as the tests of a printed statement.
-- **NC cards**: 13 keyed (*pythonds* self-checks 12: 3.1 six, 3.5 six; MIT 6.006 S20 prob1 1-3, 3.3), 16 unkeyed (*pythonds* end-of-chapter exercises: 3.1 two, 3.2 four, 3.3 two, 3.5 eight).
+- **NC cards**: 7 keyed (*pythonds* self-checks 6: 3.1 three, 3.5 three, of which two ship, as the cache holds three per page and not six (corrected in the chapter 2–3 pass); MIT 6.006 S20 prob1 1-3, 3.3), 16 unkeyed (*pythonds* end-of-chapter exercises: 3.1 two, 3.2 four, 3.3 two, 3.5 eight).
 - **Concepts with no open exercise**: rootish-index-math, sqrt-space-lower-bound. Thin: monotonic-queue-minimum (the minimum variant only as ODS's written 3.15–3.16; the tested ones are maximum variants), largest-zero-submatrix (one tested exercise, whose test must compare the area only), selist-spread-gather (one written proof), dual-array-deque (the harness and ODS 2.6).
 
 ## The exercise choice (decision 19)
@@ -49,9 +49,9 @@ The judge's fit, as read for Kattis and ICPC here: good where its note says so w
 
 | § | concept | check | code | NC cards (keyed) |
 |---|---|---|---|---|
-| 3.1 | stack | opendsa stack MC questions (the multiple-choice items of the judge's rank-8 entry) | exercism simple-linked-list (29 cases; the Exercism example passes; from 2.5); icc `stacks_queues/stack` (12 asserts; its reference is run before it ships) | pythonds self-checks, 3.1's six |
+| 3.1 | stack | opendsa stack MC questions (the multiple-choice items of the judge's rank-8 entry) | exercism simple-linked-list (29 cases; the Exercism example passes; from 2.5); icc `stacks_queues/stack` (12 asserts; its reference is run before it ships) | pythonds self-checks, 3.1's three (the cache holds three, not six; chapter 2–3 pass) |
 | 3.1 | balanced-brackets | none | none (ODS intro exc-2 unkeyed; kattis brackets and gcpc2023 loopinvariant not rated good) | none |
-| 3.1 | bracket-validation | none | exercism matching-brackets (20 cases; the Exercism example passes; trekhleb's 12 expects as its JS tests); kattis delimitersoup (CC BY-SA 3.0, AI tests) | none |
+| 3.1 | bracket-validation | none | exercism matching-brackets (20 cases; the Exercism example passes; trekhleb's 12 expects not used: they contradict Exercism's statement (3.1's build; chapter 2–3 pass), so the JavaScript runs Exercism's cases); kattis delimitersoup (CC BY-SA 3.0, AI tests) | none |
 | 3.2 | queue | opendsa StackQMCQ q* (8 MC) | none (kattis ferryloading4 not rated) | none |
 | 3.2 | circular-buffer | none | exercism circular-buffer (14 cases; the Exercism example cannot store 0, so the shipped reference is AI-written and marked) | none |
 | 3.2 | queue-linked-list | none | icc `stacks_queues/queue_list` (5 asserts, reference passes; an AI test adds dequeue-to-empty-then-enqueue, marked) | none |
@@ -65,7 +65,7 @@ The judge's fit, as read for Kattis and ICPC here: good where its note says so w
 | 3.4 | sliding-window-minimum | none | none (maximum-variant test sources only) | none |
 | 3.4 | nearest-smaller-element | none | none (test sources only; kattis bungeebuilder stretch) | none |
 | 3.4 | largest-zero-submatrix | none | cp-algorithms' own problem sentence ("Find the largest submatrix consisting of only zeros", origin `cpa`) with tryalgo `rectangles_from_grid` tests, comparing the area only and passing `black=0`; AI tests add the all-ones, all-zeros, 1×m and n×1 grids, marked | none |
-| 3.5 | rpn-evaluation | none | exercism forth (55 cases; the cases on user-defined words are a stretch part) | pythonds self-checks, 3.5's six (tagged with expression-parsing where they convert infix) |
+| 3.5 | rpn-evaluation | none | exercism forth (55 cases; the cases on user-defined words are a stretch part) | pythonds self-checks, 3.5's three, of which two ship (postfix1, postfix2; the cache holds three, not six; chapter 2–3 pass) |
 | 3.5 | expression-parsing | none | kattis calculator (CC BY-SA 3.0, AI tests; tagged with unary-right-assoc); kattis bracketsequence (CC BY-SA 3.0, AI tests) | none |
 | 3.5 | unary-right-assoc | none | kattis calculator (above) | none |
 | 3.6 | rootish-array-stack, rootish-index-math, sqrt-space-lower-bound, space-efficient-list, selist-spread-gather | none | none (harness only, or ODS exc-10–13, 17, 18 unkeyed or needing AI tests) | none |
