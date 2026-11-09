@@ -1,0 +1,197 @@
+<section id="prefix-sums" data-source="oiwiki" data-locator="oiwiki:basic/prefix-sum#引入 (with its 规定 box), #前缀和 (its heading dropped) and #一维前缀和" data-ai="claude-opus-5-5 high">
+<h2>Prefix sums</h2>
+<p><span data-concept="prefix-sums">Prefix sums</span> and differences are techniques often used in competitive programming: the former for finding <span data-concept="prefix-sums">range sums</span> quickly, the latter for carrying out range updates efficiently.</p>
+<div class="note"><div class="eyebrow">Convention</div>
+<p>For convenience of discussion, this article takes the indices of the <span data-concept="array">array</span> $\{a_i\}$ to start from $1$ by default, and additionally defines $a_0 = 0$.</p>
+</div>
+<p><span data-concept="prefix-sums">A prefix sum</span> can be understood simply as “the sum of the first $n$ terms of a sequence”; it is an important kind of preprocessing.</p>
+<h3>One-dimensional prefix sums</h3>
+<p>For a sequence $\{a_i\}$ of length $n$, if the sum of the numbers of the sequence in a range $[l,r]$ is to be queried many times, <span data-concept="prefix-sums">prefix sums</span> are worth considering. The <span data-concept="prefix-sums">prefix sums</span> of the sequence are</p>
+$$S_{i} = \sum_{j=1}^i a_j.$$
+<p>They can be computed from the recurrence relation</p>
+$$S_0 = 0,~ S_i = S_{i-1} + a_i$$
+<p>term by term. To query the sum of the sequence over the range $[l,r]$, it is enough to compute the difference</p>
+$$S([l,r]) = S_r - S_{l-1}.$$
+<p>In this way, with $O(n)$ time of preprocessing, the complexity of a single range-sum query is brought down to $O(1)$.</p>
+<div class="code-set" data-source="thealgorithms-python" data-locator="thealgorithms-python:data_structures/arrays/prefix_sum.py::PrefixSum">
+<pre data-lang="python"><code>class PrefixSum:
+    def __init__(self, array: list[int]) -&gt; None:
+        len_array = len(array)
+        self.prefix_sum = [0] * len_array
+
+        if len_array &gt; 0:
+            self.prefix_sum[0] = array[0]
+
+        for i in range(1, len_array):
+            self.prefix_sum[i] = self.prefix_sum[i - 1] + array[i]
+
+    def get_sum(self, start: int, end: int) -&gt; int:
+        if not self.prefix_sum:
+            raise ValueError("The array is empty.")
+
+        if start &lt; 0 or end &gt;= len(self.prefix_sum) or start &gt; end:
+            raise ValueError("Invalid range specified.")
+
+        if start == 0:
+            return self.prefix_sum[end]
+
+        return self.prefix_sum[end] - self.prefix_sum[start - 1]</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>class PrefixSum {
+    private final int[] prefixSum;
+
+    PrefixSum(int[] array) {
+        int lenArray = array.length;
+        prefixSum = new int[lenArray];
+
+        if (lenArray &gt; 0) {
+            prefixSum[0] = array[0];
+        }
+
+        for (int i = 1; i &lt; lenArray; i++) {
+            prefixSum[i] = prefixSum[i - 1] + array[i];
+        }
+    }
+
+    int getSum(int start, int end) {
+        if (prefixSum.length == 0) {
+            throw new IllegalArgumentException("The array is empty.");
+        }
+
+        if (start &lt; 0 || end &gt;= prefixSum.length || start &gt; end) {
+            throw new IllegalArgumentException("Invalid range specified.");
+        }
+
+        if (start == 0) {
+            return prefixSum[end];
+        }
+
+        return prefixSum[end] - prefixSum[start - 1];
+    }
+}</code></pre>
+<pre data-lang="cpp" data-ai="claude-opus-5-5 high"><code>class PrefixSum {
+    std::vector&lt;int&gt; prefix_sum;
+
+public:
+    explicit PrefixSum(const std::vector&lt;int&gt;&amp; array) {
+        std::size_t len_array = array.size();
+        prefix_sum.assign(len_array, 0);
+
+        if (len_array &gt; 0) {
+            prefix_sum[0] = array[0];
+        }
+
+        for (std::size_t i = 1; i &lt; len_array; i++) {
+            prefix_sum[i] = prefix_sum[i - 1] + array[i];
+        }
+    }
+
+    int get_sum(int start, int end) const {
+        if (prefix_sum.empty()) {
+            throw std::invalid_argument("The array is empty.");
+        }
+
+        if (start &lt; 0 || end &gt;= static_cast&lt;int&gt;(prefix_sum.size()) || start &gt; end) {
+            throw std::invalid_argument("Invalid range specified.");
+        }
+
+        if (start == 0) {
+            return prefix_sum[end];
+        }
+
+        return prefix_sum[end] - prefix_sum[start - 1];
+    }
+};</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>class PrefixSum {
+    constructor(array) {
+        const lenArray = array.length;
+        this.prefixSum = new Array(lenArray).fill(0);
+
+        if (lenArray &gt; 0) {
+            this.prefixSum[0] = array[0];
+        }
+
+        for (let i = 1; i &lt; lenArray; i++) {
+            this.prefixSum[i] = this.prefixSum[i - 1] + array[i];
+        }
+    }
+
+    getSum(start, end) {
+        if (this.prefixSum.length === 0) {
+            throw new RangeError("The array is empty.");
+        }
+
+        if (start &lt; 0 || end &gt;= this.prefixSum.length || start &gt; end) {
+            throw new RangeError("Invalid range specified.");
+        }
+
+        if (start === 0) {
+            return this.prefixSum[end];
+        }
+
+        return this.prefixSum[end] - this.prefixSum[start - 1];
+    }
+}</code></pre>
+</div>
+<p>The C++ standard library implements a prefix-sum function, <a href="https://en.cppreference.com/w/cpp/algorithm/partial_sum"><code>std::partial_sum</code></a>, defined in the header <code>&lt;numeric&gt;</code>. Since C++17 the standard library has also provided a prefix-sum function that does the same, <a href="https://en.cppreference.com/w/cpp/algorithm/inclusive_scan"><code>std::inclusive_scan</code></a>, likewise defined in the header <code>&lt;numeric&gt;</code>.</p>
+</section>
+
+<section id="prefix-sums-2d" data-source="oiwiki" data-locator="oiwiki:basic/prefix-sum#二维/多维前缀和 (its opening), #基于容斥原理 and #逐维前缀和" data-ai="claude-opus-5-5 high">
+<h2>Two-dimensional and multidimensional prefix sums</h2>
+<p>Extending <span data-concept="prefix-sums">one-dimensional prefix sums</span> to the multidimensional case gives <span data-concept="prefix-sums-2d">multidimensional prefix sums</span>. There are two common ways of computing <span data-concept="prefix-sums-2d">multidimensional prefix sums</span>.</p>
+<h3>Based on the inclusion–exclusion principle</h3>
+<p>This method is used mostly for <span data-concept="prefix-sums-2d">two-dimensional prefix sums</span>. Given a two-dimensional <span data-concept="array">array</span> $A$ of size $m\times n$, its <span data-concept="prefix-sums">prefix sum</span> $S$ is to be found. Then $S$ is likewise a two-dimensional <span data-concept="array">array</span> of size $m\times n$, and</p>
+$$S_{i,j} = \sum_{i'\le i}\sum_{j'\le j}A_{i',j'}.$$
+<p>By analogy with the one-dimensional case, $S_{i,j}$ ought to be computable from $S_{i-1,j}$ or $S_{i,j-1}$, so as to avoid computing the sums of the earlier terms again. But if $S_{i-1,j}$ and $S_{i,j-1}$ are added directly and $A_{i,j}$ is then added, the <span data-concept="prefix-sums">prefix sum</span> of their overlap, $S_{i-1,j-1}$, is counted twice, so that part has to be subtracted again. This is the <a href="/cs-interview-prep-ultra/ch40/40.4/">inclusion–exclusion principle</a>. This gives the following recurrence relation:</p>
+$$S_{i,j} = A_{i,j} + S_{i-1,j} + S_{i,j-1} - S_{i-1,j-1}.$$
+<p>In an implementation, it is enough to go through $(i,j)$ directly and sum.</p>
+<div class="note"><div class="eyebrow">Example</div>
+<p>Consider a concrete example.</p>
+<p>Here $S$ is the <span data-concept="prefix-sums">prefix sum</span> of the matrix $A$. By definition, $S_{3,3}$ is the sum of the submatrix in the dashed box of the left figure. Moreover, $S_{3,2}$ is the sum of the blue submatrix and $S_{2,3}$ the sum of the red submatrix, and the sum of their overlap is $S_{2,2}$. So if $S_{3,2}$ and $S_{2,3}$ are added directly, $S_{2,2}$ is counted twice, and we should have<sup class="fn" data-note="err-2d-example"></sup></p>
+$$S_{3,3} = A_{3,3} + S_{2,3} + S_{3,2} - S_{2,2} = 5 + 18 + 15 - 9 = 29.$$
+</div>
+<figure class="sim" id="sim-prefix-2d" data-source="doocs-leetcode" data-locator="doocs-leetcode:0304#Solution 1: Two-dimensional Prefix Sum" data-original="/media/ch02/oiwiki-prefix-sum-2d.png" data-original-caption="Example of a two-dimensional prefix sum">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The example’s matrix <em>A</em>, and beside it its prefix sums <em>S</em>, with a row and a column of zeros in front. Each cell of <em>S</em> is the cell of <em>A</em> plus the red block above it and the blue block to its left, less their overlap, which both blocks count. A query reads four cells of <em>S</em> the same way.</span></div>
+</figure>
+<p>In the same way, once the <span data-concept="prefix-sums-2d">two-dimensional prefix sums</span> have been preprocessed, to query the sum of the submatrix whose upper-left corner is $(i_1,j_1)$ and whose lower-right corner is $(i_2,j_2)$, one can compute</p>
+$$S_{i_2,j_2} - S_{i_1-1,j_2} - S_{i_2,j_1-1} + S_{i_1-1,j_1-1}.$$
+<p>This can be done in $O(1)$ time.</p>
+<p>In the two-dimensional case, the time complexity of the <span data-concept="algorithm">algorithm</span> above can be taken simply as $O(mn)$, that is, linear in the size of the given <span data-concept="array">array</span>. But as the dimension $k$ grows, the number of terms the inclusion–exclusion principle involves grows exponentially, and the time complexity becomes $O(2^kN)$, where $k$ is the dimension of the <span data-concept="array">array</span> and $N$ the size of the given <span data-concept="array">array</span>. So the <span data-concept="algorithm">algorithm</span> is no longer suitable.</p>
+<h3>Prefix sums dimension by dimension</h3>
+<p>For the general case, given a $k$-dimensional <span data-concept="array">array</span> $A$ of size $N$, its <span data-concept="prefix-sums">prefix sum</span> $S$ is likewise to be found. Here,</p>
+$$S_{i_1,\cdots,i_k} = \sum_{i'_1\le i_1}\cdots\sum_{i'_k\le i_k} A_{i'_1,\cdots,i'_k}.$$
+<p>The formula above shows that a $k$-dimensional <span data-concept="prefix-sums">prefix sum</span> is just $k$ summations. So an obvious <span data-concept="algorithm">algorithm</span> is to consider one dimension at a time, holding all the other dimensions fixed, and compute a number of <span data-concept="prefix-sums">one-dimensional prefix sums</span>; once this has been done along each of the $k$ dimensions in turn, the result is the $k$-dimensional <span data-concept="prefix-sums">prefix sum</span>.</p>
+<p>Because each dimension is considered in a single pass over the whole <span data-concept="array">array</span>, the complexity of this <span data-concept="algorithm">algorithm</span> is $O(kN)$, which is usually acceptable.</p>
+</section>
+
+<section id="difference-array" data-source="oiwiki" data-locator="oiwiki:basic/prefix-sum#差分 (its opening) and #一维差分" data-ai="claude-opus-5-5 high">
+<h2>Difference arrays</h2>
+<p><span data-concept="difference-array">Taking differences</span> is a strategy opposite to the <span data-concept="prefix-sums">prefix sum</span>: it is the inverse operation of the <span data-concept="prefix-sums">prefix sum</span>. Rather than finding the differences of a given sequence, the more common situation in competitions is to carry out many range updates by maintaining the information of the <span data-concept="difference-array">difference sequence</span>. When the range updates are finished, the information of the original sequence can be recovered by a <span data-concept="prefix-sums">prefix sum</span>, so that the original sequence can be queried. Note that the update operations must come before the query operations.</p>
+<p>If a mix of many updates and queries has to be supported, a <a href="/cs-interview-prep-ultra/ch30/30.2/">Fenwick tree</a> is needed, but the ideas behind the two are the same.</p>
+<h3>One-dimensional differences</h3>
+<p>For a sequence $\{a_i\}$, its <span data-concept="difference-array">difference sequence</span> $\{D_i\}$ is</p>
+$$D_i = a_i - a_{i-1},~ a_0 = 0.$$
+<p>The C++ standard library implements a difference function, <a href="https://en.cppreference.com/w/cpp/algorithm/adjacent_difference"><code>std::adjacent_difference</code></a>, defined in the header <code>&lt;numeric&gt;</code>.</p>
+<p>The relation between <span data-concept="prefix-sums">prefix sums</span> and differences is as follows:</p>
+<div class="note"><div class="eyebrow">Properties</div>
+<p>Let $\{D_i\}$ be the <span data-concept="difference-array">difference sequence</span> of $\{a_i\}$. Then</p>
+<ul><li>the sequence $\{a_i\}$ is the <span data-concept="prefix-sums">prefix sum</span> of the sequence $\{D_i\}$, that is, $$ a_i = \sum_{j=1}^i D_j. $$</li><li>the <span data-concept="prefix-sums">prefix sum</span> of the sequence $\{a_i\}$ is $$ S_i = \sum_{j=1}^i\sum_{k=1}^jD_k = \sum_{j=1}^i(i-j+1)D_j. $$</li></ul>
+</div>
+<p>Difference information is often used to keep up with many additions of a number to a range of a sequence, followed by one or more queries of the value at some position of the sequence.</p>
+<p>Suppose $v$ is to be added to every number of the sequence $\{a_i\}$ in the range $[l,r]$. The following operation can be done on its <span data-concept="difference-array">difference sequence</span> $\{D_i\}$:</p>
+$$D_{l} \gets D_{l} + v,~ D_{r+1}\gets D_{r+1} - v.$$
+<p>Once all the updates are finished, the updated values of $\{a_i\}$ can be recovered by a prefix-sum operation. A single update is $O(1)$. To query, one $O(n)$ prefix-sum operation is needed, after which every query is $O(1)$.</p>
+<figure class="sim" id="sim-range-add" data-source="doocs-leetcode" data-locator="doocs-leetcode:0370#Solution 1: Difference Array">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Adding <span data-ref="c"><em>c</em></span> to a[<span data-ref="l"><em>l</em></span>..<span data-ref="r"><em>r</em></span>] writes two cells of the difference array d: <span data-ref="c"><em>c</em></span> at <span data-ref="l"><em>l</em></span>, and −<span data-ref="c"><em>c</em></span> just past <span data-ref="r"><em>r</em></span>, unless <span data-ref="r"><em>r</em></span> is the last cell. The prefix pass over d, cell <span data-ref="i"><em>i</em></span> by cell, spreads each add back over its range, and d turns into the array.</span></div>
+</figure>
+</section>
+
+<section id="difference-array-2d" data-source="oiwiki" data-locator="oiwiki:basic/prefix-sum#二维/多维差分" data-ai="claude-opus-5-5 high">
+<h2>Two-dimensional and multidimensional difference arrays</h2>
+<p>Differences generalise to the multidimensional case as well. Seen as the inverse operation of the <span data-concept="prefix-sums-2d">multidimensional prefix sum</span>, finding a <span data-concept="difference-array-2d">multidimensional difference array</span> amounts to recovering the original <span data-concept="array">array</span> from its <span data-concept="prefix-sums-2d">multidimensional prefix sum</span>. By the discussion above, the inclusion–exclusion principle can be used. For example, the <span data-concept="difference-array-2d">two-dimensional difference</span> is defined as</p>
+$$D_{i,j} = a_{i,j} - a_{i-1,j} - a_{i,j-1} + a_{i-1,j-1}.$$
+<p>But to compute the whole <span data-concept="difference-array-2d">difference array</span>, a simpler and more efficient way is to take differences dimension by dimension: go through every dimension and compute the differences of the <span data-concept="array">array</span> once along each of them.</p>
+<p><span data-concept="difference-array-2d">Two-dimensional difference</span> information is often used to keep up with many rectangle additions on a two-dimensional <span data-concept="array">array</span>. For example, to add $v$ to every number of the matrix whose upper-left corner is $(x_1,y_1)$ and whose lower-right corner is $(x_2,y_2)$, the following operations can be done on its <span data-concept="difference-array-2d">difference array</span> $\{D_{i,j}\}$:</p>
+$$\begin{aligned} D_{x_1,y_1} &amp;\gets D_{x_1,y_1} + v, \\ D_{x_1,y_2+1} &amp;\gets D_{x_1,y_2+1} - v,\\ D_{x_2+1,y_1} &amp;\gets D_{x_2+1,y_1} - v,\\ D_{x_2+1,y_2+1} &amp;\gets D_{x_2+1,y_2+1} + v. \end{aligned}$$
+<p>After all the updates are finished, a single pass of <span data-concept="prefix-sums-2d">two-dimensional prefix sums</span> is all it takes to query the updated values of the <span data-concept="array">array</span> quickly.</p>
+<p>Of course, a similar idea holds for dimensions $k&gt;2$, but a single update then takes $O(2^k)$ time, which stops being practical as $k$ grows.</p>
+</section>

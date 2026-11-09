@@ -1,0 +1,2468 @@
+{
+ "id": "2.1",
+ "chapter": "2",
+ "title": "Arrays and the list interface",
+ "short": "Arrays and lists",
+ "lead": "An Essential section on the <span data-concept=\"array\">array</span>, whose elements all have one size so that each element’s address can be computed from its index; on how C defines indexing as <span data-concept=\"pointer-arithmetic\">pointer arithmetic</span>; and on the <span data-concept=\"list-interface\">List interface</span>. Indices start at 0 throughout, as in x<sub>0</sub>, …, x<sub>n−1</sub>. Stacks, queues and deques come in Sections 3.1–3.3, so the Deque operations in the List passage are a preview.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "The Array article’s history, applications, other memory layouts and comparisons, and the Pointer article outside its section on C arrays, are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The true-or-false items are Busbee’s, with Busbee’s answers: items 2, 3 and 5 of 6.17; items 1 and 4 (C++ declarations) and 6–10 (searching and sorting, taught in later chapters) are left out. ODS Exercise 2.5 has no tests of its own, so its tests and references are written by the AI that built the section, and keon’s and TheAlgorithms’ rotate functions pass them. The matrix tests are Exercism’s canonical data and its references the AI’s. ODS Exercise 1.6 is asked here for the List interface only, with AI tests and references; its USet and SSet parts wait for chapters 5 and 8, and Exercise 1.7, which has no tests, is left out. Each code card’s starter holds the small function its tests call. Exercism list-ops is left out, since its operations take functions as arguments, which a test written as data cannot carry; Kattis nsum is left out as trivial; TheAlgorithms’ index_2d_array_in_1d and reverse_array are tests with no printed statement. The OpenDSA List questions wait for the converter of OpenDSA’s exercises, and each is read against the list model this page teaches when it is converted. No open exercise asks for pointer arithmetic. The MIT 6.006 card is in this section’s NC file.",
+ "figures": [
+  {
+   "id": "sim-address",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ],
+   "originals": [
+    "/media/ch02/wp-1d-array-diagram.png"
+   ],
+   "original_caption": "Diagram of a typical 1D array. Image: Tropwine, CC BY 4.0, via Wikimedia Commons."
+  },
+  {
+   "id": "sim-row-major",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ],
+   "originals": [
+    "/media/ch02/wp-2d-array-diagram.png"
+   ],
+   "original_caption": "Diagram of a typical 2D array. Image: Tropwine, CC BY 4.0, via Wikimedia Commons."
+  },
+  {
+   "id": "photo-iliffe",
+   "kind": "photo",
+   "widths": [
+    120
+   ]
+  },
+  {
+   "id": "sim-list",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ],
+   "originals": [
+    "/media/ch02/ods-1-4-list.png"
+   ],
+   "original_caption": "A List represents a sequence indexed by $0,1,2,\\ldots,n-1$. In this List a call to $\\mathrm{get}(2)$ would return the value $c$."
+  }
+ ],
+ "coverage": [
+  {
+   "span": "array",
+   "concept": "array",
+   "verb": "introduces"
+  },
+  {
+   "span": "addressing",
+   "concept": "array",
+   "verb": "reinforces"
+  },
+  {
+   "span": "efficiency",
+   "concept": "array",
+   "verb": "reinforces"
+  },
+  {
+   "span": "efficiency",
+   "concept": "big-o",
+   "verb": "uses"
+  },
+  {
+   "span": "iliffe",
+   "concept": "array",
+   "verb": "reinforces"
+  },
+  {
+   "span": "c-arrays",
+   "concept": "pointer-arithmetic",
+   "verb": "introduces"
+  },
+  {
+   "span": "c-arrays",
+   "concept": "array",
+   "verb": "uses"
+  },
+  {
+   "span": "list-interface",
+   "concept": "list-interface",
+   "verb": "introduces"
+  },
+  {
+   "span": "list-interface",
+   "concept": "interface-vs-implementation",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "k2",
+   "source_id": "lt-busbee:6.17#tf-2",
+   "source_number": "True / False 2",
+   "origin": "lt-busbee",
+   "kind": "check",
+   "bloom": "Remember",
+   "place": {
+    "at": "end"
+   },
+   "cite": "addressing",
+   "prompt": "Arrays can have more than one dimension.",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "True",
+     "False"
+    ],
+    "correct": 0,
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "k3",
+   "source_id": "lt-busbee:6.17#tf-3",
+   "source_number": "True / False 3",
+   "origin": "lt-busbee",
+   "kind": "check",
+   "bloom": "Remember",
+   "place": {
+    "at": "end"
+   },
+   "cite": "array",
+   "prompt": "For loops are often used to display the members of an array.",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "True",
+     "False"
+    ],
+    "correct": 0,
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "k5",
+   "source_id": "lt-busbee:6.17#tf-5",
+   "source_number": "True / False 5",
+   "origin": "lt-busbee",
+   "kind": "check",
+   "bloom": "Remember",
+   "place": {
+    "at": "end"
+   },
+   "cite": "array",
+   "prompt": "Arrays are rarely used to represent data.",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "True",
+     "False"
+    ],
+    "correct": 1,
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c1",
+   "source_id": "ods:arrays#exc-5",
+   "source_number": "Exercise 2.5",
+   "origin": "ods",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "addressing",
+   "changes": "The tests call rotated(a, r), which the starter defines: it runs your rotate on a and returns a.",
+   "prompt": "Implement a method $\\mathrm{rotate}(a,r)$ that “rotates” the array $a$ so that $a[i]$ moves to $a[(i+r)\\bmod \\mathrm{length}(a)]$, for all $i\\in\\{0,\\ldots,\\mathrm{length}(a)\\}$.<sup class=\"fn\" data-note=\"err-rotate\"></sup>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "rotated",
+     "starter": "def rotate(a, r):\n    pass\n\n\ndef rotated(a, r):\n    rotate(a, r)\n    return a\n",
+     "reference": "def rotate(a, r):\n    n = len(a)\n    old = a[:]\n    for i in range(n):\n        a[(i + r) % n] = old[i]\n\n\ndef rotated(a, r):\n    rotate(a, r)\n    return a\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "rotated",
+     "starter": "function rotate(a, r) {\n}\n\nfunction rotated(a, r) {\n  rotate(a, r);\n  return a;\n}\n",
+     "reference": "function rotate(a, r) {\n  const n = a.length;\n  const old = a.slice();\n  for (let i = 0; i < n; i++) a[(i + r) % n] = old[i];\n}\n\nfunction rotated(a, r) {\n  rotate(a, r);\n  return a;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       1
+      ],
+      "expect": [
+       5,
+       1,
+       2,
+       3,
+       4
+      ],
+      "visible": true,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       0
+      ],
+      "expect": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "visible": true,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       2
+      ],
+      "expect": [
+       4,
+       5,
+       1,
+       2,
+       3
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       4
+      ],
+      "expect": [
+       2,
+       3,
+       4,
+       5,
+       1
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       5
+      ],
+      "expect": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       7
+      ],
+      "expect": [
+       4,
+       5,
+       1,
+       2,
+       3
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        9
+       ],
+       3
+      ],
+      "expect": [
+       9
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        1,
+        1,
+        2,
+        2
+       ],
+       1
+      ],
+      "expect": [
+       2,
+       1,
+       1,
+       2
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        0,
+        -1,
+        5
+       ],
+       2
+      ],
+      "expect": [
+       -1,
+       5,
+       0
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        3,
+        8,
+        9,
+        7,
+        6,
+        1,
+        2
+       ],
+       1000003
+      ],
+      "expect": [
+       7,
+       6,
+       1,
+       2,
+       3,
+       8,
+       9
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        "a",
+        "b",
+        "c",
+        "d"
+       ],
+       3
+      ],
+      "expect": [
+       "b",
+       "c",
+       "d",
+       "a"
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "exercism:matrix",
+   "source_number": "matrix",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "addressing",
+   "changes": "The tests call answer(matrix_string, method, index), which the starter defines over your Matrix class.",
+   "prompt": "Given a string representing a matrix of numbers, return the rows and columns of that matrix.\n\nSo given a string with embedded newlines like:\n\n<pre>9 8 7\n5 3 2\n6 6 7</pre>\n\nrepresenting this matrix:\n\n<pre>    1  2  3\n  |---------\n1 | 9  8  7\n2 | 5  3  2\n3 | 6  6  7</pre>\n\nyour code should be able to spit out:\n\n<ul><li>A list of the rows, reading each row left-to-right while moving top-to-bottom across the rows,</li><li>A list of the columns, reading each column top-to-bottom while moving from left-to-right.</li></ul>\n\nThe rows for our example matrix:\n\n<ul><li>9, 8, 7</li><li>5, 3, 2</li><li>6, 6, 7</li></ul>\n\nAnd its columns:\n\n<ul><li>9, 5, 6</li><li>8, 3, 6</li><li>7, 2, 7</li></ul>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "answer",
+     "starter": "class Matrix:\n    def __init__(self, matrix_string):\n        pass\n\n    def row(self, index):\n        pass\n\n    def column(self, index):\n        pass\n\n\ndef answer(matrix_string, method, index):\n    return getattr(Matrix(matrix_string), method)(index)\n",
+     "reference": "class Matrix:\n    def __init__(self, matrix_string):\n        self.rows = [[int(v) for v in line.split()] for line in matrix_string.splitlines()]\n\n    def row(self, index):\n        return list(self.rows[index - 1])\n\n    def column(self, index):\n        return [r[index - 1] for r in self.rows]\n\n\ndef answer(matrix_string, method, index):\n    return getattr(Matrix(matrix_string), method)(index)\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "answer",
+     "starter": "class Matrix {\n  constructor(matrixString) {\n  }\n\n  row(index) {\n  }\n\n  column(index) {\n  }\n}\n\nfunction answer(matrixString, method, index) {\n  return new Matrix(matrixString)[method](index);\n}\n",
+     "reference": "class Matrix {\n  constructor(matrixString) {\n    this.rows = matrixString.split(\"\\n\").map((line) => line.trim().split(/\\s+/).map(Number));\n  }\n\n  row(index) {\n    return this.rows[index - 1].slice();\n  }\n\n  column(index) {\n    return this.rows.map((r) => r[index - 1]);\n  }\n}\n\nfunction answer(matrixString, method, index) {\n  return new Matrix(matrixString)[method](index);\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       "1",
+       "row",
+       1
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1 2\n3 4",
+       "row",
+       2
+      ],
+      "expect": [
+       3,
+       4
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1 2\n10 20",
+       "row",
+       2
+      ],
+      "expect": [
+       10,
+       20
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1 2 3\n4 5 6\n7 8 9\n8 7 6",
+       "row",
+       4
+      ],
+      "expect": [
+       8,
+       7,
+       6
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1",
+       "column",
+       1
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1 2 3\n4 5 6\n7 8 9",
+       "column",
+       3
+      ],
+      "expect": [
+       3,
+       6,
+       9
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "1 2 3 4\n5 6 7 8\n9 8 7 6",
+       "column",
+       4
+      ],
+      "expect": [
+       4,
+       8,
+       6
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "89 1903 3\n18 3 1\n9 4 800",
+       "column",
+       2
+      ],
+      "expect": [
+       1903,
+       3,
+       4
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c3",
+   "source_id": "ods:intro#exc-6",
+   "source_number": "Exercise 1.6",
+   "origin": "ods",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "list-interface",
+   "changes": "Only the List interface is asked for and tested. The tests call run(ops), which the starter defines: it applies each operation to a new ArrayList and returns what get and size return.",
+   "prompt": "From scratch, write and test implementations of the List, USet and SSet interfaces. These do not have to be efficient. They can be used later to test the correctness and performance of more efficient implementations. (The easiest way to do this is to store the elements in an array.)",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class ArrayList:\n    def __init__(self):\n        pass\n\n    def size(self):\n        pass\n\n    def get(self, i):\n        pass\n\n    def set(self, i, x):\n        pass\n\n    def add(self, i, x):\n        pass\n\n    def remove(self, i):\n        pass\n\n\ndef run(ops):\n    lst, out = ArrayList(), []\n    for name, *args in ops:\n        value = getattr(lst, name)(*args)\n        if name in (\"get\", \"size\"):\n            out.append(value)\n    return out\n",
+     "reference": "class ArrayList:\n    def __init__(self):\n        self.a = [None]\n        self.n = 0\n\n    def size(self):\n        return self.n\n\n    def get(self, i):\n        return self.a[i]\n\n    def set(self, i, x):\n        y = self.a[i]\n        self.a[i] = x\n        return y\n\n    def add(self, i, x):\n        if self.n == len(self.a):\n            self.a = self.a + [None] * len(self.a)\n        for j in range(self.n, i, -1):\n            self.a[j] = self.a[j - 1]\n        self.a[i] = x\n        self.n += 1\n\n    def remove(self, i):\n        x = self.a[i]\n        for j in range(i, self.n - 1):\n            self.a[j] = self.a[j + 1]\n        self.n -= 1\n        self.a[self.n] = None\n        return x\n\n\ndef run(ops):\n    lst, out = ArrayList(), []\n    for name, *args in ops:\n        value = getattr(lst, name)(*args)\n        if name in (\"get\", \"size\"):\n            out.append(value)\n    return out\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class ArrayList {\n  constructor() {\n  }\n\n  size() {\n  }\n\n  get(i) {\n  }\n\n  set(i, x) {\n  }\n\n  add(i, x) {\n  }\n\n  remove(i) {\n  }\n}\n\nfunction run(ops) {\n  const list = new ArrayList();\n  const out = [];\n  for (const [name, ...args] of ops) {\n    const value = list[name](...args);\n    if (name === \"get\" || name === \"size\") out.push(value);\n  }\n  return out;\n}\n",
+     "reference": "class ArrayList {\n  constructor() {\n    this.a = [null];\n    this.n = 0;\n  }\n\n  size() {\n    return this.n;\n  }\n\n  get(i) {\n    return this.a[i];\n  }\n\n  set(i, x) {\n    const y = this.a[i];\n    this.a[i] = x;\n    return y;\n  }\n\n  add(i, x) {\n    if (this.n === this.a.length) this.a = this.a.concat(new Array(this.a.length).fill(null));\n    for (let j = this.n; j > i; j--) this.a[j] = this.a[j - 1];\n    this.a[i] = x;\n    this.n++;\n  }\n\n  remove(i) {\n    const x = this.a[i];\n    for (let j = i; j < this.n - 1; j++) this.a[j] = this.a[j + 1];\n    this.n--;\n    this.a[this.n] = null;\n    return x;\n  }\n}\n\nfunction run(ops) {\n  const list = new ArrayList();\n  const out = [];\n  for (const [name, ...args] of ops) {\n    const value = list[name](...args);\n    if (name === \"get\" || name === \"size\") out.push(value);\n  }\n  return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       0
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       "a",
+       1
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "add",
+         1,
+         "b"
+        ],
+        [
+         "add",
+         2,
+         "c"
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "get",
+         2
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       "a",
+       "b",
+       "c",
+       3
+      ],
+      "visible": true,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "c"
+        ],
+        [
+         "add",
+         0,
+         "b"
+        ],
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "get",
+         2
+        ]
+       ]
+      ],
+      "expect": [
+       "a",
+       "b",
+       "c"
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "add",
+         1,
+         "c"
+        ],
+        [
+         "add",
+         1,
+         "b"
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "get",
+         2
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       "b",
+       "c",
+       3
+      ],
+      "visible": true,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "add",
+         1,
+         "b"
+        ],
+        [
+         "set",
+         1,
+         "z"
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       "z",
+       2
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "add",
+         1,
+         "b"
+        ],
+        [
+         "add",
+         2,
+         "c"
+        ],
+        [
+         "remove",
+         0
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       "b",
+       2,
+       "b",
+       1
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         "a"
+        ],
+        [
+         "add",
+         1,
+         "b"
+        ],
+        [
+         "add",
+         2,
+         "c"
+        ],
+        [
+         "add",
+         3,
+         "d"
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "get",
+         2
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       "c",
+       "d",
+       3
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "add",
+         0,
+         81
+        ],
+        [
+         "add",
+         0,
+         60
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "remove",
+         0
+        ],
+        [
+         "set",
+         0,
+         47
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "add",
+         0,
+         29
+        ],
+        [
+         "set",
+         1,
+         94
+        ],
+        [
+         "set",
+         1,
+         78
+        ],
+        [
+         "add",
+         1,
+         69
+        ],
+        [
+         "remove",
+         0
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "add",
+         0,
+         15
+        ],
+        [
+         "get",
+         0
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "add",
+         0,
+         23
+        ],
+        [
+         "set",
+         1,
+         30
+        ],
+        [
+         "add",
+         0,
+         26
+        ],
+        [
+         "set",
+         2,
+         96
+        ],
+        [
+         "get",
+         2
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         3,
+         71
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "add",
+         1,
+         68
+        ],
+        [
+         "add",
+         2,
+         57
+        ],
+        [
+         "remove",
+         2
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         0,
+         11
+        ],
+        [
+         "add",
+         5,
+         63
+        ],
+        [
+         "add",
+         1,
+         70
+        ],
+        [
+         "remove",
+         3
+        ],
+        [
+         "remove",
+         2
+        ],
+        [
+         "remove",
+         4
+        ],
+        [
+         "add",
+         5,
+         21
+        ],
+        [
+         "remove",
+         2
+        ],
+        [
+         "add",
+         4,
+         39
+        ],
+        [
+         "add",
+         1,
+         8
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "set",
+         2,
+         20
+        ],
+        [
+         "set",
+         5,
+         66
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "add",
+         2,
+         94
+        ],
+        [
+         "remove",
+         5
+        ],
+        [
+         "remove",
+         3
+        ],
+        [
+         "set",
+         1,
+         20
+        ],
+        [
+         "remove",
+         3
+        ],
+        [
+         "get",
+         3
+        ],
+        [
+         "add",
+         2,
+         6
+        ],
+        [
+         "get",
+         5
+        ],
+        [
+         "add",
+         3,
+         31
+        ],
+        [
+         "add",
+         1,
+         43
+        ],
+        [
+         "remove",
+         2
+        ],
+        [
+         "size"
+        ],
+        [
+         "set",
+         3,
+         6
+        ],
+        [
+         "add",
+         7,
+         3
+        ],
+        [
+         "size"
+        ],
+        [
+         "get",
+         5
+        ],
+        [
+         "set",
+         5,
+         76
+        ],
+        [
+         "set",
+         7,
+         74
+        ],
+        [
+         "get",
+         7
+        ],
+        [
+         "add",
+         8,
+         75
+        ],
+        [
+         "add",
+         0,
+         48
+        ],
+        [
+         "set",
+         0,
+         33
+        ],
+        [
+         "remove",
+         3
+        ],
+        [
+         "get",
+         6
+        ],
+        [
+         "add",
+         6,
+         96
+        ],
+        [
+         "size"
+        ],
+        [
+         "get",
+         2
+        ],
+        [
+         "add",
+         6,
+         12
+        ],
+        [
+         "add",
+         10,
+         57
+        ],
+        [
+         "set",
+         1,
+         15
+        ],
+        [
+         "set",
+         2,
+         38
+        ],
+        [
+         "remove",
+         5
+        ],
+        [
+         "add",
+         3,
+         79
+        ],
+        [
+         "add",
+         2,
+         48
+        ],
+        [
+         "add",
+         11,
+         70
+        ],
+        [
+         "set",
+         9,
+         90
+        ],
+        [
+         "remove",
+         11
+        ],
+        [
+         "set",
+         12,
+         1
+        ],
+        [
+         "add",
+         13,
+         8
+        ],
+        [
+         "add",
+         9,
+         22
+        ],
+        [
+         "get",
+         3
+        ],
+        [
+         "add",
+         10,
+         95
+        ],
+        [
+         "add",
+         12,
+         19
+        ],
+        [
+         "add",
+         9,
+         64
+        ],
+        [
+         "get",
+         15
+        ],
+        [
+         "get",
+         3
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "remove",
+         10
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         16,
+         97
+        ],
+        [
+         "remove",
+         2
+        ],
+        [
+         "remove",
+         10
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         10,
+         84
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         2,
+         83
+        ],
+        [
+         "add",
+         14,
+         64
+        ],
+        [
+         "remove",
+         0
+        ],
+        [
+         "set",
+         14,
+         60
+        ],
+        [
+         "remove",
+         12
+        ],
+        [
+         "get",
+         2
+        ],
+        [
+         "add",
+         1,
+         84
+        ],
+        [
+         "add",
+         7,
+         35
+        ],
+        [
+         "set",
+         12,
+         92
+        ],
+        [
+         "add",
+         7,
+         51
+        ],
+        [
+         "add",
+         15,
+         29
+        ],
+        [
+         "remove",
+         2
+        ],
+        [
+         "add",
+         5,
+         62
+        ],
+        [
+         "add",
+         19,
+         27
+        ],
+        [
+         "set",
+         20,
+         80
+        ],
+        [
+         "set",
+         19,
+         89
+        ],
+        [
+         "get",
+         8
+        ],
+        [
+         "add",
+         15,
+         49
+        ],
+        [
+         "add",
+         12,
+         67
+        ],
+        [
+         "size"
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         10,
+         25
+        ],
+        [
+         "add",
+         12,
+         91
+        ],
+        [
+         "add",
+         17,
+         22
+        ],
+        [
+         "add",
+         9,
+         79
+        ],
+        [
+         "get",
+         23
+        ],
+        [
+         "set",
+         3,
+         21
+        ],
+        [
+         "set",
+         6,
+         86
+        ],
+        [
+         "add",
+         20,
+         74
+        ],
+        [
+         "set",
+         8,
+         10
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         8,
+         19
+        ],
+        [
+         "get",
+         16
+        ],
+        [
+         "add",
+         19,
+         88
+        ],
+        [
+         "add",
+         12,
+         20
+        ],
+        [
+         "get",
+         14
+        ],
+        [
+         "add",
+         29,
+         78
+        ],
+        [
+         "set",
+         11,
+         85
+        ],
+        [
+         "add",
+         17,
+         12
+        ],
+        [
+         "add",
+         13,
+         4
+        ],
+        [
+         "add",
+         23,
+         2
+        ],
+        [
+         "add",
+         2,
+         50
+        ],
+        [
+         "remove",
+         28
+        ],
+        [
+         "add",
+         0,
+         69
+        ],
+        [
+         "add",
+         19,
+         24
+        ],
+        [
+         "remove",
+         0
+        ],
+        [
+         "add",
+         8,
+         73
+        ],
+        [
+         "set",
+         27,
+         67
+        ],
+        [
+         "get",
+         19
+        ],
+        [
+         "add",
+         25,
+         70
+        ],
+        [
+         "add",
+         36,
+         74
+        ],
+        [
+         "get",
+         1
+        ],
+        [
+         "set",
+         4,
+         10
+        ],
+        [
+         "add",
+         12,
+         19
+        ],
+        [
+         "add",
+         33,
+         77
+        ],
+        [
+         "remove",
+         31
+        ],
+        [
+         "remove",
+         21
+        ],
+        [
+         "add",
+         9,
+         45
+        ],
+        [
+         "add",
+         40,
+         80
+        ],
+        [
+         "add",
+         4,
+         85
+        ],
+        [
+         "add",
+         32,
+         12
+        ],
+        [
+         "set",
+         12,
+         46
+        ],
+        [
+         "add",
+         3,
+         20
+        ],
+        [
+         "add",
+         31,
+         35
+        ],
+        [
+         "set",
+         41,
+         51
+        ],
+        [
+         "add",
+         6,
+         29
+        ],
+        [
+         "get",
+         34
+        ],
+        [
+         "add",
+         12,
+         88
+        ],
+        [
+         "add",
+         33,
+         54
+        ],
+        [
+         "add",
+         14,
+         27
+        ],
+        [
+         "remove",
+         46
+        ],
+        [
+         "add",
+         34,
+         81
+        ],
+        [
+         "remove",
+         11
+        ],
+        [
+         "add",
+         23,
+         63
+        ],
+        [
+         "remove",
+         28
+        ],
+        [
+         "get",
+         17
+        ],
+        [
+         "set",
+         13,
+         87
+        ],
+        [
+         "set",
+         39,
+         68
+        ],
+        [
+         "remove",
+         7
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         29,
+         89
+        ],
+        [
+         "set",
+         0,
+         45
+        ],
+        [
+         "add",
+         16,
+         77
+        ],
+        [
+         "add",
+         24,
+         82
+        ],
+        [
+         "set",
+         11,
+         68
+        ],
+        [
+         "remove",
+         26
+        ],
+        [
+         "add",
+         32,
+         71
+        ],
+        [
+         "add",
+         28,
+         94
+        ],
+        [
+         "set",
+         23,
+         10
+        ],
+        [
+         "add",
+         38,
+         22
+        ],
+        [
+         "add",
+         42,
+         46
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "get",
+         37
+        ],
+        [
+         "set",
+         42,
+         94
+        ],
+        [
+         "add",
+         6,
+         27
+        ],
+        [
+         "get",
+         33
+        ],
+        [
+         "add",
+         32,
+         37
+        ],
+        [
+         "add",
+         15,
+         84
+        ],
+        [
+         "add",
+         41,
+         59
+        ],
+        [
+         "set",
+         48,
+         24
+        ],
+        [
+         "set",
+         16,
+         23
+        ],
+        [
+         "add",
+         24,
+         28
+        ],
+        [
+         "remove",
+         16
+        ],
+        [
+         "add",
+         54,
+         58
+        ],
+        [
+         "add",
+         50,
+         43
+        ],
+        [
+         "remove",
+         51
+        ],
+        [
+         "add",
+         8,
+         93
+        ],
+        [
+         "add",
+         10,
+         48
+        ],
+        [
+         "add",
+         2,
+         0
+        ],
+        [
+         "set",
+         55,
+         74
+        ],
+        [
+         "add",
+         53,
+         58
+        ],
+        [
+         "add",
+         14,
+         93
+        ],
+        [
+         "remove",
+         48
+        ],
+        [
+         "remove",
+         3
+        ],
+        [
+         "add",
+         58,
+         16
+        ],
+        [
+         "remove",
+         29
+        ],
+        [
+         "add",
+         36,
+         80
+        ],
+        [
+         "add",
+         45,
+         88
+        ],
+        [
+         "add",
+         16,
+         96
+        ],
+        [
+         "add",
+         32,
+         93
+        ],
+        [
+         "set",
+         15,
+         25
+        ],
+        [
+         "remove",
+         42
+        ],
+        [
+         "get",
+         4
+        ],
+        [
+         "set",
+         15,
+         81
+        ],
+        [
+         "add",
+         33,
+         13
+        ],
+        [
+         "set",
+         37,
+         82
+        ],
+        [
+         "add",
+         26,
+         17
+        ],
+        [
+         "remove",
+         63
+        ],
+        [
+         "add",
+         42,
+         83
+        ],
+        [
+         "remove",
+         1
+        ],
+        [
+         "add",
+         18,
+         36
+        ],
+        [
+         "add",
+         52,
+         7
+        ],
+        [
+         "add",
+         65,
+         2
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         56,
+         62
+        ],
+        [
+         "remove",
+         47
+        ],
+        [
+         "add",
+         2,
+         81
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         51,
+         96
+        ],
+        [
+         "add",
+         58,
+         92
+        ],
+        [
+         "remove",
+         28
+        ],
+        [
+         "add",
+         29,
+         2
+        ],
+        [
+         "get",
+         58
+        ],
+        [
+         "get",
+         11
+        ],
+        [
+         "add",
+         19,
+         21
+        ],
+        [
+         "add",
+         34,
+         41
+        ],
+        [
+         "set",
+         38,
+         27
+        ],
+        [
+         "size"
+        ],
+        [
+         "remove",
+         25
+        ],
+        [
+         "add",
+         20,
+         19
+        ],
+        [
+         "add",
+         14,
+         21
+        ],
+        [
+         "remove",
+         14
+        ],
+        [
+         "remove",
+         15
+        ],
+        [
+         "set",
+         26,
+         89
+        ],
+        [
+         "set",
+         68,
+         2
+        ],
+        [
+         "add",
+         31,
+         28
+        ],
+        [
+         "remove",
+         12
+        ],
+        [
+         "add",
+         55,
+         73
+        ],
+        [
+         "set",
+         66,
+         89
+        ],
+        [
+         "set",
+         1,
+         51
+        ],
+        [
+         "add",
+         40,
+         87
+        ],
+        [
+         "add",
+         53,
+         4
+        ],
+        [
+         "remove",
+         5
+        ],
+        [
+         "get",
+         61
+        ],
+        [
+         "add",
+         10,
+         99
+        ],
+        [
+         "size"
+        ],
+        [
+         "set",
+         33,
+         67
+        ],
+        [
+         "get",
+         37
+        ],
+        [
+         "add",
+         62,
+         83
+        ],
+        [
+         "add",
+         37,
+         6
+        ],
+        [
+         "add",
+         74,
+         11
+        ],
+        [
+         "remove",
+         17
+        ],
+        [
+         "set",
+         19,
+         39
+        ],
+        [
+         "add",
+         14,
+         34
+        ],
+        [
+         "set",
+         56,
+         29
+        ],
+        [
+         "add",
+         54,
+         65
+        ],
+        [
+         "set",
+         60,
+         27
+        ],
+        [
+         "remove",
+         46
+        ],
+        [
+         "set",
+         5,
+         63
+        ],
+        [
+         "remove",
+         42
+        ],
+        [
+         "add",
+         2,
+         54
+        ],
+        [
+         "remove",
+         20
+        ],
+        [
+         "add",
+         27,
+         21
+        ],
+        [
+         "get",
+         43
+        ],
+        [
+         "add",
+         29,
+         83
+        ],
+        [
+         "size"
+        ],
+        [
+         "add",
+         45,
+         67
+        ],
+        [
+         "get",
+         24
+        ],
+        [
+         "add",
+         76,
+         23
+        ],
+        [
+         "set",
+         61,
+         18
+        ],
+        [
+         "add",
+         18,
+         36
+        ],
+        [
+         "set",
+         10,
+         7
+        ],
+        [
+         "add",
+         38,
+         41
+        ],
+        [
+         "remove",
+         21
+        ],
+        [
+         "set",
+         3,
+         80
+        ],
+        [
+         "remove",
+         34
+        ],
+        [
+         "add",
+         78,
+         98
+        ],
+        [
+         "set",
+         15,
+         3
+        ],
+        [
+         "get",
+         48
+        ],
+        [
+         "size"
+        ],
+        [
+         "remove",
+         65
+        ],
+        [
+         "add",
+         21,
+         83
+        ],
+        [
+         "get",
+         48
+        ],
+        [
+         "set",
+         37,
+         98
+        ]
+       ]
+      ],
+      "expect": [
+       60,
+       47,
+       15,
+       96,
+       3,
+       23,
+       5,
+       8,
+       8,
+       66,
+       21,
+       7,
+       8,
+       66,
+       74,
+       21,
+       10,
+       43,
+       38,
+       57,
+       38,
+       16,
+       15,
+       16,
+       79,
+       35,
+       23,
+       23,
+       60,
+       28,
+       67,
+       64,
+       24,
+       84,
+       74,
+       19,
+       47,
+       22,
+       71,
+       85,
+       67,
+       68,
+       92,
+       86,
+       72,
+       92,
+       74,
+       27,
+       37,
+       78,
+       20,
+       71,
+       81,
+       70
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "k2",
+   "concept": "array"
+  },
+  {
+   "exercise": "k3",
+   "concept": "array"
+  },
+  {
+   "exercise": "k5",
+   "concept": "array"
+  },
+  {
+   "exercise": "c1",
+   "concept": "array"
+  },
+  {
+   "exercise": "c2",
+   "concept": "array"
+  },
+  {
+   "exercise": "c3",
+   "concept": "list-interface"
+  }
+ ],
+ "referents": [],
+ "footnotes": [
+  {
+   "id": "wp-array-fn-1",
+   "kind": "book",
+   "number": "1",
+   "html": "Black, Paul E. (13 November 2008). <a href=\"https://xlinux.nist.gov/dads/HTML/array.html\">“array”</a>. <em>Dictionary of Algorithms and Data Structures</em>. National Institute of Standards and Technology. Retrieved 22 August 2010."
+  },
+  {
+   "id": "wp-array-fn-2",
+   "kind": "book",
+   "number": "2",
+   "html": "Andres, Bjoern; Koethe, Ullrich; Kroeger, Thorben; Hamprecht (2010). “Runtime-Flexible Multi-dimensional Arrays and Views for C++98 and C++0x”. arXiv:1008.2909 [cs.DS]."
+  },
+  {
+   "id": "wp-array-fn-3",
+   "kind": "book",
+   "number": "3",
+   "html": "Garcia, Ronald; Lumsdaine, Andrew (2005). “MultiArray: a C++ library for generic programming with arrays”. <em>Software: Practice and Experience</em>. 35 (2): 159–188. doi:10.1002/spe.630. ISSN 0038-0644. S2CID 10890293."
+  },
+  {
+   "id": "wp-array-fn-4",
+   "kind": "book",
+   "number": "4",
+   "html": "David R. Richardson (2002), The Book on Data Structures. iUniverse, 1112 pages. ISBN 0-595-24039-9, ISBN 978-0-595-24039-5."
+  },
+  {
+   "id": "wp-array-fn-3-2",
+   "kind": "book",
+   "number": "3",
+   "html": "Garcia, Ronald; Lumsdaine, Andrew (2005). “MultiArray: a C++ library for generic programming with arrays”. <em>Software: Practice and Experience</em>. 35 (2): 159–188. doi:10.1002/spe.630. ISSN 0038-0644. S2CID 10890293."
+  },
+  {
+   "id": "wp-array-fn-5",
+   "kind": "book",
+   "number": "5",
+   "html": "Veldhuizen, Todd L. (December 1998). <em>Arrays in Blitz++</em>. <em>Computing in Object-Oriented Parallel Environments</em>. Lecture Notes in Computer Science. Vol. 1505. Berlin: Springer. pp. 223–230. doi:10.1007/3-540-49372-7_24. ISBN 978-3-540-65387-5. [dead link]"
+  },
+  {
+   "id": "wp-array-fn-2-2",
+   "kind": "book",
+   "number": "2",
+   "html": "Andres, Bjoern; Koethe, Ullrich; Kroeger, Thorben; Hamprecht (2010). “Runtime-Flexible Multi-dimensional Arrays and Views for C++98 and C++0x”. arXiv:1008.2909 [cs.DS]."
+  },
+  {
+   "id": "wp-array-fn-8",
+   "kind": "book",
+   "number": "8",
+   "html": "<a href=\"http://www.configure-all.com/arrays.php\">“Array Code Examples - PHP Array Functions - PHP code”</a>. Computer Programming Web programming Tips. <a href=\"https://web.archive.org/web/20110413142103/http://www.configure-all.com/arrays.php\">Archived from the original</a> on 13 April 2011. Retrieved 8 April 2011. “In most computer languages array index (counting) starts from 0, not from 1. Index of the first element of the array is 0, index of the second element of the array is 1, and so on. In array of names below you can see indexes and values.”"
+  },
+  {
+   "id": "wp-pointer-fn-12",
+   "kind": "book",
+   "number": "12",
+   "html": "Plauger, P J; Brodie, Jim (1992). <a href=\"https://archive.org/details/ansiisostandardc00plau/\"><em>ANSI and ISO Standard C Programmer's Reference</em></a>. Redmond, WA: Microsoft Press. p. 108. ISBN 978-1-55615-359-4."
+  },
+  {
+   "id": "wp-pointer-fn-13",
+   "kind": "book",
+   "number": "13",
+   "html": "<a href=\"https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf\"><em>WG14-N3096: Draft for C23: ISO/IEC 9899:2023</em></a>. April 1, 2023. ISO/IEC. § 6.3.2.1: Lvalues, arrays, and function designators. p. 48. <a href=\"https://web.archive.org/web/20230402172459/https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf\">Archived</a> on April 2, 2023."
+  },
+  {
+   "id": "err-rebase",
+   "kind": "correction",
+   "html": "As printed, “<em>B</em> + 30<em>c</em>”. With element <em>i</em> at <em>B</em> + <em>c</em> · <em>i</em>, the base address that numbers the same five elements 31 to 35 is <em>B</em> − 30<em>c</em>, since (<em>B</em> − 30<em>c</em>) + <em>c</em> · (<em>i</em> + 30) = <em>B</em> + <em>c</em> · <em>i</em>; replacing <em>B</em> by <em>B</em> + 30<em>c</em> would number them −29 to −25."
+  },
+  {
+   "id": "err-a11",
+   "kind": "correction",
+   "html": "The labels a<sub>11</sub> … a<sub>23</sub> count rows and columns from 1, but a C array counts from 0: <code>int a[2][3]</code> holds <code>a[0][0]</code>, <code>a[0][1]</code>, <code>a[0][2]</code>, <code>a[1][0]</code>, <code>a[1][1]</code>, <code>a[1][2]</code>, stored in that order."
+  },
+  {
+   "id": "err-rotate",
+   "kind": "correction",
+   "html": "As printed, the index set ends at $\\mathrm{length}(a)$; the last index of $a$ is $\\mathrm{length}(a) - 1$, so $i$ runs over $\\{0,\\ldots,\\mathrm{length}(a)-1\\}$."
+  }
+ ],
+ "derivations": []
+}

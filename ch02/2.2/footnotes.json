@@ -1,0 +1,9 @@
+[
+ {
+  "id": "ods-fn-2-1",
+  "kind": "book",
+  "number": "1",
+  "html": "The ${}-1$ in this formula accounts for the special case that occurs when $n=0$ and $\\mathrm{length}(a) = 1$.",
+  "source": "ods"
+ }
+]

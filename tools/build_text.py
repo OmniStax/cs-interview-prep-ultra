@@ -447,7 +447,8 @@ def ods_figures(path, first, last):
     out = {}
     for f in re.findall(r'\\begin\{figure\}(.*?)\\end\{figure\}', text, flags=re.S):
         lab = re.search(r'\\figlabel\{([^}]*)\}', f)
-        cap = re.search(r'\\caption\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}', f, flags=re.S)
+        # the caption as printed; a short form for the list of figures, \caption[A DLList]{…}, is not printed
+        cap = re.search(r'\\caption(?:\[[^\]]*\])?\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}', f, flags=re.S)
         if lab and cap:
             out[lab.group(1)] = ' '.join(cap.group(1).split())
     return out
@@ -505,6 +506,24 @@ def ods_tex(path, first, last, spec):
             p = m.group(2).strip()
             if not p:
                 continue
+        # a subsection inside the passage is its <h3> (ODS's DLList "Adding and Removing", "Summary")
+        m = re.match(r'\\subsection\{(.*?)\}\s*(.*)', p, re.S)
+        if m:
+            els.append({'kind': 'heading', 'level': 3, 'tex': m.group(1)})
+            p = m.group(2).strip()
+            if not p:
+                continue
+        # a listing the edition prints from the code (\codeimport{ods/DLList.getNode(i)}): the spec says what stands
+        # there (a code set in four languages, or the Sim whose panel shows it), by its name without the package
+        m = re.match(r'\\codeimport\{(?:\w+/)?([^{}]*)\}\s*$', p)
+        if m:
+            els.append({'kind': 'code', 'name': m.group(1)})
+            continue
+        # a theorem or lemma as a whole paragraph: a note under its eyebrow (book RULES, Apparatus)
+        m = re.match(r'\\begin\{(thm|lem)\}(?:\\(?:thm|lem)label\{[^{}]*\})?\s*(.*?)\s*\\end\{\1\}\s*$', p, re.S)
+        if m:
+            els.append({'kind': 'env', 'name': m.group(1), 'tex': ' '.join(m.group(2).split())})
+            continue
         m = re.match(r'\\item\[(.*?)\]\s*(.*)', p, re.S)
         if m:
             els.append({'kind': 'li', 'label': m.group(1), 'tex': ' '.join(m.group(2).split())})
@@ -544,7 +563,7 @@ def ods_inline(tex, spec, notes, ctx):
         body = m.group(1)
         body = re.sub(r'(\\[A-Za-z]+)#', r'\1 #', body)    # \log#n# is \log n, not \logn
         body = body.replace('\\mbox{', '\\text{')            # KaTeX has no \mbox; \text is the same box
-        body = re.sub(r'#(\w+)#', r'\1', body)
+        body = re.sub(r'#(\w+(?:\.\w+)*)#', r'\1', body)     # a field in maths (#u.next#) is the variable too
         return '\x00' + body + '\x01'
     h = re.sub(r'\$(.+?)\$', math, h)
     md = h
@@ -725,7 +744,11 @@ def build(sec_dir, check=False):
 
     for b in spec['BLOCKS']:
         hparts, mparts = [], []
-        if b.get('reader') in ('latex', 'mcs'):
+        if callable(b.get('reader')):
+            # a reader the section brings for a format no shared tool reads yet (2.1: Wikipedia's wikitext):
+            # reader(block, spec, book folder) -> (HTML parts, Markdown parts), its <h2> first
+            hparts, mparts = b['reader'](b, spec, BOOK)
+        elif b.get('reader') in ('latex', 'mcs'):
             # a LaTeX passage (tools/read_latex.py) or an MCS page (tools/extract_mcs.py): tools/build_blocks.py
             import build_blocks
             hparts, mparts = build_blocks.block(b, spec, BOOK)
@@ -811,11 +834,36 @@ def build(sec_dir, check=False):
             first, last = b['lines']
             list_open = False
             for e in ods_tex(path, first, last, spec):
-                if e['kind'] == 'heading':
-                    continue
                 if e['kind'] != 'li' and list_open:
                     hparts.append('</ul>')
                     list_open = False
+                if e['kind'] == 'heading':
+                    if e['level'] == 3:     # a subsection of the passage; its \section is the block's own <h2>
+                        th, tm = ods_inline(e['tex'], spec, ods_notes, ctx)
+                        hparts.append(f'<h3>{th}</h3>')
+                        mparts.append(f'### {tm}')
+                    continue
+                if e['kind'] == 'code':
+                    # the spec's CODE_SETS name the listing's variants (code_set: Python, Java, C++, JavaScript);
+                    # its CODEIMPORT names an HTML key (a Sim whose code panel is the listing)
+                    variants = spec.get('CODE_SETS', {}).get(e['name'])
+                    if variants is not None:
+                        hparts.append(code_set(variants, spec.get('AI', '')))
+                        mparts.append('\n\n'.join(f'```{lang}\n{variants[lang].strip(chr(10))}\n```'
+                                                  for lang in ('python', 'java', 'cpp', 'javascript') if lang in variants))
+                    elif e['name'] in spec.get('CODEIMPORT', {}):
+                        key = spec['CODEIMPORT'][e['name']]
+                        hparts.append(spec['HTML'][key])
+                        mparts.append(f'[{key}]')
+                    else:
+                        print(f'{b["id"]}: no code set or figure for \\codeimport{{{e["name"]}}}', file=sys.stderr)
+                    continue
+                if e['kind'] == 'env':
+                    eh, em = ods_inline(e['tex'], spec, ods_notes, ctx)
+                    eb = {'thm': 'Theorem', 'lem': 'Lemma'}[e['name']]
+                    hparts.append(f'<div class="note"><span class="eyebrow">{eb}</span><p>{apply_fixes(eh, fixes, b["id"], used)}</p></div>')
+                    mparts.append(f'> **{eb}.** {em}')
+                    continue
                 if e['kind'] == 'display':
                     # a dollar sign in a display is set as text, so that no $ stands in the page
                     tex = re.sub(r'#(\w+)#', r'\1', re.sub(r'(\\[A-Za-z]+)#', r'\1 #', e['tex']).replace('\\$', '\\text{\\textdollar}'))

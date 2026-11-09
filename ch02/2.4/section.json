@@ -1,0 +1,148 @@
+{
+ "id": "2.4",
+ "chapter": "2",
+ "title": "Prefix sums and difference arrays",
+ "short": "Prefix sums",
+ "lead": "Essential; the <span data-concept=\"prefix-sums-2d\">two-dimensional prefix sums</span> and <span data-concept=\"difference-array-2d\">differences</span> are Advanced. Running totals for range-sum queries, and their inverse, differences, for range updates. The text counts from 1, with a<sub>0</sub> = S<sub>0</sub> = 0 (its Convention box); the code counts from 0. TheAlgorithms’ PrefixSum treats a range starting at 0 apart, and the doocs code pads its table with a zero row and column, so s[i + 1][j + 1] is S<sub>i+1, j+1</sub>, and writes d[r + 1].",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "OI Wiki’s code, its Luogu P1387 example and its sections on subset sums and on trees are not included here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "No exercise with a printed statement and tests poses a prefix-sum or difference-array problem yet. TheAlgorithms’ PrefixSum and equilibrium-index doctests and keon’s sum_sub_squares tests are tests with no statement of their own; the Kattis problems sumoftheothers, commercials, shortsell, pivot and freefood come with sample data only; and Kattis subseqhard, which needs a hash map, is held for chapter 5.",
+ "figures": [
+  {
+   "id": "sim-prefix-2d",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/oiwiki-prefix-sum-2d.png"
+   ],
+   "original_caption": "Example of a two-dimensional prefix sum",
+   "draws": [
+    "key",
+    "cost"
+   ],
+   "facts": [
+    "#2f6fd6",
+    "#d64538"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-range-add",
+   "kind": "sim",
+   "draws": [
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "prefix-sums",
+   "concept": "prefix-sums",
+   "verb": "introduces"
+  },
+  {
+   "span": "prefix-sums-2d",
+   "concept": "prefix-sums-2d",
+   "verb": "introduces"
+  },
+  {
+   "span": "prefix-sums-2d",
+   "concept": "prefix-sums",
+   "verb": "uses"
+  },
+  {
+   "span": "difference-array",
+   "concept": "difference-array",
+   "verb": "introduces"
+  },
+  {
+   "span": "difference-array",
+   "concept": "prefix-sums",
+   "verb": "uses"
+  },
+  {
+   "span": "difference-array-2d",
+   "concept": "difference-array-2d",
+   "verb": "introduces"
+  },
+  {
+   "span": "difference-array-2d",
+   "concept": "prefix-sums-2d",
+   "verb": "uses"
+  },
+  {
+   "span": "difference-array-2d",
+   "concept": "difference-array",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [
+  {
+   "id": "l",
+   "label": "l, the first index of an update",
+   "figures": [
+    "sim-range-add"
+   ]
+  },
+  {
+   "id": "r",
+   "label": "r, the last index of an update",
+   "figures": [
+    "sim-range-add"
+   ]
+  },
+  {
+   "id": "c",
+   "label": "c, the number an update adds",
+   "figures": [
+    "sim-range-add"
+   ]
+  },
+  {
+   "id": "i",
+   "label": "i, the cell of the prefix pass",
+   "figures": [
+    "sim-range-add"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "err-2d-example",
+   "kind": "correction",
+   "html": "The numbers are listed in the other order from the terms: by the figure, <em>S</em><sub>2,3</sub> = 15 and <em>S</em><sub>3,2</sub> = 18. The sum, 29, is right."
+  }
+ ],
+ "derivations": []
+}

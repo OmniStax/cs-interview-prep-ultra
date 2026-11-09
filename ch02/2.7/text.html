@@ -1,0 +1,44 @@
+<section id="tortoise-hare" data-source="cpa" data-locator="cpa:others/tortoise_and_hare, its opening, #proposed-algorithm and its ###Step 1">
+<h2>Floyd's Linked List Cycle Finding Algorithm</h2>
+<p>Given a linked list where the starting point of that linked list is denoted by <span data-ref="head"><strong>head</strong></span>, and there may or may not be a cycle present. For instance:</p>
+<figure class="sim" id="sim-rho-list" data-original="/media/ch02/cpa-tortoise-hare-algo.png" data-original-caption="Linked list with cycle">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>A linked list with a cycle: from the <span data-ref="head">head</span> the links run through A and B to <span data-ref="C">C</span>, round through D to H, and from H back to <span data-ref="C">C</span>, so following them never reaches null.</span></div>
+</figure>
+<p>Here we need to find out the point <span data-ref="C"><strong>C</strong></span>, i.e the starting point of the cycle.</p>
+<h3>Proposed algorithm</h3>
+<p>The <span data-concept="algorithm">algorithm</span> is called <strong><span data-concept="floyd-cycle-detection">Floyd’s Cycle Algorithm or Tortoise And Hare algorithm</span></strong>. In order to figure out the <span data-concept="cycle-start">starting point of the cycle</span>, we need to figure out if a cycle even exists. This involves two steps:</p>
+<ol><li>Figure out the presence of the cycle.</li><li>Find out the <span data-concept="cycle-start">starting point of the cycle</span>.</li></ol>
+<h4>Step 1: Presence of the cycle</h4>
+<ol><li>Take two pointers <span data-ref="slow">$slow$</span> and <span data-ref="fast">$fast$</span>.</li><li><span data-ref="slow fast">Both of them</span> will point to <span data-ref="head">head</span> of the linked list initially.</li><li><span data-ref="slow">$slow$</span> will move one step at a time.</li><li><span data-ref="fast">$fast$</span> will move two steps at a time. (twice as speed as <span data-ref="slow">$slow$</span> pointer).</li><li>Check if at any point <span data-ref="slow fast">they</span> point to the same node before any one(or both) reach null.</li><li>If <span data-ref="slow fast">they</span> point to the same node at any point of their journey, it indicates that a cycle indeed exists in the linked list.</li><li>If we get null, it indicates that the linked list has no cycle.</li></ol>
+<p>Now, that we have figured out if there is a cycle present in the linked list, for the next step we need to find out the starting point of cycle, i.e., <span data-ref="C"><strong>C</strong></span>.</p>
+</section>
+
+<section id="cycle-start" data-source="cpa" data-locator="cpa:others/tortoise_and_hare#step-2-starting-point-of-the-cycle, with both Java snippets">
+<h2>Step 2: Starting point of the cycle</h2>
+<ol><li>Reset the <span data-ref="slow">$slow$</span> pointer to the <span data-ref="head"><strong>head</strong></span> of the linked list.</li><li>Move <span data-ref="slow fast">both pointers</span> one step at a time.</li><li><span data-concept="cycle-start">The point they will meet at will be the starting point of the cycle.</span></li></ol>
+<figure class="sim" id="sim-rho" data-original="/media/ch02/cpa-tortoise-hare-cycle-found.png" data-original-caption="Found cycle">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-ref="slow"><em>slow</em></span> moves one node a step and <span data-ref="fast"><em>fast</em></span> two. Once both are in the cycle, <span data-ref="fast"><em>fast</em></span> gains one node on <span data-ref="slow"><em>slow</em></span> each step until they share a node, <span data-ref="G">G</span>. Then <span data-ref="slow"><em>slow</em></span> goes back to the <span data-ref="head">head</span> and both move one node a step, always the same distance from <span data-ref="C">C</span>, so they meet there. On a list with no cycle, <span data-ref="fast"><em>fast</em></span> reaches null first.</span></div>
+</figure>
+</section>
+
+<section id="why-meet" data-source="cpa" data-locator="cpa:others/tortoise_and_hare#why-does-it-work, its ###Step 1">
+<h2>Why does it work</h2>
+<h3>Step 1: Presence of the cycle</h3>
+<p>Since the pointer <span data-ref="fast">$fast$</span> is moving with twice as speed as <span data-ref="slow">$slow$</span>, we can say that at any point of time, <span data-ref="fast">$fast$</span> would have covered twice as much distance as <span data-ref="slow">$slow$</span>. We can also deduce that the difference between the distance covered by <span data-ref="slow fast">both of these pointers</span> is increasing by $1$.</p>
+<pre>slow: 0 --&gt; 1 --&gt; 2 --&gt; 3 --&gt; 4 (distance covered)
+fast: 0 --&gt; 2 --&gt; 4 --&gt; 6 --&gt; 8 (distance covered)
+diff: 0 --&gt; 1 --&gt; 2 --&gt; 3 --&gt; 4 (difference between distance covered by both pointers)</pre>
+<p>Let $L$ denote the length of the cycle, and $a$ represent the number of steps required for <span data-ref="slow">the slow pointer</span> to reach <span data-ref="C">the entry of cycle</span>. There exists a positive integer $k$ ($k &gt; 0$) such that $k \cdot L \geq a$. When <span data-ref="slow">the slow pointer</span> has moved $k \cdot L$ steps, and <span data-ref="fast">the fast pointer</span> has covered $2 \cdot k \cdot L$ steps, <span data-ref="slow fast">both pointers</span> find themselves within the cycle. At this point, there is a separation of $k \cdot L$ between them. Given that the cycle's length remains $L$, this signifies that they meet at the same point within the cycle, resulting in their encounter.</p>
+</section>
+
+<section id="cycle-start-proof" data-source="cpa" data-locator="cpa:others/tortoise_and_hare#step-2-starting-point-of-the-cycle_1">
+<h2>Why the reset finds the cycle start</h2>
+<p><span data-concept="cycle-start-proof">Let's try to calculate the distance covered by both of the pointers till the point they meet within the cycle.</span></p>
+<figure class="sim" id="sim-rho-proof" data-original="/media/ch02/cpa-tortoise-hare-proof.png" data-original-caption="Proof">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Whatever the tail’s length <em>a</em> and the cycle’s length <em>L</em>, <span data-ref="slow"><em>slow</em></span> and <span data-ref="fast"><em>fast</em></span> first meet at a node <span data-ref="G">G</span>, <em>b</em> steps past <span data-ref="C">C</span>, after <em>x</em> laps of <span data-ref="slow"><em>slow</em></span> and <em>y</em> of <span data-ref="fast"><em>fast</em></span>. Because <span data-ref="fast"><em>fast</em></span> has gone twice as far, <em>a</em> = (<em>y</em> − 2<em>x</em>)<em>L</em> − <em>b</em>: going <em>a</em> steps on from <span data-ref="G">G</span> makes whole laps less <em>b</em> and stops on <span data-ref="C">C</span>, just as <em>a</em> steps from the <span data-ref="head">head</span> does.</span></div>
+</figure>
+<ul><li>$slowDist$ is the total distance covered by <span data-ref="slow">slow pointer</span>.</li><li>$fastDist$ is the total distance covered by <span data-ref="fast">fast pointer</span>.</li><li>$a$ is the number of steps both pointers need to take to enter the cycle.</li><li>$b$ is the distance between <span data-ref="C"><strong>C</strong></span> and <span data-ref="G"><strong>G</strong></span>, i.e., distance between the starting point of cycle and meeting point of both pointers.</li><li>$x$ is the number of times <span data-ref="slow">the slow pointer</span> has looped inside the cycle, starting from and ending at <span data-ref="C"><strong>C</strong></span>.</li><li>$y$ is the number of times <span data-ref="fast">the fast pointer</span> has looped inside the cycle, starting from and ending at <span data-ref="C"><strong>C</strong></span>.</li></ul>
+<figure class="dv" id="drv-cycle-start"></figure>
+<p>where $y-2x$ is an integer</p>
+<p>This basically means that $a$ steps is same as doing some number of full loops in cycle and go $b$ steps backwards. Since <span data-ref="fast">the fast pointer</span> already is $b$ steps ahead of <span data-ref="C">the entry of cycle</span>, if <span data-ref="fast">fast pointer</span> moves another $a$ steps it will end up at <span data-ref="C">the entry of the cycle</span>. And since we let <span data-ref="slow">the slow pointer</span> start at the start of the linked list, after $a$ steps it will also end up at <span data-ref="C">the cycle entry</span>. So, if they both move $a$ step <span data-ref="slow fast">they both</span> will meet <span data-ref="C">the entry of cycle</span>.</p>
+</section>

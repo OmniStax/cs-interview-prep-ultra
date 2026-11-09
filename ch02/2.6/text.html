@@ -1,0 +1,214 @@
+<section id="dummy-node" data-source="ods" data-locator="ods:linkedlists#sec:dllist, opening through fig. dllist and the DLList() code">
+<h2>DLList: A Doubly-Linked List</h2>
+<p>A <span data-concept="doubly-linked-list">DLList (doubly-linked list)</span> is very similar to an SLList except that each node $u$ in a <span data-concept="doubly-linked-list">DLList</span> has references to both the node $u.next$ that follows it and the node $u.prev$ that precedes it.</p>
+<p>When implementing an SLList, we saw that there were always several special cases to worry about. For example, removing the last element from an SLList or adding an element to an empty SLList requires care to ensure that $head$ and $tail$ are correctly updated. In a <span data-concept="doubly-linked-list">DLList</span>, the number of these special cases increases considerably. Perhaps the cleanest way to take care of all these special cases in a <span data-concept="doubly-linked-list">DLList</span> is to introduce a <span data-concept="sentinel-node">$\htmlData{ref=dummy}{dummy}$ node</span>. This is a node that does not contain any data, but acts as a placeholder so that there are no special nodes; every node has both a $next$ and a $prev$, with $\htmlData{ref=dummy}{dummy}$ acting as the node that follows the last node in the list and that precedes the first node in the list. In this way, the nodes of the list are (doubly-)linked into a cycle, as illustrated in <a href="#sim-dllist-ring">Figure 3.2</a>.</p>
+<figure class="sim" id="sim-dllist-ring" data-original="/media/ch02/ods-dllist.png" data-original-caption="A DLList containing a,b,c,d,e.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Five elements, a to e, and the <span data-ref="dummy">dummy</span> node in one cycle. Following next from the <span data-ref="dummy">dummy</span> passes a, b, c, d and e and comes back to it; following prev passes them in the opposite order. With <span data-type="size"><em>n</em></span> = 0 the <span data-ref="dummy">dummy</span> node’s next and prev are the <span data-ref="dummy">dummy</span> itself, so even the empty list has no missing reference.</span></div>
+</figure>
+<div class="code-set">
+<pre data-lang="python"><code>def _initialize(self):
+    self.n = 0
+    self.dummy = DLList.Node(None)
+    self.dummy.prev = self.dummy
+    self.dummy.next = self.dummy</code></pre>
+<pre data-lang="java"><code>int n;
+Node dummy;
+
+DLList() {
+    dummy = new Node();
+    dummy.next = dummy;
+    dummy.prev = dummy;
+    n = 0;
+}</code></pre>
+<pre data-lang="cpp"><code>Node dummy;
+int n;
+
+DLList&lt;T&gt;::DLList() {
+    dummy.next = &amp;dummy;
+    dummy.prev = &amp;dummy;
+    n = 0;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>n;
+dummy;
+
+constructor() {
+  this.dummy = new Node();
+  this.dummy.next = this.dummy;
+  this.dummy.prev = this.dummy;
+  this.n = 0;
+}</code></pre>
+</div>
+</section>
+
+<section id="dllist" data-source="ods" data-locator="ods:linkedlists#sec:dllist, from getNode(i) through “Adding and Removing” and “Summary”">
+<h2>Operations on a DLList</h2>
+<p>Finding the node with a particular index in a <span data-concept="doubly-linked-list">DLList</span> is easy; we can either start at the head of the list ($\htmlData{ref=dummy}{dummy}.next$) and work forward, or start at the tail of the list ($\htmlData{ref=dummy}{dummy}.prev$) and work backward. This allows us to reach the $\htmlData{ref=i}{i}$th node in $O(1+\min\{\htmlData{ref=i}{i},n-\htmlData{ref=i}{i}\})$ time:</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code>def get_node(self, i):
+    if i &lt; self.n//2:
+        p = self.dummy.next
+        for _ in range(i):
+            p = p.next
+    else:
+        p = self.dummy
+        for _ in range(self.n, i, -1):
+            p = p.prev
+    return p</code></pre>
+<pre data-lang="java"><code>Node getNode(int i) {
+    Node p = null;
+    if (i &lt; n / 2) {
+        p = dummy.next;
+        for (int j = 0; j &lt; i; j++)
+            p = p.next;
+    } else {
+        p = dummy;
+        for (int j = n; j &gt; i; j--)
+            p = p.prev;
+    }
+    return p;
+}</code></pre>
+<pre data-lang="cpp"><code>DLList&lt;T&gt;::Node* DLList&lt;T&gt;::getNode(int i) {
+    Node* p;
+    if (i &lt; n / 2) {
+        p = dummy.next;
+        for (int j = 0; j &lt; i; j++)
+            p = p-&gt;next;
+    } else {
+        p = &amp;dummy;
+        for (int j = n; j &gt; i; j--)
+            p = p-&gt;prev;
+    }
+    return (p);
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>getNode(i) {
+  let p = null;
+  if (i &lt; Math.floor(this.n / 2)) {
+    p = this.dummy.next;
+    for (let j = 0; j &lt; i; j++)
+      p = p.next;
+  } else {
+    p = this.dummy;
+    for (let j = this.n; j &gt; i; j--)
+      p = p.prev;
+  }
+  return p;
+}</code></pre>
+</div>
+<p>The $get(i)$ and $set(i,x)$ operations are now also easy. We first find the $\htmlData{ref=i}{i}$th node and then get or set its $x$ value:</p>
+<div class="code-set">
+<pre data-lang="python"><code>def get(self, i):
+    if i &lt; 0 or i &gt;= self.n: raise IndexError()
+    return self.get_node(i).x
+
+def set(self, i, x): #@ReservedAssignment
+    if i &lt; 0 or i &gt;= self.n: raise IndexError()
+    u = self.get_node(i)
+    y = u.x
+    u.x = x
+    return y</code></pre>
+<pre data-lang="java"><code>T get(int i) {
+    return getNode(i).x;
+}
+
+T set(int i, T x) {
+    Node u = getNode(i);
+    T y = u.x;
+    u.x = x;
+    return y;
+}</code></pre>
+<pre data-lang="cpp"><code>T DLList&lt;T&gt;::get(int i) {
+    return getNode(i)-&gt;x;
+}
+
+T DLList&lt;T&gt;::set(int i, T x) {
+    Node* u = getNode(i);
+    T y = u-&gt;x;
+    u-&gt;x = x;
+    return y;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>get(i) {
+  return this.getNode(i).x;
+}
+
+set(i, x) {
+  const u = this.getNode(i);
+  const y = u.x;
+  u.x = x;
+  return y;
+}</code></pre>
+</div>
+<p>The running time of these operations is dominated by the time it takes to find the $\htmlData{ref=i}{i}$th node, and is therefore $O(1+\min\{\htmlData{ref=i}{i},n-\htmlData{ref=i}{i}\})$.</p>
+<h3>Adding and Removing</h3>
+<p>If we have a reference to a node $\htmlData{ref=w}{w}$ in a <span data-concept="doubly-linked-list">DLList</span> and we want to insert a node $\htmlData{ref=u}{u}$ before $\htmlData{ref=w}{w}$, then this is just a matter of setting $\htmlData{ref=u}{u}.next=\htmlData{ref=w}{w}$, $\htmlData{ref=u}{u}.prev=\htmlData{ref=w}{w}.prev$, and then adjusting $\htmlData{ref=u}{u}.prev.next$ and $\htmlData{ref=u}{u}.next.prev$. (See <a href="#sim-dllist">Figure 3.3</a>.) Thanks to the <span data-concept="sentinel-node">dummy node</span>, there is no need to worry about $\htmlData{ref=w}{w}.prev$ or $\htmlData{ref=w}{w}.next$ not existing.</p>
+<figure class="sim" id="sim-dllist" data-original="/media/ch02/ods-dllist-addbefore.png" data-original-caption="Adding the node u before the node w in a DLList.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>add(<span data-ref="i"><em>i</em></span>, x) and remove(<span data-ref="i"><em>i</em></span>) on a DLList. getNode starts <span data-ref="p"><em>p</em></span> at whichever end is nearer, so <span data-ref="p"><em>p</em></span> follows at most <span data-type="cost">1 + min(<span data-ref="i"><em>i</em></span>, <span data-type="size"><em>n</em></span> − <span data-ref="i"><em>i</em></span>)</span> references. Then addBefore points the new node <span data-ref="u"><em>u</em></span> at its two neighbours and re-aims their two references at <span data-ref="u"><em>u</em></span>, or remove re-aims the two references around <span data-ref="w"><em>w</em></span> so they skip it. At the front, at the back and in an empty list the neighbour is the <span data-ref="dummy">dummy</span>, and the same lines run.</span></div>
+</figure>
+<p>Now, the <span data-concept="list-interface">list</span> operation $add(i,x)$ is trivial to implement. We find the $\htmlData{ref=i}{i}$th node in the <span data-concept="doubly-linked-list">DLList</span> and insert a new node $\htmlData{ref=u}{u}$ that contains $x$ just before it.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def add(self, i, x):
+    if i &lt; 0 or i &gt; self.n:    raise IndexError()
+    self.add_before(self.get_node(i), x)</code></pre>
+<pre data-lang="java"><code>void add(int i, T x) {
+    addBefore(getNode(i), x);
+}</code></pre>
+<pre data-lang="cpp"><code>void DLList&lt;T&gt;::add(int i, T x) {
+    addBefore(getNode(i), x);
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>add(i, x) {
+  this.addBefore(this.getNode(i), x);
+}</code></pre>
+</div>
+<p>The only non-constant part of the running time of $add(i,x)$ is the time it takes to find the $\htmlData{ref=i}{i}$th node (using $getNode(i)$). Thus, $add(i,x)$ runs in $O(1+\min\{\htmlData{ref=i}{i}, n-\htmlData{ref=i}{i}\})$ time.</p>
+<p>Removing a node $\htmlData{ref=w}{w}$ from a <span data-concept="doubly-linked-list">DLList</span> is easy. We only need to adjust pointers at $\htmlData{ref=w}{w}.next$ and $\htmlData{ref=w}{w}.prev$ so that they skip over $\htmlData{ref=w}{w}$. Again, the use of the <span data-concept="sentinel-node">dummy node</span> eliminates the need to consider any special cases:</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _remove(self, w):
+    w.prev.next = w.next
+    w.next.prev = w.prev
+    self.n -= 1</code></pre>
+<pre data-lang="java"><code>void remove(Node w) {
+    w.prev.next = w.next;
+    w.next.prev = w.prev;
+    n--;
+}</code></pre>
+<pre data-lang="cpp"><code>void DLList&lt;T&gt;::remove(Node *w) {
+    w-&gt;prev-&gt;next = w-&gt;next;
+    w-&gt;next-&gt;prev = w-&gt;prev;
+    delete w;
+    n--;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>_remove(w) {
+  w.prev.next = w.next;
+  w.next.prev = w.prev;
+  this.n--;
+}</code></pre>
+</div>
+<p>Now the $remove(i)$ operation is trivial. We find the node with index $\htmlData{ref=i}{i}$ and remove it:</p>
+<div class="code-set">
+<pre data-lang="python"><code>def remove(self, i):
+    if i &lt; 0 or i &gt;= self.n: raise IndexError()
+    self._remove(self.get_node(i))</code></pre>
+<pre data-lang="java"><code>T remove(int i) {
+    Node w = getNode(i);
+    remove(w);
+    return w.x;
+}</code></pre>
+<pre data-lang="cpp"><code>T DLList&lt;T&gt;::remove(int i) {
+    Node *w = getNode(i);
+    T x = w-&gt;x;
+    remove(w);
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>remove(i) {
+  const w = this.getNode(i);
+  this._remove(w);
+  return w.x;
+}</code></pre>
+</div>
+<p>Again, the only expensive part of this operation is finding the $\htmlData{ref=i}{i}$th node using $getNode(i)$, so $remove(i)$ runs in $O(1+\min\{\htmlData{ref=i}{i}, n-\htmlData{ref=i}{i}\})$ time.</p>
+<h3>Summary</h3>
+<p>The following theorem summarizes the performance of a <span data-concept="doubly-linked-list">DLList</span>:</p>
+<div class="note"><span class="eyebrow">Theorem</span><p>A <span data-concept="doubly-linked-list">DLList</span> implements the <span data-concept="list-interface">List interface</span>. In this <span data-concept="interface-vs-implementation">implementation</span>, the $get(i)$, $set(i,x)$, $add(i,x)$ and $remove(i)$ operations run in $O(1+\min\{\htmlData{ref=i}{i},n-\htmlData{ref=i}{i}\})$ time per operation.</p></div>
+<p>It is worth noting that, if we ignore the cost of the $getNode(i)$ operation, then all operations on a <span data-concept="doubly-linked-list">DLList</span> take constant time. Thus, the only expensive part of operations on a <span data-concept="doubly-linked-list">DLList</span> is finding the relevant node. Once we have the relevant node, adding, removing, or accessing the data at that node takes only constant time.</p>
+<p>This is in sharp contrast to the array-based <span data-concept="list-interface">List</span> <span data-concept="interface-vs-implementation">implementations</span> of <a href="/cs-interview-prep-ultra/ch02/2.2/">Section 2.2</a>; in those <span data-concept="interface-vs-implementation">implementations</span>, the relevant <span data-concept="array">array</span> item can be found in constant time. However, addition or removal requires shifting elements in the <span data-concept="array">array</span> and, in general, takes non-constant time.</p>
+<p>For this reason, linked list structures are well-suited to applications where references to list nodes can be obtained through external means.</p>
+</section>

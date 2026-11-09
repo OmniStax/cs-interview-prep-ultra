@@ -1,0 +1,72 @@
+[
+ {
+  "id": "wp-array-fn-1",
+  "kind": "book",
+  "number": "1",
+  "html": "Black, Paul E. (13 November 2008). <a href=\"https://xlinux.nist.gov/dads/HTML/array.html\">“array”</a>. <em>Dictionary of Algorithms and Data Structures</em>. National Institute of Standards and Technology. Retrieved 22 August 2010.",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-2",
+  "kind": "book",
+  "number": "2",
+  "html": "Andres, Bjoern; Koethe, Ullrich; Kroeger, Thorben; Hamprecht (2010). “Runtime-Flexible Multi-dimensional Arrays and Views for C++98 and C++0x”. arXiv:1008.2909 [cs.DS].",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-3",
+  "kind": "book",
+  "number": "3",
+  "html": "Garcia, Ronald; Lumsdaine, Andrew (2005). “MultiArray: a C++ library for generic programming with arrays”. <em>Software: Practice and Experience</em>. 35 (2): 159–188. doi:10.1002/spe.630. ISSN 0038-0644. S2CID 10890293.",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-4",
+  "kind": "book",
+  "number": "4",
+  "html": "David R. Richardson (2002), The Book on Data Structures. iUniverse, 1112 pages. ISBN 0-595-24039-9, ISBN 978-0-595-24039-5.",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-3-2",
+  "kind": "book",
+  "number": "3",
+  "html": "Garcia, Ronald; Lumsdaine, Andrew (2005). “MultiArray: a C++ library for generic programming with arrays”. <em>Software: Practice and Experience</em>. 35 (2): 159–188. doi:10.1002/spe.630. ISSN 0038-0644. S2CID 10890293.",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-5",
+  "kind": "book",
+  "number": "5",
+  "html": "Veldhuizen, Todd L. (December 1998). <em>Arrays in Blitz++</em>. <em>Computing in Object-Oriented Parallel Environments</em>. Lecture Notes in Computer Science. Vol. 1505. Berlin: Springer. pp. 223–230. doi:10.1007/3-540-49372-7_24. ISBN 978-3-540-65387-5. [dead link]",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-2-2",
+  "kind": "book",
+  "number": "2",
+  "html": "Andres, Bjoern; Koethe, Ullrich; Kroeger, Thorben; Hamprecht (2010). “Runtime-Flexible Multi-dimensional Arrays and Views for C++98 and C++0x”. arXiv:1008.2909 [cs.DS].",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-array-fn-8",
+  "kind": "book",
+  "number": "8",
+  "html": "<a href=\"http://www.configure-all.com/arrays.php\">“Array Code Examples - PHP Array Functions - PHP code”</a>. Computer Programming Web programming Tips. <a href=\"https://web.archive.org/web/20110413142103/http://www.configure-all.com/arrays.php\">Archived from the original</a> on 13 April 2011. Retrieved 8 April 2011. “In most computer languages array index (counting) starts from 0, not from 1. Index of the first element of the array is 0, index of the second element of the array is 1, and so on. In array of names below you can see indexes and values.”",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-pointer-fn-12",
+  "kind": "book",
+  "number": "12",
+  "html": "Plauger, P J; Brodie, Jim (1992). <a href=\"https://archive.org/details/ansiisostandardc00plau/\"><em>ANSI and ISO Standard C Programmer's Reference</em></a>. Redmond, WA: Microsoft Press. p. 108. ISBN 978-1-55615-359-4.",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-pointer-fn-13",
+  "kind": "book",
+  "number": "13",
+  "html": "<a href=\"https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf\"><em>WG14-N3096: Draft for C23: ISO/IEC 9899:2023</em></a>. April 1, 2023. ISO/IEC. § 6.3.2.1: Lvalues, arrays, and function designators. p. 48. <a href=\"https://web.archive.org/web/20230402172459/https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf\">Archived</a> on April 2, 2023.",
+  "source": "wikipedia"
+ }
+]

@@ -1,0 +1,10 @@
+{
+ "dllist": {
+  "html": "A DLList containing a,b,c,d,e.",
+  "text": "A DLList containing a,b,c,d,e."
+ },
+ "dllist-addbefore": {
+  "html": "Adding the node $u$ before the node $w$ in a DLList.",
+  "text": "Adding the node u before the node w in a DLList."
+ }
+}

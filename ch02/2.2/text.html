@@ -1,0 +1,279 @@
+<section id="arrays-intro" data-source="ods" data-locator="ods:arrays#chap:arrays, the chapter opening (the table, the three points and the amortized paragraph)">
+<h2>Array-Based Lists</h2>
+<p>In this chapter, we will study <span data-concept="interface-vs-implementation">implementations</span> of the <span data-concept="list-interface">List</span> and Queue <span data-concept="interface-vs-implementation">interfaces</span> where the underlying data is stored in an <span data-concept="array">array</span>, called the <span data-concept="dynamic-array"><em>backing array</em></span>. The following table summarizes the running times of operations for the data structures presented in this chapter:</p>
+<div class="book-table"><table><thead><tr><th></th><th>$\mathrm{get}(i)$/$\mathrm{set}(i,x)$</th><th>$\mathrm{add}(i,x)$/$\mathrm{remove}(i)$</th></tr></thead><tbody><tr><th>ArrayStack</th><td>$O(1)$</td><td>$O(n-i)$</td></tr><tr><th>ArrayDeque</th><td>$O(1)$</td><td>$O(\min\{i,n-i\})$</td></tr><tr><th>DualArrayDeque</th><td>$O(1)$</td><td>$O(\min\{i,n-i\})$</td></tr><tr><th>RootishArrayStack</th><td>$O(1)$</td><td>$O(n-i)$</td></tr></tbody></table></div>
+<p>Data structures that work by storing data in a single <span data-concept="array">array</span> have many advantages and limitations in common:</p>
+<ul><li><span data-concept="array">Arrays</span> offer constant time access to any value in the <span data-concept="array">array</span>. This is what allows $\mathrm{get}(i)$ and $\mathrm{set}(i,x)$ to run in constant time.</li><li><span data-concept="array">Arrays</span> are not very dynamic. Adding or removing an element near the middle of a <span data-concept="list-interface">list</span> means that a large number of elements in the <span data-concept="array">array</span> need to be shifted to make room for the newly added element or to fill in the gap created by the deleted element. This is why the operations $\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$ have running times that depend on $n$ and $i$.</li><li><span data-concept="array">Arrays</span> cannot expand or shrink. When the number of elements in the data structure exceeds the size of the <span data-concept="dynamic-array">backing array</span>, a new <span data-concept="array">array</span> needs to be allocated and the data from the old <span data-concept="array">array</span> needs to be copied into the new <span data-concept="array">array</span>. This is an expensive operation.</li></ul>
+<p>The third point is important. The running times cited in the table above do not include the cost associated with <span data-concept="array-resize">growing and shrinking</span> the <span data-concept="dynamic-array">backing array</span>. We will see that, if carefully managed, the cost of <span data-concept="array-resize">growing and shrinking</span> the <span data-concept="dynamic-array">backing array</span> does not add much to the cost of an <em>average</em> operation. More precisely, if we start with an empty data structure, and perform any sequence of $m$ $\mathrm{add}(i,x)$ or $\mathrm{remove}(i)$ operations, then the total cost of <span data-concept="array-resize">growing and shrinking</span> the <span data-concept="dynamic-array">backing array</span>, over the entire sequence of $m$ operations is $O(m)$. Although some individual operations are more expensive, the <span data-concept="amortized-analysis">amortized cost</span>, when amortized over all $m$ operations, is only $O(1)$ per operation.</p>
+</section>
+
+<section id="arraystack" data-source="ods" data-locator="ods:arrays#sec:arraystack, the opening and The Basics">
+<h2>ArrayStack: Fast Stack Operations Using an Array</h2>
+<p>An <span data-concept="dynamic-array">ArrayStack</span> implements the <span data-concept="list-interface">list interface</span> using an <span data-concept="array">array</span> $\htmlData{ref=a}{a}$, called the <span data-concept="dynamic-array"><em>backing array</em></span>. The <span data-concept="list-interface">list</span> element with index $\htmlData{ref=i}{i}$ is stored in $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}]$. At most times, $\htmlData{ref=a}{a}$ is larger than strictly necessary, so an integer $\htmlData{ref=n}{n}$ is used to keep track of the number of elements actually stored in $\htmlData{ref=a}{a}$. In this way, the <span data-concept="list-interface">list</span> elements are stored in $\htmlData{ref=a}{a}[0]$,…,$\htmlData{ref=a}{a}[\htmlData{ref=n}{n}-1]$ and, at all times, $\mathrm{length}(\htmlData{ref=a}{a}) \ge \htmlData{ref=n}{n}$.</p>
+<div class="code-set" id="arraystack-code">
+<pre data-lang="python"><code>def _initialize(self):
+    self.a = new_array(1)
+    self.n = 0</code></pre>
+<pre data-lang="java"><code>T[] a;
+int n;
+
+int size() {
+    return n;
+}</code></pre>
+<pre data-lang="cpp"><code>array&lt;T&gt; a;
+int n;
+
+int size() {
+    return n;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>a;
+n;
+
+size() {
+    return this.n;
+}</code></pre>
+</div>
+<h3>The Basics</h3>
+<p>Accessing and modifying the elements of an <span data-concept="dynamic-array">ArrayStack</span> using $\mathrm{get}(\htmlData{ref=i}{i})$ and $\mathrm{set}(\htmlData{ref=i}{i},x)$ is trivial. After performing any necessary bounds-checking we simply return or set, respectively, $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}]$.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def get(self, i):
+    return self.a[i]
+
+def set(self, i, x):
+    y = self.a[i]
+    self.a[i] = x
+    return y</code></pre>
+<pre data-lang="java"><code>T get(int i) {
+    return a[i];
+}
+
+T set(int i, T x) {
+    T y = a[i];
+    a[i] = x;
+    return y;
+}</code></pre>
+<pre data-lang="cpp"><code>T get(int i) {
+    return a[i];
+}
+
+T set(int i, T x) {
+    T y = a[i];
+    a[i] = x;
+    return y;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>get(i) {
+    return this.a[i];
+}
+
+set(i, x) {
+    const y = this.a[i];
+    this.a[i] = x;
+    return y;
+}</code></pre>
+</div>
+<p>The operations of adding and removing elements from an <span data-concept="dynamic-array">ArrayStack</span> are illustrated in <a href="#sim-arraystack">Figure 2.1</a>. To implement the $\mathrm{add}(\htmlData{ref=i}{i},x)$ operation, we first check if $\htmlData{ref=a}{a}$ is already full. If so, we call the method $\mathrm{resize}()$ to increase the size of $\htmlData{ref=a}{a}$. How $\mathrm{resize}()$ is implemented will be discussed later. For now, it is sufficient to know that, after a call to $\mathrm{resize}()$, we can be sure that $\mathrm{length}(\htmlData{ref=a}{a}) > \htmlData{ref=n}{n}$. With this out of the way, we now shift the elements $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=n}{n}-1]$ right by one position to make room for $x$, set $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}]$ equal to $x$, and increment $\htmlData{ref=n}{n}$.</p>
+<figure class="sim" id="sim-arraystack" data-original="/media/ch02/ods-arraystack.png" data-original-caption="A sequence of add(i,x) and remove(i) operations on an ArrayStack. Arrows denote elements being copied. Operations that result in a call to resize() are marked with an asterisk.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>ODS’s ArrayStack running a sequence of add(<span data-ref="i"><em>i</em></span>, x), remove(<span data-ref="i"><em>i</em></span>) and set(<span data-ref="i"><em>i</em></span>, x) calls on its backing array <span data-ref="a"><em>a</em></span>. An add shifts <span data-ref="a"><em>a</em></span>[<span data-ref="i"><em>i</em></span>], …, <span data-ref="a"><em>a</em></span>[<span data-ref="n"><em>n</em></span> − 1] one cell to the right and a remove shifts the cells after <span data-ref="i"><em>i</em></span> one cell to the left; when <span data-ref="a"><em>a</em></span> is full, or when length(<span data-ref="a"><em>a</em></span>) ≥ 3<span data-ref="n"><em>n</em></span> after a remove, resize() copies the <span data-ref="n"><em>n</em></span> elements into a new array <span data-ref="b"><em>b</em></span> of length 2<span data-ref="n"><em>n</em></span>. Each resize copies <em>n</em><sub><em>i</em></sub> elements and comes at least <em>n</em><sub><em>i</em></sub>/2 − 1 calls after the one before it, so the copies never pass <span data-type="cost">2<em>m</em> + 2<em>r</em></span> for <em>m</em> calls and <em>r</em> resizes. Adding at the front shifts every element each time; at the boundary the array does not resize at all, because it shrinks only once it is two-thirds empty. The same doubling, paid for by the aggregate, accounting and potential methods, is in <a href="/cs-interview-prep-ultra/ch01/1.5/#sim-pay-for-doubling">Section 1.5</a>.</span></div>
+</figure>
+<div class="code-set">
+<pre data-lang="python"><code>def add(self, i, x):
+    if self.n == len(self.a): self._resize()
+    self.a[i+1:self.n+1] = self.a[i:self.n]
+    self.a[i] = x
+    self.n += 1</code></pre>
+<pre data-lang="java"><code>void add(int i, T x) {
+    if (n + 1 &gt; a.length) resize();
+    for (int j = n; j &gt; i; j--)
+        a[j] = a[j-1];
+    a[i] = x;
+    n++;
+}</code></pre>
+<pre data-lang="cpp"><code>void add(int i, T x) {
+    if (n + 1 &gt; a.length) resize();
+    for (int j = n; j &gt; i; j--)
+        a[j] = a[j - 1];
+    a[i] = x;
+    n++;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>add(i, x) {
+    if (this.n + 1 &gt; this.a.length) this.resize();
+    for (let j = this.n; j &gt; i; j--)
+        this.a[j] = this.a[j-1];
+    this.a[i] = x;
+    this.n++;
+}</code></pre>
+</div>
+<p>If we ignore the cost of the potential call to $\mathrm{resize}()$, then the cost of the $\mathrm{add}(\htmlData{ref=i}{i},x)$ operation is proportional to the number of elements we have to shift to make room for $x$. Therefore the cost of this operation (ignoring the <span data-concept="dynamic-array-cost">cost of resizing</span> $\htmlData{ref=a}{a}$) is $O(\htmlData{ref=n}{n}-\htmlData{ref=i}{i})$.</p>
+<p>Implementing the $\mathrm{remove}(\htmlData{ref=i}{i})$ operation is similar. We shift the elements $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}+1],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=n}{n}-1]$ left by one position (overwriting $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}]$) and decrease the value of $\htmlData{ref=n}{n}$. After doing this, we check if $\htmlData{ref=n}{n}$ is getting much smaller than $\mathrm{length}(\htmlData{ref=a}{a})$ by checking if $\mathrm{length}(\htmlData{ref=a}{a}) \ge 3\htmlData{ref=n}{n}$. If so, then we call $\mathrm{resize}()$ to reduce the size of $\htmlData{ref=a}{a}$.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def remove(self, i):
+    x = self.a[i]
+    self.a[i:self.n-1] = self.a[i+1:self.n]
+    self.n -= 1
+    if len(self.a) &gt;= 3*self.n: self._resize()
+    return x</code></pre>
+<pre data-lang="java"><code>T remove(int i) {
+    T x = a[i];
+    for (int j = i; j &lt; n-1; j++)
+        a[j] = a[j+1];
+    n--;
+    if (a.length &gt;= 3*n) resize();
+    return x;
+}</code></pre>
+<pre data-lang="cpp"><code>T remove(int i) {
+    T x = a[i];
+    for (int j = i; j &lt; n - 1; j++)
+        a[j] = a[j + 1];
+    n--;
+    if (a.length &gt;= 3 * n) resize();
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>remove(i) {
+    const x = this.a[i];
+    for (let j = i; j &lt; this.n-1; j++)
+        this.a[j] = this.a[j+1];
+    this.n--;
+    if (this.a.length &gt;= 3*this.n) this.resize();
+    return x;
+}</code></pre>
+</div>
+<p>If we ignore the cost of the $\mathrm{resize}()$ method, the cost of a $\mathrm{remove}(\htmlData{ref=i}{i})$ operation is proportional to the number of elements we shift, which is $O(\htmlData{ref=n}{n}-\htmlData{ref=i}{i})$.</p>
+</section>
+
+<section id="resize" data-source="ods" data-locator="ods:arrays#growing-and-shrinking, the first two paragraphs and resize()">
+<h2>Growing and Shrinking</h2>
+<p>The $\mathrm{resize}()$ method is fairly straightforward; <span data-concept="array-resize">it allocates a new array</span> $b$ whose size is $2n$ and copies the $n$ elements of $a$ into the first $n$ positions in $b$, and then sets $a$ to $b$. Thus, after a call to $\mathrm{resize}()$, $\mathrm{length}(a) = 2n$.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _resize(self):
+    b = new_array(max(1, 2*self.n))
+    b[0:self.n] = self.a[0:self.n]
+    self.a = b</code></pre>
+<pre data-lang="java"><code>void resize() {
+    T[] b = newArray(max(n*2,1));
+    for (int i = 0; i &lt; n; i++) {
+        b[i] = a[i];
+    }
+    a = b;
+}</code></pre>
+<pre data-lang="cpp"><code>void resize() {
+    array&lt;T&gt; b(max(2 * n, 1));
+    for (int i = 0; i &lt; n; i++)
+        b[i] = a[i];
+    a = b;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>resize() {
+    const b = new Array(Math.max(this.n*2, 1));
+    for (let i = 0; i &lt; this.n; i++) {
+        b[i] = this.a[i];
+    }
+    this.a = b;
+}</code></pre>
+</div>
+<p>Analyzing the actual cost of the $\mathrm{resize}()$ operation is easy. It allocates an <span data-concept="array">array</span> $b$ of size $2n$ and copies the $n$ elements of $a$ into $b$. This takes $O(n)$ time.</p>
+</section>
+
+<section id="arraystack-cost" data-source="ods" data-locator="ods:arrays#growing-and-shrinking, from “The running time analysis from the previous section ignored…” to the end of the section: lem:arraystack-amortized with its proof, and the Summary (thm:arraystack and the push/pop paragraph)">
+<h2>Amortized cost of resizing</h2>
+<p>The running time analysis from the previous section ignored the cost of calls to $\mathrm{resize}()$. In this section we analyze this cost using a technique known as <span data-concept="amortized-analysis"><em>amortized analysis</em></span>. This technique does not try to determine the <span data-concept="dynamic-array-cost">cost of resizing</span> during each individual $\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$ operation. Instead, it considers the cost of all calls to $\mathrm{resize}()$ during a sequence of $m$ calls to $\mathrm{add}(i,x)$ or $\mathrm{remove}(i)$. In particular, we will show:</p>
+<div class="note"><span class="eyebrow">Lemma</span><p>If an empty <span data-concept="dynamic-array">ArrayStack</span> is created and any sequence of $m\ge 1$ calls to $\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$ are performed, then <span data-concept="dynamic-array-cost">the total time spent during all calls to $\mathrm{resize}()$ is $O(m)$</span>.</p></div>
+<p><em>Proof.</em> We will show that any time $\mathrm{resize}()$ is called, the number of calls to $\mathit{add}$ or $\mathit{remove}$ since the last call to $\mathrm{resize}()$ is at least $n/2-1$. Therefore, if $n_i$ denotes the value of $n$ during the $i$th call to $\mathrm{resize}()$ and $r$ denotes the number of calls to $\mathrm{resize}()$, then the total number of calls to $\mathrm{add}(i,x)$ or $\mathrm{remove}(i)$ is at least</p>
+<figure class="dv" id="drv-arraystack-sum"></figure>
+<p>since $r$ is not more than $m$. All that remains is to show that the number of calls to $\mathrm{add}(i,x)$ or $\mathrm{remove}(i)$ between the $(i-1)$th and the $i$th call to $\mathrm{resize}()$ is at least $n_i/2$.<sup class="fn" data-note="err-half"></sup></p>
+<p>There are two cases to consider. In the first case, $\mathrm{resize}()$ is being called by $\mathrm{add}(i,x)$ because the <span data-concept="dynamic-array">backing array</span> $a$ is full, i.e., $\mathrm{length}(a) = n=n_i$. Consider the previous call to $\mathrm{resize}()$: after this previous call, the size of $a$ was $\mathrm{length}(a)$, but the number of elements stored in $a$ was at most $\mathrm{length}(a)/2=n_i/2$. But now the number of elements stored in $a$ is $n_i=\mathrm{length}(a)$, so there must have been at least $n_i/2$ calls to $\mathrm{add}(i,x)$ since the previous call to $\mathrm{resize}()$.</p>
+<p>The second case occurs when $\mathrm{resize}()$ is being called by $\mathrm{remove}(i)$ because $\mathrm{length}(a) \ge 3n=3n_i$. Again, after the previous call to $\mathrm{resize}()$ the number of elements stored in $a$ was at least $\mathrm{length}(a)/2-1$.<sup class="fn" data-note="ods-fn-2-1"></sup> Now there are $n_i\le\mathrm{length}(a)/3$ elements stored in $a$. Therefore, the number of $\mathrm{remove}(i)$ operations since the last call to $\mathrm{resize}()$ is at least</p>
+<figure class="dv" id="drv-shrink-case"></figure>
+<p>In either case, the number of calls to $\mathrm{add}(i,x)$ or $\mathrm{remove}(i)$ that occur between the $(i-1)$th call to $\mathrm{resize}()$ and the $i$th call to $\mathrm{resize}()$ is at least $n_i/2-1$, as required to complete the proof.</p>
+<h3>Summary</h3>
+<p>The following theorem summarizes the performance of an <span data-concept="dynamic-array">ArrayStack</span>:</p>
+<div class="note"><span class="eyebrow">Theorem</span><p>An <span data-concept="dynamic-array">ArrayStack</span> implements the <span data-concept="list-interface">List interface</span>. Ignoring the cost of calls to $\mathrm{resize}()$, an <span data-concept="dynamic-array">ArrayStack</span> supports the operations</p>
+<ul><li>$\mathrm{get}(i)$ and $\mathrm{set}(i,x)$ in $O(1)$ time per operation; and</li><li>$\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$ in $O(1+n-i)$ time per operation.</li></ul>
+<p>Furthermore, beginning with an empty <span data-concept="dynamic-array">ArrayStack</span> and performing any sequence of $m$ $\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$ operations results in a total of $O(m)$ time spent during all calls to $\mathrm{resize}()$.</p></div>
+<p>The <span data-concept="dynamic-array">ArrayStack</span> is an efficient way to implement a Stack. In particular, we can implement $\mathrm{push}(x)$ as $\mathrm{add}(n,x)$ and $\mathrm{pop}()$ as $\mathrm{remove}(n-1)$, in which case these operations will run in $O(1)$ amortized time.</p>
+</section>
+
+<section id="fastarraystack" data-source="ods" data-locator="ods:arrays#sec:fastarraystack">
+<h2>FastArrayStack: An Optimized ArrayStack</h2>
+<p>Much of the work done by an <span data-concept="dynamic-array">ArrayStack</span> involves shifting (by $\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$) and copying (by $\mathrm{resize}()$) of data. In a naive <span data-concept="interface-vs-implementation">implementation</span>, this would be done using $\textbf{for}$ loops. It turns out that many programming environments have <span data-concept="block-copy">specific functions that are very efficient at copying and moving blocks of data</span>. In the C programming language, there are the $\mathrm{memcpy}(d,s,n)$ and $\mathrm{memmove}(d,s,n)$ functions. In the C++ language there is the $\mathrm{std{:}{:}copy}(a_0,a_1,b)$ algorithm. In Java there is the $\mathrm{System.arraycopy}(s,i,d,j,n)$ method.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def add(self, i, x):
+    if self.n == len(self.a): self._resize()
+    self.a[i+1:self.n+1] = self.a[i:self.n]
+    self.a[i] = x
+    self.n += 1
+
+def remove(self, i):
+    x = self.a[i]
+    self.a[i:self.n-1] = self.a[i+1:self.n]
+    self.n -= 1
+    if len(self.a) &gt;= 3*self.n: self._resize()
+    return x
+
+def _resize(self):
+    b = new_array(max(1, 2*self.n))
+    b[0:self.n] = self.a[0:self.n]
+    self.a = b</code></pre>
+<pre data-lang="java"><code>void resize() {
+    T[] b = newArray(max(2*n,1));
+    System.arraycopy(a, 0, b, 0, n);
+    a = b;
+}
+
+void add(int i, T x) {
+    if (n + 1 &gt; a.length) resize();
+    System.arraycopy(a, i, a, i+1, n-i);
+    a[i] = x;
+    n++;
+}
+
+T remove(int i) {
+    T x = a[i];
+    System.arraycopy(a, i+1, a, i, n-i-1);
+    n--;
+    if (a.length &gt;= 3*n) resize();
+    return x;
+}</code></pre>
+<pre data-lang="cpp"><code>void resize() {
+    array&lt;T&gt; b(max(1, 2*n));
+    std::copy(a+0, a+n, b+0);
+    a = b;
+}
+
+void add(int i, T x) {
+    if (n + 1 &gt; a.length) resize();
+    std::copy_backward(a+i, a+n, a+n+1);
+    a[i] = x;
+    n++;
+}
+
+T remove(int i)
+{
+    T x = a[i];
+    std::copy(a+i+1, a+n, a+i);
+    n--;
+    if (a.length &gt;= 3 * n) resize();
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>resize() {
+    const b = this.a.slice(0, this.n);
+    b.length = Math.max(2*this.n, 1);
+    this.a = b;
+}
+
+add(i, x) {
+    if (this.n + 1 &gt; this.a.length) this.resize();
+    this.a.copyWithin(i+1, i, this.n);
+    this.a[i] = x;
+    this.n++;
+}
+
+remove(i) {
+    const x = this.a[i];
+    this.a.copyWithin(i, i+1, this.n);
+    this.n--;
+    if (this.a.length &gt;= 3*this.n) this.resize();
+    return x;
+}</code></pre>
+</div>
+<p>These functions are usually highly optimized and may even use special machine instructions that can do this copying much faster than we could by using a $\textbf{for}$ loop. Although using these functions does not asymptotically decrease the running times, it can still be a worthwhile optimization.</p>
+<p>In our C++ and Java <span data-concept="interface-vs-implementation">implementations</span>, the use of fast <span data-concept="array">array</span> copying functions resulted in speedups of a factor between 2 and 3, depending on the types of operations performed. Your mileage may vary.</p>
+</section>

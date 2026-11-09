@@ -1,0 +1,32 @@
+{
+ "section": "2.6",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-6006s20-ps1-4",
+   "source_id": "mitocw-6-006-spring2020:ps1#1-4",
+   "source_number": "Problem Set 1, Problem 1-4",
+   "origin": "mitocw-6-006-spring2020",
+   "kind": "exercise",
+   "bloom": "Create",
+   "place": {
+    "at": "end"
+   },
+   "cite": "dllist",
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "<p><strong>Doubly Linked List</strong></p>\n<p>In Lecture 2, we described a singly linked list. In this problem, you will implement a <strong>doubly linked list</strong>, supporting some additional constant-time operations. Each node <code>x</code> of a doubly linked list maintains an <code>x.prev</code> pointer to the node preceeding it in the sequence, in addition to an <code>x.next</code> pointer to the node following it in the sequence. A doubly linked list <code>L</code> maintains a pointer to <code>L.tail</code>, the last node in the sequence, in addition to <code>L.head</code>, the first node in the sequence. For this problem, doubly linked lists <strong>should not maintain their length</strong>.</p>\n<p><strong>(a)</strong> Given a doubly linked list as described above, describe algorithms to implement the following sequence operations, each in $O(1)$ time. <code>insert_first(x)</code>, <code>insert_last(x)</code>, <code>delete_first()</code>, <code>delete_last()</code></p>\n<p><strong>(b)</strong> Given two nodes $x_1$ and $x_2$ from a doubly linked list $L$, where $x_1$ occurs before $x_2$, describe a constant-time algorithm to <strong>remove</strong> all nodes from $x_1$ to $x_2$ inclusive from $L$, and return them as a new doubly linked list.</p>\n<p><strong>(c)</strong> Given node $x$ from a doubly linked list $L_1$ and second doubly linked list $L_2$, describe a constant-time algorithm to <strong>splice</strong> list $L_2$ into list $L_1$ after node $x$. After the splice operation, $L_1$ should contain all items previously in either list, and $L_2$ should be empty.</p>\n<p><strong>(d)</strong> Implement the operations above in the <code>Doubly_Linked_List_Seq</code> class in the provided code template; <strong>do not modify</strong> the <code>Doubly_Linked_List_Node</code> class. You can download the code template including some test cases from the website.</p>",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/10e4e3444c1bde4c662a47a8f14dadd3_MIT6_006S20_ps1-solutions.pdf\">Solutions to Problem Set 1</a>, Problem 1-4."
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-6006s20-ps1-4",
+   "concept": "doubly-linked-list"
+  }
+ ]
+}

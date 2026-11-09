@@ -16,6 +16,8 @@ What the section's build_spec.py may add, beside BLOCKS:
 - ENV_EYEBROW {(block id, environment): eyebrow}: the label a boxed environment carries (a framed theorem).
 - FIGURE_AT {label: HTML key}: the Sim that stands where the source's figure stood.
 - DISPLAYS {key: TeX}: an MCS display, which the PDF draws in pieces, set from the page render.
+- CODE_HOOK(e): the HTML for an ODS listing (`\\codeimport{ods/ArrayStack.add(i,x)}` and the edition imports,
+  e = {cmd, ref}); '' drops it, as a spec without the hook does.
 The footnotes the passages print go to spec['_latex_notes'] for build_text.py's footnote rows.
 """
 import html
@@ -49,7 +51,11 @@ def _hooks(b, spec):
     def figure_hook(e):
         key = spec.get('FIGURE_AT', {}).get(e.get('label'))
         return spec['HTML'][key] if key else ''
-    return dict(display_hook=display_hook, env_hook=env_hook, figure_hook=figure_hook)
+    def code_hook(e):
+        # an ODS listing (tools/read_latex.py, kind 'code'): the spec's CODE_HOOK sets it, or it is dropped
+        f = spec.get('CODE_HOOK')
+        return f(e) if f else ''
+    return dict(display_hook=display_hook, env_hook=env_hook, figure_hook=figure_hook, code_hook=code_hook)
 
 
 def latex_block(b, spec, book):

@@ -1,0 +1,217 @@
+<section id="singly-linked-list" data-source="wikipedia" data-locator="wikipedia:Linked_list lead + #Basic concepts and nomenclature + ===Singly linked list===">
+<h2>Linked lists</h2>
+<figure class="photo" id="photo-singly-linked-list">
+  <img src="/media/ch02/wp-singly-linked-list.png" alt="">
+  <figcaption><span>A linked list is a sequence of nodes that contain two fields: data (an integer value here as an example) and a link to the next node. The last node is linked to a terminator used to signify the end of the list. Image: Lasindi, Wikimedia Commons, public domain.</span></figcaption>
+</figure>
+<p>In computer science, a <span data-concept="singly-linked-list"><strong>linked list</strong></span> is a linear collection of data elements whose order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a collection of nodes which together represent a sequence. In its most basic form, each node contains data, and a reference (in other words, a <em>link</em>) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing more efficient insertion or removal of nodes at arbitrary positions. A drawback of <span data-concept="singly-linked-list">linked lists</span> is that data access time is linear with respect to the number of nodes in the list. Because nodes are serially linked, accessing any node requires that the prior node be accessed beforehand (which introduces difficulties in pipelining). Faster access, such as random access (direct access), is not possible. <a href="/cs-interview-prep-ultra/ch02/2.1/">Arrays</a> have better cache locality compared to <span data-concept="singly-linked-list">linked lists</span>.</p>
+<p><span data-concept="singly-linked-list">Linked lists</span> are among the simplest and most common data structures. They can be used to implement several other common <span data-concept="interface-vs-implementation">abstract data types</span>, including <a href="/cs-interview-prep-ultra/ch02/2.1/">lists</a>, <a href="/cs-interview-prep-ultra/ch03/3.1/">stacks</a>, <a href="/cs-interview-prep-ultra/ch03/3.2/">queues</a>, associative arrays, and S-expressions, though it is not uncommon to implement those data structures directly without using a <span data-concept="singly-linked-list">linked list</span> as the basis.</p>
+<p>The principal benefit of a <span data-concept="singly-linked-list">linked list</span> over a conventional <a href="/cs-interview-prep-ultra/ch02/2.1/">array</a> is that the list elements can be easily inserted or removed without reallocation or reorganization of the entire structure because the data items do not need to be stored contiguously in memory or on disk, while restructuring an <span data-concept="array">array</span> at run-time is a much more expensive operation. In an <span data-concept="array">array</span>, data is stored contiguously in memory; each element is located in an adjacent location to the previous one. But in a <span data-concept="singly-linked-list">linked list</span>, data is not stored in contiguous memory locations; instead, the node holding the reference to other node's memory address is in sequential order. <span data-concept="singly-linked-list">Linked lists</span> allow insertion and removal of nodes at any point in the list, and allow doing so with a constant number of operations by keeping the link previous to the link being added or removed in memory during list traversal.</p>
+<p>On the other hand, since simple <span data-concept="singly-linked-list">linked lists</span> by themselves do not allow random access to the data or any form of efficient indexing, many basic operations—such as obtaining the last node of the list, finding a node that contains a given datum, or locating the place where a new node should be inserted—may require iterating through most or all of the list elements.</p>
+<h3>Basic concepts and nomenclature</h3>
+<p>Each record of a <span data-concept="singly-linked-list">linked list</span> is often called an 'element' or 'node'.</p>
+<p>The field of each node that contains the address of the next node is usually called the 'next link' or 'next pointer'. The remaining fields are known as the 'data', 'information', 'value', 'cargo', or 'payload' fields.</p>
+<p>The 'head' of a list is its first node. The 'tail' of a list may refer either to the rest of the list after the head, or to the last node in the list. In Lisp and some derived languages, the next node may be called the 'cdr' (pronounced /'kʊd.əɹ/) of the list, while the payload of the head node may be called the 'car'.</p>
+<h3>Singly linked list</h3>
+<p><span data-concept="singly-linked-list">Singly linked lists</span> contain nodes which have a 'value' field as well as 'next' field, which points to the next node in line of nodes. Operations that can be performed on <span data-concept="singly-linked-list">singly linked lists</span> include insertion, deletion and traversal.</p>
+<p>The following C language code demonstrates how to add a new node with the "value" to the end of a <span data-concept="singly-linked-list">singly linked list</span>:</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code># Each node in a linked list is an object. The head node is the first node in the list.
+
+class Node:
+    def __init__(self):
+        self.value = 0
+        self.next = None
+
+def addNodeToTail(head, value):
+    # declare a Node reference and initialize it to refer to the new Node being added to the end of the list.
+    temp = Node()
+    temp.value = value  # Add data to the value field of the new Node.
+    temp.next = None  # initialize invalid links to None.
+
+    if not head:
+        head = temp  # If the linked list is empty (i.e., head is None), then have head refer to the new Node.
+    else:
+        p = head  # Assign the head node reference to the Node reference 'p'.
+        while p.next:
+            p = p.next  # Traverse the list until p is the last Node. The last Node always points to None.
+        p.next = temp  # Make the previously last Node point to the new Node.
+
+    return head  # Return the head node reference.</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>// Each node in a linked list is an object. The head node is the first node in the list.
+
+class Node {
+    int value;
+    Node next;
+}
+
+static Node addNodeToTail(Node head, int value) {
+    // declare a Node reference and initialize it to refer to the new Node being added to the end of the list.
+    Node temp = new Node();
+    temp.value = value; // Add data to the value field of the new Node.
+    temp.next = null; // initialize invalid links to null.
+
+    if (head == null) {
+        head = temp;     // If the linked list is empty (i.e., head is null), then have head refer to the new Node.
+    } else {
+        Node p = head;   // Assign the head node reference to the Node reference 'p'.
+        while (p.next != null) {
+            p = p.next;    // Traverse the list until p is the last Node. The last Node always points to null.
+        }
+        p.next = temp; // Make the previously last Node point to the new Node.
+    }
+
+    return head;    // Return the head node reference.
+}</code></pre>
+<pre data-lang="cpp"><code>#include &lt;stdlib.h&gt;
+
+// Each node in a linked list is a structure. The head node is the first node in the list.
+
+typedef struct Node {
+    int value;
+    struct Node* next;
+} Node;
+
+Node* addNodeToTail(Node* head, int value) {
+    // declare Node pointer and initialize to point to the new Node (i.e., it will have the new Node's memory address) being added to the end of the list.
+    Node* temp = (Node*)malloc(sizeof *temp); /// 'malloc' in stdlib.
+    temp-&gt;value = value; // Add data to the value field of the new Node.
+    temp-&gt;next = NULL; // initialize invalid links to nil.
+    
+    if (!head) {
+        head = temp;     // If the linked list is empty (i.e., the head node pointer is a null pointer), then have the head node pointer point to the new Node.
+    } else {
+        Node* p = head;   // Assign the head node pointer to the Node pointer 'p'.
+        while (p-&gt;next) {
+            p = p-&gt;next;    // Traverse the list until p is the last Node. The last Node always points to NULL.
+        }
+        p-&gt;next = temp; // Make the previously last Node point to the new Node.
+    }
+    
+    return head;    // Return the head node pointer.
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>// Each node in a linked list is an object. The head node is the first node in the list.
+
+class Node {
+    constructor() {
+        this.value = 0;
+        this.next = null;
+    }
+}
+
+function addNodeToTail(head, value) {
+    // declare a Node reference and initialize it to refer to the new Node being added to the end of the list.
+    const temp = new Node();
+    temp.value = value; // Add data to the value field of the new Node.
+    temp.next = null; // initialize invalid links to null.
+
+    if (!head) {
+        head = temp;     // If the linked list is empty (i.e., head is null), then have head refer to the new Node.
+    } else {
+        let p = head;   // Assign the head node reference to the Node reference 'p'.
+        while (p.next) {
+            p = p.next;    // Traverse the list until p is the last Node. The last Node always points to null.
+        }
+        p.next = temp; // Make the previously last Node point to the new Node.
+    }
+
+    return head;    // Return the head node reference.
+}</code></pre>
+</div>
+</section>
+
+<section id="pointer-to-pointer" data-source="wikipedia" data-locator="wikipedia:Pointer_(computer_programming)#Multiple indirection, to “…the address of the new item.”, before the argv paragraph">
+<h2>Multiple indirection</h2>
+<p>In some languages, a pointer can reference another pointer, requiring multiple dereference operations to get to the original value. While each level of indirection may add a performance cost, it is sometimes necessary in order to provide correct behavior for complex data structures. For example, in C it is typical to define a <span data-concept="singly-linked-list">linked list</span> in terms of an element that contains a pointer to the next element of the list:</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code>class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+head = None</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>class LinkedList {
+    int value;
+    LinkedList next;
+}
+
+LinkedList head = null;</code></pre>
+<pre data-lang="cpp"><code>typedef struct LinkedList {
+    int value;
+    struct LinkedList *next;
+} LinkedList;
+
+LinkedList *head = NULL;</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>class LinkedList {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+let head = null;</code></pre>
+</div>
+<p>This implementation uses a pointer to the first element in the list as a surrogate for the entire list. If a new value is added to the beginning of the list, <span data-ref="head"><code>head</code></span> has to be changed to point to the new element. Since C arguments are always passed by value, using <span data-concept="pointer-to-pointer">double indirection</span> allows the insertion to be implemented correctly, and has the desirable side-effect of eliminating special case code to deal with insertions at the front of the list:<sup class="fn" data-note="err-sorted-comment"></sup></p>
+<figure class="sim" id="sim-sorted-insert">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-ref="p">p</span> never points at a node: it points at a link, first the caller’s <span data-ref="head">head</span>, then one node’s next field after another, stopping at the first link whose node is not smaller than <span data-ref="item">item</span>. The two assignments after the loop are the same whether that link is <span data-ref="head">head</span> or a next field in the middle, so an insert at the front needs no case of its own. A value equal to one in the list goes in before it.</span></div>
+</figure>
+<p>In this case, if the value of <span data-ref="item"><code>item</code></span> is less than that of <span data-ref="head"><code>head</code></span>, the caller's <span data-ref="head"><code>head</code></span> is properly updated to the address of the new item.</p>
+</section>
+
+<section id="list-operations" data-source="wikipedia" data-locator="wikipedia:Linked_list#Linked list operations (its opening) + ====Singly linked lists====">
+<h2>Linked list operations</h2>
+<p>When manipulating <span data-concept="singly-linked-list">linked lists</span> in-place, care must be taken to not use values that have been invalidated in previous assignments. This makes <span data-concept="algorithm">algorithms</span> for inserting or deleting <span data-concept="singly-linked-list">linked list</span> nodes somewhat subtle. This section gives pseudocode for adding or removing nodes from singly, doubly, and circularly <span data-concept="singly-linked-list">linked lists</span> in-place. Throughout, <em>null</em> is used to refer to an end-of-list marker or sentinel, which may be implemented in a number of ways.</p>
+<h3>Singly linked lists</h3>
+<p>The node data structure will have two fields. There is also a variable, <em>firstNode</em> which always points to the first node in the list, or is <em>null</em> for an empty list.</p>
+<pre>record Node
+{
+    data; // The data being stored in the node
+    Node next // A reference to the next node, null for last node
+}</pre>
+<pre>record List
+{
+    Node firstNode // points to first node of list; null for empty list
+}</pre>
+<p>Traversal of a <span data-concept="singly-linked-list">singly linked list</span> is simple, beginning at the first node and following each <em>next</em> link until reaching the end:</p>
+<pre>node := list.firstNode
+while node not null
+    (do something with node.data)
+    node := node.next</pre>
+<p>The following code inserts a node after an existing node in a <span data-concept="singly-linked-list">singly linked list</span>. The diagram shows how it works. Inserting a node before an existing one cannot be done directly; instead, one must keep track of the previous node and insert a node after it.</p>
+<figure class="sim" id="sim-list-ops" data-original="/media/ch02/wp-cpt-addingnode.png,/media/ch02/wp-cpt-deletingnode.png" data-original-caption="Diagram of inserting a node into a singly linked list. Diagram of deleting a node from a singly linked list.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Each operation changes the list by re-aiming one or two links. To insert, <span data-ref="new-node">newNode</span> first takes <span data-ref="node">node</span>’s next link and only then does <span data-ref="node">node</span> point at it; done the other way round, the rest of the list would be lost. To remove, <span data-ref="obsolete-node">obsoleteNode</span> is held while the link before it skips over it, and once nothing reaches it, it is destroyed. Each operation writes at most two links, whatever the length of the list, but appending without a reference to the tail first follows every link to the last node.</span></div>
+</figure>
+<pre>function insertAfter(Node node, Node newNode) // insert newNode after node
+    newNode.next := node.next
+    node.next    := newNode</pre>
+<p>Inserting at the beginning of the list requires a separate function. This requires updating <em>firstNode</em>.</p>
+<pre>function insertBeginning(List list, Node newNode) // insert node before current first node
+    newNode.next   := list.firstNode
+    list.firstNode := newNode</pre>
+<p>Similarly, there are functions for removing the node <em>after</em> a given node, and for removing a node from the beginning of the list. The diagram demonstrates the former. To find and remove a particular node, one must again keep track of the previous element.</p>
+<pre>function removeAfter(Node node) // remove node past this one
+    obsoleteNode := node.next
+    node.next := node.next.next
+    destroy obsoleteNode</pre>
+<pre>function removeBeginning(List list) // remove first node
+    obsoleteNode := list.firstNode
+    list.firstNode := list.firstNode.next // point past deleted node
+    destroy obsoleteNode</pre>
+<p>Notice that <code>removeBeginning()</code> sets <code>list.firstNode</code> to <code>null</code> when removing the last node in the list.</p>
+<p>Since it is not possible to iterate backwards, efficient <code>insertBefore</code> or <code>removeBefore</code> operations are not possible. Inserting to a list before a specific node requires traversing the list, which would have a worst case running time of <span data-type="cost">O(n)</span>.</p>
+<p>Appending one <span data-concept="singly-linked-list">linked list</span> to another can be inefficient unless a reference to the tail is kept as part of the List structure, because it is needed to traverse the entire first list in order to find the tail, and then append the second list to this. Thus, if two linearly <span data-concept="singly-linked-list">linked lists</span> are each of length $n$, list appending has asymptotic time complexity of $O(n)$. In the Lisp family of languages, list appending is provided by the <code>append</code> procedure.</p>
+<p>Many of the special cases of <span data-concept="implement-linked-list">linked list operations</span> can be eliminated by including a dummy element at the front of the list. This ensures that there are no special cases for the beginning of the list and renders both <code>insertBeginning()</code> and <code>removeBeginning()</code> unnecessary, i.e., every element or node is next to another node (even the first node is next to the <span data-concept="sentinel-node">dummy node</span>). In this case, the first useful data in the list will be found at <code>list.firstNode.next</code>.</p>
+</section>
+
+<section id="lists-vs-arrays" data-source="wikipedia" data-locator="wikipedia:Linked_list#Linked lists vs. dynamic arrays, without its comparison table (a template)">
+<h2>Linked lists vs. dynamic arrays</h2>
+<p>A <em><a href="/cs-interview-prep-ultra/ch02/2.2/">dynamic array</a></em> is a data structure that allocates all elements contiguously in memory, and keeps a count of the current number of elements. If the space reserved for the <span data-concept="dynamic-array">dynamic array</span> is exceeded, it is reallocated and (possibly) copied, which is an expensive operation.</p>
+<p><span data-concept="linked-list-vs-array">Linked lists have several advantages over dynamic arrays</span>. Insertion or deletion of an element at a specific point of a list, assuming that a pointer is indexed to the node (before the one to be removed, or before the insertion point) already, is a constant-time operation (otherwise without this reference it is <span data-type="cost">O(n)</span>), whereas insertion in a <span data-concept="dynamic-array">dynamic array</span> at random locations will require moving half of the elements on average, and all the elements in the worst case. While one can "delete" an element from an <span data-concept="array">array</span> in constant time by somehow marking its slot as "vacant", this causes fragmentation that impedes the performance of iteration.</p>
+<p>Moreover, arbitrarily many elements may be inserted into a <span data-concept="singly-linked-list">linked list</span>, limited only by the total memory available; while a <span data-concept="dynamic-array">dynamic array</span> will eventually fill up its underlying <span data-concept="array">array</span> data structure and will have to reallocate—an expensive operation, one that may not even be possible if memory is fragmented, although the cost of reallocation can be averaged over insertions, and the cost of an insertion due to reallocation would still be <a href="/cs-interview-prep-ultra/ch01/1.5/">amortized</a> <span data-type="cost">O(1)</span>. This helps with appending elements at the <span data-concept="array">array</span>'s end, but inserting into (or removing from) middle positions still carries prohibitive costs due to data moving to maintain contiguity. An <span data-concept="array">array</span> from which many elements are removed may also have to be resized in order to avoid wasting too much space.</p>
+<p>On the other hand, <span data-concept="dynamic-array">dynamic arrays</span> (as well as fixed-size <a href="/cs-interview-prep-ultra/ch02/2.1/">array data structure</a>s) allow constant-time random access, while <span data-concept="singly-linked-list">linked lists</span> allow only sequential access to elements. <span data-concept="singly-linked-list">Singly linked lists</span>, in fact, can be easily traversed in only one direction. This makes <span data-concept="singly-linked-list">linked lists</span> unsuitable for applications where it's useful to look up an element by its index quickly, such as heapsort. Sequential access on <span data-concept="array">arrays</span> and <span data-concept="dynamic-array">dynamic arrays</span> is also faster than on <span data-concept="singly-linked-list">linked lists</span> on many machines, because they have optimal locality of reference and thus make good use of data caching.</p>
+<p>Another disadvantage of <span data-concept="singly-linked-list">linked lists</span> is the extra storage needed for references, which often makes them impractical for lists of small data items such as characters or Boolean values, because the storage overhead for the links may exceed by a factor of two or more the size of the data. In contrast, a <span data-concept="dynamic-array">dynamic array</span> requires only the space for the data itself (and a very small amount of control data).<sup class="fn" data-note="lists-vs-arrays-note-1"></sup> It can also be slow, and with a naïve allocator, wasteful, to allocate memory separately for each new element, a problem generally solved using memory pools.</p>
+<p>Some hybrid solutions try to combine the advantages of the two representations. Unrolled linked lists store several elements in each list node, increasing cache performance while decreasing memory overhead for references. CDR coding does both these as well, by replacing references with the actual data referenced, which extends off the end of the referencing record.</p>
+<p>A good example that highlights the pros and cons of using <span data-concept="dynamic-array">dynamic arrays</span> vs. <span data-concept="singly-linked-list">linked lists</span> is by implementing a program that resolves the Josephus problem. The Josephus problem is an election method that works by having a group of people stand in a circle. Starting at a predetermined person, one may count around the circle <em>n</em> times. Once the <em>n</em>th person is reached, one should remove them from the circle and have the members close the circle. The process is repeated until only one person is left. That person wins the election. This shows the strengths and weaknesses of a <span data-concept="singly-linked-list">linked list</span> vs. a <span data-concept="dynamic-array">dynamic array</span>, because if the people are viewed as connected nodes in a circular linked list, then it shows how easily the <span data-concept="singly-linked-list">linked list</span> is able to delete nodes (as it only has to rearrange the links to the different nodes). However, the <span data-concept="singly-linked-list">linked list</span> will be poor at finding the next person to remove and will need to search through the list until it finds that person. A <span data-concept="dynamic-array">dynamic array</span>, on the other hand, will be poor at deleting nodes (or elements) as it cannot remove one node without individually shifting all the elements up the list by one. However, it is exceptionally easy to find the <em>n</em>th person in the circle by directly referencing them by their position in the <span data-concept="array">array</span>.</p>
+<p>The list ranking problem concerns the efficient conversion of a <span data-concept="singly-linked-list">linked list</span> representation into an <span data-concept="array">array</span>. Although trivial for a conventional computer, solving this problem by a parallel <span data-concept="algorithm">algorithm</span> is complicated and has been the subject of much research.</p>
+<p>A balanced tree has similar memory access patterns and space overhead to a <span data-concept="singly-linked-list">linked list</span> while permitting much more efficient indexing, taking <span data-type="cost">O(log n)</span> time instead of <span data-type="cost">O(n)</span> for a random access. However, insertion and deletion operations are more expensive due to the overhead of tree manipulations to maintain balance. Schemes exist for trees to automatically maintain themselves in a balanced state: AVL trees or red–black trees.</p>
+</section>

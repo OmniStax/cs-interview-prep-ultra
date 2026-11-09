@@ -1,0 +1,513 @@
+{
+ "types": [],
+ "symbols": [],
+ "concepts": [
+  {
+   "id": "prefix-sums",
+   "kind": "definition",
+   "section": "2.4",
+   "name": "Prefix sums",
+   "type": "key",
+   "terms": [
+    "prefix sum",
+    "prefix sums",
+    "one-dimensional prefix sums",
+    "range sum"
+   ],
+   "statement": "The prefix sums of a sequence a₁, …, aₙ (with a₀ = 0) are S_i = a₁ + ⋯ + a_i, computed one after another by S₀ = 0, S_i = S_{i−1} + a_i; after this O(n) preprocessing the sum of any range [l, r] is S_r − S_{l−1}, an O(1) query.",
+   "forms": [
+    {
+     "id": "eq-prefix-sum",
+     "latex": "S_{i} = \\sum_{j=1}^i a_j",
+     "anchor": "2.4-prefix-sums"
+    },
+    {
+     "id": "eq-prefix-sum-recurrence",
+     "latex": "S_0 = 0,~ S_i = S_{i-1} + a_i",
+     "anchor": "2.4-prefix-sums"
+    },
+    {
+     "id": "eq-range-sum",
+     "latex": "S([l,r]) = S_r - S_{l-1}",
+     "anchor": "2.4-prefix-sums"
+    }
+   ]
+  },
+  {
+   "id": "prefix-sums-2d",
+   "kind": "result",
+   "section": "2.4",
+   "name": "Two-dimensional prefix sums",
+   "terms": [
+    "two-dimensional prefix sums",
+    "two-dimensional prefix sum",
+    "multidimensional prefix sums",
+    "multidimensional prefix sum",
+    "summed-area table"
+   ],
+   "statement": "S_{i,j} = A_{i,j} + S_{i−1,j} + S_{i,j−1} − S_{i−1,j−1} fills the table of two-dimensional prefix sums in one pass, the subtraction removing the overlap the two sums both count (inclusion–exclusion); the sum of a submatrix is then four lookups, S_{i₂,j₂} − S_{i₁−1,j₂} − S_{i₂,j₁−1} + S_{i₁−1,j₁−1}. In k dimensions, summing along one dimension at a time costs O(kN), where inclusion–exclusion costs O(2^k N).",
+   "forms": [
+    {
+     "id": "eq-prefix-sum-2d",
+     "latex": "S_{i,j} = A_{i,j} + S_{i-1,j} + S_{i,j-1} - S_{i-1,j-1}",
+     "anchor": "2.4-prefix-sums-2d"
+    },
+    {
+     "id": "eq-submatrix-sum",
+     "latex": "S_{i_2,j_2} - S_{i_1-1,j_2} - S_{i_2,j_1-1} + S_{i_1-1,j_1-1}",
+     "condition": "the sum of the submatrix with corners (i₁, j₁) and (i₂, j₂)",
+     "anchor": "2.4-prefix-sums-2d"
+    }
+   ]
+  },
+  {
+   "id": "difference-array",
+   "kind": "skill",
+   "section": "2.4",
+   "name": "Difference arrays",
+   "terms": [
+    "difference array",
+    "difference arrays",
+    "difference sequence",
+    "taking differences"
+   ],
+   "statement": "The difference sequence D_i = a_i − a_{i−1} (a₀ = 0) is the inverse of the prefix sum: adding v to every a_i with l ≤ i ≤ r becomes D_l ← D_l + v and D_{r+1} ← D_{r+1} − v, O(1) per update, and one O(n) prefix-sum pass after all the updates recovers the array.",
+   "forms": [
+    {
+     "id": "eq-difference",
+     "latex": "D_i = a_i - a_{i-1},~ a_0 = 0",
+     "anchor": "2.4-difference-array"
+    },
+    {
+     "id": "eq-difference-inverse",
+     "latex": "a_i = \\sum_{j=1}^i D_j",
+     "anchor": "2.4-difference-array"
+    },
+    {
+     "id": "eq-range-update",
+     "latex": "D_{l} \\gets D_{l} + v,~ D_{r+1}\\gets D_{r+1} - v",
+     "condition": "to add v to every a_i in [l, r]",
+     "anchor": "2.4-difference-array"
+    }
+   ]
+  },
+  {
+   "id": "difference-array-2d",
+   "kind": "skill",
+   "section": "2.4",
+   "name": "Two-dimensional difference arrays",
+   "terms": [
+    "two-dimensional difference",
+    "two-dimensional difference array",
+    "multidimensional difference array",
+    "multidimensional differences"
+   ],
+   "statement": "Adding v to every entry of the submatrix with corners (x₁, y₁) and (x₂, y₂) becomes four updates of the two-dimensional difference array, +v at (x₁, y₁) and (x₂ + 1, y₂ + 1) and −v at (x₁, y₂ + 1) and (x₂ + 1, y₁); one two-dimensional prefix-sum pass afterwards recovers the array. In k dimensions an update touches 2^k entries.",
+   "forms": [
+    {
+     "id": "eq-difference-2d",
+     "latex": "D_{i,j} = a_{i,j} - a_{i-1,j} - a_{i,j-1} + a_{i-1,j-1}",
+     "anchor": "2.4-difference-array-2d"
+    }
+   ]
+  },
+  {
+   "id": "floyd-cycle-detection",
+   "kind": "result",
+   "section": "2.7",
+   "name": "Floyd’s cycle detection (tortoise and hare)",
+   "terms": [
+    "Floyd’s Cycle Algorithm",
+    "Tortoise And Hare algorithm",
+    "tortoise and hare"
+   ],
+   "statement": "Start two pointers at the head, slow moving one node at a time and fast two; if they ever point to the same node the list has a cycle, and if fast reaches null it has none. Fast’s lead grows by one node a step, so once slow has moved a multiple kL ≥ a of the cycle’s length L, both are in the cycle, kL apart, and meet."
+  },
+  {
+   "id": "cycle-start",
+   "kind": "result",
+   "section": "2.7",
+   "name": "Finding where the cycle starts",
+   "terms": [
+    "starting point of the cycle"
+   ],
+   "statement": "Once slow and fast meet, reset slow to the head and move both one node at a time; they meet at the node where the cycle starts."
+  },
+  {
+   "id": "cycle-start-proof",
+   "kind": "result",
+   "section": "2.7",
+   "name": "Why the reset finds the cycle start",
+   "statement": "With a the steps from the head to the cycle’s start C, b from C to the meeting point G, L the cycle’s length and x, y the laps of slow and fast, a + yL + b = 2(a + xL + b) gives a = (y − 2x)L − b: a steps from G is whole laps less b, which ends on C, as a steps from the head does."
+  },
+  {
+   "id": "array",
+   "kind": "definition",
+   "section": "2.1",
+   "name": "Array",
+   "terms": [
+    "array",
+    "arrays"
+   ],
+   "statement": "An array is a collection of elements of one memory size, each identified by an index (or a tuple of indices), stored so that each element’s address is computed from its index by a formula: B + c·i in one dimension, B + c·i + d·j in two. Store and select take constant time, and the array takes O(n) space.",
+   "forms": [
+    {
+     "id": "eq-address-1d",
+     "latex": "\\text{address} = B + c\\cdot i",
+     "anchor": "2.1-addressing"
+    },
+    {
+     "id": "eq-address-2d",
+     "latex": "\\text{address} = B + c\\cdot i + d\\cdot j",
+     "anchor": "2.1-addressing"
+    },
+    {
+     "id": "eq-address-kd",
+     "latex": "\\text{address} = B + c_1 i_1 + c_2 i_2 + \\dots + c_k i_k",
+     "anchor": "2.1-addressing"
+    }
+   ]
+  },
+  {
+   "id": "pointer-arithmetic",
+   "kind": "skill",
+   "section": "2.1",
+   "name": "Indexing by pointer arithmetic",
+   "terms": [
+    "pointer arithmetic"
+   ],
+   "statement": "In C, a[i] is defined as *(a + i): an array’s name evaluates to a pointer to its first element, and adding i to a pointer moves it i elements on, i times the element’s size in bytes.",
+   "forms": [
+    {
+     "id": "eq-c-subscript",
+     "latex": "a[i] \\equiv {*}(a + i)",
+     "anchor": "2.1-c-arrays"
+    }
+   ]
+  },
+  {
+   "id": "list-interface",
+   "kind": "definition",
+   "section": "2.1",
+   "name": "List interface",
+   "terms": [
+    "List interface",
+    "List"
+   ],
+   "statement": "A List represents a sequence x₀, …, x_{n−1} with size(), get(i), set(i, x), add(i, x), which shifts x_i, …, x_{n−1} one place right, and remove(i), which shifts the later values one place left. These subsume the Deque: addFirst(x) is add(0, x) and removeLast() is remove(size() − 1)."
+  },
+  {
+   "id": "sentinel-node",
+   "kind": "skill",
+   "section": "2.6",
+   "name": "Dummy (sentinel) node",
+   "terms": [
+    "dummy node",
+    "sentinel node"
+   ],
+   "statement": "A DLList keeps a dummy node that holds no data and stands after the last node and before the first, so the nodes form a cycle, every node has a next and a prev, and adding or removing needs no special case for an empty list or for either end."
+  },
+  {
+   "id": "doubly-linked-list",
+   "kind": "definition",
+   "section": "2.6",
+   "name": "Doubly linked list",
+   "terms": [
+    "doubly-linked list",
+    "doubly linked list",
+    "DLList"
+   ],
+   "statement": "A linked list whose nodes point both to the node that follows them and to the node that precedes them; with a dummy node it reaches the ith node from the nearer end in O(1 + min{i, n − i}) time, and adds or removes a node it holds a reference to in constant time."
+  },
+  {
+   "id": "dynamic-array",
+   "kind": "definition",
+   "section": "2.2",
+   "name": "Dynamic array (vector)",
+   "terms": [
+    "dynamic array",
+    "backing array",
+    "ArrayStack",
+    "resizable array"
+   ],
+   "statement": "A list kept in a backing array a that is usually larger than it needs to be: n counts the elements, stored in a[0], …, a[n−1], and length(a) ≥ n at all times; when the array is full a larger one is allocated and the elements are copied into it."
+  },
+  {
+   "id": "array-resize",
+   "kind": "skill",
+   "section": "2.2",
+   "name": "Growing and shrinking the backing array",
+   "terms": [
+    "resize",
+    "resizing",
+    "array doubling",
+    "growing and shrinking"
+   ],
+   "statement": "resize() allocates an array b of size 2n, copies the n elements of a into its first n positions and makes b the new a, in O(n) time; add(i, x) calls it when a is full and remove(i) when length(a) ≥ 3n."
+  },
+  {
+   "id": "dynamic-array-cost",
+   "kind": "result",
+   "section": "2.2",
+   "name": "Cost of dynamic-array operations",
+   "type": "cost",
+   "terms": [
+    "cost of resizing"
+   ],
+   "statement": "Ignoring resizing, get(i) and set(i, x) take O(1) time and add(i, x) and remove(i) take O(1 + n − i); from an empty ArrayStack, any m calls to add(i, x) and remove(i) spend O(m) time in all calls to resize(), so push and pop at the end run in O(1) amortized time."
+  },
+  {
+   "id": "block-copy",
+   "kind": "skill",
+   "section": "2.2",
+   "name": "Block copying with memcpy/arraycopy",
+   "terms": [
+    "block copy",
+    "block copying"
+   ],
+   "statement": "Shifting and copying with a platform's block-move functions (memcpy and memmove in C, std::copy in C++, System.arraycopy in Java) in place of for loops leaves the asymptotic running times unchanged but can be several times faster; ODS measured a factor between 2 and 3."
+  },
+  {
+   "id": "implement-vector",
+   "kind": "skill",
+   "section": "2.2",
+   "name": "Implement a vector",
+   "terms": [
+    "implementing a vector"
+   ],
+   "statement": "Build a resizable array: fields a and n, size, get, set, add(i, x) and remove(i) that shift the elements after i, and a resize that doubles the array when it is full and shrinks it when it is two-thirds empty; ODS's ArrayStack is such a class."
+  },
+  {
+   "id": "singly-linked-list",
+   "kind": "definition",
+   "section": "2.5",
+   "name": "Singly linked list",
+   "terms": [
+    "singly linked list",
+    "linked list"
+   ],
+   "statement": "A linked list is a sequence of nodes whose order is not given by their place in memory: each node holds its data and a link (the next pointer) to the next node; the head is the first node, the last node links to a terminator, and a singly linked list’s nodes hold a value field and a next field."
+  },
+  {
+   "id": "pointer-to-pointer",
+   "kind": "skill",
+   "section": "2.5",
+   "name": "Pointer to pointer",
+   "terms": [
+    "double indirection",
+    "multiple indirection",
+    "pointer to a pointer"
+   ],
+   "statement": "Pass a function the address of a pointer (double indirection, LinkedList **), so that it can change where the caller’s pointer points: a list insert then updates the caller’s head correctly, with no special case for inserting at the front."
+  },
+  {
+   "id": "implement-linked-list",
+   "kind": "skill",
+   "section": "2.5",
+   "name": "Implement a linked list",
+   "terms": [
+    "linked list operations"
+   ],
+   "statement": "Change a singly linked list in place: traverse by following next links from firstNode; insert or remove after a given node by re-aiming its link, in constant time; insert or remove at the beginning by updating firstNode; inserting before a node, or appending without a reference to the tail, needs a traversal (O(n)); a dummy first node removes the special cases."
+  },
+  {
+   "id": "linked-list-vs-array",
+   "kind": "result",
+   "section": "2.5",
+   "name": "Linked lists versus arrays",
+   "terms": [
+    "linked lists vs. dynamic arrays"
+   ],
+   "statement": "A linked list inserts or deletes in constant time at a node already in hand (O(n) to find it) and grows without reallocation, but allows only sequential access, uses extra storage for links and has poorer locality of reference; a dynamic array gives constant-time random access and faster sequential access but moves elements to insert or delete in the middle."
+  },
+  {
+   "id": "two-pointers",
+   "kind": "idea",
+   "section": "2.3",
+   "name": "Two pointers",
+   "terms": [
+    "two pointers",
+    "two-pointer"
+   ],
+   "statement": "Two pointers point at positions of a sequence or a linked list (or at nodes of a tree or graph) and move in the same direction or toward each other to maintain or count information; on a sorted sequence, one at each end closes in on a pair with a given sum, each step moving the pointer whose element cannot be part of it."
+  },
+  {
+   "id": "three-sum",
+   "kind": "result",
+   "section": "2.3",
+   "name": "3SUM in quadratic time",
+   "terms": [
+    "3SUM"
+   ],
+   "statement": "After sorting, 3SUM (do three of n numbers sum to zero?) is solved in worst-case O(n²) time without hashing: for each a = S[i], two pointers start = i + 1 and end = n − 1 move inward, end down when a + b + c > 0 and start up when it is < 0."
+  },
+  {
+   "id": "merge-sorted-sequences",
+   "kind": "result",
+   "section": "2.3",
+   "name": "Merging two sorted lists",
+   "terms": [
+    "merging two sorted lists",
+    "merge"
+   ],
+   "statement": "Two sorted lists, linked lists or arrays, merge into one in linear time by repeatedly appending the smaller of their two heads (the head of A on a tie) and dropping it from its list, then appending what remains of the other."
+  },
+  {
+   "id": "sliding-window-fixed",
+   "kind": "skill",
+   "section": "2.3",
+   "name": "Fixed-size sliding window",
+   "terms": [
+    "simple moving average",
+    "moving average",
+    "fixed-size sliding window"
+   ],
+   "statement": "A mean over the last k data points is updated as the window moves by adding the value that comes in and subtracting the one that drops out, SMA_next = SMA_prev + (p_{n+1} − p_{n−k+1})/k: three arithmetic steps, not a new sum of k values.",
+   "forms": [
+    {
+     "id": "eq-sma-next",
+     "latex": "\\textit{SMA}_{k,\\text{next}} = \\textit{SMA}_{k,\\text{prev}} + \\frac{1}{k}\\left(p_{n+1} - p_{n-k+1}\\right)",
+     "anchor": "2.3-moving-average"
+    },
+    {
+     "id": "eq-sma",
+     "latex": "\\textit{SMA}_{k} = \\frac{1}{k} \\sum_{i=n-k+1}^{n} p_{i}",
+     "anchor": "2.3-moving-average"
+    }
+   ]
+  },
+  {
+   "id": "sliding-window-variable",
+   "kind": "skill",
+   "section": "2.3",
+   "name": "Variable-size sliding window",
+   "terms": [
+    "variable-size sliding window",
+    "sliding window"
+   ],
+   "statement": "Two pointers l and r bound a window over which a quantity that changes monotonically and is cheap to update (a sum of positive numbers, a product of positive integers) is kept: r moves right one element at a time and l moves right while the window breaks the condition, so for each r, l is the leftmost point the window can reach and the valid windows ending at r number r − l + 1."
+  }
+ ],
+ "concept_prereqs": [
+  {
+   "concept": "prefix-sums-2d",
+   "prereq": "prefix-sums"
+  },
+  {
+   "concept": "difference-array",
+   "prereq": "prefix-sums"
+  },
+  {
+   "concept": "difference-array-2d",
+   "prereq": "prefix-sums-2d"
+  },
+  {
+   "concept": "difference-array-2d",
+   "prereq": "difference-array"
+  },
+  {
+   "concept": "cycle-start",
+   "prereq": "floyd-cycle-detection"
+  },
+  {
+   "concept": "cycle-start-proof",
+   "prereq": "cycle-start"
+  },
+  {
+   "concept": "pointer-arithmetic",
+   "prereq": "array"
+  },
+  {
+   "concept": "list-interface",
+   "prereq": "interface-vs-implementation"
+  },
+  {
+   "concept": "doubly-linked-list",
+   "prereq": "list-interface"
+  },
+  {
+   "concept": "doubly-linked-list",
+   "prereq": "sentinel-node"
+  },
+  {
+   "concept": "dynamic-array",
+   "prereq": "running-time-guarantees"
+  },
+  {
+   "concept": "dynamic-array",
+   "prereq": "array"
+  },
+  {
+   "concept": "dynamic-array",
+   "prereq": "list-interface"
+  },
+  {
+   "concept": "array-resize",
+   "prereq": "dynamic-array"
+  },
+  {
+   "concept": "dynamic-array-cost",
+   "prereq": "amortized-analysis"
+  },
+  {
+   "concept": "dynamic-array-cost",
+   "prereq": "array-resize"
+  },
+  {
+   "concept": "block-copy",
+   "prereq": "dynamic-array"
+  },
+  {
+   "concept": "implement-vector",
+   "prereq": "pointer-arithmetic"
+  },
+  {
+   "concept": "implement-vector",
+   "prereq": "dynamic-array"
+  },
+  {
+   "concept": "implement-linked-list",
+   "prereq": "singly-linked-list"
+  },
+  {
+   "concept": "implement-linked-list",
+   "prereq": "pointer-to-pointer"
+  },
+  {
+   "concept": "linked-list-vs-array",
+   "prereq": "dynamic-array"
+  },
+  {
+   "concept": "linked-list-vs-array",
+   "prereq": "singly-linked-list"
+  },
+  {
+   "concept": "prefix-sums",
+   "prereq": "array"
+  },
+  {
+   "concept": "two-pointers",
+   "prereq": "array"
+  },
+  {
+   "concept": "three-sum",
+   "prereq": "two-pointers"
+  },
+  {
+   "concept": "merge-sorted-sequences",
+   "prereq": "array"
+  },
+  {
+   "concept": "sliding-window-fixed",
+   "prereq": "array"
+  },
+  {
+   "concept": "sliding-window-variable",
+   "prereq": "two-pointers"
+  },
+  {
+   "concept": "sliding-window-variable",
+   "prereq": "sliding-window-fixed"
+  }
+ ]
+}

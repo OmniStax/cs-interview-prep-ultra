@@ -182,7 +182,8 @@ def blocks(s):
             out.append({'kind': 'p', 'tex': ' '.join(t.split())})
         para.clear()
     i = 0
-    pat = re.compile(r'\\(section|subsection|subsubsection|paragraph)\*?\{|\\begin\{([A-Za-z*]+)\}|\\\[|\n\s*\n')
+    pat = re.compile(r'\\(section|subsection|subsubsection|paragraph)\*?\{|\\begin\{([A-Za-z*]+)\}|\\\[|\n\s*\n|'
+                     r'\\(codeimport|javaimport|cppimport|pcodeimport)\{')
     while i < len(s):
         m = pat.search(s, i)
         if not m:
@@ -203,6 +204,14 @@ def blocks(s):
             title, j = arg(s, m.end() - 1)
             level = {'section': 2, 'subsection': 3, 'subsubsection': 4}[m.group(1)]
             out.append({'kind': 'heading', 'level': level, 'tex': title})
+            i = j
+            continue
+        if m.group(3):
+            # ODS's listing of a class's methods by the edition's source (\codeimport{ods/ArrayStack.add(i,x)}):
+            # the paragraph breaks where it stands, and the section's code hook sets it
+            flush()
+            ref, j = arg(s, m.end() - 1)
+            out.append({'kind': 'code', 'cmd': m.group(3), 'ref': ref})
             i = j
             continue
         if m.group(0) == '\\[':
@@ -253,10 +262,10 @@ def blocks(s):
             out.extend(blocks(body))
         elif name == 'figure':
             cap = ''
-            mm = re.search(r'\\caption\{', body)
+            mm = re.search(r'\\caption(\[[^\]]*\])?\{', body)
             if mm:
                 cap, _ = arg(body, mm.end() - 1)
-            lab = re.search(r'\\label\{([^}]*)\}', body)
+            lab = re.search(r'\\(?:fig)?label\{([^}]*)\}', body)
             out.append({'kind': 'figure', 'label': lab.group(1) if lab else None, 'caption': cap})
         else:   # framed, lem, thm, proof
             lab = re.search(r'\\(?:lem|thm)?label\{([^}]*)\}', body)
@@ -279,11 +288,73 @@ WORDS = {'dots': '…', 'ldots': '…', 'textregistered': '®', 'copyright': '©
          'qedhere': ''}
 
 
+# ---------------------------------------------------------------- ODS's pseudocode edition
+
+# The edition macros (latex/Makefile): the pseudocode edition (METHOD decision 20) prints \pcodeonly{…} and
+# drops \javaonly{…}, \cpponly{…} and \notpcode{…}, as tools/build_text.py's first ODS reader does.
+ODS_EDITION = {'pcodeonly': True, 'javaonly': False, 'cpponly': False, 'notpcode': False}
+
+
+def ods_edition(text):
+    """Apply the edition macros, braces balanced."""
+    out, i = [], 0
+    pat = re.compile(r'\\(' + '|'.join(ODS_EDITION) + r')\{')
+    while True:
+        m = pat.search(text, i)
+        if not m:
+            out.append(text[i:])
+            return ''.join(out)
+        before = text[i:m.start()]
+        e = group_end(text, m.end() - 1)
+        if ODS_EDITION[m.group(1)]:
+            out.append(before)
+            out.append(ods_edition(text[m.end():e - 1]))
+        else:
+            # a dropped macro that stood on a line of its own takes its line with it, so that it leaves no blank
+            # line to end the paragraph
+            line_start = before.rfind('\n') + 1
+            nl = text.find('\n', e)
+            rest = text[e:nl if nl >= 0 else len(text)]
+            if not before[line_start:].strip() and not rest.strip() and nl >= 0:
+                out.append(before[:line_start])
+                e = nl + 1
+            else:
+                out.append(before)
+        i = e
+
+
+# The words the edition's translate_code sets in bold (latex/snarf-python.py, keywords).
+PCODE_KEYWORDS = ('if', 'or', 'and', 'then', 'else', 'in', 'for', 'do', 'return', 'while', 'break', 'repeat', 'times')
+
+
+def ods_pcode(code):
+    """A #code# run that is not one word, as the pseudocode edition sets it in maths (latex/snarf-python.py,
+    translate_code, the parts ODS's array chapters use): a call's name upright (get(i), resize(),
+    System.arraycopy(s,i,d,j,n)), an array's length as length(a), = as \\gets, ++ as one operator, a name ending
+    in a digit with that digit as a subscript (a0 is a₀). The edition's script also strips every colon, which
+    turns C++'s std::copy into "stdcopy"; the name is kept as C++ writes it."""
+    c = re.sub(r'\b([A-Za-z_]\w*)\.length\b', r'\\mathrm{length}(\1)', code)
+    c = re.sub(r'(?<![\w\\])([A-Za-z_][\w.]*(?:::\w+)*)\(', lambda m: '\\mathrm{' + m.group(1).replace(':', '{:}') + '}(', c)
+    c = re.sub(r'(?<![=<>!])=(?!=)', r'\\gets ', c)
+    c = c.replace('++', '{+}{+}')
+    c = re.sub(r'(?<![\\\w])([a-z])(\d)\b', r'\1_\2', c)
+    return c
+
+
+def ods_word(w):
+    """A one-word #code#: a keyword in bold, as the edition prints it; a longer name in \\mathit (add, remove), one
+    letter the variable itself."""
+    if w in PCODE_KEYWORDS:
+        return '\\textbf{' + w + '}'
+    return '\\mathit{' + w + '}' if len(w) > 1 and not w.isdigit() else w
+
+
 def math_tex(t, dialect):
     t = t.replace('\\qedhere', '')
     t = re.sub(r'\\(?:label|lemlabel|seclabel)\{[^}]*\}', '', t)
     if dialect == 'ods':
         t = re.sub(r'#(\w+)#', r'\1', t)
+        t = re.sub(r'#([^#\s][^#]*)#', lambda m: ods_pcode(m.group(1)), t)
         t = re.sub(r'\\E(?![A-Za-z])', r'\\mathrm{E}', t)
     t = t.replace('\\mbox{', '\\text{')
     if dialect == 'brisk':
@@ -325,7 +396,8 @@ def inline(tex, ctx, fn_numbers=None, _maths=None):
     if ctx.dialect == 'ods' and not nested:
         # the pseudocode edition: a capitalised #Name# is plain text, any other #name# maths
         s = re.sub(r'#([A-Z]\w*)#', r'\1', s)
-        s = re.sub(r'#(\w+)#', lambda m: keep_math(m.group(1)), s)
+        s = re.sub(r'#(\w+)#', lambda m: keep_math(ods_word(m.group(1))), s)
+        s = re.sub(r'#([^#\s][^#]*)#', lambda m: keep_math(ods_pcode(m.group(1))), s)
     out = []
     i = 0
     while i < len(s):
@@ -446,7 +518,7 @@ def to_md(h):
 # ---------------------------------------------------------------- render
 
 def render(els, ctx, fn_numbers, display_hook=None, env_hook=None, figure_hook=None, heading_shift=0,
-           enum_state=None):
+           enum_state=None, code_hook=None):
     """Elements to (html list, md list). Hooks let the section replace a display, an environment or a
     figure by its own HTML (a derivation, a Sim): each takes the element and returns HTML, '' to drop
     it, or None to render it as printed."""
@@ -507,6 +579,12 @@ def render(els, ctx, fn_numbers, display_hook=None, env_hook=None, figure_hook=N
             hs.append(f'<div class="book-table"><table><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table></div>')
             ms.append('| ' + ' | '.join(to_md(c) for c in head) + ' |\n|' + '---|' * len(head) + '\n' +
                       '\n'.join('| ' + ' | '.join(to_md(c) for c in r) + ' |' for r in body))
+        elif k == 'code':
+            # an ODS listing (\codeimport and the edition imports): the section's code hook sets it, or it is dropped
+            rep = code_hook(e) if code_hook else None
+            if rep:
+                hs.append(rep)
+                ms.append(f'[code {e["cmd"]} {e["ref"]}]')
         elif k == 'figure':
             rep = figure_hook(e) if figure_hook else None
             if rep:
@@ -519,7 +597,8 @@ def render(els, ctx, fn_numbers, display_hook=None, env_hook=None, figure_hook=N
                     hs.append(rep)
                     ms.append(f'[{e["name"]}]')
                 continue
-            ih, im = render(e['children'], ctx, fn_numbers, display_hook, env_hook, figure_hook, heading_shift, enum_state)
+            ih, im = render(e['children'], ctx, fn_numbers, display_hook, env_hook, figure_hook, heading_shift, enum_state,
+                            code_hook)
             if e['name'] == 'proof':
                 # a proof is printed as running text opened by "Proof." (the derivation, if any, stands in it)
                 if ih and ih[0].startswith('<p>'):
@@ -557,6 +636,11 @@ def passage(path, start, stop, chapter, dialect, refs=None, fn_prefix='fn', all_
     text, off = read(path, start, stop)
     nums = [str(n) for pos, n in sorted(fn_at.items()) if off <= pos < off + len(text)]
     text = drop_command(text, 'index')
+    if dialect == 'ods':
+        # the pseudocode edition's text, and none of the table's spacing set-up (\newlength and its kin)
+        text = ods_edition(text)
+        for name, nargs in (('newlength', 1), ('setlength', 2), ('addtolength', 2)):
+            text = drop_command(text, name, nargs)
     text = re.sub(r'\\(?:seclabel|lemlabel)\{[^}]*\}', '', text)
     text = unwrap_size_groups(text)
     els = blocks(text)
@@ -584,8 +668,8 @@ def figure_captions(path, chapter, dialect):
     for m in re.finditer(r'\\begin\{figure\}', s):
         a, b = env_end(s, 'figure', m.end())
         body = s[m.end():a]
-        lab = re.search(r'\\label\{([^}]*)\}', body)
-        cap = re.search(r'\\caption\{', body)
+        lab = re.search(r'\\(?:fig)?label\{([^}]*)\}', body)
+        cap = re.search(r'\\caption(\[[^\]]*\])?\{', body)
         if not (lab and cap):
             continue
         t, _ = arg(body, cap.end() - 1)

@@ -1,0 +1,459 @@
+{
+ "id": "2.5",
+ "chapter": "2",
+ "title": "Singly linked lists",
+ "short": "Singly linked lists",
+ "lead": "An Essential section on the <span data-concept=\"singly-linked-list\">singly linked list</span>: its nodes and links, the in-place operations at a node and at the front of the list, and where it beats or loses to a dynamic array. <span data-concept=\"pointer-to-pointer\">Multiple indirection</span> is shown in C, in the pointer notation of <a href=\"/cs-interview-prep-ultra/ch02/2.1/\">Section 2.1</a>. No node has an index here: a node is reached by following links from the first.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "Wikipedia’s comparison table of list structures, its citations and the argv example of multiple indirection are left out.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The interactive coding challenge is Donne Martin’s, with his tests; it is run through a small driver that the starter holds, and its JavaScript version and reference are the AI’s. OpenDSA’s ListOverhead question waits for the converter of OpenDSA’s exercises, and its two linked-list proficiency exercises for an answer type that takes a sequence. Exercism’s simple-linked-list tests a linked stack and is held for Section 3.1; MIT 6.006’s problem 1-4 is on doubly linked lists and is held for Section 2.6. ODS Exercises 3.2–3.4 and Coding Interview University’s “implement a linked list” checklist have no tests of their own, and Kattis’s joinstrings and sim only sample cases, so they are left out; the keon, TheAlgorithms and trekhleb linked-list files, merge_two_lists among them, are tests without a printed statement. No exercise was found for multiple indirection.",
+ "figures": [
+  {
+   "id": "photo-singly-linked-list",
+   "kind": "photo"
+  },
+  {
+   "id": "sim-sorted-insert",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-list-ops",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/wp-cpt-addingnode.png",
+    "/media/ch02/wp-cpt-deletingnode.png"
+   ],
+   "original_caption": "Diagram of inserting a node into a singly linked list. Diagram of deleting a node from a singly linked list.",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "singly-linked-list",
+   "concept": "singly-linked-list",
+   "verb": "introduces"
+  },
+  {
+   "span": "pointer-to-pointer",
+   "concept": "pointer-to-pointer",
+   "verb": "introduces"
+  },
+  {
+   "span": "pointer-to-pointer",
+   "concept": "singly-linked-list",
+   "verb": "uses"
+  },
+  {
+   "span": "list-operations",
+   "concept": "implement-linked-list",
+   "verb": "introduces"
+  },
+  {
+   "span": "list-operations",
+   "concept": "singly-linked-list",
+   "verb": "uses"
+  },
+  {
+   "span": "lists-vs-arrays",
+   "concept": "linked-list-vs-array",
+   "verb": "introduces"
+  },
+  {
+   "span": "lists-vs-arrays",
+   "concept": "singly-linked-list",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "icc:linked_lists/linked_list",
+   "source_number": "linked_list",
+   "origin": "icc",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "list-operations",
+   "changes": "The tests are the source’s unit tests, each test method one list of operations that a given run(ops) plays on your LinkedList; print_list is not tested, as in the source.",
+   "prompt": "Implement a linked list with insert, append, find, delete, length, and print methods.\n\nConstraints:\n\n- Can we assume this is a non-circular, singly linked list? Yes\n- Do we keep track of the tail or just the head? Just the head\n- Can we insert None values? No",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class Node(object):\n\n    def __init__(self, data, next_node=None):\n        pass\n        # TODO: Implement me\n\n    def __str__(self):\n        pass\n        # TODO: Implement me\n\n\nclass LinkedList(object):\n\n    def __init__(self, head=None):\n        pass\n        # TODO: Implement me\n\n    def __len__(self):\n        pass\n        # TODO: Implement me\n\n    def insert_to_front(self, data):\n        pass\n        # TODO: Implement me\n\n    def append(self, data):\n        pass\n        # TODO: Implement me\n\n    def find(self, data):\n        pass\n        # TODO: Implement me\n\n    def delete(self, data):\n        pass\n        # TODO: Implement me\n\n    def print_list(self):\n        pass\n        # TODO: Implement me\n\n    def get_all_data(self):\n        pass\n        # TODO: Implement me\n\n\ndef run(ops):\n    \"\"\"Given: plays the tests' operations on a LinkedList and returns what the queries give.\"\"\"\n    out, lst = [], None\n    for op, *args in ops:\n        if op == 'new':\n            lst = LinkedList(Node(args[0]) if args else None)\n        elif op == 'len':\n            out.append(len(lst))\n        elif op == 'find':\n            node = lst.find(*args)\n            out.append(None if node is None else str(node))\n        elif op == 'get_all_data':\n            out.append(lst.get_all_data())\n        else:\n            getattr(lst, op)(*args)\n    return out\n",
+     "reference": "class Node(object):\n\n    def __init__(self, data, next=None):\n        self.next = next\n        self.data = data\n\n    def __str__(self):\n        return self.data\n\n\nclass LinkedList(object):\n\n    def __init__(self, head=None):\n        self.head = head\n\n    def __len__(self):\n        curr = self.head\n        counter = 0\n        while curr is not None:\n            counter += 1\n            curr = curr.next\n        return counter\n\n    def insert_to_front(self, data):\n        if data is None:\n            return None\n        node = Node(data, self.head)\n        self.head = node\n        return node\n\n    def append(self, data):\n        if data is None:\n            return None\n        node = Node(data)\n        if self.head is None:\n            self.head = node\n            return node\n        curr_node = self.head\n        while curr_node.next is not None:\n            curr_node = curr_node.next\n        curr_node.next = node\n        return node\n\n    def find(self, data):\n        if data is None:\n            return None\n        curr_node = self.head\n        while curr_node is not None:\n            if curr_node.data == data:\n                return curr_node\n            curr_node = curr_node.next\n        return None\n\n    def delete(self, data):\n        if data is None:\n            return\n        if self.head is None:\n            return\n        if self.head.data == data:\n            self.head = self.head.next\n            return\n        prev_node = self.head\n        curr_node = self.head.next\n        while curr_node is not None:\n            if curr_node.data == data:\n                prev_node.next = curr_node.next\n                return\n            prev_node = curr_node\n            curr_node = curr_node.next\n\n    def delete_alt(self, data):\n        if data is None:\n            return\n        if self.head is None:\n            return\n        curr_node = self.head\n        if curr_node.data == data:\n            curr_node = curr_node.next\n            return\n        while curr_node.next is not None:\n            if curr_node.next.data == data:\n                curr_node.next = curr_node.next.next\n                return\n            curr_node = curr_node.next\n\n    def print_list(self):\n        curr_node = self.head\n        while curr_node is not None:\n            print(curr_node.data)\n            curr_node = curr_node.next\n\n    def get_all_data(self):\n        data = []\n        curr_node = self.head\n        while curr_node is not None:\n            data.append(curr_node.data)\n            curr_node = curr_node.next\n        return data\n\n\ndef run(ops):\n    \"\"\"Given: plays the tests' operations on a LinkedList and returns what the queries give.\"\"\"\n    out, lst = [], None\n    for op, *args in ops:\n        if op == 'new':\n            lst = LinkedList(Node(args[0]) if args else None)\n        elif op == 'len':\n            out.append(len(lst))\n        elif op == 'find':\n            node = lst.find(*args)\n            out.append(None if node is None else str(node))\n        elif op == 'get_all_data':\n            out.append(lst.get_all_data())\n        else:\n            getattr(lst, op)(*args)\n    return out\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class Node {\n    constructor(data, next = null) {\n        // TODO: Implement me\n    }\n\n    toString() {\n        // TODO: Implement me\n    }\n}\n\nclass LinkedList {\n    constructor(head = null) {\n        // TODO: Implement me\n    }\n\n    length() {\n        // TODO: Implement me\n    }\n\n    insertToFront(data) {\n        // TODO: Implement me\n    }\n\n    append(data) {\n        // TODO: Implement me\n    }\n\n    find(data) {\n        // TODO: Implement me\n    }\n\n    delete(data) {\n        // TODO: Implement me\n    }\n\n    printList() {\n        // TODO: Implement me\n    }\n\n    getAllData() {\n        // TODO: Implement me\n    }\n}\n\n// Given: plays the tests' operations on a LinkedList and returns what the queries give.\nfunction run(ops) {\n    const out = [];\n    let lst = null;\n    const call = { insert_to_front: 'insertToFront', append: 'append', delete: 'delete' };\n    for (const [op, ...args] of ops) {\n        if (op === 'new') lst = new LinkedList(args.length ? new Node(args[0]) : null);\n        else if (op === 'len') out.push(lst.length());\n        else if (op === 'find') { const node = lst.find(args[0]); out.push(node === null ? null : String(node)); }\n        else if (op === 'get_all_data') out.push(lst.getAllData());\n        else lst[call[op]](...args);\n    }\n    return out;\n}\n",
+     "reference": "class Node {\n    constructor(data, next = null) {\n        this.next = next;\n        this.data = data;\n    }\n\n    toString() {\n        return String(this.data);\n    }\n}\n\nclass LinkedList {\n    constructor(head = null) {\n        this.head = head;\n    }\n\n    length() {\n        let curr = this.head;\n        let counter = 0;\n        while (curr !== null) {\n            counter += 1;\n            curr = curr.next;\n        }\n        return counter;\n    }\n\n    insertToFront(data) {\n        if (data === null || data === undefined) return null;\n        const node = new Node(data, this.head);\n        this.head = node;\n        return node;\n    }\n\n    append(data) {\n        if (data === null || data === undefined) return null;\n        const node = new Node(data);\n        if (this.head === null) {\n            this.head = node;\n            return node;\n        }\n        let curr = this.head;\n        while (curr.next !== null) curr = curr.next;\n        curr.next = node;\n        return node;\n    }\n\n    find(data) {\n        if (data === null || data === undefined) return null;\n        let curr = this.head;\n        while (curr !== null) {\n            if (curr.data === data) return curr;\n            curr = curr.next;\n        }\n        return null;\n    }\n\n    delete(data) {\n        if (data === null || data === undefined) return;\n        if (this.head === null) return;\n        if (this.head.data === data) {\n            this.head = this.head.next;\n            return;\n        }\n        let prev = this.head;\n        let curr = this.head.next;\n        while (curr !== null) {\n            if (curr.data === data) {\n                prev.next = curr.next;\n                return;\n            }\n            prev = curr;\n            curr = curr.next;\n        }\n    }\n\n    printList() {\n        let curr = this.head;\n        while (curr !== null) {\n            console.log(curr.data);\n            curr = curr.next;\n        }\n    }\n\n    getAllData() {\n        const data = [];\n        let curr = this.head;\n        while (curr !== null) {\n            data.push(curr.data);\n            curr = curr.next;\n        }\n        return data;\n    }\n}\n\n// Given: plays the tests' operations on a LinkedList and returns what the queries give.\nfunction run(ops) {\n    const out = [];\n    let lst = null;\n    const call = { insert_to_front: 'insertToFront', append: 'append', delete: 'delete' };\n    for (const [op, ...args] of ops) {\n        if (op === 'new') lst = new LinkedList(args.length ? new Node(args[0]) : null);\n        else if (op === 'len') out.push(lst.length());\n        else if (op === 'find') { const node = lst.find(args[0]); out.push(node === null ? null : String(node)); }\n        else if (op === 'get_all_data') out.push(lst.getAllData());\n        else lst[call[op]](...args);\n    }\n    return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "insert_to_front",
+         10
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "insert_to_front",
+         null
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "insert_to_front",
+         "a"
+        ],
+        [
+         "insert_to_front",
+         "bc"
+        ],
+        [
+         "get_all_data"
+        ]
+       ]
+      ],
+      "expect": [
+       [
+        10
+       ],
+       [
+        10
+       ],
+       [
+        "bc",
+        "a",
+        10
+       ]
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "append",
+         10
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "append",
+         null
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "append",
+         "a"
+        ],
+        [
+         "append",
+         "bc"
+        ],
+        [
+         "get_all_data"
+        ]
+       ]
+      ],
+      "expect": [
+       [
+        10
+       ],
+       [
+        10
+       ],
+       [
+        10,
+        "a",
+        "bc"
+       ]
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "find",
+         "a"
+        ],
+        [
+         "new",
+         10
+        ],
+        [
+         "find",
+         null
+        ],
+        [
+         "new",
+         10
+        ],
+        [
+         "insert_to_front",
+         "a"
+        ],
+        [
+         "insert_to_front",
+         "bc"
+        ],
+        [
+         "find",
+         "a"
+        ],
+        [
+         "find",
+         "aaa"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       "a",
+       null
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "delete",
+         "a"
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "new",
+         10
+        ],
+        [
+         "delete",
+         null
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "new",
+         10
+        ],
+        [
+         "insert_to_front",
+         "a"
+        ],
+        [
+         "insert_to_front",
+         "bc"
+        ],
+        [
+         "delete",
+         "a"
+        ],
+        [
+         "get_all_data"
+        ],
+        [
+         "delete",
+         "aa"
+        ],
+        [
+         "get_all_data"
+        ]
+       ]
+      ],
+      "expect": [
+       [],
+       [
+        10
+       ],
+       [
+        "bc",
+        10
+       ],
+       [
+        "bc",
+        10
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "len"
+        ],
+        [
+         "new",
+         10
+        ],
+        [
+         "insert_to_front",
+         "a"
+        ],
+        [
+         "insert_to_front",
+         "bc"
+        ],
+        [
+         "len"
+        ]
+       ]
+      ],
+      "expect": [
+       0,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "singly-linked-list"
+  },
+  {
+   "exercise": "c1",
+   "concept": "implement-linked-list"
+  }
+ ],
+ "referents": [
+  {
+   "id": "p",
+   "label": "p, the pointer to a link",
+   "figures": [
+    "sim-sorted-insert"
+   ]
+  },
+  {
+   "id": "item",
+   "label": "item, the element being inserted",
+   "figures": [
+    "sim-sorted-insert"
+   ]
+  },
+  {
+   "id": "head",
+   "label": "head, the caller’s pointer to the first element",
+   "figures": [
+    "sim-sorted-insert"
+   ]
+  },
+  {
+   "id": "node",
+   "label": "node, the node the operation works after",
+   "figures": [
+    "sim-list-ops"
+   ]
+  },
+  {
+   "id": "new-node",
+   "label": "newNode, the node being inserted",
+   "figures": [
+    "sim-list-ops"
+   ]
+  },
+  {
+   "id": "obsolete-node",
+   "label": "obsoleteNode, the node being removed",
+   "figures": [
+    "sim-list-ops"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "lists-vs-arrays-note-1",
+   "kind": "book",
+   "number": "note 1",
+   "html": "The amount of control data required for a dynamic array is usually of the form $K+Bn$, where $K$ is a per-array constant, $B$ is a per-dimension constant, and $n$ is the number of dimensions. $K$ and $B$ are typically on the order of 10 bytes."
+  },
+  {
+   "id": "err-sorted-comment",
+   "kind": "correction",
+   "html": "The comment at the head of the listing says the item goes in at the first place “where all earlier elements have lesser or equal value”. The loop stops at the first element whose value is not less than the item’s, so every earlier element is strictly less, and the item goes in before any element equal to it. The code is a correct sorted insert; only the comment is loose."
+  }
+ ],
+ "derivations": []
+}

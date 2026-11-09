@@ -1,0 +1,406 @@
+{
+ "id": "2.7",
+ "chapter": "2",
+ "title": "Cycles in linked lists: tortoise and hare",
+ "short": "Tortoise and hare",
+ "lead": "An Essential section on telling whether a singly linked list ends or loops back on itself, and on finding the node where the loop begins, using two pointers that move at different speeds. Nothing here is indexed: a and b count steps along the list, L is the length of the cycle, and x and y count the laps each pointer makes.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "cp-algorithms’ list of practice problems is left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The code exercise is Interactive Coding Challenges’ find_loop_start, with its own five tests and its solution as the Python reference; the five further tests, the harness that builds each list and the JavaScript reference are written by the AI that built the section. keon’s is_cyclic and first_cyclic_node and TheAlgorithms’ has_loop, floyds_cycle_detection and happy_number carry tests but print no exercise statement, so they have no card. No open exercise tests why the reset finds the start of the cycle, and none of the chapter’s check, trace or NC items covers this section.",
+ "figures": [
+  {
+   "id": "sim-rho-list",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/cpa-tortoise-hare-algo.png"
+   ],
+   "original_caption": "Linked list with cycle",
+   "draws": [],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-rho",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/cpa-tortoise-hare-cycle-found.png"
+   ],
+   "original_caption": "Found cycle",
+   "draws": [
+    "index",
+    "size",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-rho-proof",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/cpa-tortoise-hare-proof.png"
+   ],
+   "original_caption": "Proof",
+   "draws": [
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "tortoise-hare",
+   "concept": "floyd-cycle-detection",
+   "verb": "introduces"
+  },
+  {
+   "span": "cycle-start",
+   "concept": "cycle-start",
+   "verb": "introduces"
+  },
+  {
+   "span": "cycle-start",
+   "concept": "floyd-cycle-detection",
+   "verb": "uses"
+  },
+  {
+   "span": "why-meet",
+   "concept": "floyd-cycle-detection",
+   "verb": "reinforces"
+  },
+  {
+   "span": "cycle-start-proof",
+   "concept": "cycle-start-proof",
+   "verb": "introduces"
+  },
+  {
+   "span": "cycle-start-proof",
+   "concept": "cycle-start",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "icc:linked_lists/find_loop_start",
+   "source_number": "find_loop_start",
+   "origin": "icc",
+   "changes": "find_loop_start takes the head as its argument instead of being a method of the list class, and each test builds its list from the values and the position the last node links back to (−1 for none) and compares the data of the node returned.",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "cycle-start",
+   "prompt": "Find the start of a linked list loop.\n\nIs this a singly linked list? Yes.\n\nCan we assume we are always passed a circular linked list? No.\n\nWhen we find a loop, do we return the node or the node's data? The node.\n\nCan we assume we already have a linked list class that can be used for this problem? Yes.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "loop_start",
+     "starter": "class Node(object):\n\n    def __init__(self, data, next=None):\n        self.next = next\n        self.data = data\n\n\ndef find_loop_start(head):\n    pass\n\n\ndef loop_start(values, back_to):\n    # Builds the list a test describes and returns the data of the node find_loop_start finds. Leave it as it is.\n    nodes = [Node(v) for v in values]\n    for a, b in zip(nodes, nodes[1:]):\n        a.next = b\n    if back_to >= 0:\n        nodes[-1].next = nodes[back_to]\n    found = find_loop_start(nodes[0] if nodes else None)\n    return None if found is None else found.data\n",
+     "reference": "class Node(object):\n\n    def __init__(self, data, next=None):\n        self.next = next\n        self.data = data\n\n\ndef find_loop_start(head):\n    if head is None or head.next is None:\n        return None\n    slow = head\n    fast = head\n    while fast.next is not None:\n        slow = slow.next\n        fast = fast.next.next\n        if fast is None:\n            return None\n        if slow == fast:\n            break\n    slow = head\n    while slow != fast:\n        slow = slow.next\n        fast = fast.next\n        if fast is None:\n            return None\n    return slow\n\n\ndef loop_start(values, back_to):\n    # Builds the list a test describes and returns the data of the node find_loop_start finds. Leave it as it is.\n    nodes = [Node(v) for v in values]\n    for a, b in zip(nodes, nodes[1:]):\n        a.next = b\n    if back_to >= 0:\n        nodes[-1].next = nodes[back_to]\n    found = find_loop_start(nodes[0] if nodes else None)\n    return None if found is None else found.data\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "loopStart",
+     "starter": "class Node {\n  constructor(data, next = null) {\n    this.next = next;\n    this.data = data;\n  }\n}\n\nfunction findLoopStart(head) {\n}\n\n// Builds the list a test describes and returns the data of the node findLoopStart finds. Leave it as it is.\nfunction loopStart(values, backTo) {\n  const nodes = values.map((v) => new Node(v));\n  for (let i = 0; i + 1 < nodes.length; i += 1) nodes[i].next = nodes[i + 1];\n  if (backTo >= 0) nodes[nodes.length - 1].next = nodes[backTo];\n  const found = findLoopStart(nodes.length ? nodes[0] : null);\n  return found === null ? null : found.data;\n}\n",
+     "reference": "class Node {\n  constructor(data, next = null) {\n    this.next = next;\n    this.data = data;\n  }\n}\n\nfunction findLoopStart(head) {\n  if (head === null || head.next === null) {\n    return null;\n  }\n  let slow = head;\n  let fast = head;\n  while (fast.next !== null) {\n    slow = slow.next;\n    fast = fast.next.next;\n    if (fast === null) {\n      return null;\n    }\n    if (slow === fast) {\n      break;\n    }\n  }\n  slow = head;\n  while (slow !== fast) {\n    slow = slow.next;\n    fast = fast.next;\n    if (fast === null) {\n      return null;\n    }\n  }\n  return slow;\n}\n\n// Builds the list a test describes and returns the data of the node findLoopStart finds. Leave it as it is.\nfunction loopStart(values, backTo) {\n  const nodes = values.map((v) => new Node(v));\n  for (let i = 0; i + 1 < nodes.length; i += 1) nodes[i].next = nodes[i + 1];\n  if (backTo >= 0) nodes[nodes.length - 1].next = nodes[backTo];\n  const found = findLoopStart(nodes.length ? nodes[0] : null);\n  return found === null ? null : found.data;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [],
+       -1
+      ],
+      "expect": null,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1
+       ],
+       -1
+      ],
+      "expect": null,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       -1
+      ],
+      "expect": null,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3
+       ],
+       -1
+      ],
+      "expect": null,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+       ],
+       3
+      ],
+      "expect": 3,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+       ],
+       0
+      ],
+      "expect": 0,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        7
+       ],
+       0
+      ],
+      "expect": 7,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        0,
+        1,
+        2,
+        3
+       ],
+       3
+      ],
+      "expect": 3,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+       ],
+       7
+      ],
+      "expect": 7,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        5,
+        6
+       ],
+       0
+      ],
+      "expect": 5,
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n) => [Array.from({ length: n }, (_, i) => i), Math.floor(n / 2)]",
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "floyd-cycle-detection"
+  },
+  {
+   "exercise": "c1",
+   "concept": "cycle-start"
+  }
+ ],
+ "referents": [
+  {
+   "id": "slow",
+   "label": "slow, the pointer that moves one node at a time",
+   "figures": [
+    "sim-rho"
+   ]
+  },
+  {
+   "id": "fast",
+   "label": "fast, the pointer that moves two nodes at a time",
+   "figures": [
+    "sim-rho"
+   ]
+  },
+  {
+   "id": "head",
+   "label": "the head of the list",
+   "figures": [
+    "sim-rho-list",
+    "sim-rho",
+    "sim-rho-proof"
+   ]
+  },
+  {
+   "id": "C",
+   "label": "C, the node where the cycle starts",
+   "figures": [
+    "sim-rho-list",
+    "sim-rho",
+    "sim-rho-proof"
+   ]
+  },
+  {
+   "id": "G",
+   "label": "G, the node where slow and fast meet",
+   "figures": [
+    "sim-rho",
+    "sim-rho-proof"
+   ]
+  }
+ ],
+ "footnotes": [],
+ "derivations": [
+  {
+   "id": "cycle-start",
+   "what": "where the cycle starts",
+   "source": "cp-algorithms, Floyd’s Linked List Cycle Finding Algorithm, why does it work, step 2",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "\\mathit{slowDist} = a + xL + b"
+      },
+      {
+       "tex": "\\mathit{fastDist} = a + yL + b"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{f}{\\mathit{fastDist}} = 2 \\cdot (\\mk{s}{\\mathit{slowDist}})",
+      "src": "why does it work, step 1"
+     },
+     "steps": [
+      {
+       "tex": "\\mk{a1}{a} + \\mk{y}{yL} + \\mk{b1}{b} = 2(\\mk{a2}{a} + \\mk{x}{xL} + \\mk{b2}{b})",
+       "uses": [
+        0,
+        1
+       ],
+       "map": {
+        "f": [
+         "a1",
+         "y",
+         "b1"
+        ],
+        "s": [
+         "a2",
+         "x",
+         "b2"
+        ]
+       }
+      },
+      {
+       "tex": "\\mk{a1}{a} + \\mk{y}{yL} + \\mk{b1}{b} = \\mk{a2}{2a} + \\mk{x}{2xL} + \\mk{b2}{2b}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{y}{yL} = \\mk{a2}{a} + \\mk{x}{2xL} + \\mk{b2}{b}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{a2}{a} = \\mk{y}{yL} - \\mk{x}{2xL} - \\mk{b2}{b}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{a2}{a} = \\mk{k}{(y - 2x)L} - \\mk{b2}{b}",
+       "uses": [],
+       "map": {
+        "y": "k",
+        "x": "k"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

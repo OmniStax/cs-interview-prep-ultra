@@ -1,0 +1,32 @@
+{
+ "section": "2.1",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-ps1-2",
+   "source_id": "mitocw-6-006-spring2020:ps1-questions#1-2",
+   "source_number": "Problem Set 1, Problem 1-2",
+   "origin": "mitocw-6-006-spring2020",
+   "kind": "exercise",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "list-interface",
+   "changes": "The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "Given a data structure D that supports Sequence operations:\n\n<ul><li>D.build(X) in $O(n)$ time, and</li><li>D.insert_at(i, x) and D.delete_at(i), each in $O(\\log n)$ time,</li></ul>\n\nwhere n is the number of items stored in D at the time of the operation, describe algorithms to implement the following higher-level operations in terms of the provided lower-level operations. Each operation below should run in $O(k \\log n)$ time. Recall, delete_at returns the deleted item.\n\n(a) reverse(D, i, k): Reverse in D the order of the k items starting at index i (up to index $i + k - 1$).\n\n(b) move(D, i, k, j): Move the k items in D starting at index i, in order, to be in front of the item at index j. Assume that expression $i \\le j < i + k$ is false.",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/10e4e3444c1bde4c662a47a8f14dadd3_MIT6_006S20_ps1-solutions.pdf\">Solutions to Problem Set 1</a>, Problem 1-2."
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-ps1-2",
+   "concept": "list-interface"
+  }
+ ]
+}

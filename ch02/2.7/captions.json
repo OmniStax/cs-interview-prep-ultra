@@ -1,0 +1,14 @@
+{
+ "tortoise_hare_algo.png": {
+  "html": "Linked list with cycle",
+  "text": "Linked list with cycle"
+ },
+ "tortoise_hare_cycle_found.png": {
+  "html": "Found cycle",
+  "text": "Found cycle"
+ },
+ "tortoise_hare_proof.png": {
+  "html": "Proof",
+  "text": "Proof"
+ }
+}

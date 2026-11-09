@@ -1,0 +1,121 @@
+<section id="two-pointers" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#引入" data-ai="claude-opus-5-5 high">
+<h2>Two pointers</h2>
+<p><span data-concept="two-pointers">Two pointers</span> is a simple yet flexible technique and way of thinking: used on its own it easily solves certain specific problems, and combined with other algorithms it can serve many different purposes.</p>
+<p>As the name suggests, two pointers means using two pointers at the same time: on sequences and linked lists they point at positions, on trees and graphs they point at nodes, and by moving either in the same direction or toward each other they maintain and count information.</p>
+<p>Next, let us look at several concrete ways of using two pointers.</p>
+</section>
+
+<section id="sorted-pair" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#利用序列有序性 (its opening, 例题 4 as a link, and 过程)" data-ai="claude-opus-5-5 high">
+<h2>Using the order of a sequence</h2>
+<p>Much of the time, two pointers used on a sequence reach their goal correctly because of some property of the sequence, and the most common one is that the sequence is sorted.</p>
+<p>Example: <a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">LeetCode 167. Two Sum II – Input Array Is Sorted</a></p>
+<h3>Procedure</h3>
+<p>This kind of problem is another classic application of two pointers; binary search is convenient too, but its time complexity carries an extra $\log{n}$, and its code is not as concise.</p>
+<p>Next, the two-pointer approach. Since we must find two numbers, and the two cannot be at the same position, their positions must be one on the left and one on the right. Since the sum of the two numbers is fixed, the larger the smaller of the two numbers is, the smaller the larger one is. Given these properties, we may as well approach them from both ends.</p>
+<p>First suppose the answer is 1 and n. If we find that $num[1]+num[n]\gt \mathit{target}$, we need to make one of the elements smaller, and $\mathit{num}[1]$ cannot get any smaller, so we decrease <span data-ref="pair-r">the pointer at $n$</span> by one, making the larger number smaller.</p>
+<p>Likewise, if we find that $num[1]+num[n]\lt \mathit{target}$, we need to make one of the elements larger, but $\mathit{num}[n]$ cannot get any larger, so we increase <span data-ref="pair-l">the pointer at 1</span> by one, making the smaller number larger.</p>
+<p>Generalising, if <span data-ref="pair-l pair-r">our two pointers</span> are now at $\htmlData{ref=pair-l}{l},\htmlData{ref=pair-r}{r}$, with $\htmlData{ref=pair-l}{l}\lt \htmlData{ref=pair-r}{r}$, then if $num[\htmlData{ref=pair-l}{l}]+num[\htmlData{ref=pair-r}{r}]\gt \mathit{target}$ we decrease $\htmlData{ref=pair-r}{r}$ by one, and if $num[\htmlData{ref=pair-l}{l}]+num[\htmlData{ref=pair-r}{r}]\lt \mathit{target}$ we increase $\htmlData{ref=pair-l}{l}$ by one. In this way $\htmlData{ref=pair-l}{l}$ keeps moving right and $\htmlData{ref=pair-r}{r}$ keeps moving left, until each of them has closed in on one number of the answer.</p>
+<figure class="sim" id="sim-two-pointers" data-source="thealgorithms-python" data-locator="thealgorithms-python:maths/two_pointer.py::two_pointer">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+</figure>
+</section>
+
+<section id="three-sum" data-source="wikipedia" data-locator="wikipedia:3SUM (the lead’s first sentence) and #Quadratic algorithm">
+<h2>3SUM</h2>
+<p>In computational complexity theory, the <strong><span data-concept="three-sum">3SUM</span></strong> problem asks if a given set of $n$ real numbers contains three elements that sum to zero.</p>
+<h3>Quadratic algorithm</h3>
+<p>Suppose the input array is $S[0..n-1]$.  In integer (word RAM) models of computing, 3SUM can be solved in $O(n^2)$ time on average by inserting each number $S[i]$ into a hash table, and then, for each index $i$ and $j$, checking whether the hash table contains the integer $-(S[i]+S[j])$.</p>
+<p>It is also possible to solve the problem in the same time in a comparison-based model of computing or real RAM, for which hashing is not allowed. The algorithm below first sorts the input array and then tests all possible pairs in a careful order that avoids the slowdown of a binary search per pair, achieving worst-case $O(n^2)$ time, as follows.<sup class="fn" data-note="wp-three-sum-1"></sup></p>
+<pre>sort(S);
+for i = 0 to n - 2 do
+    a = S[i];
+    start = i + 1;
+    end = n - 1;
+    while (start &lt; end) do
+        b = S[start]
+        c = S[end];
+        if (a + b + c == 0) then
+            output a, b, c;
+            // Continue search for all triplet combinations summing to zero.
+            // We need to update both end and start together since the array values are distinct.
+            start = start + 1;
+            end = end - 1;
+        else if (a + b + c &gt; 0) then
+            end = end - 1;
+        else
+            start = start + 1;
+    end
+end</pre>
+<p>The following example shows this algorithm's execution on a small sorted array. Current values of <strong>a</strong> are shown in red, values of <strong>b</strong> and <strong>c</strong> are shown in magenta.</p>
+<pre> <span style="color:red">-25</span> <span style="color:magenta">-10</span> -7 -3 2 4 8 <span style="color:magenta">10</span>  (a+b+c==-25)
+ <span style="color:red">-25</span> -10 <span style="color:magenta">-7</span> -3 2 4 8 <span style="color:magenta">10</span>  (a+b+c==-22)
+ . . .
+ <span style="color:red">-25</span> -10 -7 -3 2 4 <span style="color:magenta">8</span> <span style="color:magenta">10</span>  (a+b+c==-7)
+ -25 <span style="color:red">-10</span> <span style="color:magenta">-7</span> -3 2 4 8 <span style="color:magenta">10</span>  (a+b+c==-7)
+ -25 <span style="color:red">-10</span> -7 <span style="color:magenta">-3</span> 2 4 8 <span style="color:magenta">10</span>  (a+b+c==-3)
+ -25 <span style="color:red">-10</span> -7 -3 <span style="color:magenta">2</span> 4 8 <span style="color:magenta">10</span>  (a+b+c==2)
+ -25 <span style="color:red">-10</span> -7 -3 <span style="color:magenta">2</span> 4 <span style="color:magenta">8</span> 10  (a+b+c==0)</pre>
+<p>The correctness of the algorithm can be seen as follows. Suppose we have a solution a + b + c = 0. Since the pointers only move in one direction, we can run the algorithm until <span data-ref="ts-i">the leftmost pointer</span> points to a. Run the algorithm until either <span data-ref="ts-start ts-end">one of the remaining pointers</span> points to b or c, whichever occurs first. Then the algorithm will run until <span data-ref="ts-start ts-end">the last pointer</span> points to the remaining term, giving the affirmative solution.</p>
+<figure class="sim" id="sim-three-sum" data-source="thealgorithms-python" data-locator="thealgorithms-python:maths/three_sum.py::three_sum">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+</figure>
+</section>
+
+<section id="merge" data-source="wikipedia" data-locator="wikipedia:Merge_algorithm#Merging two lists">
+<h2>Merging two lists</h2>
+<p><span data-concept="merge-sorted-sequences">Merging two sorted lists</span> into one can be done in linear time and linear or constant space (depending on the data access model). The following pseudocode demonstrates an algorithm that merges input lists (either linked lists or arrays) <span data-ref="list-a"><em>A</em></span> and <span data-ref="list-b"><em>B</em></span> into a new list <span data-ref="list-c"><em>C</em></span>.<sup class="fn" data-note="wp-merge-2"></sup><sup class="fn" data-note="wp-merge-3"></sup> The function <code>head</code> yields the first element of a list; "dropping" an element means removing it from its list, typically by incrementing a pointer or index.</p>
+<pre>algorithm merge(A, B) is
+    inputs A, B : list
+    returns list
+
+    C := new empty list
+    while A is not empty and B is not empty do
+        if head(A) ≤ head(B) then
+            append head(A) to C
+            drop the head of A
+        else
+            append head(B) to C
+            drop the head of B
+
+    // By now, either A or B is empty. It remains to empty the other input list.
+    while A is not empty do
+        append head(A) to C
+        drop the head of A
+    while B is not empty do
+        append head(B) to C
+        drop the head of B
+
+    return C</pre>
+<figure class="sim" id="sim-merge" data-source="thealgorithms-python" data-locator="thealgorithms-python:data_structures/arrays/merge_sorted.py::merge_sorted_arrays">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+</figure>
+<p>When the inputs are linked lists, this algorithm can be implemented to use only a constant amount of working space; the pointers in the lists' nodes can be reused for bookkeeping and for constructing the final merged list.</p>
+<p>In the merge sort algorithm, this subroutine is typically used to merge two sub-arrays <code>A[lo..mid]</code>, <code>A[mid+1..hi]</code> of a single array <code>A</code>. This can be done by copying the sub-arrays into a temporary array, then applying the merge algorithm above.<sup class="fn" data-note="wp-merge-4"></sup> The allocation of a temporary array can be avoided, but at the expense of speed and programming ease. Various in-place merge algorithms have been devised,<sup class="fn" data-note="wp-merge-5"></sup> sometimes sacrificing the linear-time bound to produce an <em>O</em>(<em>n</em> log <em>n</em>) algorithm;<sup class="fn" data-note="wp-merge-6"></sup> see [<em>Merge sort</em> §Variants] for discussion.</p>
+</section>
+
+<section id="moving-average" data-source="wikipedia" data-locator="wikipedia:Moving_average#Simple moving average, from its opening to “…and only 3 arithmetic steps.”">
+<h2>Simple moving average</h2>
+<p>In financial applications a <strong><span data-concept="sliding-window-fixed">simple moving average</span></strong> (<strong>SMA</strong>) is the unweighted mean of the previous $k$ data-points. However, in science and engineering, the mean is normally taken from an equal number of data on either side of a central value. This ensures that variations in the mean are aligned with the variations in the data rather than being shifted in time. An example of a simple equally weighted running mean is the mean over the last $k$ entries of a data-set containing $n$ entries. Let those data-points be $p_1, p_2, \dots, p_n$. This could be closing prices of a stock. The mean over the last $k$ data-points (days in this example) is denoted as $\textit{SMA}_{k}$ and calculated as:</p>
+$$\begin{aligned}
+  \textit{SMA}_{k} &amp;= \frac{p_{n-k+1} + p_{n-k+2} + \cdots + p_{n}}{k} \\
+  &amp;= \frac{1}{k} \sum_{i=n-k+1}^{n} p_{i}
+\end{aligned}$$
+<p>When calculating the next mean $\textit{SMA}_{k,\text{next}}$ with the same sampling width $k$ the range from $n - k + 2$ to $n+1$ is considered. A new value $p_{n+1}$ comes into the sum and the oldest value $p_{n-k+1}$ drops out. This simplifies the calculations by reusing the previous mean $\textit{SMA}_{k,\text{prev}}$.</p>
+<figure class="dv" id="drv-sma-next"></figure>
+<p>This means that the moving average filter can be computed quite cheaply on real time data with a FIFO / circular buffer and only 3 arithmetic steps.</p>
+<figure class="sim" id="sim-moving-window">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+</figure>
+</section>
+
+<section id="variable-window" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#维护区间信息 (its opening, 例题 1 as a link, and its 过程)" data-ai="claude-opus-5-5 high">
+<h2>Variable-size sliding window</h2>
+<p>If two pointers are not combined with other data structures, the simplest pattern for <span data-concept="sliding-window-variable">maintaining information over an interval</span> with them is to maintain information that has a certain monotonicity and in which adding or removing one element is easy to handle, such as a sum of positive numbers or a product of positive integers.</p>
+<h3>Example</h3>
+<p><a href="https://leetcode.com/problems/subarray-product-less-than-k/">LeetCode 713. Subarray Product Less Than K</a></p>
+<h4>Procedure</h4>
+<p>Let <span data-ref="win-l win-r">the two pointers</span> be $\htmlData{ref=win-l}{l},\htmlData{ref=win-r}{r}$, and keep in addition a variable $\htmlData{ref=win-tmp}{\mathit{tmp}}$ that records the product of all the numbers in $[\htmlData{ref=win-l}{l},\htmlData{ref=win-r}{r}]$. At the start $\htmlData{ref=win-l}{l},\htmlData{ref=win-r}{r}$ are both at the far left. First move $\htmlData{ref=win-r}{r}$ to the right until we find $\htmlData{ref=win-tmp}{\mathit{tmp}}\geq k$ for the first time; then fix $\htmlData{ref=win-r}{r}$ and move $\htmlData{ref=win-l}{l}$ to the right until $\htmlData{ref=win-tmp}{\mathit{tmp}}\lt k$. Then for each $\htmlData{ref=win-r}{r}$, $\htmlData{ref=win-l}{l}$ is the left boundary it can extend to, and by the monotonicity of products of positive integers, the number of intervals with right endpoint $\htmlData{ref=win-r}{r}$ that satisfy the problem's condition is $\htmlData{ref=win-r}{r}-\htmlData{ref=win-l}{l}+1$.</p>
+<figure class="sim" id="sim-variable-window" data-source="doocs-leetcode" data-locator="doocs-leetcode:0713#Solution 1: Two Pointers">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>CAPTION</span></div>
+</figure>
+</section>

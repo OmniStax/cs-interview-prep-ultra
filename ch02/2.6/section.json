@@ -1,0 +1,138 @@
+{
+ "id": "2.6",
+ "chapter": "2",
+ "title": "Doubly linked lists",
+ "short": "Doubly linked lists",
+ "lead": "An Essential section on the <span data-concept=\"doubly-linked-list\">doubly linked list</span> and the <span data-concept=\"sentinel-node\">dummy node</span> that spares it special cases at either end. ODS calls the singly linked list of <a href=\"/cs-interview-prep-ultra/ch02/2.5/\">Section 2.5</a> an SLList, with fields <em>head</em>, <em>tail</em> and <em>n</em>. Its DLList numbers the list’s elements from 0 to <em>n</em> − 1, and getNode(<em>i</em>) finds the one numbered <em>i</em>.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "The examples that close ODS’s Java and C++ editions of this section, a Java LinkedHashSet and a C++ USet, are not included here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "OpenDSA’s true-or-false item on doubly linked list implementations (ListTFdblimpl) waits for the converter of OpenDSA’s exercises. ODS’s Exercise 3.1, on why a dummy node cannot remove every special case of an SLList, has no published answer and is left out, as are its Exercises 3.5 to 3.12, which have no tests. Exercism’s linked-list tests a deque and goes with Section 3.3. MIT 6.006’s Problem 1-4 (Spring 2020) is an NC card, kept in exercises-nc.json apart from the book’s CC BY-SA content and keyed by a link to MIT’s worked solution; its template’s tests check a class, which the code answer type cannot run yet.",
+ "figures": [
+  {
+   "id": "sim-dllist-ring",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/ods-dllist.png"
+   ],
+   "original_caption": "A DLList containing a,b,c,d,e.",
+   "draws": [
+    "index",
+    "key",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-dllist",
+   "kind": "sim",
+   "originals": [
+    "/media/ch02/ods-dllist-addbefore.png"
+   ],
+   "original_caption": "Adding the node u before the node w in a DLList.",
+   "draws": [
+    "index",
+    "key",
+    "size",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "dummy-node",
+   "concept": "sentinel-node",
+   "verb": "introduces"
+  },
+  {
+   "span": "dummy-node",
+   "concept": "doubly-linked-list",
+   "verb": "uses"
+  },
+  {
+   "span": "dllist",
+   "concept": "doubly-linked-list",
+   "verb": "introduces"
+  },
+  {
+   "span": "dllist",
+   "concept": "sentinel-node",
+   "verb": "uses"
+  },
+  {
+   "span": "dllist",
+   "concept": "big-o",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [
+  {
+   "id": "dummy",
+   "label": "dummy, the DLList’s dummy node",
+   "figures": [
+    "sim-dllist-ring",
+    "sim-dllist"
+   ]
+  },
+  {
+   "id": "p",
+   "label": "p, the node getNode walks to",
+   "figures": [
+    "sim-dllist"
+   ]
+  },
+  {
+   "id": "w",
+   "label": "w, the node to add before or to remove",
+   "figures": [
+    "sim-dllist"
+   ]
+  },
+  {
+   "id": "u",
+   "label": "u, the new node",
+   "figures": [
+    "sim-dllist"
+   ]
+  },
+  {
+   "id": "i",
+   "label": "i, the index of the node asked for",
+   "figures": [
+    "sim-dllist"
+   ]
+  }
+ ],
+ "footnotes": [],
+ "derivations": []
+}
