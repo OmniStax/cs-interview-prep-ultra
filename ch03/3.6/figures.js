@@ -868,7 +868,9 @@ function selistFigure(o) {
         top: 230,
         counts: (c, vv, y) => {
           const m = vv.calls, s = vv.big;
-          seg(c, [[`add calls m = ${m}  ·  spreads s = ${s} ≤ m/b = ${(m / SB).toFixed(1)}  ·  elements moved ${vv.moved}`, C('cost')]], y);
+          /* the lemma's bound counts from an empty SEList, so only the run, which starts empty, states it */
+          const bound = P.list.length ? `spreads ${s}` : `spreads s = ${s} ≤ m/b = ${(m / SB).toFixed(1)}`;
+          seg(c, [[`add calls m = ${m}  ·  ${bound}  ·  elements moved ${vv.moved}`, C('cost')]], y);
         },
       });
     },
@@ -1014,7 +1016,9 @@ function selistFigure(o) {
       tip.hits = drawSEList(g, P, F, {
         top: 230,
         counts: (c, vv, y) => {
-          seg(c, [[`remove calls m = ${vv.calls}  ·  gathers ${vv.big} ≤ m/b = ${(vv.calls / SB).toFixed(1)}  ·  elements moved ${vv.moved}`, C('cost')]], y);
+          /* the run starts from blocks of exactly b, so Φ = 0 there and the lemma's bound applies */
+          const bound = P.value === 'run' ? `gathers ${vv.big} ≤ m/b = ${(vv.calls / SB).toFixed(1)}` : `gathers ${vv.big}`;
+          seg(c, [[`remove calls m = ${vv.calls}  ·  ${bound}  ·  elements moved ${vv.moved}`, C('cost')]], y);
         },
       });
     },
