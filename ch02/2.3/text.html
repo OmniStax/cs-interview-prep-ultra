@@ -1,22 +1,22 @@
 <section id="two-pointers" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#引入" data-ai="claude-opus-5-5 high">
 <h2>Two pointers</h2>
-<p><span data-concept="two-pointers">Two pointers</span> is a simple yet flexible technique and way of thinking: used on its own it easily solves certain specific problems, and combined with other <span data-concept="algorithm">algorithms</span> it can serve many different purposes.</p>
-<p>As the name suggests, <span data-concept="two-pointers">two pointers</span> means using two pointers at the same time: on sequences and linked lists they point at positions, on trees and graphs they point at nodes, and by moving either in the same direction or toward each other they maintain and count information.</p>
-<p>Next, let us look at several concrete ways of using <span data-concept="two-pointers">two pointers</span>.</p>
+<p><span data-concept="two-pointers">Two pointers</span> is a simple yet flexible technique and way of thinking: used on its own it easily solves certain specific problems, and combined with other algorithms it can serve many different purposes.</p>
+<p>As the name suggests, two pointers means using two pointers at the same time: on sequences and linked lists they point at positions, on trees and graphs they point at nodes, and by moving either in the same direction or toward each other they maintain and count information.</p>
+<p>Next, let us look at several concrete ways of using two pointers.</p>
 </section>
 
 <section id="sorted-pair" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#利用序列有序性 (its opening, 例题 4 as a link, and 过程)" data-ai="claude-opus-5-5 high">
 <h2>Using the order of a sequence</h2>
-<p>Much of the time, <span data-concept="two-pointers">two pointers</span> used on a sequence reach their goal correctly because of some property of the sequence, and the most common one is that the sequence is sorted.</p>
+<p>Much of the time, two pointers used on a sequence reach their goal correctly because of some property of the sequence, and the most common one is that the sequence is sorted.</p>
 <p>Example: <a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/">LeetCode 167. Two Sum II – Input Array Is Sorted</a></p>
 <h3>Procedure</h3>
-<p>This kind of problem is another classic application of <span data-concept="two-pointers">two pointers</span>; binary search is convenient too, but its time complexity carries an extra $\log{n}$, and its code is not as concise.</p>
-<p>Next, the <span data-concept="two-pointers">two-pointer</span> approach. Since we must find two numbers, and the two cannot be at the same position, their positions must be one on the left and one on the right. Since the sum of the two numbers is fixed, the larger the smaller of the two numbers is, the smaller the larger one is. Given these properties, we may as well approach them from both ends.</p>
+<p>This kind of problem is another classic application of two pointers; binary search is convenient too, but its time complexity carries an extra $\log{n}$, and its code is not as concise.</p>
+<p>Next, the two-pointer approach. Since we must find two numbers, and the two cannot be at the same position, their positions must be one on the left and one on the right. Since the sum of the two numbers is fixed, the larger the smaller of the two numbers is, the smaller the larger one is. Given these properties, we may as well approach them from both ends.</p>
 <p>First suppose the answer is 1 and n. If we find that $num[1]+num[n]\gt \mathit{target}$, we need to make one of the elements smaller, and $\mathit{num}[1]$ cannot get any smaller, so we decrease <span data-ref="pair-r">the pointer at $n$</span> by one, making the larger number smaller.</p>
 <p>Likewise, if we find that $num[1]+num[n]\lt \mathit{target}$, we need to make one of the elements larger, but $\mathit{num}[n]$ cannot get any larger, so we increase <span data-ref="pair-l">the pointer at 1</span> by one, making the smaller number larger.</p>
 <p>Generalising, if <span data-ref="pair-l pair-r">our two pointers</span> are now at $\htmlData{ref=pair-l}{l},\htmlData{ref=pair-r}{r}$, with $\htmlData{ref=pair-l}{l}\lt \htmlData{ref=pair-r}{r}$, then if $num[\htmlData{ref=pair-l}{l}]+num[\htmlData{ref=pair-r}{r}]\gt \mathit{target}$ we decrease $\htmlData{ref=pair-r}{r}$ by one, and if $num[\htmlData{ref=pair-l}{l}]+num[\htmlData{ref=pair-r}{r}]\lt \mathit{target}$ we increase $\htmlData{ref=pair-l}{l}$ by one. In this way $\htmlData{ref=pair-l}{l}$ keeps moving right and $\htmlData{ref=pair-r}{r}$ keeps moving left, until each of them has closed in on one number of the answer.</p>
 <figure class="sim" id="sim-two-pointers" data-source="thealgorithms-python" data-locator="thealgorithms-python:maths/two_pointer.py::two_pointer">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>On a sorted array, <span data-ref="pair-l"><em>l</em></span> starts at the first element and <span data-ref="pair-r"><em>r</em></span> at the last. When a[<span data-ref="pair-l"><em>l</em></span>] + a[<span data-ref="pair-r"><em>r</em></span>] is too big, no pair with a[<span data-ref="pair-r"><em>r</em></span>] can reach the target, so <span data-ref="pair-r"><em>r</em></span> moves left and its column of the pair-sum table drops out; when it is too small, <span data-ref="pair-l"><em>l</em></span> moves right and its row drops out. The pairs still possible are the triangle between <span data-ref="pair-l"><em>l</em></span> and <span data-ref="pair-r"><em>r</em></span>, and at most <em>n</em> − 1 checks settle the question. The code calls <span data-ref="pair-l"><em>l</em></span> and <span data-ref="pair-r"><em>r</em></span> i and j and counts from 0; the text counts from 1.</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>On a sorted array, <span data-ref="pair-l"><em>l</em></span> starts at the first element and <span data-ref="pair-r"><em>r</em></span> at the last. When num[<span data-ref="pair-l"><em>l</em></span>] + num[<span data-ref="pair-r"><em>r</em></span>] is too big, no pair with num[<span data-ref="pair-r"><em>r</em></span>] can reach the target, so <span data-ref="pair-r"><em>r</em></span> moves left and its column of the pair-sum table drops out; when it is too small, <span data-ref="pair-l"><em>l</em></span> moves right and its row drops out. The pairs still possible are the triangle between <span data-ref="pair-l"><em>l</em></span> and <span data-ref="pair-r"><em>r</em></span>, and at most <em>n</em> − 1 checks settle the question. The code calls <span data-ref="pair-l"><em>l</em></span> and <span data-ref="pair-r"><em>r</em></span> i and j and counts from 0; the text counts from 1.</span></div>
 </figure>
 </section>
 
@@ -24,8 +24,8 @@
 <h2>3SUM</h2>
 <p>In computational complexity theory, the <strong><span data-concept="three-sum">3SUM</span></strong> problem asks if a given set of $n$ real numbers contains three elements that sum to zero.</p>
 <h3>Quadratic algorithm</h3>
-<p>Suppose the input <span data-concept="array">array</span> is $S[0..n-1]$.  In integer (word RAM) models of computing, <span data-concept="three-sum">3SUM</span> can be solved in $O(n^2)$ time on average by inserting each number $S[i]$ into a hash table, and then, for each index $i$ and $j$, checking whether the hash table contains the integer $-(S[i]+S[j])$.</p>
-<p>It is also possible to solve the problem in the same time in a comparison-based model of computing or real RAM, for which hashing is not allowed. The algorithm below first sorts the input <span data-concept="array">array</span> and then tests all possible pairs in a careful order that avoids the slowdown of a binary search per pair, achieving worst-case $O(n^2)$ time, as follows.<sup class="fn" data-note="wp-three-sum-1"></sup></p>
+<p>Suppose the input array is $S[0..n-1]$.  In integer (word RAM) models of computing, 3SUM can be solved in $O(n^2)$ time on average by inserting each number $S[i]$ into a hash table, and then, for each index $i$ and $j$, checking whether the hash table contains the integer $-(S[i]+S[j])$.</p>
+<p>It is also possible to solve the problem in the same time in a comparison-based model of computing or real RAM, for which hashing is not allowed. The algorithm below first sorts the input array and then tests all possible pairs in a careful order that avoids the slowdown of a binary search per pair, achieving worst-case $O(n^2)$ time, as follows.<sup class="fn" data-note="wp-three-sum-1"></sup></p>
 <pre>sort(S);
 for i = 0 to n - 2 do
     a = S[i];
@@ -46,7 +46,7 @@ for i = 0 to n - 2 do
             start = start + 1;
     end
 end</pre>
-<p>The following example shows this algorithm's execution on a small sorted <span data-concept="array">array</span>. Current values of <strong>a</strong> are shown in red, values of <strong>b</strong> and <strong>c</strong> are shown in magenta.</p>
+<p>The following example shows this algorithm's execution on a small sorted array. Current values of <strong>a</strong> are shown in red, values of <strong>b</strong> and <strong>c</strong> are shown in magenta.</p>
 <pre> <span style="color:red">-25</span> <span style="color:magenta">-10</span> -7 -3 2 4 8 <span style="color:magenta">10</span>  (a+b+c==-25)
  <span style="color:red">-25</span> -10 <span style="color:magenta">-7</span> -3 2 4 8 <span style="color:magenta">10</span>  (a+b+c==-22)
  . . .
@@ -63,7 +63,7 @@ end</pre>
 
 <section id="merge" data-source="wikipedia" data-locator="wikipedia:Merge_algorithm#Merging two lists">
 <h2>Merging two lists</h2>
-<p><span data-concept="merge-sorted-sequences">Merging two sorted lists</span> into one can be done in linear time and linear or constant space (depending on the data access model). The following pseudocode demonstrates an algorithm that <span data-concept="merge-sorted-sequences">merges</span> input lists (either <span data-concept="singly-linked-list">linked lists</span> or <span data-concept="array">arrays</span>) <span data-ref="list-a"><em>A</em></span> and <span data-ref="list-b"><em>B</em></span> into a new list <span data-ref="list-c"><em>C</em></span>.<sup class="fn" data-note="wp-merge-2"></sup><sup class="fn" data-note="wp-merge-3"></sup> The function <code>head</code> yields the first element of a list; "dropping" an element means removing it from its list, typically by incrementing a pointer or index.</p>
+<p><span data-concept="merge-sorted-sequences">Merging two sorted lists</span> into one can be done in linear time and linear or constant space (depending on the data access model). The following pseudocode demonstrates an algorithm that merges input lists (either linked lists or arrays) <span data-ref="list-a"><em>A</em></span> and <span data-ref="list-b"><em>B</em></span> into a new list <span data-ref="list-c"><em>C</em></span>.<sup class="fn" data-note="wp-merge-2"></sup><sup class="fn" data-note="wp-merge-3"></sup> The function <code>head</code> yields the first element of a list; "dropping" an element means removing it from its list, typically by incrementing a pointer or index.</p>
 <pre>algorithm merge(A, B) is
     inputs A, B : list
     returns list
@@ -89,8 +89,8 @@ end</pre>
 <figure class="sim" id="sim-merge" data-source="thealgorithms-python" data-locator="thealgorithms-python:data_structures/arrays/merge_sorted.py::merge_sorted_arrays">
   <div class="sim-head"><span class="eyebrow">Sim</span><span><span data-ref="list-c"><em>C</em></span> grows by one element a step: the smaller of the heads of <span data-ref="list-a"><em>A</em></span> and <span data-ref="list-b"><em>B</em></span>, <span data-ref="list-a"><em>A</em></span>’s on a tie, so equal keys keep their order. Once one list runs out, the rest of the other goes on the end with no more comparisons, so lists of lengths <em>m</em> and <em>n</em> take at most <em>m</em> + <em>n</em> − 1. The code calls <span data-ref="list-a"><em>A</em></span>, <span data-ref="list-b"><em>B</em></span> and <span data-ref="list-c"><em>C</em></span> nums1, nums2 and merged.</span></div>
 </figure>
-<p>When the inputs are <span data-concept="singly-linked-list">linked lists</span>, this algorithm can be implemented to use only a constant amount of working space; the pointers in the lists' nodes can be reused for bookkeeping and for constructing the final merged list.</p>
-<p>In the merge sort algorithm, this subroutine is typically used to <span data-concept="merge-sorted-sequences">merge</span> two sub-arrays <code>A[lo..mid]</code>, <code>A[mid+1..hi]</code> of a single <span data-concept="array">array</span> <code>A</code>. This can be done by copying the sub-arrays into a temporary <span data-concept="array">array</span>, then applying the <span data-concept="merge-sorted-sequences">merge</span> algorithm above.<sup class="fn" data-note="wp-merge-4"></sup> The allocation of a temporary <span data-concept="array">array</span> can be avoided, but at the expense of speed and programming ease. Various in-place <span data-concept="merge-sorted-sequences">merge</span> <span data-concept="algorithm">algorithms</span> have been devised,<sup class="fn" data-note="wp-merge-5"></sup> sometimes sacrificing the linear-time bound to produce an <em>O</em>(<em>n</em> log <em>n</em>) algorithm;<sup class="fn" data-note="wp-merge-6"></sup> see [<em>Merge sort</em> §Variants] for discussion.</p>
+<p>When the inputs are linked lists, this algorithm can be implemented to use only a constant amount of working space; the pointers in the lists' nodes can be reused for bookkeeping and for constructing the final merged list.</p>
+<p>In the merge sort algorithm, this subroutine is typically used to merge two sub-arrays <code>A[lo..mid]</code>, <code>A[mid+1..hi]</code> of a single array <code>A</code>. This can be done by copying the sub-arrays into a temporary array, then applying the merge algorithm above.<sup class="fn" data-note="wp-merge-4"></sup> The allocation of a temporary array can be avoided, but at the expense of speed and programming ease. Various in-place merge algorithms have been devised,<sup class="fn" data-note="wp-merge-5"></sup> sometimes sacrificing the linear-time bound to produce an <em>O</em>(<em>n</em> log <em>n</em>) algorithm;<sup class="fn" data-note="wp-merge-6"></sup> see [<em>Merge sort</em> §Variants] for discussion.</p>
 </section>
 
 <section id="moving-average" data-source="wikipedia" data-locator="wikipedia:Moving_average#Simple moving average, from its opening to “…and only 3 arithmetic steps.”">
@@ -102,7 +102,7 @@ $$\begin{aligned}
 \end{aligned}$$
 <p>When calculating the next mean $\textit{SMA}_{k,\text{next}}$ with the same sampling width $k$ the range from $n - k + 2$ to $n+1$ is considered. A new value $p_{n+1}$ comes into the sum and the oldest value $p_{n-k+1}$ drops out. This simplifies the calculations by reusing the previous mean $\textit{SMA}_{k,\text{prev}}$.</p>
 <figure class="dv" id="drv-sma-next"></figure>
-<p>This means that the <span data-concept="sliding-window-fixed">moving average</span> filter can be computed quite cheaply on real time data with a FIFO / circular buffer and only 3 arithmetic steps.</p>
+<p>This means that the moving average filter can be computed quite cheaply on real time data with a FIFO / circular buffer and only 3 arithmetic steps.</p>
 <figure class="sim" id="sim-moving-window">
   <div class="sim-head"><span class="eyebrow">Sim</span><span>The window holds the last <em>k</em> points. Each move adds the point that comes in and subtracts the one that drops out, three arithmetic steps whatever <em>k</em> is, against <em>k</em> to add the window up again. A larger <em>k</em> gives a smoother line that lags further behind the data.</span></div>
 </figure>
@@ -110,7 +110,7 @@ $$\begin{aligned}
 
 <section id="variable-window" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#维护区间信息 (its opening, 例题 1 as a link, and its 过程)" data-ai="claude-opus-5-5 high">
 <h2>Variable-size sliding window</h2>
-<p>If <span data-concept="two-pointers">two pointers</span> are not combined with other data structures, the simplest pattern for <span data-concept="sliding-window-variable">maintaining information over an interval</span> with them is to maintain information that has a certain monotonicity and in which adding or removing one element is easy to handle, such as a sum of positive numbers or a product of positive integers.</p>
+<p>If two pointers are not combined with other data structures, the simplest pattern for <span data-concept="sliding-window-variable">maintaining information over an interval</span> with them is to maintain information that has a certain monotonicity and in which adding or removing one element is easy to handle, such as a sum of positive numbers or a product of positive integers.</p>
 <h3>Example</h3>
 <p><a href="https://leetcode.com/problems/subarray-product-less-than-k/">LeetCode 713. Subarray Product Less Than K</a></p>
 <h4>Procedure</h4>
