@@ -542,6 +542,7 @@ def ods_inline(tex, spec, notes, ctx):
     def math(m):
         body = m.group(1)
         body = re.sub(r'(\\[A-Za-z]+)#', r'\1 #', body)    # \log#n# is \log n, not \logn
+        body = body.replace('\\mbox{', '\\text{')            # KaTeX has no \mbox; \text is the same box
         body = re.sub(r'#(\w+)#', r'\1', body)
         return '\x00' + body + '\x01'
     h = re.sub(r'\$(.+?)\$', math, h)
@@ -817,6 +818,7 @@ def build(sec_dir, check=False):
                 if e['kind'] == 'display':
                     # a dollar sign in a display is set as text, so that no $ stands in the page
                     tex = re.sub(r'#(\w+)#', r'\1', re.sub(r'(\\[A-Za-z]+)#', r'\1 #', e['tex']).replace('\\$', '\\text{\\textdollar}'))
+                    tex = tex.replace('\\mbox{', '\\text{')    # KaTeX has no \mbox; \text is the same box
                     # a display a derivation replaces (root item 29.2): the spec's DISPLAY_AS names it by a piece of its TeX
                     swap = next((k for piece, k in spec.get('DISPLAY_AS', {}).items() if piece in tex), None)
                     hparts.append(spec['HTML'][swap] if swap else f'$${tex}$$')

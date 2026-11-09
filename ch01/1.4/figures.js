@@ -149,7 +149,7 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
         const cell = Math.min(GW / n, GH / n, 92);
         const i = v.i, j = v.j;
         /* the headline sings the line just sung, or says what the day added */
-        if (done) topline(ctx, `${n === 12 ? 'Twelve' : n} day${n === 1 ? '' : 's'}: ${names} gift names sung and ${given} gifts given.`);
+        if (done) topline(ctx, `${n === 12 ? 'Twelve' : n} day${n === 1 ? '' : 's'}: ${names} gift name${names === 1 ? '' : 's'} sung and ${given} gift${given === 1 ? '' : 's'} given.`);
         else if (L === 2) topline(ctx, `${n - 1} gift${n === 2 ? '' : 's'} on the list, so the song has n = ${n} day${n === 1 ? '' : 's'}.`);
         else if (blk === 'day') topline(ctx, `Day ${i} sung: ${i} gift name${i === 1 ? '' : 's'} and ${(i * (i + 1)) / 2} gift${i === 1 ? '' : 's'}.`);
         else if (L === 4 || L === 3) topline(ctx, `“On the ${ORD[i]} day of Christmas, my true love gave to me”`);
@@ -173,7 +173,7 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
           if (onRow) rect(ctx, gx - 4, y0 - 2, r * cell + 8, cell + 4, null, cI, 3, [10, 8]);
         }
         const ended = done || L === 9, daysSung = done ? n : !i ? 0 : ended ? i : i - 1;
-        text(ctx, !i ? 'no day sung yet' : ended ? `days 1 .. ${daysSung} sung` : `${daysSung ? `days 1 .. ${daysSung} sung · ` : ''}day i = ${i} in progress`, gx, 830, PAL.muted, { size: 26 });
+        text(ctx, !i ? 'no day sung yet' : ended ? (daysSung === 1 ? 'day 1 sung' : `days 1 .. ${daysSung} sung`) : `${daysSung ? (daysSung === 1 ? 'day 1 sung · ' : `days 1 .. ${daysSung} sung · `) : ''}day i = ${i} in progress`, gx, 830, PAL.muted, { size: 26 });
         text(ctx, `gift names ${names} of n(n + 1)/2 = ${(n * (n + 1)) / 2}   ·   gifts ${given} of n(n + 1)(n + 2)/6 = ${(n * (n + 1) * (n + 2)) / 6}`, 700, 932, cost, { size: 28, align: 'center' });
       } else {
         const beer = v.beer || 0, rows = n + 1, cell = Math.min(GH / rows, 70), cw = 130;

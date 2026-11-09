@@ -75,6 +75,11 @@
    "span": "guarantees",
    "concept": "interface-vs-implementation",
    "verb": "uses"
+  },
+  {
+   "span": "running-time",
+   "concept": "big-o",
+   "verb": "uses"
   }
  ],
  "exercises": [],
