@@ -1,0 +1,962 @@
+{
+ "id": "3.2",
+ "chapter": "3",
+ "title": "Queues and circular buffers",
+ "short": "Queues",
+ "lead": "An Essential section on the <span data-concept=\"queue\">FIFO queue</span> and two ways to build it. Arrays are indexed from 0. ODS’s ArrayQueue grows and shrinks its circular array as <a href=\"/cs-interview-prep-ultra/ch02/2.2/\">Section 2.2</a>’s ArrayStack does; the <span data-concept=\"circular-buffer\">circular buffer</span> of the exercises is the fixed-size kind, which overwrites its oldest element. The linked queue is <a href=\"/cs-interview-prep-ultra/ch02/2.6/\">Section 2.6</a>’s SLList, whose pop() removes the head node as <a href=\"/cs-interview-prep-ultra/ch03/3.1/\">Section 3.1</a>’s linked stack does; the Deque it nearly implements is <a href=\"/cs-interview-prep-ultra/ch03/3.3/\">Section 3.3</a>’s.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "ODS’s paragraphs on priority queues, stacks and deques, which chapter 9 and Sections 3.1 and 3.3 carry, and the opening and summary of its SLList section are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "Exercism’s circular-buffer and Interactive Coding Challenges’ queue_list are the code exercises. Exercism’s own example cannot store 0, so both circular-buffer references are the AI’s, as are the queue’s JavaScript reference and the tests added to each. OpenDSA’s keyed queue questions (StackQMCQ) wait for the converter of OpenDSA’s exercises, and its four enqueue and dequeue exercises and the Wikibooks A-level queue traces for an answer type that takes a sequence; the one Wikibooks question on priority queues is held for chapter 9. Kattis’s ferryloading4 has only a sample, ODS’s ArrayQueue harness has no printed statement, ODS Exercise 2.3 (RandomQueue) and SICP Exercises 3.21 and 3.22 have no tests of their own, and the pythonds queue exercises have no published answers, so they are left out; the TheAlgorithms, keon and trekhleb queue files are tests with no printed statement. Interactive Coding Challenges’ queue_from_stacks is left out because its queue takes quadratic time on alternating operations. ODS Exercise 2.8, which replaces the mod operator with bit operations, is held for chapter 7, and MIT 6.006’s problem 1-4 is with Section 2.6.",
+ "figures": [
+  {
+   "id": "sim-fifo-queue",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/ods-queue.png"
+   ],
+   "original_caption": "A FIFO Queue.",
+   "draws": [
+    "key"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-arrayqueue",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/ods-arrayqueue.png"
+   ],
+   "original_caption": "A sequence of add(x) and remove(i) operations on an ArrayQueue. Arrows denote elements being copied. Operations that result in a call to resize() are marked with an asterisk.",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "queue",
+   "concept": "queue",
+   "verb": "introduces"
+  },
+  {
+   "span": "queue",
+   "concept": "interface-vs-implementation",
+   "verb": "uses"
+  },
+  {
+   "span": "circular",
+   "concept": "circular-buffer",
+   "verb": "introduces"
+  },
+  {
+   "span": "circular",
+   "concept": "queue",
+   "verb": "uses"
+  },
+  {
+   "span": "circular",
+   "concept": "dynamic-array",
+   "verb": "uses"
+  },
+  {
+   "span": "arrayqueue",
+   "concept": "array-queue",
+   "verb": "introduces"
+  },
+  {
+   "span": "arrayqueue",
+   "concept": "circular-buffer",
+   "verb": "uses"
+  },
+  {
+   "span": "arrayqueue",
+   "concept": "array-resize",
+   "verb": "uses"
+  },
+  {
+   "span": "arrayqueue",
+   "concept": "dynamic-array-cost",
+   "verb": "uses"
+  },
+  {
+   "span": "linked-queue",
+   "concept": "queue-linked-list",
+   "verb": "introduces"
+  },
+  {
+   "span": "linked-queue",
+   "concept": "singly-linked-list",
+   "verb": "uses"
+  },
+  {
+   "span": "linked-queue",
+   "concept": "queue",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "exercism:circular-buffer",
+   "source_number": "circular-buffer",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "circular",
+   "changes": "The tests are Exercism’s canonical cases, each a list of operations that a given run(capacity, operations) plays on your CircularBuffer, with two more that store 0 and go round the buffer several times; a failed read or write is reported as “empty” or “full”.",
+   "prompt": "A circular buffer, cyclic buffer or ring buffer is a data structure that uses a single, fixed-size buffer as if it were connected end-to-end.\n\nA circular buffer first starts empty and of some predefined length. For example, this is a 7-element buffer:\n\n<pre>[ ][ ][ ][ ][ ][ ][ ]</pre>\n\nAssume that a 1 is written into the middle of the buffer (exact starting location does not matter in a circular buffer):\n\n<pre>[ ][ ][ ][1][ ][ ][ ]</pre>\n\nThen assume that two more elements are added — 2 &amp; 3 — which get appended after the 1:\n\n<pre>[ ][ ][ ][1][2][3][ ]</pre>\n\nIf two elements are then removed from the buffer, the oldest values inside the buffer are removed. The two elements removed, in this case, are 1 &amp; 2, leaving the buffer with just a 3:\n\n<pre>[ ][ ][ ][ ][ ][3][ ]</pre>\n\nIf the buffer has 7 elements then it is completely full:\n\n<pre>[5][6][7][8][9][3][4]</pre>\n\nWhen the buffer is full an error will be raised, alerting the client that further writes are blocked until a slot becomes free.\n\nWhen the buffer is full, the client can opt to overwrite the oldest data with a forced write. In this case, two more elements — A &amp; B — are added and they overwrite the 3 &amp; 4:\n\n<pre>[5][6][7][8][9][A][B]</pre>\n\n3 &amp; 4 have been replaced by A &amp; B making 5 now the oldest data in the buffer. Finally, if two elements are removed then what would be returned is 5 &amp; 6 yielding the buffer:\n\n<pre>[ ][ ][7][8][9][A][B]</pre>\n\nBecause there is space available, if the client again uses overwrite to store C &amp; D then the space where 5 &amp; 6 were stored previously will be used not the location of 7 &amp; 8. 7 is still the oldest element and the buffer is once again full.\n\n<pre>[C][D][7][8][9][A][B]</pre>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class BufferFullException(BufferError):\n    \"\"\"Exception raised when CircularBuffer is full.\"\"\"\n\n\nclass BufferEmptyException(BufferError):\n    \"\"\"Exception raised when CircularBuffer is empty.\"\"\"\n\n\nclass CircularBuffer:\n    def __init__(self, capacity):\n        pass\n\n    def read(self):\n        pass\n\n    def write(self, data):\n        pass\n\n    def overwrite(self, data):\n        pass\n\n    def clear(self):\n        pass\n\n\ndef run(capacity, operations):\n    \"\"\"Given: plays the tests' operations on a CircularBuffer and returns what each read and write gives:\n    the value read, None for a write that succeeds, \"empty\" or \"full\" for one that raises.\"\"\"\n    buf, out = CircularBuffer(capacity), []\n    for op, *args in operations:\n        try:\n            if op == 'read':\n                out.append(buf.read())\n            elif op == 'write':\n                buf.write(*args)\n                out.append(None)\n            elif op == 'overwrite':\n                buf.overwrite(*args)\n            else:\n                buf.clear()\n        except BufferEmptyException:\n            out.append('empty')\n        except BufferFullException:\n            out.append('full')\n    return out\n",
+     "reference": "class BufferFullException(BufferError):\n    \"\"\"Exception raised when CircularBuffer is full.\"\"\"\n\n\nclass BufferEmptyException(BufferError):\n    \"\"\"Exception raised when CircularBuffer is empty.\"\"\"\n\n\nclass CircularBuffer:\n    def __init__(self, capacity):\n        self.a = [None] * capacity\n        self.j = 0          # the oldest element\n        self.n = 0          # how many are stored\n\n    def read(self):\n        if self.n == 0:\n            raise BufferEmptyException(\"Circular buffer is empty\")\n        x = self.a[self.j]\n        self.a[self.j] = None\n        self.j = (self.j + 1) % len(self.a)\n        self.n -= 1\n        return x\n\n    def write(self, data):\n        if self.n == len(self.a):\n            raise BufferFullException(\"Circular buffer is full\")\n        self.a[(self.j + self.n) % len(self.a)] = data\n        self.n += 1\n\n    def overwrite(self, data):\n        if self.n == len(self.a):\n            self.read()\n        self.write(data)\n\n    def clear(self):\n        self.a = [None] * len(self.a)\n        self.j = 0\n        self.n = 0\n\n\ndef run(capacity, operations):\n    \"\"\"Given: plays the tests' operations on a CircularBuffer and returns what each read and write gives:\n    the value read, None for a write that succeeds, \"empty\" or \"full\" for one that raises.\"\"\"\n    buf, out = CircularBuffer(capacity), []\n    for op, *args in operations:\n        try:\n            if op == 'read':\n                out.append(buf.read())\n            elif op == 'write':\n                buf.write(*args)\n                out.append(None)\n            elif op == 'overwrite':\n                buf.overwrite(*args)\n            else:\n                buf.clear()\n        except BufferEmptyException:\n            out.append('empty')\n        except BufferFullException:\n            out.append('full')\n    return out\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class BufferFullError extends Error {}\n\nclass BufferEmptyError extends Error {}\n\nclass CircularBuffer {\n    constructor(capacity) {\n    }\n\n    read() {\n    }\n\n    write(data) {\n    }\n\n    forceWrite(data) {\n    }\n\n    clear() {\n    }\n}\n\n\n// Given: plays the tests' operations on a CircularBuffer and returns what each read and write gives:\n// the value read, null for a write that succeeds, \"empty\" or \"full\" for one that throws.\nfunction run(capacity, operations) {\n    const buf = new CircularBuffer(capacity), out = [];\n    for (const [op, ...args] of operations) {\n        try {\n            if (op === 'read') out.push(buf.read());\n            else if (op === 'write') { buf.write(...args); out.push(null); }\n            else if (op === 'overwrite') buf.forceWrite(...args);\n            else buf.clear();\n        } catch (e) {\n            if (e instanceof BufferEmptyError) out.push('empty');\n            else if (e instanceof BufferFullError) out.push('full');\n            else throw e;\n        }\n    }\n    return out;\n}\n",
+     "reference": "class BufferFullError extends Error {}\n\nclass BufferEmptyError extends Error {}\n\nclass CircularBuffer {\n    constructor(capacity) {\n        this.a = new Array(capacity).fill(null);\n        this.j = 0;         // the oldest element\n        this.n = 0;         // how many are stored\n    }\n\n    read() {\n        if (this.n === 0) throw new BufferEmptyError('Circular buffer is empty');\n        const x = this.a[this.j];\n        this.a[this.j] = null;\n        this.j = (this.j + 1) % this.a.length;\n        this.n -= 1;\n        return x;\n    }\n\n    write(data) {\n        if (this.n === this.a.length) throw new BufferFullError('Circular buffer is full');\n        this.a[(this.j + this.n) % this.a.length] = data;\n        this.n += 1;\n    }\n\n    forceWrite(data) {\n        if (this.n === this.a.length) this.read();\n        this.write(data);\n    }\n\n    clear() {\n        this.a.fill(null);\n        this.j = 0;\n        this.n = 0;\n    }\n}\n\n\n// Given: plays the tests' operations on a CircularBuffer and returns what each read and write gives:\n// the value read, null for a write that succeeds, \"empty\" or \"full\" for one that throws.\nfunction run(capacity, operations) {\n    const buf = new CircularBuffer(capacity), out = [];\n    for (const [op, ...args] of operations) {\n        try {\n            if (op === 'read') out.push(buf.read());\n            else if (op === 'write') { buf.write(...args); out.push(null); }\n            else if (op === 'overwrite') buf.forceWrite(...args);\n            else buf.clear();\n        } catch (e) {\n            if (e instanceof BufferEmptyError) out.push('empty');\n            else if (e instanceof BufferFullError) out.push('full');\n            else throw e;\n        }\n    }\n    return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       1,
+       [
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       "empty"
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       1
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       1,
+       "empty"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       2,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       1,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       "full"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       1,
+       null,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       3,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         3
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       1,
+       null,
+       2,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "clear"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       "empty"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "clear"
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       1,
+       [
+        [
+         "clear"
+        ],
+        [
+         "write",
+         1
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       2,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "overwrite",
+         2
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       1,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       2,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "overwrite",
+         3
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       2,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       3,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "write",
+         3
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         4
+        ],
+        [
+         "overwrite",
+         5
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       null,
+       1,
+       null,
+       3,
+       4,
+       5
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       2,
+       [
+        [
+         "clear"
+        ],
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "overwrite",
+         3
+        ],
+        [
+         "overwrite",
+         4
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       3,
+       4,
+       "empty"
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       2,
+       [
+        [
+         "write",
+         0
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         0
+        ],
+        [
+         "write",
+         1
+        ],
+        [
+         "overwrite",
+         0
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       0,
+       null,
+       null,
+       1,
+       0,
+       "empty"
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       3,
+       [
+        [
+         "write",
+         1
+        ],
+        [
+         "write",
+         2
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         3
+        ],
+        [
+         "write",
+         4
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         5
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ],
+        [
+         "write",
+         6
+        ],
+        [
+         "write",
+         7
+        ],
+        [
+         "write",
+         8
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ],
+        [
+         "read"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null,
+       1,
+       null,
+       null,
+       2,
+       null,
+       3,
+       4,
+       null,
+       null,
+       "full",
+       5,
+       6,
+       7,
+       "empty"
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "icc:stacks_queues/queue_list",
+   "source_number": "queue_list",
+   "origin": "icc",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "linked-queue",
+   "changes": "The source’s one unit test is a list of operations that a given run(ops) plays on your Queue, with two more that empty the queue and use it again and that mix enqueues and dequeues.",
+   "prompt": "Implement a queue with enqueue and dequeue methods using a linked list.\n\nConstraints:\n\n- If there is one item in the list, do you expect the first and last pointers to both point to it? Yes\n- If there are no items on the list, do you expect the first and last pointers to be None? Yes\n- If you dequeue on an empty queue, does that return None? Yes\n- Can we assume this fits memory? Yes",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class Node(object):\n\n    def __init__(self, data):\n        # TODO: Implement me\n        pass\n\n\nclass Queue(object):\n\n    def __init__(self):\n        # TODO: Implement me\n        pass\n\n    def enqueue(self, data):\n        # TODO: Implement me\n        pass\n\n    def dequeue(self):\n        # TODO: Implement me\n        pass\n\n\ndef run(ops):\n    \"\"\"Given: plays the tests' operations on a Queue and returns what each dequeue gives.\"\"\"\n    queue, out = Queue(), []\n    for op, *args in ops:\n        if op == 'enqueue':\n            queue.enqueue(*args)\n        else:\n            out.append(queue.dequeue())\n    return out\n",
+     "reference": "class Node(object):\n\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\n\nclass Queue(object):\n\n    def __init__(self):\n        self.head = None\n        self.tail = None\n\n    def enqueue(self, data):\n        node = Node(data)\n        # Empty list\n        if self.head is None and self.tail is None:\n            self.head = node\n            self.tail = node\n        else:\n            self.tail.next = node\n            self.tail = node\n\n    def dequeue(self):\n        # Empty list\n        if self.head is None and self.tail is None:\n            return None\n        data = self.head.data\n        # Remove only element from a one element list\n        if self.head == self.tail:\n            self.head = None\n            self.tail = None\n        else:\n            self.head = self.head.next\n        return data\n\n\ndef run(ops):\n    \"\"\"Given: plays the tests' operations on a Queue and returns what each dequeue gives.\"\"\"\n    queue, out = Queue(), []\n    for op, *args in ops:\n        if op == 'enqueue':\n            queue.enqueue(*args)\n        else:\n            out.append(queue.dequeue())\n    return out\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class Node {\n    constructor(data) {\n        // TODO: Implement me\n    }\n}\n\nclass Queue {\n    constructor() {\n        // TODO: Implement me\n    }\n\n    enqueue(data) {\n        // TODO: Implement me\n    }\n\n    dequeue() {\n        // TODO: Implement me\n    }\n}\n\n\n// Given: plays the tests' operations on a Queue and returns what each dequeue gives.\nfunction run(ops) {\n    const queue = new Queue(), out = [];\n    for (const [op, ...args] of ops) {\n        if (op === 'enqueue') queue.enqueue(...args);\n        else out.push(queue.dequeue());\n    }\n    return out;\n}\n",
+     "reference": "class Node {\n    constructor(data) {\n        this.data = data;\n        this.next = null;\n    }\n}\n\nclass Queue {\n    constructor() {\n        this.head = null;\n        this.tail = null;\n    }\n\n    enqueue(data) {\n        const node = new Node(data);\n        // Empty list\n        if (this.head === null && this.tail === null) {\n            this.head = node;\n            this.tail = node;\n        } else {\n            this.tail.next = node;\n            this.tail = node;\n        }\n    }\n\n    dequeue() {\n        // Empty list\n        if (this.head === null && this.tail === null) return null;\n        const data = this.head.data;\n        // Remove only element from a one element list\n        if (this.head === this.tail) {\n            this.head = null;\n            this.tail = null;\n        } else {\n            this.head = this.head.next;\n        }\n        return data;\n    }\n}\n\n\n// Given: plays the tests' operations on a Queue and returns what each dequeue gives.\nfunction run(ops) {\n    const queue = new Queue(), out = [];\n    for (const [op, ...args] of ops) {\n        if (op === 'enqueue') queue.enqueue(...args);\n        else out.push(queue.dequeue());\n    }\n    return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        [
+         "dequeue"
+        ],
+        [
+         "enqueue",
+         1
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "enqueue",
+         2
+        ],
+        [
+         "enqueue",
+         3
+        ],
+        [
+         "enqueue",
+         4
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       1,
+       2,
+       3,
+       4
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "enqueue",
+         "a"
+        ],
+        [
+         "enqueue",
+         "b"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "enqueue",
+         "c"
+        ],
+        [
+         "enqueue",
+         "d"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ]
+       ]
+      ],
+      "expect": [
+       "a",
+       "b",
+       null,
+       "c",
+       "d",
+       null
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "enqueue",
+         1
+        ],
+        [
+         "enqueue",
+         2
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "enqueue",
+         3
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "enqueue",
+         4
+        ],
+        [
+         "enqueue",
+         5
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "enqueue",
+         6
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ],
+        [
+         "dequeue"
+        ]
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       null
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "circular-buffer"
+  },
+  {
+   "exercise": "c1",
+   "concept": "queue"
+  },
+  {
+   "exercise": "c2",
+   "concept": "queue-linked-list"
+  },
+  {
+   "exercise": "c2",
+   "concept": "queue"
+  }
+ ],
+ "referents": [
+  {
+   "id": "a",
+   "label": "a, the backing array",
+   "figures": [
+    "sim-arrayqueue"
+   ]
+  },
+  {
+   "id": "b",
+   "label": "b, the array resize() fills",
+   "figures": [
+    "sim-arrayqueue"
+   ]
+  },
+  {
+   "id": "j",
+   "label": "j, the index of the next element to remove",
+   "figures": [
+    "sim-arrayqueue"
+   ]
+  },
+  {
+   "id": "n",
+   "label": "n, the number of elements in the queue",
+   "figures": [
+    "sim-arrayqueue"
+   ]
+  },
+  {
+   "id": "k",
+   "label": "k, the element resize() is copying",
+   "figures": [
+    "sim-arrayqueue"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "err-theorem-ops",
+   "kind": "correction",
+   "html": "A Queue’s operations are $\\mathrm{add}(x)$ and $\\mathrm{remove}()$; $\\mathrm{add}(i,x)$ and $\\mathrm{remove}(i)$ are the List operations of ArrayStack’s theorem. The bound holds for any sequence of $m$ calls to $\\mathrm{add}(x)$ and $\\mathrm{remove}()$."
+  },
+  {
+   "id": "err-resize-size",
+   "kind": "correction",
+   "html": "The code allocates an array of size $\\max(1, 2n)$, so that a queue emptied by $\\mathrm{remove}()$ keeps an array of length 1 to add into."
+  },
+  {
+   "id": "err-caption-ops",
+   "kind": "correction",
+   "figure": "sim-arrayqueue",
+   "html": "The calls drawn are $\\mathrm{add}(x)$ and $\\mathrm{remove}()$, the Queue’s operations; $\\mathrm{remove}(i)$ is a List operation."
+  }
+ ],
+ "derivations": []
+}

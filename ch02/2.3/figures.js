@@ -163,7 +163,7 @@ const ptr = (ctx, S, list, side) => {
           if (cur) rect(ctx, x0 + 2, y0 + 2, cw - 4, ch - 4, null, found ? key : PAL.ink, 4);
         }
       }
-      text(ctx, 'i', gx - 54, gy + ((n - 1) * ch) / 2, cl, { size: 28, weight: 600, italic: true, align: 'right' });
+      text(ctx, 'i', gx - 18, gy - 22, cl, { size: 28, weight: 600, italic: true, align: 'right' });
       const checks = v.checks || 0;
       text(ctx, `checks ${checks} ≤ n − 1 = ${n - 1}`, 1340, 830, C('cost'), { size: 28, align: 'right' });
     },
@@ -310,7 +310,7 @@ const ptr = (ctx, S, list, side) => {
       if (lo >= 0) ps.push({ at: g.num('low'), name: 'low', color: cs }, { at: g.num('high'), name: 'high', color: ce });
       if (ps.length) ptr(ctx, S, ps);
       /* a = nums[i] and the pair being tried, as a sum */
-      if (I >= 0 && lo >= 0 && L >= 6 && L !== 22) {
+      if (I >= 0 && lo >= 0 && lo < hi && L >= 6 && L !== 22) {  /* no pair once low meets high */
         const y = 400;
         text(ctx, `a = ${neg(nums[I])}`, 300, y, ci, { size: 32, weight: 600, align: 'center' });
         text(ctx, `b = ${neg(nums[lo])}`, 640, y, cs, { size: 32, weight: 600, align: 'center' });
@@ -531,7 +531,9 @@ const ptr = (ctx, S, list, side) => {
         arrow(ctx, fx, fy + 40, tx, ty - 40, ev[0] === 'takeA' ? ca : cb, 4);
         text(ctx, String(merged[to]), fx + (tx - fx) * e, fy + (ty - fy) * e, key, { size: 32, align: 'center', weight: 600 });
       }
-      text(ctx, `C sorted, holding A[0..${i}) and B[0..${j})`, x0, 690, idx, { size: 26 });
+      /* after the loop, extend copies the rest of A, then of B, without moving i or j: count from what C holds */
+      const ia = shown.length >= A.length + j ? A.length : i, jb = shown.length >= A.length + B.length ? B.length : j;
+      text(ctx, `C sorted, holding A[0..${ia}) and B[0..${jb})`, x0, 690, idx, { size: 26 });
       text(ctx, `comparisons ${v.comps || 0} ≤ m + n − 1 = ${Math.max(0, N - 1)}`, 1340, 760, C('cost'), { size: 28, align: 'right' });
     },
   });
@@ -703,7 +705,7 @@ const ptr = (ctx, S, list, side) => {
       const inp = INPUTS.find((x) => x.value === g.input) || INPUTS[0], A = inp.A, n = A.length, k = inp.k;
       const v = g.frame.vars, L = g.frame.line, ev = g.frame.ev || [];
       const cl = F.ref('win-l'), cr = F.ref('win-r'), cp = F.ref('win-tmp'), idx = C('index'), key = C('key');
-      const l = typeof v.l === 'number' ? v.l : 0, r = typeof v.r === 'number' ? v.r : -1, p = typeof v.p === 'number' ? v.p : 1;
+      const l = typeof v.l === 'number' ? v.l : 0, r = typeof v.r === 'number' ? v.r : L >= 11 ? n - 1 : -1, p = typeof v.p === 'number' ? v.p : 1;
       let head;
       if (L <= 4) head = `An empty window, product 1, and k = ${k}.`;
       else if (L === 5) head = `r = ${r}: x = ${A[r]} joins the window on the right.`;
@@ -713,9 +715,10 @@ const ptr = (ctx, S, list, side) => {
       else head = `Done: ${v.ans} windows have product < ${k}.`;
       topline(ctx, head);
       const S = cells(ctx, { values: A, y: 230, state: (q) => (q < l ? 'faded' : q > r ? 'hollow' : 'live') });
-      if (r >= l && r >= 0) F.ds.region(ctx, S, { from: Math.max(0, g.num('l')), to: g.num('r'), color: idx, alpha: 0.16 });
+      const er = isNaN(g.num('r')) ? r : g.num('r');  /* after the loop the trace has no r: Python leaves it at n − 1 */
+      if (r >= l && r >= 0) F.ds.region(ctx, S, { from: Math.max(0, g.num('l')), to: er, color: idx, alpha: 0.16 });
       const ps = [{ at: g.num('l'), name: 'l', color: cl }];
-      if (r >= 0) ps.push({ at: g.num('r'), name: 'r', color: cr });
+      if (r >= 0) ps.push({ at: er, name: 'r', color: cr });
       ptr(ctx, S, ps);
       /* the product of the window, written out, against k */
       const inside = r >= l ? A.slice(l, r + 1) : [];

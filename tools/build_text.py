@@ -907,7 +907,9 @@ def build(sec_dir, check=False):
         for blk, old, new, *cnt in spec.get('MARKS', []):
             if blk != b['id']:
                 continue
-            if '<' in old:
+            # a fifth field 'plain' replaces in the whole text, as an old string holding a tag does: a block whose maths
+            # holds a bare < ($i<n/2$, ch03/3.3) would otherwise read as a tag to outside_tags and hide what follows
+            if '<' in old or cnt[1:] == ['plain']:
                 n = min(body.count(old), cnt[0] if cnt else 1)
                 body = body.replace(old, new, n)
             else:

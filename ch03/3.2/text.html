@@ -1,0 +1,226 @@
+<section id="queue" data-source="ods" data-locator="ods:intro#the-queue-stack-and-deque-interfaces, the opening paragraph and its list, the FIFO paragraph and fig. queue (to “…called enqueue(x) and dequeue(), respectively.”)">
+<h2>The Queue Interface</h2>
+<p>The <span data-concept="queue">Queue interface</span> represents a collection of elements to which we can add elements and remove the next element. More precisely, the operations supported by the <span data-concept="queue">Queue interface</span> are</p>
+<ul><li>$\mathrm{add}(x)$: add the value $x$ to the <span data-concept="queue">Queue</span></li><li>$\mathrm{remove}()$: remove the next (previously added) value, $y$, from the <span data-concept="queue">Queue</span> and return $y$</li></ul>
+<p>Notice that the $\mathrm{remove}()$ operation takes no argument. The <span data-concept="queue">Queue</span>’s <em><span data-concept="queue">queueing discipline</span></em> decides which element should be removed. There are many possible <span data-concept="queue">queueing disciplines</span>, the most common of which include FIFO, priority, and LIFO.</p>
+<p>A <span data-concept="queue"><em>FIFO (first-in-first-out) Queue</em></span>, which is illustrated in <a href="#sim-fifo-queue">Figure 1.1</a>, removes items in the same order they were added, much in the same way a queue (or line-up) works when checking out at a cash register in a grocery store. This is the most common kind of <span data-concept="queue">Queue</span> so the qualifier FIFO is often omitted. In other texts, the $\mathrm{add}(x)$ and $\mathrm{remove}()$ operations on a <span data-concept="queue">FIFO Queue</span> are often called $\mathrm{enqueue}(x)$ and $\mathrm{dequeue}()$, respectively.</p>
+<figure class="sim" id="sim-fifo-queue" data-original="/media/ch03/ods-queue.png" data-original-caption="A FIFO Queue.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Values join the queue at one end with add(x) and leave from the other with remove(), so each remove() returns the value that has waited longest, and the values come out in the order they went in.</span></div>
+</figure>
+</section>
+
+<section id="circular" data-source="ods" data-locator="ods:arrays#sec:arrayqueue, from the opening through “…does not exceed the size of a.” (the circular array)">
+<h2>ArrayQueue: An Array-Based Queue</h2>
+<p>In this section, we present the <span data-concept="array-queue">ArrayQueue</span> data structure, which implements a FIFO (first-in-first-out) <span data-concept="queue">queue</span>; elements are removed (using the $\mathrm{remove}()$ operation) from the <span data-concept="queue">queue</span> in the same order they are added (using the $\mathrm{add}(x)$ operation).</p>
+<p>Notice that an <span data-concept="dynamic-array">ArrayStack</span> is a poor choice for an <span data-concept="interface-vs-implementation">implementation</span> of a <span data-concept="queue">FIFO queue</span>. It is not a good choice because we must choose one end of the <span data-concept="list-interface">list</span> upon which to add elements and then remove elements from the other end. One of the two operations must work on the head of the <span data-concept="list-interface">list</span>, which involves calling $\mathrm{add}(i,x)$ or $\mathrm{remove}(i)$ with a value of $i=0$. This gives a running time proportional to $n$.</p>
+<p>To obtain an efficient array-based <span data-concept="interface-vs-implementation">implementation</span> of a <span data-concept="queue">queue</span>, we first notice that the problem would be easy if we had an infinite <span data-concept="array">array</span> $\htmlData{ref=a}{a}$. We could maintain one index $\htmlData{ref=j}{j}$ that keeps track of the next element to remove and an integer $\htmlData{ref=n}{n}$ that counts the number of elements in the <span data-concept="queue">queue</span>. The <span data-concept="queue">queue</span> elements would always be stored in</p>
+$$\htmlData{ref=a}{a}[\htmlData{ref=j}{j}],\htmlData{ref=a}{a}[\htmlData{ref=j}{j}+1],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=j}{j}+\htmlData{ref=n}{n}-1] \enspace .$$
+<p>Initially, both $\htmlData{ref=j}{j}$ and $\htmlData{ref=n}{n}$ would be set to 0. To add an element, we would place it in $\htmlData{ref=a}{a}[\htmlData{ref=j}{j}+\htmlData{ref=n}{n}]$ and increment $\htmlData{ref=n}{n}$. To remove an element, we would remove it from $\htmlData{ref=a}{a}[\htmlData{ref=j}{j}]$, increment $\htmlData{ref=j}{j}$, and decrement $\htmlData{ref=n}{n}$.</p>
+<p>Of course, the problem with this solution is that it requires an infinite <span data-concept="array">array</span>. An <span data-concept="array-queue">ArrayQueue</span> simulates this by using a finite <span data-concept="array">array</span> $\htmlData{ref=a}{a}$ and <em><span data-concept="circular-buffer">modular arithmetic</span></em>. This is the kind of arithmetic used when we are talking about the time of day. For example 10:00 plus five hours gives 3:00. Formally, we say that</p>
+$$10 + 5 = 15 \equiv 3 \pmod{12} \enspace .$$
+<p>We read the latter part of this equation as “15 is congruent to 3 modulo 12.” We can also treat $\bmod$ as a binary operator, so that</p>
+$$15 \bmod 12 = 3 \enspace .$$
+<p>More generally, for an integer $a$ and positive integer $m$, $a \bmod m$ is the unique integer $r\in\{0,\ldots,m-1\}$ such that $a = r + km$ for some integer $k$. Less formally, the value $r$ is the remainder we get when we divide $a$ by $m$. In many programming languages, including C, C++, and Java, the mod operate is represented using the % symbol.</p>
+<p><span data-concept="circular-buffer">Modular arithmetic</span> is useful for simulating an infinite <span data-concept="array">array</span>, since $i\bmod \mathrm{length}(\htmlData{ref=a}{a})$ always gives a value in the range $0,\ldots,\mathrm{length}(\htmlData{ref=a}{a})-1$. Using <span data-concept="circular-buffer">modular arithmetic</span> we can store the <span data-concept="queue">queue</span> elements at <span data-concept="array">array</span> locations</p>
+$$\htmlData{ref=a}{a}[\htmlData{ref=j}{j}\bmod \mathrm{length}(\htmlData{ref=a}{a})],\htmlData{ref=a}{a}[(\htmlData{ref=j}{j}+1)\bmod \mathrm{length}(\htmlData{ref=a}{a})],\ldots,\htmlData{ref=a}{a}[(\htmlData{ref=j}{j}+\htmlData{ref=n}{n}-1)\bmod \mathrm{length}(\htmlData{ref=a}{a})] \enspace.$$
+<p>This treats the <span data-concept="array">array</span> $\htmlData{ref=a}{a}$ like a <span data-concept="circular-buffer"><em>circular array</em></span> in which <span data-concept="array">array</span> indices larger than $\mathrm{length}(\htmlData{ref=a}{a})-1$ “wrap around” to the beginning of the <span data-concept="array">array</span>.</p>
+<p>The only remaining thing to worry about is taking care that the number of elements in the <span data-concept="array-queue">ArrayQueue</span> does not exceed the size of $\htmlData{ref=a}{a}$.</p>
+</section>
+
+<section id="arrayqueue" data-source="ods" data-locator="ods:arrays#sec:arrayqueue, from the first code import (ArrayQueue.a.j.n) to the end of “Summary”">
+<h2>ArrayQueue’s add(x), remove() and resize()</h2>
+<div class="code-set" id="arrayqueue-code">
+<pre data-lang="python"><code>def _initialize(self):
+    self.a = new_array(1)
+    self.j = 0
+    self.n = 0</code></pre>
+<pre data-lang="java"><code>T[] a;
+int j;
+int n;</code></pre>
+<pre data-lang="cpp"><code>array&lt;T&gt; a;
+int j;
+int n;</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>a;
+j;
+n;</code></pre>
+</div>
+<p>A sequence of $\mathrm{add}(x)$ and $\mathrm{remove}()$ operations on an <span data-concept="array-queue">ArrayQueue</span> is illustrated in <a href="#sim-arrayqueue">Figure 2.2</a>. To implement $\mathrm{add}(x)$, we first check if $\htmlData{ref=a}{a}$ is full and, if necessary, call $\mathrm{resize}()$ to increase the size of $\htmlData{ref=a}{a}$. Next, we store $x$ in $\htmlData{ref=a}{a}[(\htmlData{ref=j}{j}+\htmlData{ref=n}{n})\bmod \mathrm{length}(\htmlData{ref=a}{a})]$ and increment $\htmlData{ref=n}{n}$.</p>
+<figure class="sim" id="sim-arrayqueue" data-original="/media/ch03/ods-arrayqueue.png" data-original-caption="A sequence of add(x) and remove(i) operations on an ArrayQueue. Arrows denote elements being copied. Operations that result in a call to resize() are marked with an asterisk.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>ODS’s ArrayQueue running add(x) and remove() on its backing array <span data-ref="a"><em>a</em></span>, seen both as the ring that modular arithmetic makes of it and as the array itself. The <span data-ref="n"><em>n</em></span> elements sit in <span data-ref="a"><em>a</em></span>[<span data-ref="j"><em>j</em></span>], <span data-ref="a"><em>a</em></span>[(<span data-ref="j"><em>j</em></span> + 1) mod length(<span data-ref="a"><em>a</em></span>)], …, <span data-ref="a"><em>a</em></span>[(<span data-ref="j"><em>j</em></span> + <span data-ref="n"><em>n</em></span> − 1) mod length(<span data-ref="a"><em>a</em></span>)]: add(x) writes at (<span data-ref="j"><em>j</em></span> + <span data-ref="n"><em>n</em></span>) mod length(<span data-ref="a"><em>a</em></span>), which runs past the last cell back to cell 0, and remove() moves <span data-ref="j"><em>j</em></span> one cell on. When <span data-ref="a"><em>a</em></span> is full, resize() copies <span data-ref="a"><em>a</em></span>[(<span data-ref="j"><em>j</em></span> + <span data-ref="k"><em>k</em></span>) mod length(<span data-ref="a"><em>a</em></span>)] into <span data-ref="b"><em>b</em></span>[<span data-ref="k"><em>k</em></span>], so the ring is unrolled into an array of length 2<span data-ref="n"><em>n</em></span> that starts at 0, and sets <span data-ref="j"><em>j</em></span> = 0. The resizes follow ArrayStack’s rule, so their copies never pass <span data-type="cost">2<em>m</em> + 2<em>r</em></span> for <em>m</em> calls and <em>r</em> resizes, as in <a href="/cs-interview-prep-ultra/ch02/2.2/#arraystack-cost">Section 2.2</a>.</span></div>
+</figure>
+<div class="code-set">
+<pre data-lang="python"><code>def add(self, x):
+    if self.n + 1 &gt; len(self.a): self._resize()
+    self.a[(self.j+self.n) % len(self.a)] = x
+    self.n += 1
+    return True</code></pre>
+<pre data-lang="java"><code>boolean add(T x) {
+    if (n + 1 &gt; a.length) resize();
+    a[(j+n) % a.length] = x;
+    n++;
+    return true;
+}</code></pre>
+<pre data-lang="cpp"><code>bool add(T x) {
+    if (n + 1 &gt; a.length) resize();
+    a[(j+n) % a.length] = x;
+    n++;
+    return true;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>add(x) {
+    if (this.n + 1 &gt; this.a.length) this.resize();
+    this.a[(this.j+this.n) % this.a.length] = x;
+    this.n++;
+    return true;
+}</code></pre>
+</div>
+<p>To implement $\mathrm{remove}()$, we first store $\htmlData{ref=a}{a}[\htmlData{ref=j}{j}]$ so that we can return it later. Next, we decrement $\htmlData{ref=n}{n}$ and increment $\htmlData{ref=j}{j}$ (modulo $\mathrm{length}(\htmlData{ref=a}{a})$) by setting $\htmlData{ref=j}{j}=(\htmlData{ref=j}{j}+1)\bmod \mathrm{length}(\htmlData{ref=a}{a})$. Finally, we return the stored value of $\htmlData{ref=a}{a}[\htmlData{ref=j}{j}]$. If necessary, we may call $\mathrm{resize}()$ to decrease the size of $\htmlData{ref=a}{a}$.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def remove(self):
+    x = self.a[self.j]
+    self.j = (self.j + 1) % len(self.a)
+    self.n -= 1
+    if len(self.a) &gt;= 3*self.n: self._resize()
+    return x</code></pre>
+<pre data-lang="java"><code>T remove() {
+    if (n == 0) throw new NoSuchElementException();
+    T x = a[j];
+    j = (j + 1) % a.length;
+    n--;
+    if (a.length &gt;= 3*n) resize();
+    return x;
+}</code></pre>
+<pre data-lang="cpp"><code>T remove() {
+    T x = a[j];
+    j = (j + 1) % a.length;
+    n--;
+    if (a.length &gt;= 3*n) resize();
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>remove() {
+    if (this.n === 0) throw new Error("no such element");
+    const x = this.a[this.j];
+    this.j = (this.j + 1) % this.a.length;
+    this.n--;
+    if (this.a.length &gt;= 3*this.n) this.resize();
+    return x;
+}</code></pre>
+</div>
+<p>Finally, the $\mathrm{resize}()$ operation is very similar to <a href="/cs-interview-prep-ultra/ch02/2.2/#resize">the $\mathrm{resize}()$ operation of ArrayStack</a>. It allocates a new <span data-concept="array">array</span>, $\htmlData{ref=b}{b}$, of size $2\htmlData{ref=n}{n}$<sup class="fn" data-note="err-resize-size"></sup> and copies</p>
+$$\htmlData{ref=a}{a}[\htmlData{ref=j}{j}],\htmlData{ref=a}{a}[(\htmlData{ref=j}{j}+1)\bmod \mathrm{length}(\htmlData{ref=a}{a})],\ldots,\htmlData{ref=a}{a}[(\htmlData{ref=j}{j}+\htmlData{ref=n}{n}-1)\bmod \mathrm{length}(\htmlData{ref=a}{a})]$$
+<p>onto</p>
+$$\htmlData{ref=b}{b}[0],\htmlData{ref=b}{b}[1],\ldots,\htmlData{ref=b}{b}[\htmlData{ref=n}{n}-1]$$
+<p>and sets $\htmlData{ref=j}{j}=0$.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _resize(self):
+    b = new_array(max(1, 2*self.n))
+    for k in range(self.n):
+        b[k] = self.a[(self.j+k) % len(self.a)]
+    self.a = b
+    self.j = 0</code></pre>
+<pre data-lang="java"><code>void resize() {
+    T[] b = newArray(max(1,n*2));
+    for (int k = 0; k &lt; n; k++)
+        b[k] = a[(j+k) % a.length];
+    a = b;
+    j = 0;
+}</code></pre>
+<pre data-lang="cpp"><code>void resize() {
+    array&lt;T&gt; b(max(1, 2*n));
+    for (int k = 0; k &lt; n; k++)
+        b[k] = a[(j+k)%a.length];
+    a = b;
+    j = 0;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>resize() {
+    const b = new Array(Math.max(1, this.n*2));
+    for (let k = 0; k &lt; this.n; k++)
+        b[k] = this.a[(this.j+k) % this.a.length];
+    this.a = b;
+    this.j = 0;
+}</code></pre>
+</div>
+<h3>Summary</h3>
+<p>The following theorem summarizes the performance of the <span data-concept="array-queue">ArrayQueue</span> data structure:</p>
+<div class="note"><span class="eyebrow">Theorem</span><p><span data-concept="array-queue">An ArrayQueue implements the (FIFO) Queue interface.</span> Ignoring the cost of calls to $\mathrm{resize}()$, an <span data-concept="array-queue">ArrayQueue</span> supports the operations $\mathrm{add}(x)$ and $\mathrm{remove}()$ in $O(1)$ time per operation. Furthermore, beginning with an empty <span data-concept="array-queue">ArrayQueue</span>, any sequence of $m$ $\mathrm{add}(i,x)$ and $\mathrm{remove}(i)$ operations<sup class="fn" data-note="err-theorem-ops"></sup> results in a total of $O(m)$ time spent during all calls to $\mathrm{resize}()$.</p></div>
+</section>
+
+<section id="linked-queue" data-source="ods" data-locator="ods:linkedlists#sec:sllist, “Queue Operations” and the paragraph after thm:sllist (“An SLList nearly implements the full set of Deque operations…”)">
+<h2>Queue Operations</h2>
+<p><span data-concept="queue-linked-list">An SLList can also implement the FIFO queue operations</span> $\mathrm{add}(x)$ and $\mathrm{remove}()$ in constant time. Removals are done from the head of the list, and are identical to the $\mathrm{pop}()$ operation:</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _remove(self):
+    return self.pop()</code></pre>
+<pre data-lang="java"><code>T remove() {
+    if (n == 0)    return null;
+    T x = head.x;
+    head = head.next;
+    if (--n == 0) tail = null;
+    return x;
+}</code></pre>
+<pre data-lang="cpp"><code>T remove() {
+    if (n == 0)    return null;
+    T x = head-&gt;x;
+    Node *u = head;
+    head = head-&gt;next;
+    delete u;
+    if (--n == 0) tail = NULL;
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>remove() {
+    if (this.n === 0) return null;
+    const x = this.head.x;
+    this.head = this.head.next;
+    if (--this.n === 0) this.tail = null;
+    return x;
+}</code></pre>
+</div>
+<p>Additions, on the other hand, are done at the tail of the list. In most cases, this is done by setting $\mathit{tail}.\mathit{next}=u$, where $u$ is the newly created node that contains $x$. However, a special case occurs when $n=0$, in which case $\mathit{tail}=\mathit{head}=\mathit{nil}$. In this case, both $\mathit{tail}$ and $\mathit{head}$ are set to $u$.</p>
+<div class="code-set" id="sllist-add-code">
+<pre data-lang="python"><code>def _add(self,x):
+    u = self.new_node(x)
+    if self.n == 0:
+        self.head = u
+    else:
+        self.tail.next = u
+    self.tail = u
+    self.n += 1
+    return True</code></pre>
+<pre data-lang="java"><code>boolean add(T x) {
+    Node u = new Node();
+    u.x = x;
+    if (n == 0) {
+        head = u;
+    } else {
+        tail.next = u;
+    }
+    tail = u;
+    n++;
+    return true;
+}</code></pre>
+<pre data-lang="cpp"><code>bool add(T x) {
+    Node *u = new Node(x);
+    if (n == 0) {
+        head = u;
+    } else {
+        tail-&gt;next = u;
+    }
+    tail = u;
+    n++;
+    return true;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>add(x) {
+    const u = new Node();
+    u.x = x;
+    if (this.n === 0) {
+        this.head = u;
+    } else {
+        this.tail.next = u;
+    }
+    this.tail = u;
+    this.n++;
+    return true;
+}</code></pre>
+</div>
+<p>Clearly, both $\mathrm{add}(x)$ and $\mathrm{remove}()$ take constant time.</p>
+<p>An SLList nearly implements the full set of Deque operations. The only missing operation is removing from the tail of an SLList. Removing from the tail of an SLList is difficult because it requires updating the value of $\mathit{tail}$ so that it points to the node $w$ that precedes $\mathit{tail}$ in the SLList; this is the node $w$ such that $\mathit{w}.\mathit{next}=\mathit{tail}$. Unfortunately, the only way to get to $w$ is by traversing the SLList starting at $\mathit{head}$ and taking $n-2$ steps.</p>
+</section>

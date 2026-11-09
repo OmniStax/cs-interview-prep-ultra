@@ -1,0 +1,1006 @@
+{
+ "id": "3.5",
+ "chapter": "3",
+ "title": "Stack applications: expression evaluation",
+ "short": "Expression evaluation",
+ "lead": "An Advanced section on evaluating expressions with stacks: reverse Polish notation with one stack, which is Essential, then ordinary infix expressions with two stacks, then unary and right-associative operators. Expressions are read character by character, and the only index is <span data-ref=\"i\"><em>i</em></span>, the position of the character the code is reading, counted from 0.",
+ "objectives": [],
+ "summary_html": "",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The forth card is Exercism’s, with the 54 canonical cases the Exercism Python track runs as its tests and the track’s example as its Python reference; the JavaScript reference is written by the AI that built the section. The two Kattis cards keep their samples as source tests; their other tests and both references are written by the same AI. Kattis circuitmath has only its sample and is not built. TheAlgorithms’ postfix_evaluation, dijkstras_two_stack_algorithm and infix_to_postfix_conversion and tryalgo’s arithm_expr_eval carry tests but print no exercise statement, so they have no card. The Wikibooks reverse Polish traces and OpenDSA’s infix-to-postfix and postfix-evaluation exercises wait for an answer type that checks a sequence. Two pythonds self-checks are NC cards, kept in exercises-nc.json apart from the book’s CC BY-SA content; its third, postfix3, asks for a change to a function on a page this book only links, and its end-of-chapter exercises 2–5 and 10–13 print no answers, so they are left out. Kattis polish evaluates prefix expressions recursively and is held for chapter 4.",
+ "figures": [
+  {
+   "id": "sim-two-stack-parser",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "rpn",
+   "concept": "rpn-evaluation",
+   "verb": "introduces"
+  },
+  {
+   "span": "parsing",
+   "concept": "expression-parsing",
+   "verb": "introduces"
+  },
+  {
+   "span": "parsing",
+   "concept": "rpn-evaluation",
+   "verb": "uses"
+  },
+  {
+   "span": "unary",
+   "concept": "unary-right-assoc",
+   "verb": "introduces"
+  },
+  {
+   "span": "unary",
+   "concept": "expression-parsing",
+   "verb": "uses"
+  },
+  {
+   "span": "right-assoc",
+   "concept": "unary-right-assoc",
+   "verb": "reinforces"
+  },
+  {
+   "span": "right-assoc",
+   "concept": "expression-parsing",
+   "verb": "reinforces"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "exercism:forth",
+   "source_number": "forth",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "rpn",
+   "changes": "The tests call evaluate with the list of input lines and expect the stack as a list, bottom first. As the Exercism Python track has it, a word with too few values on the stack raises StackUnderflowError, division by zero raises ZeroDivisionError, and an undefined word or the redefinition of a number raises ValueError.",
+   "prompt": "Implement an evaluator for a very simple subset of Forth.\n\nForth is a stack-based programming language. Implement a very basic evaluator for a small subset of Forth.\n\nYour evaluator has to support the following words:\n\n<ul><li><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> (integer arithmetic)</li><li><code>DUP</code>, <code>DROP</code>, <code>SWAP</code>, <code>OVER</code> (stack manipulation)</li></ul>\n\nYour evaluator also has to support defining new words using the customary syntax: <code>: word-name definition ;</code>.\n\nTo keep things simple the only data type you need to support is signed integers of at least 16 bits size.\n\nYou should use the following rules for the syntax: a number is a sequence of one or more (ASCII) digits, a word is a sequence of one or more letters, digits, symbols or punctuation that is not a number. (Forth probably uses slightly different rules, but this is close enough.)\n\nWords are case-insensitive.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "evaluate",
+     "starter": "class StackUnderflowError(Exception):\n    \"\"\"Exception raised when Stack is not full.\n       message: explanation of the error.\n    \"\"\"\n    def __init__(self, message):\n        self.message = message\n\n\ndef evaluate(input_data):\n    pass\n",
+     "reference": "class StackUnderflowError(Exception):\n    \"\"\"Exception raised when Stack is not full.\n       message: explanation of the error.\n    \"\"\"\n    def __init__(self, message):\n        self.message = message\n\n\ndef is_integer(string):\n    try:\n        int(string)\n        return True\n    except ValueError:\n        return False\n\n\ndef evaluate(input_data):\n    if not input_data:\n        return []\n    defines = {}\n    while input_data[0][:1] == ':':\n        values = input_data.pop(0).split()\n        values.pop()\n        values.pop(0)\n        key = values.pop(0).lower()\n        if is_integer(key):\n            raise ValueError('illegal operation')\n        defines[key] = [\n                idx\n                for vivaldi in values\n                for idx in defines.get(vivaldi, [vivaldi])\n        ]\n    stack = []\n    input_data = input_data[-1].split()\n    while any(input_data):\n        word = input_data.pop(0).lower()\n        try:\n            if is_integer(word):\n                stack.append(int(word))\n            elif word in defines:\n                input_data = defines[word] + input_data\n            elif word == '+':\n                stack.append(stack.pop() + stack.pop())\n            elif word == '-':\n                stack.append(-stack.pop() + stack.pop())\n            elif word == '*':\n                stack.append(stack.pop() * stack.pop())\n            elif word == '/':\n                divisor = stack.pop()\n                if divisor == 0:\n                    raise ZeroDivisionError('divide by zero')\n                stack.append(int(stack.pop() / divisor))\n            elif word == 'dup':\n                stack.append(stack[-1])\n            elif word == 'drop':\n                stack.pop()\n            elif word == 'swap':\n                stack.append(stack[-2])\n                del stack[-3]\n            elif word == 'over':\n                stack.append(stack[-2])\n            else:\n                raise ValueError('undefined operation')\n        except IndexError as error:\n            raise StackUnderflowError('Insufficient number of items in stack') from error\n    return stack\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "evaluate",
+     "starter": "class StackUnderflowError extends Error {\n  constructor(message) { super(message); this.name = 'StackUnderflowError'; }\n}\nclass ZeroDivisionError extends Error {\n  constructor(message) { super(message); this.name = 'ZeroDivisionError'; }\n}\nclass ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nfunction evaluate(instructions) {\n}\n",
+     "reference": "class StackUnderflowError extends Error {\n  constructor(message) { super(message); this.name = 'StackUnderflowError'; }\n}\nclass ZeroDivisionError extends Error {\n  constructor(message) { super(message); this.name = 'ZeroDivisionError'; }\n}\nclass ValueError extends Error {\n  constructor(message) { super(message); this.name = 'ValueError'; }\n}\n\nconst isNumber = (w) => /^-?\\d+$/.test(w);\n\nfunction evaluate(instructions) {\n  const defs = new Map();\n  const stack = [];\n  const need = (k) => { if (stack.length < k) throw new StackUnderflowError('Insufficient number of items in stack'); };\n  // a definition is expanded when it is made, so a later redefinition does not change it\n  const expand = (words) => words.flatMap((w) => defs.get(w) || [w]);\n  for (const line of instructions) {\n    const words = line.toLowerCase().split(/\\s+/).filter(Boolean);\n    if (words[0] === ':') {\n      const name = words[1];\n      if (isNumber(name)) throw new ValueError('illegal operation');\n      defs.set(name, expand(words.slice(2, -1)));\n      continue;\n    }\n    for (const w of expand(words)) {\n      if (isNumber(w)) { stack.push(Number(w)); continue; }\n      switch (w) {\n        case '+': need(2); stack.push(stack.pop() + stack.pop()); break;\n        case '-': { need(2); const b = stack.pop(); stack.push(stack.pop() - b); break; }\n        case '*': need(2); stack.push(stack.pop() * stack.pop()); break;\n        case '/': {\n          need(2);\n          const b = stack.pop();\n          if (b === 0) throw new ZeroDivisionError('divide by zero');\n          stack.push(Math.trunc(stack.pop() / b));\n          break;\n        }\n        case 'dup': need(1); stack.push(stack[stack.length - 1]); break;\n        case 'drop': need(1); stack.pop(); break;\n        case 'swap': { need(2); const b = stack.pop(), a = stack.pop(); stack.push(b, a); break; }\n        case 'over': need(2); stack.push(stack[stack.length - 2]); break;\n        default: throw new ValueError('undefined operation');\n      }\n    }\n  }\n  return stack;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        "1 2 3 4 5"
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       3,
+       4,
+       5
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "-1 -2 -3 -4 -5"
+       ]
+      ],
+      "expect": [
+       -1,
+       -2,
+       -3,
+       -4,
+       -5
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 +"
+       ]
+      ],
+      "expect": [
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "+"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 +"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 3 +"
+       ]
+      ],
+      "expect": [
+       1,
+       5
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "3 4 -"
+       ]
+      ],
+      "expect": [
+       -1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "-"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 -"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 12 3 -"
+       ]
+      ],
+      "expect": [
+       1,
+       9
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "2 4 *"
+       ]
+      ],
+      "expect": [
+       8
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "*"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 *"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 3 *"
+       ]
+      ],
+      "expect": [
+       1,
+       6
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "12 3 /"
+       ]
+      ],
+      "expect": [
+       4
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "8 3 /"
+       ]
+      ],
+      "expect": [
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "4 0 /"
+       ]
+      ],
+      "raises": "ZeroDivisionError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "/"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 /"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 12 3 /"
+       ]
+      ],
+      "expect": [
+       1,
+       4
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 + 4 -"
+       ]
+      ],
+      "expect": [
+       -1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "2 4 * 3 /"
+       ]
+      ],
+      "expect": [
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 3 4 * +"
+       ]
+      ],
+      "expect": [
+       13
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 3 4 + *"
+       ]
+      ],
+      "expect": [
+       7
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 dup"
+       ]
+      ],
+      "expect": [
+       1,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 dup"
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "dup"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 drop"
+       ]
+      ],
+      "expect": [],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 drop"
+       ]
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "drop"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 swap"
+       ]
+      ],
+      "expect": [
+       2,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 3 swap"
+       ]
+      ],
+      "expect": [
+       1,
+       3,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "swap"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 swap"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 over"
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 3 over"
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       3,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "over"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 over"
+       ]
+      ],
+      "raises": "StackUnderflowError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": dup-twice dup dup ;",
+        "1 dup-twice"
+       ]
+      ],
+      "expect": [
+       1,
+       1,
+       1
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": countup 1 2 3 ;",
+        "countup"
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": foo dup ;",
+        ": foo dup dup ;",
+        "1 foo"
+       ]
+      ],
+      "expect": [
+       1,
+       1,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": swap dup ;",
+        "1 swap"
+       ]
+      ],
+      "expect": [
+       1,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": + * ;",
+        "3 4 +"
+       ]
+      ],
+      "expect": [
+       12
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": foo 5 ;",
+        ": bar foo ;",
+        ": foo 6 ;",
+        "bar foo"
+       ]
+      ],
+      "expect": [
+       5,
+       6
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": foo 10 ;",
+        ": foo foo 1 + ;",
+        "foo"
+       ]
+      ],
+      "expect": [
+       11
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": 1 2 ;"
+       ]
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": -1 2 ;"
+       ]
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "foo"
+       ]
+      ],
+      "raises": "ValueError",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 DUP Dup dup"
+       ]
+      ],
+      "expect": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 3 4 DROP Drop drop"
+       ]
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 SWAP 3 Swap 4 swap"
+       ]
+      ],
+      "expect": [
+       2,
+       3,
+       4,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        "1 2 OVER Over over"
+       ]
+      ],
+      "expect": [
+       1,
+       2,
+       1,
+       2,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": foo dup ;",
+        "1 FOO Foo foo"
+       ]
+      ],
+      "expect": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        ": SWAP DUP Dup dup ;",
+        "1 swap"
+       ]
+      ],
+      "expect": [
+       1,
+       1,
+       1,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "kattis:calculator",
+   "source_number": "Calculator",
+   "origin": "kattis-by-sa",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "parsing",
+   "prompt": "<strong>Input</strong>\n\nInput contains several test cases, one per line. Each test case consists of an expression to be evaluated, containing numbers, parentheses, and the operators $+,-,*,/$.\n\nNormal operator precedence applies, so multiplication and division bind harder than addition and subtraction. All operators evaluate left-to-right. Implicit multiplication is not possible, so $3(1+1)$ is not a valid input. There may be an arbitrary amount (including $0$) of spaces between tokens. Numbers are integers with absolute value at most $500$.\n\nInput is terminated by end of file.\n\n<strong>Output</strong>\n\nFor each test case, output the value of the expression, with two digits of precision after the decimal point.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "starter": "import sys\n\nfor line in sys.stdin:\n    if not line.strip():\n        continue\n",
+     "reference": "import sys\n\n\ndef priority(op):\n    if op[0] == 'u':\n        return 3\n    if op in '+-':\n        return 1\n    return 2\n\n\ndef process_op(st, op):\n    if op[0] == 'u':\n        l = st.pop()\n        st.append(-l if op == 'u-' else l)\n    else:\n        r = st.pop()\n        l = st.pop()\n        if op == '+':\n            st.append(l + r)\n        elif op == '-':\n            st.append(l - r)\n        elif op == '*':\n            st.append(l * r)\n        else:\n            st.append(l / r)\n\n\ndef evaluate(s):\n    # two stacks, as cp-algorithms evaluates an expression: numbers on st, operators and brackets on op\n    st, op = [], []\n    may_be_unary = True\n    i = 0\n    while i < len(s):\n        c = s[i]\n        if c.isspace():\n            i += 1\n            continue\n        if c == '(':\n            op.append('(')\n            may_be_unary = True\n        elif c == ')':\n            while op[-1] != '(':\n                process_op(st, op.pop())\n            op.pop()\n            may_be_unary = False\n        elif c in '+-*/':\n            cur = 'u' + c if may_be_unary and c in '+-' else c\n            while op and op[-1] != '(' and (priority(op[-1]) > priority(cur) if cur[0] == 'u'\n                                            else priority(op[-1]) >= priority(cur)):\n                process_op(st, op.pop())\n            op.append(cur)\n            may_be_unary = True\n        else:\n            j = i\n            while j < len(s) and s[j].isdigit():\n                j += 1\n            st.append(int(s[i:j]))\n            i = j - 1\n            may_be_unary = False\n        i += 1\n    while op:\n        process_op(st, op.pop())\n    return st[-1]\n\n\nfor line in sys.stdin:\n    if line.strip():\n        out = f\"{evaluate(line):.2f}\"\n        print(\"0.00\" if out == \"-0.00\" else out)\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "starter": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').split('\\n').filter((l) => l.trim());\n",
+     "reference": "const fs = require('fs');\n\nconst priority = (op) => (op[0] === 'u' ? 3 : op === '+' || op === '-' ? 1 : 2);\n\nfunction processOp(st, op) {\n  if (op[0] === 'u') {\n    const l = st.pop();\n    st.push(op === 'u-' ? -l : l);\n  } else {\n    const r = st.pop(), l = st.pop();\n    st.push(op === '+' ? l + r : op === '-' ? l - r : op === '*' ? l * r : l / r);\n  }\n}\n\n// two stacks, as cp-algorithms evaluates an expression: numbers on st, operators and brackets on op\nfunction evaluate(s) {\n  const st = [], op = [];\n  let mayBeUnary = true;\n  for (let i = 0; i < s.length; i++) {\n    const c = s[i];\n    if (/\\s/.test(c)) continue;\n    if (c === '(') {\n      op.push('(');\n      mayBeUnary = true;\n    } else if (c === ')') {\n      while (op[op.length - 1] !== '(') processOp(st, op.pop());\n      op.pop();\n      mayBeUnary = false;\n    } else if ('+-*/'.includes(c)) {\n      const cur = mayBeUnary && (c === '+' || c === '-') ? 'u' + c : c;\n      while (op.length && op[op.length - 1] !== '(' &&\n             (cur[0] === 'u' ? priority(op[op.length - 1]) > priority(cur) : priority(op[op.length - 1]) >= priority(cur))) {\n        processOp(st, op.pop());\n      }\n      op.push(cur);\n      mayBeUnary = true;\n    } else {\n      let j = i;\n      while (j < s.length && s[j] >= '0' && s[j] <= '9') j++;\n      st.push(Number(s.slice(i, j)));\n      i = j - 1;\n      mayBeUnary = false;\n    }\n  }\n  while (op.length) processOp(st, op.pop());\n  return st[st.length - 1];\n}\n\nconst out = [];\nfor (const line of fs.readFileSync(0, 'utf8').split('\\n')) {\n  if (!line.trim()) continue;\n  const v = evaluate(line).toFixed(2);\n  out.push(v === '-0.00' ? '0.00' : v);\n}\nconsole.log(out.join('\\n'));\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "stdin": "5 - 3-2\n5- (3-2)\n5 / 3 / 2\n5 / (3 / 2)\n1/3+1\n1/(3+1)\n-4--2\n(1-3)/(5+4)\n2*3*5*7*11*13*17*19\n-5/-5\n",
+      "stdout": "0.00\n4.00\n0.83\n3.33\n1.33\n0.25\n-2.00\n-0.22\n9699690.00\n1.00\n",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "1+2*3\n(1+2)*3\n10-4-3\n10-(4-3)\n100/10/5\n100/(10/5)\n2*3+4*5\n2*(3+4)*5\n",
+      "stdout": "7.00\n9.00\n3.00\n9.00\n2.00\n50.00\n26.00\n70.00\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "-3\n-3*-3\n-(2+3)\n(-2)*(-3)\n4*-(1+1)\n--5\n3--3\n-(-(-1))\n",
+      "stdout": "-3.00\n9.00\n-5.00\n6.00\n-8.00\n5.00\n6.00\n-1.00\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "  1 +   2  \n500*500*500\n-500/500\n( ( ( 7 ) ) )\n1 - - 1\n500 / 3\n",
+      "stdout": "3.00\n125000000.00\n-1.00\n7.00\n2.00\n166.67\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "1/3\n2/3\n7/9+1/9\n10/7*7\n22/7\n-1/7*3\n",
+      "stdout": "0.33\n0.67\n0.89\n10.00\n3.14\n-0.43\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "3+5*5*2*(8*1+2-2*8+8+9-8*4+2)/3-1*3*8+9-3-2*(6/7)*4-9-(5)+8+2*(9*4+4-4)-9*6*4-(3)-(7*(1-3-5+(9)-1-6+(6)-7-3+8+3+4-1-5-7-6+5)+2)+(8+1-2*5*5/2)+5+(4-3)/5+9-6+7-6-(9*6+9/(8*(3/3+(4*9-7+6+8)-3)*6*7-(7*5+4-8-(4)+8*7+9+1*5+7)+2-9)+(6*9)*2)+9-1*6+2*(1*9+7+9)+6/(8*6+3-2+7)/8-1*6-6*(3)+3/9\n",
+      "stdout": "-576.98\n",
+      "generated_by": "ai"
+     }
+    ],
+    "compare": "tokens",
+    "bound": "n",
+    "grow": "(n, rand) => { let s = String(rand.int(1, 9)); for (let k = 1; k < n; k++) s += '+-*'[rand.int(0, 2)] + rand.int(1, 9); return s + '\\n'; }",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "c3",
+   "source_id": "kattis:bracketsequence",
+   "source_number": "Bracket Sequence",
+   "origin": "kattis-by-sa",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "parsing",
+   "prompt": "Two great friends, Eddie John and Kris Cross, are attending the Brackets Are Perfection Conference. They wholeheartedly agree with the main message of the conference and they are delighted with all the new things they learn about brackets.\n\nOne of these things is a bracket sequence. If you want to do a computation with $+$ and $\\times $, you usually write it like so:\n\n$$ (2 \\times (2 + 1 + 0 + 1) \\times 1) + 3 + 2. $$\n\nThe brackets are only used to group multiplications and additions together. This means that you can remove all the operators, as long as you remember that addition is used for numbers outside any parentheses! A bracket sequence can then be shortened to\n\n$$ (\\; 2 \\; ( \\; 2 \\; 1 \\; 0 \\; 1 \\; ) \\; 1 \\; ) \\; 3 \\; 2. $$\n\nThat is much better, because it saves on writing all those operators. Reading bracket sequences is easy, too. Suppose you have the following bracket sequence\n\nYou start with addition, so this is the same as the following:\n\n$$ 5 + 2 + (\\; 3 \\; 1 \\; (\\; 2 \\; 2 \\; ) \\; ( \\; 3 \\; 3 \\; ) \\; 1 \\; ). $$\n\nYou know the parentheses group a multiplication, so this is equal to\n\n$$ 5 + 2 + (3 \\times 1 \\times (\\; 2 \\; 2 \\; ) \\times ( \\; 3 \\; 3 \\; ) \\times 1). $$\n\nThen there is another level of parentheses: that groups an operation within a multiplication, so the operation must be addition.\n\n$$ 5 + 2 + (3 \\times 1 \\times (2 + 2 ) \\times (3 + 3) \\times 1 ) = 5 + 2 + (3 \\times 1 \\times 4 \\times 6 \\times 1) = 5+2 + 72 = 79. $$\n\nSince bracket sequences are so much easier than normal expressions with operators, it should be easy to evaluate some big ones. We will even allow you to write a program to do it for you.\n\nNote that $(\\; )$ is not a valid bracket sequence, nor a subsequence of any valid bracket sequence.\n\n<strong>Input</strong>\n\nOne line containing a single integer $1\\leq n\\leq 3\\cdot 10^5$.\n\nOne line consisting of $n$ tokens, each being either (, ), or an integer $0\\leq x \\lt 10^9+7$. It is guaranteed that the tokens form a bracket sequence.\n\n<strong>Output</strong>\n\nOutput the value of the given bracket sequence. Since this may be very large, you should print it modulo $10^9+7$.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "starter": "import sys\n\ndata = sys.stdin.read().split()\nn = int(data[0])\ntokens = data[1:1 + n]\n",
+     "reference": "import sys\n\nMOD = 10 ** 9 + 7\n\n\ndef main():\n    data = sys.stdin.read().split()\n    n = int(data[0])\n    # one running value per open bracket; at an even depth it is a sum, at an odd depth a product\n    stack = [0]\n    for t in data[1:1 + n]:\n        if t == '(':\n            stack.append(1 if len(stack) % 2 == 1 else 0)\n        else:\n            v = stack.pop() if t == ')' else int(t)\n            if len(stack) % 2 == 0:\n                stack[-1] = stack[-1] * v % MOD\n            else:\n                stack[-1] = (stack[-1] + v) % MOD\n    print(stack[0])\n\n\nmain()\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "starter": "const fs = require('fs');\nconst data = fs.readFileSync(0, 'utf8').split(/\\s+/).filter(Boolean);\n",
+     "reference": "const fs = require('fs');\nconst MOD = 1000000007n;\nconst data = fs.readFileSync(0, 'utf8').split(/\\s+/).filter(Boolean);\nconst n = Number(data[0]);\n// one running value per open bracket; at an even depth it is a sum, at an odd depth a product\nconst stack = [0n];\nfor (const t of data.slice(1, 1 + n)) {\n  if (t === '(') {\n    stack.push(stack.length % 2 === 1 ? 1n : 0n);\n  } else {\n    const v = t === ')' ? stack.pop() : BigInt(t);\n    const top = stack.length - 1;\n    stack[top] = stack.length % 2 === 0 ? (stack[top] * v) % MOD : (stack[top] + v) % MOD;\n  }\n}\nconsole.log(String(stack[0]));\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "stdin": "2\n2 3\n",
+      "stdout": "5\n",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "8\n( 2 ( 2 1 ) ) 3\n",
+      "stdout": "9\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "4\n( 12 3 )\n",
+      "stdout": "36\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "6\n( 2 ) ( 3 )\n",
+      "stdout": "5\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "6\n( ( 2 3 ) )\n",
+      "stdout": "5\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "11\n1 ( 0 ( 583920 ( 2839 82 ) ) )\n",
+      "stdout": "1\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "1\n7\n",
+      "stdout": "7\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "4\n( 0 1 )\n",
+      "stdout": "0\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "3\n1000000006 1000000006 1000000006\n",
+      "stdout": "1000000004\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "4\n( 1000000006 1000000006 )\n",
+      "stdout": "1\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "14\n( 2 ( 3 4 ) ( 5 ( 6 7 ) ) )\n",
+      "stdout": "658\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "11\n0 ( 0 ) ( 5 ) ( 0 5 )\n",
+      "stdout": "5\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "6002\n( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( 2 2 ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) ) )\n",
+      "stdout": "4\n",
+      "generated_by": "ai"
+     }
+    ],
+    "compare": "tokens",
+    "bound": "n",
+    "grow": "(n, rand) => { const t = []; let d = 0; for (let k = 0; k < n; k++) { const r = rand(); if (r < 0.3) { t.push('('); d++; t.push(String(rand.int(0, 9))); } else if (r < 0.5 && d > 0) { t.push(')'); d--; } else t.push(String(rand.int(0, 9))); } while (d-- > 0) t.push(')'); return t.length + '\\n' + t.join(' ') + '\\n'; }",
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "rpn-evaluation"
+  },
+  {
+   "exercise": "c2",
+   "concept": "expression-parsing"
+  },
+  {
+   "exercise": "c2",
+   "concept": "unary-right-assoc"
+  },
+  {
+   "exercise": "c3",
+   "concept": "expression-parsing"
+  }
+ ],
+ "referents": [
+  {
+   "id": "st",
+   "label": "st, the stack of numbers",
+   "figures": [
+    "sim-two-stack-parser"
+   ]
+  },
+  {
+   "id": "op",
+   "label": "op, the stack of operators and opening brackets",
+   "figures": [
+    "sim-two-stack-parser"
+   ]
+  },
+  {
+   "id": "i",
+   "label": "i, the position of the character being read",
+   "figures": [
+    "sim-two-stack-parser"
+   ]
+  },
+  {
+   "id": "cur_op",
+   "label": "cur_op, the operator just read",
+   "figures": [
+    "sim-two-stack-parser"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "err-unary-pow",
+   "kind": "correction",
+   "html": "With exponentiation among the binary operators, as in the next subsection, this rule reads $-2^2$ as $(-2)^2 = 4$; the usual convention reads it as $-(2^2) = -4$, which needs the unary minus to rank below $\\wedge$ and above $*$ and $/$."
+  }
+ ],
+ "derivations": []
+}

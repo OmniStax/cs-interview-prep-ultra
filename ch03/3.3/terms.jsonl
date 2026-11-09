@@ -1,0 +1,51 @@
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 5, "term": "Deque", "hash": "9f9343e709bc", "concept": "deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 6, "term": "Deque", "hash": "9f9343e709bc", "concept": "deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 7, "term": "Stack", "hash": "9f9343e709bc", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 8, "term": "FIFO Queue", "hash": "9f9343e709bc", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 9, "term": "ArrayQueue", "hash": "9f9343e709bc", "concept": "array-queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 11, "term": "List interface", "hash": "9f9343e709bc", "concept": "list-interface"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 12, "term": "circular array", "hash": "9f9343e709bc", "concept": "circular-buffer"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 13, "term": "ArrayQueue", "hash": "9f9343e709bc", "concept": "array-queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 14, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 15, "term": "array", "hash": "9f9343e709bc", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 16, "term": "implementation", "hash": "9f9343e709bc", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 17, "term": "resize", "hash": "9f9343e709bc", "concept": "array-resize"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 18, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 19, "term": "implementation", "hash": "9f9343e709bc", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 20, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 21, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 22, "term": "List interface", "hash": "9f9343e709bc", "concept": "list-interface"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 23, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 24, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 25, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 26, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 27, "term": "ArrayStacks", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 28, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 29, "term": "ArrayDeque", "hash": "9f9343e709bc", "concept": "array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 30, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 31, "term": "list", "hash": "9f9343e709bc", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 32, "term": "ArrayStacks", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 33, "term": "ArrayStack", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 34, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 35, "term": "ArrayStacks", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 36, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 37, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 38, "term": "ArrayStack", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 39, "term": "list", "hash": "9f9343e709bc", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 40, "term": "ArrayStack", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 41, "term": "list", "hash": "9f9343e709bc", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 42, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 43, "term": "ArrayStacks", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 44, "term": "implementation", "hash": "9f9343e709bc", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 45, "term": "ArrayStack", "hash": "9f9343e709bc", "concept": "dynamic-array"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 46, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 48, "term": "potential", "hash": "9f9343e709bc", "concept": "potential-method"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 49, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 50, "term": "potential", "hash": "9f9343e709bc", "concept": "potential-method"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 51, "term": "potential", "hash": "9f9343e709bc", "concept": "potential-method"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 52, "term": "potential", "hash": "9f9343e709bc", "concept": "potential-method"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 53, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 54, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 55, "term": "List interface", "hash": "9f9343e709bc", "concept": "list-interface"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 56, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}
+{"book": "cs-interview-prep-ultra", "section": "3.3", "idx": 57, "term": "DualArrayDeque", "hash": "9f9343e709bc", "concept": "dual-array-deque"}

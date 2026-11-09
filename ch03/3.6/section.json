@@ -1,0 +1,611 @@
+{
+ "id": "3.6",
+ "chapter": "3",
+ "title": "Space-efficient lists",
+ "short": "Space-efficient lists",
+ "lead": "An Advanced section on lists that waste little space: ODS’s RootishArrayStack, the √<em>n</em> lower bound on wasted space, and the SEList; <span data-concept=\"rootish-index-math\">computing square roots in constant time</span> is Beyond. Blocks and list indices count from 0. The SEList proof’s “potential method” is <a href=\"/cs-interview-prep-ultra/ch01/1.5/#potential\">Section 1.5</a>’s method used as a counter: Φ is the number of fragile nodes, each add that does not spread raises it by at most 1, and so the adds before a spread pay for it.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "The Discussion and Exercises sections of ODS’s two chapters are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "No exercise ships with this section yet. ODS’s test_rootisharraystack.py and test_selist.py are tests with no printed statement (they pass on ODS’s Python once its integer division and print statements are ported). ODS Exercises 2.10 to 2.13 (faster RootishArrayStack variants and a CubishArrayStack) and 3.17 and 3.18 (an SEList used as a stack and a variant of it) have no published answers or tests and are left out. No open exercise exists for computing square roots in constant time or for the √n lower bound on wasted space.",
+ "figures": [
+  {
+   "id": "sim-rootish",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/ods-rootisharraystack.png"
+   ],
+   "original_caption": "A sequence of add(i,x) and remove(i) operations on a RootishArrayStack. Arrows denote elements being copied.",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-gauss",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/ods-gauss.png"
+   ],
+   "original_caption": "The number of white squares is 1+2+3+\\cdots+r. The number of shaded squares is the same. Together the white and shaded squares make a rectangle consisting of r(r+1) squares.",
+   "draws": [
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-wasted-space",
+   "kind": "sim",
+   "draws": [
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-fastsqrt",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-selist-add",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/ods-selist-add-a.png",
+    "/media/ch03/ods-selist-add-b.png",
+    "/media/ch03/ods-selist-add-c.png"
+   ],
+   "original_caption": "The three cases that occur during the addition of an item x in the interior of an SEList. (This SEList has block size b=3.)",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-selist-remove",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/ods-selist-remove-a.png",
+    "/media/ch03/ods-selist-remove-b.png",
+    "/media/ch03/ods-selist-remove-c.png"
+   ],
+   "original_caption": "The three cases that occur during the removal of an item x in the interior of an SEList. (This SEList has block size b=3.)",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "rootish",
+   "concept": "rootish-array-stack",
+   "verb": "introduces"
+  },
+  {
+   "span": "rootish",
+   "concept": "dynamic-array-cost",
+   "verb": "uses"
+  },
+  {
+   "span": "rootish",
+   "concept": "amortized-analysis",
+   "verb": "uses"
+  },
+  {
+   "span": "sqrt-lower-bound",
+   "concept": "sqrt-space-lower-bound",
+   "verb": "introduces"
+  },
+  {
+   "span": "sqrt-lower-bound",
+   "concept": "rootish-array-stack",
+   "verb": "uses"
+  },
+  {
+   "span": "rootish-summary",
+   "concept": "rootish-array-stack",
+   "verb": "uses"
+  },
+  {
+   "span": "rootish-sqrt",
+   "concept": "rootish-index-math",
+   "verb": "introduces"
+  },
+  {
+   "span": "rootish-sqrt",
+   "concept": "word-ram",
+   "verb": "uses"
+  },
+  {
+   "span": "rootish-sqrt",
+   "concept": "rootish-array-stack",
+   "verb": "uses"
+  },
+  {
+   "span": "selist",
+   "concept": "space-efficient-list",
+   "verb": "introduces"
+  },
+  {
+   "span": "selist",
+   "concept": "doubly-linked-list",
+   "verb": "uses"
+  },
+  {
+   "span": "selist",
+   "concept": "sqrt-space-lower-bound",
+   "verb": "uses"
+  },
+  {
+   "span": "selist-amortized",
+   "concept": "selist-spread-gather",
+   "verb": "introduces"
+  },
+  {
+   "span": "selist-amortized",
+   "concept": "potential-method",
+   "verb": "uses"
+  },
+  {
+   "span": "selist-amortized",
+   "concept": "space-efficient-list",
+   "verb": "uses"
+  },
+  {
+   "span": "selist-summary",
+   "concept": "space-efficient-list",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [
+  {
+   "id": "i",
+   "label": "i, the list index a call names",
+   "figures": [
+    "sim-rootish",
+    "sim-selist-add",
+    "sim-selist-remove"
+   ]
+  },
+  {
+   "id": "b",
+   "label": "b, the block that holds index i",
+   "figures": [
+    "sim-rootish"
+   ]
+  },
+  {
+   "id": "n",
+   "label": "n, the number of elements stored",
+   "figures": [
+    "sim-rootish"
+   ]
+  },
+  {
+   "id": "r",
+   "label": "r, the number of blocks",
+   "figures": [
+    "sim-rootish"
+   ]
+  },
+  {
+   "id": "x",
+   "label": "x, the number whose square root is taken",
+   "figures": [
+    "sim-fastsqrt"
+   ]
+  },
+  {
+   "id": "s",
+   "label": "s, the square root as it is found",
+   "figures": [
+    "sim-fastsqrt"
+   ]
+  },
+  {
+   "id": "u",
+   "label": "u, the node that holds index i",
+   "figures": [
+    "sim-selist-add",
+    "sim-selist-remove"
+   ]
+  },
+  {
+   "id": "w",
+   "label": "w, the node the search has reached",
+   "figures": [
+    "sim-selist-add",
+    "sim-selist-remove"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "ods-fn-2-3",
+   "kind": "book",
+   "number": "3",
+   "html": "Recall <a href=\"/cs-interview-prep-ultra/ch01/1.4/#word-ram\">Section 1.4</a> for a discussion of how memory is measured."
+  },
+  {
+   "id": "ods-fn-3-1",
+   "kind": "book",
+   "number": "1",
+   "html": "Recall <a href=\"/cs-interview-prep-ultra/ch01/1.4/#word-ram\">Section 1.4</a> for a discussion of how memory is measured."
+  },
+  {
+   "id": "err-wasting",
+   "kind": "correction",
+   "html": "A typo: the data structure is wasting at least $\\sqrt{n}$ space."
+  },
+  {
+   "id": "err-case2",
+   "kind": "correction",
+   "html": "With $b = 3$, Figure 3.5’s middle picture is not Case 2: its three blocks of $b - 1 = 2$ elements are $b$ such blocks, so $\\mathrm{remove}(1)$ finds Case 3 and gathers them, leaving a c | d e f. Case 2 needs the end of the list within $b - 1$ blocks, as in a b | c d, which becomes a c | d."
+  },
+  {
+   "id": "err-inittabs",
+   "kind": "correction",
+   "html": "As printed, $\\mathrm{inittabs}()$ makes tables of $2^{r/2} = 2^{14}$ entries for $r = 29$, but $\\mathrm{sqrt}(x)$ reads $\\mathit{sqrttab}$ at <code>xp&gt;&gt;(r/2)</code>, which reaches $2^{16} - 1$, and the text speaks of tables of size $2^{16}$, as ODS’s working code builds them. In the C++ listing, <code>logtab[1&lt;&lt;d+k]</code> reads as <code>logtab[1&lt;&lt;(d+k)]</code>; <code>logtab[(1&lt;&lt;d)+k]</code> is meant."
+  }
+ ],
+ "derivations": [
+  {
+   "id": "rootish-blocks",
+   "what": "r = O(√n)",
+   "source": "Open Data Structures, 2.6.2 Space Usage",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "The $\\mathrm{remove}(i)$ operation ensures that a RootishArrayStack never has more than two blocks that are not completely full.",
+       "src": "2.6.2"
+      },
+      {
+       "text": "Block $b$ contains $b + 1$ elements, so blocks $0, \\ldots, r - 3$ hold $1 + 2 + \\cdots + (r-2) = (r-2)(r-1)/2$ of them.",
+       "src": "2.6"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{f}{(r-2)(r-1)/2} \\le \\mk{n}{n}",
+      "uses": [
+       0,
+       1
+      ],
+      "why": "All but the last two of the $r$ blocks are full, and their elements are among the $n$."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{f}{r^2 - 3r + 2} \\le \\mk{n}{2n}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{f}{r^2 - 3r + 2 - 2n} \\le \\mk{z}{0}",
+       "uses": [],
+       "map": {
+        "n": "f"
+       }
+      },
+      {
+       "tex": "\\mk{r}{r} \\le \\mk{q}{\\frac{1}{2}\\left(3+\\sqrt{8n+1}\\right)}",
+       "uses": [],
+       "map": {
+        "f": "r",
+        "z": "q"
+       },
+       "cap": "A parabola that opens upward is at most 0 only between its roots, and by the quadratic formula the larger root of $r^2 - 3r + (2 - 2n)$ is $\\frac{1}{2}\\left(3 + \\sqrt{9 - 4(2 - 2n)}\\right)$."
+      },
+      {
+       "tex": "\\mk{r}{r} \\le \\mk{q}{\\frac{1}{2}\\left(3+\\sqrt{8n+1}\\right)} = \\mk{o}{O(\\sqrt{n})}",
+       "uses": [],
+       "cap": "For $n \\ge 1$, $\\sqrt{8n + 1} \\le 3\\sqrt{n}$."
+      }
+     ],
+     "src": "2.6.2"
+    }
+   ]
+  },
+  {
+   "id": "sqrt-lower-bound",
+   "what": "some moment wastes √n space",
+   "source": "Open Data Structures, 2.6.2 Space Usage",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "An empty data structure receives $n$ items one at a time, and at the end they are distributed among $r$ memory blocks.",
+       "src": "2.6.2"
+      },
+      {
+       "text": "The pigeonhole principle: $n$ items in $r$ blocks put at least $n/r$ of them in one block."
+      },
+      {
+       "text": "Immediately after it is allocated, a block is empty, so all of its space is wasted.",
+       "src": "2.6.2"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{s}{\\text{size of some block}} \\ge \\mk{q}{n/r}",
+      "uses": [
+       0,
+       1
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{w}{\\text{waste when it was allocated}} \\ge \\mk{q}{n/r}",
+       "uses": [
+        2
+       ],
+       "map": {
+        "s": "w"
+       }
+      }
+     ],
+     "src": "2.6.2"
+    },
+    {
+     "assumes": [
+      {
+       "text": "The structure must keep $r$ pointers (or references) to its $r$ blocks, and these pointers are wasted space.",
+       "src": "2.6.2"
+      },
+      {
+       "step": 0
+      }
+     ],
+     "then": {
+      "tex": "\\mk{w}{\\text{most waste at any moment}} \\ge \\mk{m}{\\max(r,\\ n/r)}",
+      "uses": [
+       0,
+       1
+      ],
+      "why": "The $r$ pointers are wasted at the end, and the large block was wasting its space the moment it was allocated."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{w}{\\text{most waste at any moment}} \\ge \\mk{m}{\\sqrt{n}}",
+       "uses": [],
+       "cap": "If $r \\ge \\sqrt{n}$, the first is at least $\\sqrt{n}$; if $r < \\sqrt{n}$, then $n/r > n/\\sqrt{n} = \\sqrt{n}$."
+      }
+     ],
+     "src": "2.6.2"
+    }
+   ]
+  },
+  {
+   "id": "root",
+   "what": "√x′ ≥ √x − 1",
+   "source": "Open Data Structures, 2.6.4 Computing Square Roots, the proof of Lemma 2.3",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "tex": "x \\ge 1",
+       "src": "Lemma 2.3"
+      }
+     ],
+     "then": {
+      "tex": "\\mk{s}{\\sqrt{x}} \\ge \\mk{o}{1}",
+      "uses": [
+       0
+      ],
+      "why": "The square root is increasing, and $\\sqrt{1} = 1$."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{x1}{x} - \\mk{s}{\\sqrt{x}} \\ge \\mk{x2}{x} - \\mk{t}{2\\sqrt{x}} + \\mk{o}{1}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{l}{\\left(\\sqrt{x-\\sqrt{x}}\\right)^2} \\ge \\mk{r}{\\left(\\sqrt{x}-1\\right)^2}",
+       "uses": [],
+       "map": {
+        "x1": "l",
+        "s": "l",
+        "x2": "r",
+        "t": "r",
+        "o": "r"
+       },
+       "cap": "Both sides are squares: $x - \\sqrt{x} \\ge 0$ because $x \\ge \\sqrt{x}$ when $x \\ge 1$, and $x - 2\\sqrt{x} + 1 = (\\sqrt{x} - 1)^2$."
+      },
+      {
+       "tex": "\\mk{l}{\\sqrt{x-\\sqrt{x}}} \\ge \\mk{r}{\\sqrt{x}-1}",
+       "uses": [],
+       "cap": "Both bases are at least 0, $\\sqrt{x} - 1$ by the first line, and for numbers at least 0, $p^2 \\ge q^2$ gives $p \\ge q$."
+      }
+     ],
+     "src": "Lemma 2.3, proof"
+    },
+    {
+     "assumes": [
+      {
+       "text": "$x' = x - a$, where $0 \\le a \\le \\sqrt{x}$.",
+       "src": "Lemma 2.3"
+      },
+      {
+       "step": 0
+      }
+     ],
+     "then": {
+      "tex": "\\mk{p}{x'} \\ge \\mk{q}{x - \\sqrt{x}}",
+      "uses": [
+       0
+      ],
+      "why": "Taking away at most $\\sqrt{x}$ leaves at least $x - \\sqrt{x}$."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{p}{\\sqrt{x'}} \\ge \\mk{q}{\\sqrt{x-\\sqrt{x}}}",
+       "uses": [],
+       "cap": "The square root is increasing."
+      },
+      {
+       "tex": "\\mk{p}{\\sqrt{x'}} \\ge \\mk{q}{\\sqrt{x}-1}",
+       "uses": [
+        1
+       ]
+      }
+     ],
+     "src": "Lemma 2.3"
+    }
+   ]
+  },
+  {
+   "id": "selist-spread",
+   "what": "O(bm) time in all calls to spread()",
+   "source": "Open Data Structures, 3.3.4 Amortized Analysis of Spreading and Gathering, the proof of Lemma 3.1",
+   "nodes": [
+    {
+     "assumes": [
+      {
+       "text": "The potential $\\Phi$, the number of fragile nodes, starts at 0 and is never less than 0.",
+       "src": "Lemma 3.1, proof"
+      },
+      {
+       "text": "Each time Case 1 or Case 2 occurs, the potential increases by at most 1.",
+       "src": "Lemma 3.1, proof"
+      },
+      {
+       "text": "Each time Case 3 occurs, the potential decreases by $b - 1$.",
+       "src": "Lemma 3.1, proof"
+      },
+      {
+       "text": "Of the $m$ calls to $\\mathrm{add}(i,x)$, $s$ reach Case 3 and call $\\mathrm{spread}(u)$, and the other $m - s$ are Case 1 or Case 2."
+      }
+     ],
+     "then": {
+      "tex": "\\mk{p}{\\Phi} \\le \\mk{o}{0} + \\mk{u}{(m-s)} - \\mk{d}{(b-1)s}",
+      "uses": [
+       1,
+       2,
+       3
+      ],
+      "why": "The potential starts at 0, the $m - s$ other calls add at most 1 each, and each spread takes $b - 1$ away."
+     },
+     "steps": [
+      {
+       "tex": "\\mk{p}{0} \\le \\mk{u}{(m-s)} - \\mk{d}{(b-1)s}",
+       "uses": [
+        0
+       ],
+       "map": {
+        "o": "p"
+       }
+      },
+      {
+       "tex": "\\mk{d}{(b-1)s} \\le \\mk{u}{m-s}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{d}{bs} \\le \\mk{u}{m}",
+       "uses": []
+      },
+      {
+       "tex": "\\mk{d}{s} \\le \\mk{u}{m/b}",
+       "uses": []
+      }
+     ],
+     "src": "Lemma 3.1, proof"
+    },
+    {
+     "assumes": [
+      {
+       "text": "Each call to $\\mathrm{spread}(u)$ runs two nested loops of at most $b + 1$ steps, so it takes $O(b^2)$ time.",
+       "src": "3.3.4"
+      },
+      {
+       "step": 0
+      }
+     ],
+     "then": {
+      "tex": "\\mk{T}{\\text{time in } \\mathrm{spread}()} = \\mk{s}{s \\cdot O(b^2)}",
+      "uses": [
+       0
+      ]
+     },
+     "steps": [
+      {
+       "tex": "\\mk{T}{\\text{time in } \\mathrm{spread}()} \\le \\mk{s}{(m/b) \\cdot O(b^2)}",
+       "uses": [
+        1
+       ]
+      },
+      {
+       "tex": "\\mk{T}{\\text{time in } \\mathrm{spread}()} = \\mk{s}{O(bm)}",
+       "uses": []
+      }
+     ],
+     "src": "Lemma 3.1"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+"""Render ODS's Figures 2.5, 2.6, 3.4 and 3.5 (latex/figs/rootisharraystack.ipe, gauss.ipe, selist-add-{a,b,c}.ipe,
+selist-remove-{a,b,c}.ipe) for the original toggles of sim-rootish, sim-gauss and sim-selist, as
+ch02/2.6/render_originals.py renders its figures.
+
+Ipe's own renderer draws each figure from its .ipe file unchanged, at 300 dpi on a transparent ground. The
+figures' LaTeX preamble loads kpfonts and ODS's ods-colors.sty, so TEXINPUTS points at ODS's latex directory;
+IPELATEXDIR is a private scratch directory, so that two builds rendering at once do not share Ipe's LaTeX run.
+Needs iperender (Ipe 7) and texlive-fonts-extra (kpfonts).
+
+    python3 -I ch03/3.6/render_originals.py
+"""
+import os
+import subprocess
+import tempfile
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+BOOK = os.path.dirname(os.path.dirname(HERE))
+ODS = os.path.join(BOOK, 'sources/_cache/ods/latex')
+OUT = os.path.join(BOOK, 'media/ch03')
+FIGS = {'rootisharraystack': 'ods-rootisharraystack.png', 'gauss': 'ods-gauss.png',
+        **{f'selist-{op}-{c}': f'ods-selist-{op}-{c}.png' for op in ('add', 'remove') for c in 'abc'}}
+
+
+def main():
+    os.makedirs(OUT, exist_ok=True)
+    with tempfile.TemporaryDirectory() as tmp:
+        env = dict(os.environ, IPELATEXDIR=tmp, TEXINPUTS=ODS + ':')
+        for src, dst in FIGS.items():
+            subprocess.run(['iperender', '-png', '-resolution', '300', os.path.join(ODS, 'figs', src + '.ipe'),
+                            os.path.join(OUT, dst)], check=True, env=env, capture_output=True)
+            print(os.path.join(OUT, dst))
+
+
+if __name__ == '__main__':
+    main()

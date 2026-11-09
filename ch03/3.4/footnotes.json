@@ -1,0 +1,37 @@
+[
+ {
+  "id": "wp-nearest-smaller-1",
+  "kind": "book",
+  "number": "1",
+  "html": "Berkman, Schieber &amp; Vishkin (1993).",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-nearest-smaller-2",
+  "kind": "book",
+  "number": "2",
+  "html": "Kravets &amp; Plaxton (1996).",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-nearest-smaller-3",
+  "kind": "book",
+  "number": "3",
+  "html": "He &amp; Huang (2001).",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-nearest-smaller-4",
+  "kind": "book",
+  "number": "4",
+  "html": "Knuth, Donald (1968), \"Vol. 1: Fundamental Algorithms\", <em>The Art of Computer Programming</em>, Reading, Mass.: Addison-Wesley, p. 198.",
+  "source": "wikipedia"
+ },
+ {
+  "id": "wp-nearest-smaller-5",
+  "kind": "book",
+  "number": "5",
+  "html": "Barbay, Fischer &amp; Navarro (2012), Lemma 1.",
+  "source": "wikipedia"
+ }
+]

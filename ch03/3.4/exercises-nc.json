@@ -1,0 +1,40 @@
+{
+ "section": "3.4",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-6046s15-ps4-1",
+   "source_id": "mitocw-6-046j-spring2015:ps4#4-1",
+   "source_number": "Problem Set 4, Problem 4-1",
+   "origin": "mitocw-6-046j-spring2015",
+   "kind": "exercise",
+   "bloom": "Create",
+   "place": {
+    "at": "end"
+   },
+   "cite": "min-queue",
+   "changes": "The point values of the parts are left out. The worked solution is MIT’s, linked rather than copied.",
+   "prompt": "<p><strong>Extreme FIFO Queues</strong></p>\n<p>Design a data structure that maintains a FIFO queue of integers, supporting operations ENQUEUE, DEUEUE, and FIND-MIN, each in $O(1)$ amortized time. In other words, any sequence of m operations should take time $O(m)$. You may assume that, in any execution, all the items that get enqueued are distinct.</p>\n<p><strong>(a)</strong> Describe your data structure. Include clear invariants describing its key properties. <em>Hint:</em> Use an actual queue plus auxiliary data structure(s) for bookkeeping.</p>\n<p><strong>(b)</strong> Describe carefully, in words or pseudo-code, your ENQUEUE, DEQUEUE and FIND-MIN procedures.</p>\n<p><strong>(c)</strong> Prove that your operations give the right answers. <em>Hint:</em> You may want to prove that their correctness follows from your data structure invariants. In that case you should also sketch arguments for why the invariants hold.</p>\n<p><strong>(d)</strong> Analyze the time complexity: the worst-case cost for each operation, and the amortized cost of any sequence of m operations.</p>",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "MIT’s worked solution: <a href=\"https://ocw.mit.edu/courses/6-046j-design-and-analysis-of-algorithms-spring-2015/8cc8292f1b04e9adc43546295b2ecae3_MIT6_046JS15_pset4sols.pdf\">Solutions to Problem Set 4</a>, Problem 4-1."
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-6046s15-ps4-1",
+   "concept": "monotonic-queue-minimum"
+  },
+  {
+   "exercise": "nc-6046s15-ps4-1",
+   "concept": "queue-from-two-stacks"
+  },
+  {
+   "exercise": "nc-6046s15-ps4-1",
+   "concept": "amortized-analysis"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "section": "3.5",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-postfix1",
+   "source_id": "pythonds:BasicDS/InfixPrefixandPostfixExpressions#postfix1",
+   "source_number": "Self Check, postfix1",
+   "origin": "pythonds",
+   "kind": "check",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "rpn",
+   "prompt": "Without using the activecode <code>infix_to_postfix</code> function, convert the following expression to postfix <code>10 + 3 * 5 / (16 - 4)</code> .",
+   "answer": {
+    "type": "open",
+    "generated_by": "source",
+    "solution": "<code>10 3 5 * 16 4 - / +</code>"
+   }
+  },
+  {
+   "id": "nc-postfix2",
+   "source_id": "pythonds:BasicDS/InfixPrefixandPostfixExpressions#postfix2",
+   "source_number": "Self Check, postfix2",
+   "origin": "pythonds",
+   "kind": "check",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "rpn",
+   "prompt": "What is the result of evaluating the following: <code>17 10 + 3 * 9 / ==</code> ?",
+   "answer": {
+    "type": "number",
+    "value": 9,
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-postfix1",
+   "concept": "expression-parsing"
+  },
+  {
+   "exercise": "nc-postfix1",
+   "concept": "rpn-evaluation"
+  },
+  {
+   "exercise": "nc-postfix2",
+   "concept": "rpn-evaluation"
+  }
+ ]
+}

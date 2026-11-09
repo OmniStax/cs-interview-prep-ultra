@@ -106,12 +106,14 @@ def java(cls, spec, printed=False):
 
 
 def _join(parts):
-    """Fields stand together; each method stands apart, after a blank line."""
-    text = ''
+    """Fields stand together; each method stands apart, after a blank line. A field is a one-line part, so a
+    run of fields (ArrayQueue's a, j and n) stays one paragraph however long it is (ch03/3.2)."""
+    text, prev = '', None
     for p in parts:
         if text:
-            text += '\n' if '\n' not in p and '\n' not in text.split('\n\n')[-1] else '\n\n'
+            text += '\n' if '\n' not in p and prev is not None and '\n' not in prev else '\n\n'
         text += p
+        prev = p
     return text
 
 
@@ -120,7 +122,7 @@ def cpp(cls, spec, printed=False):
         return _printed_cpp(cpp(cls, spec), cls)
     want = _members(spec)
     src = open(os.path.join(ODS, 'cpp', cls + '.h'), encoding='utf-8').read().split('\n')
-    out, cur, depth, printing, inclass = [], [], 0, False, False
+    out, cur, depth, printing, inclass, body = [], [], 0, False, False, 1
     for raw in src:
         line = re.sub(CPP_DROP, '', raw)
         line = re.sub(r'template\s*<[^\]]+>', '', line)
@@ -128,9 +130,14 @@ def cpp(cls, spec, printed=False):
             m = re.match(r'\s*(?:[\w<>:*&]+\s*[*&]*\s+)?' + cls + r'(?:<[^>]*>)?::(\w+)\s*\(([^)]*)\)', line)
             if depth == 1 and m and _sig(m.group(1), m.group(2)) in want:
                 printing = True
+            # a method defined inside the class body (SLList.h), as snarf-cpp.pl also prints one (ch03/3.2)
+            mi = re.match(r'\s*[\w<>:]+\s*[*&]*\s+[*&]*(\w+)\s*\(([^)]*)\)[^;]*$', line)
+            if inclass and depth == 2 and mi and _sig(mi.group(1), mi.group(2)) in want:
+                printing, body = True, 2
             if depth == 1 and re.match(r'\s*class\s+' + cls + r'\b', line):
                 inclass = True
-            f = re.match(r'\s*[\w<>]+\s*\*?\s+\*?(\w+)\s*;', line)
+            # a field, its type perhaps a template of pointers (RootishArrayStack's ArrayStack<T*> blocks, ch03/3.6)
+            f = re.match(r'\s*[\w<>]+\s*\*?\s+\*?(\w+)\s*;', line) or re.match(r'\s*\w+<[\w*\s,]+>\s+(\w+)\s*;', line)
             if inclass and depth == 2 and f and f.group(1) in want:
                 out.append(_dedent([line]))
         if printing and line.strip():
@@ -138,9 +145,9 @@ def cpp(cls, spec, printed=False):
         depth += line.count('{') - line.count('}')
         if inclass and depth == 1:
             inclass = False
-        if printing and depth == 1 and any('{' in l for l in cur):
+        if printing and depth == body and any('{' in l for l in cur):
             out.append(_dedent(cur))
-            cur, printing = [], False
+            cur, printing, body = [], False, 1
     return _join(out)
 
 

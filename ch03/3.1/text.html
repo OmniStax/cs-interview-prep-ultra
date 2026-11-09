@@ -1,0 +1,96 @@
+<section id="stack" data-source="wikipedia" data-locator="wikipedia:Stack_(abstract_data_type) lead + #Non-essential operations">
+<h2>Stacks</h2>
+<figure class="photo" id="photo-lifo-stack">
+  <img src="/media/ch03/wp-lifo-stack.png" alt="">
+  <figcaption><span>Simple representation of a stack runtime with <em>push</em> and <em>pop</em> operations. Image: vectorization by Alhadis, Wikimedia Commons, CC0.</span></figcaption>
+</figure>
+<p>In computer science, a <span data-concept="stack"><strong>stack</strong></span> is an <span data-concept="interface-vs-implementation">abstract data type</span> that serves as a collection of elements with two main operations:</p>
+<ul><li><strong>Push</strong>, which adds an element to the collection, and</li><li><strong>Pop</strong>, which removes the most recently added element.</li></ul>
+<p>Additionally, a peek operation can, without modifying the <span data-concept="stack">stack</span>, return the value of the last element added (the item at the top of the <span data-concept="stack">stack</span>). The name <em><span data-concept="stack">stack</span></em> is an analogy to a set of physical items stacked one atop another, such as a stack of plates.</p>
+<p>The order in which elements are added to or removed from a <span data-concept="stack">stack</span> is described as <strong><span data-concept="stack">last in, first out</span></strong>, referred to by the acronym <strong><span data-concept="stack">LIFO</span></strong>.<sup class="fn" data-note="wp-stack-nb-1"></sup> As with a stack of physical objects, this structure makes it easy to take an item off the top of the <span data-concept="stack">stack</span>, but accessing a datum deeper in the <span data-concept="stack">stack</span> typically requires removing multiple other items first.<sup class="fn" data-note="wp-stack-1"></sup></p>
+<p>Considered a sequential collection, a <span data-concept="stack">stack</span> has one end which is the only position at which the push and pop operations may occur, the <em>top</em> of the <span data-concept="stack">stack</span>, and is fixed at the other end, the <em>bottom</em>. A <span data-concept="stack">stack</span> may be implemented as, for example, a <a href="/cs-interview-prep-ultra/ch02/2.5/">singly linked list</a> with a pointer to the top element.</p>
+<p>A <span data-concept="stack">stack</span> may be implemented to have a bounded capacity. If the <span data-concept="stack">stack</span> is full and does not contain enough space to accept another element, the <span data-concept="stack">stack</span> is in a state of <span data-concept="stack">stack</span> overflow.</p>
+<h3>Non-essential operations</h3>
+<p>In many <span data-concept="interface-vs-implementation">implementations</span>, a <span data-concept="stack">stack</span> has more operations than the essential "push" and "pop" operations. An example of a non-essential operation is "top of <span data-concept="stack">stack</span>", or "peek", which observes the top element without removing it from the <span data-concept="stack">stack</span>.<sup class="fn" data-note="wp-stack-2"></sup> Since this can be broken down into a "pop" followed by a "push" to return the same data to the <span data-concept="stack">stack</span>, it is not considered an essential operation. If the <span data-concept="stack">stack</span> is empty, an underflow condition will occur upon execution of either the "peek" or "pop" operation. Additionally, many <span data-concept="interface-vs-implementation">implementations</span> include convenience operations that handle common tasks, such as checking if the <span data-concept="stack">stack</span> is empty or returning its size.</p>
+</section>
+
+<section id="stack-implementation" data-source="wikipedia" data-locator="wikipedia:Stack_(abstract_data_type)#Implementation, with ====Array==== and ====Linked list====">
+<h2>Implementation</h2>
+<p>A <span data-concept="stack">stack</span> can be easily implemented either through an <span data-concept="array">array</span> or a <span data-concept="singly-linked-list">linked list</span>, as it is merely a special case of a <span data-concept="list-interface">list</span>.<sup class="fn" data-note="wp-stack-implementation-3"></sup> In either case, what identifies the data structure as a <span data-concept="stack">stack</span> is not the <span data-concept="interface-vs-implementation">implementation</span> but the <span data-concept="interface-vs-implementation">interface</span>: the user is only allowed to pop or push items onto the <span data-concept="array">array</span> or <span data-concept="singly-linked-list">linked list</span>, with few other helper operations. The following will demonstrate both <span data-concept="interface-vs-implementation">implementations</span> using pseudocode.</p>
+<h3>Array</h3>
+<p>An <span data-concept="array">array</span> can be used to implement a (bounded) <span data-concept="stack">stack</span>, as follows. The first element, usually at the zero offset, is the bottom, resulting in <code>array[0]</code> being the first element pushed onto the <span data-concept="stack">stack</span> and the last element popped off. The program must keep track of the size (length) of the <span data-concept="stack">stack</span>, using a variable <span data-ref="top"><em>top</em></span> that records the number of items pushed so far<sup class="fn" data-note="err-top"></sup>, therefore pointing to the place in the <span data-concept="array">array</span> where the next element is to be inserted (assuming a zero-based index convention). Thus, the <span data-concept="stack">stack</span> itself can be effectively implemented as a three-element structure:</p>
+<pre>structure stack:
+    maxsize: integer
+    top: integer
+    items: array of item</pre>
+<pre>procedure initialize(stk: stack, size: integer):
+    stk.items ← new array of size items, initially empty
+    stk.maxsize ← size
+    stk.top ← 0</pre>
+<p>The <em>push</em> operation adds an element and increments the <span data-ref="top"><em>top</em></span> index, after checking for overflow:</p>
+<pre>procedure push(stk: stack, x: item):
+    if stk.top = stk.maxsize:
+        report overflow error
+    else:
+        stk.items[stk.top] ← x
+        stk.top ← stk.top + 1</pre>
+<p>Similarly, <em>pop</em> decrements the <span data-ref="top"><em>top</em></span> index after checking for underflow, and returns the item that was previously the top one:</p>
+<pre>procedure pop(stk: stack):
+    if stk.top = 0:
+        report underflow error
+    else:
+        stk.top ← stk.top − 1
+        r ← stk.items[stk.top]
+        return r</pre>
+<figure class="sim" id="sim-array-stack" data-original="/media/ch03/wp-stack-push.gif,/media/ch03/wp-stack-pop.gif" data-original-caption="Animated push operation on an array-based stack from underflow to overflow. Animated pop operation on an array-based stack from the full-stack state to the underflow. Images: Michel Bakni, Wikimedia Commons, CC BY-SA 4.0.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The stack is the cells below <span data-ref="top">top</span>: a push writes at <span data-ref="top">top</span> and moves it up, a pop moves it down and reads the cell it lands on. Each call touches one cell, however full the array is. Pushing onto a full array is overflow and popping an empty one is underflow, and both are caught before any cell is touched.</span></div>
+</figure>
+<p>Using a <a href="/cs-interview-prep-ultra/ch02/2.2/">dynamic array</a>, it is possible to implement a <span data-concept="stack">stack</span> that can grow or shrink as much as needed. The size of the <span data-concept="stack">stack</span> is simply the size of the <span data-concept="dynamic-array">dynamic array</span>, which is a very efficient <span data-concept="interface-vs-implementation">implementation</span> of a <span data-concept="stack">stack</span> since adding items to or removing items from the end of a <span data-concept="dynamic-array">dynamic array</span> requires amortized <span data-type="cost">O(1)</span> time.</p>
+<h3>Linked list</h3>
+<p>Another option for implementing <span data-concept="stack">stacks</span> is to use a <a href="/cs-interview-prep-ultra/ch02/2.5/">singly linked list</a>. A <span data-concept="stack">stack</span> is then a pointer to the "<span data-ref="head">head</span>" of the list, with perhaps a counter to keep track of the size of the list:</p>
+<pre>structure frame:
+    data: item
+    next: frame or nil</pre>
+<pre>structure stack:
+    head: frame or nil
+    size: integer</pre>
+<pre>procedure initialize(stk: stack):
+    stk.head ← nil
+    stk.size ← 0</pre>
+<p>Pushing and popping items happens at the <span data-ref="head">head</span> of the list; overflow is not possible in this <span data-concept="interface-vs-implementation">implementation</span> (unless memory is exhausted):</p>
+<pre>procedure push(stk: stack, x: item):
+    newhead ← new frame
+    newhead.data ← x
+    newhead.next ← stk.head
+    stk.head ← newhead
+    stk.size ← stk.size + 1</pre>
+<pre>procedure pop(stk: stack):
+    if stk.head = nil:
+        report underflow error
+    else:
+        r ← stk.head.data
+        stk.head ← stk.head.next
+        stk.size ← stk.size - 1
+        return r</pre>
+<figure class="sim" id="sim-linked-stack" data-original="/media/ch03/wp-linked-stack-push.gif,/media/ch03/wp-linked-stack-pop.gif" data-original-caption="Animated push operation on an Linked-List-based stack. Animated pop operation on an Linked-List-based stack. Images: Michel Bakni, Wikimedia Commons, CC BY-SA 4.0.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>A push makes <span data-ref="newhead">newhead</span>, points it at the old <span data-ref="head">head</span> and makes it the new <span data-ref="head">head</span>; a pop takes <span data-ref="head">head</span>’s data and moves <span data-ref="head">head</span> one link on. Each call writes at most two links, whatever the size, and the list never fills up; popping an empty one is still underflow.</span></div>
+</figure>
+</section>
+
+<section id="balanced" data-source="cpa" data-locator="cpa:combinatorics/bracket_sequences#balanced-bracket-sequences, to “…in a similar fashion.”, before the article’s list of its problems">
+<h2>Balanced bracket sequences</h2>
+<p>A <span data-concept="balanced-brackets"><strong>balanced bracket sequence</strong></span> is a string consisting of only brackets, such that this sequence, when inserted certain numbers and mathematical operations, gives a valid mathematical expression. Formally you can define <span data-concept="balanced-brackets">balanced bracket sequence</span> with:</p>
+<ul><li>$e$ (the empty string) is a <span data-concept="balanced-brackets">balanced bracket sequence</span>.</li><li>if $s$ is a <span data-concept="balanced-brackets">balanced bracket sequence</span>, then so is $(s)$.</li><li>if $s$ and $t$ are <span data-concept="balanced-brackets">balanced bracket sequences</span>, then so is $s t$.</li></ul>
+<p>For instance $(())()$ is a <span data-concept="balanced-brackets">balanced bracket sequence</span>, but $())($ is not.</p>
+<p>Of course you can define other bracket sequences also with multiple bracket types in a similar fashion.</p>
+</section>
+
+<section id="validation" data-source="cpa" data-locator="cpa:combinatorics/bracket_sequences#balance-validation">
+<h2>Balance validation</h2>
+<p>We want to <span data-concept="bracket-validation">check if a given string is balanced</span> or not.</p>
+<p>At first suppose there is only one type of bracket. For this case there exists a very simple <span data-concept="algorithm">algorithm</span>. Let $\text{depth}$ be the current number of open brackets. Initially $\text{depth} = 0$. We iterate over all character of the string, if the current bracket character is an opening bracket, then we increment $\text{depth}$, otherwise we decrement it. If at any time the variable $\text{depth}$ gets negative, or at the end it is different from $0$, then the string is not a balanced sequence. Otherwise it is.</p>
+<p>If there are several bracket types involved, then the <span data-concept="algorithm">algorithm</span> needs to be changed. Instead of a counter $\text{depth}$ we create a <span data-concept="stack">stack</span>, in which we will store all opening brackets that we meet. If the current bracket character is an opening one, we put it onto the <span data-concept="stack">stack</span>. If it is a closing one, then we check if the <span data-concept="stack">stack</span> is non-empty, and if the top element of the <span data-concept="stack">stack</span> is of the same type as the current closing bracket. If both conditions are fulfilled, then we remove the opening bracket from the <span data-concept="stack">stack</span>. If at any time one of the conditions is not fulfilled, or at the end the <span data-concept="stack">stack</span> is not empty, then the string is not balanced. Otherwise it is.</p>
+<figure class="sim" id="sim-brackets">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>With one bracket type, depth counts the brackets still open, and the line under the string must never go below 0 and must end at 0. With several types, the stack holds the open brackets themselves, and its height is that same line, but ([)] stays above 0 and ends at 0 and is still not balanced: only the stack sees that ) closes a [.</span></div>
+</figure>
+</section>

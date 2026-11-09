@@ -2,7 +2,7 @@
 tools/build_text.py, which calls block() for any block whose spec row names a `reader`.
 
 A `latex` block: {id, source, locator, h2, reader: 'latex', file, chapter, dialect, parts: [(start, stop), …],
-drop_first_heading?}. Each part runs from the line holding `start` to the line before the one holding
+drop_first_heading?, edition?}. Each part runs from the line holding `start` to the line before the one holding
 `stop` (None: the end of the file); the parts are read in order and set one after another.
 
 An `mcs` block: {id, source, locator, h2, reader: 'mcs', pdf, pages, from, to, drop_first_heading?}.
@@ -66,7 +66,8 @@ def latex_block(b, spec, book):
     for k, (start, stop) in enumerate(b['parts']):
         h, m, fn, unknown, _ = read_latex.passage(
             path, start, stop, b['chapter'], b['dialect'], refs=refs,
-            fn_prefix=f'{b["source"]}-fn-{b["chapter"]}', heading_shift=b.get('heading_shift', 1), **_hooks(b, spec))
+            fn_prefix=f'{b["source"]}-fn-{b["chapter"]}', heading_shift=b.get('heading_shift', 1), edition=b.get('edition'),
+            **_hooks(b, spec))
         if k == 0 and b.get('drop_first_heading') and h and re.match(r'<h\d>', h[0]):
             h, m = h[1:], m[1:]
         if unknown:

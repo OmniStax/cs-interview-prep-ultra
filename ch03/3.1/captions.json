@@ -1,0 +1,26 @@
+{
+ "Tallrik - Ystad-2018.jpg": {
+  "html": "Similarly to a stack of plates, adding or removing is only practical at the top.",
+  "text": "Similarly to a stack of plates, adding or removing is only practical at the top."
+ },
+ "Lifo stack.svg": {
+  "html": "Simple representation of a stack runtime with <em>push</em> and <em>pop</em> operations",
+  "text": "Simple representation of a stack runtime with push and pop operations"
+ },
+ "Stack Push operation-en.gif": {
+  "html": "Animated push operation on an array-based stack from underflow to overflow",
+  "text": "Animated push operation on an array-based stack from underflow to overflow"
+ },
+ "Stack Pop Operation-en.gif": {
+  "html": "Animated pop operation on an array-based stack from the full-stack state to the underflow",
+  "text": "Animated pop operation on an array-based stack from the full-stack state to the underflow"
+ },
+ "Linked-list-based Stack Push operation-en.gif": {
+  "html": "Animated push operation on an Linked-List-based stack.",
+  "text": "Animated push operation on an Linked-List-based stack."
+ },
+ "Linked-list-based Stack Pop Operation-en.gif": {
+  "html": "Animated pop operation on an Linked-List-based stack.",
+  "text": "Animated pop operation on an Linked-List-based stack."
+ }
+}

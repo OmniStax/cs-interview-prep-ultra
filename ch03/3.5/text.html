@@ -1,0 +1,681 @@
+<section id="rpn" data-source="cpa" data-locator="cpa:string/expression_parsing lead + #reverse-polish-notation">
+<h2>Expression parsing</h2>
+<p>A string containing a mathematical expression containing numbers and various operators is given. We have to compute the value of it in $O(n)$, where $n$ is the length of the string.</p>
+<p>The <span data-concept="algorithm">algorithm</span> discussed here translates an expression into the so-called <strong><span data-concept="rpn-evaluation">reverse Polish notation</span></strong> (explicitly or implicitly), and evaluates this expression.</p>
+<h3>Reverse Polish notation</h3>
+<p>The <span data-concept="rpn-evaluation">reverse Polish notation</span> is a form of writing mathematical expressions, in which the operators are located after their operands. For example the following expression</p>
+$$a + b * c * d + (e - f) * (g * h + i)$$
+<p>can be written in <span data-concept="rpn-evaluation">reverse Polish notation</span> in the following way:</p>
+$$a b c * d * + e f - g h * i + * +$$
+<p>The <span data-concept="rpn-evaluation">reverse Polish notation</span> was developed by the Australian philosopher and computer science specialist Charles Hamblin in the mid 1950s on the basis of the Polish notation, which was proposed in 1920 by the Polish mathematician Jan Łukasiewicz.</p>
+<p><span data-concept="rpn-evaluation">The convenience of the reverse Polish notation is, that expressions in this form are very <strong>easy to evaluate</strong> in linear time.</span> We use a <span data-concept="stack">stack</span>, which is initially empty. We will iterate over the operands and operators of the expression in <span data-concept="rpn-evaluation">reverse Polish notation</span>. If the current element is a number, then we put the value on top of the <span data-concept="stack">stack</span>, if the current element is an operator, then we get the top two elements from the <span data-concept="stack">stack</span>, perform the operation, and put the result back on top of the <span data-concept="stack">stack</span>. In the end there will be exactly one element left in the <span data-concept="stack">stack</span>, which will be the value of the expression.</p>
+<p>Obviously this simple evaluation runs in $O(n)$ time.</p>
+</section>
+
+<section id="parsing" data-source="cpa" data-locator="cpa:string/expression_parsing#parsing-of-simple-expressions">
+<h2>Parsing of simple expressions</h2>
+<p>For the time being we only consider a simplified problem: we assume that all operators are <strong>binary</strong> (i.e. they take two arguments), and all are <strong>left-associative</strong> (if the priorities are equal, they get executed from left to right). Parentheses are allowed.</p>
+<p><span data-concept="expression-parsing">We will set up <span data-ref="st op">two stacks</span></span>: <span data-ref="st">one for numbers</span>, and <span data-ref="op">one for operators and parentheses</span>. <span data-ref="st op">Initially both <span data-concept="stack">stacks</span></span> are empty. For <span data-ref="op">the second <span data-concept="stack">stack</span></span> we will maintain the condition that all operations are ordered by strict descending priority. If there are parenthesis on <span data-ref="op">the <span data-concept="stack">stack</span></span>, than each block of operators (corresponding to one pair of parenthesis) is ordered, and the entire <span data-concept="stack">stack</span> is not necessarily ordered.</p>
+<p>We will iterate over the characters of the expression from left to right. If the current character is a digit, then we put the value of this number on <span data-ref="st">the <span data-concept="stack">stack</span></span>. If the current character is an opening parenthesis, then we put it on <span data-ref="op">the <span data-concept="stack">stack</span></span>. If the current character is a closing parenthesis, the we execute all operators on <span data-ref="op">the <span data-concept="stack">stack</span></span> until we reach the opening bracket (in other words we perform all operations inside the parenthesis). Finally if the current character is an operator, then while the top of <span data-ref="op">the <span data-concept="stack">stack</span></span> has an operator with the same or higher priority, we will execute this operation, and put the new operation on <span data-ref="op">the <span data-concept="stack">stack</span></span>.</p>
+<p>After we processed the entire string, some operators might still be in <span data-ref="op">the <span data-concept="stack">stack</span></span>, so we execute them.</p>
+<p>Here is the implementation of this method for the four operators $+$ $-$ $*$ $/$:</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code>def delim(c):
+    return c == ' '
+
+
+def is_op(c):
+    return c == '+' or c == '-' or c == '*' or c == '/'
+
+
+def priority(op):
+    if op == '+' or op == '-':
+        return 1
+    if op == '*' or op == '/':
+        return 2
+    return -1
+
+
+def process_op(st, op):
+    r = st.pop()
+    l = st.pop()
+    if op == '+':
+        st.append(l + r)
+    elif op == '-':
+        st.append(l - r)
+    elif op == '*':
+        st.append(l * r)
+    elif op == '/':
+        st.append(int(l / r))
+
+
+def evaluate(s):
+    st = []
+    op = []
+    i = 0
+    while i &lt; len(s):
+        if delim(s[i]):
+            i += 1
+            continue
+
+        if s[i] == '(':
+            op.append('(')
+        elif s[i] == ')':
+            while op[-1] != '(':
+                process_op(st, op[-1])
+                op.pop()
+            op.pop()
+        elif is_op(s[i]):
+            cur_op = s[i]
+            while op and priority(op[-1]) &gt;= priority(cur_op):
+                process_op(st, op[-1])
+                op.pop()
+            op.append(cur_op)
+        else:
+            number = 0
+            while i &lt; len(s) and s[i].isalnum():
+                number = number * 10 + ord(s[i]) - ord('0')
+                i += 1
+            i -= 1
+            st.append(number)
+        i += 1
+
+    while op:
+        process_op(st, op[-1])
+        op.pop()
+    return st[-1]</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>static boolean delim(char c) {
+    return c == ' ';
+}
+
+static boolean is_op(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
+}
+
+static int priority(char op) {
+    if (op == '+' || op == '-')
+        return 1;
+    if (op == '*' || op == '/')
+        return 2;
+    return -1;
+}
+
+static void process_op(Deque&lt;Integer&gt; st, char op) {
+    int r = st.pop();
+    int l = st.pop();
+    switch (op) {
+        case '+': st.push(l + r); break;
+        case '-': st.push(l - r); break;
+        case '*': st.push(l * r); break;
+        case '/': st.push(l / r); break;
+    }
+}
+
+static int evaluate(String s) {
+    Deque&lt;Integer&gt; st = new ArrayDeque&lt;&gt;();
+    Deque&lt;Character&gt; op = new ArrayDeque&lt;&gt;();
+    for (int i = 0; i &lt; s.length(); i++) {
+        if (delim(s.charAt(i)))
+            continue;
+
+        if (s.charAt(i) == '(') {
+            op.push('(');
+        } else if (s.charAt(i) == ')') {
+            while (op.peek() != '(') {
+                process_op(st, op.peek());
+                op.pop();
+            }
+            op.pop();
+        } else if (is_op(s.charAt(i))) {
+            char cur_op = s.charAt(i);
+            while (!op.isEmpty() &amp;&amp; priority(op.peek()) &gt;= priority(cur_op)) {
+                process_op(st, op.peek());
+                op.pop();
+            }
+            op.push(cur_op);
+        } else {
+            int number = 0;
+            while (i &lt; s.length() &amp;&amp; Character.isLetterOrDigit(s.charAt(i)))
+                number = number * 10 + s.charAt(i++) - '0';
+            --i;
+            st.push(number);
+        }
+    }
+
+    while (!op.isEmpty()) {
+        process_op(st, op.peek());
+        op.pop();
+    }
+    return st.peek();
+}</code></pre>
+<pre data-lang="cpp"><code>bool delim(char c) {
+    return c == ' ';
+}
+
+bool is_op(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
+}
+
+int priority (char op) {
+    if (op == '+' || op == '-')
+        return 1;
+    if (op == '*' || op == '/')
+        return 2;
+    return -1;
+}
+
+void process_op(stack&lt;int&gt;&amp; st, char op) {
+    int r = st.top(); st.pop();
+    int l = st.top(); st.pop();
+    switch (op) {
+        case '+': st.push(l + r); break;
+        case '-': st.push(l - r); break;
+        case '*': st.push(l * r); break;
+        case '/': st.push(l / r); break;
+    }
+}
+
+int evaluate(string&amp; s) {
+    stack&lt;int&gt; st;
+    stack&lt;char&gt; op;
+    for (int i = 0; i &lt; (int)s.size(); i++) {
+        if (delim(s[i]))
+            continue;
+        
+        if (s[i] == '(') {
+            op.push('(');
+        } else if (s[i] == ')') {
+            while (op.top() != '(') {
+                process_op(st, op.top());
+                op.pop();
+            }
+            op.pop();
+        } else if (is_op(s[i])) {
+            char cur_op = s[i];
+            while (!op.empty() &amp;&amp; priority(op.top()) &gt;= priority(cur_op)) {
+                process_op(st, op.top());
+                op.pop();
+            }
+            op.push(cur_op);
+        } else {
+            int number = 0;
+            while (i &lt; (int)s.size() &amp;&amp; isalnum(s[i]))
+                number = number * 10 + s[i++] - '0';
+            --i;
+            st.push(number);
+        }
+    }
+
+    while (!op.empty()) {
+        process_op(st, op.top());
+        op.pop();
+    }
+    return st.top();
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>function delim(c) {
+    return c === ' ';
+}
+
+function is_op(c) {
+    return c === '+' || c === '-' || c === '*' || c === '/';
+}
+
+function priority(op) {
+    if (op === '+' || op === '-')
+        return 1;
+    if (op === '*' || op === '/')
+        return 2;
+    return -1;
+}
+
+function process_op(st, op) {
+    const r = st.pop();
+    const l = st.pop();
+    switch (op) {
+        case '+': st.push(l + r); break;
+        case '-': st.push(l - r); break;
+        case '*': st.push(l * r); break;
+        case '/': st.push(Math.trunc(l / r)); break;
+    }
+}
+
+function evaluate(s) {
+    const st = [];
+    const op = [];
+    for (let i = 0; i &lt; s.length; i++) {
+        if (delim(s[i]))
+            continue;
+
+        if (s[i] === '(') {
+            op.push('(');
+        } else if (s[i] === ')') {
+            while (op[op.length - 1] !== '(') {
+                process_op(st, op[op.length - 1]);
+                op.pop();
+            }
+            op.pop();
+        } else if (is_op(s[i])) {
+            const cur_op = s[i];
+            while (op.length &gt; 0 &amp;&amp; priority(op[op.length - 1]) &gt;= priority(cur_op)) {
+                process_op(st, op[op.length - 1]);
+                op.pop();
+            }
+            op.push(cur_op);
+        } else {
+            let number = 0;
+            while (i &lt; s.length &amp;&amp; /[0-9A-Za-z]/.test(s[i]))
+                number = number * 10 + s.charCodeAt(i++) - 48;
+            --i;
+            st.push(number);
+        }
+    }
+
+    while (op.length &gt; 0) {
+        process_op(st, op[op.length - 1]);
+        op.pop();
+    }
+    return st[st.length - 1];
+}</code></pre>
+</div>
+<p>Thus we learned how to calculate the value of an expression in $O(n)$, at the same time we implicitly used the <span data-concept="rpn-evaluation">reverse Polish notation</span>. By slightly modifying the above implementation it is also possible to obtain the expression in <span data-concept="rpn-evaluation">reverse Polish notation</span> in an explicit form.</p>
+</section>
+
+<section id="unary" data-source="cpa" data-locator="cpa:string/expression_parsing#unary-operators">
+<h2>Unary operators</h2>
+<p>Now suppose that the expression also contains <strong><span data-concept="unary-right-assoc">unary</span></strong> operators (operators that take one argument). The unary plus and unary minus are common examples of such operators.</p>
+<p>One of the differences in this case, is that we need to determine whether <span data-ref="cur_op">the current operator</span> is a unary or a binary one.</p>
+<p><span data-concept="unary-right-assoc">You can notice, that before an unary operator, there always is another operator or an opening parenthesis, or nothing at all</span> (if it is at the very beginning of the expression). On the contrary before a binary operator there will always be an operand (number) or a closing parenthesis. Thus it is easy to flag whether the next operator can be unary or not.</p>
+<p>Additionally we need to execute a unary and a binary operator differently. And we need to chose the priority of a <span data-concept="unary-right-assoc">unary operator</span> higher than all of the binary operators.<sup class="fn" data-note="err-unary-pow"></sup></p>
+<p>In addition it should be noted, that some <span data-concept="unary-right-assoc">unary operators</span> (e.g. unary plus and unary minus) are actually <strong><span data-concept="unary-right-assoc">right-associative</span></strong>.</p>
+</section>
+
+<section id="right-assoc" data-source="cpa" data-locator="cpa:string/expression_parsing#right-associativity">
+<h2>Right-associativity</h2>
+<p><span data-concept="unary-right-assoc">Right-associative</span> means, that whenever the priorities are equal, the operators must be evaluated from right to left.</p>
+<p>As noted above, <span data-concept="unary-right-assoc">unary operators</span> are usually <span data-concept="unary-right-assoc">right-associative</span>. Another example for an <span data-concept="unary-right-assoc">right-associative</span> operator is the exponentiation operator ($a \wedge b \wedge c$ is usually perceived as $a^{b^c}$ and not as $(a^b)^c$).</p>
+<p>What difference do we need to make in order to correctly handle <span data-concept="unary-right-assoc">right-associative</span> operators? It turns out that the changes are very minimal. The only difference will be, if the priorities are equal we will postpone the execution of the <span data-concept="unary-right-assoc">right-associative</span> operation.</p>
+<p>The only line that needs to be replaced is</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code>while op and priority(op[-1]) &gt;= priority(cur_op):</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>while (!op.isEmpty() &amp;&amp; priority(op.peek()) &gt;= priority(cur_op))</code></pre>
+<pre data-lang="cpp"><code>while (!op.empty() &amp;&amp; priority(op.top()) &gt;= priority(cur_op))</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>while (op.length &gt; 0 &amp;&amp; priority(op[op.length - 1]) &gt;= priority(cur_op))</code></pre>
+</div>
+<p>with</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code>while op and (
+        (left_assoc(cur_op) and priority(op[-1]) &gt;= priority(cur_op)) or
+        (not left_assoc(cur_op) and priority(op[-1]) &gt; priority(cur_op))
+    ):</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>while (!op.isEmpty() &amp;&amp; (
+        (left_assoc(cur_op) &amp;&amp; priority(op.peek()) &gt;= priority(cur_op)) ||
+        (!left_assoc(cur_op) &amp;&amp; priority(op.peek()) &gt; priority(cur_op))
+    ))</code></pre>
+<pre data-lang="cpp"><code>while (!op.empty() &amp;&amp; (
+        (left_assoc(cur_op) &amp;&amp; priority(op.top()) &gt;= priority(cur_op)) ||
+        (!left_assoc(cur_op) &amp;&amp; priority(op.top()) &gt; priority(cur_op))
+    ))</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>while (op.length &gt; 0 &amp;&amp; (
+        (left_assoc(cur_op) &amp;&amp; priority(op[op.length - 1]) &gt;= priority(cur_op)) ||
+        (!left_assoc(cur_op) &amp;&amp; priority(op[op.length - 1]) &gt; priority(cur_op))
+    ))</code></pre>
+</div>
+<p>where <code>left_assoc</code> is a function that decides if an operator is left_associative or not.</p>
+<p>Here is an implementation for the binary operators $+$ $-$ $*$ $/$ and the <span data-concept="unary-right-assoc">unary  operators</span> $+$ and $-$.</p>
+<div class="code-set">
+<pre data-lang="python" data-ai="claude-opus-5-5 high"><code>def delim(c):
+    return c == ' '
+
+
+def is_op(c):
+    return c == '+' or c == '-' or c == '*' or c == '/'
+
+
+def is_unary(c):
+    return c == '+' or c == '-'
+
+
+def priority(op):
+    if op[0] == 'u':  # unary operator
+        return 3
+    if op == '+' or op == '-':
+        return 1
+    if op == '*' or op == '/':
+        return 2
+    return -1
+
+
+def process_op(st, op):
+    if op[0] == 'u':
+        l = st.pop()
+        if op[1] == '+':
+            st.append(l)
+        elif op[1] == '-':
+            st.append(-l)
+    else:
+        r = st.pop()
+        l = st.pop()
+        if op == '+':
+            st.append(l + r)
+        elif op == '-':
+            st.append(l - r)
+        elif op == '*':
+            st.append(l * r)
+        elif op == '/':
+            st.append(int(l / r))
+
+
+def evaluate(s):
+    st = []
+    op = []
+    may_be_unary = True
+    i = 0
+    while i &lt; len(s):
+        if delim(s[i]):
+            i += 1
+            continue
+
+        if s[i] == '(':
+            op.append('(')
+            may_be_unary = True
+        elif s[i] == ')':
+            while op[-1] != '(':
+                process_op(st, op[-1])
+                op.pop()
+            op.pop()
+            may_be_unary = False
+        elif is_op(s[i]):
+            cur_op = s[i]
+            if may_be_unary and is_unary(cur_op):
+                cur_op = 'u' + cur_op
+            while op and (
+                    (cur_op[0] != 'u' and priority(op[-1]) &gt;= priority(cur_op)) or
+                    (cur_op[0] == 'u' and priority(op[-1]) &gt; priority(cur_op))
+                ):
+                process_op(st, op[-1])
+                op.pop()
+            op.append(cur_op)
+            may_be_unary = True
+        else:
+            number = 0
+            while i &lt; len(s) and s[i].isalnum():
+                number = number * 10 + ord(s[i]) - ord('0')
+                i += 1
+            i -= 1
+            st.append(number)
+            may_be_unary = False
+        i += 1
+
+    while op:
+        process_op(st, op[-1])
+        op.pop()
+    return st[-1]</code></pre>
+<pre data-lang="java" data-ai="claude-opus-5-5 high"><code>static boolean delim(char c) {
+    return c == ' ';
+}
+
+static boolean is_op(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
+}
+
+static boolean is_unary(String c) {
+    return c.equals("+") || c.equals("-");
+}
+
+static int priority(String op) {
+    if (op.startsWith("u")) // unary operator
+        return 3;
+    if (op.equals("+") || op.equals("-"))
+        return 1;
+    if (op.equals("*") || op.equals("/"))
+        return 2;
+    return -1;
+}
+
+static void process_op(Deque&lt;Integer&gt; st, String op) {
+    if (op.startsWith("u")) {
+        int l = st.pop();
+        switch (op.charAt(1)) {
+            case '+': st.push(l); break;
+            case '-': st.push(-l); break;
+        }
+    } else {
+        int r = st.pop();
+        int l = st.pop();
+        switch (op.charAt(0)) {
+            case '+': st.push(l + r); break;
+            case '-': st.push(l - r); break;
+            case '*': st.push(l * r); break;
+            case '/': st.push(l / r); break;
+        }
+    }
+}
+
+static int evaluate(String s) {
+    Deque&lt;Integer&gt; st = new ArrayDeque&lt;&gt;();
+    Deque&lt;String&gt; op = new ArrayDeque&lt;&gt;();
+    boolean may_be_unary = true;
+    for (int i = 0; i &lt; s.length(); i++) {
+        if (delim(s.charAt(i)))
+            continue;
+
+        if (s.charAt(i) == '(') {
+            op.push("(");
+            may_be_unary = true;
+        } else if (s.charAt(i) == ')') {
+            while (!op.peek().equals("(")) {
+                process_op(st, op.peek());
+                op.pop();
+            }
+            op.pop();
+            may_be_unary = false;
+        } else if (is_op(s.charAt(i))) {
+            String cur_op = String.valueOf(s.charAt(i));
+            if (may_be_unary &amp;&amp; is_unary(cur_op))
+                cur_op = "u" + cur_op;
+            while (!op.isEmpty() &amp;&amp; (
+                    (!cur_op.startsWith("u") &amp;&amp; priority(op.peek()) &gt;= priority(cur_op)) ||
+                    (cur_op.startsWith("u") &amp;&amp; priority(op.peek()) &gt; priority(cur_op))
+                )) {
+                process_op(st, op.peek());
+                op.pop();
+            }
+            op.push(cur_op);
+            may_be_unary = true;
+        } else {
+            int number = 0;
+            while (i &lt; s.length() &amp;&amp; Character.isLetterOrDigit(s.charAt(i)))
+                number = number * 10 + s.charAt(i++) - '0';
+            --i;
+            st.push(number);
+            may_be_unary = false;
+        }
+    }
+
+    while (!op.isEmpty()) {
+        process_op(st, op.peek());
+        op.pop();
+    }
+    return st.peek();
+}</code></pre>
+<pre data-lang="cpp"><code>bool delim(char c) {
+    return c == ' ';
+}
+
+bool is_op(char c) {
+    return c == '+' || c == '-' || c == '*' || c == '/';
+}
+
+bool is_unary(char c) {
+    return c == '+' || c=='-';
+}
+
+int priority (char op) {
+    if (op &lt; 0) // unary operator
+        return 3;
+    if (op == '+' || op == '-')
+        return 1;
+    if (op == '*' || op == '/')
+        return 2;
+    return -1;
+}
+
+void process_op(stack&lt;int&gt;&amp; st, char op) {
+    if (op &lt; 0) {
+        int l = st.top(); st.pop();
+        switch (-op) {
+            case '+': st.push(l); break;
+            case '-': st.push(-l); break;
+        }
+    } else {
+        int r = st.top(); st.pop();
+        int l = st.top(); st.pop();
+        switch (op) {
+            case '+': st.push(l + r); break;
+            case '-': st.push(l - r); break;
+            case '*': st.push(l * r); break;
+            case '/': st.push(l / r); break;
+        }
+    }
+}
+
+int evaluate(string&amp; s) {
+    stack&lt;int&gt; st;
+    stack&lt;char&gt; op;
+    bool may_be_unary = true;
+    for (int i = 0; i &lt; (int)s.size(); i++) {
+        if (delim(s[i]))
+            continue;
+        
+        if (s[i] == '(') {
+            op.push('(');
+            may_be_unary = true;
+        } else if (s[i] == ')') {
+            while (op.top() != '(') {
+                process_op(st, op.top());
+                op.pop();
+            }
+            op.pop();
+            may_be_unary = false;
+        } else if (is_op(s[i])) {
+            char cur_op = s[i];
+            if (may_be_unary &amp;&amp; is_unary(cur_op))
+                cur_op = -cur_op;
+            while (!op.empty() &amp;&amp; (
+                    (cur_op &gt;= 0 &amp;&amp; priority(op.top()) &gt;= priority(cur_op)) ||
+                    (cur_op &lt; 0 &amp;&amp; priority(op.top()) &gt; priority(cur_op))
+                )) {
+                process_op(st, op.top());
+                op.pop();
+            }
+            op.push(cur_op);
+            may_be_unary = true;
+        } else {
+            int number = 0;
+            while (i &lt; (int)s.size() &amp;&amp; isalnum(s[i]))
+                number = number * 10 + s[i++] - '0';
+            --i;
+            st.push(number);
+            may_be_unary = false;
+        }
+    }
+
+    while (!op.empty()) {
+        process_op(st, op.top());
+        op.pop();
+    }
+    return st.top();
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>function delim(c) {
+    return c === ' ';
+}
+
+function is_op(c) {
+    return c === '+' || c === '-' || c === '*' || c === '/';
+}
+
+function is_unary(c) {
+    return c === '+' || c === '-';
+}
+
+function priority(op) {
+    if (op[0] === 'u') // unary operator
+        return 3;
+    if (op === '+' || op === '-')
+        return 1;
+    if (op === '*' || op === '/')
+        return 2;
+    return -1;
+}
+
+function process_op(st, op) {
+    if (op[0] === 'u') {
+        const l = st.pop();
+        switch (op[1]) {
+            case '+': st.push(l); break;
+            case '-': st.push(-l); break;
+        }
+    } else {
+        const r = st.pop();
+        const l = st.pop();
+        switch (op) {
+            case '+': st.push(l + r); break;
+            case '-': st.push(l - r); break;
+            case '*': st.push(l * r); break;
+            case '/': st.push(Math.trunc(l / r)); break;
+        }
+    }
+}
+
+function evaluate(s) {
+    const st = [];
+    const op = [];
+    let may_be_unary = true;
+    for (let i = 0; i &lt; s.length; i++) {
+        if (delim(s[i]))
+            continue;
+
+        if (s[i] === '(') {
+            op.push('(');
+            may_be_unary = true;
+        } else if (s[i] === ')') {
+            while (op[op.length - 1] !== '(') {
+                process_op(st, op[op.length - 1]);
+                op.pop();
+            }
+            op.pop();
+            may_be_unary = false;
+        } else if (is_op(s[i])) {
+            let cur_op = s[i];
+            if (may_be_unary &amp;&amp; is_unary(cur_op))
+                cur_op = 'u' + cur_op;
+            while (op.length &gt; 0 &amp;&amp; (
+                    (cur_op[0] !== 'u' &amp;&amp; priority(op[op.length - 1]) &gt;= priority(cur_op)) ||
+                    (cur_op[0] === 'u' &amp;&amp; priority(op[op.length - 1]) &gt; priority(cur_op))
+                )) {
+                process_op(st, op[op.length - 1]);
+                op.pop();
+            }
+            op.push(cur_op);
+            may_be_unary = true;
+        } else {
+            let number = 0;
+            while (i &lt; s.length &amp;&amp; /[0-9A-Za-z]/.test(s[i]))
+                number = number * 10 + s.charCodeAt(i++) - 48;
+            --i;
+            st.push(number);
+            may_be_unary = false;
+        }
+    }
+
+    while (op.length &gt; 0) {
+        process_op(st, op[op.length - 1]);
+        op.pop();
+    }
+    return st[st.length - 1];
+}</code></pre>
+</div>
+<figure class="sim" id="sim-two-stack-parser">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The string is read left to right. Each number goes onto <span data-ref="st"><code>st</code></span>; each operator waits on <span data-ref="op"><code>op</code></span> until a weaker operator, a closing bracket or the end of the string comes after it, and is then executed on the top of <span data-ref="st"><code>st</code></span>. The order in which the operators are executed is the expression’s reverse Polish notation. A unary minus and ^ are right-associative, so an operator of equal priority on top is not executed: the new one waits above it.</span></div>
+</figure>
+</section>

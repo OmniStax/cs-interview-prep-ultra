@@ -1,0 +1,2633 @@
+{
+ "id": "3.4",
+ "chapter": "3",
+ "title": "Min-stacks and monotonic queues",
+ "short": "Min-stacks and monotonic queues",
+ "lead": "An Essential section on a stack and a queue that report their smallest element in constant time, on using such a queue to find the minimum of every window of fixed length, and on finding each element’s nearest smaller value with a stack. The largest all-zero submatrix is Advanced. cp-algorithms counts from 0 (A[0] to A[N − 1], rows 0 to n − 1); Wikipedia’s A[1..n] counts from 1, with a sentinel A[0].",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "cp-algorithms’ lists of practice problems are left out, and so are the parts of Wikipedia’s article on applications and on parallel algorithms.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "ODS’s Exercises 3.15 (MinQueue) and 3.16 (MinDeque) ask for a design in words and have no tests, so they are not set. TheAlgorithms’ queue_by_two_stacks, monotonic_queue, sliding_window_maximum, stock_span_problem, next_greater_element and largest_rectangle_histogram, tryalgo’s our_queue and keon’s max_sliding_window carry tests but print no exercise statement, so they have no card. Interactive Coding Challenges’ stack_min and queue_from_stacks are left out: the first loses a repeated minimum and the second moves every element back on each enqueue, which is quadratic. Kattis’s bungeebuilder is left for a later pass, and keon’s heap version of the window waits for the heaps of chapter 9. MIT 6.046J’s “Extreme FIFO Queues”, which chapter 1’s plan had placed in 1.5, is set here with the NC cards.",
+ "figures": [
+  {
+   "id": "sim-min-stack",
+   "kind": "sim",
+   "draws": [
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-min-queue",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-two-stack-queue",
+   "kind": "sim",
+   "draws": [
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-nearest-smaller",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "min-stack",
+   "concept": "min-stack",
+   "verb": "introduces"
+  },
+  {
+   "span": "min-queue",
+   "concept": "monotonic-queue-minimum",
+   "verb": "introduces"
+  },
+  {
+   "span": "min-queue-index",
+   "concept": "monotonic-queue-minimum",
+   "verb": "reinforces"
+  },
+  {
+   "span": "two-stack-queue",
+   "concept": "queue-from-two-stacks",
+   "verb": "introduces"
+  },
+  {
+   "span": "two-stack-queue",
+   "concept": "min-stack",
+   "verb": "uses"
+  },
+  {
+   "span": "window-minimum",
+   "concept": "sliding-window-minimum",
+   "verb": "introduces"
+  },
+  {
+   "span": "window-minimum",
+   "concept": "monotonic-queue-minimum",
+   "verb": "uses"
+  },
+  {
+   "span": "window-minimum",
+   "concept": "sliding-window-fixed",
+   "verb": "uses"
+  },
+  {
+   "span": "nearest-smaller",
+   "concept": "nearest-smaller-element",
+   "verb": "introduces"
+  },
+  {
+   "span": "zero-submatrix",
+   "concept": "largest-zero-submatrix",
+   "verb": "introduces"
+  },
+  {
+   "span": "zero-submatrix",
+   "concept": "nearest-smaller-element",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "ods:linkedlists#exc-14",
+   "source_number": "Exercise 3.14",
+   "origin": "ods",
+   "kind": "code",
+   "bloom": "Create",
+   "place": {
+    "at": "end"
+   },
+   "cite": "min-stack",
+   "changes": "The tests call run(ops), which the starter defines: it plays a list of operations on a new MinStack and returns what pop, size and min return. Its first two tests are TheAlgorithms’ doctests for stack_tracking_min_max.py (MIT, © The Algorithms), less the size limit and the value they return on an empty stack, which the exercise does not ask for; min and pop are never called on an empty stack.",
+   "prompt": "Design and implement a <code>MinStack</code> data structure that can store comparable elements and supports the stack operations <code>push(x)</code>, <code>pop()</code>, and <code>size()</code>, as well as the <code>min()</code> operation, which returns the minimum value currently stored in the data structure. All operations should run in constant time.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class MinStack:\n    def __init__(self):\n        pass\n\n    def push(self, x):\n        pass\n\n    def pop(self):\n        pass\n\n    def size(self):\n        pass\n\n    def min(self):\n        pass\n\n\ndef run(ops):\n    # Plays the operations on a new MinStack and returns what pop, size and min return, in order. Leave it as it is.\n    s = MinStack()\n    out = []\n    for name, *args in ops:\n        r = getattr(s, name)(*args)\n        if name != \"push\":\n            out.append(r)\n    return out\n",
+     "reference": "class MinStack:\n    def __init__(self):\n        self.st = []\n\n    def push(self, x):\n        new_min = x if not self.st else min(x, self.st[-1][1])\n        self.st.append((x, new_min))\n\n    def pop(self):\n        return self.st.pop()[0]\n\n    def size(self):\n        return len(self.st)\n\n    def min(self):\n        return self.st[-1][1]\n\n\ndef run(ops):\n    # Plays the operations on a new MinStack and returns what pop, size and min return, in order. Leave it as it is.\n    s = MinStack()\n    out = []\n    for name, *args in ops:\n        r = getattr(s, name)(*args)\n        if name != \"push\":\n            out.append(r)\n    return out\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class MinStack {\n  constructor() {\n  }\n\n  push(x) {\n  }\n\n  pop() {\n  }\n\n  size() {\n  }\n\n  min() {\n  }\n}\n\n// Plays the operations on a new MinStack and returns what pop, size and min return, in order. Leave it as it is.\nfunction run(ops) {\n  const s = new MinStack();\n  const out = [];\n  for (const [name, ...args] of ops) {\n    const r = s[name](...args);\n    if (name !== \"push\") out.push(r);\n  }\n  return out;\n}\n",
+     "reference": "class MinStack {\n  constructor() {\n    this.st = [];\n  }\n\n  push(x) {\n    const newMin = this.st.length === 0 ? x : Math.min(x, this.st[this.st.length - 1][1]);\n    this.st.push([x, newMin]);\n  }\n\n  pop() {\n    return this.st.pop()[0];\n  }\n\n  size() {\n    return this.st.length;\n  }\n\n  min() {\n    return this.st[this.st.length - 1][1];\n  }\n}\n\n// Plays the operations on a new MinStack and returns what pop, size and min return, in order. Leave it as it is.\nfunction run(ops) {\n  const s = new MinStack();\n  const out = [];\n  for (const [name, ...args] of ops) {\n    const r = s[name](...args);\n    if (name !== \"push\") out.push(r);\n  }\n  return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ]
+       ]
+      ],
+      "expect": [
+       2,
+       1
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "push",
+         123
+        ],
+        [
+         "push",
+         -123
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ]
+       ]
+      ],
+      "expect": [
+       -123,
+       0,
+       -123,
+       -123,
+       123,
+       123
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ]
+       ]
+      ],
+      "expect": [
+       1,
+       1
+      ],
+      "visible": true,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       2,
+       2,
+       2,
+       2
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ]
+       ]
+      ],
+      "expect": [
+       3,
+       3,
+       4,
+       4,
+       5
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ]
+       ]
+      ],
+      "expect": [
+       1,
+       3,
+       3,
+       1
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "size"
+        ],
+        [
+         "push",
+         7
+        ],
+        [
+         "size"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ]
+       ]
+      ],
+      "expect": [
+       0,
+       1,
+       7,
+       7,
+       0
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "size"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "size"
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         4
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "size"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         0
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         6
+        ],
+        [
+         "push",
+         5
+        ],
+        [
+         "min"
+        ],
+        [
+         "min"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "min"
+        ],
+        [
+         "size"
+        ],
+        [
+         "size"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "push",
+         3
+        ]
+       ]
+      ],
+      "expect": [
+       1,
+       1,
+       4,
+       0,
+       0,
+       5,
+       0,
+       0,
+       7,
+       0,
+       0,
+       3,
+       2,
+       2,
+       0,
+       5,
+       0,
+       0,
+       0,
+       5,
+       7,
+       6,
+       6,
+       1,
+       0,
+       3,
+       0,
+       2,
+       2,
+       9,
+       0,
+       5,
+       0,
+       2,
+       5,
+       0,
+       0,
+       14,
+       0,
+       4,
+       0,
+       0,
+       0,
+       5,
+       2,
+       0,
+       6,
+       0,
+       1,
+       0,
+       15,
+       6,
+       14,
+       6,
+       5,
+       15,
+       0,
+       1,
+       16,
+       4,
+       4,
+       1,
+       0,
+       0,
+       0,
+       18,
+       19,
+       6,
+       0,
+       19,
+       21,
+       0,
+       0,
+       3,
+       22,
+       0,
+       0,
+       0,
+       6,
+       0,
+       0,
+       4,
+       0,
+       0,
+       4,
+       27,
+       0,
+       0,
+       6,
+       0,
+       5,
+       3,
+       0,
+       33,
+       5,
+       2,
+       6,
+       35,
+       2,
+       2,
+       0,
+       1,
+       0,
+       1,
+       3,
+       0,
+       35,
+       0,
+       0,
+       1,
+       3,
+       6,
+       5,
+       0,
+       0,
+       0,
+       2,
+       5,
+       39,
+       4,
+       42,
+       0,
+       6,
+       44,
+       0,
+       5,
+       6,
+       45,
+       4,
+       0,
+       0,
+       47,
+       4,
+       0,
+       0,
+       0,
+       46,
+       46,
+       4,
+       0,
+       2,
+       0,
+       3,
+       0,
+       0,
+       51,
+       0,
+       3,
+       52,
+       0,
+       0,
+       56,
+       0,
+       0,
+       58,
+       0,
+       0,
+       1,
+       1,
+       57,
+       3,
+       1,
+       3,
+       0,
+       0,
+       4,
+       61,
+       0,
+       61,
+       0,
+       0,
+       0,
+       0,
+       63,
+       0,
+       0,
+       0,
+       6,
+       0,
+       2,
+       3,
+       0,
+       0,
+       65,
+       65,
+       0,
+       0,
+       3,
+       0,
+       0,
+       6,
+       2,
+       4,
+       68,
+       69,
+       0,
+       73,
+       0,
+       6,
+       73,
+       5,
+       0,
+       0,
+       0,
+       4,
+       0,
+       1,
+       5,
+       76,
+       77,
+       0,
+       0,
+       0,
+       5,
+       0,
+       79,
+       79,
+       6,
+       1,
+       6,
+       0
+      ],
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n, rand) => [Array.from({ length: n }, (_, i) => (i % 4 === 3 ? ['min'] : ['push', rand.int(0, 99)]))]",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "cpa:dynamic_programming/zero_matrix",
+   "source_number": "Finding the largest zero submatrix",
+   "origin": "cpa",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "zero-submatrix",
+   "changes": "zero_matrix(a) returns the area of the largest zero submatrix, as the article’s code does; a is a list of rows of 0s and 1s with at least one row and one column. The first two tests are tryalgo’s grids for rectangles_from_grid (MIT, © 2016 Jill-Jênn Vie) with 0 and 1 swapped, since tryalgo looks for ones; their areas are its own.",
+   "prompt": "You are given a matrix with <code>n</code> rows and <code>m</code> columns. Find the largest submatrix consisting of only zeros (a submatrix is a rectangular area of the matrix).",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "zero_matrix",
+     "starter": "def zero_matrix(a):\n    pass\n",
+     "reference": "def zero_matrix(a):\n    n = len(a)\n    m = len(a[0])\n\n    ans = 0\n    d, d1, d2 = [-1] * m, [0] * m, [0] * m\n    st = []\n    for i in range(n):\n        for j in range(m):\n            if a[i][j] == 1:\n                d[j] = i\n\n        for j in range(m):\n            while st and d[st[-1]] <= d[j]:\n                st.pop()\n            d1[j] = -1 if not st else st[-1]\n            st.append(j)\n        while st:\n            st.pop()\n\n        for j in range(m - 1, -1, -1):\n            while st and d[st[-1]] <= d[j]:\n                st.pop()\n            d2[j] = m if not st else st[-1]\n            st.append(j)\n        while st:\n            st.pop()\n\n        for j in range(m):\n            ans = max(ans, (i - d[j]) * (d2[j] - d1[j] - 1))\n    return ans\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "zero_matrix",
+     "starter": "function zero_matrix(a) {\n}\n",
+     "reference": "function zero_matrix(a) {\n    const n = a.length;\n    const m = a[0].length;\n\n    let ans = 0;\n    const d = new Array(m).fill(-1), d1 = new Array(m), d2 = new Array(m);\n    const st = [];\n    for (let i = 0; i < n; ++i) {\n        for (let j = 0; j < m; ++j) {\n            if (a[i][j] === 1)\n                d[j] = i;\n        }\n\n        for (let j = 0; j < m; ++j) {\n            while (st.length > 0 && d[st[st.length - 1]] <= d[j])\n                st.pop();\n            d1[j] = st.length === 0 ? -1 : st[st.length - 1];\n            st.push(j);\n        }\n        while (st.length > 0)\n            st.pop();\n\n        for (let j = m - 1; j >= 0; --j) {\n            while (st.length > 0 && d[st[st.length - 1]] <= d[j])\n                st.pop();\n            d2[j] = st.length === 0 ? m : st[st.length - 1];\n            st.push(j);\n        }\n        while (st.length > 0)\n            st.pop();\n\n        for (let j = 0; j < m; ++j)\n            ans = Math.max(ans, (i - d[j]) * (d2[j] - d1[j] - 1));\n    }\n    return ans;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        [
+         0,
+         1,
+         0,
+         0,
+         1,
+         0,
+         0,
+         0
+        ],
+        [
+         1,
+         0,
+         1,
+         1,
+         1,
+         0,
+         1,
+         0
+        ],
+        [
+         0,
+         0,
+         1,
+         0,
+         0,
+         1,
+         1,
+         1
+        ],
+        [
+         1,
+         1,
+         0,
+         0,
+         0,
+         1,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         1,
+         0,
+         0,
+         0,
+         1,
+         0
+        ],
+        [
+         1,
+         0,
+         1,
+         1,
+         1,
+         0,
+         1,
+         0
+        ]
+       ]
+      ],
+      "expect": 6,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         0
+        ],
+        [
+         0,
+         0
+        ]
+       ]
+      ],
+      "expect": 4,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         1,
+         1,
+         1,
+         1
+        ],
+        [
+         1,
+         1,
+         1,
+         1
+        ],
+        [
+         1,
+         1,
+         1,
+         1
+        ]
+       ]
+      ],
+      "expect": 0,
+      "visible": true,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0
+        ]
+       ]
+      ],
+      "expect": 12,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         0,
+         1,
+         0,
+         0,
+         0,
+         1
+        ]
+       ]
+      ],
+      "expect": 3,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0
+        ],
+        [
+         0
+        ],
+        [
+         1
+        ],
+        [
+         0
+        ],
+        [
+         0
+        ],
+        [
+         0
+        ]
+       ]
+      ],
+      "expect": 3,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0
+        ]
+       ]
+      ],
+      "expect": 1,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         1
+        ]
+       ]
+      ],
+      "expect": 0,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         1,
+         0
+        ],
+        [
+         1,
+         0,
+         0,
+         0
+        ]
+       ]
+      ],
+      "expect": 12,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         0,
+         0,
+         1,
+         0
+        ]
+       ]
+      ],
+      "expect": 12,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         1,
+         0,
+         0,
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         1,
+         0,
+         0,
+         1,
+         0,
+         1
+        ]
+       ]
+      ],
+      "expect": 4,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         1,
+         0,
+         0
+        ],
+        [
+         1,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         1
+        ]
+       ]
+      ],
+      "expect": 10,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         0,
+         1
+        ],
+        [
+         1,
+         0
+        ],
+        [
+         0,
+         1
+        ],
+        [
+         0,
+         0
+        ],
+        [
+         1,
+         0
+        ],
+        [
+         0,
+         1
+        ]
+       ]
+      ],
+      "expect": 2,
+      "visible": false,
+      "generated_by": "ai"
+     },
+     {
+      "args": [
+       [
+        [
+         1,
+         0,
+         0
+        ],
+        [
+         1,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         1
+        ],
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         1
+        ]
+       ]
+      ],
+      "expect": 8,
+      "visible": false,
+      "generated_by": "ai"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n, rand) => { const k = Math.max(1, Math.ceil(Math.sqrt(n))); return [Array.from({ length: k }, () => Array.from({ length: k }, () => (rand() < 0.2 ? 1 : 0)))]; }",
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "min-stack"
+  },
+  {
+   "exercise": "c2",
+   "concept": "largest-zero-submatrix"
+  },
+  {
+   "exercise": "c2",
+   "concept": "nearest-smaller-element"
+  }
+ ],
+ "referents": [
+  {
+   "id": "st",
+   "label": "st, the stack of pairs",
+   "figures": [
+    "sim-min-stack"
+   ]
+  },
+  {
+   "id": "new-elem",
+   "label": "new_elem, the element being added",
+   "figures": [
+    "sim-min-stack"
+   ]
+  },
+  {
+   "id": "q",
+   "label": "q, the deque of method 1",
+   "figures": [
+    "sim-min-queue"
+   ]
+  },
+  {
+   "id": "new-element",
+   "label": "new_element, the element being added",
+   "figures": [
+    "sim-min-queue",
+    "sim-two-stack-queue"
+   ]
+  },
+  {
+   "id": "s1",
+   "label": "s1, the stack new elements go onto",
+   "figures": [
+    "sim-two-stack-queue"
+   ]
+  },
+  {
+   "id": "s2",
+   "label": "s2, the stack elements leave from",
+   "figures": [
+    "sim-two-stack-queue"
+   ]
+  },
+  {
+   "id": "S",
+   "label": "S, the stack of values",
+   "figures": [
+    "sim-nearest-smaller"
+   ]
+  },
+  {
+   "id": "x",
+   "label": "x, the value being processed",
+   "figures": [
+    "sim-nearest-smaller"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "wp-nearest-smaller-1",
+   "kind": "book",
+   "number": "1",
+   "html": "Berkman, Schieber &amp; Vishkin (1993)."
+  },
+  {
+   "id": "wp-nearest-smaller-2",
+   "kind": "book",
+   "number": "2",
+   "html": "Kravets &amp; Plaxton (1996)."
+  },
+  {
+   "id": "wp-nearest-smaller-3",
+   "kind": "book",
+   "number": "3",
+   "html": "He &amp; Huang (2001)."
+  },
+  {
+   "id": "wp-nearest-smaller-4",
+   "kind": "book",
+   "number": "4",
+   "html": "Knuth, Donald (1968), \"Vol. 1: Fundamental Algorithms\", <em>The Art of Computer Programming</em>, Reading, Mass.: Addison-Wesley, p. 198."
+  },
+  {
+   "id": "wp-nearest-smaller-5",
+   "kind": "book",
+   "number": "5",
+   "html": "Barbay, Fischer &amp; Navarro (2012), Lemma 1."
+  },
+  {
+   "id": "err-empty-min",
+   "kind": "correction",
+   "html": "When both stacks are empty, the code for the minimum takes its first branch and reads <code>s2.top()</code>, the top of an empty stack, which C++ leaves undefined. An empty queue has no minimum, so it can be asked for only while the queue holds an element."
+  },
+  {
+   "id": "err-d-row",
+   "kind": "correction",
+   "html": "The code below sets <code>d[j] = i</code> for each 1 in row $i$ before the row is used, so $d[i][j]$ is the largest row number from $0$ to $i$, row $i$ itself included, not to $i - 1$. Including row $i$ is what gives a cell that holds a 1 the height $i - d[i][j] = 0$, so that no zero submatrix ends on it."
+  },
+  {
+   "id": "err-d-index",
+   "kind": "correction",
+   "html": "The array is indexed by the column: $d[j]$ for $j = 0, \\ldots, m - 1$, as the code’s <code>vector&lt;int&gt; d(m, -1)</code> declares it."
+  }
+ ],
+ "derivations": []
+}

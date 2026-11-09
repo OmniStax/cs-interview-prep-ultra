@@ -1,0 +1,1239 @@
+{
+ "id": "3.1",
+ "chapter": "3",
+ "title": "Stacks and bracket matching",
+ "short": "Stacks and brackets",
+ "lead": "An Essential section on the <span data-concept=\"stack\">stack</span>, the last-in, first-out collection, and on using one to <span data-concept=\"bracket-validation\">check that a string’s brackets balance</span>. Indexing is 0-based: the array stack’s <span data-ref=\"top\">top</span> counts the items on it and names the next free cell. The array-backed stack is the ArrayStack of <a href=\"/cs-interview-prep-ultra/ch02/2.2/\">Section 2.2</a> in another notation; the linked-list stack pushes and pops at the <span data-ref=\"head\">head</span> of the singly linked list of <a href=\"/cs-interview-prep-ultra/ch02/2.5/\">Section 2.5</a>.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "The stack article’s history, hardware stacks, applications and security, its photograph of plates and its UML diagram are left out, as are the bracket article’s counting and enumeration problems.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "Exercism’s matching-brackets and simple-linked-list keep their canonical cases (simple-linked-list as the Python track runs them, last in first out); Donne Martin’s stack challenge keeps his tests; their JavaScript references, and the Kattis tests beyond the five samples and both Kattis references, are the AI’s. OpenDSA’s stack questions wait for the converter of OpenDSA’s exercises, and its push and pop proficiency exercises and the seven Wikibooks stack traces for an answer type that takes a sequence. ODS Exercises 1.2 and 1.3 have no key. Kattis brackets, bracketmatching and GCPC 2023’s loopinvariant were not judged a good fit, and Kattis backspace and throwns are over the cap of two code exercises for the stack. TheAlgorithms’ stack and balanced-parentheses doctests are tests without a printed statement, and trekhleb’s valid-parentheses tests read an empty string as unbalanced and a space as a wrong closing bracket, against Exercism’s statement, so they are not used. pythonds’ end-of-chapter exercises 19 and 30 have no key.",
+ "figures": [
+  {
+   "id": "photo-lifo-stack",
+   "kind": "photo"
+  },
+  {
+   "id": "sim-array-stack",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/wp-stack-push.gif",
+    "/media/ch03/wp-stack-pop.gif"
+   ],
+   "original_caption": "Animated push operation on an array-based stack from underflow to overflow. Animated pop operation on an array-based stack from the full-stack state to the underflow. Images: Michel Bakni, Wikimedia Commons, CC BY-SA 4.0.",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-linked-stack",
+   "kind": "sim",
+   "originals": [
+    "/media/ch03/wp-linked-stack-push.gif",
+    "/media/ch03/wp-linked-stack-pop.gif"
+   ],
+   "original_caption": "Animated push operation on an Linked-List-based stack. Animated pop operation on an Linked-List-based stack. Images: Michel Bakni, Wikimedia Commons, CC BY-SA 4.0.",
+   "draws": [
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-brackets",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "stack",
+   "concept": "stack",
+   "verb": "introduces"
+  },
+  {
+   "span": "stack-implementation",
+   "concept": "stack",
+   "verb": "uses"
+  },
+  {
+   "span": "stack-implementation",
+   "concept": "dynamic-array",
+   "verb": "uses"
+  },
+  {
+   "span": "stack-implementation",
+   "concept": "singly-linked-list",
+   "verb": "uses"
+  },
+  {
+   "span": "balanced",
+   "concept": "balanced-brackets",
+   "verb": "introduces"
+  },
+  {
+   "span": "validation",
+   "concept": "bracket-validation",
+   "verb": "introduces"
+  },
+  {
+   "span": "validation",
+   "concept": "stack",
+   "verb": "uses"
+  },
+  {
+   "span": "validation",
+   "concept": "balanced-brackets",
+   "verb": "uses"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "exercism:simple-linked-list",
+   "source_number": "simple-linked-list",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "stack-implementation",
+   "changes": "The tests call run(initial_values, operations), given in the starter, on your LinkedList: push, pop, len for the count, head().value() for a peek, iteration for the list (the last value pushed first) and reversed(). pop and head on an empty list raise EmptyListException(\"The list is empty.\").",
+   "prompt": "Write a prototype of the music player application.\n\nFor the prototype, each song will simply be represented by a number. Given a range of numbers (the song IDs), create a singly linked list.\n\nGiven a singly linked list, you should be able to reverse the list to play the songs in the opposite order.\n\nThe linked list is a fundamental data structure in computer science, often used in the implementation of other data structures.\n\nThe simplest kind of linked list is a <strong>singly</strong> linked list. That means that each element (or \"node\") contains data, along with something that points to the next node in the list.\n\nIf you want to dig deeper into linked lists, check out this article that explains it using nice drawings.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class EmptyListException(Exception):\n    pass\n\n\nclass Node:\n    def __init__(self, value):\n        pass\n\n    def value(self):\n        pass\n\n    def next(self):\n        pass\n\n\nclass LinkedList:\n    def __init__(self, values=None):\n        pass\n\n    def __iter__(self):\n        pass\n\n    def __len__(self):\n        pass\n\n    def head(self):\n        pass\n\n    def push(self, value):\n        pass\n\n    def pop(self):\n        pass\n\n    def reversed(self):\n        pass\n\n\ndef run(initial_values, operations):\n    \"\"\"Given: builds LinkedList(initial_values), plays the operations on it and returns what the queries give.\"\"\"\n    lst = LinkedList(initial_values)\n    out = []\n    for op in operations:\n        name = op['operation']\n        if name == 'push':\n            lst.push(op['value'])\n        elif name == 'pop':\n            out.append(lst.pop())\n        elif name == 'peek':\n            out.append(lst.head().value())\n        elif name == 'count':\n            out.append(len(lst))\n        elif name == 'toList':\n            out.append(list(lst))\n        elif name == 'reverse':\n            lst = lst.reversed()\n    return out\n",
+     "reference": "class Node:\n    def __init__(self, value):\n        self._value = value\n        self._next = None\n\n    def value(self):\n        return self._value\n\n    def next(self):\n        return self._next\n\n\nclass LinkedIterator:\n    def __init__(self, linked_list):\n        self.current = linked_list._head\n\n    def __iter__(self):\n        return self\n\n    def __next__(self):\n        if self.current is None:\n            raise StopIteration\n        value = self.current.value()\n        self.current = self.current.next()\n        return value\n\n    def next(self):\n        return self.__next__()\n\n\nclass LinkedList:\n    def __init__(self, values=None):\n        values = values if values is not None else []\n        self._head = None\n        self._len = 0\n        for value in values:\n            self.push(value)\n\n    def __iter__(self):\n        return LinkedIterator(self)\n\n    def __len__(self):\n        return self._len\n\n    def head(self):\n        if self._head is None:\n            raise EmptyListException('The list is empty.')\n        return self._head\n\n    def push(self, value):\n        new_node = Node(value)\n        new_node._next = self._head\n        self._head = new_node\n        self._len += 1\n\n    def pop(self):\n        if self._head is None:\n            raise EmptyListException('The list is empty.')\n        self._len -= 1\n        ret = self._head.value()\n        self._head = self._head.next()\n        return ret\n\n    def reversed(self):\n        return LinkedList(self)\n\n\nclass EmptyListException(Exception):\n    \"\"\"Exception raised when the linked list is empty.\n\n    message: explanation of the error.\n\n    \"\"\"\n\n    def __init__(self, message):\n        self.message = message\n\n\ndef run(initial_values, operations):\n    \"\"\"Given: builds LinkedList(initial_values), plays the operations on it and returns what the queries give.\"\"\"\n    lst = LinkedList(initial_values)\n    out = []\n    for op in operations:\n        name = op['operation']\n        if name == 'push':\n            lst.push(op['value'])\n        elif name == 'pop':\n            out.append(lst.pop())\n        elif name == 'peek':\n            out.append(lst.head().value())\n        elif name == 'count':\n            out.append(len(lst))\n        elif name == 'toList':\n            out.append(list(lst))\n        elif name == 'reverse':\n            lst = lst.reversed()\n    return out\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class EmptyListException extends Error {\n    constructor(message) {\n        super(message);\n        this.name = 'EmptyListException';\n    }\n}\n\nclass Node {\n    constructor(value) {\n    }\n\n    value() {\n    }\n\n    next() {\n    }\n}\n\nclass LinkedList {\n    constructor(values = []) {\n    }\n\n    [Symbol.iterator]() {\n    }\n\n    get length() {\n    }\n\n    head() {\n    }\n\n    push(value) {\n    }\n\n    pop() {\n    }\n\n    reversed() {\n    }\n}\n\n// Given: builds new LinkedList(initialValues), plays the operations on it and returns what the queries give.\nfunction run(initialValues, operations) {\n    let lst = new LinkedList(initialValues);\n    const out = [];\n    for (const op of operations) {\n        const name = op.operation;\n        if (name === 'push') lst.push(op.value);\n        else if (name === 'pop') out.push(lst.pop());\n        else if (name === 'peek') out.push(lst.head().value());\n        else if (name === 'count') out.push(lst.length);\n        else if (name === 'toList') out.push([...lst]);\n        else if (name === 'reverse') lst = lst.reversed();\n    }\n    return out;\n}\n",
+     "reference": "class EmptyListException extends Error {\n    constructor(message) {\n        super(message);\n        this.name = 'EmptyListException';\n    }\n}\n\nclass Node {\n    constructor(value) {\n        this._value = value;\n        this._next = null;\n    }\n\n    value() {\n        return this._value;\n    }\n\n    next() {\n        return this._next;\n    }\n}\n\nclass LinkedList {\n    constructor(values = []) {\n        this._head = null;\n        this._len = 0;\n        for (const value of values) this.push(value);\n    }\n\n    *[Symbol.iterator]() {\n        let current = this._head;\n        while (current !== null) {\n            yield current.value();\n            current = current.next();\n        }\n    }\n\n    get length() {\n        return this._len;\n    }\n\n    head() {\n        if (this._head === null) throw new EmptyListException('The list is empty.');\n        return this._head;\n    }\n\n    push(value) {\n        const node = new Node(value);\n        node._next = this._head;\n        this._head = node;\n        this._len += 1;\n    }\n\n    pop() {\n        if (this._head === null) throw new EmptyListException('The list is empty.');\n        const value = this._head.value();\n        this._head = this._head.next();\n        this._len -= 1;\n        return value;\n    }\n\n    reversed() {\n        return new LinkedList(this);\n    }\n}\n\n// Given: builds new LinkedList(initialValues), plays the operations on it and returns what the queries give.\nfunction run(initialValues, operations) {\n    let lst = new LinkedList(initialValues);\n    const out = [];\n    for (const op of operations) {\n        const name = op.operation;\n        if (name === 'push') lst.push(op.value);\n        else if (name === 'pop') out.push(lst.pop());\n        else if (name === 'peek') out.push(lst.head().value());\n        else if (name === 'count') out.push(lst.length);\n        else if (name === 'toList') out.push([...lst]);\n        else if (name === 'reverse') lst = lst.reversed();\n    }\n    return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       0
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1
+       ],
+       [
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3
+       ],
+       [
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       3
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "pop"
+        }
+       ]
+      ],
+      "raises": "EmptyListException",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1
+       ],
+       [
+        {
+         "operation": "pop"
+        }
+       ]
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "pop"
+        }
+       ]
+      ],
+      "expect": [
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "pop"
+        }
+       ]
+      ],
+      "expect": [
+       2,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "count"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "count"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       2,
+       2,
+       1,
+       1,
+       0
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "push",
+         "value": 1
+        }
+       ]
+      ],
+      "expect": [],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "push",
+         "value": 3
+        }
+       ]
+      ],
+      "expect": [],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "push",
+         "value": 3
+        },
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "push",
+         "value": 1
+        },
+        {
+         "operation": "push",
+         "value": 2
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "push",
+         "value": 3
+        },
+        {
+         "operation": "count"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       2,
+       2,
+       3,
+       1,
+       0
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "peek"
+        }
+       ]
+      ],
+      "raises": "EmptyListException",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1
+       ],
+       [
+        {
+         "operation": "peek"
+        }
+       ]
+      ],
+      "expect": [
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "peek"
+        }
+       ]
+      ],
+      "expect": [
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2
+       ],
+       [
+        {
+         "operation": "peek"
+        },
+        {
+         "operation": "count"
+        }
+       ]
+      ],
+      "expect": [
+       2,
+       2
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "push",
+         "value": 1
+        },
+        {
+         "operation": "push",
+         "value": 2
+        },
+        {
+         "operation": "peek"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "peek"
+        },
+        {
+         "operation": "push",
+         "value": 3
+        },
+        {
+         "operation": "peek"
+        }
+       ]
+      ],
+      "expect": [
+       2,
+       2,
+       1,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "toList"
+        }
+       ]
+      ],
+      "expect": [
+       []
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3
+       ],
+       [
+        {
+         "operation": "toList"
+        }
+       ]
+      ],
+      "expect": [
+       [
+        3,
+        2,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "push",
+         "value": 1
+        },
+        {
+         "operation": "push",
+         "value": 2
+        },
+        {
+         "operation": "push",
+         "value": 3
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "push",
+         "value": 4
+        },
+        {
+         "operation": "toList"
+        }
+       ]
+      ],
+      "expect": [
+       3,
+       [
+        4,
+        2,
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [],
+       [
+        {
+         "operation": "reverse"
+        },
+        {
+         "operation": "toList"
+        }
+       ]
+      ],
+      "expect": [
+       []
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1
+       ],
+       [
+        {
+         "operation": "reverse"
+        },
+        {
+         "operation": "toList"
+        }
+       ]
+      ],
+      "expect": [
+       [
+        1
+       ]
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3
+       ],
+       [
+        {
+         "operation": "reverse"
+        },
+        {
+         "operation": "count"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "pop"
+        }
+       ]
+      ],
+      "expect": [
+       3,
+       1,
+       2,
+       3
+      ],
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        1,
+        2,
+        3
+       ],
+       [
+        {
+         "operation": "reverse"
+        },
+        {
+         "operation": "reverse"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "pop"
+        },
+        {
+         "operation": "pop"
+        }
+       ]
+      ],
+      "expect": [
+       3,
+       2,
+       1
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c2",
+   "source_id": "icc:stacks_queues/stack",
+   "source_number": "stack",
+   "origin": "icc",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "stack-implementation",
+   "changes": "The tests are the source’s end-to-end test in its three parts, each a list of operations that a given run(ops) plays on your Stack; Stack(Node(5)) starts a stack whose top is 5.",
+   "prompt": "Implement a stack with push, pop, peek, and is_empty methods using a linked list.\n\nIf we pop on an empty stack, do we return None? Yes.\n\nCan we assume this fits memory? Yes.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "run",
+     "starter": "class Node(object):\n\n    def __init__(self, data):\n        # TODO: Implement me\n        pass\n\n\nclass Stack(object):\n\n    def __init__(self, top=None):\n        # TODO: Implement me\n        pass\n\n    def push(self, data):\n        # TODO: Implement me\n        pass\n\n    def pop(self):\n        # TODO: Implement me\n        pass\n\n    def peek(self):\n        # TODO: Implement me\n        pass\n\n    def is_empty(self):\n        # TODO: Implement me\n        pass\n\n\ndef run(ops):\n    \"\"\"Given: plays the tests' operations on a Stack and returns what pop, peek and is_empty give.\"\"\"\n    out, stack = [], None\n    for op, *args in ops:\n        if op == 'new':\n            stack = Stack(Node(args[0]) if args else None)\n        elif op == 'push':\n            stack.push(args[0])\n        else:\n            out.append(getattr(stack, op)())\n    return out\n",
+     "reference": "class Node(object):\n\n    def __init__(self, data, next=None):\n        self.data = data\n        self.next = next\n\n\nclass Stack(object):\n\n    def __init__(self, top=None):\n        self.top = top\n\n    def push(self, data):\n        self.top = Node(data, self.top)\n\n    def pop(self):\n        if self.top is None:\n            return None\n        data = self.top.data\n        self.top = self.top.next\n        return data\n\n    def peek(self):\n        return self.top.data if self.top is not None else None\n\n    def is_empty(self):\n        return self.peek() is None\n\n\ndef run(ops):\n    \"\"\"Given: plays the tests' operations on a Stack and returns what pop, peek and is_empty give.\"\"\"\n    out, stack = [], None\n    for op, *args in ops:\n        if op == 'new':\n            stack = Stack(Node(args[0]) if args else None)\n        elif op == 'push':\n            stack.push(args[0])\n        else:\n            out.append(getattr(stack, op)())\n    return out\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "run",
+     "starter": "class Node {\n    constructor(data, next = null) {\n        // TODO: Implement me\n    }\n}\n\nclass Stack {\n    constructor(top = null) {\n        // TODO: Implement me\n    }\n\n    push(data) {\n        // TODO: Implement me\n    }\n\n    pop() {\n        // TODO: Implement me\n    }\n\n    peek() {\n        // TODO: Implement me\n    }\n\n    isEmpty() {\n        // TODO: Implement me\n    }\n}\n\n// Given: plays the tests' operations on a Stack and returns what pop, peek and isEmpty give.\nfunction run(ops) {\n    const out = [];\n    let stack = null;\n    const call = { pop: 'pop', peek: 'peek', is_empty: 'isEmpty' };\n    for (const [op, ...args] of ops) {\n        if (op === 'new') stack = new Stack(args.length ? new Node(args[0]) : null);\n        else if (op === 'push') stack.push(args[0]);\n        else out.push(stack[call[op]]());\n    }\n    return out;\n}\n",
+     "reference": "class Node {\n    constructor(data, next = null) {\n        this.data = data;\n        this.next = next;\n    }\n}\n\nclass Stack {\n    constructor(top = null) {\n        this.top = top;\n    }\n\n    push(data) {\n        this.top = new Node(data, this.top);\n    }\n\n    pop() {\n        if (this.top === null) return null;\n        const data = this.top.data;\n        this.top = this.top.next;\n        return data;\n    }\n\n    peek() {\n        return this.top !== null ? this.top.data : null;\n    }\n\n    isEmpty() {\n        return this.peek() === null;\n    }\n}\n\n// Given: plays the tests' operations on a Stack and returns what pop, peek and isEmpty give.\nfunction run(ops) {\n    const out = [];\n    let stack = null;\n    const call = { pop: 'pop', peek: 'peek', is_empty: 'isEmpty' };\n    for (const [op, ...args] of ops) {\n        if (op === 'new') stack = new Stack(args.length ? new Node(args[0]) : null);\n        else if (op === 'push') stack.push(args[0]);\n        else out.push(stack[call[op]]());\n    }\n    return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "peek"
+        ],
+        [
+         "pop"
+        ]
+       ]
+      ],
+      "expect": [
+       null,
+       null
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "new",
+         5
+        ],
+        [
+         "pop"
+        ],
+        [
+         "peek"
+        ]
+       ]
+      ],
+      "expect": [
+       5,
+       null
+      ],
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       [
+        [
+         "new"
+        ],
+        [
+         "push",
+         1
+        ],
+        [
+         "push",
+         2
+        ],
+        [
+         "push",
+         3
+        ],
+        [
+         "pop"
+        ],
+        [
+         "peek"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "peek"
+        ],
+        [
+         "is_empty"
+        ],
+        [
+         "pop"
+        ],
+        [
+         "peek"
+        ],
+        [
+         "is_empty"
+        ]
+       ]
+      ],
+      "expect": [
+       3,
+       2,
+       2,
+       1,
+       false,
+       1,
+       null,
+       true
+      ],
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c3",
+   "source_id": "exercism:matching-brackets",
+   "source_number": "matching-brackets",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "validation",
+   "changes": "A solution must run in time linear in the length of the string; the source asks for no bound.",
+   "prompt": "Given a string containing brackets <code>[]</code>, braces <code>{}</code>, parentheses <code>()</code>, or any combination thereof, verify that any and all pairs are matched and nested correctly. Any other characters should be ignored. For example, <code>\"{what is (42)}?\"</code> is balanced and <code>\"[text}\"</code> is not.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "is_paired",
+     "starter": "def is_paired(input_string):\n    pass\n",
+     "reference": "def is_paired(input_string):\n    counterparts = {')': '(', '}': '{', ']': '['}\n\n    stack = []\n    for char in input_string:\n        if char in counterparts.values():\n            stack.append(char)\n        elif char in counterparts:\n            if not stack:\n                return False\n            if stack.pop() != counterparts[char]:\n                return False\n    return not stack\n",
+     "generated_by": "source"
+    },
+    "javascript": {
+     "entry": "isPaired",
+     "starter": "function isPaired(inputString) {\n}\n",
+     "reference": "function isPaired(inputString) {\n    const counterparts = { ')': '(', '}': '{', ']': '[' };\n    const stack = [];\n    for (const char of inputString) {\n        if ('({['.includes(char)) {\n            stack.push(char);\n        } else if (char in counterparts) {\n            if (stack.length === 0) return false;\n            if (stack.pop() !== counterparts[char]) return false;\n        }\n    }\n    return stack.length === 0;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       "[]"
+      ],
+      "expect": true,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       ""
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "[["
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "}{"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{]"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{ }"
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{[])"
+      ],
+      "expect": false,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{[]}"
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{}[]"
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "([{}({}[])])"
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{[)][]}"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "([{])"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "[({]})"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "[({}])"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{}["
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "[]]"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       ")()"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "{)()"
+      ],
+      "expect": false,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "(((185 + 223.85) * 15) - 543)/2"
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       "\\left(\\begin{array}{cc} \\frac{1}{3} & x\\\\ \\mathrm{e}^{x} &... x^2 \\end{array}\\right)"
+      ],
+      "expect": true,
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "bound": "n",
+    "grow": "(n, rand) => { const o = Array.from({ length: Math.floor(n / 2) }, () => '([{'[rand.int(0, 2)]); const c = { '(': ')', '[': ']', '{': '}' }; return [o.join('') + o.slice().reverse().map((x) => c[x]).join('')]; }",
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "c4",
+   "source_id": "kattis:delimitersoup",
+   "source_number": "Delimiter Soup",
+   "origin": "kattis-by-sa",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "validation",
+   "prompt": "Whenever a programmer starts to learn a Lisp, they think that there are too many parentheses in it. Sophia thinks there are too few, so she is making a programming language with only parentheses. To spice it up a bit, she is also adding square brackets (‘<code>[]</code>’) and curly braces (‘<code>{}</code>’) to the language.\n\nRight now, she is struggling to make people use it for production code. Obviously, it has to be because of the bad error messages you get when you mess up the delimiters! Right now, you only get the error message ‘<code>syntax error</code>’ when you mess them up.\n\nAny opening delimiter must be closed by the same type of delimiter: ‘<code>(</code>’ is closed with ‘<code>)</code>’, ‘<code>[</code>’ is closed by ‘<code>]</code>’, etc.\n\nSophia wants to improve the error message so that you at least get some help finding out where it all went wrong.\n\n<strong>Input</strong>\n\nThe input consists of two lines. The first line contains an integer $|L|$, the length of the next line. The next line contains $L$, the program you want to validate.\n\n<strong>Output</strong>\n\nOutput the character and the $0$-indexed location of the first closing delimiter that does not match with the opening delimiter.\n\nIf there are no errors, or there are more opening delimiters than closing delimiters, print ‘<code>ok so far</code>’ instead.\n\n<strong>Limits</strong>\n\n<ul><li>$1 \\leq |L| \\leq 200$</li><li>$L$ contains only the characters ‘<code>()[]{}</code>’ and spaces</li><li>$L$ does not start with a space character</li></ul>",
+   "answer": {
+    "type": "code",
+    "python": {
+     "starter": "import sys\n\nlines = sys.stdin.read().split('\\n')\n",
+     "reference": "import sys\n\nlines = sys.stdin.read().split('\\n')\nlength = int(lines[0])\nprogram = lines[1][:length]\n\nopening = {')': '(', ']': '[', '}': '{'}\nstack = []\nerror = None\nfor i, c in enumerate(program):\n    if c in '([{':\n        stack.append(c)\n    elif c in opening:\n        if not stack or stack[-1] != opening[c]:\n            error = f'{c} {i}'\n            break\n        stack.pop()\n\nprint(error if error is not None else 'ok so far')\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "starter": "const lines = require('fs').readFileSync(0, 'utf8').split('\\n');\n",
+     "reference": "const lines = require('fs').readFileSync(0, 'utf8').split('\\n');\nconst length = parseInt(lines[0], 10);\nconst program = (lines[1] || '').slice(0, length);\n\nconst opening = { ')': '(', ']': '[', '}': '{' };\nconst stack = [];\nlet error = null;\nfor (let i = 0; i < program.length; i++) {\n    const c = program[i];\n    if ('([{'.includes(c)) {\n        stack.push(c);\n    } else if (c in opening) {\n        if (stack.length === 0 || stack[stack.length - 1] !== opening[c]) {\n            error = `${c} ${i}`;\n            break;\n        }\n        stack.pop();\n    }\n}\nconsole.log(error !== null ? error : 'ok so far');\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "stdin": "8\n([] [] ]\n",
+      "stdout": "] 7\n",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "13\n(([] [[]] ())\n",
+      "stdout": "ok so far\n",
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "21\n[ { { () () () () } ]\n",
+      "stdout": "] 20\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "27\n[ { [[()]] (({})) } ] () {}\n",
+      "stdout": "ok so far\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "19\n[[]] () ) [] {{}} {\n",
+      "stdout": ") 8\n",
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "stdin": "1\n)\n",
+      "stdout": ") 0\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "1\n(\n",
+      "stdout": "ok so far\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "4\n([)]\n",
+      "stdout": ") 2\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "6\n{[()]}\n",
+      "stdout": "ok so far\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "3\n(((\n",
+      "stdout": "ok so far\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "1\n]\n",
+      "stdout": "] 0\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "5\n( ] )\n",
+      "stdout": "] 2\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "7\n{ } } {\n",
+      "stdout": "} 4\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "4\n[(])\n",
+      "stdout": "] 2\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "6\n()[]{}\n",
+      "stdout": "ok so far\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "200\n(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((())))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))\n",
+      "stdout": "ok so far\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "200\n(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((([[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[)\n",
+      "stdout": ") 199\n",
+      "generated_by": "ai"
+     },
+     {
+      "stdin": "200\n{()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()]\n",
+      "stdout": "] 199\n",
+      "generated_by": "ai"
+     }
+    ],
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "stack"
+  },
+  {
+   "exercise": "c1",
+   "concept": "singly-linked-list"
+  },
+  {
+   "exercise": "c2",
+   "concept": "stack"
+  },
+  {
+   "exercise": "c3",
+   "concept": "bracket-validation"
+  },
+  {
+   "exercise": "c4",
+   "concept": "bracket-validation"
+  }
+ ],
+ "referents": [
+  {
+   "id": "top",
+   "label": "top, the number of items on the array stack and its next free cell",
+   "figures": [
+    "sim-array-stack"
+   ]
+  },
+  {
+   "id": "head",
+   "label": "head, the frame on top of the linked stack",
+   "figures": [
+    "sim-linked-stack"
+   ]
+  },
+  {
+   "id": "newhead",
+   "label": "newhead, the frame being pushed",
+   "figures": [
+    "sim-linked-stack"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "wp-stack-1",
+   "kind": "book",
+   "number": "1",
+   "html": "Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Stein, Clifford (2009) [1990]. <em>Introduction to Algorithms</em> (3rd ed.). MIT Press and McGraw-Hill. pp.&nbsp;232–233. ISBN&nbsp;0-262-03384-4."
+  },
+  {
+   "id": "wp-stack-nb-1",
+   "kind": "book",
+   "number": "nb 1",
+   "html": "By contrast, a queue operates first in, first out, referred to by the acronym FIFO."
+  },
+  {
+   "id": "wp-stack-2",
+   "kind": "book",
+   "number": "2",
+   "html": "Horowitz, Ellis (1984). <em>Fundamentals of Data Structures in Pascal</em>. Computer Science Press. p.&nbsp;67."
+  },
+  {
+   "id": "wp-stack-implementation-3",
+   "kind": "book",
+   "number": "3",
+   "html": "Pandey, Shreesham (2020). \"<a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4145204\">Data Structures in a Nutshell</a>\". <em>Dev Genius</em> 2020."
+  },
+  {
+   "id": "err-top",
+   "kind": "correction",
+   "html": "<em>top</em> counts the items on the stack now, not every item pushed so far: each pop takes 1 from it. So it is the number pushed less the number popped, and that is also the cell the next push writes to."
+  }
+ ],
+ "derivations": []
+}

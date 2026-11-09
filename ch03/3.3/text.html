@@ -1,0 +1,368 @@
+<section id="deque" data-source="ods" data-locator="ods:intro#the-queue-stack-and-deque-interfaces, the Deque paragraph (“A Deque is a generalization of both…” to “…addLast(x) and removeFirst().”)">
+<h2>The Deque interface</h2>
+<p><span data-concept="deque">A Deque is a generalization of both the FIFO Queue and LIFO Queue (Stack).</span> A <span data-concept="deque">Deque</span> represents a sequence of elements, with a front and a back. Elements can be added at the front of the sequence or the back of the sequence. The names of the <span data-concept="deque">Deque</span> operations are self-explanatory: $\mathrm{addFirst}(x)$, $\mathrm{removeFirst}()$, $\mathrm{addLast}(x)$, and $\mathrm{removeLast}()$. It is worth noting that a <span data-concept="stack">Stack</span> can be implemented using only $\mathrm{addFirst}(x)$ and $\mathrm{removeFirst}()$ while a <span data-concept="queue">FIFO Queue</span> can be implemented using $\mathrm{addLast}(x)$ and $\mathrm{removeFirst}()$.</p>
+</section>
+
+<section id="arraydeque" data-source="ods" data-locator="ods:arrays#sec:arraydeque, the whole section with thm:arraydeque">
+<h2>ArrayDeque: Fast Deque Operations Using an Array</h2>
+<p>The <span data-concept="array-queue">ArrayQueue</span> from <a href="/cs-interview-prep-ultra/ch03/3.2/#arrayqueue">the previous section</a> is a data structure for representing a sequence that allows us to efficiently add to one end of the sequence and remove from the other end. <span data-concept="array-deque">The ArrayDeque data structure allows for efficient addition and removal at both ends.</span> This structure implements the <span data-concept="list-interface">List interface</span> by using the same <span data-concept="circular-buffer">circular array</span> technique used to represent an <span data-concept="array-queue">ArrayQueue</span>.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _initialize(self):
+    self.a = new_array(1)
+    self.j = 0
+    self.n = 0</code></pre>
+<pre data-lang="java"><code>T[] a;
+int j;
+int n;</code></pre>
+<pre data-lang="cpp"><code>array&lt;T&gt; a;
+int j;
+int n;</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>a;
+j;
+n;</code></pre>
+</div>
+<p>The $\mathrm{get}(\htmlData{ref=i}{i})$ and $\mathrm{set}(\htmlData{ref=i}{i},x)$ operations on an <span data-concept="array-deque">ArrayDeque</span> are straightforward. They get or set the <span data-concept="array">array</span> element $\htmlData{ref=a}{a}[{(\htmlData{ref=j}{j}+\htmlData{ref=i}{i})\bmod \mathrm{length}(\htmlData{ref=a}{a})}]$.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def get(self, i):
+    return self.a[(i+self.j)%len(self.a)]
+
+def set(self, i, x):
+    y = self.a[(i+self.j)%len(self.a)]
+    self.a[(i+self.j)%len(self.a)] = x
+    return y</code></pre>
+<pre data-lang="java"><code>T get(int i) {
+    return a[(j+i)%a.length];
+}
+
+T set(int i, T x) {
+    T y = a[(j+i)%a.length];
+    a[(j+i)%a.length] = x;
+    return y;
+}</code></pre>
+<pre data-lang="cpp"><code>T get(int i) {
+    return a[(j + i) % a.length];
+}
+
+T set(int i, T x) {
+    T y = a[(j + i) % a.length];
+    a[(j + i) % a.length] = x;
+    return y;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>get(i) {
+    return this.a[(this.j+i)%this.a.length];
+}
+
+set(i, x) {
+    const y = this.a[(this.j+i)%this.a.length];
+    this.a[(this.j+i)%this.a.length] = x;
+    return y;
+}</code></pre>
+</div>
+<p>The implementation of $\mathrm{add}(\htmlData{ref=i}{i},x)$ is a little more interesting. As usual, we first check if $\htmlData{ref=a}{a}$ is full and, if necessary, call $\mathrm{resize}()$ to <span data-concept="array-resize">resize</span> $\htmlData{ref=a}{a}$. Remember that we want this operation to be fast when $\htmlData{ref=i}{i}$ is small (close to 0) or when $\htmlData{ref=i}{i}$ is large (close to $\htmlData{ref=n}{n}$). Therefore, we check if $\htmlData{ref=i}{i}<\htmlData{ref=n}{n}/2$. If so, we shift the elements $\htmlData{ref=a}{a}[0],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=i}{i}-1]$ left by one position.<sup class="fn" data-note="err-positions"></sup> Otherwise ($\htmlData{ref=i}{i}\ge \htmlData{ref=n}{n}/2$), we shift the elements $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=n}{n}-1]$ right by one position. See <a href="#sim-arraydeque">Figure 2.3</a> for an illustration of $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(x)$<sup class="fn" data-note="err-remove-x"></sup> operations on an <span data-concept="array-deque">ArrayDeque</span>.</p>
+<figure class="sim" id="sim-arraydeque" data-original="/media/ch03/ods-arraydeque.png" data-original-caption="A sequence of add(i,x) and remove(i) operations on an ArrayDeque. Arrows denote elements being copied.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>ODS’s ArrayDeque keeps the list in a circular array <span data-ref="a"><em>a</em></span>: list position <em>k</em> sits at <span data-ref="a"><em>a</em></span>[(<span data-ref="j"><em>j</em></span> + <em>k</em>) mod length(<span data-ref="a"><em>a</em></span>)], so the list can run past the last cell and on from cell 0. add(<span data-ref="i"><em>i</em></span>, x) and remove(<span data-ref="i"><em>i</em></span>) shift whichever side of position <span data-ref="i"><em>i</em></span> is shorter, and step <span data-ref="j"><em>j</em></span> back or forward a cell when they shift the front part, so a call shifts at most <span data-type="cost">min(<span data-ref="i"><em>i</em></span>, <span data-ref="n"><em>n</em></span> − <span data-ref="i"><em>i</em></span>)</span> elements. At either end nothing shifts; in the middle about <span data-ref="n"><em>n</em></span>/2 elements move every time. When <span data-ref="a"><em>a</em></span> is full, resize() copies the list, from <span data-ref="a"><em>a</em></span>[<span data-ref="j"><em>j</em></span>] on, into the start of a new array <span data-ref="b"><em>b</em></span> twice as long, and sets <span data-ref="j"><em>j</em></span> to 0.</span></div>
+</figure>
+<p>By doing the shifting in this way, we guarantee that $\mathrm{add}(\htmlData{ref=i}{i},x)$ never has to shift more than $\min\{ \htmlData{ref=i}{i}, \htmlData{ref=n}{n}-\htmlData{ref=i}{i} \}$ elements.<sup class="fn" data-note="err-half"></sup> Thus, the running time of the $\mathrm{add}(\htmlData{ref=i}{i},x)$ operation (ignoring the cost of a $\mathrm{resize}()$ operation) is $O(1+\min\{\htmlData{ref=i}{i},\htmlData{ref=n}{n}-\htmlData{ref=i}{i}\})$.</p>
+<p>The implementation of the $\mathrm{remove}(\htmlData{ref=i}{i})$ operation is similar. It either shifts elements $\htmlData{ref=a}{a}[0],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=i}{i}-1]$ right by one position or shifts the elements $\htmlData{ref=a}{a}[\htmlData{ref=i}{i}+1],\ldots,\htmlData{ref=a}{a}[\htmlData{ref=n}{n}-1]$ left by one position depending on whether $\htmlData{ref=i}{i}<\htmlData{ref=n}{n}/2$. Again, this means that $\mathrm{remove}(\htmlData{ref=i}{i})$ never spends more than $O(1+\min\{\htmlData{ref=i}{i},\htmlData{ref=n}{n}-\htmlData{ref=i}{i}\})$ time to shift elements.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def remove(self, i):
+    x = self.a[(self.j+i)%len(self.a)]
+    if i &lt; self.n / 2:
+        for k in range(i, 0, -1):
+            self.a[(self.j+k)%len(self.a)] = self.a[(self.j+k-1)%len(self.a)]
+        self.j = (self.j+1) % len(self.a)
+    else:
+        for k in range(i, self.n-1):
+            self.a[(self.j+k)%len(self.a)] = self.a[(self.j+k+1)%len(self.a)]
+    self.n -= 1
+    if len(self.a) &gt;= 3*self.n: self._resize()
+    return x</code></pre>
+<pre data-lang="java"><code>T remove(int i) {
+    T x = a[(j+i)%a.length];
+    if (i &lt; n/2) {  // shift a[0],..,[i-1] right one position
+        for (int k = i; k &gt; 0; k--)
+            a[(j+k)%a.length] = a[(j+k-1)%a.length];
+        j = (j + 1) % a.length;
+    } else { // shift a[i+1],..,a[n-1] left one position
+        for (int k = i; k &lt; n-1; k++)
+            a[(j+k)%a.length] = a[(j+k+1)%a.length];
+    }
+    n--;
+    if (3*n &lt; a.length) resize();
+    return x;
+}</code></pre>
+<pre data-lang="cpp"><code>T remove(int i) {
+    T x = a[(j+i)%a.length];
+    if (i &lt; n/2) { // shift a[0],..,[i-1] right one position
+        for (int k = i; k &gt; 0; k--)
+            a[(j+k)%a.length] = a[(j+k-1)%a.length];
+        j = (j + 1) % a.length;
+    } else { // shift a[i+1],..,a[n-1] left one position
+        for (int k = i; k &lt; n-1; k++)
+            a[(j+k)%a.length] = a[(j+k+1)%a.length];
+    }
+    n--;
+    if (3*n &lt; a.length) resize();
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>remove(i) {
+    const x = this.a[(this.j+i)%this.a.length];
+    if (i &lt; Math.floor(this.n/2)) {  // shift a[0],..,[i-1] right one position
+        for (let k = i; k &gt; 0; k--)
+            this.a[(this.j+k)%this.a.length] = this.a[(this.j+k-1)%this.a.length];
+        this.j = (this.j + 1) % this.a.length;
+    } else { // shift a[i+1],..,a[n-1] left one position
+        for (let k = i; k &lt; this.n-1; k++)
+            this.a[(this.j+k)%this.a.length] = this.a[(this.j+k+1)%this.a.length];
+    }
+    this.n--;
+    if (3*this.n &lt; this.a.length) this.resize();
+    return x;
+}</code></pre>
+</div>
+<h3>Summary</h3>
+<p>The following theorem summarizes the performance of the <span data-concept="array-deque">ArrayDeque</span> data structure:</p>
+<div class="note"><span class="eyebrow">Theorem</span><p>An <span data-concept="array-deque">ArrayDeque</span> implements the <span data-concept="list-interface">List interface</span>. Ignoring the cost of calls to $\mathrm{resize}()$, an <span data-concept="array-deque">ArrayDeque</span> supports the operations</p>
+<ul><li>$\mathrm{get}(\htmlData{ref=i}{i})$ and $\mathrm{set}(\htmlData{ref=i}{i},x)$ in $O(1)$ time per operation; and</li><li>$\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$ in $O(1+\min\{\htmlData{ref=i}{i},\htmlData{ref=n}{n}-\htmlData{ref=i}{i}\})$ time per operation.</li></ul>
+<p>Furthermore, beginning with an empty <span data-concept="array-deque">ArrayDeque</span>, performing any sequence of $m$ $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$ operations results in a total of $O(m)$ time spent during all calls to $\mathrm{resize}()$.</p></div>
+</section>
+
+<section id="dualarraydeque" data-source="ods" data-locator="ods:arrays#sec:dualarraydeque, the whole section with lem:dualarraydeque-amortized and thm:dualarraydeque">
+<h2>DualArrayDeque: Building a Deque from Two Stacks</h2>
+<p>Next, we present a data structure, the <span data-concept="dual-array-deque">DualArrayDeque</span> that achieves the same performance bounds as an <span data-concept="array-deque">ArrayDeque</span> by using two <span data-concept="dynamic-array">ArrayStacks</span>. Although the asymptotic performance of the <span data-concept="dual-array-deque">DualArrayDeque</span> is no better than that of the <span data-concept="array-deque">ArrayDeque</span>, it is still worth studying, since it offers a good example of how to make a sophisticated data structure by combining two simpler data structures.</p>
+<p>A <span data-concept="dual-array-deque">DualArrayDeque</span> represents a list using two <span data-concept="dynamic-array">ArrayStacks</span>. Recall that an <span data-concept="dynamic-array">ArrayStack</span> is fast when the operations on it modify elements near the end. A <span data-concept="dual-array-deque">DualArrayDeque</span> places two <span data-concept="dynamic-array">ArrayStacks</span>, called $\htmlData{ref=front}{\mathit{front}}$ and $\htmlData{ref=back}{\mathit{back}}$, <span data-concept="dual-array-deque">back-to-back so that operations are fast at either end</span>.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _initialize(self):
+    self.front = ArrayStack()
+    self.back = ArrayStack()</code></pre>
+<pre data-lang="java"><code>List&lt;T&gt; front;
+List&lt;T&gt; back;</code></pre>
+<pre data-lang="cpp"><code>ArrayStack&lt;T&gt; front;
+ArrayStack&lt;T&gt; back;</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>front;
+back;</code></pre>
+</div>
+<p>A <span data-concept="dual-array-deque">DualArrayDeque</span> does not explicitly store the number, $\htmlData{ref=n}{n}$, of elements it contains. It doesn’t need to, since it contains $\htmlData{ref=n}{n}=\mathrm{front.size}() + \mathrm{back.size}()$ elements. Nevertheless, when analyzing the <span data-concept="dual-array-deque">DualArrayDeque</span> we will still use $\htmlData{ref=n}{n}$ to denote the number of elements it contains.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def size(self):
+    return self.front.size() + self.back.size()</code></pre>
+<pre data-lang="java"><code>int size() {
+    return front.size() + back.size();
+}</code></pre>
+<pre data-lang="cpp"><code>int size() {
+    return front.size() + back.size();
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>size() {
+    return this.front.size() + this.back.size();
+}</code></pre>
+</div>
+<p>The $\htmlData{ref=front}{\mathit{front}}$ <span data-concept="dynamic-array">ArrayStack</span> stores the list elements that whose indices are $0,\ldots,\mathrm{front.size}()-1$, but stores them in reverse order. The $\htmlData{ref=back}{\mathit{back}}$ <span data-concept="dynamic-array">ArrayStack</span> contains list elements with indices in $\mathrm{front.size}(),\ldots,\mathrm{size}()-1$ in the normal order. In this way, $\mathrm{get}(\htmlData{ref=i}{i})$ and $\mathrm{set}(\htmlData{ref=i}{i},x)$ translate into appropriate calls to $\mathrm{get}(\htmlData{ref=i}{i})$ or $\mathrm{set}(\htmlData{ref=i}{i},x)$ on either $\htmlData{ref=front}{\mathit{front}}$ or $\htmlData{ref=back}{\mathit{back}}$, which take $O(1)$ time per operation.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def get(self, i):
+    if i &lt; self.front.size():
+        return self.front.get(self.front.size()-i-1)
+    else:
+        return self.back.get(i-self.front.size())
+
+def set(self, i, x):
+    if i &lt; self.front.size():
+        return self.front.set(self.front.size()-i-1, x)
+    else:
+        return self.back.set(i-self.front.size(), x)</code></pre>
+<pre data-lang="java"><code>T get(int i) {
+    if (i &lt; front.size()) {
+        return front.get(front.size()-i-1);
+    } else {
+        return back.get(i-front.size());
+    }
+}
+
+T set(int i, T x) {
+    if (i &lt; front.size()) {
+        return front.set(front.size()-i-1, x);
+
+    } else {
+        return back.set(i-front.size(), x);
+    }
+}</code></pre>
+<pre data-lang="cpp"><code>T get(int i) {
+    if (i &lt; front.size()) {
+        return front.get(front.size() - i - 1);
+    } else {
+        return back.get(i - front.size());
+    }
+}
+
+T set(int i, T x) {
+    if (i &lt; front.size()) {
+        return front.set(front.size() - i - 1, x);
+    } else {
+        return back.set(i - front.size(), x);
+    }
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>get(i) {
+    if (i &lt; this.front.size()) {
+        return this.front.get(this.front.size()-i-1);
+    } else {
+        return this.back.get(i-this.front.size());
+    }
+}
+
+set(i, x) {
+    if (i &lt; this.front.size()) {
+        return this.front.set(this.front.size()-i-1, x);
+    } else {
+        return this.back.set(i-this.front.size(), x);
+    }
+}</code></pre>
+</div>
+<p>Note that if an index $\htmlData{ref=i}{i}<\mathrm{front.size}()$, then it corresponds to the element of $\htmlData{ref=front}{\mathit{front}}$ at position $\mathrm{front.size}()-\htmlData{ref=i}{i}-1$, since the elements of $\htmlData{ref=front}{\mathit{front}}$ are stored in reverse order.</p>
+<p>Adding and removing elements from a <span data-concept="dual-array-deque">DualArrayDeque</span> is illustrated in <a href="#sim-dualarraydeque">Figure 2.4</a>. The $\mathrm{add}(\htmlData{ref=i}{i},x)$ operation manipulates either $\htmlData{ref=front}{\mathit{front}}$ or $\htmlData{ref=back}{\mathit{back}}$, as appropriate:</p>
+<figure class="sim" id="sim-dualarraydeque" data-original="/media/ch03/ods-dualarraydeque.png" data-original-caption="A sequence of add(i,x) and remove(i) operations on a DualArrayDeque. Arrows denote elements being copied. Operations that result in a rebalancing by balance() are marked with an asterisk.">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>ODS’s DualArrayDeque keeps the list in two ArrayStacks back to back: <span data-ref="front"><code>front</code></span> holds list positions 0 to front.size() − 1 in reverse order, so that both stacks grow outward from the middle, and <span data-ref="back"><code>back</code></span> holds the rest. Each call adds or removes in the stack that holds position <span data-ref="i"><em>i</em></span>. When one stack holds more than three times as many elements as the other, balance() copies every element into two new stacks of ⌊<span data-ref="n"><em>n</em></span>/2⌋ and ⌈<span data-ref="n"><em>n</em></span>/2⌉. The potential <span data-type="cost">Φ</span> = |front.size() − back.size()| is at most 1 just after a balance and rises by at most 1 a call, so the calls since the last balance are never fewer than <span data-type="cost">Φ − Φ₀</span>, and more than <span data-ref="n"><em>n</em></span>/2 − 1 by the time the next one comes. Adding at the back keeps triggering balances; adding at the two ends in turn never needs one.</span></div>
+</figure>
+<p>The $\mathrm{add}(\htmlData{ref=i}{i},x)$ method performs rebalancing of the two <span data-concept="dynamic-array">ArrayStacks</span> $\htmlData{ref=front}{\mathit{front}}$ and $\htmlData{ref=back}{\mathit{back}}$, by calling the $\mathrm{balance}()$ method. The implementation of $\mathrm{balance}()$ is described below, but for now it is sufficient to know that $\mathrm{balance}()$ ensures that, unless $\mathrm{size}()<2$, $\mathrm{front.size}()$ and $\mathrm{back.size}()$ do not differ by more than a factor of 3. In particular, $3\cdot\mathrm{front.size}() \ge \mathrm{back.size}()$ and $3\cdot\mathrm{back.size}() \ge \mathrm{front.size}()$.</p>
+<p>Next we analyze the cost of $\mathrm{add}(\htmlData{ref=i}{i},x)$, ignoring the cost of calls to $\mathrm{balance}()$. If $\htmlData{ref=i}{i}<\mathrm{front.size}()$, then $\mathrm{add}(\htmlData{ref=i}{i},x)$ gets implemented by the call to $\mathrm{front.add}(\mathrm{front.size}()-\htmlData{ref=i}{i}-1,x)$.<sup class="fn" data-note="err-front-add"></sup> Since $\htmlData{ref=front}{\mathit{front}}$ is an <span data-concept="dynamic-array">ArrayStack</span>, the cost of this is</p>
+$$O(\mathrm{front.size}()-(\mathrm{front.size}()-i-1)+1) = O(i+1) \enspace .\tag{2.1}$$
+<p>On the other hand, if $\htmlData{ref=i}{i}\ge\mathrm{front.size}()$, then $\mathrm{add}(\htmlData{ref=i}{i},x)$ gets implemented as $\mathrm{back.add}(\htmlData{ref=i}{i}-\mathrm{front.size}(),x)$. The cost of this is</p>
+$$O(\mathrm{back.size}()-(i-\mathrm{front.size}())+1) = O(n-i+1) \enspace .\tag{2.2}$$
+<p>Notice that the first case (2.1) occurs when $\htmlData{ref=i}{i}<\htmlData{ref=n}{n}/4$. The second case (2.2) occurs when $\htmlData{ref=i}{i}\ge 3\htmlData{ref=n}{n}/4$. When $\htmlData{ref=n}{n}/4\le \htmlData{ref=i}{i}<3\htmlData{ref=n}{n}/4$, we cannot be sure whether the operation affects $\htmlData{ref=front}{\mathit{front}}$ or $\htmlData{ref=back}{\mathit{back}}$, but in either case, the operation takes $O(\htmlData{ref=n}{n})=O(\htmlData{ref=i}{i})=O(\htmlData{ref=n}{n}-\htmlData{ref=i}{i})$ time, since $\htmlData{ref=i}{i}\ge \htmlData{ref=n}{n}/4$ and $\htmlData{ref=n}{n}-\htmlData{ref=i}{i}> \htmlData{ref=n}{n}/4$. Summarizing the situation, we have</p>
+$$\text{Running time of } \mathrm{add}(i,x) \le \begin{cases} O(1+ i) & \text{if $i< n/4$} \\ O(n) & \text{if $n/4 \le i < 3n/4$} \\ O(1+n-i) & \text{if $i \ge 3n/4$} \end{cases}$$
+<p>Thus, the running time of $\mathrm{add}(\htmlData{ref=i}{i},x)$, if we ignore the cost of the call to $\mathrm{balance}()$, is $O(1+\min\{\htmlData{ref=i}{i}, \htmlData{ref=n}{n}-\htmlData{ref=i}{i}\})$.</p>
+<p>The $\mathrm{remove}(\htmlData{ref=i}{i})$ operation and its analysis resemble the $\mathrm{add}(\htmlData{ref=i}{i},x)$ operation and analysis.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def remove(self, i):
+    if i &lt; self.front.size():
+        x = self.front.remove(self.front.size()-i-1)
+    else:
+        x = self.back.remove(i-self.front.size())
+    self._balance()
+    return x</code></pre>
+<pre data-lang="java"><code>T remove(int i) {
+    T x;
+    if (i &lt; front.size()) {
+        x = front.remove(front.size()-i-1);
+    } else {
+        x = back.remove(i-front.size());
+    }
+    balance();
+    return x;
+}</code></pre>
+<pre data-lang="cpp"><code>T remove(int i) {
+    T x;
+    if (i &lt; front.size()) {
+            x = front.remove(front.size()-i-1);
+    } else {
+            x = back.remove(i-front.size());
+    }
+    balance();
+    return x;
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>remove(i) {
+    let x;
+    if (i &lt; this.front.size()) {
+        x = this.front.remove(this.front.size()-i-1);
+    } else {
+        x = this.back.remove(i-this.front.size());
+    }
+    this.balance();
+    return x;
+}</code></pre>
+</div>
+<h3>Balancing</h3>
+<p>Finally, we turn to the $\mathrm{balance}()$ operation performed by $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$. This operation ensures that neither $\htmlData{ref=front}{\mathit{front}}$ nor $\htmlData{ref=back}{\mathit{back}}$ becomes too big (or too small). It ensures that, unless there are fewer than two elements, each of $\htmlData{ref=front}{\mathit{front}}$ and $\htmlData{ref=back}{\mathit{back}}$ contain at least $\htmlData{ref=n}{n}/4$ elements. If this is not the case, then it moves elements between them so that $\htmlData{ref=front}{\mathit{front}}$ and $\htmlData{ref=back}{\mathit{back}}$ contain exactly $\lfloor \htmlData{ref=n}{n}/2\rfloor$ elements and $\lceil \htmlData{ref=n}{n}/2\rceil$ elements, respectively.</p>
+<div class="code-set">
+<pre data-lang="python"><code>def _balance(self):
+    n = self.size()
+    mid = n//2
+    if 3*self.front.size() &lt; self.back.size() or 3*self.back.size() &lt; self.front.size():
+        f = ArrayStack()
+        for i in range(mid):
+            f.add(i, self.get(mid-i-1))
+        b = ArrayStack()
+        for i in range(n-mid):
+            b.add(i, self.get(mid+i))
+        self.front = f
+        self.back = b</code></pre>
+<pre data-lang="java"><code>void balance() {
+    int n = size();
+    if (3*front.size() &lt; back.size()) {
+        int s = n/2 - front.size();
+        List&lt;T&gt; l1 = newStack();
+        List&lt;T&gt; l2 = newStack();
+        l1.addAll(back.subList(0,s));
+        Collections.reverse(l1);
+        l1.addAll(front);
+        l2.addAll(back.subList(s, back.size()));
+        front = l1;
+        back = l2;
+    } else if (3*back.size() &lt; front.size()) {
+        int s = front.size() - n/2;
+        List&lt;T&gt; l1 = newStack();
+        List&lt;T&gt; l2 = newStack();
+        l1.addAll(front.subList(s, front.size()));
+        l2.addAll(front.subList(0, s));
+        Collections.reverse(l2);
+        l2.addAll(back);
+        front = l1;
+        back = l2;
+    }
+}</code></pre>
+<pre data-lang="cpp"><code>void balance() {
+    if (3*front.size() &lt; back.size()
+            || 3*back.size() &lt; front.size()) {
+        int n = front.size() + back.size();
+        int nf = n/2;
+        array&lt;T&gt; af(max(2*nf, 1));
+        for (int i = 0; i &lt; nf; i++) {
+            af[nf-i-1] = get(i);
+        }
+        int nb = n - nf;
+        array&lt;T&gt; ab(max(2*nb, 1));
+        for (int i = 0; i &lt; nb; i++) {
+            ab[i] = get(nf+i);
+        }
+        front.a = af;
+        front.n = nf;
+        back.a = ab;
+        back.n = nb;
+    }
+}</code></pre>
+<pre data-lang="javascript" data-ai="claude-opus-5-5 high"><code>balance() {
+    if (3*this.front.size() &lt; this.back.size()
+            || 3*this.back.size() &lt; this.front.size()) {
+        const n = this.front.size() + this.back.size();
+        const nf = Math.floor(n/2);
+        const af = new Array(Math.max(2*nf, 1));
+        for (let i = 0; i &lt; nf; i++) {
+            af[nf-i-1] = this.get(i);
+        }
+        const nb = n - nf;
+        const ab = new Array(Math.max(2*nb, 1));
+        for (let i = 0; i &lt; nb; i++) {
+            ab[i] = this.get(nf+i);
+        }
+        this.front.a = af;
+        this.front.n = nf;
+        this.back.a = ab;
+        this.back.n = nb;
+    }
+}</code></pre>
+</div>
+<p>Here there is little to analyze. If the $\mathrm{balance}()$ operation does rebalancing, then it moves $O(\htmlData{ref=n}{n})$ elements and this takes $O(\htmlData{ref=n}{n})$ time. This is bad, since $\mathrm{balance}()$ is called with each call to $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$. However, the following lemma shows that, on average, $\mathrm{balance}()$ only spends a constant amount of time per operation.</p>
+<div class="note"><span class="eyebrow">Lemma</span><p>If an empty <span data-concept="dual-array-deque">DualArrayDeque</span> is created and any sequence of $m\ge 1$ calls to $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$ are performed, then the total time spent during all calls to $\mathrm{balance}()$ is $O(m)$.</p></div>
+<p><em>Proof.</em> We will show that, if $\mathrm{balance}()$ is forced to shift elements, then the number of $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$ operations since the last time any elements were shifted by $\mathrm{balance}()$ is at least $\htmlData{ref=n}{n}/2-1$. As in the proof of <a href="/cs-interview-prep-ultra/ch02/2.2/#arraystack-cost">Lemma 2.1</a>, this is sufficient to prove that the total time spent by $\mathrm{balance}()$ is $O(m)$.</p>
+<p>We will perform our analysis using a technique knows as<sup class="fn" data-note="err-knows"></sup> the <span data-concept="potential-method"><em>potential method</em></span>. Define the <em><span data-concept="potential-method">potential</span></em>, $\Phi$, of the <span data-concept="dual-array-deque">DualArrayDeque</span> as the difference in size between $\htmlData{ref=front}{\mathit{front}}$ and $\htmlData{ref=back}{\mathit{back}}$:</p>
+$$\Phi = |\mathrm{front.size}() - \mathrm{back.size}()| \enspace .$$
+<p>The interesting thing about this <span data-concept="potential-method">potential</span> is that a call to $\mathrm{add}(\htmlData{ref=i}{i},x)$ or $\mathrm{remove}(\htmlData{ref=i}{i})$ that does not do any balancing can increase the <span data-concept="potential-method">potential</span> by at most 1.</p>
+<p>Observe that, immediately after a call to $\mathrm{balance}()$ that shifts elements, the <span data-concept="potential-method">potential</span>, $\Phi_0$, is at most 1, since</p>
+$$\Phi_0 = \left|\lfloor n/2\rfloor-\lceil n/2\rceil\right|\le 1 \enspace .$$
+<p>Consider the situation immediately before a call to $\mathrm{balance}()$ that shifts elements and suppose, without loss of generality, that $\mathrm{balance}()$ is shifting elements because $3\mathrm{front.size}() < \mathrm{back.size}()$. Notice that, in this case,</p>
+<figure class="dv" id="drv-balance-potential"></figure>
+<p>Therefore, the number of calls to $\mathrm{add}(\htmlData{ref=i}{i},x)$ or $\mathrm{remove}(\htmlData{ref=i}{i})$ since the last time $\mathrm{balance}()$ shifted elements is at least $\Phi_1-\Phi_0 > \htmlData{ref=n}{n}/2-1$. This completes the proof.</p>
+<h3>Summary</h3>
+<p>The following theorem summarizes the properties of a <span data-concept="dual-array-deque">DualArrayDeque</span>:</p>
+<div class="note"><span class="eyebrow">Theorem</span><p>A <span data-concept="dual-array-deque">DualArrayDeque</span> implements the <span data-concept="list-interface">List interface</span>. Ignoring the cost of calls to $\mathrm{resize}()$ and $\mathrm{balance}()$, a <span data-concept="dual-array-deque">DualArrayDeque</span> supports the operations</p>
+<ul><li>$\mathrm{get}(\htmlData{ref=i}{i})$ and $\mathrm{set}(\htmlData{ref=i}{i},x)$ in $O(1)$ time per operation; and</li><li>$\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$ in $O(1+\min\{\htmlData{ref=i}{i},\htmlData{ref=n}{n}-\htmlData{ref=i}{i}\})$ time per operation.</li></ul>
+<p>Furthermore, beginning with an empty <span data-concept="dual-array-deque">DualArrayDeque</span>, any sequence of $m$ $\mathrm{add}(\htmlData{ref=i}{i},x)$ and $\mathrm{remove}(\htmlData{ref=i}{i})$ operations results in a total of $O(m)$ time spent during all calls to $\mathrm{resize}()$ and $\mathrm{balance}()$.</p></div>
+</section>

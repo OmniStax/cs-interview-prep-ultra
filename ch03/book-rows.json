@@ -1,0 +1,418 @@
+{
+ "types": [],
+ "symbols": [],
+ "concepts": [
+  {
+   "id": "queue",
+   "kind": "definition",
+   "section": "3.2",
+   "name": "Queue",
+   "terms": [
+    "queue",
+    "FIFO queue",
+    "Queue interface",
+    "enqueue",
+    "dequeue",
+    "queueing discipline"
+   ],
+   "statement": "A Queue is a collection with add(x), which adds the value x, and remove(), which removes and returns the next value; its queueing discipline decides which value comes next, and a FIFO (first-in-first-out) Queue removes values in the order they were added. add(x) and remove() on a FIFO Queue are often called enqueue(x) and dequeue()."
+  },
+  {
+   "id": "circular-buffer",
+   "kind": "definition",
+   "section": "3.2",
+   "name": "Circular buffer",
+   "terms": [
+    "circular array",
+    "circular buffer",
+    "ring buffer",
+    "modular arithmetic"
+   ],
+   "statement": "A circular array keeps a queue of n elements at a[j mod length(a)], a[(j+1) mod length(a)], …, a[(j+n−1) mod length(a)]: with modular arithmetic an index past length(a) − 1 wraps around to the start, so a finite array simulates an infinite one as long as the n elements fit in a."
+  },
+  {
+   "id": "array-queue",
+   "kind": "result",
+   "section": "3.2",
+   "name": "ArrayQueue (array-backed FIFO queue)",
+   "terms": [
+    "ArrayQueue"
+   ],
+   "statement": "An ArrayQueue keeps a FIFO queue in a circular array a with j, the index of the next element to remove, and n, the number of elements: add(x) stores x in a[(j+n) mod length(a)] and remove() takes a[j] and sets j = (j+1) mod length(a), each in O(1) time ignoring resize(); resize() copies the elements into b[0], …, b[n−1] of a new array of size 2n and sets j = 0, and from an empty ArrayQueue any m operations spend O(m) time in all calls to resize()."
+  },
+  {
+   "id": "queue-linked-list",
+   "kind": "skill",
+   "section": "3.2",
+   "name": "Queue on a linked list with a tail pointer",
+   "terms": [
+    "linked queue"
+   ],
+   "statement": "An SLList implements the FIFO queue operations in constant time: remove() takes the head node, as pop() does, and add(x) links a new node after tail, or makes it both head and tail when n = 0; removing from the tail instead would need the node before tail, which only n − 2 steps from head reach."
+  },
+  {
+   "id": "stack",
+   "kind": "definition",
+   "section": "3.1",
+   "name": "Stack",
+   "terms": [
+    "stack",
+    "stacks",
+    "LIFO",
+    "last in, first out"
+   ],
+   "statement": "A stack is a collection with two main operations, push (add an element) and pop (remove the most recently added one), so elements leave last in, first out; peek returns the top element without removing it. Both operations act at one end, the top. Popping or peeking an empty stack is underflow, and pushing onto a full bounded stack is overflow. An array (top counting the items) or a singly linked list (top at the head) gives O(1) push and pop, and a dynamic array amortized O(1)."
+  },
+  {
+   "id": "balanced-brackets",
+   "kind": "definition",
+   "section": "3.1",
+   "name": "Balanced bracket sequence",
+   "terms": [
+    "balanced bracket sequence",
+    "balanced bracket sequences"
+   ],
+   "statement": "A balanced bracket sequence is a string of brackets built by three rules: the empty string is balanced; if s is balanced, so is (s); if s and t are balanced, so is st. (())() is balanced, ())( is not."
+  },
+  {
+   "id": "bracket-validation",
+   "kind": "skill",
+   "section": "3.1",
+   "name": "Checking bracket balance",
+   "terms": [
+    "balance validation"
+   ],
+   "statement": "With one bracket type, keep depth, the number of open brackets: add 1 at an opening bracket and subtract 1 at a closing one; the string is balanced when depth never goes negative and ends at 0. With several types, push every opening bracket on a stack; a closing bracket needs a non-empty stack with an opening bracket of its type on top, which it pops; the string is balanced when every check passes and the stack ends empty."
+  },
+  {
+   "id": "min-stack",
+   "kind": "skill",
+   "section": "3.4",
+   "name": "Minimum stack",
+   "terms": [
+    "minimum stack"
+   ],
+   "statement": "Store each stack entry as a pair: the element and the minimum of the stack from that element down. The stack’s minimum is then the top pair’s second value, and adding or removing an element stays O(1)."
+  },
+  {
+   "id": "monotonic-queue-minimum",
+   "kind": "idea",
+   "section": "3.4",
+   "name": "Minimum queue via a monotonic deque",
+   "terms": [
+    "minimum queue"
+   ],
+   "statement": "Keep in a deque only the elements that can still become the minimum, in nondecreasing order: before adding x, remove the trailing elements larger than x. The head is the minimum, and since each element is pushed and popped at most once, every operation is O(1) on average. Removal needs the element’s value (method 1) or its index (method 2)."
+  },
+  {
+   "id": "queue-from-two-stacks",
+   "kind": "skill",
+   "section": "3.4",
+   "name": "Queue from two stacks (with minimum)",
+   "terms": [
+    "two stacks"
+   ],
+   "statement": "Add to stack s1 and remove from stack s2, moving all of s1 into s2 (which reverses them) whenever s2 is empty. Each element is added once, transferred once and popped once, so every operation is O(1) on average; with minimum stacks, the queue’s minimum is the smaller of the two stacks’ minima."
+  },
+  {
+   "id": "sliding-window-minimum",
+   "kind": "result",
+   "section": "3.4",
+   "name": "Sliding window minimum",
+   "statement": "The minima of all N − M + 1 subarrays of length M of an array of length N take O(N) in all: add the first M elements to a minimum queue, then repeatedly read the minimum, add the next element and remove the oldest."
+  },
+  {
+   "id": "nearest-smaller-element",
+   "kind": "skill",
+   "section": "3.4",
+   "name": "Nearest smaller element with a stack",
+   "terms": [
+    "all nearest smaller values",
+    "nearest smaller value",
+    "nearest smaller values"
+   ],
+   "statement": "For every position i, the nearest earlier position j with A[j] < A[i] is found in linear time by scanning with a stack: pop every top element greater than or equal to x, read the top (or none), then push x. Each pop removes an element pushed earlier, so the nested loop is linear."
+  },
+  {
+   "id": "largest-zero-submatrix",
+   "kind": "result",
+   "section": "3.4",
+   "name": "Largest zero submatrix in O(nm)",
+   "terms": [
+    "largest zero submatrix",
+    "zero submatrix"
+   ],
+   "statement": "With d[j] the nearest row at or above the current row i holding a 1 in column j, each column’s best rectangle with bottom row i has top d[j] + 1, and its sides are the nearest columns left and right with a larger d, found by a stack in each direction; over all rows this is O(nm) time and O(m) memory."
+  },
+  {
+   "id": "rpn-evaluation",
+   "kind": "skill",
+   "section": "3.5",
+   "name": "Reverse Polish notation evaluation",
+   "terms": [
+    "reverse Polish notation",
+    "RPN"
+   ],
+   "statement": "In reverse Polish notation the operators come after their operands. To evaluate it, read it left to right with a stack: push each number, and for an operator take the top two elements off the stack, perform the operation and put the result back. The one element left at the end is the value, found in O(n) time."
+  },
+  {
+   "id": "expression-parsing",
+   "kind": "result",
+   "section": "3.5",
+   "name": "Infix expression parsing with two stacks",
+   "terms": [
+    "two stacks"
+   ],
+   "statement": "With binary, left-associative operators and parentheses, an expression is evaluated in O(n) with a stack of numbers and a stack of operators kept in strictly descending priority within each pair of parentheses: push a number or an opening parenthesis; at a closing parenthesis, execute the operators back to the opening one; before pushing an operator, execute every operator on top of the same or higher priority; at the end, execute what is left. This evaluates the expression’s reverse Polish notation implicitly."
+  },
+  {
+   "id": "unary-right-assoc",
+   "kind": "skill",
+   "section": "3.5",
+   "name": "Unary and right-associative operators in parsing",
+   "terms": [
+    "unary operator",
+    "right-associative",
+    "right-associativity"
+   ],
+   "statement": "An operator is unary when it comes first, after another operator or after an opening parenthesis; it is executed on one value and given a priority above every binary operator. A right-associative operator (unary plus and minus, exponentiation) is postponed when the priorities are equal: the operators on the stack are executed only while their priority is strictly higher."
+  },
+  {
+   "id": "rootish-array-stack",
+   "kind": "result",
+   "section": "3.6",
+   "name": "RootishArrayStack",
+   "terms": [
+    "RootishArrayStack",
+    "rootish array stack"
+   ],
+   "statement": "A RootishArrayStack stores the list in r blocks numbered 0, …, r − 1, block b holding b + 1 elements, so list index i lies in block b = i2b(i) at j = i − b(b + 1)/2; get(i) and set(i, x) take O(1) time, add(i, x) and remove(i) take O(1 + n − i), any m of them spend O(m) time in grow() and shrink(), and n elements take n + O(√n) words."
+  },
+  {
+   "id": "rootish-index-math",
+   "kind": "skill",
+   "section": "3.6",
+   "name": "Square roots in constant time",
+   "terms": [
+    "computing square roots",
+    "sqrttab",
+    "logtab"
+   ],
+   "statement": "⌊√x⌋ is not a word-RAM operation, but for every x ≤ n it can be computed in constant time after O(√n) preprocessing: round x down to x′, a multiple of 2^⌊r/2⌋, which lowers the root by at most 1 (√(x − a) ≥ √x − 1 for 0 ≤ a ≤ √x), look ⌊√x′⌋ up in a table sqrttab, and add 1 at most twice; a table logtab gives ⌊log x⌋, so that a small x can be shifted up first."
+  },
+  {
+   "id": "sqrt-space-lower-bound",
+   "kind": "result",
+   "section": "3.6",
+   "name": "Ω(√n) wasted space is unavoidable",
+   "terms": [
+    "wasted space",
+    "space lower bound"
+   ],
+   "statement": "A RootishArrayStack wastes O(√n) space, and no structure that starts empty and adds items one at a time can do better: with its items in r blocks, either r ≥ √n and the r references to the blocks are wasted, or some block holds at least n/r > √n items and was wasting √n space when it was allocated."
+  },
+  {
+   "id": "space-efficient-list",
+   "kind": "result",
+   "section": "3.6",
+   "name": "SEList (space-efficient list)",
+   "terms": [
+    "SEList",
+    "space-efficient list",
+    "unrolled linked list",
+    "block size",
+    "BDeque",
+    "bounded deque"
+   ],
+   "statement": "An SEList with block size b is a doubly-linked list of nodes, each holding a BDeque of capacity b + 1, in which every block but the last keeps between b − 1 and b + 1 elements; locating index i takes O(1 + min{i, n − i}/b) steps, add(i, x) and remove(i) shift through at most b blocks or spread or gather b of them, and the wasted space is O(b + n/b)."
+  },
+  {
+   "id": "selist-spread-gather",
+   "kind": "result",
+   "section": "3.6",
+   "name": "SEList spreading and gathering",
+   "type": "cost",
+   "terms": [
+    "spread",
+    "gather",
+    "fragile node",
+    "rugged node"
+   ],
+   "statement": "Spreading b full blocks into b + 1 blocks of b, or gathering b blocks of b − 1 into b − 1 blocks of b, costs O(b²); counting fragile nodes, those whose block does not hold exactly b elements, shows that from an empty SEList any m ≥ 1 calls to add(i, x) and remove(i) spend O(bm) time in all calls to spread() and gather()."
+  },
+  {
+   "id": "deque",
+   "kind": "definition",
+   "section": "3.3",
+   "name": "Deque interface",
+   "terms": [
+    "deque",
+    "deques",
+    "double-ended queue",
+    "Deque"
+   ],
+   "statement": "A Deque is a sequence of elements with a front and a back, where elements can be added and removed at either end: addFirst(x), removeFirst(), addLast(x) and removeLast(). It generalizes both the FIFO Queue and the LIFO Queue: a Stack needs only addFirst(x) and removeFirst(), a FIFO Queue addLast(x) and removeFirst()."
+  },
+  {
+   "id": "array-deque",
+   "kind": "result",
+   "section": "3.3",
+   "name": "ArrayDeque",
+   "terms": [
+    "ArrayDeque",
+    "circular deque"
+   ],
+   "statement": "An ArrayDeque keeps a list in a circular array, its element i at a[(j + i) mod length(a)], and on add(i,x) or remove(i) shifts whichever side of position i is shorter, so get(i) and set(i,x) take O(1) time and add(i,x) and remove(i) O(1 + min{i, n − i}), ignoring resize(); m calls from empty spend O(m) time in all calls to resize().",
+   "forms": [
+    {
+     "id": "eq-arraydeque-cost",
+     "latex": "O(1+\\min\\{i,n-i\\})",
+     "anchor": "3.3-arraydeque"
+    }
+   ]
+  },
+  {
+   "id": "dual-array-deque",
+   "kind": "result",
+   "section": "3.3",
+   "name": "DualArrayDeque: a deque from two stacks",
+   "terms": [
+    "DualArrayDeque"
+   ],
+   "statement": "A DualArrayDeque keeps a list in two ArrayStacks back to back, front holding elements 0, …, front.size() − 1 in reverse order and back the rest; balance() rebuilds them with ⌊n/2⌋ and ⌈n/2⌉ elements whenever one holds more than three times the other. get and set take O(1) time, add(i,x) and remove(i) O(1 + min{i, n − i}) ignoring balance() and resize(), and m calls from empty spend O(m) time in all calls to balance().",
+   "forms": [
+    {
+     "id": "eq-dualarraydeque-potential",
+     "latex": "\\Phi = |\\mathrm{front.size}() - \\mathrm{back.size}()|",
+     "anchor": "3.3-dualarraydeque"
+    }
+   ]
+  }
+ ],
+ "concept_prereqs": [
+  {
+   "concept": "queue",
+   "prereq": "interface-vs-implementation"
+  },
+  {
+   "concept": "circular-buffer",
+   "prereq": "dynamic-array"
+  },
+  {
+   "concept": "circular-buffer",
+   "prereq": "queue"
+  },
+  {
+   "concept": "array-queue",
+   "prereq": "dynamic-array-cost"
+  },
+  {
+   "concept": "array-queue",
+   "prereq": "circular-buffer"
+  },
+  {
+   "concept": "queue-linked-list",
+   "prereq": "singly-linked-list"
+  },
+  {
+   "concept": "queue-linked-list",
+   "prereq": "queue"
+  },
+  {
+   "concept": "stack",
+   "prereq": "dynamic-array"
+  },
+  {
+   "concept": "bracket-validation",
+   "prereq": "stack"
+  },
+  {
+   "concept": "bracket-validation",
+   "prereq": "balanced-brackets"
+  },
+  {
+   "concept": "min-stack",
+   "prereq": "stack"
+  },
+  {
+   "concept": "queue-from-two-stacks",
+   "prereq": "min-stack"
+  },
+  {
+   "concept": "sliding-window-minimum",
+   "prereq": "sliding-window-fixed"
+  },
+  {
+   "concept": "sliding-window-minimum",
+   "prereq": "monotonic-queue-minimum"
+  },
+  {
+   "concept": "nearest-smaller-element",
+   "prereq": "stack"
+  },
+  {
+   "concept": "largest-zero-submatrix",
+   "prereq": "nearest-smaller-element"
+  },
+  {
+   "concept": "rpn-evaluation",
+   "prereq": "stack"
+  },
+  {
+   "concept": "expression-parsing",
+   "prereq": "rpn-evaluation"
+  },
+  {
+   "concept": "unary-right-assoc",
+   "prereq": "expression-parsing"
+  },
+  {
+   "concept": "rootish-array-stack",
+   "prereq": "dynamic-array-cost"
+  },
+  {
+   "concept": "rootish-index-math",
+   "prereq": "rootish-array-stack"
+  },
+  {
+   "concept": "sqrt-space-lower-bound",
+   "prereq": "rootish-array-stack"
+  },
+  {
+   "concept": "space-efficient-list",
+   "prereq": "doubly-linked-list"
+  },
+  {
+   "concept": "selist-spread-gather",
+   "prereq": "potential-method"
+  },
+  {
+   "concept": "selist-spread-gather",
+   "prereq": "space-efficient-list"
+  },
+  {
+   "concept": "deque",
+   "prereq": "stack"
+  },
+  {
+   "concept": "deque",
+   "prereq": "queue"
+  },
+  {
+   "concept": "array-deque",
+   "prereq": "array-queue"
+  },
+  {
+   "concept": "array-deque",
+   "prereq": "deque"
+  },
+  {
+   "concept": "dual-array-deque",
+   "prereq": "dynamic-array-cost"
+  },
+  {
+   "concept": "dual-array-deque",
+   "prereq": "deque"
+  }
+ ]
+}

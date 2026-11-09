@@ -1,0 +1,125 @@
+{
+ "section": "3.1",
+ "license": "CC BY-NC-SA 4.0",
+ "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+ "exercises": [
+  {
+   "id": "nc-stack-1",
+   "source_id": "pythonds:BasicDS/ImplementingaStackinPython#stack_1",
+   "source_number": "Self Check stack_1",
+   "origin": "pythonds",
+   "kind": "check",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "stack",
+   "prompt": "Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?\n\n<pre>m = Stack()\nm.push(\"x\")\nm.push(\"y\")\nm.pop()\nm.push(\"z\")\nm.peek()</pre>",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "\"x\"",
+     "\"y\"",
+     "\"z\"",
+     "The stack is empty"
+    ],
+    "correct": 2,
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "nc-stack-2",
+   "source_id": "pythonds:BasicDS/ImplementingaStackinPython#stack_2",
+   "source_number": "Self Check stack_2",
+   "origin": "pythonds",
+   "kind": "check",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "stack",
+   "prompt": "Given the following sequence of stack operations, what is the top item on the stack when the sequence is complete?\n\n<pre>m = Stack()\nm.push(\"x\")\nm.push(\"y\")\nm.push(\"z\")\nwhile not m.is_empty():\n   m.pop()\n   m.pop()</pre>",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "\"x\"",
+     "the stack is empty",
+     "an error will occur",
+     "\"z\""
+    ],
+    "correct": 2,
+    "generated_by": "source"
+   }
+  },
+  {
+   "id": "nc-stack-stringrev",
+   "source_id": "pythonds:BasicDS/ImplementingaStackinPython#stack_stringrev",
+   "source_number": "Self Check stack_stringrev",
+   "origin": "pythonds",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "stack",
+   "changes": "pythonds imports its own Stack class (pythonds3.basic), which the runner does not have; a list used only through append and pop is a stack. The tests are pythonds’ three; the references are the AI’s.",
+   "prompt": "Write a function <code>rev_string(my_str)</code> that uses a stack to reverse the characters in a string.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "rev_string",
+     "starter": "def rev_string(my_str):\n    # your code here\n    pass\n",
+     "reference": "def rev_string(my_str):\n    stack = []\n    for ch in my_str:\n        stack.append(ch)\n    out = []\n    while stack:\n        out.append(stack.pop())\n    return ''.join(out)\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "revString",
+     "starter": "function revString(myStr) {\n    // your code here\n}\n",
+     "reference": "function revString(myStr) {\n    const stack = [];\n    for (const ch of myStr) stack.push(ch);\n    let out = '';\n    while (stack.length > 0) out += stack.pop();\n    return out;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       "apple"
+      ],
+      "expect": "elppa",
+      "generated_by": "source",
+      "visible": true
+     },
+     {
+      "args": [
+       "x"
+      ],
+      "expect": "x",
+      "generated_by": "source",
+      "visible": false
+     },
+     {
+      "args": [
+       "1234567890"
+      ],
+      "expect": "0987654321",
+      "generated_by": "source",
+      "visible": false
+     }
+    ],
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "nc-stack-1",
+   "concept": "stack"
+  },
+  {
+   "exercise": "nc-stack-2",
+   "concept": "stack"
+  },
+  {
+   "exercise": "nc-stack-stringrev",
+   "concept": "stack"
+  }
+ ]
+}

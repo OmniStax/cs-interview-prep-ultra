@@ -86,11 +86,14 @@ def strip_comments(s):
     no blank line, which would end the paragraph."""
     out = []
     for l in s.split('\n'):
+        # ODS's #code# may hold Python's % (#a[(j+n)%a.length]#, ch03/3.2): inside a #…# run with no space it is
+        # the mod operator, not a comment
+        l = re.sub(r'#[^#\s%]*%[^#\s]*#', lambda m: m.group(0).replace('%', '\x03'), l)
         t = re.sub(r'(?<!\\)%.*$', '', l)
         bare = drop_command(t, 'index').strip()
         if not bare and l.strip():
             continue
-        out.append(t)
+        out.append(t.replace('\x03', '%'))
     return '\n'.join(out)
 
 
@@ -139,13 +142,19 @@ def scan_labels(path, chapter):
         elif m.group(0) == '\\footnote{':
             fn += 1
             fn_at[m.start()] = fn
+    # ODS's numbered equations (ch03/3.3): every equation environment takes the chapter's next number, and its
+    # \eqlabel{x} (ods.tex: \label{eq:x}) is stored as 'eq:x', a key no other label uses, so nothing above changes
+    for k, m in enumerate(re.finditer(r'\\begin\{equation\}(.*?)\\end\{equation\}', s, re.S), 1):
+        lab = re.search(r'\\eqlabel\{([^}]*)\}', m.group(1))
+        if lab:
+            labels['eq:' + lab.group(1)] = {'kind': 'equation', 'number': f'{chapter}.{k}'}
     return labels, fn_at
 
 
 # ---------------------------------------------------------------- blocks
 
 BLOCK_ENVS = ('framed', 'center', 'enumerate', 'itemize', 'figure', 'align', 'align*', 'equation', 'equation*',
-              'lem', 'thm', 'proof', 'minipage', 'tabular', 'longtable')
+              'lem', 'thm', 'proof', 'minipage', 'tabular', 'longtable', 'eqnarray', 'eqnarray*')
 
 
 def unwrap_size_groups(s):
@@ -241,7 +250,20 @@ def blocks(s):
         i = b
         if name in ('align', 'align*', 'equation', 'equation*'):
             tex = body.strip()
-            out.append({'kind': 'display', 'tex': tex, 'aligned': name.startswith('align')})
+            el = {'kind': 'display', 'tex': tex, 'aligned': name.startswith('align')}
+            lab = re.search(r'\\eqlabel\{([^}]*)\}', tex)
+            if name == 'equation' and lab:
+                # ODS's \eqlabel (ch03/3.3): the display carries its number as \tag (render), the label leaves the TeX
+                el['tex'] = re.sub(r'\s*\\eqlabel\{[^}]*\}', '', tex)
+                el['label'] = 'eq:' + lab.group(1)
+            out.append(el)
+        elif name in ('eqnarray', 'eqnarray*'):
+            # ch03/3.3: an eqnarray's rows are lhs & rel & rhs; as an aligned display each row is lhs &rel rhs
+            rows = []
+            for r in re.split(r'\\\\', body):
+                cells = r.split('&')
+                rows.append(cells[0].strip() + ' &' + ' '.join(c.strip() for c in cells[1:]) if len(cells) > 1 else r.strip())
+            out.append({'kind': 'display', 'tex': ' \\\\ '.join(x for x in rows if x.strip()), 'aligned': True})
         elif name in ('enumerate', 'itemize'):
             items = [x.strip() for x in re.split(r'\\item\b', body)[1:]]
             out.append({'kind': 'list', 'ordered': name == 'enumerate', 'resume': 'resume' in opt, 'items': items})
@@ -295,10 +317,13 @@ WORDS = {'dots': '…', 'ldots': '…', 'textregistered': '®', 'copyright': '©
 ODS_EDITION = {'pcodeonly': True, 'javaonly': False, 'cpponly': False, 'notpcode': False}
 
 
-def ods_edition(text):
-    """Apply the edition macros, braces balanced."""
+def ods_edition(text, table=None):
+    """Apply the edition macros, braces balanced. table: the edition to print, by macro (default ODS_EDITION, the
+    pseudocode edition); a block the pseudocode edition does not print passes {'notpcode': True} merged into it
+    (3.6's "Computing Square Roots", which only the Java and C++ editions print)."""
+    table = table or ODS_EDITION
     out, i = [], 0
-    pat = re.compile(r'\\(' + '|'.join(ODS_EDITION) + r')\{')
+    pat = re.compile(r'\\(' + '|'.join(table) + r')\{')
     while True:
         m = pat.search(text, i)
         if not m:
@@ -306,9 +331,9 @@ def ods_edition(text):
             return ''.join(out)
         before = text[i:m.start()]
         e = group_end(text, m.end() - 1)
-        if ODS_EDITION[m.group(1)]:
+        if table[m.group(1)]:
             out.append(before)
-            out.append(ods_edition(text[m.end():e - 1]))
+            out.append(ods_edition(text[m.end():e - 1], table))
         else:
             # a dropped macro that stood on a line of its own takes its line with it, so that it leaves no blank
             # line to end the paragraph
@@ -338,7 +363,15 @@ def ods_pcode(code):
     c = re.sub(r'(?<![=<>!])=(?!=)', r'\\gets ', c)
     c = c.replace('++', '{+}{+}')
     c = re.sub(r'(?<![\\\w])([a-z])(\d)\b', r'\1_\2', c)
+    # ch03/3.2: Python's % as the edition's \bmod, and a field of a node (tail.next) as two names in \mathit, as
+    # translate_code sets them; neither occurs in a page built before
+    c = c.replace('%', '\\bmod ')
+    c = re.sub(r'(?<![\w\\{])([a-z]\w*)\.([a-z]\w*)\b(?!\()', r'\\mathit{\1}.\\mathit{\2}', c)
     return c
+
+
+# The one-word names ch03/3.2 meets inside maths, as the edition's translate_code sets them (null as nil).
+ODS_MATH_WORDS = {'tail': '\\mathit{tail}', 'head': '\\mathit{head}', 'null': '\\mathit{nil}'}
 
 
 def ods_word(w):
@@ -353,6 +386,12 @@ def math_tex(t, dialect):
     t = t.replace('\\qedhere', '')
     t = re.sub(r'\\(?:label|lemlabel|seclabel)\{[^}]*\}', '', t)
     if dialect == 'ods':
+        # a control word written straight before #code# ($i\ge#n#/2$, ch03/3.3) keeps a space, or it would run on
+        # into the name (\gen); a page built before has none
+        t = re.sub(r'(\\[A-Za-z]+)(?=#[A-Za-z]\w*#)', r'\1 ', t)
+        # a one-word name of more than one letter in maths (#tail#=#head#=#null#, ch03/3.2) as the edition sets
+        # it; only the names in ODS_MATH_WORDS, so the pages built before are unchanged
+        t = re.sub(r'#([a-z][a-z]\w*)#', lambda m: ODS_MATH_WORDS.get(m.group(1), m.group(0)), t)
         t = re.sub(r'#(\w+)#', r'\1', t)
         t = re.sub(r'#([^#\s][^#]*)#', lambda m: ods_pcode(m.group(1)), t)
         t = re.sub(r'\\E(?![A-Za-z])', r'\\mathrm{E}', t)
@@ -439,13 +478,16 @@ def inline(tex, ctx, fn_numbers=None, _maths=None):
                 out.append(f'<sup class="fn" data-note="{nid}"></sup>')
                 i = j
                 continue
-            if name in ('ref', 'pageref', 'secref', 'chapref', 'lemref', 'thmref', 'figref', 'eqref'):
+            if name in ('ref', 'pageref', 'secref', 'chapref', 'lemref', 'thmref', 'figref', 'eqref', 'myeqref'):
                 lab, j = arg(s, j)
                 key = lab if name in ('ref', 'pageref') else f'{name}:{lab}'
                 if key in ctx.refs:
                     out.append(ctx.refs[key][0])
                 elif lab in ctx.labels and name == 'ref':
                     out.append(ctx.labels[lab]['number'])
+                elif name == 'myeqref' and 'eq:' + lab in ctx.labels:
+                    # ods.tex: \myeqref{x} prints (\ref{eq:x}), the equation's number in parentheses (ch03/3.3)
+                    out.append('(' + ctx.labels['eq:' + lab]['number'] + ')')
                 else:
                     ctx.unknown.add(f'\\{name}{{{lab}}}')
                     out.append('??')
@@ -550,6 +592,9 @@ def render(els, ctx, fn_numbers, display_hook=None, env_hook=None, figure_hook=N
             tex = math_tex(e['tex'], ctx.dialect)
             if e.get('aligned'):
                 tex = '\\begin{aligned}' + tex + '\\end{aligned}'
+            if e.get('label') in ctx.labels:
+                # a numbered equation keeps the source's number (root RULES item 29.2; ch03/3.3)
+                tex += '\\tag{' + ctx.labels[e['label']]['number'] + '}'
             hs.append(f'$${tex}$$')
             ms.append(f'$${tex}$$')
         elif k == 'list':
@@ -628,8 +673,9 @@ def read(path, start, stop, include_start=True):
     return s[a:b], a
 
 
-def passage(path, start, stop, chapter, dialect, refs=None, fn_prefix='fn', all_labels=None, **hooks):
-    """One passage, read and rendered: (html list, md list, footnotes, unknown commands)."""
+def passage(path, start, stop, chapter, dialect, refs=None, fn_prefix='fn', all_labels=None, edition=None, **hooks):
+    """One passage, read and rendered: (html list, md list, footnotes, unknown commands). edition: ODS's edition
+    macros to change from the pseudocode edition's, e.g. {'notpcode': True} (default: none changed)."""
     labels, fn_at = scan_labels(path, chapter)
     if all_labels:
         labels = dict(all_labels, **labels)
@@ -638,7 +684,7 @@ def passage(path, start, stop, chapter, dialect, refs=None, fn_prefix='fn', all_
     text = drop_command(text, 'index')
     if dialect == 'ods':
         # the pseudocode edition's text, and none of the table's spacing set-up (\newlength and its kin)
-        text = ods_edition(text)
+        text = ods_edition(text, dict(ODS_EDITION, **edition) if edition else None)
         for name, nargs in (('newlength', 1), ('setlength', 2), ('addtolength', 2)):
             text = drop_command(text, name, nargs)
     text = re.sub(r'\\(?:seclabel|lemlabel)\{[^}]*\}', '', text)
