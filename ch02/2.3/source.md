@@ -33,6 +33,9 @@
 
 <!-- block three-sum · source wikipedia · wikipedia:3SUM (the lead’s first sentence) and #Quadratic algorithm -->
 
+{{Short description|Problem in computational complexity theory}}
+{{CS1 config|mode=cs2}}
+
 In [[computational complexity theory]], the '''3SUM''' problem asks if a given set of <math>n</math> real numbers contains three elements that sum to zero.
 
 == Quadratic algorithm ==
@@ -75,7 +78,6 @@ The correctness of the algorithm can be seen as follows. Suppose we have a solut
 <!-- block merge · source wikipedia · wikipedia:Merge_algorithm#Merging two lists -->
 
 == Merging two lists ==
-
 Merging two sorted lists into one can be done in [[linear time]] and linear or constant space (depending on the data access model). The following [[pseudocode]] demonstrates an algorithm that merges input lists (either [[linked list]]s or [[Array data structure|arrays]]) {{mvar|A}} and {{mvar|B}} into a new list {{mvar|C}}.<ref name="skiena">{{cite book |last=Skiena |first=Steven |author-link=Steven Skiena |title=The Algorithm Design Manual |publisher=[[Springer Science+Business Media]] |edition=2nd |year=2010 |isbn=978-1-849-96720-4 |page=123}}</ref>{{r|toolbox}}{{rp|104}} The function {{mono|head}} yields the first element of a list; "dropping" an element means removing it from its list, typically by incrementing a pointer or index.
 
  '''algorithm''' merge(A, B) '''is'''

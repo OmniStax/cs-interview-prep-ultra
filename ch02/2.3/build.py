@@ -4,14 +4,14 @@
 The page joins two sources block by block, which neither shared assembler does (tools/build_translation.py
 builds a page of OI Wiki blocks, tools/build_text.py one of ODS, Erickson, OpenDSA and LaTeX blocks), so this
 assembler calls the shared translation tool's own parser, parity check and HTML writer for the OI Wiki blocks
-and `wikitext.py` beside it for the Wikipedia blocks. Nothing of either source is typed:
+and `tools/wikitext.py`, the book's one Wikipedia reader, for the Wikipedia blocks. Nothing of either source is typed:
 
 - **OI Wiki** (translated): each block is a slice of the page from one heading to another, cut by script and
   written to source.md verbatim. An admonition box (`???+ note …` and its indented lines) that restates a
   LeetCode problem is link-only (RULES.md, Source): it is read as one slot on both halves, `[[<key>]]`, so the
   parity check passes over it and the spec's HTML stands in its place. The English is translation.md.
 - **Wikipedia**: each block is the article's lead or a section, cut at the spec's anchors, read by
-  `wikitext.py`; its wikitext slice is written to source.md verbatim; its references become book footnotes in
+  `tools/wikitext.py`; its wikitext slice is written to source.md verbatim; its references become book footnotes in
   Wikipedia's words, numbered in the order their markers stand on the page.
 
 Then the spec's figures and derivations are placed (`AT`: after the element holding an anchor; `REPLACE`: a
@@ -32,9 +32,8 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 BOOK = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(BOOK, 'tools'))
-sys.path.insert(0, HERE)
 import build_translation as BT  # noqa: E402  the shared OI Wiki parser, parity check and HTML writer
-import wikitext as WT  # noqa: E402
+import wikitext as WT  # noqa: E402  tools/wikitext.py, the book's one Wikipedia reader
 
 
 def load_spec():
@@ -119,63 +118,6 @@ def oi_block(b, spec, page, trans, check):
 
 # ---------------------------------------------------------------- Wikipedia
 
-def cut_after(lines, anchor):
-    """The lines up to and including the anchor, the line holding it cut just after it."""
-    for i, l in enumerate(lines):
-        if anchor in l:
-            return lines[:i] + [l[:l.index(anchor) + len(anchor)]]
-    raise SystemExit(f'wikitext: anchor {anchor!r} not in the passage')
-
-
-def wp_block(b, spec, articles):
-    path = os.path.join(BOOK, 'sources/_cache/wikipedia', b['file'])
-    text = articles.setdefault(path, open(path, encoding='utf-8').read())
-    refs = WT.named_refs(text)
-    md_parts, parts, notes = [], [], []
-    parts.append(f'<h2>{b["h2"]}</h2>')
-    after = [a for a in spec.get('AT', []) if a[0] == b['id']]
-    replace = [r for r in spec.get('REPLACE', []) if r[0] == b['id']]
-    placed = set()
-    for part in b['parts']:
-        kind, name, until = part
-        lines = WT.lead(text) if kind == 'lead' else WT.section(text, name)
-        if kind == 'lead':
-            lines = [l for l in lines if not re.match(r'^\{\{(Short description|CS1 config|Other uses)', l)]
-            while lines and not lines[0].strip():
-                lines.pop(0)
-        if until:
-            lines = cut_after(lines, until)
-        while lines and not lines[-1].strip():
-            lines.pop()
-        md_parts.append(('' if kind == 'lead' else f'== {name} ==\n') + '\n'.join(lines))
-        if kind == 'section' and part[1] and b.get('h3', {}).get(name):
-            parts.append(f'<h3>{b["h3"][name]}</h3>')
-        for e in WT.elements(lines, refs):
-            if e['kind'] == 'display':
-                r = next((r for r in replace if r[1] in e['tex']), None)
-                if r:
-                    parts.append(spec['HTML'][r[2]])
-                    placed.add(r[2])
-                    continue
-                tex = e['tex'].replace('\\begin{align}', '\\begin{aligned}').replace('\\end{align}', '\\end{aligned}')
-                parts.append(f'$${html.escape(tex, quote=False)}$$')
-                continue
-            if e['kind'] == 'pre':
-                parts.append(f'<pre>{e["html"]}</pre>')
-                anchor_text = e['html']
-            else:
-                parts.append(('P', e['html'], e['notes']))
-                anchor_text = e['wiki']
-            for _, anchor, key in after:
-                if anchor in anchor_text:
-                    parts.append(spec['HTML'][key])
-                    placed.add(key)
-    want = {a[2] for a in after} | {r[2] for r in replace}
-    if want - placed:
-        raise SystemExit(f'{b["id"]}: never placed {sorted(want - placed)}')
-    return '\n\n'.join(md_parts), parts, notes
-
-
 def math_refs(body, table):
     """Inside each $…$ of the block, a referent's letter (or a \\mathit{name}) wrapped in \\htmlData{ref=…}, as 1.3
     marks its referents in maths; a letter that is part of a command or of a longer name is left alone."""
@@ -196,27 +138,15 @@ def build(check=False):
     spec = {k: getattr(mod, k) for k in dir(mod) if k.isupper()}
     oi_page = BT.page_lines(os.path.join(BOOK, spec['OIWIKI_FILE']))
     trans = BT.read_translation(os.path.join(HERE, 'translation.md'))
-    articles = {}
-    md_blocks, html_blocks, fn_rows, used = [], [], [], set()
+    notes, log, state = WT.Notes(), [], {}
+    md_blocks, html_blocks, used = [], [], set()
     for b in spec['BLOCKS']:
         head = f'<!-- block {b["id"]} · source {b["source"]} · {b["locator"]} -->'
         if b['source'] == 'oiwiki':
             md, body, _ = oi_block(b, spec, oi_page, trans, check)
         else:
-            md, parts, notes = wp_block(b, spec, articles)
-            out = []
-            for p in parts:
-                if isinstance(p, tuple):
-                    h, ns = p[1], p[2]
-                    # numbered in the order the markers stand in the paragraph, as Wikipedia numbers them
-                    for k in [int(x) for x in re.findall(r'\x01(\d+)\x01', h)]:
-                        fid = f'wp-{b["id"]}-{len(fn_rows) + 1}'
-                        fn_rows.append({'id': fid, 'kind': 'book', 'number': str(len(fn_rows) + 1), 'html': ns[k]['html'], 'source': 'wikipedia'})
-                        h = h.replace(f'\x01{k}\x01', f'<sup class="fn" data-note="{fid}"></sup>', 1)
-                    out.append(f'<p>{h}</p>')
-                else:
-                    out.append(p)
-            body = '\n'.join(out)
+            md, parts = WT.block(b, spec, notes, log, state=state)
+            body = '\n'.join(parts)
         md_blocks.append(head + '\n\n' + md)
         for blk, old, new, why in spec.get('FIXES', []):
             if blk != b['id']:
@@ -243,6 +173,9 @@ def build(check=False):
         if b['source'] == 'oiwiki':
             attrs += f' data-ai="{spec["AI"]}"'
         html_blocks.append(f'<section {attrs}>\n{body}\n</section>')
+    for m in WT.unplaced(spec, state):
+        raise SystemExit(m)
+    fn_rows = notes.rows
     md = f'# {spec["TITLE"]}\n\n' + '\n\n'.join(md_blocks) + '\n'
     open(os.path.join(HERE, 'source.md'), 'w', encoding='utf-8').write(md)
     with open(os.path.join(HERE, 'text.html'), 'w', encoding='utf-8') as f:

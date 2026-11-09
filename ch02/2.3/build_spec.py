@@ -17,14 +17,14 @@ BLOCKS = [
     dict(id='sorted-pair', source='oiwiki', locator=f'{OI}#利用序列有序性 (its opening, 例题 4 as a link, and 过程)',
          boxes=['lc167'], **{'from': '## 利用序列有序性', 'to': '### 实现'}),
     dict(id='three-sum', source='wikipedia', locator='wikipedia:3SUM (the lead’s first sentence) and #Quadratic algorithm',
-         file='3SUM.wiki', h2='3SUM', h3={'Quadratic algorithm': 'Quadratic algorithm'},
-         parts=[('lead', None, 'sum to zero.'), ('section', 'Quadratic algorithm', None)]),
+         file='3SUM.wiki', h2='3SUM',
+         parts=[{'lead': True, 'cut_after': 'sum to zero.'}, {'section': 'Quadratic algorithm', 'h3': 'Quadratic algorithm'}]),
     dict(id='merge', source='wikipedia', locator='wikipedia:Merge_algorithm#Merging two lists',
-         file='Merge_algorithm.wiki', h2='Merging two lists', parts=[('section', 'Merging two lists', None)]),
+         file='Merge_algorithm.wiki', h2='Merging two lists', parts=[{'section': 'Merging two lists'}]),
     dict(id='moving-average', source='wikipedia',
          locator='wikipedia:Moving_average#Simple moving average, from its opening to “…and only 3 arithmetic steps.”',
          file='Moving_average.wiki', h2='Simple moving average',
-         parts=[('section', 'Simple moving average', 'only 3 arithmetic steps.')]),
+         parts=[{'section': 'Simple moving average', 'cut_after': 'only 3 arithmetic steps.'}]),
     dict(id='variable-window', source='oiwiki', locator=f'{OI}#维护区间信息 (its opening, 例题 1 as a link, and its 过程)',
          h2='Variable-size sliding window', boxes=['lc713'], **{'from': '## 维护区间信息', 'to': '#### 实现'}),
 ]
@@ -105,7 +105,7 @@ REPLACE = [
 ]
 # (block, what the reader gives, what the page prints, why)
 FIXES = [
-    ('merge', 'see Merge sort §&nbsp;Variants for discussion',
+    ('merge', 'see Merge sort §\u00a0Variants for discussion',
      'see [<em>Merge sort</em> §Variants] for discussion',
      'a reference to a passage the book does not carry prints as its title in italics and its own section, in '
      'brackets and with no link (RULES.md, Cross-references); Wikipedia\'s {{slink}} links its Merge sort article'),
@@ -497,3 +497,10 @@ def EXERCISES(exercism, book):
                            'generated_by': 'source'}))
     concepts.append({'exercise': 'c4', 'concept': 'sliding-window-variable'})
     return ex, concepts
+
+# each occurrence of a file's frame in the Wikipedia blocks: what stands there (None: left out, the plan decides every
+# figure, and the moving-average chart is not kept)
+IMAGES = {
+    'Moving Average Types comparison - Simple and Exponential.png': [None],
+}
+

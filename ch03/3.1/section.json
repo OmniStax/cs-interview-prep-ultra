@@ -1218,21 +1218,21 @@
    "html": "By contrast, a queue operates first in, first out, referred to by the acronym FIFO."
   },
   {
+   "id": "err-top",
+   "kind": "correction",
+   "html": "<em>top</em> counts the items on the stack now, not every item pushed so far: each pop takes 1 from it. So it is the number pushed less the number popped, and that is also the cell the next push writes to."
+  },
+  {
    "id": "wp-stack-2",
    "kind": "book",
    "number": "2",
-   "html": "Horowitz, Ellis (1984). <em>Fundamentals of Data Structures in Pascal</em>. Computer Science Press. p.&nbsp;67."
+   "html": "Horowitz, Ellis (1984). <em>Fundamentals of Data Structures in Pascal</em>. Computer Science Press. p. 67."
   },
   {
    "id": "wp-stack-implementation-3",
    "kind": "book",
    "number": "3",
-   "html": "Pandey, Shreesham (2020). \"<a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4145204\">Data Structures in a Nutshell</a>\". <em>Dev Genius</em> 2020."
-  },
-  {
-   "id": "err-top",
-   "kind": "correction",
-   "html": "<em>top</em> counts the items on the stack now, not every item pushed so far: each pop takes 1 from it. So it is the number pushed less the number popped, and that is also the cell the next push writes to."
+   "html": "Pandey, Shreesham (2020). <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4145204\">“Data Structures in a Nutshell”</a>. <em>Dev Genius</em>. 2020."
   }
  ],
  "derivations": []

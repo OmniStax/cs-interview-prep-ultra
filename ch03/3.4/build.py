@@ -12,12 +12,9 @@ article, and neither the other's blocks), so this assembler calls their readers,
   A fenced snippet is what the spec's CODE says: a Sim's panel carries it (left out here; the Sim stands
   where AT puts it), or a four-language code set whose C++ variant is the snippet verbatim and whose other
   variants are the spec's, AI-marked.
-- **Wikipedia**: the article's lead and sections, read by ch02/2.3/wikitext.py (2.3's reader). Beyond 2.3's
-  articles this one prints `{{harvtxt}}` (set as Wikipedia prints it: the authors, then the year in
-  brackets), `{{sfnp}}` (a footnote in Wikipedia's short form), a `{{citation}}` inside a `<ref>`,
-  `<code>` and `<sup>` inline, and `:` indented lines (set as `<blockquote>`). They are rewritten into what
-  the reader reads before it reads the passage; `source.md` keeps the wikitext as the article prints it.
-  The references become book footnotes in Wikipedia's words, numbered as their markers stand.
+- **Wikipedia**: the article's lead and sections, read by tools/wikitext.py, the book's one Wikipedia reader
+  (`{{harvtxt}}`, `{{sfnp}}`, `{{citation}}` in CS2, `<code>`, `<sup>` and `:` lines are its readings); the
+  citations are book footnotes in Wikipedia's words, numbered as their markers stand on the page.
 
 Then the spec's MARKS (concept spans, referent spans, erratum markers, links) are applied outside tags, and
 tools/apply_terms.py applies the section's judged concept mentions.
@@ -34,10 +31,9 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 BOOK = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(BOOK, 'tools'))
-sys.path.insert(0, os.path.join(BOOK, 'ch02', '2.3'))
 import build_markdown as BM  # noqa: E402  front_matter_end, slice_block, prepare (used as they are)
 import build_translation as BT  # noqa: E402  parse, inline, el_html, el_text, outside_tags (used as they are)
-import wikitext as WT  # noqa: E402  2.3's Wikipedia reader (used as it is)
+import wikitext as WT  # noqa: E402  tools/wikitext.py, the book's one Wikipedia reader
 
 
 def load_spec():
@@ -122,134 +118,21 @@ def cpa_block(b, spec, pages, used_code):
     return md, '\n'.join(parts), []
 
 
-# ---------------------------------------------------------------- Wikipedia
-
-def harv_names(args):
-    """{{harvtxt|A|B|C|1993}} → the authors as Wikipedia joins them, and the year."""
-    pos = [a.strip() for a in args if '=' not in a]
-    kv = dict(a.split('=', 1) for a in args if '=' in a)
-    names, year = pos[:-1], pos[-1]
-    if len(names) == 1:
-        who = names[0]
-    elif len(names) == 2:
-        who = f'{names[0]} & {names[1]}'
-    elif len(names) == 3:
-        who = f'{names[0]}, {names[1]} & {names[2]}'
-    else:
-        who = f'{names[0]} et al.'
-    return who, year, kv.get('loc', '').strip()
-
-
-def citation(body):
-    """A {{citation}} as Wikipedia's Citation Style 2 prints it, near enough: author (year), "contribution",
-    title, location: publisher, page."""
-    args = WT.split_args(body)
-    kv = {}
-    for a in args[1:]:
-        if '=' in a:
-            k, v = a.split('=', 1)
-            kv[k.strip()] = v.strip()
-    who = kv.get('last', '') + (', ' + kv['first'] if kv.get('first') else '')
-    bits = [f'{who} ({kv["year"]})' if kv.get('year') else who]
-    if kv.get('contribution'):
-        bits.append(f'"{kv["contribution"]}"')
-    bits.append(f"''{re.sub(r'^\[\[(.*)\]\]$', r'\1', kv.get('title', ''))}''")
-    if kv.get('publisher'):
-        bits.append((kv['location'] + ': ' if kv.get('location') else '') + kv['publisher'])
-    if kv.get('page'):
-        bits.append(f'p. {kv["page"]}')
-    return ', '.join(bits)
-
-
-def wiki_prepare(text):
-    """The article as 2.3's reader reads it (see the module's docstring); the cached text is not changed."""
-    text = re.sub(r'^\{\{short description\|[^}]*\}\}\n', '', text, flags=re.I)
-
-    def tmpl(m):
-        body = m.group(1)
-        args = WT.split_args(body)
-        name = args[0].strip().lower()
-        if name == 'harvtxt':
-            who, year, _ = harv_names(args[1:])
-            return f'{who} ({year})'
-        if name == 'sfnp':
-            who, year, loc = harv_names(args[1:])
-            return f'<ref>{who} ({year}){", " + loc if loc else ""}.</ref>'
-        return m.group(0)
-    text = re.sub(r'\{\{((?:harvtxt|sfnp)\|[^{}]*)\}\}', tmpl, text)
-    text = re.sub(r'<ref>\s*\{\{(citation\b.*?)\}\}\.?\s*</ref>', lambda m: '<ref>' + citation(m.group(1)) + '.</ref>', text, flags=re.S)
-    text = re.sub(r'<code>(.*?)</code>', r'{{mono|\1}}', text)
-    text = re.sub(r'<sup>(.*?)</sup>', '\x02\\1\x03', text)
-    # an indented line (`:`) stands apart, as Wikipedia sets it
-    text = re.sub(r'^:(.*)$', lambda m: '\n\x05' + m.group(1).strip() + '\n', text, flags=re.M)
-    return text
-
-
-def wiki_block(b, spec, articles):
-    path = os.path.join(BOOK, 'sources/_cache/wikipedia', b['file'])
-    raw = articles.setdefault(path, open(path, encoding='utf-8').read())
-    text = wiki_prepare(raw)
-    refs = WT.named_refs(text)
-    md_parts, parts = [], [f'<h2>{esc(b["h2"])}</h2>']
-    after = [a for a in spec.get('AT', []) if a[0] == b['id']]
-    placed = set()
-    for kind, name in b['parts']:
-        lines = WT.lead(text) if kind == 'lead' else WT.section(text, name)
-        rawl = WT.lead(raw) if kind == 'lead' else WT.section(raw, name)
-        while lines and not lines[0].strip():
-            lines.pop(0)
-        while lines and not lines[-1].strip():
-            lines.pop()
-        md_parts.append(('' if kind == 'lead' else f'== {name} ==\n') + '\n'.join(rawl).strip('\n'))
-        if kind == 'section':
-            parts.append(f'<h3>{esc(name)}</h3>')
-        for e in WT.elements(lines, refs):
-            if e['kind'] == 'pre':
-                parts.append(f'<pre>{e["html"]}</pre>')
-                anchor_text = html.unescape(e['html'])
-            elif e['kind'] == 'display':
-                parts.append(f'$${esc(e["tex"])}$$')
-                anchor_text = e['tex']
-            else:
-                h = e['html'].replace('\x02', '<sup>').replace('\x03', '</sup>')
-                quote = h.startswith('\x05')
-                parts.append(('Q' if quote else 'P', h.lstrip('\x05'), e['notes']))
-                anchor_text = e['wiki']
-            for _, anchor, key in after:
-                if anchor in anchor_text and key not in placed:
-                    parts.append(spec['HTML'][key])
-                    placed.add(key)
-    want = {a[2] for a in after}
-    if want - placed:
-        raise SystemExit(f'{b["id"]}: never placed {sorted(want - placed)}')
-    return '\n\n'.join(md_parts), parts
-
-
 # ---------------------------------------------------------------- the page
 
 def build():
     mod = load_spec()
     spec = {k: getattr(mod, k) for k in dir(mod) if k.isupper()}
-    pages, articles, used_code = {}, {}, set()
-    md_blocks, html_blocks, fn_rows = [], [], []
+    pages, used_code = {}, set()
+    notes, log, state = WT.Notes(), [], {}
+    md_blocks, html_blocks = [], []
     for b in spec['BLOCKS']:
         head = f'<!-- block {b["id"]} · source {b["source"]} · {b["locator"]} -->'
         if b['source'] == 'cpa':
             md, body, _ = cpa_block(b, spec, pages, used_code)
         else:
-            md, parts = wiki_block(b, spec, articles)
-            out = []
-            for p in parts:
-                if isinstance(p, tuple):
-                    tag, h, ns = p
-                    for k in [int(x) for x in re.findall(r'\x01(\d+)\x01', h)]:
-                        fid = f'wp-{b["id"]}-{len(fn_rows) + 1}'
-                        fn_rows.append({'id': fid, 'kind': 'book', 'number': str(len(fn_rows) + 1), 'html': ns[k]['html'], 'source': 'wikipedia'})
-                        h = h.replace(f'\x01{k}\x01', f'<sup class="fn" data-note="{fid}"></sup>', 1)
-                    out.append(f'<blockquote><p>{h}</p></blockquote>' if tag == 'Q' else f'<p>{h}</p>')
-                else:
-                    out.append(p)
-            body = '\n'.join(out)
+            md, parts = WT.block(b, spec, notes, log, state=state)
+            body = '\n'.join(parts)
         md_blocks.append(head + '\n\n' + md)
         figs = []   # the marks are the prose's: a figure's caption carries its own spans
         body = re.sub(r'<figure\b.*?</figure>', lambda m: figs.append(m.group(0)) or f'\x06{len(figs) - 1}\x06', body, flags=re.S)
@@ -266,6 +149,10 @@ def build():
         body = re.sub(r'\x06(\d+)\x06', lambda m: figs[int(m.group(1))], body)
         attrs = f'id="{b["id"]}" data-source="{b["source"]}" data-locator="{html.escape(b["locator"], quote=True)}"'
         html_blocks.append(f'<section {attrs}>\n{body}\n</section>')
+    fn_rows = notes.rows
+    for m in WT.unplaced(spec, state):
+        if not m.startswith('CODE'):
+            raise SystemExit(m)
     unused = [c[:2] for i, c in enumerate(spec['CODE']) if i not in used_code]
     if unused:
         raise SystemExit(f'CODE entries matched no fenced block: {unused}')

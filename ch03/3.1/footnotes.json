@@ -1,12 +1,5 @@
 [
  {
-  "id": "wp-stack-1",
-  "kind": "book",
-  "number": "1",
-  "html": "Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Stein, Clifford (2009) [1990]. <em>Introduction to Algorithms</em> (3rd ed.). MIT Press and McGraw-Hill. pp.&nbsp;232–233. ISBN&nbsp;0-262-03384-4.",
-  "source": "wikipedia"
- },
- {
   "id": "wp-stack-nb-1",
   "kind": "book",
   "number": "nb 1",
@@ -14,17 +7,24 @@
   "source": "wikipedia"
  },
  {
+  "id": "wp-stack-1",
+  "kind": "book",
+  "number": "1",
+  "html": "Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Stein, Clifford (2009) [1990]. <em>Introduction to Algorithms</em> (3rd ed.). MIT Press and McGraw-Hill. pp.&nbsp;232–233. ISBN&nbsp;0-262-03384-4.",
+  "source": "wikipedia"
+ },
+ {
   "id": "wp-stack-2",
   "kind": "book",
   "number": "2",
-  "html": "Horowitz, Ellis (1984). <em>Fundamentals of Data Structures in Pascal</em>. Computer Science Press. p.&nbsp;67.",
+  "html": "Horowitz, Ellis (1984). <em>Fundamentals of Data Structures in Pascal</em>. Computer Science Press. p. 67.",
   "source": "wikipedia"
  },
  {
   "id": "wp-stack-implementation-3",
   "kind": "book",
   "number": "3",
-  "html": "Pandey, Shreesham (2020). \"<a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4145204\">Data Structures in a Nutshell</a>\". <em>Dev Genius</em> 2020.",
+  "html": "Pandey, Shreesham (2020). <a href=\"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4145204\">“Data Structures in a Nutshell”</a>. <em>Dev Genius</em>. 2020.",
   "source": "wikipedia"
  }
 ]

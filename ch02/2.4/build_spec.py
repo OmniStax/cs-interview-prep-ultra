@@ -1,4 +1,4 @@
-"""What tools/build_translation.py (with tools/oiwiki_boxes.py) needs to assemble 2.4 Prefix sums and difference
+"""What tools/build_translation.py needs to assemble 2.4 Prefix sums and difference
 arrays (the plan is plan.md beside this file).
 
 The Chinese comes from OI Wiki's page by script (source.md); the English is translation.md, written block by
@@ -8,7 +8,7 @@ stand, and the spans that mark concepts and the erratum. The code set's Python i
 cache by script; its Java, C++ and JavaScript are the AI's translations (decision 20), run against the Python's
 doctests before they were written here (plan.md, log-pass.md).
 
-    python3 -I tools/oiwiki_boxes.py ch02/2.4 --check
+    python3 -I tools/build_translation.py ch02/2.4 --check
 """
 import html
 import os

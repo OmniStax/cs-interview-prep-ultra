@@ -38,7 +38,7 @@
   "id": "wp-array-fn-5",
   "kind": "book",
   "number": "5",
-  "html": "Veldhuizen, Todd L. (December 1998). <em>Arrays in Blitz++</em>. <em>Computing in Object-Oriented Parallel Environments</em>. Lecture Notes in Computer Science. Vol. 1505. Berlin: Springer. pp. 223–230. doi:10.1007/3-540-49372-7_24. ISBN 978-3-540-65387-5. [dead link]",
+  "html": "Veldhuizen, Todd L. (December 1998). “Arrays in Blitz++”. <em>Computing in Object-Oriented Parallel Environments</em>. Lecture Notes in Computer Science. Vol. 1505. Berlin: Springer. pp. 223–230. doi:10.1007/3-540-49372-7_24. ISBN 978-3-540-65387-5. [dead link]",
   "source": "wikipedia"
  },
  {
@@ -49,23 +49,23 @@
   "source": "wikipedia"
  },
  {
-  "id": "wp-array-fn-8",
+  "id": "wp-array-fn-6",
   "kind": "book",
-  "number": "8",
+  "number": "6",
   "html": "<a href=\"http://www.configure-all.com/arrays.php\">“Array Code Examples - PHP Array Functions - PHP code”</a>. Computer Programming Web programming Tips. <a href=\"https://web.archive.org/web/20110413142103/http://www.configure-all.com/arrays.php\">Archived from the original</a> on 13 April 2011. Retrieved 8 April 2011. “In most computer languages array index (counting) starts from 0, not from 1. Index of the first element of the array is 0, index of the second element of the array is 1, and so on. In array of names below you can see indexes and values.”",
   "source": "wikipedia"
  },
  {
-  "id": "wp-pointer-fn-12",
+  "id": "wp-pointer-fn-7",
   "kind": "book",
-  "number": "12",
+  "number": "7",
   "html": "Plauger, P J; Brodie, Jim (1992). <a href=\"https://archive.org/details/ansiisostandardc00plau/\"><em>ANSI and ISO Standard C Programmer's Reference</em></a>. Redmond, WA: Microsoft Press. p. 108. ISBN 978-1-55615-359-4.",
   "source": "wikipedia"
  },
  {
-  "id": "wp-pointer-fn-13",
+  "id": "wp-pointer-fn-8",
   "kind": "book",
-  "number": "13",
+  "number": "8",
   "html": "<a href=\"https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf\"><em>WG14-N3096: Draft for C23: ISO/IEC 9899:2023</em></a>. April 1, 2023. ISO/IEC. § 6.3.2.1: Lvalues, arrays, and function designators. p. 48. <a href=\"https://web.archive.org/web/20230402172459/https://www.open-std.org/jtc1/sc22/wg14/www/docs/n3096.pdf\">Archived</a> on April 2, 2023.",
   "source": "wikipedia"
  }

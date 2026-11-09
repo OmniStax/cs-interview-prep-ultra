@@ -19,25 +19,25 @@ PTR = 'sources/_cache/wikipedia/Pointer_computer_programming.wiki'
 BLOCKS = [
     dict(id='singly-linked-list', source='wikipedia', file=LL, h2='Linked lists',
          locator='wikipedia:Linked_list lead + #Basic concepts and nomenclature + ===Singly linked list===',
-         parts=[(None, '==History==', None), ('==Basic concepts and nomenclature==', '===Doubly linked list===', None)],
+         parts=[{'from': None, 'to': '==History=='}, {'from': '==Basic concepts and nomenclature==', 'to': '===Doubly linked list==='}],
          headings={'Basic concepts and nomenclature': 3, 'Singly linked list': 3}),
     dict(id='pointer-to-pointer', source='wikipedia', file=PTR, h2='Multiple indirection',
          locator='wikipedia:Pointer_(computer_programming)#Multiple indirection, to “…the address of the new item.”, before the argv paragraph',
-         parts=[('====Multiple indirection====', '====Function pointer====', 'A basic example is in the [[argv]]')],
+         parts=[{'from': '====Multiple indirection====', 'to': '====Function pointer====', 'stop_at': 'A basic example is in the [[argv]]'}],
          headings={'Multiple indirection': None}),
     dict(id='list-operations', source='wikipedia', file=LL, h2='Linked list operations',
          locator='wikipedia:Linked_list#Linked list operations (its opening) + ====Singly linked lists====',
-         parts=[('==Linked list operations==', '===Circularly linked list===', None)],
+         parts=[{'from': '==Linked list operations==', 'to': '===Circularly linked list==='}],
          headings={'Linked list operations': None, 'Linearly linked lists': None, 'Singly linked lists': 3}),
     dict(id='lists-vs-arrays', source='wikipedia', file=LL, h2='Linked lists vs. dynamic arrays',
          locator='wikipedia:Linked_list#Linked lists vs. dynamic arrays, without its comparison table (a template)',
-         parts=[('===Linked lists vs. dynamic arrays===', '===Singly linked linear lists vs. other lists===', None)],
+         parts=[{'from': '===Linked lists vs. dynamic arrays===', 'to': '===Singly linked linear lists vs. other lists==='}],
          headings={'Linked lists vs. dynamic arrays': None}),
 ]
 
 # wikilinks whose subject this book carries (plan, Questions 4); every other wikilink is its text
 SEC = '/cs-interview-prep-ultra'
-LINKS = {
+WIKILINKS = {
     'Array data structure': f'{SEC}/ch02/2.1/',
     'List (abstract data type)': f'{SEC}/ch02/2.1/',
     'Dynamic array': f'{SEC}/ch02/2.2/',

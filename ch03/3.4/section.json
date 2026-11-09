@@ -2602,12 +2602,6 @@
    "html": "He &amp; Huang (2001)."
   },
   {
-   "id": "wp-nearest-smaller-4",
-   "kind": "book",
-   "number": "4",
-   "html": "Knuth, Donald (1968), \"Vol. 1: Fundamental Algorithms\", <em>The Art of Computer Programming</em>, Reading, Mass.: Addison-Wesley, p. 198."
-  },
-  {
    "id": "wp-nearest-smaller-5",
    "kind": "book",
    "number": "5",
@@ -2627,6 +2621,12 @@
    "id": "err-d-index",
    "kind": "correction",
    "html": "The array is indexed by the column: $d[j]$ for $j = 0, \\ldots, m - 1$, as the code’s <code>vector&lt;int&gt; d(m, -1)</code> declares it."
+  },
+  {
+   "id": "wp-nearest-smaller-4",
+   "kind": "book",
+   "number": "4",
+   "html": "Knuth, Donald (1968), “Vol. 1: Fundamental Algorithms”, <em>The Art of Computer Programming</em>, Reading, Mass.: Addison-Wesley, p. 198."
   }
  ],
  "derivations": []

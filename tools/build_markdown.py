@@ -58,6 +58,11 @@ def slice_block(lines, b):
     if z <= a:
         raise SystemExit(f'{b["id"]}: {b["to"]!r} does not come after {b["from"]!r}')
     out = lines[a:z]
+    if b.get('stop_at'):     # cut before the paragraph that starts with these words (3.1)
+        k = next((i for i, l in enumerate(out) if l.startswith(b['stop_at'])), None)
+        if k is None:
+            raise SystemExit(f'{b["id"]}: stop_at {b["stop_at"]!r} not in the slice')
+        out = out[:k]
     while out and not out[-1].strip():
         out.pop()
     return out

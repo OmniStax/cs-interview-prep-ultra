@@ -177,7 +177,3 @@ A good example that highlights the pros and cons of using dynamic arrays vs. lin
 The [[list ranking]] problem concerns the efficient conversion of a linked list representation into an array. Although trivial for a conventional computer, solving this problem by a [[parallel algorithm]] is complicated and has been the subject of much research.
 
 A [[self-balancing binary search tree|balanced tree]] has similar memory access patterns and space overhead to a linked list while permitting much more efficient indexing, taking O(log n) time instead of O(n) for a random access. However, insertion and deletion operations are more expensive due to the overhead of tree manipulations to maintain balance. Schemes exist for trees to automatically maintain themselves in a balanced state: [[AVL tree]]s or [[red–black tree]]s.
-
-## Notes
-
-[^lists-vs-arrays-note-1]: The amount of control data required for a dynamic array is usually of the form <math>K+Bn</math>, where <math>K</math> is a per-array constant, <math>B</math> is a per-dimension constant, and <math>n</math> is the number of dimensions. <math>K</math> and <math>B</math> are typically on the order of 10 bytes.

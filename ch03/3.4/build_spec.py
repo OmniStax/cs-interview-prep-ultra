@@ -27,7 +27,7 @@ BLOCKS = [
          **{'from': '## Finding the minimum for all subarrays of fixed length', 'to': '## Practice Problems'}),
     dict(id='nearest-smaller', source='wikipedia', file='All_nearest_smaller_values.wiki', h2='All nearest smaller values',
          locator='wikipedia:All_nearest_smaller_values lead, #Example, #Sequential algorithm',
-         parts=[('lead', None), ('section', 'Example'), ('section', 'Sequential algorithm')]),
+         parts=[{'lead': True}, {'section': 'Example', 'h3': 'Example'}, {'section': 'Sequential algorithm', 'h3': 'Sequential algorithm'}]),
     dict(id='zero-submatrix', source='cpa', file=ZM, locator='cpa:dynamic_programming/zero_matrix',
          **{'from': '# Finding the largest zero submatrix', 'to': None}),
 ]
@@ -565,3 +565,4 @@ def EXERCISES(exercism, book):
     concepts = [{'exercise': 'c1', 'concept': 'min-stack'}, {'exercise': 'c2', 'concept': 'largest-zero-submatrix'},
                 {'exercise': 'c2', 'concept': 'nearest-smaller-element'}]
     return [c1, c2], concepts
+

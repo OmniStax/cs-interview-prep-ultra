@@ -12,6 +12,9 @@ _sp = importlib.util.spec_from_file_location('readers_2_1', os.path.join(_HERE, 
 readers = importlib.util.module_from_spec(_sp)
 _sp.loader.exec_module(readers)
 _BOOK = os.path.dirname(os.path.dirname(_HERE))
+_sp = importlib.util.spec_from_file_location('wikitext', os.path.join(_BOOK, 'tools', 'wikitext.py'))
+wikitext = importlib.util.module_from_spec(_sp)
+_sp.loader.exec_module(wikitext)
 
 TITLE = 'Arrays and the list interface'
 ARRAY = 'sources/_cache/wikipedia/Array_data_structure.wiki'
@@ -19,40 +22,37 @@ POINTER = 'sources/_cache/wikipedia/Pointer_computer_programming.wiki'
 INTRO = 'sources/_cache/ods/latex/intro.tex'
 
 BLOCKS = [
-    dict(id='array', source='wikipedia', reader=readers.wikitext_block, file=ARRAY, note_prefix='wp-array-fn',
-         start="In [[computer science]], an '''array'''", stop='==History==',
+    dict(id='array', source='wikipedia', reader=wikitext.text_block, file=ARRAY, note_prefix='wp-array-fn',
+         parts=[dict(start="In [[computer science]], an '''array'''", stop='==History==')], heading_shift=0, heading_cap=6,
          locator='wikipedia:Array_(data_structure), the lead', h2='Arrays'),
-    dict(id='addressing', source='wikipedia', reader=readers.wikitext_block, file=ARRAY, note_prefix='wp-array-fn',
-         start='==Element identifier and addressing formulas==', stop='===Dope vectors===', drop_first_heading=True,
+    dict(id='addressing', source='wikipedia', reader=wikitext.text_block, file=ARRAY, note_prefix='wp-array-fn',
+         parts=[dict(start='==Element identifier and addressing formulas==', stop='===Dope vectors===')], heading_shift=0, heading_cap=6, drop_first_heading=True,
          locator='wikipedia:Array_(data_structure)#Element identifier and addressing formulas, its opening with “One-dimensional arrays” and “Multidimensional arrays”, before “Dope vectors”',
-         h2='Element identifier and addressing formulas'),
-    dict(id='efficiency', source='wikipedia', reader=readers.wikitext_block, file=ARRAY, note_prefix='wp-array-fn',
-         start='==Efficiency==', stop='===Comparison with other data structures===', drop_first_heading=True,
+         h2='Element identifier and addressing formulas', displays={0: r'B + c_1 \cdot i_1 + c_2 \cdot i_2 + \dots + c_k \cdot i_k.'}),
+    dict(id='efficiency', source='wikipedia', reader=wikitext.text_block, file=ARRAY, note_prefix='wp-array-fn',
+         parts=[dict(start='==Efficiency==', stop='===Comparison with other data structures===')], heading_shift=0, heading_cap=6, drop_first_heading=True,
          locator='wikipedia:Array_(data_structure)#Efficiency, its opening, before “Comparison with other data structures”',
          h2='Efficiency'),
-    dict(id='iliffe', source='wikipedia', reader=readers.wikitext_block, file=ARRAY, note_prefix='wp-array-fn',
-         start='[[Image:Array of array storage.svg', stop='==Dimension==',
+    dict(id='iliffe', source='wikipedia', reader=wikitext.text_block, file=ARRAY, note_prefix='wp-array-fn',
+         parts=[dict(start='[[Image:Array of array storage.svg', stop='==Dimension==')], heading_shift=0, heading_cap=6,
          locator='wikipedia:Array_(data_structure)#Comparison with other data structures, the Iliffe-vector paragraph and its image',
          h2='Iliffe vectors'),
-    dict(id='c-arrays', source='wikipedia', reader=readers.wikitext_block, file=POINTER, note_prefix='wp-pointer-fn',
-         start='====C arrays====', stop='====C linked list====', drop_first_heading=True,
+    dict(id='c-arrays', source='wikipedia', reader=wikitext.text_block, file=POINTER, note_prefix='wp-pointer-fn',
+         parts=[dict(start='====C arrays====', stop='====C linked list====')], heading_shift=0, heading_cap=6, drop_first_heading=True,
          locator='wikipedia:Pointer_(computer_programming)#C arrays', h2='C arrays'),
     dict(id='list-interface', source='ods', reader=readers.ods_block, file=INTRO, chapter='1',
          start='\\subsection{The #List# Interface', stop='\\subsection{The #USet#', drop_first_heading=True,
          locator='ods:intro#the-list-interface-linear-sequences', h2='The List Interface: Linear Sequences'),
 ]
 
-# the image lines of the passages: the Sim or photograph that stands in their place, or '' where the Sim stands
-# after a paragraph instead (AFTER_TEXT) or the image is dropped (the 3D diagram: plan.md)
-WIKI_FIGURES = {
-    ('addressing', '1D array diagram.svg'): '',
-    ('addressing', '2D array diagram.svg'): '',
-    ('addressing', '3D array diagram.svg'): '',
-    ('iliffe', 'Array of array storage.svg'): 'photo-iliffe',
-}
-# the indented formula line of “Multidimensional arrays”, set as the display the article means by it
-WIKI_DISPLAYS = {
-    ('addressing', 0): r'B + c_1 \cdot i_1 + c_2 \cdot i_2 + \dots + c_k \cdot i_k.',
+# the image lines of the passages, per occurrence: the photograph that stands in their place, or None where the
+# Sim stands after a paragraph instead (AFTER_TEXT) or the image is dropped (the 3D diagram: plan.md); the
+# indented formula line of “Multidimensional arrays” is set as the display the article means by it (`displays`)
+IMAGES = {
+    '1D array diagram.svg': [None],
+    '2D array diagram.svg': [None],
+    '3D array diagram.svg': [None],
+    'Array of array storage.svg': ['photo-iliffe'],
 }
 WIKI_FIXES = []
 
@@ -582,3 +582,4 @@ def EXERCISES(exercism, book):
                           'tests': lt, 'generated_by': 'ai'}})
     concepts.append({'exercise': 'c3', 'concept': 'list-interface'})
     return ex, concepts
+

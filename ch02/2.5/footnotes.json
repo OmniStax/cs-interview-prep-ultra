@@ -1,6 +1,6 @@
 [
  {
-  "id": "lists-vs-arrays-note-1",
+  "id": "wp-lists-vs-arrays-note-1",
   "kind": "book",
   "number": "note 1",
   "html": "The amount of control data required for a dynamic array is usually of the form $K+Bn$, where $K$ is a per-array constant, $B$ is a per-dimension constant, and $n$ is the number of dimensions. $K$ and $B$ are typically on the order of 10 bytes.",

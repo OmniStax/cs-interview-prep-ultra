@@ -444,15 +444,15 @@
  ],
  "footnotes": [
   {
-   "id": "lists-vs-arrays-note-1",
-   "kind": "book",
-   "number": "note 1",
-   "html": "The amount of control data required for a dynamic array is usually of the form $K+Bn$, where $K$ is a per-array constant, $B$ is a per-dimension constant, and $n$ is the number of dimensions. $K$ and $B$ are typically on the order of 10 bytes."
-  },
-  {
    "id": "err-sorted-comment",
    "kind": "correction",
    "html": "The comment at the head of the listing says the item goes in at the first place “where all earlier elements have lesser or equal value”. The loop stops at the first element whose value is not less than the item’s, so every earlier element is strictly less, and the item goes in before any element equal to it. The code is a correct sorted insert; only the comment is loose."
+  },
+  {
+   "id": "wp-lists-vs-arrays-note-1",
+   "kind": "book",
+   "number": "note 1",
+   "html": "The amount of control data required for a dynamic array is usually of the form $K+Bn$, where $K$ is a per-array constant, $B$ is a per-dimension constant, and $n$ is the number of dimensions. $K$ and $B$ are typically on the order of 10 bytes."
   }
  ],
  "derivations": []

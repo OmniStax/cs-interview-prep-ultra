@@ -784,31 +784,31 @@
    "id": "wp-merge-2",
    "kind": "book",
    "number": "2",
-   "html": "Skiena, Steven (2010). <em>The Algorithm Design Manual</em> (2nd ed.). Springer Science+Business Media. p.&nbsp;123. ISBN&nbsp;978-1-849-96720-4."
+   "html": "Skiena, Steven (2010). <em>The Algorithm Design Manual</em> (2nd ed.). Springer Science+Business Media. p. 123. ISBN 978-1-849-96720-4."
   },
   {
    "id": "wp-merge-3",
    "kind": "book",
    "number": "3",
-   "html": "Kurt Mehlhorn; Peter Sanders (2008). <em><a href=\"http://people.mpi-inf.mpg.de/~mehlhorn/ftp/Toolbox/\">Algorithms and Data Structures: The Basic Toolbox</a></em>. Springer. ISBN&nbsp;978-3-540-77978-0. p.&nbsp;104."
+   "html": "Kurt Mehlhorn; Peter Sanders (2008). <a href=\"http://people.mpi-inf.mpg.de/~mehlhorn/ftp/Toolbox/\"><em>Algorithms and Data Structures: The Basic Toolbox</em></a>. Springer. ISBN 978-3-540-77978-0. p. 104."
+  },
+  {
+   "id": "wp-merge-2-2",
+   "kind": "book",
+   "number": "2",
+   "html": "Skiena, Steven (2010). <em>The Algorithm Design Manual</em> (2nd ed.). Springer Science+Business Media. p. 123. ISBN 978-1-849-96720-4."
   },
   {
    "id": "wp-merge-4",
    "kind": "book",
    "number": "4",
-   "html": "Skiena, Steven (2010). <em>The Algorithm Design Manual</em> (2nd ed.). Springer Science+Business Media. p.&nbsp;123. ISBN&nbsp;978-1-849-96720-4."
+   "html": "Katajainen, Jyrki; Pasanen, Tomi; Teuhola, Jukka (1996). <a href=\"https://dl.acm.org/doi/10.5555/642136.642138\">“Practical in-place mergesort”</a>. <em>Nordic J. Computing</em>. 3 (1): 27–40."
   },
   {
    "id": "wp-merge-5",
    "kind": "book",
    "number": "5",
-   "html": "Katajainen, Jyrki; Pasanen, Tomi; Teuhola, Jukka (1996). \"<a href=\"https://dl.acm.org/doi/10.5555/642136.642138\">Practical in-place mergesort</a>\". <em>Nordic J. Computing</em> 3 (1): 27–40."
-  },
-  {
-   "id": "wp-merge-6",
-   "kind": "book",
-   "number": "6",
-   "html": "Kim, Pok-Son; Kutzner, Arne (2004). \"Stable Minimum Storage Merging by Symmetric Comparisons\". <em>European Symp. Algorithms</em>. Lecture Notes in Computer Science 3221. pp.&nbsp;714–723. doi:10.1007/978-3-540-30140-0_63."
+   "html": "Kim, Pok-Son; Kutzner, Arne (2004). “Stable Minimum Storage Merging by Symmetric Comparisons”. <em>European Symp. Algorithms</em>. Lecture Notes in Computer Science. Vol. 3221. pp. 714–723. doi:10.1007/978-3-540-30140-0_63. ISBN 978-3-540-23025-0."
   }
  ],
  "derivations": [

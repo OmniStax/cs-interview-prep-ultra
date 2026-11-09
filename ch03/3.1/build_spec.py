@@ -20,10 +20,10 @@ CPA = 'sources/_cache/cpa/src/combinatorics/bracket_sequences.md'
 BLOCKS = [
     dict(id='stack', source='wikipedia', file=WP, h2='Stacks',
          locator='wikipedia:Stack_(abstract_data_type) lead + #Non-essential operations',
-         parts=[('lead', None, None), ('section', 'Non-essential operations', 'Non-essential operations')]),
+         heading_shift=-1, parts=[{'lead': True}, {'section': 'Non-essential operations', 'h3': 'Non-essential operations'}]),
     dict(id='stack-implementation', source='wikipedia', file=WP, h2='Implementation',
          locator='wikipedia:Stack_(abstract_data_type)#Implementation, with ====Array==== and ====Linked list====',
-         parts=[('section', 'Implementation', None)]),
+         heading_shift=-1, parts=[{'section': 'Implementation'}]),
     dict(id='balanced', source='cpa', file=CPA, h2=None,
          locator='cpa:combinatorics/bracket_sequences#balanced-bracket-sequences, to “…in a similar fashion.”, before the article’s list of its problems',
          **{'from': '# Balanced bracket sequences', 'to': '## Balance validation', 'stop_at': 'In this article we discuss'}),
@@ -50,12 +50,11 @@ IMAGES = {
     'Linked-list-based Stack Pop Operation-en.gif': [None],
 }
 
-# wikilinks whose subject this book carries: the words the link wraps, per block (the reader prints a link as its text)
-LINKS = [
-    ('stack', 'singly linked list', f'{SEC}/ch02/2.5/'),
-    ('stack-implementation', 'dynamic array', f'{SEC}/ch02/2.2/'),
-    ('stack-implementation', 'singly linked list', f'{SEC}/ch02/2.5/'),
-]
+# wikilinks whose subject this book carries and no concept span names there (RULES.md, Wikipedia's wikilinks)
+WIKILINKS = {
+    'Singly linked list': f'{SEC}/ch02/2.5/',
+    'Dynamic array': f'{SEC}/ch02/2.2/',
+}
 
 
 # ---------------------------------------------------------------- figures
