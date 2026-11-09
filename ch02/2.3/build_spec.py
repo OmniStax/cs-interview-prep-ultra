@@ -49,8 +49,8 @@ R_ = ref('pair-r', '<em>r</em>')
 E_ = lambda x: f'<em>{x}</em>'  # noqa: E731
 CAPTIONS = {
     'sim-two-pointers': (
-        f'On a sorted array, {L_} starts at the first element and {R_} at the last. When a[{L_}] + a[{R_}] is too big, no pair '
-        f'with a[{R_}] can reach the target, so {R_} moves left and its column of the pair-sum table drops out; when it is too '
+        f'On a sorted array, {L_} starts at the first element and {R_} at the last. When num[{L_}] + num[{R_}] is too big, no pair '
+        f'with num[{R_}] can reach the target, so {R_} moves left and its column of the pair-sum table drops out; when it is too '
         f'small, {L_} moves right and its row drops out. The pairs still possible are the triangle between {L_} and {R_}, and at '
         f'most {E_("n")} − 1 checks settle the question. The code calls {L_} and {R_} i and j and counts from 0; the text counts from 1.'),
     'sim-three-sum': (

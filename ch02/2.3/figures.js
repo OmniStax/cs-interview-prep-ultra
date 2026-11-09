@@ -99,7 +99,7 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
     { value: 'dup', label: 'duplicates', A: [1, 3, 3], t: 6 },
     { value: 'adv', label: 'adversarial', A: [5, 8, 12, 16, 18, 19, 20, 21], t: 34 },
   ];
-  const d = sim('sim-two-pointers', 800);
+  const d = sim('sim-two-pointers', 860);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS3,
     lineMap: { java: MAP, cpp: MAP, javascript: MAP },
@@ -140,7 +140,7 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
       if (L > 2) ptr(ctx, S, ps);
       else ptr(ctx, S, [{ at: 0, name: 'i', color: cl }]);
       /* the pair-sum table: row i, column j, i < j; a move rules out a whole row (i moves) or a column (j moves) */
-      const m = n - 1, cw = Math.min(110, 840 / m), ch = 50, gx = 700 - (m * cw) / 2, gy = 360;
+      const m = n - 1, cw = Math.min(110, 840 / m), ch = 50, gx = 700 - (m * cw) / 2, gy = 420;
       text(ctx, 'nums[i] + nums[j] for each pair i < j', gx, gy - 66, PAL.muted, { size: 26 });
       for (let c = 1; c < n; c += 1) text(ctx, String(c), gx + (c - 0.5) * cw, gy - 22, c === Jn ? cr : alpha(idx, 0.8), { size: 26, align: 'center', weight: c === Jn ? 600 : 400 });
       text(ctx, 'j', gx + m * cw + 26, gy - 22, cr, { size: 28, weight: 600, italic: true });
@@ -156,7 +156,7 @@ const ptr = (ctx, S, list, side) => F.ds.pointer(ctx, S, list, { side: side || '
       }
       text(ctx, 'i', gx - 54, gy + ((n - 1) * ch) / 2, cl, { size: 28, weight: 600, italic: true, align: 'right' });
       const checks = v.checks || 0;
-      text(ctx, `checks ${checks} ≤ n − 1 = ${n - 1}`, 1340, 770, C('cost'), { size: 28, align: 'right' });
+      text(ctx, `checks ${checks} ≤ n − 1 = ${n - 1}`, 1340, 830, C('cost'), { size: 28, align: 'right' });
     },
   });
 })();
