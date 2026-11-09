@@ -267,7 +267,7 @@ const tn = (n) => commas(n).replace(/,/g, '{,}');
     lo = Math.max(lo, -10);
     const box = { l: 170, r: 1330, t: 100, b: 500 };
     const ax = axes(ctx, box, [T0, T1], [lo, hi * 1.08 || 1], { nx: Math.max(1, Math.round(T1 - T0)), ny: 4, nice: true, xl: 'n', xc: size, yl: 'f(n)/g(n)', yc: cost,
-      fx: (t) => { const v = 10 ** t; return v >= 1e3 ? `10${'⁰¹²³⁴⁵⁶⁷⁸⁹'[Math.round(t)] || ''}` : commas(v); }, fy: (v) => commas(v) === String(Math.round(v)) && Math.abs(hi) >= 10 ? commas(v) : fmt(v, 1) });
+      fx: (t) => { const v = 10 ** t; return v >= 1e3 ? `10${'⁰¹²³⁴⁵⁶⁷⁸⁹'[Math.round(t)] || ''}` : commas(v); }, fy: (v) => (hi >= 10 ? commas(v) : fmt(v, 1)) });
     if (Number.isFinite(p.lim)) {
       dashed(ctx, ax, () => p.lim, T0, T1, cost, 3);
       text(ctx, `limit ${p.lim}`, box.l + 0.82 * (box.r - box.l), ax.Y(p.lim) + (p.lim === 0 ? -22 : 24), cost, { size: 22, weight: 600, align: 'center', bg: PAL.panel });
