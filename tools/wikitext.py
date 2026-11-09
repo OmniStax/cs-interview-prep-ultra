@@ -617,7 +617,7 @@ def elements(lines, ctx):
                 j += 1
             body = ''.join('<tr>' + ''.join((f'<th>{inline(c, ctx)}</th>' if hd else f'<td>{inline(c, ctx)}</td>') for hd, c in row) + '</tr>'
                            for row in rows if row)
-            els.append({'kind': 'table', 'html': f'<table>{body}</table>'})
+            els.append({'kind': 'table', 'html': f'<div class="book-table"><table>{body}</table></div>'})
             i = j + 1
             continue
         if l.startswith(' '):

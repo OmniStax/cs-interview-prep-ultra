@@ -49,10 +49,10 @@ $$\Phi(h) = 2n - m$$
 <section id="stack-example" data-source="oiwiki" data-locator="oiwiki:basic/amortized-analysis#扩展示例：堆栈操作 (its opening and table), #聚合分析法 and #记账分析法" data-ai="claude-opus-5-5 high">
 <h2>Extended example: stack operations</h2>
 <p><span data-concept="stack">Stack</span> operations are one of the classic applications of <span data-concept="amortized-analysis">amortized analysis</span>. Suppose we start from an empty <span data-concept="stack">stack</span> and <code>pop</code> is used only on a non-empty <span data-concept="stack">stack</span>; the <span data-concept="stack">stack</span> <code>S</code> supports the following three operations:</p>
-<table>
+<div class="book-table"><table>
 <thead><tr><th>Operation</th><th>Description</th><th>Actual cost $c_i$</th></tr></thead>
 <tbody><tr><td><code>S.push(x)</code></td><td>Push element $x$ onto the stack</td><td>$1$</td></tr><tr><td><code>S.pop()</code></td><td>Pop the element at the top of the stack</td><td>$1$</td></tr><tr><td><code>S.multi-pop(k)</code></td><td>Pop at most $k$ elements from the top of the stack</td><td>$O(\min(\lvert S\rvert,k))$</td></tr></tbody>
-</table>
+</table></div>
 <p>We will analyse the <span data-concept="amortized-analysis">amortized cost</span> of these <span data-concept="stack">stack</span> operations by the three methods of <span data-concept="aggregate-accounting">aggregate analysis</span>, <span data-concept="aggregate-accounting">the accounting method</span> and <span data-concept="potential-method">the potential method</span>.</p>
 <h3>The aggregate method</h3>
 <p><span data-concept="aggregate-accounting">Aggregate analysis</span> computes the total cost of all the operations and spreads it evenly over each operation, which gives the <span data-concept="amortized-analysis">amortized cost</span>.</p>

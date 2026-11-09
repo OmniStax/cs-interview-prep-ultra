@@ -747,3 +747,79 @@ Planned and built in one run (`briefs/section-build.md`; `ch03/3.6/plan.md`, its
 **Deviations from the plan.** The SEList runs are 16 adds and 12 removes (the plan's 30 gave hundreds of stops). In Java, C++ and JavaScript the SEList panels colour only `w` and `i`: Java's `u` is the scanning node in add (Python's `w`) and `l.u` the located one, which the panel cannot colour.
 
 **For the chapter pass.** Edge `space-efficient-list → array-deque` once 3.3's concept exists (staged then removed: an edge to a missing concept stops the chapter's merge). The link "Section 3.3" goes to `/ch03/3.3/#arraydeque` (exploration's block id; check it). B14b's wording should match B14a's in 3.3. Python SEList `remove(i)` returns nothing (Java and C++ return y); not noted. Extra Sim offered: a b slider on the SEList runs.
+
+## Pass 22: chapters 2 and 3 pass (2026-11-09)
+
+Plan phase 3 over 2.1–2.7 and 3.1–3.6, from the "for the chapter pass" lists of passes 9–21 and the plans'
+Questions. Model: claude-opus-5-5, high effort.
+
+**Log.** The thirteen `log-pass.md` files are passes 9–21 above, in section order, under this file's heading
+convention; the files are removed.
+
+**Rebuilds and the terms rows.** Every section of chapters 1–3 was rebuilt from the current tools. The terms rows
+(`terms.jsonl`) named their mention by its number among every mention of every built concept's terms, so chapter 2's
+and 3's new concepts (array, stack, queue, deque …) shifted the numbers in every earlier section and a rebuild marked
+the wrong words or refused. `tools/apply_terms.py` now finds each row again by its term, its sentence and its place
+among mentions with both (`term`, `context`, `nth`, given to every chosen row once, from the committed pages), and
+wraps the mentions in the section's own folder, so a scratch copy no longer writes the book. With that, every page
+rebuilt byte-identical. 2.2's one-space change (3.3's `\le` rule) does not occur with the current tools; 2.5 and 2.7
+build, in place and in a scratch copy. The new concepts' mentions in earlier pages were judged: 105 marked (1.1's
+arrays and "List interface", 1.3's and 1.5's arrays, 1.5's dynamic array, resizes and stack, 2.1's Stack, Queue and
+Deque, 2.2's "Queue interfaces" and Stack, 2.3's circular buffer, 2.5's unrolled linked lists, 2.7's linked lists and
+two pointers, 3.2's LIFO and Deque); priority queues, "list" as a word, and the like stay in ink.
+
+**One Wikipedia reader.** `tools/wikitext.py` replaces 2.1's `readers.py` wikitext part, 2.3's `wikitext.py`, the
+readings 3.1's and 3.4's `build.py` added around it and the reader inside `tools/build_wikitext.py`; 2.1 builds
+through `build_text.py`'s reader hook (`wikitext.text_block`), 2.5 through `build_wikitext.py`, 2.3, 3.1 and 3.4
+through their assemblers calling `wikitext.block`. Every spec's `parts` are now one form (dicts: lead, section,
+from/to, start/stop; `cut_after`, `stop_at`, `h3`). Decided once (RULES.md, Wikipedia): citations are book notes,
+numbered in page order, a named one reused keeping its number; explanatory notes keep their group label; a wikilink
+is a link only where WIKILINKS map it (2.5, 3.1). Intended differences only: 2.1's notes renumbered 1–8 (were the
+article's 1–5, 8, 12, 13), 2.3's reused Skiena citation keeps number 2, citations set in one CS1/CS2 style (curly
+quotes, edition after the title, CS2 without its own full stop), 2.5's link tail inside its link, 3.4's doubled spaces
+collapsed; footnote rows synced into `section.json` through `ost`. `tools/oiwiki_boxes.py` is folded into
+`build_translation.py` (1.5 and 2.4 byte-identical); 3.1's cp-algorithms blocks are sliced by `build_markdown.py`'s
+functions (byte-identical), and a page of cp-algorithms alone builds with it (2.7, 3.5). Text tables from OI Wiki and
+Wikipedia now stand in `div.book-table` as ODS's do (1.5's stack table and 2.1's byte table had no rules or padding).
+
+**ODS names.** The pseudocode edition snake-cases ODS's names; `read_latex.py` now does too (2.1's and 3.3's
+add_first, remove_first, add_last, remove_last; 2.1's `sim-list` labels). 2.6 and chapter 1 still use the older ODS
+reader (open, RULES.md).
+
+**Concepts.** The five edges left out mid-build are merged (floyd-cycle-detection → singly-linked-list,
+monotonic-queue-minimum → deque, space-efficient-list → array-deque, pointer-to-pointer → pointer-arithmetic;
+list-interface → interface-vs-implementation was in `book.json` and is now an EDGE in `map.spec`). `map.spec` carries
+every chapter 2–3 concept's built name and statement; `build.py`, `report.py`, `check_map.py` clean (1022 concepts,
+1332 edges). All 77 concepts agree with the map in name, statement and edges; each has one introducing span, in its
+home section; the 90 edges are Hasse-reduced and acyclic (checked by script).
+
+**Errata, bridges, glossary.** `judgements/ch01-03-reconciled.md`: errata 35–42 (3.4's d-index, 2.1's rotate index set,
+3.1's top, 3.2's Figure 2.2 caption, 3.3's 26b and 26c, 3.6's Figure 3.5(b) and inittabs) and every chapter 2–3 note id;
+erratum 17 (C29) stands unnoted. B17 struck; B14a and B14b worded alike in the 3.3 and 3.6 leads (both mark
+`potential-method`); B18 printed one way ("Lemma 2.1" as ODS prints it, linked; "resize() of ArrayStack" wrapped).
+Every glossary row decided: 区间 is "range" in 2.3 and 2.4 (2.3's three "interval"s changed); the forced scenarios of
+2.3 and 2.4 in `translation-notes.md` and `ch02/config.md`. RULES.md: the links table struck for 2.2, 2.5 and 3.1 and
+extended with 30.2 and 40.4; every chapter 2–3 cross-link checked by script. `ch03/config.md`'s pythonds counts (three per
+page, not six) and the trekhleb line corrected; 1.1's, 1.4's, 1.5's and 2.2's notes say where held cards are set.
+
+**Colour.** `npm run colours:default` kept every type's colour, but 39 of 97 referents wore the palette's first red,
+0.03 from PAL.bad in the dark theme (3.5's `st`), and the dark olive and dark green stood 0.12 from the light ink
+(3.5's `op`, chapter 1's yellow). The app now lets a book store `referentAvoid`: no smart referent within 0.10 of
+PAL.bad or 0.15 of ink, and farthest-apart dealing wears one only last; `colours:default --reorder-referents` sets it
+and works the order out again. Other books store no flag and deal as before. Now the nearest referent stands 0.109 from
+PAL.bad and 0.158 from ink; 5 groups are dealt farthest apart (2 before), the worst pair in a group 0.123 (0.083 before).
+
+**App** (OmniStax, branch claude/confident-cannon-bl42ph, not pushed): referents clear of PAL.bad and ink (ea775d0,
+with tests); article `<pre>` scrolls inside the column, adjacent footnote markers read 1,2,3 (2f325da, with a test).
+
+**Checks.** `ost check`: no errors, the two by-design warnings. `npm run check:content`: the same. `npm run check:code`:
+28 Python references, no errors. `npm test`: 1193 pass, 0 fail. Headless (dev server, own cache, port 4520): all 13
+pages in light and dark, every figure at its opening state, the lead and the footer: no console errors, no failed
+requests, no KaTeX errors, every figure eyebrow "Sim", every internal link resolving (the two to 30.2 and 40.4 listed).
+Screenshots in the session scratchpad, `ch0203pass/`.
+
+**Open.** 2.6 and chapter 1's ODS prose in the older reader (italic calls, camel case). `book.json` `authors` names
+neither doocs nor TheAlgorithms (ost cannot write it; the footer credits them from `sources`). 3.3's derivation cites
+"2.4 DualArrayDeque", ODS's own section number. NC cards were not shot (they show only in a practice session). The
+`F.ds.pointer` name collision and a `stack` primitive are still for figlib; 2.5–2.6 still draw nodes by hand rather than
+with `F.ds.nodes`. The owner's review of the translations; a person's reading of WG14 N3517.

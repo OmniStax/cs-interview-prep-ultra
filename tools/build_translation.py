@@ -325,7 +325,7 @@ def el_html(e, note_ids, drop, dropped):
     if k == 'table':
         head = ''.join(f'<th>{inline(c, note_ids)}</th>' for c in e['head'])
         rows = ''.join('<tr>' + ''.join(f'<td>{inline(c, note_ids)}</td>' for c in r) + '</tr>' for r in e['rows'])
-        return f'<table>\n<thead><tr>{head}</tr></thead>\n<tbody>{rows}</tbody>\n</table>'
+        return f'<div class="book-table"><table>\n<thead><tr>{head}</tr></thead>\n<tbody>{rows}</tbody>\n</table></div>'
     raise ValueError(k)
 
 
