@@ -287,7 +287,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
 
       /* ---------------- the headline: the call, the side it shifts, and what moved */
       let head;
-      const plural = (c, w) => `${c} element${c === 1 ? '' : 's'}${w ? ' ' + w : ''}`;
+      const plural = (c, w) => `${c || 'no'} element${c === 1 ? '' : 's'}${w ? ' ' + w : ''}`;
       if (!op) head = `The list holds n = ${v.n} elements, list position 0 at a[j], j = ${v.j}, in an array of length ${len}.`;
       else if (inResize || swapping) {
         head = swapping ? `resize() has copied the list into the start of b, which becomes a; now j = ${v.j}.`
@@ -561,7 +561,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
     }) };
   };
 
-  const d = sim('sim-dualarraydeque', 760);
+  const d = sim('sim-dualarraydeque', 830);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI }, lineMap: MAP,
     blocks: [
@@ -647,7 +647,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
         ctx.restore();
       };
       /* the middle */
-      line(ctx, 700, ROW - CH / 2 - 96, 700, ROW + CH / 2 + 40, ink, 3);
+      line(ctx, 700, ROW - CH / 2 - 132, 700, ROW + CH / 2 + 40, ink, 3);
       const swapK = ln === L.setF ? (g.prev.line === L.setF ? 1 : k) : (ln === L.setB ? 1 : 0);
       if (swapping && swapK < 1 && v.fresh) {
         /* the old stacks fade, the new ones rise into their place */
@@ -658,8 +658,8 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
       } else {
         half('front', v.front, ROW, 0); half('back', v.back, ROW, fs);
       }
-      text(ctx, 'front', 700 - GAP - cw * Math.min(2.5, SLOTS / 2), ROW - CH / 2 - 72, cf, { size: 32, weight: 600, align: 'center', base: 'middle' });
-      text(ctx, 'back', 700 + GAP + cw * Math.min(2.5, SLOTS / 2), ROW - CH / 2 - 72, cbk, { size: 32, weight: 600, align: 'center', base: 'middle' });
+      text(ctx, 'front', 700 - GAP - cw * Math.min(2.5, SLOTS / 2), ROW - CH / 2 - 112, cf, { size: 32, weight: 600, align: 'center', base: 'middle' });
+      text(ctx, 'back', 700 + GAP + cw * Math.min(2.5, SLOTS / 2), ROW - CH / 2 - 112, cbk, { size: 32, weight: 600, align: 'center', base: 'middle' });
 
       if (!swapping) {
         /* the copies inside the stack this call touched: an arc from each element's old cell to its new one, as

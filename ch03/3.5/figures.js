@@ -28,7 +28,7 @@ const isOp = (c) => '+-*/^'.includes(c);
 const isUnary = (c) => c === '+' || c === '-';
 const isAlnum = (c) => /[0-9A-Za-z]/.test(c);
 /* how an operator reads on the canvas: a typographic minus, and a unary one marked */
-const sym = (o) => (o === '-' ? '−' : o);
+const sym = (o) => (o === '-' ? '−' : o === '^' ? '∧' : o);   /* ∧ as cp-algorithms writes exponentiation in its maths */
 const show = (o) => (o[0] === 'u' ? `unary ${sym(o.slice(1))}` : sym(o));
 const word = (o) => (o === '(' ? 'the opening bracket' : show(o));
 /* a number as the canvas writes it: a typographic minus, and in brackets where it is an operand */
@@ -121,7 +121,7 @@ function run(s) {
     last = null;
     const v = st[st.length - 1];
     at(46, V(s === '-2^2'
-      ? `The value is ${num(v)}: a unary minus ranks above ^, so −2^2 is read as (−2)^2. The usual convention reads it as −(2^2) = −4.`
+      ? `The value is ${num(v)}: a unary minus ranks above ∧, so −2^2 is read as (−2)^2. The usual convention reads it as −(2^2) = −4.`
       : `The one number left on st, ${num(v)}, is the value.`, { done: true }));
   });
 }
@@ -174,8 +174,8 @@ function run(s) {
   function entry(ctx, x, y, s, color, a, pri, stroke) {
     ctx.save(); ctx.globalAlpha *= a;
     roundRect(ctx, x - BOX_W / 2, y - BOX_H / 2, BOX_W, BOX_H, 8, PAL.panel, stroke || alpha(PAL.ink, 0.7), stroke ? 4 : 2.5);
-    text(ctx, s, x, y + 1, color, { size: 30, align: 'center' });
-    if (pri !== undefined && pri !== null) text(ctx, String(pri), x + BOX_W / 2 + 14, y + 1, PAL.muted, { size: 26, align: 'left' });
+    text(ctx, s, pri !== undefined && pri !== null ? x - 12 : x, y + 1, stroke === PAL.bad ? PAL.bad : color, { size: 30, weight: stroke === PAL.bad ? 600 : 400, align: 'center' });
+    if (pri !== undefined && pri !== null) text(ctx, String(pri), x + BOX_W / 2 - 12, y + 1, PAL.muted, { size: 26, align: 'right' });
     ctx.restore();
   }
   const slotY = (k) => BASE - BOX_H / 2 - 6 - k * (BOX_H + 6);
@@ -186,7 +186,7 @@ function run(s) {
     while (common < prev.length && common < cur.length && prev[common] === cur[common]) common += 1;
     /* the well: two sides and a floor, in the stack's colour */
     ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 4; ctx.beginPath();
-    const l = x - BOX_W / 2 - 10, r = x + BOX_W / 2 + 10, top = slotY(5) - BOX_H / 2;
+    const l = x - BOX_W / 2 - 26, r = x + BOX_W / 2 + 26, top = slotY(3.6) - BOX_H / 2;
     ctx.moveTo(l, top); ctx.lineTo(l, BASE); ctx.lineTo(r, BASE); ctx.lineTo(r, top); ctx.stroke(); ctx.restore();
     text(ctx, label, x, BASE + 30, color, { size: 30, weight: 600, align: 'center' });
     for (let j = 0; j < common; j += 1) entry(ctx, x, slotY(j), fmt(cur[j]), fmt.color(cur[j]), 1, pri && pri(cur[j]), mark && mark(j, cur.length));
@@ -235,15 +235,15 @@ function run(s) {
       const ops = v.op, lastOpen = ops.lastIndexOf('(');
       const run = ops.slice(lastOpen + 1);
       if (run.length) {
-        const y0 = slotY(lastOpen + run.length) + BOX_H / 2 + 3, y1 = slotY(lastOpen + 1) + BOX_H / 2 + 3;
-        ctx.save(); ctx.fillStyle = alpha(idx, 0.16); ctx.fillRect(OP_X - BOX_W / 2 - 8, y0 - 3, BOX_W + 16, y1 - y0 + 3); ctx.restore();
+        const y0 = slotY(lastOpen + run.length) - BOX_H / 2 - 3, y1 = slotY(lastOpen + 1) + BOX_H / 2 + 3;
+        ctx.save(); ctx.fillStyle = alpha(idx, 0.22); ctx.fillRect(OP_X - BOX_W / 2 - 22, y0 - 3, BOX_W + 44, y1 - y0 + 3); ctx.restore();
       }
       /* the two stacks */
       const stDone = v.done && s === '-2^2';
       column(ctx, ST_X, pv.st, v.st, k, 'st', cSt, numFmt, undefined, stDone ? (j, len) => (j === len - 1 ? PAL.bad : null) : null);
       column(ctx, OP_X, pv.op, v.op, k, 'op', cOp, opFmt, opPri, null);
       /* the operator just read, beside op until it is pushed */
-      const cy = slotY(Math.min(v.op.length, 5));
+      const cy = slotY(Math.min(v.op.length, 3));
       if (v.pending && v.cur_op) {
         const fresh = !pv.pending;
         entry(ctx, CUR_X, cy, opFmt(v.cur_op), PAL.ink, fresh ? k : 1, priority(v.cur_op), cCur);
@@ -256,7 +256,7 @@ function run(s) {
       /* the priorities the helpers give */
       const lx = 1000;
       text(ctx, 'priority', lx, 420, PAL.ink, { size: 26, weight: 600, align: 'left' });
-      [['+  −', '1', ''], ['*  /', '2', ''], ['^', '3', 'right-associative'], ['u−  u+', '4', 'right-associative']].forEach(([o, p, a], j) => {
+      [['+  −', '1', ''], ['*  /', '2', ''], ['∧', '3', 'right-associative'], ['u−  u+', '4', 'right-associative']].forEach(([o, p, a], j) => {
         const y = 462 + j * 38;
         text(ctx, o, lx, y, PAL.ink, { size: 26, align: 'left' });
         text(ctx, p, lx + 110, y, PAL.ink, { size: 26, align: 'left' });

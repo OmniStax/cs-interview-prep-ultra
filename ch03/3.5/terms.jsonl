@@ -1,34 +1,34 @@
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 0, "term": "algorithm", "hash": "757e3251c656", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 2, "term": "reverse Polish notation", "hash": "757e3251c656", "concept": "rpn-evaluation"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 3, "term": "reverse Polish notation", "hash": "757e3251c656", "concept": "rpn-evaluation"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 4, "term": "reverse Polish notation", "hash": "757e3251c656", "concept": "rpn-evaluation"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 6, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 7, "term": "reverse Polish notation", "hash": "757e3251c656", "concept": "rpn-evaluation"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 8, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 9, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 10, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 11, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 13, "term": "stacks", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 14, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 15, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 16, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 17, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 18, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 19, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 20, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 21, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 22, "term": "stack", "hash": "757e3251c656", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 23, "term": "implementation", "hash": "757e3251c656", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 24, "term": "reverse Polish notation", "hash": "757e3251c656", "concept": "rpn-evaluation"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 25, "term": "implementation", "hash": "757e3251c656", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 26, "term": "reverse Polish notation", "hash": "757e3251c656", "concept": "rpn-evaluation"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 28, "term": "unary operator", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 29, "term": "unary operators", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 31, "term": "Right-associative", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 32, "term": "unary operators", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 33, "term": "right-associative", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 34, "term": "right-associative", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 35, "term": "right-associative", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 36, "term": "right-associative", "hash": "757e3251c656", "concept": "unary-right-assoc"}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 37, "term": "implementation", "hash": "757e3251c656", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 38, "term": "unary operators", "hash": "757e3251c656", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 0, "term": "algorithm", "hash": "506ea8463f08", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 2, "term": "reverse Polish notation", "hash": "506ea8463f08", "concept": "rpn-evaluation"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 3, "term": "reverse Polish notation", "hash": "506ea8463f08", "concept": "rpn-evaluation"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 4, "term": "reverse Polish notation", "hash": "506ea8463f08", "concept": "rpn-evaluation"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 6, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 7, "term": "reverse Polish notation", "hash": "506ea8463f08", "concept": "rpn-evaluation"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 8, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 9, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 10, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 11, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 13, "term": "stacks", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 14, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 15, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 16, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 17, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 18, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 19, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 20, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 21, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 22, "term": "stack", "hash": "506ea8463f08", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 23, "term": "implementation", "hash": "506ea8463f08", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 24, "term": "reverse Polish notation", "hash": "506ea8463f08", "concept": "rpn-evaluation"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 25, "term": "implementation", "hash": "506ea8463f08", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 26, "term": "reverse Polish notation", "hash": "506ea8463f08", "concept": "rpn-evaluation"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 28, "term": "unary operator", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 29, "term": "unary operators", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 31, "term": "Right-associative", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 32, "term": "unary operators", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 33, "term": "right-associative", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 34, "term": "right-associative", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 35, "term": "right-associative", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 36, "term": "right-associative", "hash": "506ea8463f08", "concept": "unary-right-assoc"}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 37, "term": "implementation", "hash": "506ea8463f08", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.5", "idx": 38, "term": "unary operators", "hash": "506ea8463f08", "concept": "unary-right-assoc"}

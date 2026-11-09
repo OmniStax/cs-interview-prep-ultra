@@ -676,6 +676,6 @@ function evaluate(s) {
 }</code></pre>
 </div>
 <figure class="sim" id="sim-two-stack-parser">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>The string is read left to right. Each number goes onto <span data-ref="st"><code>st</code></span>; each operator waits on <span data-ref="op"><code>op</code></span> until a weaker operator, a closing bracket or the end of the string comes after it, and is then executed on the top of <span data-ref="st"><code>st</code></span>. The order in which the operators are executed is the expression’s reverse Polish notation. A unary minus and ^ are right-associative, so an operator of equal priority on top is not executed: the new one waits above it.</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The string is read left to right. Each number goes onto <span data-ref="st"><code>st</code></span>; each operator waits on <span data-ref="op"><code>op</code></span> until a weaker operator, a closing bracket or the end of the string comes after it, and is then executed on the top of <span data-ref="st"><code>st</code></span>. The order in which the operators are executed is the expression’s reverse Polish notation. A unary minus and ∧ (exponentiation) are right-associative, so an operator of equal priority on top is not executed: the new one waits above it.</span></div>
 </figure>
 </section>

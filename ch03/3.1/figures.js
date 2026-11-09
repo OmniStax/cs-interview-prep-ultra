@@ -205,20 +205,19 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
         text(ctx, 'bottom', l - 20, y, PAL.muted, { size: 26, align: 'right' });
       }
       /* the item moving: x slides in from the right on a write; r slides out on a read */
-      const bx = S.r + 120;
+      const bx = Math.min(S.r + 220, 1290), by = y;
       if (L === 7 || L === 8 || L === 9) {
-        const by = 130;
         rect(ctx, bx - 50, by - 36, 100, 72, alpha(key, 0.08), key, 3);
         text(ctx, String(v.x), bx, by, key, { size: 36, align: 'center', weight: 600 });
         text(ctx, 'x', bx, by - 58, PAL.ink, { size: 28, align: 'center', italic: true });
-        if (L === 9) { line(ctx, bx - 40, by - 30, bx + 40, by + 30, PAL.bad, 5); line(ctx, bx - 40, by + 30, bx + 40, by - 30, PAL.bad, 5); text(ctx, 'overflow', bx, by + 64, PAL.bad, { size: 28, align: 'center', weight: 600 }); }
+        if (L === 9) { line(ctx, bx - 40, by - 30, bx + 40, by + 30, PAL.bad, 5); line(ctx, bx - 40, by + 30, bx + 40, by - 30, PAL.bad, 5); text(ctx, 'overflow', bx, by + 66, PAL.bad, { size: 28, align: 'center', weight: 600 }); }
       }
       if (ev[0] === 'write' && g.k < 1) {
-        const tx = S.x(ev[1]), x = ease(bx, tx, g.k), yy = ease(130, y, g.k);
+        const tx = S.x(ev[1]), x = ease(bx, tx, g.k), yy = y;
         rect(ctx, x - 50, yy - 36, 100, 72, alpha(key, 0.08), key, 3);
       }
       if (L === 19 || L === 20) {
-        const k = L === 19 ? g.k : 1, from = S.x(top), x = ease(from, bx, k), yy = ease(y, 130, k);
+        const k = L === 19 ? g.k : 1, from = S.x(top), x = ease(from, bx, k), yy = y;
         rect(ctx, x - 50, yy - 36, 100, 72, alpha(key, 0.08), key, 3);
         text(ctx, String(v.r), x, yy, key, { size: 36, align: 'center', weight: 600 });
         if (k > 0.6) text(ctx, 'r', x, yy - 58, PAL.ink, { size: 28, align: 'center', italic: true });
@@ -623,7 +622,7 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       }
       line(ctx, gx0, Y(0), gx1 + 30, Y(0), PAL.muted, 2, [10, 10]);
       text(ctx, '0', gx0 - 14, Y(0), PAL.muted, { size: 26, align: 'right' });
-      text(ctx, isStack ? 'stack height' : 'depth', gx0 - 14, Y(2), PAL.ink, { size: 26, align: 'right' });
+      text(ctx, isStack ? 'stack height' : 'depth', gx0, Y(3), PAL.ink, { size: 26 });
       for (let k = 1; k < path.length; k += 1) {
         const xa = l + (k - 1) * cell, xb = l + k * cell, a = path[k - 1], b = path[k];
         const kk = k === path.length - 1 && (ev[0] === 'up' || ev[0] === 'down') ? g.k : 1;

@@ -81,8 +81,8 @@ ST, OP = ref('st', '<code>st</code>'), ref('op', '<code>op</code>')
 CAPTION = (
     f'The string is read left to right. Each number goes onto {ST}; each operator waits on {OP} until a weaker '
     f'operator, a closing bracket or the end of the string comes after it, and is then executed on the top of {ST}. '
-    f'The order in which the operators are executed is the expression’s reverse Polish notation. A unary minus and ^ '
-    f'are right-associative, so an operator of equal priority on top is not executed: the new one waits above it.')
+    f'The order in which the operators are executed is the expression’s reverse Polish notation. A unary minus and ∧ '
+    f'(exponentiation) are right-associative, so an operator of equal priority on top is not executed: the new one waits above it.')
 SIM = (f'<figure class="sim" id="sim-two-stack-parser">\n'
        f'  <div class="sim-head"><span class="eyebrow">Sim</span><span>{CAPTION}</span></div>\n</figure>')
 
