@@ -194,7 +194,7 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
     void flat;
   });
 
-  const d = sim('sim-rootish', 780);
+  const d = sim('sim-rootish', 760);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { python: AI, javascript: AI },
     lineMap: { java: MAP, cpp: MAP, javascript: MAP },
@@ -274,7 +274,7 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
       const totalCells = Math.max(showR * (showR + 1) / 2, 1), GAP = 30;
       const cw = Math.min(70, (1240 - GAP * (showR - 1)) / totalCells), CH = Math.min(62, cw * 0.95);
       const W = totalCells * cw + GAP * (showR - 1), X0 = 700 - W / 2;
-      const ROW = top + 230, REFY = top + 70;
+      const ROW = top + 250, REFY = top + 60;
       const cellX = (bb, jj) => X0 + (bb * (bb + 1) / 2 + jj) * cw + bb * GAP;
       const ix = (t) => { const [bb, jj] = bj(t); return cellX(bb, jj) + cw / 2; };
       const curAt = v.at || null, curB = curAt ? curAt[0] : (op && op[0] !== 'get' && v.b !== null ? v.b : null);
@@ -312,16 +312,16 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
           hits.push({ x: x + cw / 2, y: ROW, r: cw / 2, name: used ? `index ${listIdx}: block ${bb}, place ${jj}, holds ${val}` : `block ${bb}, place ${jj}: not in use` });
           listIdx += 1;
         }
-        text(ctx, `${bb}`, cellX(bb, 0) + (size_ * cw) / 2, ROW - CH / 2 - 26, isB ? cb : muted, { size: 22, align: 'center', base: 'middle', weight: isB ? 600 : 400 });
+        text(ctx, `${bb}`, cellX(bb, 0) + (size_ * cw) / 2, ROW - CH / 2 - 62, isB ? cb : muted, { size: 22, align: 'center', base: 'middle', weight: isB ? 600 : 400 });
       }
-      if (r) text(ctx, 'block', X0 - 12, ROW - CH / 2 - 26, muted, { size: 22, align: 'right', base: 'middle' });
+      if (r) text(ctx, 'block', X0 - 12, ROW - CH / 2 - 62, muted, { size: 22, align: 'right', base: 'middle' });
       /* the copies this call made: an arc from each element's old index to its new one, the last drawn as it moves */
       (v.moves || []).forEach((mv) => {
         const cur = v.mv && v.mv[0] === mv[0] && v.mv[1] === mv[1];
         const fresh = cur && !(pv.mv && pv.mv[0] === mv[0] && pv.mv[1] === mv[1]);
         const x0 = ix(mv[0]), x1 = ix(mv[1]), y = ROW - CH / 2 - 4;
         const t = fresh ? Math.max(0.25, k) : 1;
-        curve(ctx, x0, y, lerp(x0, x1, t), y, 40, cur ? ci : alpha(ci, 0.4), cur ? 4 : 3);
+        curve(ctx, x0, y, lerp(x0, x1, t), y, 30, cur ? ci : alpha(ci, 0.4), cur ? 4 : 3);
       });
       /* i under its index; the n cells in use bracketed */
       const iShow = op && op[0] !== 'get' && v.mv ? v.mv[1] : v.i;
@@ -333,7 +333,7 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
       }
 
       /* ---------------- the formula for the index this step reaches, then the counts */
-      const Y0 = ROW + 175;
+      const Y0 = ROW + 205;
       const fi = iShow !== null && iShow !== undefined && op ? iShow : null;
       if (fi !== null && fi < cells) {
         const fb = i2b(fi), fj = fi - fb * (fb + 1) / 2, raw = (-3 + Math.sqrt(9 + 8 * fi)) / 2;
@@ -341,7 +341,7 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
           [` = ⌈(−3 + √(9 + 8·${fi}))/2⌉ = ⌈${raw.toFixed(2)}⌉ = ${fb},   j = ${fi} − ${fb}·${fb + 1}/2 = ${fj}`, ink]], Y0);
       } else seg(ctx, [['i2b(i) = ⌈(−3 + √(9 + 8i))/2⌉ finds the block of index i', muted]], Y0);
       seg(ctx, [['cells in use ', ink], ['n', cn, { weight: 600 }], [` = ${v.n} of r(r + 1)/2 = ${cells}, `, ink], ['r', cr, { weight: 600 }],
-        [` = ${r}: wasted ${cells - v.n} ≤ 2r − 1 = ${Math.max(0, 2 * r - 1)}`, cost]], Y0 + 46);
+        [` = ${r}:  `, ink], [`wasted ${cells - v.n} ≤ 2r − 1 = ${Math.max(0, 2 * r - 1)}`, cost]], Y0 + 46);
       if (op && op[0] !== 'get') {
         const bound = op[0] === 'add' ? `n − i = ${v.n - (ln >= L.addN ? 1 : 0) - op[1]}` : `n − i − 1 = ${(ln >= L.remN ? v.n + 1 : v.n) - op[1] - 1}`;
         seg(ctx, [[`elements shifted by this call: ${v.shifted} ≤ ${bound}  ·  grow ${v.grows}, shrink ${v.shrinks} so far`, cost]], Y0 + 92);
@@ -487,6 +487,7 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
   const d = sim('sim-fastsqrt', 640);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { python: AI, javascript: AI },
+    lineMap: Object.fromEntries(['java', 'cpp', 'javascript'].map((l) => [l, { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7 }])),
     blocks: [
       { id: 'log', lines: [2, 2], label: 'r′ = log(x): the place of the top bit', touches: ['x', 'rp'] },
       { id: 'up', lines: [3, 4], label: 'shift x up an even number of places, to r or r + 1 bits', touches: ['x', 'xp'] },
@@ -569,15 +570,15 @@ const locate = (list, i) => {
   let p = list.length, idx = n; while (i < idx) { p -= 1; idx -= list[p].d.length; } return [p, i - idx];
 };
 const copyList = (list) => list.map((nd) => ({ id: nd.id, d: nd.d.slice() }));
-const CW = 42, CH = 52, NODE = (SB + 1) * CW, NGAP = 56;
+const CW = 62, CH = 72, NODE = (SB + 1) * CW, NGAP = 52;
 /* where each node stands: rows of up to six, centred; a node is (b + 1) cells */
 const layoutOf = (list, top) => {
-  const per = 6, rows = Math.ceil(Math.max(list.length, 1) / per), pos = new Map();
+  const per = 4, rows = Math.ceil(Math.max(list.length, 1) / per), pos = new Map();
   list.forEach((nd, p) => {
     const row = Math.floor(p / per), inRow = Math.min(per, list.length - row * per);
     const W = inRow * NODE + (inRow - 1) * NGAP + (row === rows - 1 ? NGAP + 90 : 0);
     const x0 = 700 - W / 2;
-    pos.set(nd.id, { x: x0 + (p - row * per) * (NODE + NGAP), y: top + row * 150, row });
+    pos.set(nd.id, { x: x0 + (p - row * per) * (NODE + NGAP), y: top + row * 190, row });
   });
   const last = list.length ? pos.get(list[list.length - 1].id) : { x: 700 - NODE - NGAP, y: top, row: 0 };
   return { pos, dummy: { x: last.x + NODE + NGAP, y: last.y }, rows };
@@ -609,7 +610,7 @@ function drawSEList(g, P, F_, opts) {
       if (j < nd.d.length) {
         rect(ctx, x + 2, q.y - CH / 2 + 2, CW - 4, CH - 4, alpha(idx, 0.14), null);
         const moving = v.mv && v.mv.to === nd.id && v.mv.j === j && !(pv.mv && pv.mv.to === nd.id && pv.mv.j === j && pv.mv.el === v.mv.el);
-        if (!moving || k > 0.6) text(ctx, String(nd.d[j]), x + CW / 2, q.y, key, { size: 26, align: 'center', base: 'middle', weight: 600 });
+        if (!moving || k > 0.6) text(ctx, String(nd.d[j]), x + CW / 2, q.y, key, { size: 34, align: 'center', base: 'middle', weight: 600 });
         hits.push({ x: x + CW / 2, y: q.y, r: CW / 2, name: `index ${gi}: ${nd.d[j]}, in block ${p} at ${j}` });
         gi += 1;
       }
@@ -635,8 +636,8 @@ function drawSEList(g, P, F_, opts) {
     arrow(ctx, lq.x + NODE + 4, lq.y - 8, dm.x - 4, dm.y - 8, alpha(ink, 0.6), 3);
     arrow(ctx, dm.x - 4, dm.y + 8, lq.x + NODE + 4, lq.y + 8, alpha(ink, 0.6), 3);
   }
-  rect(ctx, dm.x, dm.y - CH / 2, 84, CH, alpha(ink, 0.05), alpha(ink, 0.5), 2, [4, 6]);
-  text(ctx, 'dummy', dm.x + 42, dm.y, muted, { size: 20, align: 'center', base: 'middle' });
+  rect(ctx, dm.x, dm.y - CH / 2, 100, CH, alpha(ink, 0.05), alpha(ink, 0.5), 2, [4, 6]);
+  text(ctx, 'dummy', dm.x + 50, dm.y, muted, { size: 24, align: 'center', base: 'middle' });
   /* the moves this call made: an arc from an element's old cell to its new one, the last as it moves */
   (v.moves || []).forEach((mv, q) => {
     const a = L1.pos.get(mv.to);
@@ -652,11 +653,11 @@ function drawSEList(g, P, F_, opts) {
   /* u and w above their nodes; w only while the search or a spread or gather runs, else it is u */
   const tag = (id, name, color, dx) => {
     if (id === null || id === undefined) return;
-    if (id === 'dummy') { const x = dm.x + 42 + dx; arrow(ctx, x, dm.y - CH / 2 - 52, x, dm.y - CH / 2 - 6, color, 4); text(ctx, name, x, dm.y - CH / 2 - 70, color, { size: 28, weight: 600, align: 'center', base: 'middle', italic: true }); return; }
+    if (id === 'dummy') { const x = dm.x + 50 + dx; arrow(ctx, x, dm.y - CH / 2 - 52, x, dm.y - CH / 2 - 6, color, 4); text(ctx, name, x, dm.y - CH / 2 - 70, color, { size: 32, weight: 600, align: 'center', base: 'middle', italic: true }); return; }
     const q = at(id); if (!q) return;
     const x = q.x + NODE / 2 + dx;
     arrow(ctx, x, q.y - CH / 2 - 52, x, q.y - CH / 2 - 6, color, 4);
-    text(ctx, name, x, q.y - CH / 2 - 70, color, { size: 28, weight: 600, align: 'center', base: 'middle', italic: true });
+    text(ctx, name, x, q.y - CH / 2 - 70, color, { size: 32, weight: 600, align: 'center', base: 'middle', italic: true });
   };
   const same = v.u !== null && v.u === v.w;
   tag(v.u, 'u', cu, same ? -26 : 0);
@@ -671,7 +672,7 @@ function drawSEList(g, P, F_, opts) {
     }
   }
   /* the counts */
-  const Y0 = TOP + L1.rows * 150 + 90;
+  const Y0 = TOP + (L1.rows - 1) * 190 + 160;
   seg(ctx, [[`Φ = fragile nodes (dashed) = ${fragile(v.list)}  ·  `, cost], ['b', size, { weight: 600 }], [` = ${SB}, so a block holds ${SB - 1} to ${SB + 1}, the last fewer`, ink]], Y0);
   opts.counts(ctx, v, Y0 + 46);
   legend(ctx, { l: 40, r: 1360, t: Y0 + 80, b: Y0 + 130 }, [
@@ -819,7 +820,7 @@ function selistFigure(o) {
     at(19, snap(), ['put', x]);
     at(20, snap());
   };
-  const traces = selistFigure({ presets: PRESETS, body, startLine: 21, top: 300 });
+  const traces = selistFigure({ presets: PRESETS, body, startLine: 21, top: 230 });
   const d = sim('sim-selist-add', 760);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI },
@@ -864,7 +865,7 @@ function selistFigure(o) {
       else head = `${op[2]} goes into u’s block at j = ${v.j}: Case ${v.cse}.`;
       topline(ctx, head);
       tip.hits = drawSEList(g, P, F, {
-        top: 300,
+        top: 230,
         counts: (c, vv, y) => {
           const m = vv.calls, s = vv.big;
           seg(c, [[`add calls m = ${m}  ·  spreads s = ${s} ≤ m/b = ${(m / SB).toFixed(1)}  ·  elements moved ${vv.moved}`, C('cost')]], y);
@@ -968,7 +969,7 @@ function selistFigure(o) {
     st.cases[cse] += 1;
     at(16, snap());
   };
-  const traces = selistFigure({ presets: PRESETS, body, startLine: 17, top: 300 });
+  const traces = selistFigure({ presets: PRESETS, body, startLine: 17, top: 230 });
   const d = sim('sim-selist-remove', 760);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI },
@@ -1011,7 +1012,7 @@ function selistFigure(o) {
       else head = `remove(${op[1]}) took out ${v.x}: Case ${v.cse}.`;
       topline(ctx, head);
       tip.hits = drawSEList(g, P, F, {
-        top: 300,
+        top: 230,
         counts: (c, vv, y) => {
           seg(c, [[`remove calls m = ${vv.calls}  ·  gathers ${vv.big} ≤ m/b = ${(vv.calls / SB).toFixed(1)}  ·  elements moved ${vv.moved}`, C('cost')]], y);
         },
