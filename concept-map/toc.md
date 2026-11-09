@@ -27,21 +27,21 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 *Concepts: 23 core · 3 stretch*
 
 - **2.1 Arrays and the list interface** [core] · ciu, ods, wikipedia, wikibooks, oiwiki, holden, aspnes-223
-  Array; Indexing by pointer arithmetic; List interface (linear sequence)
+  Array; Indexing by pointer arithmetic; List interface
 - **2.2 Dynamic arrays** [core] · ciu, ods
   Dynamic array (vector); Growing and shrinking the backing array; Cost of dynamic-array operations; Block copying with memcpy/arraycopy [stretch]; Implement a vector (no open prose)
 - **2.3 Two pointers and sliding windows** [core] · wikipedia, doocs, oiwiki, icc
   Two pointers; 3SUM in quadratic time; Merging two sorted lists; Fixed-size sliding window; Variable-size sliding window
   *Folds:* OI Wiki misc/two-pointer is split over this home: its sorted-sequence section treats two-pointers, its window section the variable window, its linked-list section Floyd's cycle detection (2.7).
 - **2.4 Prefix sums and difference arrays** [core] · wikipedia, doocs, oiwiki
-  Prefix sums; Two-dimensional prefix sums (summed-area table) [stretch]; Difference arrays; Two-dimensional difference arrays [stretch]
+  Prefix sums; Two-dimensional prefix sums [stretch]; Difference arrays; Two-dimensional difference arrays [stretch]
   *Folds:* OI Wiki basic/prefix-sum is split over this home: one row per section (1D, 2D, 1D difference, 2D difference); its tree prefix sums and differences are not taken.
 - **2.5 Singly linked lists** [core] · ciu, ods, wikipedia, opendsa, oiwiki, aspnes-223
   Singly linked list; Pointer to pointer; Implement a linked list; Linked lists versus arrays
 - **2.6 Doubly linked lists** [core] · ciu, ods
   Dummy (sentinel) node; Doubly linked list
 - **2.7 Cycles in linked lists: tortoise and hare** [core] · cpa, wikipedia, oiwiki, algo-expl
-  Floyd's cycle detection (tortoise and hare); Finding where the cycle starts; Why the reset finds the cycle start
+  Floyd’s cycle detection (tortoise and hare); Finding where the cycle starts; Why the reset finds the cycle start
 
 ## 3. Stacks, queues and deques · **first pass**
 
@@ -54,12 +54,12 @@ Chapters 1 to 3 (marked **first pass**) are the first build pass. The appendices
 - **3.3 Deques** [core] · ods
   Deque interface; ArrayDeque; DualArrayDeque: a deque from two stacks [stretch]
 - **3.4 Min-stacks and monotonic queues** [core] · cpa, wikipedia, doocs, oiwiki
-  Minimum stack; Queue from two stacks (with minimum); Minimum queue via a monotonic deque; Sliding window minimum; Nearest smaller element to the left/right with a stack; Largest zero submatrix in O(nm) [stretch]
+  Minimum stack; Queue from two stacks (with minimum); Minimum queue via a monotonic deque; Sliding window minimum; Nearest smaller element with a stack; Largest zero submatrix in O(nm) [stretch]
   *Folds:* cpa data_structures/stack_queue_modification is the home article; cpa dynamic_programming/zero_matrix contributes its stack step.
 - **3.5 Stack applications: expression evaluation** [stretch] · cpa
   Reverse Polish notation evaluation [core]; Infix expression parsing with two stacks; Unary and right-associative operators in parsing
 - **3.6 Space-efficient lists** [stretch] · ods
-  RootishArrayStack; Block index by the quadratic formula [contest]; Omega(sqrt n) wasted space is unavoidable; SEList (space-efficient list); SEList spreading and gathering
+  RootishArrayStack; Square roots in constant time [contest]; Ω(√n) wasted space is unavoidable; SEList (space-efficient list); SEList spreading and gathering
 
 ## 4. Recursion and induction
 

@@ -1890,6 +1890,22 @@
     {
       "concept": "dual-array-deque",
       "prereq": "deque"
+    },
+    {
+      "concept": "floyd-cycle-detection",
+      "prereq": "singly-linked-list"
+    },
+    {
+      "concept": "monotonic-queue-minimum",
+      "prereq": "deque"
+    },
+    {
+      "concept": "space-efficient-list",
+      "prereq": "array-deque"
+    },
+    {
+      "concept": "pointer-to-pointer",
+      "prereq": "pointer-arithmetic"
     }
   ],
   "sheets": [],

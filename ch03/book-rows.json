@@ -413,6 +413,14 @@
   {
    "concept": "dual-array-deque",
    "prereq": "deque"
+  },
+  {
+   "concept": "monotonic-queue-minimum",
+   "prereq": "deque"
+  },
+  {
+   "concept": "space-efficient-list",
+   "prereq": "array-deque"
   }
  ]
 }

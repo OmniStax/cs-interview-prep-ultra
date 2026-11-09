@@ -512,6 +512,14 @@
   {
    "concept": "sentinel-node",
    "prereq": "singly-linked-list"
+  },
+  {
+   "concept": "floyd-cycle-detection",
+   "prereq": "singly-linked-list"
+  },
+  {
+   "concept": "pointer-to-pointer",
+   "prereq": "pointer-arithmetic"
   }
  ]
 }

@@ -408,6 +408,14 @@
   [
    "linear-probing-analysis",
    "random-variable"
+  ],
+  [
+   "list-interface",
+   "interface-vs-implementation"
+  ],
+  [
+   "pointer-to-pointer",
+   "pointer-arithmetic"
   ]
  ],
  "used_noedge": [
