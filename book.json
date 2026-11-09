@@ -1476,6 +1476,10 @@
     {
       "concept": "sliding-window-variable",
       "prereq": "sliding-window-fixed"
+    },
+    {
+      "concept": "sentinel-node",
+      "prereq": "singly-linked-list"
     }
   ],
   "sheets": [],

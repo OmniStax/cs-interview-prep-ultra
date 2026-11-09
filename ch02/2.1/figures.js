@@ -73,7 +73,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
 
 /* ================================================================ sim-row-major: a two-dimensional array in memory */
 (function () {
-  const d = sim('sim-row-major', 600);
+  const d = sim('sim-row-major', 560);
   const SHAPES = { a: { name: 'a', rows: 2, cols: 3, i: 1, j: 2 }, A: { name: 'A', rows: 3, cols: 4, i: 1, j: 3 } };
   const B = 2000, SIZE = 4;
   const shape = choice(d.controls, { label: '\\text{array}', key: 'shape', value: 'a',
@@ -164,7 +164,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
         if (t > b && t < b + 1) active = { from: j, to: j + 1 };
       }
       const kb = ease(t - (T - 1));
-      xAt = { p: i, lift: 1 - kb }; xAlpha = Math.min(1, 0.35 + kb);
+      xAt = { p: i, lift: 1 - kb }; xAlpha = Math.min(1, 0.5 + kb);
       if (t >= T) n = N + 1;
     } else if (o.base === 'remove') {
       const k0 = ease(t);

@@ -297,7 +297,7 @@ function drawLinks(ctx, N, from, prevTo, curTo, k, color, w, alphaOf, nullLabel)
   const INPUTS = [
     { value: '6', label: 'insert 6', item: 6, x: 710, head: '6 goes in between 5 and 7: the loop stops at the link that leads to 7.' },
     { value: '0', label: 'insert 0, a new head', item: 0, x: 265, head: '0 is smaller than the head, so p never moves, and *p = item changes the caller’s head.' },
-    { value: '10', label: 'insert 10, past the end', item: 10, x: 1240, head: '10 is larger than every value, so p walks to the last next field, which is null.' },
+    { value: '10', label: 'insert 10, past the end', item: 10, x: 1150, head: '10 is larger than every value, so p walks to the last next field, which is null.' },
     { value: '5', label: 'insert 5, equal', item: 5, x: 490, head: '5 goes in before the 5 already there: the loop stops at the first value that is not smaller.' },
   ];
   /* a link field is named by the node that owns it ('head' for the caller's pointer) */
