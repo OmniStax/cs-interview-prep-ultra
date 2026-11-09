@@ -359,7 +359,10 @@ def ods_pcode(code):
     in a digit with that digit as a subscript (a0 is a₀). The edition's script also strips every colon, which
     turns C++'s std::copy into "stdcopy"; the name is kept as C++ writes it."""
     c = re.sub(r'\b([A-Za-z_]\w*)\.length\b', r'\\mathrm{length}(\1)', code)
-    c = re.sub(r'(?<![\w\\])([A-Za-z_][\w.]*(?:::\w+)*)\(', lambda m: '\\mathrm{' + m.group(1).replace(':', '{:}') + '}(', c)
+    # the edition's camel case to underscores (addFirst(x) is add_first(x)), by its own two rules (chapter 2–3 pass)
+    c = re.sub(r'\b([a-z_][a-z0-9_]*)([A-Z])', lambda m: m.group(1) + '_' + m.group(2).lower(), c)
+    c = re.sub(r'_[A-Z]_', lambda m: m.group(0).lower(), c)
+    c = re.sub(r'(?<![\w\\])([A-Za-z_][\w.]*(?:::\w+)*)\(', lambda m: '\\mathrm{' + m.group(1).replace(':', '{:}').replace('_', '\\_') + '}(', c)
     c = re.sub(r'(?<![=<>!])=(?!=)', r'\\gets ', c)
     c = c.replace('++', '{+}{+}')
     c = re.sub(r'(?<![\\\w])([a-z])(\d)\b', r'\1_\2', c)

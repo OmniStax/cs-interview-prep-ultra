@@ -4,7 +4,7 @@
 
 ## The Deque interface
 
-A Deque is a generalization of both the FIFO Queue and LIFO Queue (Stack). A Deque represents a sequence of elements, with a front and a back. Elements can be added at the front of the sequence or the back of the sequence. The names of the Deque operations are self-explanatory: $\mathrm{addFirst}(x)$, $\mathrm{removeFirst}()$, $\mathrm{addLast}(x)$, and $\mathrm{removeLast}()$. It is worth noting that a Stack can be implemented using only $\mathrm{addFirst}(x)$ and $\mathrm{removeFirst}()$ while a FIFO Queue can be implemented using $\mathrm{addLast}(x)$ and $\mathrm{removeFirst}()$.
+A Deque is a generalization of both the FIFO Queue and LIFO Queue (Stack). A Deque represents a sequence of elements, with a front and a back. Elements can be added at the front of the sequence or the back of the sequence. The names of the Deque operations are self-explanatory: $\mathrm{add\_first}(x)$, $\mathrm{remove\_first}()$, $\mathrm{add\_last}(x)$, and $\mathrm{remove\_last}()$. It is worth noting that a Stack can be implemented using only $\mathrm{add\_first}(x)$ and $\mathrm{remove\_first}()$ while a FIFO Queue can be implemented using $\mathrm{add\_last}(x)$ and $\mathrm{remove\_first}()$.
 
 <!-- block arraydeque · source ods · ods:arrays#sec:arraydeque, the whole section with thm:arraydeque -->
 

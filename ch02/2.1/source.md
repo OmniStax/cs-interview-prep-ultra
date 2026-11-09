@@ -175,7 +175,7 @@ This book will talk very little about the FIFO Queue, Stack, or Deque interfaces
 
 Notice that these operations are easily sufficient to implement the Deque interface:
 
-$$\begin{aligned}\mathrm{addFirst}(x) &\Rightarrow \mathrm{add}(0,x) \\ \mathrm{removeFirst}() &\Rightarrow \mathrm{remove}(0) \\ \mathrm{addLast}(x) &\Rightarrow \mathrm{add}(\mathrm{size}(),x) \\ \mathrm{removeLast}() &\Rightarrow \mathrm{remove}(\mathrm{size}()-1)\end{aligned}$$
+$$\begin{aligned}\mathrm{add\_first}(x) &\Rightarrow \mathrm{add}(0,x) \\ \mathrm{remove\_first}() &\Rightarrow \mathrm{remove}(0) \\ \mathrm{add\_last}(x) &\Rightarrow \mathrm{add}(\mathrm{size}(),x) \\ \mathrm{remove\_last}() &\Rightarrow \mathrm{remove}(\mathrm{size}()-1)\end{aligned}$$
 
 [figure list]
 

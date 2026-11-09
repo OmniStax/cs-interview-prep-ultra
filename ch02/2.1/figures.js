@@ -127,10 +127,10 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
   const OPS = {
     get: { label: 'get(i)', base: 'get' }, set: { label: 'set(i, x)', base: 'set' },
     add: { label: 'add(i, x)', base: 'add' }, remove: { label: 'remove(i)', base: 'remove' },
-    addFirst: { label: 'addFirst(x)', base: 'add', at: 0, call: '\\mathrm{add}(0,x)' },
-    removeFirst: { label: 'removeFirst()', base: 'remove', at: 0, call: '\\mathrm{remove}(0)' },
-    addLast: { label: 'addLast(x)', base: 'add', at: N, call: '\\mathrm{add}(\\mathrm{size}(),x)' },
-    removeLast: { label: 'removeLast()', base: 'remove', at: N - 1, call: '\\mathrm{remove}(\\mathrm{size}()-1)' },
+    addFirst: { label: 'add_first(x)', base: 'add', at: 0, call: '\\mathrm{add}(0,x)' },
+    removeFirst: { label: 'remove_first()', base: 'remove', at: 0, call: '\\mathrm{remove}(0)' },
+    addLast: { label: 'add_last(x)', base: 'add', at: N, call: '\\mathrm{add}(\\mathrm{size}(),x)' },
+    removeLast: { label: 'remove_last()', base: 'remove', at: N - 1, call: '\\mathrm{remove}(\\mathrm{size}()-1)' },
   };
   const opSel = select(d.controls, { label: '\\text{operation}', key: 'op', value: 'get',
     options: Object.keys(OPS).map((k) => ({ value: k, label: OPS[k].label })), onInput: setup });
@@ -219,7 +219,7 @@ const ease = (k) => { const t = Math.max(0, Math.min(1, k)); return t * t * (3 -
       remove: i === N - 1 ? `remove(${N - 1}) takes ${sub(N - 1)} = ${XS[N - 1]}; nothing moves.` : `remove(${i}) takes ${sub(i)} = ${XS[i]}, then moves ${sub(i + 1)}, …, ${sub(N - 1)} one place left.`,
     }[o.base];
     topline(ctx, head);
-    const call = o.call ? `\\mathrm{${o.label.replace(/\(.*$/, '')}}(${o.label.includes('x') ? 'x' : ''}) \\Rightarrow ${o.call.replace('(0,x)', '(0,x)')}\\\\ ` : '';
+    const call = o.call ? `\\mathrm{${o.label.replace(/\(.*$/, '').replace(/_/g, '\\_')}}(${o.label.includes('x') ? 'x' : ''}) \\Rightarrow ${o.call.replace('(0,x)', '(0,x)')}\\\\ ` : '';
     let rd;
     if (o.base === 'get') rd = `\\mathrm{get}(${i}) = x_{${i}} = ${XS[i]}`;
     else if (o.base === 'set') rd = `x_{${i}} = x`;
