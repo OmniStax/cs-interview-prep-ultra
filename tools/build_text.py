@@ -269,7 +269,7 @@ def pre_text(lines):
     base = xs[0]
     out = []
     for i, l in enumerate(lines):
-        t = plain(l['runs']).rstrip()
+        t = re.sub(r'\s*\.\.\s*', ' .. ', plain(l['runs']).rstrip())
         if i == 0:
             out.append(t)
         else:
@@ -630,12 +630,16 @@ def build(sec_dir, check=False):
             mparts.insert(0, f'## {b["h2"]}')
         # figures placed after a paragraph
         body = '\n'.join(hparts)
+        placed = {}
         for anchor, key in spec.get('AFTER_TEXT', {}).get(b['id'], []):
             idx = body.find(anchor)
             if idx < 0:
                 raise SystemExit(f'{b["id"]}: anchor {anchor!r} for {key} not found')
-            end = body.find('</p>', idx) + len('</p>')
-            body = body[:end] + '\n' + spec['HTML'][key] + body[end:]
+            # a second figure after the same paragraph stands after the first
+            end = placed.get(anchor) or body.find('</p>', idx) + len('</p>')
+            ins = '\n' + spec['HTML'][key]
+            body = body[:end] + ins + body[end:]
+            placed[anchor] = end + len(ins)
         # spans: concepts, referents, introducing ids
         for blk, old, new, *cnt in spec.get('MARKS', []):
             if blk != b['id']:

@@ -186,13 +186,13 @@ HTML = {
         'sim-scan-cost',
         'How long a structure that inspects every item takes: <span data-type="size">the number of items</span> '
         'times <span data-type="size">the number of operations</span>, divided by the speed of the machine. Push '
-        'either count to the billions and the clock runs to days; let each operation inspect about two items and it '
+        'either count to the billions and the clock runs to years; let each operation inspect about two items and it '
         'drops below a second.'),
 }
 
 AFTER_PRE = {
     'BottlesOfBeer(n):': ['bottles-code'],
-    'FibonacciMultiply(X[0.. m − 1], Y[0.. n − 1]):': ['sim-lattice'],
+    'FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):': ['sim-lattice'],
 }
 AFTER_TEXT = {
     'peasant': [('rounding down).', 'sim-peasant')],

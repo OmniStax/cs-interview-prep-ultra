@@ -55,25 +55,25 @@ $$z = x\cdot y = \sum_{k=0}^{m+n-1} Z[k]\cdot 10^k.$$
 <p>The algorithm uses addition and <em>single-digit</em> multiplication as primitive operations. Addition can be performed using a simple for-loop. In practice, single-digit multiplication is performed using a lookup table, either carved into clay tablets, painted on strips of wood or bamboo, written on paper, stored in read-only memory, or memorized by the computator. The entire lattice algorithm can be summarized by the formula</p>
 $$x\cdot y = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}\bigl(X[i]\cdot Y[j]\cdot 10^{i+j}\bigr).$$
 <p>Different variants of the lattice algorithm evaluate the partial products <em>X</em>[<em>i</em>] · <em>Y</em>[<em>j</em>] · 10<sup><em>i</em>+<em>j</em></sup> in different orders and use different strategies for computing their sum. For example, in <em>Liber Abaco</em>, Fibonacci describes a variant that considers the <em>mn</em> partial products in increasing order of significance, as shown in modern pseudocode below.</p>
-<pre>FibonacciMultiply(X[0.. m − 1], Y[0.. n − 1]):
+<pre>FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):
   hold ← 0
   for k ← 0 to n + m − 1
       for all i and j such that i + j = k
           hold ← hold + X[i] · Y[j]
       Z[k] ← hold mod 10
       hold ← ⌊hold/10⌋
-  return Z[0.. m + n − 1]</pre>
+  return Z[0 .. m + n − 1]</pre>
 <figure class="sim" id="sim-lattice">
   <div class="sim-head"><span class="eyebrow">Sim</span><span>The lattice for <span data-ref="lat-k">column</span> after column: each step adds the products <em>X</em>[<span data-ref="lat-i"><em>i</em></span>] · <em>Y</em>[<span data-ref="lat-j"><em>j</em></span>] whose positions sum to <span data-ref="lat-k"><em>k</em></span>, writes the low digit of <span data-ref="lat-hold"><em>hold</em></span> as <em>Z</em>[<span data-ref="lat-k"><em>k</em></span>] and carries the rest. The settled digits of the product fill in from the right; the count of single-digit products ends at exactly <em>m</em> · <em>n</em> whatever the digits are.</span></div>
 </figure>
 <p>Fibonacci’s algorithm is often executed by storing all the partial products in a two-dimensional table (often called a “tableau” or “grate” or “lattice”) and then summing along the diagonals with appropriate carries, as shown on the right in <a href="#photo-treviso">Figure 0.1</a>. American elementary-school students are taught to multiply one factor (the “multiplicand”) by each digit in the other factor (the “multiplier”), writing down all the multiplicand-by-digit products before adding them up, as shown on the left in <a href="#photo-treviso">Figure 0.1</a>. This was also the method described by Eutocius, although he fittingly considered the multiplier digits from left to right, as shown in <a href="#photo-eutocius">Figure 0.2</a>. Both of these variants (and several others) are described and illustrated side by side in the anonymous 1458 textbook <em>L’Arte dell’Abbaco</em>, also known as the <em>Treviso Arithmetic</em>, the first <em>printed</em> mathematics book in the West.</p>
-<figure class="photo" id="photo-eutocius">
-  <img src="/media/ch01/jeffe-0-2-eutocius.png" alt="">
-  <figcaption><span>Eutocius’s 6th-century calculation of 1172⅛ × 1172⅛ = 1373877¹⁄₆₄, in his commentary on Archimedes’ <em>Measurement of the Circle</em>, transcribed (left) and translated into modern notation (right) by Johan Heiberg (1891). (See Image Credits at the end of the book.) Image: Internet Archive, public domain, as credited in Erickson’s Image Credits.</span></figcaption>
-</figure>
 <figure class="photo" id="photo-treviso">
   <img src="/media/ch01/jeffe-0-1-treviso.png" alt="">
   <figcaption><span>Computing 934 × 314 = 293276 using “long" multiplication (with error-checking by casting out nines) and “lattice" multiplication, from <em>L’Arte dell’Abbaco</em> (1458). (See Image Credits at the end of the book.) Image: Biblioteca nazionale Braidense (Milano), public domain, as credited in Erickson’s Image Credits.</span></figcaption>
+</figure>
+<figure class="photo" id="photo-eutocius">
+  <img src="/media/ch01/jeffe-0-2-eutocius.png" alt="">
+  <figcaption><span>Eutocius’s 6th-century calculation of 1172⅛ × 1172⅛ = 1373877¹⁄₆₄, in his commentary on Archimedes’ <em>Measurement of the Circle</em>, transcribed (left) and translated into modern notation (right) by Johan Heiberg (1891). (See Image Credits at the end of the book.) Image: Internet Archive, public domain, as credited in Erickson’s Image Credits.</span></figcaption>
 </figure>
 <p>All of these variants of the lattice algorithm—and other similar variants described by Sunzi, al-Khwārizmī, Fibonacci, <em>L’Arte dell’Abbaco</em>, and many other sources—compute the product of any <em>m</em>-digit number and any <em>n</em>-digit number in <span data-type="cost"><strong><em>O</em>(<em>mn</em>) <em>time</em></strong></span>; the running time of every variant is dominated by the number of single-digit multiplications.</p>
 </section>
@@ -181,7 +181,7 @@ $$x\cdot y = \begin{cases} 0 & \text{if } x = 0\\ \lfloor x/2\rfloor\cdot(y+y) &
 <p><strong>Number of operations:</strong> Imagine an application with a moderately-sized data set, say of one million ($10^6$), items. It is reasonable, in most applications, to assume that the application will want to look up each item at least once. This means we can expect to do at least one million ($10^6$) searches in this data. If each of these $10^6$ searches inspects each of the $10^6$ items, this gives a total of $10^6\times 10^6=10^{12}$ (one thousand billion) inspections.</p>
 <p><strong>Processor speeds:</strong> At the time of writing, even a very fast desktop computer can not do more than one billion ($10^9$) operations per second.<sup class="fn" data-note="ods-fn-1"></sup> This means that this application will take at least $10^{12}/10^9 = 1000$ seconds, or roughly 16 minutes and 40 seconds. Sixteen minutes is an eon in computer time, but a person might be willing to put up with it (if he or she were headed out for a coffee break).</p>
 <figure class="sim" id="sim-scan-cost">
-  <div class="sim-head"><span class="eyebrow">Sim</span><span>How long a structure that inspects every item takes: <span data-type="size">the number of items</span> times <span data-type="size">the number of operations</span>, divided by the speed of the machine. Push either count to the billions and the clock runs to days; let each operation inspect about two items and it drops below a second.</span></div>
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>How long a structure that inspects every item takes: <span data-type="size">the number of items</span> times <span data-type="size">the number of operations</span>, divided by the speed of the machine. Push either count to the billions and the clock runs to years; let each operation inspect about two items and it drops below a second.</span></div>
 </figure>
 <p><strong>Bigger data sets:</strong> Now consider a company like Google, that indexes over 8.5 billion web pages. By our calculations, doing any kind of query over this data would take at least 8.5 seconds. We already know that this isn’t the case; web searches complete in much less than 8.5 seconds, and they do much more complicated queries than just asking if a particular page is in their list of indexed pages. At the time of writing, Google receives approximately $4,500$ queries per second, meaning that they would require at least $4,500\times 8.5=38,250$ very fast servers just to keep up.</p>
 <p><strong>The solution:</strong> These examples tell us that the obvious implementations of data structures <span data-concept="need-for-efficiency">do not scale well</span> when the number of items, $n$, in the data structure and the number of operations, $m$, performed on the data structure are both large. In these cases, the time (measured in, say, machine instructions) is roughly $n\times m$.</p>

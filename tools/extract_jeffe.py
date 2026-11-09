@@ -48,6 +48,7 @@ NAMES = {
     'a12': '☞', 'a110': '☜', 'periodcentered': '·', 'dotmath': '·', 'notequal': '≠',
     'infinity': '∞', 'Theta': 'Θ', 'quoteleft': '‘', 'quoteright': '’',
 }
+MIRRORED = {'☞': '☜'}
 DIGITS = {n: str(i) for i, n in enumerate(
     ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'])}
 
@@ -115,6 +116,9 @@ def char_record(c, diffs):
     if raw not in ('￿', '\x00', '') and name is None:
         t = raw
     font = c.fontname.split('+')[-1]
+    # a glyph drawn mirrored: Erickson's left-pointing hand is the right-pointing one turned over
+    if c.matrix[0] < 0 and t in MIRRORED:
+        t = MIRRORED[t]
     return {
         't': t, 'x0': c.x0, 'x1': c.x1, 'base': c.matrix[5], 'sz': round(c.size, 1),
         'i': ('Italic' in font or 'Slanted' in font), 'b': 'Bold' in font, 'sc': sc,

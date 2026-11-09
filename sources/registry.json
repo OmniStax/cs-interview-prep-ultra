@@ -60,15 +60,21 @@
         "Jeff Erickson"
       ],
       "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
-      "pin": "PDFs fetched 2026-11-08",
+      "pin": "PDFs fetched 2026-11-08; 99-backmatter.pdf (Image Credits, p. 23 of that file) fetched 2026-11-09, sha256 e01ea031…f31142f",
       "licence": "CC BY 4.0",
       "licence_evidence": {
         "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/",
         "quote": "The textbook Algorithms (in both paper and electronic forms) is licensed under a Creative Commons Attribution 4.0 International license."
       },
       "use": "prose and exercises (mostly unkeyed; the author asks not to be asked for solutions)",
-      "format": "PDF per chapter; text via pdftotext -layout (small-caps algorithm names come out garbled; verbatim conversion needs a better pass)",
-      "locator": "jeffe:<chapter number>.<section number>, e.g. jeffe:3.4; exercises jeffe:<chapter>.ex<number>"
+      "format": "PDF per chapter; the glyphs are decoded by their font encoding names with tools/extract_jeffe.py (pdftotext and the cached .txt lose digits, minus signs and small caps)",
+      "locator": "jeffe:<chapter number>.<section number>, e.g. jeffe:3.4; exercises jeffe:<chapter>.ex<number>",
+      "image_credits": {
+        "file": "99-backmatter.pdf",
+        "page": 23,
+        "figure 0.1": "Biblioteca nazionale Braidense (Milano), http://atena.beic.it/webclient/DeliveryManager?pid=2953344, public domain",
+        "figure 0.2": "Internet Archive, https://archive.org/details/archimedisopera05eutogoog/page/n377, public domain"
+      }
     },
     {
       "id": "jeffe-notes",
@@ -1796,6 +1802,24 @@
       "locator": "openstax-introcs-ex:<page stem>#<question number>, e.g. openstax-introcs-ex:3-conceptual-questions#1",
       "added_by": "ch01 finder 2026-11-08",
       "excluded": "Not used, 2026-11-08: the publisher licenses it CC BY-NC-SA 4.0 and asks that anyone incorporating it into large language models or AI offerings first get permission. OmniStax builds with AI agents, so it stays out unless OpenStax grants permission. See dossiers/ch01.md."
+    },
+    {
+      "id": "census-2020",
+      "title": "2020 Census Apportionment Results (historical apportionment data, apportionment.csv)",
+      "authors": [
+        "U.S. Census Bureau"
+      ],
+      "url": "https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/apportionment.csv",
+      "pin": "fetched 2026-11-09 (Last-Modified 2021-04-26) through the USAFacts .gov fetch, since the session proxy refuses census.gov; the 2020 rows saved as res2020.csv (name, resident population, representatives, average apportionment population per representative)",
+      "licence": "public domain (U.S. Government work)",
+      "licence_evidence": {
+        "url": "https://www.census.gov/about/policies/citation.html",
+        "quote": "U.S. Government Work — public domain; the Census Bureau asks to be cited as the source"
+      },
+      "use": "data for sim-apportion (1.1): the 50 states' 2020 resident populations; Huntington–Hill on them with R = 435 gives exactly the 2020 seats in the same file",
+      "format": "CSV",
+      "locator": "census-2020:<state name>",
+      "note": "The apportionment populations proper (resident plus overseas, Table 1) are only in xlsx/pdf, which could not be fetched; the resident populations reproduce every state's seats."
     }
   ]
 }

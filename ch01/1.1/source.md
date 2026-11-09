@@ -46,14 +46,14 @@ $$x\cdot y = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}\bigl(X[i]\cdot Y[j]\cdot 10^{i+j}\
 Different variants of the lattice algorithm evaluate the partial products *X*[*i*] · *Y*[*j*] · 10^*i*^^+^^*j*^ in different orders and use different strategies for computing their sum. For example, in *Liber Abaco*, Fibonacci describes a variant that considers the *mn* partial products in increasing order of significance, as shown in modern pseudocode below.
 
 ```
-FibonacciMultiply(X[0.. m − 1], Y[0.. n − 1]):
+FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):
   hold ← 0
   for k ← 0 to n + m − 1
       for all i and j such that i + j = k
           hold ← hold + X[i] · Y[j]
       Z[k] ← hold mod 10
       hold ← ⌊hold/10⌋
-  return Z[0.. m + n − 1]
+  return Z[0 .. m + n − 1]
 ```
 
 [sim-lattice]
@@ -237,7 +237,7 @@ A data structure *implementation*, on the other hand, includes the internal repr
 
 [^3]: While it is tempting to translate the title *Liber Abaci* as “The Book of the Abacus”, a more accurate translation is “The Book of Calculation”. Both before and after Fibonacci, the Italian word *abaco* was used to describe anything related to numerical calculation—devices, methods, schools, books, and so on—much in the same way that “computer science” is used today in English, or as the Chinese phrase for “operations research” translates literally as “the study of using counting rods”.
 
-[^4]: ☞ Reckoning with *digits*! ☞
+[^4]: ☞ Reckoning with *digits*! ☜
 
 [^5]: The word *calculate* derives from the Latin word *calculus*, meaning “small rock”, referring to the stones on a counting table, or as Chaucer called them, *augrym stones*. In 440bce, Herodotus wrote in his *Histories* that “The Greeks write and calculate (λογίζεσθαι ψήφοις, literally ‘reckon with pebbles’) from left to right; the Egyptians do the opposite. Yet they say that their way of writing is toward the right, and the Greek way toward the left.” (Herodotus is strangely silent on which end of the egg the Egyptians ate first.)
 
