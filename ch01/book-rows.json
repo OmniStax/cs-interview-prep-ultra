@@ -1,0 +1,104 @@
+{
+ "types": [],
+ "symbols": [],
+ "concepts": [
+  {
+   "id": "algorithm",
+   "kind": "definition",
+   "section": "1.1",
+   "name": "Algorithm",
+   "terms": [
+    "algorithm"
+   ],
+   "statement": "An algorithm is an explicit, precise, unambiguous, mechanically executable sequence of elementary instructions, usually intended to accomplish a specific purpose."
+  },
+  {
+   "id": "lattice-multiplication",
+   "kind": "result",
+   "section": "1.1",
+   "name": "Lattice multiplication",
+   "terms": [
+    "lattice algorithm"
+   ],
+   "statement": "Multiplying an m-digit number by an n-digit number by summing the partial products X[i] · Y[j] · 10^(i+j), in whatever order and with whatever handling of the carries, takes O(mn) time, dominated by the single-digit multiplications."
+  },
+  {
+   "id": "peasant-multiplication",
+   "kind": "result",
+   "section": "1.1",
+   "name": "Peasant multiplication",
+   "terms": [
+    "peasant multiplication",
+    "duplation",
+    "mediation"
+   ],
+   "statement": "x · y can be computed with only parity tests, addition, doubling (duplation) and halving (mediation): halve x and double y, adding y to the product whenever x is odd; this takes O(log x) such steps and O(mn) time for an m-digit and an n-digit number."
+  },
+  {
+   "id": "apportionment",
+   "kind": "result",
+   "section": "1.1",
+   "name": "Huntington–Hill apportionment",
+   "terms": [
+    "Huntington-Hill method",
+    "method of equal proportions"
+   ],
+   "statement": "Huntington–Hill gives each state one representative, then each next seat to the state of highest priority P/√(r(r+1)), held in a priority queue used only through NewPriorityQueue, Insert and ExtractMax; the output, and so its correctness, does not depend on how the queue is implemented."
+  },
+  {
+   "id": "underspecified-algorithm",
+   "kind": "idea",
+   "section": "1.1",
+   "name": "Underspecified algorithm",
+   "statement": "Martin’s “how to become a millionaire and never pay taxes” is not an algorithm, because its first step, get a million dollars, is not an elementary, unambiguous instruction; it is a perfectly good reduction."
+  },
+  {
+   "id": "describing-algorithms",
+   "kind": "skill",
+   "section": "1.1",
+   "name": "Describing an algorithm",
+   "statement": "A complete description of an algorithm gives what (a precise specification of the problem), how (the algorithm itself, loops written as loops and recursion as recursion), why (a proof that it solves the problem) and how fast (an analysis of its running time)."
+  },
+  {
+   "id": "need-for-efficiency",
+   "kind": "idea",
+   "section": "1.1",
+   "name": "The need for efficiency",
+   "statement": "Scanning every item does not scale: 10^6 searches over 10^6 items is 10^12 inspections, about 1000 seconds at 10^9 operations a second, so a data structure must be organised so that most operations inspect few items."
+  },
+  {
+   "id": "interface-vs-implementation",
+   "kind": "definition",
+   "section": "1.1",
+   "name": "Interface and implementation",
+   "terms": [
+    "interface",
+    "abstract data type",
+    "implementation"
+   ],
+   "statement": "An interface, or abstract data type, names the operations a data structure supports and what they mean; an implementation gives its internal representation and the algorithms for the operations. One interface can have many implementations."
+  }
+ ],
+ "concept_prereqs": [
+  {
+   "concept": "underspecified-algorithm",
+   "prereq": "algorithm"
+  },
+  {
+   "concept": "describing-algorithms",
+   "prereq": "algorithm"
+  },
+  {
+   "concept": "lattice-multiplication",
+   "prereq": "algorithm"
+  },
+  {
+   "concept": "peasant-multiplication",
+   "prereq": "algorithm"
+  },
+  {
+   "concept": "apportionment",
+   "prereq": "algorithm"
+  }
+ ]
+}

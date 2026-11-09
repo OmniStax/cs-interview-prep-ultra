@@ -1,0 +1,22 @@
+{
+ "0.1": {
+  "html": "Computing 934 × 314 = 293276 using “long\" multiplication (with error-checking by casting out nines) and “lattice\" multiplication, from <em>L’Arte dell’Abbaco</em> (1458). (See Image Credits at the end of the book.)",
+  "text": "Computing 934 × 314 = 293276 using “long\" multiplication (with error-checking by casting out nines) and “lattice\" multiplication, from L’Arte dell’Abbaco (1458). (See Image Credits at the end of the book.)"
+ },
+ "0.2": {
+  "html": "Eutocius’s 6th-century calculation of 1172⅛ × 1172⅛ = 1373877¹⁄₆₄, in his commentary on Archimedes’ <em>Measurement of the Circle</em>, transcribed (left) and translated into modern notation (right) by Johan Heiberg (1891). (See Image Credits at the end of the book.)",
+  "text": "Eutocius’s 6th-century calculation of 1172⅛ × 1172⅛ = 1373877¹⁄₆₄, in his commentary on Archimedes’ Measurement of the Circle, transcribed (left) and translated into modern notation (right) by Johan Heiberg (1891). (See Image Credits at the end of the book.)"
+ },
+ "0.3": {
+  "html": "Multiplication by duplation and mediation",
+  "text": "Multiplication by duplation and mediation"
+ },
+ "0.4": {
+  "html": "Multiplication by compass and straightedge.",
+  "text": "Multiplication by compass and straightedge."
+ },
+ "0.5": {
+  "html": "The Huntington-Hill apportionment algorithm",
+  "text": "The Huntington-Hill apportionment algorithm"
+ }
+}

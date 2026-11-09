@@ -1,0 +1,490 @@
+{
+ "id": "1.1",
+ "chapter": "1",
+ "title": "What an algorithm is",
+ "short": "Algorithms",
+ "lead": "An Essential section on what makes a procedure an <span data-concept=\"algorithm\">algorithm</span>, how to describe one and why its cost matters, told through a song, three ways to multiply and the apportionment of Congress; <span data-concept=\"lattice-multiplication\">lattice multiplication</span> and the <span data-concept=\"apportionment\">Huntington–Hill method</span> are Advanced. Erickson’s digit arrays count from 0 (X[0 .. m − 1], digit i worth 10<sup>i</sup>) and his Pop[1 .. n] and Rep[1 .. n] from 1, while the Python, Java, C++ and JavaScript beside the figures count from 0.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "Erickson’s chapter-opening epigraphs, the rest of his chapter 0 from “Running Time” on, and ODS’s overview of its own chapter are left out here.",
+ "ai": {
+  "text": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ],
+  "figures": [
+   {
+    "model": "claude-opus-5-5",
+    "effort": "high"
+   }
+  ]
+ },
+ "built": "2026-11-09",
+ "exercise_notes": "The OpenDSA items the chapter config lists for this section (ProblemAlgorithmProgramTF1–TF11 with AnalPrelimSumm, AlgAnlsMCQrelalgprb, IntroMCQeff and IntroMCQeff2, ADTMCQadt, ADTMCQinter and ADTMCQds with IntroADTSumm) wait for the converter of OpenDSA’s Khan-format exercises and are not here yet; AlgAnlsMCQalgdfn is not used, since its key contradicts Erickson’s definition. Erickson’s chapter 0 exercises 1 and 5 have no published answers and are left out. ODS chapter 1 exercises 1, 5, 6 and 7 are held for chapters 3, 5 and 8, which define the interfaces they use, and Erickson’s chapter 1 Factorial item, which uses lattice and peasant multiplication, for chapter 4. Peasant multiplication has open test cases (TheAlgorithms, trekhleb) but no open exercise statement, so it has no card. The difference-of-squares tests are Exercism’s canonical data; its references are written by the AI that built the section.",
+ "figures": [
+  {
+   "id": "sim-lattice",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "photo-treviso",
+   "kind": "photo"
+  },
+  {
+   "id": "photo-eutocius",
+   "kind": "photo"
+  },
+  {
+   "id": "sim-peasant",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/jeffe-0-3-peasant.png"
+   ],
+   "original_caption": "Multiplication by duplation and mediation",
+   "draws": [
+    "key",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-compass",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/jeffe-0-4-compass.png"
+   ],
+   "original_caption": "Multiplication by compass and straightedge.",
+   "draws": [
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-apportion",
+   "kind": "sim",
+   "originals": [
+    "/media/ch01/jeffe-0-5-apportion.png"
+   ],
+   "original_caption": "The Huntington-Hill apportionment algorithm",
+   "draws": [
+    "key",
+    "cost",
+    "size"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  },
+  {
+   "id": "sim-scan-cost",
+   "kind": "sim",
+   "draws": [
+    "size",
+    "cost"
+   ],
+   "ai": [
+    {
+     "model": "claude-opus-5-5",
+     "effort": "high",
+     "part": "built"
+    }
+   ]
+  }
+ ],
+ "coverage": [
+  {
+   "span": "algorithm",
+   "concept": "algorithm",
+   "verb": "introduces"
+  },
+  {
+   "span": "lattice",
+   "concept": "lattice-multiplication",
+   "verb": "introduces"
+  },
+  {
+   "span": "lattice",
+   "concept": "algorithm",
+   "verb": "uses"
+  },
+  {
+   "span": "peasant",
+   "concept": "peasant-multiplication",
+   "verb": "introduces"
+  },
+  {
+   "span": "peasant",
+   "concept": "lattice-multiplication",
+   "verb": "uses"
+  },
+  {
+   "span": "compass",
+   "concept": "algorithm",
+   "verb": "reinforces"
+  },
+  {
+   "span": "apportionment",
+   "concept": "apportionment",
+   "verb": "introduces"
+  },
+  {
+   "span": "apportionment",
+   "concept": "algorithm",
+   "verb": "reinforces"
+  },
+  {
+   "span": "underspecified",
+   "concept": "underspecified-algorithm",
+   "verb": "introduces"
+  },
+  {
+   "span": "underspecified",
+   "concept": "algorithm",
+   "verb": "uses"
+  },
+  {
+   "span": "describing",
+   "concept": "describing-algorithms",
+   "verb": "introduces"
+  },
+  {
+   "span": "describing",
+   "concept": "lattice-multiplication",
+   "verb": "uses"
+  },
+  {
+   "span": "describing",
+   "concept": "peasant-multiplication",
+   "verb": "uses"
+  },
+  {
+   "span": "correctness",
+   "concept": "describing-algorithms",
+   "verb": "reinforces"
+  },
+  {
+   "span": "efficiency",
+   "concept": "need-for-efficiency",
+   "verb": "introduces"
+  },
+  {
+   "span": "interfaces",
+   "concept": "interface-vs-implementation",
+   "verb": "introduces"
+  }
+ ],
+ "exercises": [
+  {
+   "id": "c1",
+   "source_id": "exercism:difference-of-squares",
+   "source_number": "difference-of-squares",
+   "origin": "exercism",
+   "kind": "code",
+   "bloom": "Apply",
+   "place": {
+    "at": "end"
+   },
+   "cite": "efficiency",
+   "changes": "Only the difference itself is asked for and tested; the canonical data’s cases for the square of the sum and the sum of the squares are left out.",
+   "prompt": "Find the difference between the square of the sum and the sum of the squares of the first N natural numbers.\n\nThe square of the sum of the first ten natural numbers is (1 + 2 + ... + 10)² = 55² = 3025.\n\nThe sum of the squares of the first ten natural numbers is 1² + 2² + ... + 10² = 385.\n\nHence the difference between the square of the sum of the first ten natural numbers and the sum of the squares of the first ten natural numbers is 3025 - 385 = 2640.\n\nYou are not expected to discover an efficient solution to this yourself from first principles; research is allowed, indeed, encouraged. Finding the best algorithm for the problem is a key skill in software engineering.",
+   "answer": {
+    "type": "code",
+    "python": {
+     "entry": "difference_of_squares",
+     "starter": "def difference_of_squares(number):\n    pass\n",
+     "reference": "def difference_of_squares(number):\n    square_of_sum = (number * (number + 1) // 2) ** 2\n    sum_of_squares = number * (number + 1) * (2 * number + 1) // 6\n    return square_of_sum - sum_of_squares\n",
+     "generated_by": "ai"
+    },
+    "javascript": {
+     "entry": "differenceOfSquares",
+     "starter": "function differenceOfSquares(number) {\n}\n",
+     "reference": "function differenceOfSquares(number) {\n  const squareOfSum = ((number * (number + 1)) / 2) ** 2;\n  const sumOfSquares = (number * (number + 1) * (2 * number + 1)) / 6;\n  return squareOfSum - sumOfSquares;\n}\n",
+     "generated_by": "ai"
+    },
+    "tests": [
+     {
+      "args": [
+       1
+      ],
+      "expect": 0,
+      "visible": true,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       5
+      ],
+      "expect": 170,
+      "visible": false,
+      "generated_by": "source"
+     },
+     {
+      "args": [
+       100
+      ],
+      "expect": 25164150,
+      "visible": false,
+      "generated_by": "source"
+     }
+    ],
+    "generated_by": "source"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "c1",
+   "concept": "need-for-efficiency"
+  }
+ ],
+ "referents": [
+  {
+   "id": "lat-k",
+   "label": "k, the column FibonacciMultiply settles",
+   "figures": [
+    "sim-lattice"
+   ]
+  },
+  {
+   "id": "lat-i",
+   "label": "i, the position in X",
+   "figures": [
+    "sim-lattice"
+   ]
+  },
+  {
+   "id": "lat-j",
+   "label": "j, the position in Y",
+   "figures": [
+    "sim-lattice"
+   ]
+  },
+  {
+   "id": "lat-hold",
+   "label": "hold, the running sum and carry",
+   "figures": [
+    "sim-lattice"
+   ]
+  },
+  {
+   "id": "x",
+   "label": "x, the number PeasantMultiply halves",
+   "figures": [
+    "sim-peasant"
+   ]
+  },
+  {
+   "id": "y",
+   "label": "y, the number PeasantMultiply doubles",
+   "figures": [
+    "sim-peasant"
+   ]
+  },
+  {
+   "id": "prod",
+   "label": "prod, the product so far",
+   "figures": [
+    "sim-peasant"
+   ]
+  },
+  {
+   "id": "C",
+   "label": "the point C",
+   "figures": [
+    "sim-compass"
+   ]
+  },
+  {
+   "id": "D",
+   "label": "the point D",
+   "figures": [
+    "sim-compass"
+   ]
+  },
+  {
+   "id": "Z",
+   "label": "the point Z, the answer",
+   "figures": [
+    "sim-compass"
+   ]
+  },
+  {
+   "id": "s",
+   "label": "s, the state that takes the next seat",
+   "figures": [
+    "sim-apportion"
+   ]
+  }
+ ],
+ "footnotes": [
+  {
+   "id": "jeffe-fn-1",
+   "kind": "book",
+   "number": "1",
+   "html": "“Mohammad, father of Adbdulla, son of Moses, the Kwārizmian”. Kwārizm is an ancient city, now called Khiva, in the Khorezm Province of Uzbekistan."
+  },
+  {
+   "id": "jeffe-fn-2",
+   "kind": "book",
+   "number": "2",
+   "html": "“The Compendious Book on Calculation by Completion and Balancing”"
+  },
+  {
+   "id": "jeffe-fn-3",
+   "kind": "book",
+   "number": "3",
+   "html": "While it is tempting to translate the title <em>Liber Abaci</em> as “The Book of the Abacus”, a more accurate translation is “The Book of Calculation”. Both before and after Fibonacci, the Italian word <em>abaco</em> was used to describe anything related to numerical calculation—devices, methods, schools, books, and so on—much in the same way that “computer science” is used today in English, or as the Chinese phrase for “operations research” translates literally as “the study of using counting rods”."
+  },
+  {
+   "id": "jeffe-fn-4",
+   "kind": "book",
+   "number": "4",
+   "html": "☞ Reckoning with <em>digits</em>! ☞"
+  },
+  {
+   "id": "jeffe-fn-5",
+   "kind": "book",
+   "number": "5",
+   "html": "The word <em>calculate</em> derives from the Latin word <em>calculus</em>, meaning “small rock”, referring to the stones on a counting table, or as Chaucer called them, <em>augrym stones</em>. In 440<span style=\"font-variant:small-caps\">bce</span>, Herodotus wrote in his <em>Histories</em> that “The Greeks write and calculate (λογίζεσθαι ψήφοις, literally ‘reckon with pebbles’) from left to right; the Egyptians do the opposite. Yet they say that their way of writing is toward the right, and the Greek way toward the left.” (Herodotus is strangely silent on which end of the egg the Egyptians ate first.)"
+  },
+  {
+   "id": "jeffe-fn-6",
+   "kind": "book",
+   "number": "6",
+   "html": "Some medieval sources claim that the Greek prefix “algo-” means “art” or “introduction”. Others claim that algorithms were invented by a Greek philosopher, or a king of India, or perhaps a king of Spain, named “Algus” or “Algor” or “Argus”. A few, possibly including Dante Alighieri, even identified the inventor with the mythological Greek shipbuilder and eponymous argonaut. It’s unclear whether any of these risible claims were intended to be historically accurate, or merely mnemonic."
+  },
+  {
+   "id": "jeffe-fn-7",
+   "kind": "book",
+   "number": "7",
+   "html": "Literally “medicine that promotes quick and easy childbirth”! Pappus of Alexandria reproduced several excerpts of <em>Okytokion</em> about 200 years before Eutocius, but his description of the lattice multiplication algorithm (if he gave one) is <em>also</em> lost."
+  },
+  {
+   "id": "jeffe-fn-8",
+   "kind": "book",
+   "number": "8",
+   "html": "There is ample evidence that ancient Sumerians calculated accurately with extremely large numbers using their base-60 place-value numerical system, but I am not aware of any surviving record of the actual methods they used. In addition to standard multiplication and reciprocal tables, tables listing the squares of integers from 1 to 59 have been found, leading some math historians to conjecture that Babylonians multiplied using an identity like <em>xy</em> = ((<em>x</em> + <em>y</em>)<sup>2</sup> − <em>x</em><sup>2</sup> − <em>y</em><sup>2</sup>)<em>/</em>2. But this trick only works when <em>x</em> + <em>y &lt;</em> 60; history is silent on how the Babylonians might have computed <em>x</em><sup>2</sup> when <em>x</em> ≥ 60."
+  },
+  {
+   "id": "jeffe-fn-9",
+   "kind": "book",
+   "number": "9",
+   "html": "but at the risk of inflaming the historical enmity between Greece and Egypt, or Lilliput and Blefuscu, or Macs and PCs, or people who think zero is a natural number and people who are wrong"
+  },
+  {
+   "id": "jeffe-fn-10",
+   "kind": "book",
+   "number": "10",
+   "html": "The version of this algorithm actually used in ancient Egypt does not use mediation or parity, but it does use comparisons. To avoid halving, the algorithm pre-computes two tables by repeated doubling: one containing all the powers of 2 not exceeding <em>x</em>, the other containing the same powers of 2 multiplied by <em>y</em>. The powers of 2 that sum to <em>x</em> are then found by greedy subtraction, and the corresponding entries in the other table are added together to form the product."
+  },
+  {
+   "id": "jeffe-fn-11",
+   "kind": "book",
+   "number": "11",
+   "html": "The written numerals 1 through 9 were known in Europe at least two centuries before Fibonacci’s <em>Liber Abaci</em> as “gobar numerals”, from the Arabic word <em>ghubār</em> meaning dust, ultimately referring to the Indian practice of performing arithmetic on tables covered with sand. The Greek word ἄβαξ is the origin of the Latin <em>abacus</em>, which also originally referred to a sand table."
+  },
+  {
+   "id": "jeffe-fn-12",
+   "kind": "book",
+   "number": "12",
+   "html": "Remember what “geometry” means? Democritus would later refer to these Egyptian surveyors, somewhat derisively, as <em>arpedonaptai</em> (ἀρπεδονάπται), meaning “rope-fasteners”."
+  },
+  {
+   "id": "jeffe-fn-13",
+   "kind": "book",
+   "number": "13",
+   "html": "Overruling an earlier ruling by a federal district court, the Supreme Court unanimously held that <strong><em>any</em></strong> apportionment method adopted in good faith by Congress is constitutional (<em>United States Department of Commerce v. Montana</em>). The current congressional apportionment algorithm is described in gruesome detail at the U.S. Census Department web site http://www.census.gov/topics/public-sector/congressional-apportionment.html. A good history of the apportionment problem can be found at http://www.thirty-thousand.org/pages/Apportionment.htm. A report by the Congressional Research Service describing various apportionment methods is available at http://www.fas.org/sgp/crs/misc/R41382.pdf."
+  },
+  {
+   "id": "jeffe-fn-14",
+   "kind": "book",
+   "number": "14",
+   "html": "developed by Thomas Jefferson in 1792, used for U.S. Congressional apportionment from 1792 to 1832, rediscovered by Belgian mathematician Victor D’Hondt in 1878, and refined by Swiss physicist Eduard Hagenbach-Bischoff in 1888."
+  },
+  {
+   "id": "jeffe-fn-15",
+   "kind": "book",
+   "number": "15",
+   "html": "developed by Daniel Webster in 1832, used for U.S. Congressional apportionment from 1842 to 1911, rediscovered by French mathematician André Sainte-Laguë in 1910, and rediscovered again by German physicist Hans Schepers in 1980."
+  },
+  {
+   "id": "jeffe-fn-16",
+   "kind": "book",
+   "number": "16",
+   "html": "Steve Martin, “You Can Be A Millionaire”, <em>Saturday Night Live</em>, January 21, 1978. Also appears on <em>Comedy Is Not Pretty</em>, Warner Bros. Records, 1979."
+  },
+  {
+   "id": "jeffe-fn-17",
+   "kind": "book",
+   "number": "17",
+   "html": "Something something secure quantum blockchain deep-learning something."
+  },
+  {
+   "id": "jeffe-fn-18",
+   "kind": "book",
+   "number": "18",
+   "html": "In particular, I assume that <em>you</em> are a skeptical novice!"
+  },
+  {
+   "id": "jeffe-fn-19",
+   "kind": "book",
+   "number": "19",
+   "html": "I’ve never heard anyone sing “√2 Bottles of Beer on the Wall.” Occasionally I <em>have</em> heard set theorists singing “ℵ<sub>0</sub> bottles of beer on the wall”, but for some reason they always gave up before the song was over."
+  },
+  {
+   "id": "jeffe-fn-20",
+   "kind": "book",
+   "number": "20",
+   "html": "This is, of course, a matter of religious conviction. Armchair linguists argue incessantly over the <em>Sapir-Whorf hypothesis</em>, which states (more or less) that people think only in the categories imposed by their languages. According to an extreme formulation of this principle, some concepts in one language simply cannot be understood by speakers of other languages, not just because of technological advancement—How would you translate “jump the shark” or “Fortnite streamer” into Aramaic?—but because of inherent structural differences between languages and cultures. For a more skeptical view, see Steven Pinker’s <em>The Language Instinct</em>. There is admittedly some strength to this idea when applied to different programming paradigms. (What’s the Y combinator, again? How do templates work? What’s an Abstract Factory?) Fortunately, those differences are too subtle to have any impact on the material in <em>this</em> book. For a compelling counterexample, see Chris Okasaki’s monograph <em>Functional Data Structures</em> and its more recent descendants."
+  },
+  {
+   "id": "jeffe-fn-21",
+   "kind": "book",
+   "number": "21",
+   "html": "If induction is <em>not</em> your friend, you will have a hard time with this book."
+  },
+  {
+   "id": "ods-fn-1",
+   "kind": "book",
+   "number": "1",
+   "html": "Computer speeds are at most a few gigahertz (billions of cycles per second), and each operation typically takes a few cycles."
+  },
+  {
+   "id": "err-apportion",
+   "kind": "correction",
+   "html": "Figure 0.5 as printed has two slips. Its first loop inserts each state with priority <em>Pop</em>[<em>i</em>]/√2, which should read <em>Pop</em>[<em>s</em>]/√2, and its second loop’s comment and bound read “the remaining <em>n</em> − <em>R</em> representatives” and “for <em>i</em> ← 1 to <em>n</em> − <em>R</em>”, which should read <em>R</em> − <em>n</em>: there are <em>R</em> seats and <em>n</em> of them are given out first. The code beside the figure has both corrected."
+  }
+ ],
+ "derivations": []
+}
