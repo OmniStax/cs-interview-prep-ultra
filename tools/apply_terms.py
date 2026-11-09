@@ -17,9 +17,8 @@ concepts' terms add are left in ink until the section's candidates are listed an
 """
 import json
 import os
-import subprocess
 import sys
-import tempfile
+import types
 from collections import defaultdict
 
 TERMS_PASS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '..', 'OmniStax', 'omnistax-content', 'tools', 'terms_pass.py')
@@ -35,29 +34,9 @@ def _import_terms_pass(tool):
     return importlib.import_module('terms_pass')
 
 
-def renumber(sec_dir, rows, tool):
-    """The rows with `idx` and `hash` of the mention they name in the page as it is now; and the rows not found."""
-    tp = _import_terms_pass(tool)
-    book = tp.ost.book_of(rows[0]['book'])
-    g = tp.glossary_of(book)
-    text = tp.ost.read_text(os.path.join(sec_dir, 'text.html'))
-    ts, h = tp.tokens(text), tp.digest(text)
-    now = defaultdict(list)
-    for idx, m in enumerate(tp.mentions(ts, g.pattern)):
-        now[(' '.join(m.text.split()).lower(), tp.sentence(ts, m))].append(idx)
-    out, lost = [], []
-    for r in rows:
-        if r.get('concept') is None:
-            continue
-        found = now.get((r['term'].lower(), r['context']), [])
-        if r['nth'] < len(found):
-            out.append({**r, 'idx': found[r['nth']], 'hash': h})
-        else:
-            lost.append(r)
-    return out, lost
-
-
 def apply(sec_dir):
+    """Wrap each chosen mention of the page the build just wrote in its concept span, in place (in this folder, so a
+    scratch copy of the book builds without touching the book: the glossary is this copy's book.json)."""
     path = os.path.join(sec_dir, 'terms.jsonl')
     if not os.path.exists(path):
         return
@@ -67,20 +46,32 @@ def apply(sec_dir):
         return
     with open(path, encoding='utf-8') as f:
         rows = [json.loads(line) for line in f if line.strip()]
-    if not any(r.get('concept') for r in rows):
+    rows = [r for r in rows if r.get('concept') is not None]
+    if not rows:
         return
-    rows, lost = renumber(sec_dir, rows, tool)
+    tp = _import_terms_pass(tool)
+    g = tp.glossary_of(types.SimpleNamespace(book_path=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(sec_dir))), 'book.json')))
+    page = os.path.join(sec_dir, 'text.html')
+    text = open(page, encoding='utf-8').read()
+    ts = tp.tokens(text)
+    now = defaultdict(list)
+    for m in tp.mentions(ts, g.pattern):
+        now[(' '.join(m.text.split()).lower(), tp.sentence(ts, m))].append(m)
+    chosen, lost, taken = {}, [], []
+    for r in rows:
+        if r['concept'] not in g.ids:
+            raise SystemExit(f'{sec_dir}: terms row {r["term"]!r}: {r["concept"]!r} is no concept of the book')
+        found = now.get((r['term'].lower(), r['context']), [])
+        if r['nth'] >= len(found):
+            lost.append(r)
+        elif found[r['nth']].inside:
+            taken.append(r)
+        else:
+            chosen[found[r['nth']]] = r['concept']
     for r in lost:
-        print(f'{sec_dir}: terms row #{r["idx"]} ({r["term"]!r} → {r["concept"]}) is no mention now; left out', file=sys.stderr)
-    with tempfile.NamedTemporaryFile('w', suffix='.jsonl', delete=False, encoding='utf-8') as f:
-        for r in rows:
-            f.write(json.dumps(r, ensure_ascii=False) + '\n')
-        tmp = f.name
-    try:
-        r = subprocess.run([sys.executable, tool, 'apply', tmp], capture_output=True, text=True)
-    finally:
-        os.unlink(tmp)
-    if r.returncode != 0:
-        print(f'{sec_dir}: terms.jsonl not applied: {r.stderr.strip()}', file=sys.stderr)
-    else:
-        print(f'{sec_dir}: {r.stdout.strip()}')
+        print(f'{sec_dir}: terms row {r["term"]!r} → {r["concept"]} is no mention now; left out ({r["context"][:80]})', file=sys.stderr)
+    for r in taken:
+        print(f'{sec_dir}: terms row {r["term"]!r} → {r["concept"]} already sits in a span the spec marks; left as it is', file=sys.stderr)
+    with open(page, 'w', encoding='utf-8') as f:
+        f.write(tp.wrapped(ts, chosen))
+    print(f'{sec_dir}: {len(chosen)} mentions marked')
