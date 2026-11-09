@@ -768,7 +768,7 @@ function selistFigure(o) {
     { value: 'case1', label: 'Case 1', list: [{ id: 1, d: LT('abcd') }, { id: 2, d: LT('efgh') }, { id: 3, d: LT('ij') }], ops: [['add', 1, 'x']] },
     { value: 'case2', label: 'Case 2', list: [{ id: 1, d: LT('abcd') }, { id: 2, d: LT('efgh') }], ops: [['add', 1, 'x']] },
     { value: 'case3', label: 'Case 3', list: [{ id: 1, d: LT('abcd') }, { id: 2, d: LT('efgh') }, { id: 3, d: LT('ijkl') }], ops: [['add', 1, 'x']] },
-    { value: 'run', label: '24 adds at the front', list: [], ops: LT('abcdefghijklmnopqrstuvwx').map((x) => ['add', 0, x]) },
+    { value: 'run', label: '16 adds at the front', list: [], ops: LT('abcdefghijklmnop').map((x) => ['add', 0, x]) },
   ];
   const body = (at, list, op, snap, st, h) => {
     const i = op[1], x = op[2];
@@ -821,7 +821,7 @@ function selistFigure(o) {
     at(20, snap());
   };
   const traces = selistFigure({ presets: PRESETS, body, startLine: 21, top: 230 });
-  const d = sim('sim-selist-add', 760);
+  const d = sim('sim-selist-add', 800);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI },
     lineMap: { java: MAP, cpp: MAP, javascript: MAP },
@@ -928,7 +928,7 @@ function selistFigure(o) {
     { value: 'case1', label: 'Case 1', list: [{ id: 1, d: LT('ab') }, { id: 2, d: LT('cd') }, { id: 3, d: LT('efg') }], ops: [['remove', 1]] },
     { value: 'case2', label: 'Case 2', list: [{ id: 1, d: LT('ab') }, { id: 2, d: LT('cd') }], ops: [['remove', 1]] },
     { value: 'case3', label: 'Case 3', list: [{ id: 1, d: LT('ab') }, { id: 2, d: LT('cd') }, { id: 3, d: LT('ef') }, { id: 4, d: LT('gh') }], ops: [['remove', 1]] },
-    { value: 'run', label: '20 removes at the front', list: R8, ops: Array.from({ length: 20 }, () => ['remove', 0]) },
+    { value: 'run', label: '12 removes at the front', list: R8, ops: Array.from({ length: 12 }, () => ['remove', 0]) },
   ];
   const body = (at, list, op, snap, st, h) => {
     const i = op[1];
@@ -970,7 +970,7 @@ function selistFigure(o) {
     at(16, snap());
   };
   const traces = selistFigure({ presets: PRESETS, body, startLine: 17, top: 230 });
-  const d = sim('sim-selist-remove', 760);
+  const d = sim('sim-selist-remove', 800);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI },
     lineMap: { java: MAP, cpp: MAPC, javascript: MAP },

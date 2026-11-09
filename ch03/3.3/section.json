@@ -117,6 +117,21 @@
    "span": "dualarraydeque",
    "concept": "array-deque",
    "verb": "uses"
+  },
+  {
+   "span": "deque",
+   "concept": "stack",
+   "verb": "uses"
+  },
+  {
+   "span": "deque",
+   "concept": "queue",
+   "verb": "uses"
+  },
+  {
+   "span": "arraydeque",
+   "concept": "array-queue",
+   "verb": "uses"
   }
  ],
  "exercises": [
@@ -936,7 +951,7 @@
     {
      "assumes": [
       {
-       "text": "Since $3\\mathrm{front.size}() < \\mathrm{back.size}()$, $\\mathit{back}$ is the larger, so $\\Phi_1 = |\\mathrm{front.size}() - \\mathrm{back.size}()| = \\mathrm{back.size}() - \\mathrm{front.size}()$.",
+       "tex": "\\Phi_1 = \\mathrm{back.size}() - \\mathrm{front.size}()",
        "src": "Lemma 2.2, proof"
       },
       {
@@ -949,9 +964,8 @@
      ],
      "then": {
       "tex": "\\mk{p}{\\Phi_1} = \\mk{b}{\\mathrm{back.size}()} - \\mk{f}{\\mathrm{front.size}()}",
-      "uses": [
-       0
-      ]
+      "uses": [],
+      "why": "With $3\\mathrm{front.size}() < \\mathrm{back.size}()$, $\\mathit{back}$ is the larger stack, so the absolute value in $\\Phi$ opens this way."
      },
      "steps": [
       {

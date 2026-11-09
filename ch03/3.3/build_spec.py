@@ -369,12 +369,12 @@ DRV = {
         },
         {
             'assumes': [
-                {'text': f'Since $3{_F} < {_B}$, $\\mathit{{back}}$ is the larger, so $\\Phi_1 = |{_F} - {_B}| = {_B} - {_F}$.',
-                 'src': 'Lemma 2.2, proof'},
+                {'tex': f'\\Phi_1 = {_B} - {_F}', 'src': 'Lemma 2.2, proof'},
                 {'tex': f'3{_F} < {_B}', 'src': 'Lemma 2.2, proof'},
                 {'step': 0},
             ],
-            'then': {'tex': f'\\mk{{p}}{{\\Phi_1}} = \\mk{{b}}{{{_B}}} - \\mk{{f}}{{{_F}}}', 'uses': [0]},
+            'then': {'tex': f'\\mk{{p}}{{\\Phi_1}} = \\mk{{b}}{{{_B}}} - \\mk{{f}}{{{_F}}}', 'uses': [],
+                     'why': 'With $3\\mathrm{front.size}() < \\mathrm{back.size}()$, $\\mathit{back}$ is the larger stack, so the absolute value in $\\Phi$ opens this way.'},
             'steps': [
                 {'tex': f'\\mk{{p}}{{\\Phi_1}} > \\mk{{b}}{{{_B}}} - \\mk{{f}}{{{_B}/3}}', 'uses': [1],
                  'cap': 'Taking away less than $\\mathrm{back.size}()/3$ leaves more than taking away $\\mathrm{back.size}()/3$.'},

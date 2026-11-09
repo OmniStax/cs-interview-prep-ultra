@@ -305,10 +305,10 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
             : `${callName(op)}: ${test}, so ${plural(n0 - op[1] - 1, 'shift')} left over the gap.`;
         }
       }
-      topline(ctx, head);
+      const lines = topline(ctx, head) || 1;
 
       /* ---------------- the calls */
-      const top = callRow(ctx, R.calls.map(callName), v.k, v.stars, hits);
+      const top = callRow(ctx, R.calls.map(callName), v.k, v.stars, hits, lines > 1 ? 140 : 112);
 
       /* ---------------- the circular array: live cells shaded in the index tint, each with its list position in its
          corner; slot numbers under the cells; while resize() runs, b below a; on the swap b rises into a's place */
@@ -619,10 +619,10 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
             : `${what}${shifted}; each stack holds at least a third of the other, so balance() leaves them.`;
         } else head = `${what}${shifted}.`;
       }
-      topline(ctx, head);
+      const lines = topline(ctx, head) || 1;
 
       /* ---------------- the calls */
-      const top = callRow(ctx, R.calls.map(callName), v.k, v.stars, hits);
+      const top = callRow(ctx, R.calls.map(callName), v.k, v.stars, hits, lines > 1 ? 140 : 112);
 
       /* ---------------- the two stacks back to back: front's index 0 next to the middle, growing left, back's growing
          right, as Figure 2.4 draws them; each cell with its list position in its corner, the stack's own index under it */
