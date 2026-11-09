@@ -175,7 +175,7 @@ function run(s) {
     ctx.save(); ctx.globalAlpha *= a;
     roundRect(ctx, x - BOX_W / 2, y - BOX_H / 2, BOX_W, BOX_H, 8, PAL.panel, stroke || alpha(PAL.ink, 0.7), stroke ? 4 : 2.5);
     text(ctx, s, x, y + 1, color, { size: 30, align: 'center' });
-    if (pri !== undefined) text(ctx, String(pri), x + BOX_W / 2 + 14, y + 1, PAL.muted, { size: 26, align: 'left' });
+    if (pri !== undefined && pri !== null) text(ctx, String(pri), x + BOX_W / 2 + 14, y + 1, PAL.muted, { size: 26, align: 'left' });
     ctx.restore();
   }
   const slotY = (k) => BASE - BOX_H / 2 - 6 - k * (BOX_H + 6);
@@ -240,14 +240,14 @@ function run(s) {
       }
       /* the two stacks */
       const stDone = v.done && s === '-2^2';
-      column(ctx, ST_X, pv.st, v.st, k, 'st', cSt, numFmt, null, stDone ? (j, len) => (j === len - 1 ? PAL.bad : null) : null);
+      column(ctx, ST_X, pv.st, v.st, k, 'st', cSt, numFmt, undefined, stDone ? (j, len) => (j === len - 1 ? PAL.bad : null) : null);
       column(ctx, OP_X, pv.op, v.op, k, 'op', cOp, opFmt, opPri, null);
       /* the operator just read, beside op until it is pushed */
       const cy = slotY(Math.min(v.op.length, 5));
       if (v.pending && v.cur_op) {
         const fresh = !pv.pending;
         entry(ctx, CUR_X, cy, opFmt(v.cur_op), PAL.ink, fresh ? k : 1, priority(v.cur_op), cCur);
-        text(ctx, 'cur_op', CUR_X, cy - BOX_H / 2 - 20, cCur, { size: 26, weight: 600, align: 'center' });
+        text(ctx, 'cur_\u200bop', CUR_X, cy - BOX_H / 2 - 20, cCur, { size: 26, weight: 600, align: 'center' });
       } else if (pv.pending && pv.cur_op && !v.pending) {
         /* pushed: it slides onto op's top */
         const fx = CUR_X + (OP_X - CUR_X) * k;

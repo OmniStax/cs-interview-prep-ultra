@@ -240,7 +240,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
     }) };
   };
 
-  const d = sim('sim-arraydeque', 800);
+  const d = sim('sim-arraydeque', 770);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI }, lineMap: MAP,
     blocks: [
@@ -312,7 +312,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
 
       /* ---------------- the circular array: live cells shaded in the index tint, each with its list position in its
          corner; slot numbers under the cells; while resize() runs, b below a; on the swap b rises into a's place */
-      const ROWA = Math.max(top + 230, 380), ROWB = ROWA + 190, CH = 84;
+      const ROWA = top + 230, ROWB = ROWA + 180, CH = 84;
       const layout = (cells, y) => { const cw = Math.min(80, 1240 / cells), x0 = 700 - (cw * cells) / 2; return { cw, x0, x1: x0 + cw * cells, y, x: (q) => x0 + q * cw + cw / 2 }; };
       const live = (jj, nn, cells, q) => ((q - jj + cells) % cells) < nn;
       const cellRow = (Lr, vals, jj, nn, name, color, op = 1) => {
@@ -363,7 +363,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
           const cur = v.mv && v.mv[0] === mv[0] && v.mv[1] === mv[1] && v.mv[2] === 'a';
           const fresh = cur && !(pv.mv && pv.mv[0] === mv[0] && pv.mv[1] === mv[1]);
           const x0 = La.x(mv[0]), x1 = La.x(mv[1]), y = ROWA - CH / 2 - 8;
-          const lift = Math.abs(mv[1] - mv[0]) > 1 ? 120 : 34;
+          const lift = Math.abs(mv[1] - mv[0]) > 1 ? 90 : 34;
           if (fresh) partArc(ctx, x0, y, x1, y, lift, Math.max(0.2, k), ci, 4);
           else curve(ctx, x0, y, x1, y, lift, cur ? ci : alpha(ci, 0.45), cur ? 4 : 3);
         });
@@ -380,14 +380,14 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
         text(ctx, `j = ${v.j}`, xj, yb + 76, cj, { size: 30, weight: 600, align: 'center', base: 'middle' });
         if (op && v.i !== null && v.i !== undefined && ln !== L.ret) {
           const nn = op[0] === 'add' && ln >= L.store ? v.n : v.n;
-          const q = (v.j + Math.min(v.i, Math.max(0, nn))) % len, xi = La.x(q), yt = ROWA - CH / 2 - (v.moves.some((mv) => mv[2] === 'a' && Math.abs(mv[1] - mv[0]) > 1) ? 150 : 64);
+          const q = (v.j + Math.min(v.i, Math.max(0, nn))) % len, xi = La.x(q), yt = ROWA - CH / 2 - (v.moves.some((mv) => mv[2] === 'a' && Math.abs(mv[1] - mv[0]) > 1) ? 110 : 64);
           arrow(ctx, xi, yt - 44, xi, yt, ci, 4);
           text(ctx, `i = ${v.i}`, xi, yt - 64, ci, { size: 30, weight: 600, align: 'center', base: 'middle' });
         }
       }
 
       /* ---------------- the counts: where the list lives, the call's shifts against min(i, n − i), the totals */
-      const Y0 = ROWB + 110;
+      const Y0 = ROWB + 96;
       seg(ctx, [['list position k sits at ', ink], ['a', ca, { weight: 600, italic: true }], ['[(', ink], ['j', cj, { weight: 600, italic: true }],
         [' + k) mod length(', ink], ['a', ca, { weight: 600, italic: true }], [')]  ·  ', ink], ['j', cj, { weight: 600, italic: true }],
         [` = ${v.j}  ·  `, ink], ['n', cn, { weight: 600, italic: true }], [` = ${v.n}  ·  `, ink], [`length(a) = ${len}`, size]], Y0);
@@ -561,7 +561,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
     }) };
   };
 
-  const d = sim('sim-dualarraydeque', 820);
+  const d = sim('sim-dualarraydeque', 760);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI }, lineMap: MAP,
     blocks: [
@@ -583,8 +583,8 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
 
   const runs = Object.fromEntries(PRESETS.map((P) => [P.value, run(P)]));
   /* the slots each half draws: the most either stack, old or new, holds in any run, and one more */
-  const SLOTS = Math.max(5, ...Object.values(runs).flatMap((R) => R.trace.map((fr) => Math.max(fr.vars.front.length, fr.vars.back.length,
-    (fr.vars.f || []).length, (fr.vars.b || []).length) + 1)));
+  const SLOTS_OF = Object.fromEntries(Object.entries(runs).map(([key, R]) => [key, Math.max(5, ...R.trace.map((fr) => Math.max(fr.vars.front.length,
+    fr.vars.back.length, (fr.vars.f || []).length, (fr.vars.b || []).length) + 1))]));
   const tip = { hits: [] };
 
   F.debug(d, {
@@ -598,7 +598,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
       const key = C('key'), cost = C('cost'), idx = C('index'), ink = PAL.ink, muted = PAL.muted, bad = PAL.bad || ink;
       const hits = [];
       const op = v.k >= 0 ? R.calls[v.k] : null;
-      const fs = v['front.size()'], bs = v['back.size()'], n = fs + bs;
+      const fs = v['front.size()'], bs = v['back.size()'], n = fs + bs, SLOTS = SLOTS_OF[g.input] || SLOTS_OF.figure;
       const inBal = ln >= L.n && ln <= L.copyB;
       const swapping = ln === L.setF || ln === L.setB;
 
@@ -626,7 +626,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
 
       /* ---------------- the two stacks back to back: front's index 0 next to the middle, growing left, back's growing
          right, as Figure 2.4 draws them; each cell with its list position in its corner, the stack's own index under it */
-      const ROW = Math.max(top + 230, 380), ROWN = ROW + 180, CH = 84;
+      const ROW = top + 190, ROWN = ROW + 170, CH = 84;
       const cw = Math.min(80, 600 / SLOTS), GAP = 10;
       const X = (st, t) => (st === 'front' || st === 'f' ? 700 - GAP - (t + 0.5) * cw : 700 + GAP + (t + 0.5) * cw);
       const half = (st, vals, y, listStart, opA = 1, named = true) => {
@@ -698,7 +698,7 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
       }
 
       /* ---------------- the counts: the balance condition, the potential, the lemma's count and its sum */
-      const Y0 = ROWN + 120;
+      const Y0 = ROWN + 96;
       const okF = 3 * fs >= bs, okB = 3 * bs >= fs, small = n < 2;
       seg(ctx, [['3·front.size() = ', ink], [`${3 * fs}`, okF || small ? ink : bad, { weight: 600 }], [okF ? ' ≥ ' : ' < ', okF || small ? ink : bad],
         [`back.size() = ${bs}  ·  3·back.size() = `, ink], [`${3 * bs}`, okB || small ? ink : bad, { weight: 600 }], [okB ? ' ≥ ' : ' < ', okB || small ? ink : bad],

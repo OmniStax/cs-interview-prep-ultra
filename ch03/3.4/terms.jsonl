@@ -1,80 +1,80 @@
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 0, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 1, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 2, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 3, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 4, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 5, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 6, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 7, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 8, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 10, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 11, "term": "stack", "hash": "146e4a85160a", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 12, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 13, "term": "Implementation", "hash": "146e4a85160a", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 14, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 15, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 16, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 18, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 19, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 20, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 21, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 22, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 23, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 24, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 25, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 26, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 27, "term": "implementations", "hash": "146e4a85160a", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 28, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 29, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 30, "term": "stacks", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 33, "term": "two stacks", "hash": "146e4a85160a", "concept": "queue-from-two-stacks"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 34, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 35, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 36, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 37, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 38, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 39, "term": "stacks", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 40, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 41, "term": "Implementation", "hash": "146e4a85160a", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 42, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 43, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 45, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 46, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 47, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 48, "term": "queue", "hash": "146e4a85160a", "concept": "queue"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 49, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 51, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 52, "term": "algorithms", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 53, "term": "algorithms", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 54, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 55, "term": "algorithms", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 56, "term": "nearest smaller values", "hash": "146e4a85160a", "concept": "nearest-smaller-element"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 57, "term": "all nearest smaller values", "hash": "146e4a85160a", "concept": "nearest-smaller-element"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 58, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 59, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 60, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 61, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 62, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 63, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 64, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 65, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 66, "term": "array", "hash": "146e4a85160a", "concept": "array"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 67, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 68, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 69, "term": "potential", "hash": "146e4a85160a", "concept": null}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 70, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 71, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 72, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 73, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 74, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 75, "term": "zero submatrix", "hash": "146e4a85160a", "concept": "largest-zero-submatrix"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 76, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 77, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 78, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 79, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 80, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 81, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 82, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 83, "term": "stack", "hash": "146e4a85160a", "concept": "stack"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 84, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
-{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 85, "term": "algorithm", "hash": "146e4a85160a", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 0, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 1, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 2, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 3, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 4, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 5, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 6, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 7, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 8, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 10, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 11, "term": "stack", "hash": "3f498f8d2140", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 12, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 13, "term": "Implementation", "hash": "3f498f8d2140", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 14, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 15, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 16, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 18, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 19, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 20, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 21, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 22, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 23, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 24, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 25, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 26, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 27, "term": "implementations", "hash": "3f498f8d2140", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 28, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 29, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 30, "term": "stacks", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 33, "term": "two stacks", "hash": "3f498f8d2140", "concept": "queue-from-two-stacks"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 34, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 35, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 36, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 37, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 38, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 39, "term": "stacks", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 40, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 41, "term": "Implementation", "hash": "3f498f8d2140", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 42, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 43, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 45, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 46, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 47, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 48, "term": "queue", "hash": "3f498f8d2140", "concept": "queue"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 49, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 51, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 52, "term": "algorithms", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 53, "term": "algorithms", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 54, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 55, "term": "algorithms", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 56, "term": "nearest smaller values", "hash": "3f498f8d2140", "concept": "nearest-smaller-element"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 57, "term": "all nearest smaller values", "hash": "3f498f8d2140", "concept": "nearest-smaller-element"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 58, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 59, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 60, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 61, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 62, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 63, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 64, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 65, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 66, "term": "array", "hash": "3f498f8d2140", "concept": "array"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 67, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 68, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 69, "term": "potential", "hash": "3f498f8d2140", "concept": null}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 70, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 71, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 72, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 73, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 74, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 75, "term": "zero submatrix", "hash": "3f498f8d2140", "concept": "largest-zero-submatrix"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 76, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 77, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 78, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 79, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 80, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 81, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 82, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 83, "term": "stack", "hash": "3f498f8d2140", "concept": "stack"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 84, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}
+{"book": "cs-interview-prep-ultra", "section": "3.4", "idx": 85, "term": "algorithm", "hash": "3f498f8d2140", "concept": "algorithm"}

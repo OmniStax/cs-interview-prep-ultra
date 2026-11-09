@@ -446,13 +446,43 @@ def R(rid, s=None):
     return f'<span data-ref="{rid}"><em>{s or rid}</em></span>'
 
 
+_I, _B, _R, _X, _S, _U, _W = R('i'), R('b'), R('r'), R('x'), R('s'), R('u'), R('w')
 CAP = {
-    'sim-rootish': 'TODO',
-    'sim-gauss': 'TODO',
-    'sim-wasted-space': 'TODO',
-    'sim-fastsqrt': 'TODO',
-    'sim-selist-add': 'TODO',
-    'sim-selist-remove': 'TODO',
+    'sim-rootish': (
+        f'ODS’s RootishArrayStack running add({_I}, x), remove({_I}) and get({_I}) on its blocks. Each get and set finds '
+        f'the block {_B} = ⌈(−3 + √(9 + 8{_I}))/2⌉ that holds index {_I} and the place j = {_I} − {_B}({_B} + 1)/2 '
+        'within it, so a shift carries an element across a block boundary as easily as along a block. grow() adds a block '
+        f'of {_R} + 1 cells only when all {_R}({_R} + 1)/2 cells are in use, and remove({_I}) frees blocks only when two '
+        f'or more stand empty, so only the last two blocks can have unused cells and the waste stays at most 2{_R} − 1. '
+        'Adding at the front shifts every element on every call.'),
+    'sim-gauss': (
+        'Two copies of the staircase 1 + 2 + ⋯ + <em>r</em>, one turned half a turn, fill a rectangle <em>r</em> cells '
+        'tall and <em>r</em> + 1 wide, so each holds <em>r</em>(<em>r</em> + 1)/2 cells: the cells of blocks 0 to '
+        '<em>r</em> − 1 of a RootishArrayStack.'),
+    'sim-wasted-space': (
+        'The space wasted after <em>n</em> appends to an empty structure. A RootishArrayStack’s unused cells and block '
+        'references stay within a small multiple of √<em>n</em>, while an ArrayStack that has just doubled wastes nearly '
+        '<em>n</em>. Both rise above √<em>n</em> at some moment, as the lower bound says every such structure must.'),
+    'sim-fastsqrt': (
+        f'FastSqrt computing ⌊√{_X}⌋ for {_X} below 2³⁰ with one table lookup. Shifting {_X} up an even number of '
+        'places, 2<em>k</em>, multiplies its square root by exactly 2<sup><em>k</em></sup>; the top 16 bits then index '
+        f'sqrtab, which holds ⌊√(<em>t</em>·2¹⁴)⌋, and shifting the entry back down by <em>k</em> leaves {_S} within 2 '
+        f'of ⌊√{_X}⌋, so the last loop adds 1 at most twice. One million needs no correction; 66,049 = 257² needs one.'),
+    'sim-selist-add': (
+        f'An SEList with block size <em>b</em> = 3 adding x at index {_I}. Starting at {_U}, the block that holds index '
+        f'{_I}, {_W} looks at most <em>b</em> blocks ahead for one with room. If it finds one (Case 1), or runs off the '
+        f'end and a new last block is added (Case 2), the last element of each block from {_U} to {_W} moves one block '
+        f'on, which frees a cell in {_U}. If <em>b</em> blocks in a row are full (Case 3), spread({_U}) first deals their '
+        'elements into <em>b</em> + 1 blocks of <em>b</em>. Adding at the front again and again spreads at most once in '
+        'every <em>b</em> adds: each spread removes <em>b</em> − 1 fragile nodes, which the adds before it made.'),
+    'sim-selist-remove': (
+        f'An SEList with <em>b</em> = 3 removing the element at index {_I}. Starting at {_U}, {_W} looks at most '
+        '<em>b</em> blocks ahead for one with more than <em>b</em> − 1 elements. After the element leaves, '
+        f'{_U} takes the first element of the next block, and each block after it does the same, until the chain '
+        f'reaches {_W} (Case 1) or the end of the list, where an emptied last block is dropped (Case 2). If <em>b</em> '
+        f'blocks in a row hold only <em>b</em> − 1 (Case 3), gather({_U}) first fills <em>b</em> − 1 of them to '
+        '<em>b</em> and removes the last. Removing from the front again and again gathers at most once in every '
+        '<em>b</em> removes.'),
 }
 M = '/media/ch03/'
 HTML = {

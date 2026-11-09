@@ -123,7 +123,7 @@ function morph(prev, cur, k, at, from, to) {
       }
     });
   });
-  const d = sim('sim-min-stack', 600);
+  const d = sim('sim-min-stack', 640);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPA_STACK, javascript: JS }, canonical: 'cpp', ai: AIS(['python', 'java', 'javascript']),
     blocks: [
@@ -159,7 +159,7 @@ function morph(prev, cur, k, at, from, to) {
         const [e, m] = valOf(it.id);
         const hotTop = it.id === topId && (L === 9 || L === 6);
         F.faded(ctx, it.a, [0, 0], () => {
-          cell(ctx, it.x - CW / 2, it.y, CW, CH, e, { stroke: it.arriving ? cNew : hotTop && L === 6 ? PAL.ink : alpha(PAL.ink, 0.8), lw: it.arriving || (hotTop && L === 6) ? 4 : 2.5 });
+          cell(ctx, it.x - CW / 2, it.y, CW, CH, e, { stroke: it.arriving && L === 4 ? cNew : hotTop && L === 6 ? PAL.ink : alpha(PAL.ink, 0.8), lw: (it.arriving && L === 4) || (hotTop && L === 6) ? 4 : 2.5 });
           cell(ctx, it.x + CW / 2, it.y, CW, CH, m, { stroke: hotTop && L === 9 ? key : alpha(PAL.ink, 0.8), lw: hotTop && L === 9 ? 4 : 2.5, weight: hotTop && L === 9 ? 600 : 400 });
         });
       });
@@ -191,7 +191,7 @@ function morph(prev, cur, k, at, from, to) {
       else if (L === 7) head = n ? `${neg(v.removed_element)} is gone; the entry below already holds the minimum of what is left, ${neg(v.ms[n - 1])}.` : 'The stack is empty again.';
       else head = `The minimum is the top entry's second value, ${neg(v.minimum)}: the smallest of ${list}.`;
       topline(ctx, head);
-      text(ctx, `comparisons ${v.cmp} · at most 1 per add, none to remove or read the minimum`, 1370, 585, C('cost'), { size: 26, align: 'right' });
+      text(ctx, `comparisons ${v.cmp} · at most 1 per add, none to remove or read the minimum`, 1370, 618, C('cost'), { size: 26, align: 'right' });
     },
   });
 })();
@@ -236,7 +236,7 @@ function morph(prev, cur, k, at, from, to) {
       if (i >= M - 1) { minimum = A[q[0]]; mins[i] = minimum; at(3, V('min'), ['min', minimum]); }
     }
   });
-  const d = sim('sim-min-queue', 590);
+  const d = sim('sim-min-queue', 620);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPA_M1, javascript: JS }, canonical: 'cpp', ai: AIS(['python', 'java', 'javascript']),
     blocks: [
@@ -253,7 +253,7 @@ function morph(prev, cur, k, at, from, to) {
     onInput: () => { traces = {}; dbg.set(traceOf(dbg.input ? dbg.input.value : 'mixed')); } });
   let traces = {};
   const traceOf = (val) => { const M = Math.round(sM.v); if (!traces[val]) traces[val] = run(INPUTS.find((x) => x[0] === val)[2], M); return traces[val]; };
-  const CW = 84, YA = 210, YQ = 440, XQ = 330;
+  const CW = 84, YA = 210, YQ = 470, XQ = 330;
   const dbg = F.debug(d, {
     code, level: 0, watch: ['q', 'new_element', 'remove_element', 'minimum'],
     inputs: INPUTS.map(([value, label]) => ({ value, label, trace: traceOf(value) })),
@@ -273,11 +273,11 @@ function morph(prev, cur, k, at, from, to) {
         const xi = S.x(Math.max(0, v.i));
         arrow(ctx, xi, YA - 90, xi, YA - 40, cNew, 4);
         text(ctx, us('new_element'), xi, YA - 106, cNew, { size: 28, weight: 600, align: xi > 1150 ? 'right' : xi < 250 ? 'left' : 'center' });
-        if (v.i >= 0 && hi >= lo) F.hbracket(ctx, S.x(lo) - CW / 2 + 4, S.x(hi) + CW / 2 - 4, YA + 58, C('size'), `window, M = ${M}`, { side: 'below', size: 26 });
+        if (v.i >= 0 && hi >= lo) F.hbracket(ctx, S.x(lo) - CW / 2 + 4, S.x(hi) + CW / 2 - 4, YA + 84, C('size'), `window, M = ${M}`, { side: 'below', size: 26 });
       }
       /* the minima found so far, each under the last element of its window */
-      text(ctx, 'minima', S.l - 24, 312, PAL.ink, { size: 26, align: 'right' });
-      v.mins.forEach((m, j) => { if (m !== null && m !== undefined) text(ctx, neg(m), S.x(j), 336, key, { size: 30, align: 'center', weight: j === v.i && L === 3 ? 600 : 400 }); });
+      text(ctx, 'minima', S.l - 24, 372, PAL.ink, { size: 26, align: 'right' });
+      v.mins.forEach((m, j) => { if (m !== null && m !== undefined) text(ctx, neg(m), S.x(j), 372, key, { size: 30, align: 'center', weight: j === v.i && L === 3 ? 600 : 400 }); });
       /* the deque, front at the left, by identity */
       ctx.save(); ctx.strokeStyle = alpha(cQ, 0.9); ctx.lineWidth = 3; ctx.setLineDash([8, 8]);
       ctx.strokeRect(XQ - 12, YQ - 44, Math.max(N, 4) * CW + 24, 88); ctx.restore();
@@ -287,9 +287,9 @@ function morph(prev, cur, k, at, from, to) {
       const items = morph(pv, v, k, place, (id) => ({ x: S.x(id), y: YA + 40 }),
         (id, p) => (pv.ids[0] === id && L === 10 ? { x: p.x - 140, y: p.y } : { x: p.x, y: p.y - 70 }));
       items.forEach((it) => F.faded(ctx, it.a, [0, 0], () => cell(ctx, it.x, it.y, CW - 8, 60, A[it.id], {
-        stroke: it.arriving ? cNew : it.leaving ? alpha(PAL.ink, 0.4) : (L === 3 && v.ids[0] === it.id) ? key : alpha(PAL.ink, 0.8),
-        lw: it.arriving || (L === 3 && v.ids[0] === it.id) ? 4 : 2.5, color: it.leaving ? alpha(key, 0.5) : key })));
-      if (v.ids.length) text(ctx, 'back', XQ + (v.ids.length - 0.5) * CW, YQ + 66, PAL.muted, { size: 26, align: 'center' });
+        stroke: it.arriving && L === 7 ? cNew : it.leaving ? alpha(PAL.ink, 0.4) : (L === 3 && v.ids[0] === it.id) ? key : alpha(PAL.ink, 0.8),
+        lw: (it.arriving && L === 7) || (L === 3 && v.ids[0] === it.id) ? 4 : 2.5, color: it.leaving ? alpha(key, 0.5) : key })));
+      if (v.ids.length > 1) text(ctx, 'back', XQ + (v.ids.length - 0.5) * CW, YQ + 66, PAL.muted, { size: 26, align: 'center' });
       /* the headline */
       const ne = neg(v.new_element);
       let head;
@@ -303,8 +303,8 @@ function morph(prev, cur, k, at, from, to) {
       topline(ctx, head);
       /* the invariant and the count */
       const qs = v.q.map(neg).join(' ≤ ') || 'empty';
-      text(ctx, v.i >= 0 ? `q: ${qs}, all inside A[${Math.round(v.lo)}..${v.i}]` : 'q: empty', 40, 560, PAL.ink, { size: 26, align: 'left' });
-      text(ctx, `pushes ${v.pushes} + pops ${v.pops} = ${v.pushes + v.pops} ≤ 2N = ${2 * N}`, 1370, 560, C('cost'), { size: 26, align: 'right' });
+      text(ctx, v.i >= 0 ? `q: ${qs}, all inside A[${Math.round(v.lo)}..${v.i}]` : 'q: empty', 40, 592, PAL.ink, { size: 26, align: 'left' });
+      text(ctx, `pushes ${v.pushes} + pops ${v.pops} = ${v.pushes + v.pops} ≤ 2N = ${2 * N}`, 1370, 592, C('cost'), { size: 26, align: 'right' });
     },
   });
 })();
@@ -374,7 +374,7 @@ function morph(prev, cur, k, at, from, to) {
       }
     });
   });
-  const d = sim('sim-two-stack-queue', 640);
+  const d = sim('sim-two-stack-queue', 680);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPA_M3, javascript: JS }, canonical: 'cpp', ai: AIS(['python', 'java', 'javascript']),
     lineMap: { python: PYMAP },
@@ -423,7 +423,7 @@ function morph(prev, cur, k, at, from, to) {
         const top2 = inS2 && v.b[v.b.length - 1] === it.id, top1 = !inS2 && v.a[v.a.length - 1] === it.id;
         const minHot = (L === 4 || L === 6) && (top2 || top1);
         F.faded(ctx, it.a, [0, 0], () => {
-          cell(ctx, x - CW / 2, y, CW, CH, e, { stroke: it.arriving ? cNew : it.leaving ? PAL.ink : alpha(PAL.ink, 0.8), lw: it.arriving || it.leaving ? 4 : 2.5 });
+          cell(ctx, x - CW / 2, y, CW, CH, e, { stroke: it.arriving && L === 9 ? cNew : it.leaving ? PAL.ink : alpha(PAL.ink, 0.8), lw: (it.arriving && L === 9) || it.leaving ? 4 : 2.5 });
           cell(ctx, x + CW / 2, y, CW, CH, m, { stroke: minHot ? key : alpha(PAL.ink, 0.8), lw: minHot ? 4 : 2.5, weight: minHot ? 600 : 400 });
         });
       });
@@ -454,7 +454,7 @@ function morph(prev, cur, k, at, from, to) {
       else head = n1 && n2 ? `The minimum is the smaller of the two tops' second values: min(${top(v.s1, 1)}, ${top(v.s2, 1)}) = ${neg(v.minimum)}.`
         : `One stack is empty, so the minimum is the other top's second value: ${neg(v.minimum)}.`;
       topline(ctx, head);
-      text(ctx, `added ${v.added} · moved ${v.moved} · removed ${v.removed}: each element at most once each`, 1370, 625, C('cost'), { size: 26, align: 'right' });
+      text(ctx, `added ${v.added} · moved ${v.moved} · removed ${v.removed}: at most 3 moves per element`, 1370, 662, C('cost'), { size: 26, align: 'right' });
     },
   });
 })();
@@ -541,9 +541,9 @@ function morph(prev, cur, k, at, from, to) {
       const items = morph(pv, v, k, place, (id) => ({ x: S.x(id), y: YA + 40 }), (id, p) => ({ x: p.x, y: p.y - 70 }));
       const topId = v.ids[v.ids.length - 1];
       items.forEach((it) => F.faded(ctx, it.a, [0, 0], () => cell(ctx, it.x, it.y, CW - 6, 60, vals[it.id], {
-        stroke: it.arriving ? cX : it.leaving ? alpha(PAL.ink, 0.4) : it.id === topId && L === 10 ? key : alpha(PAL.ink, 0.8),
-        lw: it.arriving || (it.id === topId && L === 10) ? 4 : 2.5 })));
-      if (v.ids.length) text(ctx, 'top', XS + (v.ids.length - 0.5) * CW, YS + 62, PAL.muted, { size: 26, align: 'center' });
+        stroke: it.arriving && L === 11 ? cX : it.leaving ? alpha(PAL.ink, 0.4) : it.id === topId && L === 10 ? key : alpha(PAL.ink, 0.8),
+        lw: (it.arriving && L === 11) || (it.id === topId && L === 10) ? 4 : 2.5 })));
+      if (v.ids.length > 1) text(ctx, 'top', XS + (v.ids.length - 0.5) * CW, YS + 62, PAL.muted, { size: 26, align: 'center' });
       /* the headline */
       const xs = neg(v.x), tp = v.S.length ? neg(v.S[v.S.length - 1]) : '';
       let head;

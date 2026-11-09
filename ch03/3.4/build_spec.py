@@ -51,7 +51,7 @@ HTML = {
         f'none, and the minimum below shows again. With a repeated minimum, the copy below keeps it after the top one goes.'),
     'sim-min-queue': sim(
         'sim-min-queue',
-        f'A window of length <em>M</em> slides along <em>A</em>, as in the last part of this article: each step adds the next '
+        f'A window of length <em>M</em> slides along <em>A</em>: each step adds the next '
         f'element, removes the oldest by its value and reads the minimum at the front of {ref("q", C("q"))}. Before '
         f'{ref("new-element", C("new_element"))} goes in at the back, every larger element there is cut, since it leaves the '
         f'window first and can never be its minimum. On increasing input nothing is cut; on decreasing input each element '

@@ -2,7 +2,7 @@
 
 Status: **plan, built from in the same run** (brief `briefs/section-build.md`: chapters 2 and 3 have no separate plan review; questions decided below), 2026-11-09. Read for this plan: root `RULES.md`; the book's `RULES.md`, `COLOR.md`, `METHOD.md` (§1–§3, §5, decisions 1–21); `LOG.md` (passes 1–8); `ch03/config.md` and `exploration.md`; `judgements/ch01-03-reconciled.md` (winners, bridges, errata, indexing, rulings of 2026-11-08), `judgements/ch03.md` §3.5 and its builder notes, `judgements/ch01-03-references.md` (the forth, calculator and TheAlgorithms rows); the three `concepts.json` rows; `ch01/plans-summary.md`, `ch01/1.5/plan.md`, the built 1.1 and 1.5, and the built 2.7 (the first cpa section, whose `tools/build_markdown.py` this section reuses unchanged); and the winning passage, `sources/_cache/cpa/src/string/expression_parsing.md` at the pinned commit d55d3f5, whole.
 
-One source, cp-algorithms (`cpa`, CC BY-SA 4.0), in English. 3 blocks, 3 concepts, 1 Sim (a debugger), no derivation, 3 code exercises, 2 NC cards.
+One source, cp-algorithms (`cpa`, CC BY-SA 4.0), in English. 4 blocks, 3 concepts, 1 Sim (a debugger), no derivation, 3 code exercises, 2 NC cards.
 
 **What the pinned page prints.** Prose, two display formulas, two full C++ listings (`expression_parsing_simple`, `expression_parsing_unary`) and two one-line C++ fragments (the `while` condition before and after the right-associativity change). C++ only: no Java, no Python, no image. So every Python, Java and JavaScript variant is an AI translation and carries `data-ai` (decision 20); the C++ is the source's and carries none.
 
@@ -18,7 +18,10 @@ Tier: Advanced (the section's), rpn-evaluation Essential (config item 10). Index
 |---|---|---|---|---|---|---|
 | 1 | `rpn` | Expression parsing (source, the article's title); "Reverse Polish notation" `<h3>` | cpa | `cpa:string/expression_parsing` lead + #reverse-polish-notation | no | the problem in O(n); the bold "reverse Polish notation"; the example and its RPN as two displays; Hamblin and Łukasiewicz; the one-stack evaluation; "Obviously this simple evaluation runs in O(n) time." |
 | 2 | `parsing` | Parsing of simple expressions (source) | cpa | `cpa:string/expression_parsing#parsing-of-simple-expressions` | no | binary, left-associative; the two stacks and their invariant; the four cases; listing `expression_parsing_simple` as a four-language code set (C++ the source's); "implicitly used the reverse Polish notation" |
-| 3 | `unary-right` | Unary operators (source); "Right-associativity" `<h3>` | cpa | `cpa:string/expression_parsing#unary-operators` + `#right-associativity` | no | the unary test; priority above every binary operator (erratum 30's marker); right-associativity; the two `while` fragments as code sets; listing `expression_parsing_unary` as a code set; then `sim-two-stack-parser` |
+| 3 | `unary` | Unary operators (source) | cpa | `cpa:string/expression_parsing#unary-operators` | no | the unary test; priority above every binary operator (erratum 30's marker); unary plus and minus right-associative |
+| 4 | `right-assoc` | Right-associativity (source) | cpa | `cpa:string/expression_parsing#right-associativity` | no | right-associativity; the two `while` fragments as code sets; listing `expression_parsing_unary` as a code set; then `sim-two-stack-parser` |
+
+*Build note:* `exploration.md` had one block `unary-right` for both headings. cpa prints them as sibling `##` headings, so one block would hold two `<h2>`s; they are two blocks, each opened by its own heading, and the concept spans both (introduced in `unary`, reinforced in `right-assoc`).
 
 Not carried: the front matter (`tags`, `e_maxx_link`). The page has no Problems list. Source text goes through `tools/build_markdown.py` (2.7's, imported unchanged; no shared tool changes), with a section `build_spec.py` holding placement, marks, the code sets and the figure's HTML.
 
@@ -28,7 +31,7 @@ Not carried: the front matter (`tags`, `e_maxx_link`). The page has no Problems 
 |---|---|---|---|---|
 | `rpn-evaluation` | skill | Essential | In reverse Polish notation the operators come after their operands. To evaluate it, read it left to right with a stack: push each number; for an operator, take the top two elements off the stack, perform the operation and put the result back. At the end the one element left is the value, in O(n). | `rpn`, "The convenience of the reverse Polish notation is, that expressions in this form are very easy to evaluate in linear time." |
 | `expression-parsing` | result | Advanced | With binary, left-associative operators and parentheses, an expression is evaluated in O(n) with a stack of numbers and a stack of operators kept in strictly descending priority within each pair of parentheses: push a number or an opening parenthesis; at a closing parenthesis, execute operators back to the opening one; before pushing an operator, execute every operator on top of the same or higher priority; at the end, execute what is left. This evaluates the reverse Polish notation implicitly. | `parsing`, "We will set up two stacks: one for numbers, and one for operators and parentheses." |
-| `unary-right-assoc` | skill | Advanced | An operator is unary when it comes first, after another operator or after an opening parenthesis; it is executed on one value and given a priority above every binary operator. A right-associative operator (unary minus and plus, exponentiation) is postponed when the priorities are equal: the operators on the stack are executed only while their priority is strictly higher. | `unary-right`, "You can notice, that before an unary operator, there always is another operator or an opening parenthesis, or nothing at all" |
+| `unary-right-assoc` | skill | Advanced | An operator is unary when it comes first, after another operator or after an opening parenthesis; it is executed on one value and given a priority above every binary operator. A right-associative operator (unary minus and plus, exponentiation) is postponed when the priorities are equal: the operators on the stack are executed only while their priority is strictly higher. | `unary`, "You can notice, that before an unary operator, there always is another operator or an opening parenthesis, or nothing at all" |
 
 Edges as `concepts.json` has them, Hasse-reduced: `rpn-evaluation → stack` (3.1's), `expression-parsing → rpn-evaluation`, `unary-right-assoc → expression-parsing`. Terms: "reverse Polish notation", "RPN" (rpn-evaluation); "two stacks" in the parsing block (expression-parsing); "unary", "right-associative" (unary-right-assoc). The map's statements are kept in substance and reworded to cpa's words (chapter 1 question 27).
 
@@ -68,10 +71,10 @@ No exercise combines unary minus with `^` (erratum 30): calculator has no `^`. `
 
 | id | what | figures | blocks that mark it |
 |---|---|---|---|
-| `st` | the stack of numbers | sim-two-stack-parser | `parsing` ("one for numbers"), `unary-right` |
-| `op` | the stack of operators and parentheses | sim-two-stack-parser | `parsing` ("one for operators and parentheses", "the second stack", "the top of the stack"), `unary-right` |
-| `i` | the position of the character being read | sim-two-stack-parser | `unary-right` (figure only) |
-| `cur_op` | the operator just read | sim-two-stack-parser | `unary-right` ("the current operator") |
+| `st` | the stack of numbers | sim-two-stack-parser | `parsing` ("one for numbers") and the caption |
+| `op` | the stack of operators and parentheses | sim-two-stack-parser | `parsing` ("one for operators and parentheses", "the second stack", "the top of the stack") and the caption |
+| `i` | the position of the character being read | sim-two-stack-parser | the lead |
+| `cur_op` | the operator just read | sim-two-stack-parser | `unary` ("the current operator") |
 
 One group of four. Types drawn: `index` (the strip's index labels, the invariant tint), `cost` (the counter). Maths in the text stays in ink (no variables rows, as chapters 1 and 2).
 

@@ -25,129 +25,120 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
 (function () {
   const PY = J([
     'class Stack:',
-    '    maxsize: int',
-    '    top: int',
-    '    items: list',
+    '    def __init__(self, size):',
+    '        self.items = [None] * size',
+    '        self.maxsize = size',
+    '        self.top = 0',
     '',
-    'def initialize(stk, size):',
-    '    stk.items = [None] * size',
-    '    stk.maxsize = size',
-    '    stk.top = 0',
+    '    def push(self, x):',
+    '        if self.top == self.maxsize:',
+    '            raise OverflowError("overflow")',
+    '        else:',
+    '            self.items[self.top] = x',
+    '            self.top = self.top + 1',
     '',
-    'def push(stk, x):',
-    '    if stk.top == stk.maxsize:',
-    '        raise OverflowError("overflow")',
-    '    else:',
-    '        stk.items[stk.top] = x',
-    '        stk.top = stk.top + 1',
-    '',
-    'def pop(stk):',
-    '    if stk.top == 0:',
-    '        raise IndexError("underflow")',
-    '    else:',
-    '        stk.top = stk.top - 1',
-    '        r = stk.items[stk.top]',
-    '        return r',
+    '    def pop(self):',
+    '        if self.top == 0:',
+    '            raise IndexError("underflow")',
+    '        else:',
+    '            self.top = self.top - 1',
+    '            r = self.items[self.top]',
+    '            return r',
   ]);
   const braces = (o) => J([
     `${o.kw} Stack {`,
     '    int maxsize;',
     '    int top;',
     `    ${o.items};`,
+    '',
+    '    Stack(int size) {',
+    `        ${o.t}items = new int[size];`,
+    `        ${o.t}maxsize = size;`,
+    `        ${o.t}top = 0;`,
+    '    }',
+    '',
+    '    void push(int x) {',
+    `        if (${o.t}top == ${o.t}maxsize) {`,
+    `            throw ${o.over};`,
+    '        } else {',
+    `            ${o.t}items[${o.t}top] = x;`,
+    `            ${o.t}top = ${o.t}top + 1;`,
+    '        }',
+    '    }',
+    '',
+    '    int pop() {',
+    `        if (${o.t}top == 0) {`,
+    `            throw ${o.under};`,
+    '        } else {',
+    `            ${o.t}top = ${o.t}top - 1;`,
+    `            int r = ${o.t}items[${o.t}top];`,
+    '            return r;',
+    '        }',
+    '    }',
     `}${o.semi}`,
-    '',
-    `${o.fn('void', 'initialize', o.stk + ', int size')} {`,
-    `    stk.items = ${o.alloc};`,
-    '    stk.maxsize = size;',
-    '    stk.top = 0;',
-    '}',
-    '',
-    `${o.fn('void', 'push', o.stk + ', int x')} {`,
-    `    if (stk.top ${o.eq} stk.maxsize) {`,
-    `        throw ${o.over};`,
-    '    } else {',
-    '        stk.items[stk.top] = x;',
-    '        stk.top = stk.top + 1;',
-    '    }',
-    '}',
-    '',
-    `${o.fn('int', 'pop', o.stk)} {`,
-    `    if (stk.top ${o.eq} 0) {`,
-    `        throw ${o.under};`,
-    '    } else {',
-    '        stk.top = stk.top - 1;',
-    `        ${o.r} r = stk.items[stk.top];`,
-    '        return r;',
-    '    }',
-    '}',
   ]);
-  const JAVA = braces({ kw: 'class', items: 'int[] items', semi: '', fn: (t, n, a) => `static ${t} ${n}(${a})`, stk: 'Stack stk',
-    alloc: 'new int[size]', eq: '==', over: 'new IllegalStateException("overflow")', under: 'new IllegalStateException("underflow")', r: 'int' });
-  const CPP = braces({ kw: 'struct', items: 'int* items', semi: ';', fn: (t, n, a) => `${t} ${n}(${a})`, stk: 'Stack& stk',
-    alloc: 'new int[size]', eq: '==', over: 'std::overflow_error("overflow")', under: 'std::underflow_error("underflow")', r: 'int' });
+  const JAVA = braces({ kw: 'class', items: 'int[] items', semi: '', t: 'this.',
+    over: 'new IllegalStateException("overflow")', under: 'new IllegalStateException("underflow")' });
+  const CPP = braces({ kw: 'struct', items: 'int* items', semi: ';', t: 'this->',
+    over: 'std::overflow_error("overflow")', under: 'std::underflow_error("underflow")' });
   const JS = J([
     'class Stack {',
-    '    maxsize = 0;',
-    '    top = 0;',
-    '    items = [];',
-    '}',
-    '',
-    'function initialize(stk, size) {',
-    '    stk.items = new Array(size).fill(null);',
-    '    stk.maxsize = size;',
-    '    stk.top = 0;',
-    '}',
-    '',
-    'function push(stk, x) {',
-    '    if (stk.top === stk.maxsize) {',
-    '        throw new Error("overflow");',
-    '    } else {',
-    '        stk.items[stk.top] = x;',
-    '        stk.top = stk.top + 1;',
+    '    constructor(size) {',
+    '        this.items = new Array(size).fill(null);',
+    '        this.maxsize = size;',
+    '        this.top = 0;',
     '    }',
-    '}',
     '',
-    'function pop(stk) {',
-    '    if (stk.top === 0) {',
-    '        throw new Error("underflow");',
-    '    } else {',
-    '        stk.top = stk.top - 1;',
-    '        const r = stk.items[stk.top];',
-    '        return r;',
+    '    push(x) {',
+    '        if (this.top === this.maxsize) {',
+    '            throw new Error("overflow");',
+    '        } else {',
+    '            this.items[this.top] = x;',
+    '            this.top = this.top + 1;',
+    '        }',
+    '    }',
+    '',
+    '    pop() {',
+    '        if (this.top === 0) {',
+    '            throw new Error("underflow");',
+    '        } else {',
+    '            this.top = this.top - 1;',
+    '            const r = this.items[this.top];',
+    '            return r;',
+    '        }',
     '    }',
     '}',
   ]);
-  const MAP = { 1: 1, 2: 2, 3: 3, 4: 4, 6: 7, 7: 8, 8: 9, 9: 10, 11: 13, 12: 14, 13: 15, 14: 16, 15: 17, 16: 18, 18: 22, 19: 23, 20: 24, 21: 25, 22: 26, 23: 27, 24: 28 };
+  const MAPC = { 1: 1, 2: 6, 3: 7, 4: 8, 5: 9, 7: 12, 8: 13, 9: 14, 10: 15, 11: 16, 12: 17, 14: 21, 15: 22, 16: 23, 17: 24, 18: 25, 19: 26, 20: 27 };
+  const MAPJ = { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 7: 8, 8: 9, 9: 10, 10: 11, 11: 12, 12: 13, 14: 17, 15: 18, 16: 19, 17: 20, 18: 21, 19: 22, 20: 23 };
   /* the calls: ['init', size] | ['push', x] | ['pop'] */
   const run = (calls) => F.trace((at) => {
-    let items = [], maxsize = 0, top = 0, touched = 0, calls_ = 0;
+    let items = [], maxsize = 0, top = 0;
     const st = (o) => Object.assign({ top, maxsize, items: items.slice() }, o);
     for (const [op, arg] of calls) {
       if (op === 'init') {
-        at(6, st({ size: arg }));
-        items = Array(arg).fill(null); at(7, st({ size: arg }));
-        maxsize = arg; at(8, st({ size: arg }));
-        top = 0; at(9, st({ size: arg }), ['init']);
+        at(2, st({ size: arg }));
+        items = Array(arg).fill(null); at(3, st({ size: arg }));
+        maxsize = arg; at(4, st({ size: arg }));
+        top = 0; at(5, st({ size: arg }), ['init']);
         continue;
       }
-      calls_ += 1;
       if (op === 'push') {
         const x = arg;
-        at(11, st({ x, 'cells touched': 0 }), ['call', 'push', x]);
-        at(12, st({ x, 'cells touched': 0 }));
-        if (top === maxsize) { at(13, st({ x, 'cells touched': 0 }), ['overflow', x]); continue; }
-        items[top] = x; at(15, st({ x, 'cells touched': 1 }), ['write', top, x]);
-        top += 1; at(16, st({ x, 'cells touched': 1 }), ['pushed', x]);
+        at(7, st({ x, 'cells touched': 0 }), ['call', 'push', x]);
+        at(8, st({ x, 'cells touched': 0 }));
+        if (top === maxsize) { at(9, st({ x, 'cells touched': 0 }), ['overflow', x]); continue; }
+        items[top] = x; at(11, st({ x, 'cells touched': 1 }), ['write', top, x]);
+        top += 1; at(12, st({ x, 'cells touched': 1 }), ['pushed', x]);
       } else {
-        at(18, st({ 'cells touched': 0 }), ['call', 'pop']);
-        at(19, st({ 'cells touched': 0 }));
-        if (top === 0) { at(20, st({ 'cells touched': 0 }), ['underflow']); continue; }
-        top -= 1; at(22, st({ 'cells touched': 0 }));
-        const r = items[top]; at(23, st({ r, 'cells touched': 1 }), ['read', top, r]);
-        items[top] = null; at(24, st({ r, 'cells touched': 1 }), ['popped', r]);
+        at(14, st({ 'cells touched': 0 }), ['call', 'pop']);
+        at(15, st({ 'cells touched': 0 }));
+        if (top === 0) { at(16, st({ 'cells touched': 0 }), ['underflow']); continue; }
+        top -= 1; at(18, st({ 'cells touched': 0 }));
+        const r = items[top]; at(19, st({ r, 'cells touched': 1 }), ['read', top, r]);
+        items[top] = null; at(20, st({ r, 'cells touched': 1 }), ['popped', r]);
       }
     }
-    void touched;
   });
   /* Wikipedia's GIFs: push 1, 2, 3, 4 into four cells, then 5 (overflow); pop to empty, then once more (underflow) */
   const GIF = [['init', 4], ['push', 1], ['push', 2], ['push', 3], ['push', 4], ['push', 5], ['pop'], ['pop'], ['pop'], ['pop'], ['pop']];
@@ -161,17 +152,17 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
   const d = sim('sim-array-stack', 560);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
-    lineMap: { java: MAP, cpp: MAP, javascript: MAP },
+    lineMap: { java: MAPC, cpp: MAPC, javascript: MAPJ },
     blocks: [
-      { id: 'init', lines: [6, 9], label: 'make an empty stack of maxsize cells', touches: ['items', 'maxsize', 'top'] },
-      { id: 'push', lines: [11, 16], label: 'push x' },
-      { id: 'full', lines: [12, 13], label: 'top = maxsize: overflow', touches: ['top', 'maxsize'] },
-      { id: 'write', lines: [14, 16], label: 'write x at top, then move top up', touches: ['items', 'top'] },
-      { id: 'pop', lines: [18, 24], label: 'pop' },
-      { id: 'empty', lines: [19, 20], label: 'top = 0: underflow', touches: ['top'] },
-      { id: 'read', lines: [21, 24], label: 'move top down, then read the cell', touches: ['top', 'r'] },
+      { id: 'init', lines: [2, 5], label: 'make an empty stack of maxsize cells', touches: ['items', 'maxsize', 'top'] },
+      { id: 'push', lines: [7, 12], label: 'push x' },
+      { id: 'full', lines: [8, 9], label: 'top = maxsize: overflow', touches: ['top', 'maxsize'] },
+      { id: 'write', lines: [10, 12], label: 'write x at top, then move top up', touches: ['items', 'top'] },
+      { id: 'pop', lines: [14, 20], label: 'pop' },
+      { id: 'empty', lines: [15, 16], label: 'top = 0: underflow', touches: ['top'] },
+      { id: 'read', lines: [17, 20], label: 'move top down, then read the cell', touches: ['top', 'r'] },
     ],
-    refs: { top: () => F.ref('top'), 'stk.top': () => F.ref('top') },
+    refs: { 'self.top': () => F.ref('top'), top: () => F.ref('top') },
   });
   F.debug(d, {
     code, watch: ['top', 'maxsize', 'x', 'r', 'cells touched'],
@@ -183,16 +174,16 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       const key = C('key'), idx = C('index'), size = C('size'), cost = C('cost'), ct = F.ref('top');
       /* the headline: the call and what it did */
       let head;
-      if (L <= 9) head = max ? `initialize(stk, ${max}): ${max} empty cells, top = 0.` : 'initialize(stk, size): an empty stack.';
-      else if (L === 11) head = `push(stk, ${v.x}): is there a free cell at top = ${top}?`;
-      else if (L === 12) head = `top = ${top}${top === max ? ' = maxsize' : ` < maxsize = ${max}`}: ${top === max ? 'the array is full.' : 'there is room.'}`;
-      else if (L === 13) head = `push(stk, ${v.x}): top = maxsize = ${max}, so overflow. Nothing is written.`;
-      else if (L === 15) head = `items[${top}] ← ${v.x}: the new item goes into the free cell.`;
-      else if (L === 16) head = `top ${top - 1} → ${top}: ${top} item${top === 1 ? '' : 's'} on the stack, and the next free cell is ${top}.`;
-      else if (L === 18) head = `pop(stk): is anything below top = ${top}?`;
-      else if (L === 19) head = top === 0 ? 'top = 0: the stack is empty.' : `top = ${top} > 0: there is an item to pop.`;
-      else if (L === 20) head = 'pop(stk): top = 0, so underflow. Nothing is read.';
-      else if (L === 22) head = `top ${top + 1} → ${top}: the top item is in cell ${top}.`;
+      if (L <= 5) head = max ? `Stack(${max}): ${max} empty cells, top = 0.` : 'Stack(size): an empty stack.';
+      else if (L === 7) head = `push(${v.x}): is there a free cell at top = ${top}?`;
+      else if (L === 8) head = `top = ${top}${top === max ? ' = maxsize' : ` < maxsize = ${max}`}: ${top === max ? 'the array is full.' : 'there is room.'}`;
+      else if (L === 9) head = `push(${v.x}): top = maxsize = ${max}, so overflow. Nothing is written.`;
+      else if (L === 11) head = `items[${top}] ← ${v.x}: the new item goes into the free cell.`;
+      else if (L === 12) head = `top ${top - 1} → ${top}: ${top} item${top === 1 ? '' : 's'} on the stack, and the next free cell is ${top}.`;
+      else if (L === 14) head = `pop(): is anything below top = ${top}?`;
+      else if (L === 15) head = top === 0 ? 'top = 0: the stack is empty.' : `top = ${top} > 0: there is an item to pop.`;
+      else if (L === 16) head = 'pop(): top = 0, so underflow. Nothing is read.';
+      else if (L === 18) head = `top ${top + 1} → ${top}: the top item is in cell ${top}.`;
       else head = `r ← items[${top}] = ${v.r}: the last item pushed is the first popped.`;
       topline(ctx, head);
       /* the array: cells below top are the stack (filled, shaded in the index tint), the rest free (hollow) */
@@ -215,24 +206,24 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       }
       /* the item moving: x slides in from the right on a write; r slides out on a read */
       const bx = S.r + 120;
-      if (L === 11 || L === 12 || L === 13) {
+      if (L === 7 || L === 8 || L === 9) {
         const by = 130;
         rect(ctx, bx - 50, by - 36, 100, 72, alpha(key, 0.08), key, 3);
         text(ctx, String(v.x), bx, by, key, { size: 36, align: 'center', weight: 600 });
         text(ctx, 'x', bx, by - 58, PAL.ink, { size: 28, align: 'center', italic: true });
-        if (L === 13) { line(ctx, bx - 40, by - 30, bx + 40, by + 30, PAL.bad, 5); line(ctx, bx - 40, by + 30, bx + 40, by - 30, PAL.bad, 5); text(ctx, 'overflow', bx, by + 64, PAL.bad, { size: 28, align: 'center', weight: 600 }); }
+        if (L === 9) { line(ctx, bx - 40, by - 30, bx + 40, by + 30, PAL.bad, 5); line(ctx, bx - 40, by + 30, bx + 40, by - 30, PAL.bad, 5); text(ctx, 'overflow', bx, by + 64, PAL.bad, { size: 28, align: 'center', weight: 600 }); }
       }
       if (ev[0] === 'write' && g.k < 1) {
         const tx = S.x(ev[1]), x = ease(bx, tx, g.k), yy = ease(130, y, g.k);
         rect(ctx, x - 50, yy - 36, 100, 72, alpha(key, 0.08), key, 3);
       }
-      if (L === 23 || L === 24) {
-        const k = L === 23 ? g.k : 1, from = S.x(top), x = ease(from, bx, k), yy = ease(y, 130, k);
+      if (L === 19 || L === 20) {
+        const k = L === 19 ? g.k : 1, from = S.x(top), x = ease(from, bx, k), yy = ease(y, 130, k);
         rect(ctx, x - 50, yy - 36, 100, 72, alpha(key, 0.08), key, 3);
         text(ctx, String(v.r), x, yy, key, { size: 36, align: 'center', weight: 600 });
         if (k > 0.6) text(ctx, 'r', x, yy - 58, PAL.ink, { size: 28, align: 'center', italic: true });
       }
-      if (L === 20) text(ctx, 'underflow', 700, 140, PAL.bad, { size: 30, align: 'center', weight: 600 });
+      if (L === 16) text(ctx, 'underflow', 700, 140, PAL.bad, { size: 30, align: 'center', weight: 600 });
       /* the invariant and the cost of the call */
       text(ctx, `the stack is items[0..${top}) · top = ${top} items`, 60, 500, PAL.ink, { size: 26 });
       text(ctx, `cells touched this call ${v['cells touched'] ?? 0} ≤ 1`, 1340, 500, cost, { size: 26, align: 'right' });
@@ -244,72 +235,67 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
 (function () {
   const PY = J([
     'class Frame:',
-    '    data: object',
-    '    next: "Frame | None"',
+    '    data = None',
+    '    next = None',
     '',
     'class Stack:',
-    '    head: Frame | None',
-    '    size: int',
+    '    def __init__(self):',
+    '        self.head = None',
+    '        self.size = 0',
     '',
-    'def initialize(stk):',
-    '    stk.head = None',
-    '    stk.size = 0',
+    '    def push(self, x):',
+    '        newhead = Frame()',
+    '        newhead.data = x',
+    '        newhead.next = self.head',
+    '        self.head = newhead',
+    '        self.size = self.size + 1',
     '',
-    'def push(stk, x):',
-    '    newhead = Frame()',
-    '    newhead.data = x',
-    '    newhead.next = stk.head',
-    '    stk.head = newhead',
-    '    stk.size = stk.size + 1',
-    '',
-    'def pop(stk):',
-    '    if stk.head is None:',
-    '        raise IndexError("underflow")',
-    '    else:',
-    '        r = stk.head.data',
-    '        stk.head = stk.head.next',
-    '        stk.size = stk.size - 1',
-    '        return r',
+    '    def pop(self):',
+    '        if self.head is None:',
+    '            raise IndexError("underflow")',
+    '        else:',
+    '            r = self.head.data',
+    '            self.head = self.head.next',
+    '            self.size = self.size - 1',
+    '            return r',
   ]);
   const braces = (o) => J([
     `${o.kw} Frame {`,
     '    int data;',
-    `    ${o.ptr('Frame')} next;`,
+    `    ${o.ptr} next;`,
     `}${o.semi}`,
     '',
     `${o.kw} Stack {`,
-    `    ${o.ptr('Frame')} head;`,
+    `    ${o.ptr} head;`,
     '    int size;',
-    `}${o.semi}`,
     '',
-    `${o.fn('void', 'initialize', o.stk)} {`,
-    `    stk.head = ${o.nil};`,
-    '    stk.size = 0;',
-    '}',
-    '',
-    `${o.fn('void', 'push', o.stk + ', int x')} {`,
-    `    ${o.ptr('Frame')} newhead = new Frame();`,
-    `    newhead${o.dot}data = x;`,
-    `    newhead${o.dot}next = stk.head;`,
-    '    stk.head = newhead;',
-    '    stk.size = stk.size + 1;',
-    '}',
-    '',
-    `${o.fn('int', 'pop', o.stk)} {`,
-    `    if (stk.head == ${o.nil}) {`,
-    `        throw ${o.under};`,
-    '    } else {',
-    `        int r = stk.head${o.dot}data;`,
-    `        stk.head = stk.head${o.dot}next;`,
-    '        stk.size = stk.size - 1;',
-    '        return r;',
+    '    Stack() {',
+    `        ${o.t}head = ${o.nil};`,
+    `        ${o.t}size = 0;`,
     '    }',
-    '}',
+    '',
+    '    void push(int x) {',
+    `        ${o.ptr} newhead = new Frame();`,
+    `        newhead${o.dot}data = x;`,
+    `        newhead${o.dot}next = ${o.t}head;`,
+    `        ${o.t}head = newhead;`,
+    `        ${o.t}size = ${o.t}size + 1;`,
+    '    }',
+    '',
+    '    int pop() {',
+    `        if (${o.t}head == ${o.nil}) {`,
+    `            throw ${o.under};`,
+    '        } else {',
+    `            int r = ${o.t}head${o.dot}data;`,
+    `            ${o.t}head = ${o.t}head${o.dot}next;`,
+    `            ${o.t}size = ${o.t}size - 1;`,
+    '            return r;',
+    '        }',
+    '    }',
+    `}${o.semi}`,
   ]);
-  const JAVA = braces({ kw: 'class', semi: '', ptr: (t) => t, fn: (t, n, a) => `static ${t} ${n}(${a})`, stk: 'Stack stk', nil: 'null', dot: '.',
-    under: 'new IllegalStateException("underflow")' });
-  const CPP = braces({ kw: 'struct', semi: ';', ptr: (t) => `${t}*`, fn: (t, n, a) => `${t} ${n}(${a})`, stk: 'Stack& stk', nil: 'nullptr', dot: '->',
-    under: 'std::underflow_error("underflow")' });
+  const JAVA = braces({ kw: 'class', semi: '', ptr: 'Frame', t: 'this.', nil: 'null', dot: '.', under: 'new IllegalStateException("underflow")' });
+  const CPP = braces({ kw: 'struct', semi: ';', ptr: 'Frame*', t: 'this->', nil: 'nullptr', dot: '->', under: 'std::underflow_error("underflow")' });
   const JS = J([
     'class Frame {',
     '    data = null;',
@@ -317,58 +303,57 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
     '}',
     '',
     'class Stack {',
-    '    head = null;',
-    '    size = 0;',
-    '}',
+    '    constructor() {',
+    '        this.head = null;',
+    '        this.size = 0;',
+    '    }',
     '',
-    'function initialize(stk) {',
-    '    stk.head = null;',
-    '    stk.size = 0;',
-    '}',
+    '    push(x) {',
+    '        const newhead = new Frame();',
+    '        newhead.data = x;',
+    '        newhead.next = this.head;',
+    '        this.head = newhead;',
+    '        this.size = this.size + 1;',
+    '    }',
     '',
-    'function push(stk, x) {',
-    '    const newhead = new Frame();',
-    '    newhead.data = x;',
-    '    newhead.next = stk.head;',
-    '    stk.head = newhead;',
-    '    stk.size = stk.size + 1;',
-    '}',
-    '',
-    'function pop(stk) {',
-    '    if (stk.head === null) {',
-    '        throw new Error("underflow");',
-    '    } else {',
-    '        const r = stk.head.data;',
-    '        stk.head = stk.head.next;',
-    '        stk.size = stk.size - 1;',
-    '        return r;',
+    '    pop() {',
+    '        if (this.head === null) {',
+    '            throw new Error("underflow");',
+    '        } else {',
+    '            const r = this.head.data;',
+    '            this.head = this.head.next;',
+    '            this.size = this.size - 1;',
+    '            return r;',
+    '        }',
     '    }',
     '}',
   ]);
-  const MAP = { 1: 1, 2: 2, 3: 3, 5: 6, 6: 7, 7: 8, 9: 11, 10: 12, 11: 13, 13: 16, 14: 17, 15: 18, 16: 19, 17: 20, 18: 21,
-    20: 24, 21: 25, 22: 26, 23: 27, 24: 28, 25: 29, 26: 30, 27: 31 };
+  const MAPC = { 1: 1, 2: 2, 3: 3, 5: 6, 6: 10, 7: 11, 8: 12, 10: 15, 11: 16, 12: 17, 13: 18, 14: 19, 15: 20, 17: 23, 18: 24, 19: 25,
+    20: 26, 21: 27, 22: 28, 23: 29, 24: 30 };
+  const MAPJ = { 1: 1, 2: 2, 3: 3, 5: 6, 6: 7, 7: 8, 8: 9, 10: 12, 11: 13, 12: 14, 13: 15, 14: 16, 15: 17, 17: 20, 18: 21, 19: 22,
+    20: 23, 21: 24, 22: 25, 23: 26, 24: 27 };
   /* the state: the frames on the stack, top first (values), and a frame being pushed or popped beside them */
   const run = (calls) => F.trace((at) => {
     let list = [], size = 0;
     const st = (o) => Object.assign({ head: list.length ? list[0] : null, size, frames: list.slice() }, o);
-    at(9, st({}));
-    at(10, st({})); at(11, st({}), ['init']);
+    at(6, st({}));
+    at(7, st({})); at(8, st({}), ['init']);
     for (const [op, x] of calls) {
       if (op === 'push') {
-        at(13, st({ x, 'links written': 0 }), ['call', 'push', x]);
-        at(14, st({ x, newhead: '(new)', 'links written': 0 }), ['new']);
-        at(15, st({ x, newhead: x, 'links written': 0 }), ['new']);
-        at(16, st({ x, newhead: x, 'links written': 1 }), ['link']);
-        list = [x].concat(list); at(17, st({ x, newhead: x, 'links written': 2 }), ['head']);
-        size += 1; at(18, st({ x, newhead: x, 'links written': 2 }), ['pushed']);
+        at(10, st({ x, 'links written': 0 }), ['call', 'push', x]);
+        at(11, st({ x, newhead: '(new)', 'links written': 0 }), ['new']);
+        at(12, st({ x, newhead: x, 'links written': 0 }), ['new']);
+        at(13, st({ x, newhead: x, 'links written': 1 }), ['link']);
+        list = [x].concat(list); at(14, st({ x, newhead: x, 'links written': 2 }), ['head']);
+        size += 1; at(15, st({ x, newhead: x, 'links written': 2 }), ['pushed']);
       } else {
-        at(20, st({ 'links written': 0 }), ['call', 'pop']);
-        at(21, st({ 'links written': 0 }));
-        if (!list.length) { at(22, st({ 'links written': 0 }), ['underflow']); continue; }
-        const r = list[0]; at(24, st({ r, 'links written': 0 }), ['take']);
-        list = list.slice(1); at(25, st({ r, 'links written': 1 }), ['moved', r]);
-        size -= 1; at(26, st({ r, 'links written': 1 }), ['moved', r]);
-        at(27, st({ r, 'links written': 1 }), ['popped', r]);
+        at(17, st({ 'links written': 0 }), ['call', 'pop']);
+        at(18, st({ 'links written': 0 }));
+        if (!list.length) { at(19, st({ 'links written': 0 }), ['underflow']); continue; }
+        const r = list[0]; at(21, st({ r, 'links written': 0 }), ['take']);
+        list = list.slice(1); at(22, st({ r, 'links written': 1 }), ['moved', r]);
+        size -= 1; at(23, st({ r, 'links written': 1 }), ['moved', r]);
+        at(24, st({ r, 'links written': 1 }), ['popped', r]);
       }
     }
   });
@@ -377,21 +362,21 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
     { value: 'mixed', label: 'pushes and pops mixed', calls: [['push', 5], ['push', 8], ['pop'], ['push', 2], ['push', 7], ['pop']] },
     { value: 'empty', label: 'pop an empty stack', calls: [['pop'], ['push', 4], ['pop'], ['pop']] },
   ];
-  const d = sim('sim-linked-stack', 520);
+  const d = sim('sim-linked-stack', 460);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
-    lineMap: { java: MAP, cpp: MAP, javascript: MAP },
+    lineMap: { java: MAPC, cpp: MAPC, javascript: MAPJ },
     blocks: [
-      { id: 'init', lines: [9, 11], label: 'an empty stack: head is nil', touches: ['head', 'size'] },
-      { id: 'push', lines: [13, 18], label: 'push x at the head' },
-      { id: 'make', lines: [14, 15], label: 'a new frame holding x', touches: ['newhead'] },
-      { id: 'link', lines: [16, 16], label: 'the new frame points at the old head', touches: ['newhead', 'head'] },
-      { id: 'set', lines: [17, 18], label: 'the new frame becomes the head', touches: ['head', 'size'] },
-      { id: 'pop', lines: [20, 27], label: 'pop the head' },
-      { id: 'empty', lines: [21, 22], label: 'head is nil: underflow', touches: ['head'] },
-      { id: 'take', lines: [23, 27], label: 'take the head’s data, then move head one link on', touches: ['head', 'r', 'size'] },
+      { id: 'init', lines: [6, 8], label: 'an empty stack: head is nil', touches: ['head', 'size'] },
+      { id: 'push', lines: [10, 15], label: 'push x at the head' },
+      { id: 'make', lines: [11, 12], label: 'a new frame holding x', touches: ['newhead'] },
+      { id: 'link', lines: [13, 13], label: 'the new frame points at the old head', touches: ['newhead', 'head'] },
+      { id: 'set', lines: [14, 15], label: 'the new frame becomes the head', touches: ['head', 'size'] },
+      { id: 'pop', lines: [17, 24], label: 'pop the head' },
+      { id: 'empty', lines: [18, 19], label: 'head is nil: underflow', touches: ['head'] },
+      { id: 'take', lines: [20, 24], label: 'take the head’s data, then move head one link on', touches: ['head', 'r', 'size'] },
     ],
-    refs: { newhead: () => F.ref('newhead'), head: () => F.ref('head'), 'stk.head': () => F.ref('head') },
+    refs: { newhead: () => F.ref('newhead'), 'self.head': () => F.ref('head'), head: () => F.ref('head') },
   });
   F.debug(d, {
     code, watch: ['x', 'newhead', 'head', 'size', 'r', 'links written'],
@@ -402,23 +387,23 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       const key = C('key'), cost = C('cost'), ch = F.ref('head'), cn = F.ref('newhead');
       const frames = v.frames || [];
       let head;
-      if (L <= 11) head = 'initialize(stk): head is nil and size is 0.';
-      else if (L === 13) head = `push(stk, ${v.x}): the new item goes in front of the head.`;
-      else if (L === 14 || L === 15) head = `newhead is a new frame holding ${v.x}, linked to nothing yet.`;
-      else if (L === 16) head = `newhead.next ← head: the new frame points at ${frames.length ? `the frame holding ${frames[0]}` : 'nil'}.`;
-      else if (L === 17) head = `head ← newhead: the frame holding ${v.x} is the top now.`;
-      else if (L === 18) head = `size ${v.size - 1} → ${v.size}. Two links written, however long the list.`;
-      else if (L === 20) head = 'pop(stk): is there a frame at the head?';
-      else if (L === 21) head = frames.length ? `head holds ${frames[0]}: there is a frame to pop.` : 'head is nil: the stack is empty.';
-      else if (L === 22) head = 'pop(stk): head is nil, so underflow.';
-      else if (L === 24) head = `r ← head.data = ${v.r}: the last item pushed.`;
-      else if (L === 25 || L === 26) head = `head ← head.next: the frame holding ${v.r} is off the stack${L === 26 ? `, size ${v.size}` : ''}.`;
+      if (L <= 8) head = 'Stack(): head is nil and size is 0.';
+      else if (L === 10) head = `push(${v.x}): the new item goes in front of the head.`;
+      else if (L === 11 || L === 12) head = `newhead is a new frame holding ${v.x}, linked to nothing yet.`;
+      else if (L === 13) head = `newhead.next ← head: the new frame points at ${frames.length ? `the frame holding ${frames[0]}` : 'nil'}.`;
+      else if (L === 14) head = `head ← newhead: the frame holding ${v.x} is the top now.`;
+      else if (L === 15) head = `size ${v.size - 1} → ${v.size}. Two links written, however long the list.`;
+      else if (L === 17) head = 'pop(): is there a frame at the head?';
+      else if (L === 18) head = frames.length ? `head holds ${frames[0]}: there is a frame to pop.` : 'head is nil: the stack is empty.';
+      else if (L === 19) head = 'pop(): head is nil, so underflow.';
+      else if (L === 21) head = `r ← head.data = ${v.r}: the last item pushed.`;
+      else if (L === 22 || L === 23) head = `head ← head.next: the frame holding ${v.r} is off the stack${L === 23 ? `, size ${v.size}` : ''}.`;
       else head = `pop returns ${v.r}.`;
       topline(ctx, head);
       /* frames in a row, the head first; a frame being pushed stands raised on the left until head takes it */
-      const fw = 170, fh = 76, gap = 70, y = 300, x0 = 260;
-      const pushing = L >= 14 && L <= 16, popping = L >= 24 && L <= 27 && ev[0] !== 'underflow';
-      const row = popping && L === 24 ? frames : frames;
+      const fw = 170, fh = 76, gap = 70, y = 250, x0 = 300;
+      const pushing = L >= 11 && L <= 13, popping = L >= 21 && L <= 24 && ev[0] !== 'underflow';
+      const row = popping && L === 21 ? frames : frames;
       const fx = (i) => x0 + i * (fw + gap);
       const drawFrame = (x, yy, val, faded, nextTo) => {
         const ink = faded ? alpha(PAL.ink, 0.3) : PAL.ink, kc = faded ? alpha(key, 0.35) : key;
@@ -429,28 +414,28 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
         else if (nextTo) arrow(ctx, x + fw * 0.8, yy, nextTo[0], nextTo[1], ink, 3);
       };
       /* the popped frame (after head has moved on) fades to ink above the row */
-      if (popping && L >= 25) {
-        const k = L === 25 ? g.k : 1;
+      if (popping && L >= 22) {
+        const k = L === 22 ? g.k : 1;
         drawFrame(ease(fx(0) - fw - gap, fx(0) - fw - gap, k), ease(y, y - 130, k), v.r, true, row.length ? [fx(0), y] : 'nil');
       }
       row.forEach((val, i) => drawFrame(fx(i), y, val, false, i + 1 < row.length ? [fx(i + 1), y] : 'nil'));
       if (pushing) {
         const nx = fx(0) - fw - gap, ny = y - 140;
         rect(ctx, nx - 6, ny - fh / 2 - 6, fw + 12, fh + 12, null, cn, 3, [8, 6]);
-        drawFrame(nx, ny, L >= 15 ? v.x : null, false, L >= 16 ? (row.length ? [fx(0) + 10, y - fh / 2] : 'nil') : null);
+        drawFrame(nx, ny, L >= 12 ? v.x : null, false, L >= 13 ? (row.length ? [fx(0) + 10, y - fh / 2] : 'nil') : null);
         text(ctx, 'newhead', nx + fw / 2, ny - fh / 2 - 30, cn, { size: 30, weight: 600, align: 'center' });
       }
       /* head: a pointer box left of the row, its arrow to the first frame or to nil */
-      const hx = 70, hy = y + 130;
+      const hx = 90, hy = y + 120;
       rect(ctx, hx, hy - 30, 120, 60, null, ch, 3);
       text(ctx, 'head', hx + 60, hy + 58, ch, { size: 30, weight: 600, align: 'center' });
       if (row.length) {
         const tx = fx(0) + fw * 0.3;
         line(ctx, hx + 60, hy, tx, hy, ch, 4); arrow(ctx, tx, hy, tx, y + fh / 2, ch, 4);
       } else text(ctx, 'nil', hx + 60, hy, PAL.muted, { size: 26, align: 'center' });
-      if (L === 22) text(ctx, 'underflow', 700, 170, PAL.bad, { size: 30, align: 'center', weight: 600 });
-      text(ctx, `size = ${v.size}`, 1340, 470, C('size'), { size: 26, align: 'right' });
-      text(ctx, `links written this call ${v['links written'] ?? 0} ≤ 2`, 1340, 505, cost, { size: 26, align: 'right' });
+      if (L === 19) text(ctx, 'underflow', 700, 120, PAL.bad, { size: 30, align: 'center', weight: 600 });
+      text(ctx, `size = ${v.size}`, 1340, 400, C('size'), { size: 26, align: 'right' });
+      text(ctx, `links written this call ${v['links written'] ?? 0} ≤ 2`, 1340, 435, cost, { size: 26, align: 'right' });
     },
   });
 })();
@@ -616,7 +601,7 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       else head = `'${v.c}' at ${at}: ${'([{'.includes(v.c) ? 'an opening bracket' : 'a closing bracket'}.`;
       topline(ctx, head);
       /* the string: characters read filled, the rest hollow; the one being read marked */
-      const cell = 92, l = 120, y = 150, h = 74, t = y - h / 2;
+      const cell = 110, l = 140, y = 150, h = 80, t = y - h / 2;
       const S = { l, r: l + n * cell, t, b: t + h, cell, n, base: 0, y, x: (i) => l + (i + 0.5) * cell };
       if (read) F.ds.region(ctx, S, { from: 0, to: read - 1, color: idx, alpha: 0.14 });
       for (let i = 0; i < n; i += 1) {
@@ -638,7 +623,7 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       }
       line(ctx, gx0, Y(0), gx1 + 30, Y(0), PAL.muted, 2, [10, 10]);
       text(ctx, '0', gx0 - 14, Y(0), PAL.muted, { size: 26, align: 'right' });
-      text(ctx, isStack ? 'stack height' : 'depth', gx0 - 14, Y(3), PAL.ink, { size: 26, align: 'right' });
+      text(ctx, isStack ? 'stack height' : 'depth', gx0 - 14, Y(2), PAL.ink, { size: 26, align: 'right' });
       for (let k = 1; k < path.length; k += 1) {
         const xa = l + (k - 1) * cell, xb = l + k * cell, a = path[k - 1], b = path[k];
         const kk = k === path.length - 1 && (ev[0] === 'up' || ev[0] === 'down') ? g.k : 1;

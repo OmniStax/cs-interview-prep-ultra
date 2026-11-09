@@ -202,7 +202,7 @@ const num = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphe
     });
   });
 
-  const d = sim('sim-arrayqueue', 930);
+  const d = sim('sim-arrayqueue', 970);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: { javascript: AI }, lineMap: MAP,
     blocks: [
@@ -258,14 +258,15 @@ const num = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphe
       if (!op) head = `length(a) = ${len} holds n = ${v.n} element${v.n === 1 ? '' : 's'}, the oldest in a[j] = a[${v.j}].`;
       else if (ln === L.defResize || ln === L.alloc) head = op[0] === 'add'
         ? `a is full, so ${callName(op)} first calls resize(): ${v.n} elements go into an array of ${Math.max(1, 2 * v.n)}.`
-        : `length(a) = ${len} ≥ 3n = ${3 * v.n}, so remove() calls resize(): ${v.n} element${v.n === 1 ? '' : 's'} go into an array of ${Math.max(1, 2 * v.n)}.`;
+        : `length(a) = ${len} ≥ 3n = ${3 * v.n}, so remove() calls resize(): ${v.n} element${v.n === 1 ? ' goes' : 's go'} into an array of ${Math.max(1, 2 * v.n)}.`;
       else if (ln === L.loop || ln === L.copy) head = v.mv
         ? `resize() copies a[(j + k) mod length(a)] = a[(${v.j} + ${v.mv[1]}) mod ${len}] = a[${v.mv[0]}] into b[${v.mv[1]}].`
         : `resize() copies a[(j + k) mod length(a)] into b[k] for k = 0, …, ${v.n - 1}.`;
       else if (ln === L.setA) head = `b, of length ${len}, becomes a: the ring is unrolled, its oldest element in cell 0.`;
       else if (ln === L.setJ) head = `j = 0: the ${v.n} element${v.n === 1 ? '' : 's'} now sit in a[0], …, a[${v.n - 1}].`;
       else if (op[0] === 'add') {
-        if (v.w === null || v.w === undefined) head = `${callName(op)}: is a full? n + 1 = ${v.n + 1} > length(a) = ${len} is ${v.n + 1 > len ? 'true' : 'false'}.`;
+        if ((v.w === null || v.w === undefined) && v.stars.includes(v.c)) head = `a was full, so ${callName(op)} resized it first: now n + 1 = ${v.n + 1} ≤ length(a) = ${len}.`;
+        else if (v.w === null || v.w === undefined) head = `${callName(op)}: is a full? n + 1 = ${v.n + 1} > length(a) = ${len} is ${v.n + 1 > len ? 'true' : 'false'}.`;
         else {
           const jn = v.wrote ? v.wrote : [v.j, v.n - 1];
           const raw = jn[0] + jn[1];
@@ -302,7 +303,7 @@ const num = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphe
 
       /* ---------------- the ring (left) and the array (right). While resize() copies, the ring is a's and b fills below
          the array; on b becomes a, the old ring and array fade as the new ones arrive */
-      const RY = top + 250, AY = top + 130, BY = AY + 190, CH = 62;
+      const RY = top + 250, AY = top + 130, BY = AY + 236, CH = 62;
       const layout = (cells, y) => { const cw = Math.min(66, 640 / cells), x0 = 1035 - (cw * cells) / 2; return { cw, x0, x1: x0 + cw * cells, y, x: (q) => x0 + q * cw + cw / 2 }; };
       const swapK = ln === L.setA ? (g.prev.line === L.setA ? 1 : ke) : 1;
       const prevLen = (ln === L.setA && pv && pv['len(a)']) ? pv['len(a)'] : len;
@@ -394,7 +395,7 @@ const num = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphe
       }
 
       /* ---------------- the counts: the invariant, the next write, then the copies against their bound */
-      const Y0 = top + 520;
+      const Y0 = top + 566;
       const seg = (parts, y) => {
         const ws = parts.map(([s, , o]) => measure(ctx, s, { size: 28, weight: (o && o.weight) || 400 }));
         let x = 700 - ws.reduce((s, w2) => s + w2, 0) / 2;
