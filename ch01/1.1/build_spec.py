@@ -144,7 +144,7 @@ HTML = {
     'bottles-code': code_set(BOTTLES),
     'sim-lattice': sim(
         'sim-lattice',
-        'The lattice for <span data-ref="lat-k">column</span> after column: each step adds the products '
+        'The lattice for <span data-ref="lat-k">column</span> after column: each column adds the products '
         '<em>X</em>[<span data-ref="lat-i"><em>i</em></span>] · <em>Y</em>[<span data-ref="lat-j"><em>j</em></span>] '
         'whose positions sum to <span data-ref="lat-k"><em>k</em></span>, writes the low digit of '
         '<span data-ref="lat-hold"><em>hold</em></span> as <em>Z</em>[<span data-ref="lat-k"><em>k</em></span>] '
@@ -172,21 +172,21 @@ HTML = {
         'sim-compass',
         'Euclid’s construction, one primitive at a time: from <span data-ref="C">C</span> and '
         '<span data-ref="D">D</span> it draws only lines and circles, and the point <span data-ref="Z">Z</span> '
-        'lands at the distance |AC| · |AD| / |AB| from A along the line AC. Drag the two lengths: the triangles ACE '
-        'and AZF stay similar, which is why it works, and the count of primitives never changes.',
+        'lands at the distance |AC| · |AD| / |AB| from A along the line AC. Whatever the two lengths, the triangles '
+        'ACE and AZF are similar, which is why it works, and the construction takes the same number of primitives.',
         '/media/ch01/jeffe-0-4-compass.png', '{{caption-text 0.4}}'),
     'sim-apportion': sim(
         'sim-apportion',
         'Huntington–Hill on the 2020 census: every state starts with one seat, and each later seat goes to the '
         'state <span data-ref="s"><em>s</em></span> at the head of the priority queue, whose priority is then '
-        'recomputed from its new number of seats. The queue is drawn as one sorted column, as the Census Bureau '
+        'recomputed from its new number of seats. The queue is one sorted column, as the Census Bureau '
         'keeps it. On the 50 states with 435 seats the run gives every state the seats the House has had since 2023.',
         '/media/ch01/jeffe-0-5-apportion.png', '{{caption-text 0.5}}'),
     'sim-scan-cost': sim(
         'sim-scan-cost',
         'How long a structure that inspects every item takes: <span data-type="size">the number of items</span> '
-        'times <span data-type="size">the number of operations</span>, divided by the speed of the machine. Push '
-        'either count to the billions and the clock runs to years; let each operation inspect about two items and it '
+        'times <span data-type="size">the number of operations</span>, divided by the speed of the machine. With '
+        'either count in the billions the time runs to years; when each operation inspects only about two items, it '
         'drops below a second.'),
 }
 

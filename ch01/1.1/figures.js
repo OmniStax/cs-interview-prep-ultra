@@ -283,7 +283,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
     'function multiplyOrDivide(A, B, C, D)', { line: 'const', point: 'const' });
   const MAP = lines(5, { 6: 7, 7: 8, 8: 9, 9: 10, 10: 11, 11: 12, 12: 13, 13: 14 });
 
-  /* the geometry: A at the origin, C straight up at |AC|, B and D on rays drawn as Figure 0.4 draws them, |AB| = 1 */
+  /* the geometry: A at the origin, C straight up at |AC|, B and D on rays drawn as Figure 0.4 draws them, |AB| = 1; drawn turned, below */
   const P = (x, y) => [x, y];
   const add = (p, q) => [p[0] + q[0], p[1] + q[1]], sub = (p, q) => [p[0] - q[0], p[1] - q[1]], mul = (p, s) => [p[0] * s, p[1] * s];
   const len = (p) => Math.hypot(p[0], p[1]), unit = (p) => mul(p, 1 / len(p)), perp = (p) => [-p[1], p[0]];
@@ -328,7 +328,41 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
       const Z = meet(Fp, ga, A, ACd); shapes.push({ kind: 'pt', p: Z, name: 'Z', who: 'Z' }); ops += 1; snap(13, { done: true });
     });
   };
-  const d = sim('sim-compass', 1000);
+  /* The scene turned a quarter clockwise from Figure 0.4, so that the line AC, along which Z travels out to
+     |AC| · |AD| = 5, runs across the wide canvas and α down it. One scale for every input (fitScale): the
+     extents are every point any slider setting and either side reaches; lines run to the box's edge and the
+     circles may leave it. */
+  const AC_R = [1, 2.5], AD_R = [0.6, 2];
+  const turn = (p) => [p[1], p[0]];             /* world (x, y) → page (right, down), in units of |AB| */
+  const ext = {};
+  ['right', 'left'].forEach((sd) => {
+    const e = { x0: Infinity, x1: -Infinity, y0: Infinity, y1: -Infinity };
+    const take = (p) => { const q = turn(p); e.x0 = Math.min(e.x0, q[0]); e.x1 = Math.max(e.x1, q[0]); e.y0 = Math.min(e.y0, q[1]); e.y1 = Math.max(e.y1, q[1]); };
+    const span = (r, k) => Array.from({ length: k + 1 }, (_, i) => r[0] + ((r[1] - r[0]) * i) / k);
+    span(AC_R, 6).forEach((ac) => span(AD_R, 7).forEach((ad) => {
+      take([0, 0]); take([Math.cos(107 * RAD), Math.sin(107 * RAD)]); take([0, ac]); take([ad * Math.cos(125 * RAD), ad * Math.sin(125 * RAD)]);
+      run(ac, ad, sd).forEach((f) => (f.vars.shapes || []).forEach((sh) => { if (sh.kind === 'pt') take(sh.p); }));
+    }));
+    ext[sd] = e;
+  });
+  /* one scale for both sides, the smaller fit; each side centred in the box on its own extents */
+  const TOP = 92, BOT = 70, PADX = 70, PADY = 56;
+  const EW = Math.max(ext.right.x1 - ext.right.x0, ext.left.x1 - ext.left.x0), EH = Math.max(ext.right.y1 - ext.right.y0, ext.left.y1 - ext.left.y0);
+  const H = Math.round(Math.min(1000, TOP + BOT + 2 * PADY + (EH * (1400 - 2 * PADX)) / EW));
+  const box = { x0: 40, x1: 1360, y0: TOP, y1: H - BOT };
+  const u = F.fitScale({ l: PADX, r: 1400 - PADX, t: TOP + PADY, b: H - BOT - PADY }, { w: EW, h: EH });
+  const ox = (sd) => 700 - ((ext[sd].x0 + ext[sd].x1) / 2) * u, oy = (sd) => (TOP + PADY + H - BOT - PADY) / 2 - ((ext[sd].y0 + ext[sd].y1) / 2) * u;
+  const X = (p) => ox(side) + turn(p)[0] * u, Y = (p) => oy(side) + turn(p)[1] * u;
+  /* a line through p along dd, cut to the box, in page coordinates */
+  const clipLine = (p, dd) => {
+    const P0 = [X(p), Y(p)], D = turn(dd), ts = [];
+    const try2 = (t) => { const q = [P0[0] + D[0] * t, P0[1] + D[1] * t]; if (q[0] >= box.x0 - 0.5 && q[0] <= box.x1 + 0.5 && q[1] >= box.y0 - 0.5 && q[1] <= box.y1 + 0.5) ts.push(t); };
+    [box.x0, box.x1].forEach((x) => { if (D[0]) try2((x - P0[0]) / D[0]); });
+    [box.y0, box.y1].forEach((y) => { if (D[1]) try2((y - P0[1]) / D[1]); });
+    ts.sort((a, b) => a - b); return ts.length >= 2 ? [[P0[0] + D[0] * ts[0], P0[1] + D[1] * ts[0]], [P0[0] + D[0] * ts[ts.length - 1], P0[1] + D[1] * ts[ts.length - 1]]] : null;
+  };
+  let AC = 2.0, AD = 1.75, side = 'right', total = 0;
+  const d = sim('sim-compass', H);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
     lineMap: { java: MAP, cpp: MAP, javascript: MAP },
@@ -347,22 +381,12 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
     ],
     refs: { python: { C: () => F.ref('C'), D: () => F.ref('D') }, java: { C: () => F.ref('C'), D: () => F.ref('D') }, cpp: { C: () => F.ref('C'), D: () => F.ref('D') }, javascript: { C: () => F.ref('C'), D: () => F.ref('D') } },
   });
-  let AC = 2.0, AD = 1.75, side = 'right', total = 0;
   const traced = () => { const fr = run(AC, AD, side); total = fr[fr.length - 1].vars.ops; return fr; };
   const dbg = F.debug(d, {
     code, watch: false, trace: traced(),
     draw: (g) => {
       const ctx = g.ctx; if (!ctx) return;
       const v = g.frame.vars, shapes = v.shapes || [];
-      const u = 120, ox = 620, oy = 760;                 /* one unit |AB| is 120 logical units; A sits at (ox, oy) */
-      const X = (p) => ox + p[0] * u, Y = (p) => oy - p[1] * u;
-      const box = { x0: 40, x1: 1360, y0: 110, y1: 980 };
-      const clipLine = (p, dd) => {
-        const ts = []; const add2 = (t) => { const q = [p[0] + dd[0] * t, p[1] + dd[1] * t]; if (X(q) >= box.x0 - 0.5 && X(q) <= box.x1 + 0.5 && Y(q) >= box.y0 - 0.5 && Y(q) <= box.y1 + 0.5) ts.push(t); };
-        [box.x0, box.x1].forEach((x) => { if (dd[0]) add2((x - ox) / u / dd[0] - p[0] / dd[0]); });
-        [box.y0, box.y1].forEach((y) => { if (dd[1]) add2((oy - y) / u / dd[1] - p[1] / dd[1]); });
-        ts.sort((a, b) => a - b); return ts.length >= 2 ? [[p[0] + dd[0] * ts[0], p[1] + dd[1] * ts[0]], [p[0] + dd[0] * ts[ts.length - 1], p[1] + dd[1] * ts[ts.length - 1]]] : null;
-      };
       const cC = F.ref('C'), cD = F.ref('D'), cZ = F.ref('Z');
       const Bp = [Math.cos(107 * RAD), Math.sin(107 * RAD)], Cp = [0, AC], Dp = [AD * Math.cos(125 * RAD), AD * Math.sin(125 * RAD)];
       const AZ = AC * AD;
@@ -374,35 +398,37 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
         ctx.fillStyle = alpha(PAL.ink, 0.1); ctx.beginPath(); ctx.moveTo(X([0, 0]), Y([0, 0])); ctx.lineTo(X(Cp), Y(Cp)); ctx.lineTo(X(E.p), Y(E.p)); ctx.closePath(); ctx.fill(); ctx.restore();
       }
       const latest = g.block ? g.block.id : '';
+      ctx.save(); ctx.beginPath(); ctx.rect(box.x0, box.y0, box.x1 - box.x0, box.y1 - box.y0); ctx.clip();
       shapes.forEach((s) => {
         const tmp = !!s.tmp, col = tmp ? alpha(PAL.ink, 0.45) : PAL.ink, w = tmp ? 2 : 3;
-        if (s.kind === 'line') { const seg = clipLine(s.p, s.d); if (seg) line(ctx, X(seg[0]), Y(seg[0]), X(seg[1]), Y(seg[1]), col, w); }
+        if (s.kind === 'line') { const seg = clipLine(s.p, s.d); if (seg) line(ctx, seg[0][0], seg[0][1], seg[1][0], seg[1][1], col, w); }
         if (s.kind === 'seg') line(ctx, X(s.p), Y(s.p), X(s.q), Y(s.q), alpha(PAL.ink, 0.6), 2, [8, 8]);
         if (s.kind === 'circle') { ctx.save(); ctx.strokeStyle = col; ctx.lineWidth = w; if (tmp) ctx.setLineDash([6, 8]); ctx.beginPath(); ctx.arc(X(s.c), Y(s.c), s.r * u, 0, 2 * Math.PI); ctx.stroke(); ctx.restore(); }
       });
+      ctx.restore();
       /* the inputs: A, the segments to B, C and D, as the book draws them */
       line(ctx, X([0, 0]), Y([0, 0]), X(Bp), Y(Bp), PAL.ink, 6);
       line(ctx, X([0, 0]), Y([0, 0]), X(Cp), Y(Cp), cC, 6);
       line(ctx, X([0, 0]), Y([0, 0]), X(Dp), Y(Dp), cD, 6);
       dot(ctx, X([0, 0]), Y([0, 0]), PAL.ink, true, 10); text(ctx, 'A', X([0, 0]) + 22, Y([0, 0]) + 30, PAL.ink, { size: 32 });
-      dot(ctx, X(Bp), Y(Bp), PAL.ink, true, 10); text(ctx, 'B', X(Bp) - 28, Y(Bp) - 22, PAL.ink, { size: 32 });
+      dot(ctx, X(Bp), Y(Bp), PAL.ink, true, 10); text(ctx, 'B', X(Bp) + 24, Y(Bp) + 4, PAL.ink, { size: 32 });
       dot(ctx, X(Cp), Y(Cp), cC, true, 10); text(ctx, 'C', X(Cp) + 22, Y(Cp) - 22, cC, { size: 32, weight: 600 });
-      dot(ctx, X(Dp), Y(Dp), cD, true, 10); text(ctx, 'D', X(Dp) - 30, Y(Dp) - 22, cD, { size: 32, weight: 600 });
+      dot(ctx, X(Dp), Y(Dp), cD, true, 10); text(ctx, 'D', X(Dp) + 22, Y(Dp) - 28, cD, { size: 32, weight: 600 });
       shapes.forEach((s) => {
         if (s.kind === 'pt') {
           const isZ = s.name === 'Z', col = isZ ? cZ : s.tmp ? alpha(PAL.ink, 0.6) : PAL.ink;
           dot(ctx, X(s.p), Y(s.p), col, !s.tmp || isZ, isZ ? 12 : 9);
           if (!s.tmp || latest.startsWith('ra')) text(ctx, s.name, X(s.p) + 20, Y(s.p) + (s.tmp ? -24 : 30), col, { size: s.tmp ? 26 : 32, weight: isZ ? 600 : 400, italic: s.tmp });
         }
-        if (s.kind === 'line' && s.name) { const seg = clipLine(s.p, s.d); if (seg) { const q = seg[1][1] > seg[0][1] || (seg[1][1] === seg[0][1] && seg[1][0] > seg[0][0]) ? seg[1] : seg[0]; text(ctx, s.name, Math.min(box.x1 - 20, Math.max(box.x0 + 20, X(q))), Math.min(box.y1 - 20, Math.max(box.y0 + 24, Y(q) + 24)), PAL.ink, { size: 32, italic: true }); } }
+        if (s.kind === 'line' && s.name) { const seg = clipLine(s.p, s.d); if (seg) { const q = seg[1][1] > seg[0][1] || (seg[1][1] === seg[0][1] && seg[1][0] > seg[0][0]) ? seg[1] : seg[0]; text(ctx, s.name, Math.min(box.x1 - 24, Math.max(box.x0 + 24, q[0] + 24)), Math.min(box.y1 - 20, Math.max(box.y0 + 24, q[1] - 6)), PAL.ink, { size: 32, italic: true }); } }
       });
-      text(ctx, `primitive operations ${v.ops ?? 0} of ${total}, the same for every input: O(1)`, 700, 958, C('cost'), { size: 26, align: 'center', bg: PAL.panel });
+      text(ctx, `primitive operations ${v.ops ?? 0} of ${total}, the same for every input: O(1)`, 700, H - 34, C('cost'), { size: 26, align: 'center', bg: PAL.panel });
     },
   });
   const rebuild = () => dbg.set(traced());
-  const sAC = ctl(d.controls, { label: '|AC|', cls: '', key: 'ac', min: 1, max: 2.5, step: 0.05, value: AC, unit: '', dec: 2, onInput: () => { AC = sAC.v; rebuild(); } });
-  const sAD = ctl(d.controls, { label: '|AD|', cls: '', key: 'ad', min: 0.6, max: 2, step: 0.05, value: AD, unit: '', dec: 2, onInput: () => { AD = sAD.v; rebuild(); } });
-  choice(d.controls, { label: '\\text{E and F}', key: 'side', value: side, options: [{ value: 'right', label: 'right of A' }, { value: 'left', label: 'left of A' }], onInput: (val) => { side = val; rebuild(); } });
+  const sAC = ctl(d.controls, { label: '|AC|', cls: '', key: 'ac', min: AC_R[0], max: AC_R[1], step: 0.05, value: AC, unit: '', dec: 2, onInput: () => { AC = sAC.v; rebuild(); } });
+  const sAD = ctl(d.controls, { label: '|AD|', cls: '', key: 'ad', min: AD_R[0], max: AD_R[1], step: 0.05, value: AD, unit: '', dec: 2, onInput: () => { AD = sAD.v; rebuild(); } });
+  choice(d.controls, { label: '\\text{E and F}', key: 'side', value: side, options: [{ value: 'right', label: 'below A' }, { value: 'left', label: 'above A' }], onInput: (val) => { side = val; rebuild(); } });
 })();
 
 /* ================================================================ sim-apportion: ApportionCongress */
@@ -509,7 +535,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
   const run = (states, R) => F.trace((at) => {
     const Pop = states.map((c) => c[1]), n = Pop.length, Rep = new Array(n).fill(0), PQ = [];
     const insert = (s, p) => { PQ.push([s, p]); PQ.sort((a, b) => b[1] - a[1]); };
-    const pq = () => PQ.slice(0, 12).map(([s, p]) => [s, Math.round(p)]);
+    const pq = () => PQ.map(([s, p]) => [s, Math.round(p)]);
     at(2, { PQ: [] }); at(3, { n, PQ: [] }); at(4, { n, Rep, PQ: [] });
     for (let s = 0; s < n; s += 1) {
       at(5, { s, Rep, PQ: pq() });
@@ -525,7 +551,10 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
     }
     at(13, { Rep, PQ: pq() });
   });
-  const d = sim('sim-apportion', 1000);
+  /* one height for both inputs: the bars run the full height on the left, the queue's head is at the top on the
+     right, and the House shows as many rows of its queue as the bars' height holds */
+  const AH = 760, ATOP = 92;
+  const d = sim('sim-apportion', AH);
   const code = F.code(d, {
     src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
     lineMap: { java: MAP, cpp: MAP, javascript: MAP },
@@ -549,7 +578,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
       const seats = Rep.reduce((a, b) => a + b, 0), done = g.frame.line === 13;
       if (!set.final) { const fr = run(states, R); set.final = fr[fr.length - 1].vars.Rep; }
       const max = Math.max(...set.final) + 1;      /* one scale for the whole run: the most seats any state ends with */
-      const bx0 = 60, bx1 = n > 10 ? 900 : 760, by = 860, bh = 600, bw = (bx1 - bx0) / n;
+      const few = n <= 10, bx0 = 60, bx1 = few ? 760 : 900, by = AH - (few ? 150 : 110), bh = by - ATOP - 56, bw = (bx1 - bx0) / n;
       if (done) {
         const same = states.every((c, k) => c[2] === Rep[k]);
         topline(ctx, n === 50 ? `All 435 seats given out${same ? ': every state has its seats in the 2020 apportionment.' : '.'}` : `All ${R} seats given out.`);
@@ -560,25 +589,26 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
       states.forEach((c, k) => {
         const h = (Rep[k] / max) * bh, x = bx0 + k * bw, on = k === s && !done;
         rect(ctx, x + bw * 0.15, by - h, bw * 0.7, h, on ? cs : alpha(C('size'), 0.55), null);
-        if (n <= 10) {
+        if (few) {
           text(ctx, c[0], x + bw / 2, by + 30, on ? cs : PAL.ink, { size: 28, align: 'center', weight: on ? 600 : 400 });
           text(ctx, String(Rep[k]), x + bw / 2, by - h - 26, on ? cs : PAL.ink, { size: 30, align: 'center', weight: 600 });
         }
       });
       if (n > 10 && typeof s === 'number' && !done) text(ctx, `${states[s][0]} ${Rep[s]}`, Math.min(bx1 - 40, Math.max(bx0 + 60, bx0 + (s + 0.5) * bw)), by - (Rep[s] / max) * bh - 30, cs, { size: 28, align: 'center', weight: 600 });
-      text(ctx, 'seats per state', bx0, by + (n <= 10 ? 76 : 34), C('size'), { size: 24 });
+      text(ctx, 'seats per state', bx0, by + (few ? 74 : 34), C('size'), { size: 24 });
       /* the queue: one sorted column, the head at the top */
-      const qx = n > 10 ? 960 : 820, qy = 170;
+      const qx = few ? 820 : 960, qy = ATOP + 26, pitch = few ? 84 : 52, rows = few ? n : Math.floor((by - 20 - qy - 46) / pitch);
       text(ctx, 'priority queue, highest first', qx, qy, PAL.muted, { size: 24 });
-      PQ.slice(0, n > 10 ? 12 : n).forEach(([k, p], r) => {
-        const y = qy + 46 + r * 52, head = r === 0;
-        rect(ctx, qx, y - 22, 1340 - qx, 44, head ? alpha(C('key'), 0.12) : null, PAL.rule, 1.5);
-        text(ctx, states[k][0], qx + 12, y, PAL.ink, { size: 26, weight: head ? 600 : 400 });
-        text(ctx, commas(p), 1330, y, C('key'), { size: 26, align: 'right' });
+      const fs = few ? 32 : 26, rh = few ? 64 : 44;
+      PQ.slice(0, rows).forEach(([k, p], r) => {
+        const y = qy + 46 + r * pitch, head = r === 0;
+        rect(ctx, qx, y - rh / 2, 1340 - qx, rh, head ? alpha(C('key'), 0.12) : null, PAL.rule, 1.5);
+        text(ctx, states[k][0], qx + 12, y, PAL.ink, { size: fs, weight: head ? 600 : 400 });
+        text(ctx, commas(p), 1330, y, C('key'), { size: fs, align: 'right' });
       });
-      if (PQ.length > 12) text(ctx, `… ${n - 12} more`, qx + 12, qy + 46 + 12 * 52, PAL.muted, { size: 24 });
+      if (PQ.length > rows) text(ctx, `… ${PQ.length - rows} more`, qx + 12, qy + 46 + rows * pitch, PAL.muted, { size: 24 });
       const calls = typeof v.i === 'number' ? v.i + (g.frame.line >= 9 ? 1 : 0) : done ? R - n : 0;
-      text(ctx, `ExtractMax calls ${calls} of R − n = ${R - n} · seats ${seats} of ${R}`, 700, 960, C('cost'), { size: 26, align: 'center' });
+      text(ctx, `ExtractMax calls ${calls} of R − n = ${R - n} · seats ${seats} of ${R}`, 700, AH - 34, C('cost'), { size: 26, align: 'center' });
     },
   });
 })();
