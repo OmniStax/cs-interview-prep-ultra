@@ -1,0 +1,16 @@
+{
+  "id": "99",
+  "dir": "ch99",
+  "title": "Sandbox: lesson figures (not part of the book)",
+  "sections": [
+    {
+      "id": "99.1",
+      "title": "Sandbox: a pair with a given sum"
+    },
+    {
+      "id": "99.2",
+      "title": "Sandbox: the minimum of every window"
+    }
+  ],
+  "variables": []
+}

@@ -1,0 +1,52 @@
+<section id="problem">
+<h2>The problem</h2>
+<p>A sorted array of numbers and a target. Is there a pair of numbers in the array that adds up to the target, and if so, where?</p>
+<p>Take 2, 4, 5, 7, 9, 12, 14, 18 and the target 21.</p>
+</section>
+
+<section id="obvious">
+<h2>1. The obvious way</h2>
+<p>Add up every pair and look. Eight numbers make 28 pairs, and the table below has one cell for each: row $\htmlData{ref=pair-l}{i}$, column $\htmlData{ref=pair-r}{j}$. A cell shows its sum only once the code has added it up.</p>
+<figure class="sim" id="sim-brute">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Every pair, one at a time. Press play, or step, and watch what each sum buys.</span></div>
+</figure>
+<p>This works on any array, sorted or not, and never uses the fact that this one is sorted. For $n$ numbers it adds up as many as $n(n-1)/2$ pairs.</p>
+</section>
+
+<section id="insight">
+<h2>2. What the obvious way wastes</h2>
+<p>Now use the order. The first pair to try is the smallest number with the largest. Its sum is one number, but because the array is sorted it says something about other pairs too. You decide which.</p>
+<figure class="sim" id="sim-insight">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>One sum has been added up. Before adding another, say which pairs it has already settled.</span></div>
+</figure>
+</section>
+
+<section id="fast">
+<h2>3. The fast way</h2>
+<p>What you just did by hand is the whole algorithm. $\htmlData{ref=pair-l}{i}$ starts at the first number and $\htmlData{ref=pair-r}{j}$ at the last; each sum either is the target or throws out a row or a column, and the pointer that moves is the one whose number is finished.</p>
+<figure class="sim" id="sim-fast">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The same table, the fast way. Count the cells that are struck out with no number in them, then try the array that is not sorted.</span></div>
+</figure>
+<p>What stays true from start to finish: any pair that adds up to the target lies between $\htmlData{ref=pair-l}{i}$ and $\htmlData{ref=pair-r}{j}$. Each step moves one pointer inward, so at most $n - 1$ sums are added up.</p>
+</section>
+
+<section id="source-words" data-source="oiwiki" data-locator="oiwiki:misc/two-pointer#利用序列有序性 (过程)" data-ai="claude-opus-5-5 high">
+<h3>The source’s words</h3>
+<p>First suppose the answer is 1 and n. If we find that $num[1]+num[n]\gt \mathit{target}$, we need to make one of the elements smaller, and $\mathit{num}[1]$ cannot get any smaller, so we decrease the pointer at $n$ by one, making the larger number smaller.</p>
+<p>Likewise, if we find that $num[1]+num[n]\lt \mathit{target}$, we need to make one of the elements larger, but $\mathit{num}[n]$ cannot get any larger, so we increase the pointer at 1 by one, making the smaller number larger.</p>
+</section>
+
+<section id="recap">
+<h2>4. The insight</h2>
+<div class="note"><span class="eyebrow">Insight</span><p><strong>On sorted data, one comparison settles many candidates at once.</strong> Here: a sum that is too small rules out every pair with the smaller number, and a sum that is too big rules out every pair with the larger one.</p></div>
+<p>Where the same insight does the work:</p>
+<ul>
+<li><a href="/cs-interview-prep-ultra/ch02/2.3/#three-sum">3SUM</a> (Section 2.3): fix one number, then this, once per number.</li>
+<li><a href="/cs-interview-prep-ultra/ch02/2.3/#merge">Merging two sorted arrays</a> (Section 2.3): the smaller of the two heads is smaller than everything left in both.</li>
+<li>Binary search (not built yet): one comparison with the middle rules out half the array.</li>
+</ul>
+<p>One more insight on top of this one:</p>
+<ul>
+<li><a href="/cs-interview-prep-ultra/ch02/2.3/#variable-window">Variable-size sliding windows</a> (Section 2.3): both pointers move the same way, and what is ruled out is every window that starts further left.</li>
+</ul>
+</section>
