@@ -268,8 +268,8 @@ function run(s) {
         text(ctx, `op above its last (: ${chain}`, lx, 640, idx, { size: 26, align: 'left' });
       }
       /* the cost: each character read once, each operator pushed once and executed once */
-      text(ctx, `characters read ${v.read} of n = ${n}`, 1370, 690, cost, { size: 26, align: 'right' });
-      text(ctx, `operators executed ${v.executed} of ${v.pushed} pushed`, 1370, 728, cost, { size: 26, align: 'right' });
+      F.rich(ctx, [`characters read `, [String(v.read), cost], ` of n = ${n}`], 1370, 690, { size: 26, align: 'right' });
+      F.rich(ctx, [`operators executed `, [String(v.executed), cost], ` of ${v.pushed} pushed`], 1370, 728, { size: 26, align: 'right' });
       /* the headline: what the step did */
       const say = v.say || pv.say || '';
       topline(ctx, say);

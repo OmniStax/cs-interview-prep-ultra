@@ -143,10 +143,11 @@ const tn = (n) => commas(n).replace(/,/g, '{,}');
       { id: 'store', lines: [4, 4], label: 'find a[i] and store i in it', touches: ['a', 'i'] },
       { id: 'step', lines: [5, 5], label: 'increment i', touches: ['i'] },
     ],
-    refs: { i: () => F.ref('i') },
+    refs: { i: () => F.ref('i'), n: () => C('size') },
   });
   let dbg = null;
-  const sn = ctl(d.controls, { label: 'n', cls: 'size', key: 'n', min: 1, max: 16, step: 1, value: 5, unit: '', dec: 0,
+  /* n is what the code runs on, so its slider stands in the panel's call row, over the code that reads it */
+  const sn = ctl(code.call, { label: 'n', cls: 'size', key: 'n', min: 1, max: 16, step: 1, value: 5, unit: '', dec: 0,
     detents: [{ v: 5, label: '5' }], onInput: () => { if (dbg) dbg.set(run(sn.v)); } });
   const ROWS = [
     ['asg', 'assignments', 'i ← 0', () => '1'],

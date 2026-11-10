@@ -341,10 +341,10 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
           [` = ⌈(−3 + √(9 + 8·${fi}))/2⌉ = ⌈${raw.toFixed(2)}⌉ = ${fb},   j = ${fi} − ${fb}·${fb + 1}/2 = ${fj}`, ink]], Y0);
       } else seg(ctx, [['i2b(i) = ⌈(−3 + √(9 + 8i))/2⌉ finds the block of index i', muted]], Y0);
       seg(ctx, [['cells in use ', ink], ['n', cn, { weight: 600 }], [` = ${v.n} of r(r + 1)/2 = ${cells}, `, ink], ['r', cr, { weight: 600 }],
-        [` = ${r}:  `, ink], [`wasted ${cells - v.n} ≤ 2r − 1 = ${Math.max(0, 2 * r - 1)}`, cost]], Y0 + 46);
+        [` = ${r}:  `, ink], ['wasted ', ink], [String(cells - v.n), cost], [` ≤ 2r − 1 = ${Math.max(0, 2 * r - 1)}`, ink]], Y0 + 46);
       if (op && op[0] !== 'get') {
         const bound = op[0] === 'add' ? `n − i = ${v.n - (ln >= L.addN ? 1 : 0) - op[1]}` : `n − i − 1 = ${(ln >= L.remN ? v.n + 1 : v.n) - op[1] - 1}`;
-        seg(ctx, [[`elements shifted by this call: ${v.shifted} ≤ ${bound}  ·  grow ${v.grows}, shrink ${v.shrinks} so far`, cost]], Y0 + 92);
+        seg(ctx, [['elements shifted by this call: ', ink], [String(v.shifted), cost], [` ≤ ${bound}  ·  grow `, ink], [String(v.grows), cost], [', shrink ', ink], [String(v.shrinks), cost], [' so far', ink]], Y0 + 92);
       }
       tip.hits = hits;
     },
@@ -551,7 +551,7 @@ const seg = (ctx, parts, y, size = 28, cx = 700) => {
         seg(ctx, [[`sqrtab[${big(v.idx)}] = ${v.entry} = ⌊√(${big(v.idx)}·2¹⁴)⌋,  `, ink], [`s = ${v.entry} >> ${v.upgrade / 2} = ${(v.entry >> (v.upgrade / 2))}`, cs, { weight: 600 }]], Y3);
         const sq = (v.s + 1) * (v.s + 1);
         seg(ctx, [['s', cs, { weight: 600 }], [` = ${v.s}:  (s + 1)² = ${big(sq)} ${sq <= I.x ? '≤' : '>'} `, ink], ['x', cx, { weight: 600 }], [` = ${big(I.x)}`, ink]], Y3 + 50);
-        seg(ctx, [[`corrections ${v.inc} ≤ 2  ·  ⌊√x⌋ = ${root}`, cost]], Y3 + 100);
+        seg(ctx, [['corrections ', ink], [String(v.inc), cost], [` ≤ 2  ·  ⌊√x⌋ = ${root}`, ink]], Y3 + 100);
       } else seg(ctx, [['sqrtab[t] holds ⌊√(t·2¹⁴)⌋ for the 2¹⁶ values of the top bits t', muted]], Y3);
       tip.hits = hits;
     },
@@ -673,7 +673,7 @@ function drawSEList(g, P, F_, opts) {
   }
   /* the counts */
   const Y0 = TOP + (L1.rows - 1) * 190 + 160;
-  seg(ctx, [[`Φ = fragile nodes (dashed) = ${fragile(v.list)}  ·  `, cost], ['b', size, { weight: 600 }], [` = ${SB}, so a block holds ${SB - 1} to ${SB + 1}, the last fewer`, ink]], Y0);
+  seg(ctx, [['Φ = fragile nodes (dashed) = ', ink], [String(fragile(v.list)), cost], ['  ·  ', ink], ['b', size, { weight: 600 }], [` = ${SB}, so a block holds ${SB - 1} to ${SB + 1}, the last fewer`, ink]], Y0);
   opts.counts(ctx, v, Y0 + 46);
   legend(ctx, { l: 40, r: 1360, t: Y0 + 80, b: Y0 + 130 }, [
     { s: 'rugged: b elements', color: ink, w: 3 },

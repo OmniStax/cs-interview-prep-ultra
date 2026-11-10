@@ -309,12 +309,12 @@ const sub = (k) => String(k).split('').map((c) => SUBS[+c]).join('');
         parts.forEach(([s, c, o], j) => { text(ctx, s, x, y, c, { size: 28, base: 'middle', weight: (o && o.weight) || 400 }); x += ws[j]; });
       };
       seg([['a[0..n − 1] holds the list: ', ink], ['n', cn, { weight: 600 }], [` = ${v.n} ≤ length(`, ink], ['a', ca, { weight: 600 }], [`) = ${cap}`, ink]], Y0);
-      seg([[`calls m = ${v.m}, resizes r = ${v.r}: copies Σnᵢ = ${v.copies} ≤ 2m + 2r = ${2 * v.m + 2 * v.r}`, cost]], Y0 + 44);
-      seg([[`elements shifted by add and remove: ${v.shifts}`, cost]], Y0 + 88);
+      seg([[`calls m = ${v.m}, resizes r = ${v.r}: copies Σnᵢ = `, PAL.ink], [String(v.copies), cost], [` ≤ 2m + 2r = ${2 * v.m + 2 * v.r}`, PAL.ink]], Y0 + 44);
+      seg([['elements shifted by add and remove: ', PAL.ink], [String(v.shifts), cost]], Y0 + 88);
       const show = v.log.slice(-2);
       show.forEach((e, j) => {
         const q = v.log.length - show.length + j + 1;
-        seg([[`resize ${q}, in ${e.call}: n${sub(q)} = ${e.ni} copied, ${e.since} call${e.since === 1 ? '' : 's'} since the last ≥ n${sub(q)}/2 − 1 = ${num(e.ni / 2 - 1)}`, cost]], Y0 + 132 + j * 44);
+        seg([[`resize ${q}, in ${e.call}: n${sub(q)} = `, PAL.ink], [String(e.ni), cost], [' copied, ', PAL.ink], [String(e.since), cost], [` call${e.since === 1 ? '' : 's'} since the last ≥ n${sub(q)}/2 − 1 = ${num(e.ni / 2 - 1)}`, PAL.ink]], Y0 + 132 + j * 44);
       });
       tip.hits = hits;
     },

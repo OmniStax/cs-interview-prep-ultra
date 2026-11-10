@@ -823,3 +823,37 @@ neither doocs nor TheAlgorithms (ost cannot write it; the footer credits them fr
 "2.4 DualArrayDeque", ODS's own section number. NC cards were not shot (they show only in a practice session). The
 `F.ds.pointer` name collision and a `stack` primitive are still for figlib; 2.5–2.6 still draw nodes by hand rather than
 with `F.ds.nodes`. The owner's review of the translations; a person's reading of WG14 N3517.
+
+## Pass 23 · the owner's review of chapters 1–3: code and drawing seen together (2026-11-10)
+
+The owner read chapters 1–3 and asked for five things; RULES.md (Figures) now holds each as a rule.
+
+**Pseudocode and its code are one listing.** 1.1's BottlesOfBeer and 1.4's Alouette are the first variant of their code
+sets; 1.1's FibonacciMultiply and 1.4's NDaysOfChristmas (with 1.1's BottlesOfBeer after it) are the first language of
+their Sims' code panels, mapped from the Python lines the traces are recorded in. `tools/build_text.py` reads `PSEUDO`
+from the spec (`pseudo_in_set`); the two specs say where each goes. The four text.html edits were made by script from
+the built pages (the source cache is not in the session), so a rebuild with the cache should give the same bytes: check
+it. Not done: the Wikipedia pseudocode of 2.3, 2.5, 3.1 and 3.4 (RULES, Open).
+
+**Seen together.** Every debugger Sim (33 over the three chapters) now takes the pane's width with the code beside the
+drawing. At 1440 × 900 with the explorer open they measure 420–910 px tall, where they were 870–1,410; the tallest
+are the long listings (2.2's ArrayStack, 2.3's merge, 3.3's deques). The input choice and the watch left the foot of
+the figure: inputs are in the code panel's call row, values are inline in the code, a fixed argument is written in as
+its value (1.3's `n`, 2.3's `target`). 1.3's and 1.4's `n` sliders and 1.4's song choice moved to the call row; 1.3's
+`n` wears the size colour in the code.
+
+**Colour the value, not the sentence.** about 45 cost lines in 16 figures and 1.3's loop-count caption coloured a whole
+sentence; each now colours the live count only (`F.rich`, `F.marked`, and the `seg` helper 2.2 and 3.2 had already).
+
+**Named cases.** 2.3's `hit | miss | duplicates | adversarial` is the model. **Open:** inputs still named by their data
+(1.1's lattice `934 × 314 | 123 × 456 | 9999 × 99`, and others) should be renamed for what each is a case of
+("no carries", "every column carries", "unequal lengths"); each needs its data checked against the name.
+
+**App** (OmniStax, branch claude/charming-mccarthy-l0l64c): `pseudocode` is a listing language and the unchosen
+default; the debugger layout, call row, inline values and written-in arguments (`codepanel.ts`, `figlib.ts`,
+`global.css`); `F.rich` and `F.marked`.
+
+**Checks.** `npm run check:content`: no errors. `npm run check`: 0 errors. `npm test`: the six failures are the tests
+that read books this session does not have (physics, chemistry); `npm run test:books` for this book passes. Headless at
+1440 × 900: every Sim of chapters 1–3 draws with no console error.
+

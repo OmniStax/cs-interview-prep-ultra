@@ -153,6 +153,12 @@ HTML = {
     'alouette-code': code_set(ALOUETTE),
 }
 
+# Pseudocode and its code are one listing: Alouette is the first variant of its code set, and
+# NDaysOfChristmas the first language of sim-song-count's code panel (figures.js carries it, with 1.1's BottlesOfBeer).
+PSEUDO = {
+    'NDaysOfChristmas(gifts[2 .. n]):': ('sim', 'sim-song-count'),
+    'Alouette(lapart[1 .. n]):': ('set', 'alouette-code'),
+}
 AFTER_PRE = {
     'NDaysOfChristmas(gifts[2 .. n]):': ['sim-song-count'],
     'Alouette(lapart[1 .. n]):': ['alouette-code'],

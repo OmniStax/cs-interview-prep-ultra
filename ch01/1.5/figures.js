@@ -272,19 +272,19 @@ const neg = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphe
 
       /* ---------------- the readout: the method's relation with the numbers of the inserts completed */
       let ro;
-      if (!done) ro = meth === 'potential' ? 'Φ(h₀) = 2·0 − 1 = −1' : meth === 'accounting' ? 'charged 0 · spent 0 · banked 0 ≥ 0' : 'no inserts yet: total 0';
+      if (!done) ro = meth === 'potential' ? 'Φ(h₀) = 2·0 − 1 = [[−1]]' : meth === 'accounting' ? 'charged 0 · spent 0 · banked [[0]] ≥ 0' : 'no inserts yet: total [[0]]';
       else if (meth === 'aggregate') {
         const copies = last.total - done, lg = Math.ceil(Math.log2(done));
-        ro = `inserts ${done} · copies ${copies} = 2^{⌈log₂ ${done}⌉} − 1 < 2n = ${2 * done} · total ${last.total} ≤ 3n = ${3 * done}`;
-        if (copies !== 2 ** lg - 1) ro = `inserts ${done} · copies ${copies} · total ${last.total} ≤ 3n = ${3 * done}`;
-      } else if (meth === 'accounting') ro = `charged 3·${done} = ${3 * done} · spent ${last.total} · banked ${last.bank} ≥ 0`;
+        ro = `inserts ${done} · copies [[${copies}]] = 2^{⌈log₂ ${done}⌉} − 1 < 2n = ${2 * done} · total [[${last.total}]] ≤ 3n = ${3 * done}`;
+        if (copies !== 2 ** lg - 1) ro = `inserts ${done} · copies [[${copies}]] · total [[${last.total}]] ≤ 3n = ${3 * done}`;
+      } else if (meth === 'accounting') ro = `charged 3·${done} = ${3 * done} · spent [[${last.total}]] · banked [[${last.bank}]] ≥ 0`;
       else {
         const dPhi = last.phi - (done > 1 ? L[done - 2].phi : -1);
         ro = last.copies
-          ? `ĉ = c + ΔΦ = (n + 1) + (2 − n) = ${last.c} + (${neg(dPhi)}) = 3 · Φ = 2·${done} − ${last.m} = ${last.phi} ≥ −1`
-          : `ĉ = c + ΔΦ = 1 + ${dPhi} = ${1 + dPhi} · Φ = 2·${done} − ${last.m} = ${last.phi} ≥ −1`;
+          ? `ĉ = c + ΔΦ = (n + 1) + (2 − n) = ${last.c} + (${neg(dPhi)}) = [[3]] · Φ = 2·${done} − ${last.m} = [[${last.phi}]] ≥ −1`
+          : `ĉ = c + ΔΦ = 1 + ${dPhi} = [[${1 + dPhi}]] · Φ = 2·${done} − ${last.m} = [[${last.phi}]] ≥ −1`;
       }
-      text(ctx, ro, 700, 935, cost, { size: 24, align: 'center', bg: PAL.panel });
+      F.rich(ctx, F.marked(ro, cost), 700, 935, { size: 24, align: 'center', bg: PAL.panel });
       tip.hits = hits;
     },
   });

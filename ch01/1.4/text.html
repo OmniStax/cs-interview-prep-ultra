@@ -14,28 +14,20 @@
 <p>What’s important here is how the singing time changes as <em>n</em> grows. Singing <span style="font-variant:small-caps">BottlesOfBeer</span>(2<em>n</em>) requires about twice much time<sup class="fn" data-note="err-twice"></sup> as singing <span style="font-variant:small-caps">BottlesOfBeer</span>(<em>n</em>), no matter what technology is being used. This is reflected in the asymptotic singing time <span data-type="cost">Θ(<em>n</em>)</span>.</p>
 <p><span data-concept="complexity-analysis">We can measure time by counting how many times the algorithm executes a certain instruction or reaches a certain milestone</span> in the “code”. For example, we might notice that the word “beer” is sung three times in every verse of <span style="font-variant:small-caps">BottlesOfBeer</span>, so the number of times you sing “beer” is a good indication of the total singing time. For this question, we can give an exact answer: <span style="font-variant:small-caps">BottlesOfBeer</span>(<em>n</em>) mentions beer exactly <span data-type="cost">3<em>n</em> + 3</span> times.</p>
 <p>Incidentally, there are <em>lots</em> of songs with quadratic singing time. This one is probably familiar to most English-speakers:</p>
-<pre>NDaysOfChristmas(gifts[2 .. n]):
-  for i ← 1 to n
-      Sing “On the ith day of Christmas, my true love gave to me”
-      for j ← i down to 2
-          Sing “j gifts[j],”
-      if i &gt; 1
-          Sing “and”
-      Sing “a partridge in a pear tree.”</pre>
 <figure class="sim" id="sim-song-count">
   <div class="sim-head"><span class="eyebrow">Sim</span><span>The Twelve Days of Christmas, day by day: on day <span data-ref="i"><em>i</em></span> the singer names the gifts from day <span data-ref="i"><em>i</em></span> down to the partridge, so row <span data-ref="i"><em>i</em></span> of the triangle holds <span data-ref="i"><em>i</em></span> gift names, and the name of gift <span data-ref="j"><em>j</em></span> brings <span data-ref="j"><em>j</em></span> gifts. The rows pile up to <span data-type="cost"><em>n</em>(<em>n</em> + 1)/2</span> gift names and <span data-type="cost"><em>n</em>(<em>n</em> + 1)(<em>n</em> + 2)/6</span> gifts. On log–log axes the gifts climb fastest, as <span data-type="cost">Θ(<em>n</em><sup>3</sup>)</span>, the gift names as <span data-type="cost">Θ(<em>n</em><sup>2</sup>)</span>, and the <span data-type="cost">3<em>n</em> + 3</span> times Bottles of Beer mentions beer only as <span data-type="cost">Θ(<em>n</em>)</span>.</span></div>
 </figure>
 <p>The input to <span style="font-variant:small-caps">NDaysOfChristmas</span> is a list of <em>n</em> − 1 gifts, represented here as an <span data-concept="array">array</span>. It’s quite easy to show that the singing time is <span data-type="cost">Θ(<em>n</em><sup>2</sup>)</span>; in particular, the singer mentions the name of a gift <span data-type="cost">$\sum_{i=1}^{n} i = n(n+1)/2$</span> times (counting the partridge in the pear tree). It’s also easy to see that during the first <em>n</em> days of Christmas, my true love gave to me exactly <span data-type="cost">$\sum_{i=1}^{n}\sum_{j=1}^{i} j = n(n+1)(n+2)/6 = \Theta(n^3)$</span> gifts.</p>
 <p>Other quadratic-time songs include “Old MacDonald Had a Farm”, “There Was an Old Lady Who Swallowed a Fly”, “Hole in the Bottom of the Sea”, “Green Grow the Rushes O”, “The Rattlin’ Bog”, “The Court Of King Caractacus”,“The Barley-Mow”, “If I Were Not Upon the Stage”, “Star Trekkin’ ”,“Ist das nicht ein Schnitzelbank?”,<sup class="fn" data-note="jeffe-fn-22"></sup>“Il Pulcino Pio”, “Minkurinn í hænsnakofanum”, “Echad Mi Yodea”, and “Το κοκοράκι”. For more examples, consult your favorite preschooler.</p>
-<pre>Alouette(lapart[1 .. n]):
+<div class="code-set">
+<pre data-lang="pseudocode"><code>Alouette(lapart[1 .. n]):
   Chantez « Alouette, gentille alouette, alouette, je te plumerai. »
   pour tout i de 1 à n
       Chantez « Je te plumerai lapart[i]. Je te plumerai lapart[i]. »
       pour tout j de i à 1 ⟨⟨à rebours⟩⟩
           Chantez « Et lapart[j] ! Et lapart[j] ! »
       Chantez « Alouette! Alouette! Aaaaaa. . . »
-      Chantez « . . . alouette, gentille allouette, alouette, je te plumerai. »</pre>
-<div class="code-set">
+      Chantez « . . . alouette, gentille allouette, alouette, je te plumerai. »</code></pre>
 <pre data-lang="python" data-ai="claude-opus-5-5 high"><code>def alouette(lapart):
     print("Alouette, gentille alouette, alouette, je te plumerai.")
     for i in range(len(lapart)):

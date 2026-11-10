@@ -307,10 +307,10 @@ function tag(ctx, lay, i, name, color) {
       else { const left = a - v.sp; head = `slow and fast are both ${left} step${left === 1 ? '' : 's'} from C.`; }
       topline(ctx, head);
       const race = v.ph === 2 ? M.m : v.sp, walk = v.ph === 2 ? v.sp : 0;
-      let count = `slow's moves: race ${race}`;
+      let count = `slow's moves: race [[${race}]]`;
       if (done && M) count += ` = kL, k = ${M.k}`;
-      if (v.ph === 2) count += ` · walk ${walk}` + (line24 ? ` = a` : '');
-      text(ctx, count, 1360, 625, cost, { size: 28, align: 'right' });
+      if (v.ph === 2) count += ` · walk [[${walk}]]` + (line24 ? ` = a` : '');
+      F.rich(ctx, F.marked(count, cost), 1360, 625, { size: 28, align: 'right' });
     },
   });
 })();

@@ -225,7 +225,7 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       if (L === 16) text(ctx, 'underflow', 700, 140, PAL.bad, { size: 30, align: 'center', weight: 600 });
       /* the invariant and the cost of the call */
       text(ctx, `the stack is items[0..${top}) · top = ${top} items`, 60, 500, PAL.ink, { size: 26 });
-      text(ctx, `cells touched this call ${v['cells touched'] ?? 0} ≤ 1`, 1340, 500, cost, { size: 26, align: 'right' });
+      F.rich(ctx, [`cells touched this call `, [String(v['cells touched'] ?? 0), cost], ` ≤ 1`], 1340, 500, { size: 26, align: 'right' });
     },
   });
 })();
@@ -434,7 +434,7 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       } else text(ctx, 'nil', hx + 60, hy, PAL.muted, { size: 26, align: 'center' });
       if (L === 19) text(ctx, 'underflow', 700, 120, PAL.bad, { size: 30, align: 'center', weight: 600 });
       text(ctx, `size = ${v.size}`, 1340, 400, C('size'), { size: 26, align: 'right' });
-      text(ctx, `links written this call ${v['links written'] ?? 0} ≤ 2`, 1340, 435, cost, { size: 26, align: 'right' });
+      F.rich(ctx, [`links written this call `, [String(v['links written'] ?? 0), cost], ` ≤ 2`], 1340, 435, { size: 26, align: 'right' });
     },
   });
 })();
@@ -649,7 +649,7 @@ const show = (v) => (v === null || v === undefined ? '—' : String(v));
       /* the invariant, and the cost */
       const ok = Math.min(...path) >= 0;
       text(ctx, ok ? `never below 0 so far · now ${lvl}` : 'went below 0', 60, 560, ok ? PAL.ink : PAL.bad, { size: 26 });
-      text(ctx, `characters read ${read} ≤ n = ${n}`, 1340, 560, cost, { size: 26, align: 'right' });
+      F.rich(ctx, [`characters read `, [String(read), cost], ` ≤ n = ${n}`], 1340, 560, { size: 26, align: 'right' });
     },
   });
 })();
