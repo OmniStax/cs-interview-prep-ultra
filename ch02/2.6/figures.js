@@ -360,7 +360,7 @@ function drawList(ctx, A, B, k, o) {
           : `half relinked: the node after ${said(bad)} does not yet point back to it`;
       }
       text(ctx, inv, 60, yb - 42, finding ? C('index') : PAL.ink, { size: 26 });
-      text(ctx, `steps ${v.steps} ≤ 1 + min(i, n − i) = ${bound}`, 60, yb, C('cost'), { size: 28, weight: 600 });
+      F.rich(ctx, [`steps `, [String(v.steps), C('cost')], ` ≤ 1 + min(i, n − i) = ${bound}`], 60, yb, { size: 28 });
       text(ctx, `n = ${v.n}`, 1340, yb, C('size'), { size: 28, weight: 600, align: 'right' });
     },
   });

@@ -18,6 +18,26 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
 
 /* ================================================================ sim-song-count: NDaysOfChristmas and BottlesOfBeer */
 (function () {
+  /* Erickson's pseudocode as the PDF prints it, the panel's first language: NDaysOfChristmas (jeffe:0.5) and,
+     after it, the BottlesOfBeer of 1.1 (jeffe:0.1) */
+  const PSEUDO = [
+    "NDaysOfChristmas(gifts[2 .. n]):",
+    "  for i ← 1 to n",
+    "      Sing “On the ith day of Christmas, my true love gave to me”",
+    "      for j ← i down to 2",
+    "          Sing “j gifts[j],”",
+    "      if i > 1",
+    "          Sing “and”",
+    "      Sing “a partridge in a pear tree.”",
+    "",
+    "BottlesOfBeer(n):",
+    "  For i ← n down to 1",
+    "      Sing “i bottles of beer on the wall, i bottles of beer,”",
+    "      Sing “Take one down, pass it around, i − 1 bottles of beer on the wall.”",
+    "  Sing “No bottles of beer on the wall, no bottles of beer,”",
+    "  Sing “Go to the store, buy some more, n bottles of beer on the wall.”",
+  ].join('\n');
+  const PMAP = { 1: 1, 3: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7, 9: 8, 11: 10, 12: 11, 13: 12, 14: 13, 15: 14, 16: 15 };
   const PY = [
     'def n_days_of_christmas(gifts):',
     '    n = len(gifts) + 1',
@@ -102,8 +122,8 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
 
   const d = sim('sim-song-count', 960);
   const code = F.code(d, {
-    src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
-    lineMap: { java: MAP, cpp: MAP, javascript: MAP },
+    src: { pseudocode: PSEUDO, python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
+    lineMap: { pseudocode: PMAP, java: MAP, cpp: MAP, javascript: MAP },
     blocks: [
       { id: 'init', lines: [2, 2], label: 'n is one more than the number of gifts', touches: ['n'] },
       { id: 'day', lines: [3, 9], label: 'sing day i', touches: ['i'] },
@@ -118,8 +138,9 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
   let song = 'christmas';
   const DEF = { christmas: 12, bottles: 10 };
   const traced = () => (song === 'christmas' ? christmas(sN.v) : bottles(sN.v));
-  const sN = ctl(d.controls, { label: 'n', cls: 'size', key: 'n', min: 1, max: 12, step: 1, value: DEF.christmas, unit: '', dec: 0, onInput: () => dbg.set(traced()) });
-  choice(d.controls, {
+  /* the song and its n are what the code runs on: both stand in the panel's call row */
+  const sN = ctl(code.call, { label: 'n', cls: 'size', key: 'n', min: 1, max: 12, step: 1, value: DEF.christmas, unit: '', dec: 0, onInput: () => dbg.set(traced()) });
+  choice(code.call, {
     label: '\\text{song}', key: 'song', value: song,
     options: [{ value: 'christmas', label: 'The Twelve Days of Christmas' }, { value: 'bottles', label: 'Bottles of Beer' }],
     onInput: (v) => { const was = song; song = v; if (sN.v === DEF[was]) sN.set(DEF[song]); dbg.set(traced()); },
@@ -174,7 +195,7 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
         }
         const ended = done || L === 9, daysSung = done ? n : !i ? 0 : ended ? i : i - 1;
         text(ctx, !i ? 'no day sung yet' : ended ? (daysSung === 1 ? 'day 1 sung' : `days 1 .. ${daysSung} sung`) : `${daysSung ? (daysSung === 1 ? 'day 1 sung · ' : `days 1 .. ${daysSung} sung · `) : ''}day i = ${i} in progress`, gx, 830, PAL.muted, { size: 26 });
-        text(ctx, `gift names ${names} of n(n + 1)/2 = ${(n * (n + 1)) / 2}   ·   gifts ${given} of n(n + 1)(n + 2)/6 = ${(n * (n + 1) * (n + 2)) / 6}`, 700, 932, cost, { size: 28, align: 'center' });
+        F.rich(ctx, [`gift names `, [String(names), cost], ` of n(n + 1)/2 = ${(n * (n + 1)) / 2}   ·   gifts `, [String(given), cost], ` of n(n + 1)(n + 2)/6 = ${(n * (n + 1) * (n + 2)) / 6}`], 700, 932, { size: 28, align: 'center' });
       } else {
         const beer = v.beer || 0, rows = n + 1, cell = Math.min(GH / rows, 70), cw = 130;
         const i = v.i;
@@ -199,7 +220,7 @@ const rect = (ctx, x, y, w, h, fill, stroke, lw = 2, dash) => {
         }
         const versesSung = done || i === undefined ? Math.min(n, Math.floor(beer / 3)) : n - i + (L === 14 ? 1 : 0);
         text(ctx, `verses sung ${versesSung} of n = ${n}`, gx, 830, PAL.muted, { size: 26 });
-        text(ctx, `“beer” ${beer} of 3n + 3 = ${3 * n + 3}`, 700, 932, cost, { size: 28, align: 'center' });
+        F.rich(ctx, [`“beer” `, [String(beer), cost], ` of 3n + 3 = ${3 * n + 3}`], 700, 932, { size: 28, align: 'center' });
       }
 
       /* ---------------- the counts against n on log–log axes: n from 1 to 12, counts from 1 to 1000 (fixed) */

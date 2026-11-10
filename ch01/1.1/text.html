@@ -1,13 +1,13 @@
 <section id="algorithm" data-source="jeffe" data-locator="jeffe:0.1">
 <h2>What is an algorithm?</h2>
 <p><span data-concept="algorithm">An algorithm</span> is an explicit, precise, unambiguous, mechanically-executable sequence of elementary instructions, usually intended to accomplish a specific purpose. For example, here is an <span data-concept="algorithm">algorithm</span> for singing that annoying song “99 Bottles of Beer on the Wall”, for arbitrary values of 99:</p>
-<pre>BottlesOfBeer(n):
+<div class="code-set">
+<pre data-lang="pseudocode"><code>BottlesOfBeer(n):
   For i ← n down to 1
       Sing “i bottles of beer on the wall, i bottles of beer,”
       Sing “Take one down, pass it around, i − 1 bottles of beer on the wall.”
   Sing “No bottles of beer on the wall, no bottles of beer,”
-  Sing “Go to the store, buy some more, n bottles of beer on the wall.”</pre>
-<div class="code-set">
+  Sing “Go to the store, buy some more, n bottles of beer on the wall.”</code></pre>
 <pre data-lang="python" data-ai="claude-opus-5-5 high"><code>def bottles_of_beer(n):
     for i in range(n, 0, -1):
         print(f"{i} bottles of beer on the wall, {i} bottles of beer,")
@@ -55,14 +55,6 @@ $$z = x\cdot y = \sum_{k=0}^{m+n-1} Z[k]\cdot 10^k.$$
 <p>The <span data-concept="algorithm">algorithm</span> uses addition and <em>single-digit</em> multiplication as primitive operations. Addition can be performed using a simple for-loop. In practice, single-digit multiplication is performed using a lookup table, either carved into clay tablets, painted on strips of wood or bamboo, written on paper, stored in read-only memory, or memorized by the computator. The entire <span data-concept="lattice-multiplication">lattice algorithm</span> can be summarized by the formula</p>
 $$x\cdot y = \sum_{i=0}^{m-1}\sum_{j=0}^{n-1}\bigl(X[i]\cdot Y[j]\cdot 10^{i+j}\bigr).$$
 <p>Different variants of the <span data-concept="lattice-multiplication">lattice algorithm</span> evaluate the partial products <em>X</em>[<em>i</em>] · <em>Y</em>[<em>j</em>] · 10<sup><em>i</em>+<em>j</em></sup> in different orders and use different strategies for computing their sum. For example, in <em>Liber Abaco</em>, Fibonacci describes a variant that considers the <em>mn</em> partial products in increasing order of significance, as shown in modern pseudocode below.</p>
-<pre>FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):
-  hold ← 0
-  for k ← 0 to n + m − 1
-      for all i and j such that i + j = k
-          hold ← hold + X[i] · Y[j]
-      Z[k] ← hold mod 10
-      hold ← ⌊hold/10⌋
-  return Z[0 .. m + n − 1]</pre>
 <figure class="sim" id="sim-lattice">
   <div class="sim-head"><span class="eyebrow">Sim</span><span>The lattice for <span data-ref="lat-k">column</span> after column: each column adds the products <em>X</em>[<span data-ref="lat-i"><em>i</em></span>] · <em>Y</em>[<span data-ref="lat-j"><em>j</em></span>] whose positions sum to <span data-ref="lat-k"><em>k</em></span>, writes the low digit of <span data-ref="lat-hold"><em>hold</em></span> as <em>Z</em>[<span data-ref="lat-k"><em>k</em></span>] and carries the rest. The settled digits of the product fill in from the right; the count of single-digit products ends at exactly <em>m</em> · <em>n</em> whatever the digits are.</span></div>
 </figure>

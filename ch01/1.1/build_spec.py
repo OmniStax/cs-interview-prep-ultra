@@ -190,6 +190,12 @@ HTML = {
         'drops below a second.'),
 }
 
+# Pseudocode and its code are one listing: BottlesOfBeer is the first variant of its code set, and
+# FibonacciMultiply the first language of sim-lattice's code panel (figures.js carries it, as the PDF prints it).
+PSEUDO = {
+    'BottlesOfBeer(n):': ('set', 'bottles-code'),
+    'FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):': ('sim', 'sim-lattice'),
+}
 AFTER_PRE = {
     'BottlesOfBeer(n):': ['bottles-code'],
     'FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):': ['sim-lattice'],

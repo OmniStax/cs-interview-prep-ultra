@@ -391,8 +391,8 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
       seg(ctx, [['list position k sits at ', ink], ['a', ca, { weight: 600, italic: true }], ['[(', ink], ['j', cj, { weight: 600, italic: true }],
         [' + k) mod length(', ink], ['a', ca, { weight: 600, italic: true }], [')]  ·  ', ink], ['j', cj, { weight: 600, italic: true }],
         [` = ${v.j}  ·  `, ink], ['n', cn, { weight: 600, italic: true }], [` = ${v.n}  ·  `, ink], [`length(a) = ${len}`, size]], Y0);
-      if (op) seg(ctx, [[`${callName(op)} shifted ${v.sh} ≤ min(i, n − i) = ${v.bound}`, cost]], Y0 + 44);
-      seg(ctx, [[`all calls: ${v.shifts} shifted, ${v.copies} copied by resize()`, cost]], Y0 + 88);
+      if (op) seg(ctx, [[`${callName(op)} shifted `, PAL.ink], [String(v.sh), cost], [` ≤ min(i, n − i) = ${v.bound}`, PAL.ink]], Y0 + 44);
+      seg(ctx, [['all calls: ', PAL.ink], [String(v.shifts), cost], [' shifted, ', PAL.ink], [String(v.copies), cost], [' copied by resize()', PAL.ink]], Y0 + 88);
       tip.hits = hits;
     },
   });
@@ -704,8 +704,8 @@ const callRow = (ctx, labels, cur, starred, hits, y0 = 112) => {
         [`back.size() = ${bs}  ·  3·back.size() = `, ink], [`${3 * bs}`, okB || small ? ink : bad, { weight: 600 }], [okB ? ' ≥ ' : ' < ', okB || small ? ink : bad],
         [`front.size() = ${fs}`, ink]], Y0);
       seg(ctx, [['Φ', cost, { weight: 600 }], [` = |front.size() − back.size()| = |${fs} − ${bs}| = ${v.phi}  ·  `, ink], ['n', cn, { weight: 600, italic: true }], [` = ${n}`, ink]], Y0 + 44);
-      seg(ctx, [[`calls since the last balance ${v.since} ≥ Φ − Φ₀ = ${v.phi} − ${v.phi0}`, cost]], Y0 + 88);
-      seg(ctx, [[`copied by balance(): ${v.copied} ≤ 2m + 2r = ${2 * v.m + 2 * v.r}  (m = ${v.m} calls, r = ${v.r} balances)`, cost]], Y0 + 132);
+      seg(ctx, [['calls since the last balance ', PAL.ink], [String(v.since), cost], [` ≥ Φ − Φ₀ = ${v.phi} − ${v.phi0}`, PAL.ink]], Y0 + 88);
+      seg(ctx, [['copied by balance(): ', PAL.ink], [String(v.copied), cost], [` ≤ 2m + 2r = ${2 * v.m + 2 * v.r}  (m = ${v.m} calls, r = ${v.r} balances)`, PAL.ink]], Y0 + 132);
       tip.hits = hits;
     },
   });

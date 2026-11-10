@@ -165,7 +165,7 @@ const ptr = (ctx, S, list, side) => {
       }
       text(ctx, 'i', gx - 18, gy - 22, cl, { size: 28, weight: 600, italic: true, align: 'right' });
       const checks = v.checks || 0;
-      text(ctx, `checks ${checks} ≤ n − 1 = ${n - 1}`, 1340, 830, C('cost'), { size: 28, align: 'right' });
+      F.rich(ctx, [`checks `, [String(checks), C('cost')], ` ≤ n − 1 = ${n - 1}`], 1340, 830, { size: 28, align: 'right' });
     },
   });
 })();
@@ -321,7 +321,7 @@ const ptr = (ctx, S, list, side) => {
       ans.forEach((tr, k) => text(ctx, `(${tr.map(neg).join(', ')})`, 120 + k * 300, 610, key, { size: 32, weight: 600 }));
       if (!ans.length) text(ctx, '—', 120, 610, PAL.muted, { size: 30 });
       const checks = v.checks || 0, bound = ((n - 1) * (n - 2)) / 2;
-      text(ctx, `pair checks ${checks} ≤ (n − 1)(n − 2)/2 = ${bound}`, 1340, 720, C('cost'), { size: 28, align: 'right' });
+      F.rich(ctx, [`pair checks `, [String(checks), C('cost')], ` ≤ (n − 1)(n − 2)/2 = ${bound}`], 1340, 720, { size: 28, align: 'right' });
     },
   });
 })();
@@ -534,7 +534,7 @@ const ptr = (ctx, S, list, side) => {
       /* after the loop, extend copies the rest of A, then of B, without moving i or j: count from what C holds */
       const ia = shown.length >= A.length + j ? A.length : i, jb = shown.length >= A.length + B.length ? B.length : j;
       text(ctx, `C sorted, holding A[0..${ia}) and B[0..${jb})`, x0, 690, idx, { size: 26 });
-      text(ctx, `comparisons ${v.comps || 0} ≤ m + n − 1 = ${Math.max(0, N - 1)}`, 1340, 760, C('cost'), { size: 28, align: 'right' });
+      F.rich(ctx, [`comparisons `, [String(v.comps || 0), C('cost')], ` ≤ m + n − 1 = ${Math.max(0, N - 1)}`], 1340, 760, { size: 28, align: 'right' });
     },
   });
 })();
@@ -587,7 +587,7 @@ const ptr = (ctx, S, list, side) => {
       topline(ctx, `The last window: SMA = ${f2(prev)}, the mean of the last ${k} data points.`);
       tex(d.readout, `\\textit{SMA}_{k} = \\frac{1}{k} \\sum_{i=n-k+1}^{n} p_{i} = ${f2(prev)}`);
     }
-    text(ctx, `arithmetic steps per move 3, against k = ${k} additions to sum the window again`, 1340, 590, C('cost'), { size: 26, align: 'right' });
+    F.rich(ctx, ['arithmetic steps per move ', ['3', C('cost')], ', against k = ', [String(k), C('cost')], ' additions to sum the window again'], 1340, 590, { size: 26, align: 'right' });
   }
   register(d.fig, { update: (dt) => cy.step(dt, () => 1 / 1.4), draw });
 })();
@@ -733,7 +733,7 @@ const ptr = (ctx, S, list, side) => {
         }
       }
       text(ctx, `windows counted ans = ${v.ans}`, 120, 640, PAL.ink, { size: 28 });
-      text(ctx, `pointer moves ${v.moves} ≤ 2n = ${2 * n}`, 1340, 680, C('cost'), { size: 28, align: 'right' });
+      F.rich(ctx, [`pointer moves `, [String(v.moves), C('cost')], ` ≤ 2n = ${2 * n}`], 1340, 680, { size: 28, align: 'right' });
     },
   });
 })();
