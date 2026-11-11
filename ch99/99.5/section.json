@@ -1,0 +1,24 @@
+{
+ "id": "99.5",
+ "chapter": "99",
+ "title": "Sandbox: four queens (scrolling drives the story, print look)",
+ "short": "Queens",
+ "lead": "A sandbox page, AI-written and not part of the book. The whole lesson is one drawing that stays put while the text scrolls past it; where you are in the text is where the drawing is in the story.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "xp-queens",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

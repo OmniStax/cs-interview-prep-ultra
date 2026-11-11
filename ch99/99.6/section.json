@@ -1,0 +1,24 @@
+{
+ "id": "99.6",
+ "chapter": "99",
+ "title": "Sandbox: the number without a twin (the reader's answers move the story, LED panel)",
+ "short": "Twins",
+ "lead": "A sandbox page, AI-written and not part of the book. The whole lesson is one panel that moves on only when the reader acts: there is no play button.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "xp-twin",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}
