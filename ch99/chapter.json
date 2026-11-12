@@ -26,6 +26,22 @@
     {
       "id": "99.6",
       "title": "Sandbox: the number without a twin (the reader's answers move the story, LED panel)"
+    },
+    {
+      "id": "99.7",
+      "title": "Sandbox: four queens, reworked (app style, six phases)"
+    },
+    {
+      "id": "99.8",
+      "title": "Sandbox: fewest coins, reworked (app style, six phases)"
+    },
+    {
+      "id": "99.9",
+      "title": "Sandbox: shortest route, reworked (app style, six phases)"
+    },
+    {
+      "id": "99.10",
+      "title": "Sandbox: sum of a range in a search tree (app style, six phases)"
     }
   ],
   "variables": []
