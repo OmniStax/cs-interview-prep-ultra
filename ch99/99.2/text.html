@@ -1,0 +1,50 @@
+<section id="problem" data-source="omnistax-sandbox">
+<h2>The problem</h2>
+<p>An array of numbers and a window of $k$ of them that slides one step at a time from the left end to the right. Report the smallest number in the window at every position.</p>
+<p>Take 4, 2, 12, 3, 8, 1, 6, 5, 9, 7, 10, 11 and $k = 5$.</p>
+</section>
+
+<section id="obvious" data-source="omnistax-sandbox">
+<h2>1. The obvious way</h2>
+<p>Scan each window for its smallest number. Under each number the figure counts how often it has been read.</p>
+<figure class="sim" id="sim-brute">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Every window scanned from its first number. Watch the read counts under the numbers in the middle.</span></div>
+</figure>
+<p>Each window costs $k - 1$ comparisons, and there are $n - k + 1$ windows. Two windows side by side share all but one of their numbers, and the scan of the second uses nothing the first found out.</p>
+</section>
+
+<section id="insight" data-source="omnistax-sandbox">
+<h2>2. What the obvious way wastes</h2>
+<p>Some numbers in a window are read again and again without ever having a chance of being the minimum. You pick them out.</p>
+<figure class="sim" id="sim-insight">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>Strike out the numbers that are finished, then slide the window and do it again.</span></div>
+</figure>
+</section>
+
+<section id="fast" data-source="omnistax-sandbox">
+<h2>3. The fast way</h2>
+<p>Keep the numbers still standing in a queue, oldest first. A number that arrives strikes out every larger one at the back and joins; the oldest leaves when the window passes it; the minimum is whatever stands first.</p>
+<figure class="sim" id="sim-fast">
+  <div class="sim-head"><span class="eyebrow">Sim</span><span>The queue is the numbers of the window left unstruck. Step through, then try the increasing and the decreasing input.</span></div>
+</figure>
+<p>What stays true from start to finish: the queue holds exactly the numbers of the window with no smaller number to their right, so read from oldest to newest they go up, and the first is the window’s minimum. Each number joins once and is struck at most once, so $n$ numbers cost fewer than $2n$ comparisons, whatever $k$ is.</p>
+</section>
+
+<section id="source-words" data-source="cpa" data-locator="cpa:data_structures/stack_queue_modification#queue-modification-method-1">
+<h3>The source’s words</h3>
+<p>The key idea is to only store the items in the queue that are needed to determine the minimum.</p>
+</section>
+
+<section id="recap" data-source="omnistax-sandbox">
+<h2>4. The insight</h2>
+<div class="note"><span class="eyebrow">Insight</span><p><strong>A candidate beaten by a newer one can be dropped for good.</strong> Here: a number with a smaller one to its right will leave the window first and loses to it until then.</p></div>
+<p>Where the same insight does the work:</p>
+<ul>
+<li><a href="/cs-interview-prep-ultra/ch03/3.4/#nearest-smaller">Nearest smaller values</a> (Section 3.4): the same striking out, with a stack, since nothing leaves at the front.</li>
+<li><a href="/cs-interview-prep-ultra/ch03/3.4/#min-stack">The minimum of a stack</a> (Section 3.4): a pushed value that is not a new minimum can never be one while what is under it stays.</li>
+</ul>
+<p>One more insight on top of this one:</p>
+<ul>
+<li><a href="/cs-interview-prep-ultra/ch03/3.4/#zero-submatrix">The largest zero submatrix</a> (Section 3.4): the same striking out, run once for each row of the matrix.</li>
+</ul>
+</section>

@@ -186,7 +186,7 @@ const DOOCS_0370 = {
       if (ln <= 4) {
         headline = 'The table s starts as zeros, one row and one column larger than A: row 0 and column 0 stay 0.';
         eq = [['S_{0,j} = S_{i,0} = 0', PAL.ink]];
-        counter = `cells to fill: mn = ${M}·${N} = ${M * N}`;
+        counter = `cells to fill: mn = ${M}·${N} = [[${M * N}]]`;
       } else if (I !== null) {
         const a = A[I - 1][J - 1], up = sv(I - 1, J), left = sv(I, J - 1), ov = sv(I - 1, J - 1), res = a + up + left - ov;
         if (I > 1 && J > 1) headline = `$${S_(I, J)}$ adds $${A_(I, J)} = ${a}$ to the red block $${S_(I - 1, J)}$ and the blue block $${S_(I, J - 1)}$, less their overlap $${S_(I - 1, J - 1)}$, which both count.`;
@@ -196,7 +196,7 @@ const DOOCS_0370 = {
         eq = [[`${S_(I, J)} = ${A_(I, J)} + `, PAL.ink], [S_(I - 1, J), RED, 600], [' + ', PAL.ink], [S_(I, J - 1), BLUE, 600], [` − ${S_(I - 1, J - 1)} = ${a} + `, PAL.ink],
           [num(up), RED, 600], [' + ', PAL.ink], [num(left), BLUE, 600], [` − ${num(ov)} = `, PAL.ink], [num(ln === 7 ? res : '?'), key, 600]];
         const filled = (I - 1) * N + J - (ln === 7 ? 0 : 1);
-        counter = `lookups: 3 a cell, ${3 * filled} for the ${filled} of mn = ${M * N} cells written · summing this cell's rectangle afresh: ${I * J - 1} addition${I * J - 1 === 1 ? '' : 's'}`;
+        counter = `lookups: 3 a cell, [[${3 * filled}]] for the ${filled} of mn = ${M * N} cells written · summing this cell's rectangle afresh: [[${I * J - 1}]] addition${I * J - 1 === 1 ? '' : 's'}`;
       } else if (Q) {
         const { I1, J1, I2, J2, t } = Q;
         const terms = [[S_(I2, J2), PAL.ink, sv(I2, J2), '+'], [S_(I2, J1 - 1), BLUE, sv(I2, J1 - 1), '−'], [S_(I1 - 1, J2), RED, sv(I1 - 1, J2), '−'], [S_(I1 - 1, J1 - 1), PAL.ink, sv(I1 - 1, J1 - 1), '+']];
@@ -214,11 +214,11 @@ const DOOCS_0370 = {
         shown.forEach(([, col, val, sg], q) => { eq.push([q ? ` ${sg} ` : '', PAL.ink]); eq.push([num(val), col, 600]); });
         eq.push([` = ${num(v.acc)}`, key, 600]);
         const cells = (I2 - I1 + 1) * (J2 - J1 + 1);
-        counter = `lookups: ${upto + 1} of 4 · adding the ${cells} cell${cells === 1 ? '' : 's'} one by one: ${cells - 1} addition${cells === 2 ? '' : 's'}`;
+        counter = `lookups: [[${upto + 1}]] of 4 · adding the ${cells} cell${cells === 1 ? '' : 's'} one by one: [[${cells - 1}]] addition${cells === 2 ? '' : 's'}`;
       }
       topline(ctx, headline);
       if (eq) runs(ctx, eq, 700, 600, 30);
-      text(ctx, counter, 700, 652, cost, { size: 26, align: 'center' });
+      F.rich(ctx, F.marked(counter, cost), 700, 652, { size: 26, align: 'center' });
       text(ctx, 'filled: written · faint: still 0 · dashed: the zero padding', 700, 696, PAL.muted, { size: 26, align: 'center' });
       tip.hits = hits;
     },
@@ -357,9 +357,9 @@ const DOOCS_0370 = {
       topline(ctx, head);
       if (rule) runs(ctx, rule, 700, 572, 30);
       const W = v.writes, D = v.direct;
-      const counter = inPass ? `writes to d: ${W}, where adding to every cell of each range takes ${D} · prefix pass: ${Math.max(0, passed)} of n − 1 = ${LEN - 1} additions`
-        : `writes to d: ${W} (at most 2 an add) · adding to every cell of each range: ${D} writes`;
-      text(ctx, counter, 700, 624, cost, { size: 26, align: 'center' });
+      const counter = inPass ? `writes to d: [[${W}]], where adding to every cell of each range takes [[${D}]] · prefix pass: [[${Math.max(0, passed)}]] of n − 1 = ${LEN - 1} additions`
+        : `writes to d: [[${W}]] (at most 2 an add) · adding to every cell of each range: [[${D}]] writes`;
+      F.rich(ctx, F.marked(counter, cost), 700, 624, { size: 26, align: 'center' });
       text(ctx, 'dashed a: what a prefix pass over d would give now · indices from 0, as the code', 700, 668, PAL.muted, { size: 26, align: 'center' });
       tip.hits = hits;
     },

@@ -113,8 +113,8 @@ HTML = {
     'sim-loop-count': sim(
         'sim-loop-count',
         'The loop filling <em>a</em>[0], …, <em>a</em>[<span data-type="size"><em>n</em></span> − 1], one pass of '
-        f'{I} at a time: <span data-type="cost">1 assignment, <em>n</em> + 1 comparisons, <em>n</em> increments, '
-        '<em>n</em> offsets and <em>n</em> stores</span>, which sum to 4<em>n</em> + 2 primitive operations. The shaded cells '
+        f'{I} at a time: <span data-type="cost">1</span> assignment, <span data-type="cost"><em>n</em> + 1</span> comparisons, <span data-type="cost"><em>n</em></span> increments, '
+        '<span data-type="cost"><em>n</em></span> offsets and <span data-type="cost"><em>n</em></span> stores, which sum to 4<em>n</em> + 2 primitive operations. The shaded cells '
         f'are the part of the array the loop has filled, <em>a</em>[0..{I}). Each count grows in step with '
         '<span data-type="size"><em>n</em></span>, so whatever each kind of operation costs, the total is '
         '<span data-type="cost"><em>O</em>(<em>n</em>)</span>.'),

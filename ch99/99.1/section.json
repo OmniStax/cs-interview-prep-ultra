@@ -1,0 +1,145 @@
+{
+ "id": "99.1",
+ "chapter": "99",
+ "title": "Sandbox: a pair with a given sum",
+ "short": "Pair sum",
+ "lead": "A sandbox page, AI-written and not part of the book. It tries one lesson shape on one problem: the obvious way, what the obvious way wastes, the fast way, the insight in one sentence, and a check.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-10",
+ "figures": [
+  {
+   "id": "sim-brute",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ]
+  },
+  {
+   "id": "sim-insight",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ]
+  },
+  {
+   "id": "sim-fast",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost"
+   ]
+  }
+ ],
+ "coverage": [],
+ "exercises": [
+  {
+   "id": "k1",
+   "source_id": "sandbox:k1",
+   "kind": "check",
+   "bloom": "Understand",
+   "place": {
+    "at": "end"
+   },
+   "prompt": "The array is sorted and $\\mathit{nums}[i] + \\mathit{nums}[j]$ is larger than the target. Which pairs are ruled out without being added up?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "Every other pair that uses $\\mathit{nums}[j]$",
+     "Every other pair that uses $\\mathit{nums}[i]$",
+     "Every pair that uses either of them",
+     "None: each pair has to be added up"
+    ],
+    "correct": 0,
+    "solution": "$\\mathit{nums}[i]$ is the smallest number still in play, so every other partner for $\\mathit{nums}[j]$ makes a sum at least as large, which is still too big. Pairs with $\\mathit{nums}[i]$ and a smaller partner than $\\mathit{nums}[j]$ are smaller, so one of them may be the target.",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "k2",
+   "source_id": "sandbox:k2",
+   "kind": "check",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "prompt": "The same code is run on an array that is not sorted. What goes wrong?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "It can answer that there is no pair when there is one",
+     "It can return a pair that does not add up to the target",
+     "It runs for about $n^2$ steps instead of about $n$",
+     "Nothing: sorting only makes it faster"
+    ],
+    "correct": 0,
+    "solution": "A pair it returns was added up and compared, so it is always right, and each step still moves one pointer, so it still stops within $n - 1$ sums. What fails is the ruling out: without sorted order, the other sums in a row are not all smaller, so a row thrown out unseen may hold the answer.",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "k3",
+   "source_id": "sandbox:k3",
+   "kind": "check",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "prompt": "Which of these problems gives way to the same insight, that one comparison on a sorted array rules out a whole row or column of pairs?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "Count the pairs in a sorted array whose sum is at most a target",
+     "Find the most frequent value in an array",
+     "Find the longest run of equal values in an array",
+     "Reverse an array in place"
+    ],
+    "correct": 0,
+    "solution": "If $\\mathit{nums}[i] + \\mathit{nums}[j]$ is at most the target, so is $\\mathit{nums}[i]$ with every partner between them: $j - i$ pairs are counted at once and $i$ moves right. If it is larger, every pair with $\\mathit{nums}[j]$ is too big and $j$ moves left. The other three need no pairs at all.",
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "k1",
+   "concept": "two-pointers"
+  },
+  {
+   "exercise": "k2",
+   "concept": "two-pointers"
+  },
+  {
+   "exercise": "k3",
+   "concept": "two-pointers"
+  }
+ ],
+ "referents": [
+  {
+   "id": "pair-l",
+   "label": "i, the left pointer",
+   "figures": [
+    "sim-brute",
+    "sim-insight",
+    "sim-fast"
+   ]
+  },
+  {
+   "id": "pair-r",
+   "label": "j, the right pointer",
+   "figures": [
+    "sim-brute",
+    "sim-insight",
+    "sim-fast"
+   ]
+  }
+ ],
+ "footnotes": [],
+ "derivations": []
+}

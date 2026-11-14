@@ -2,7 +2,7 @@
    Four debugger figures (code beside the drawing, stepped by block: METHOD §2.3) and one still sim.
    The code in every panel is an AI translation of Erickson's pseudocode into Python, Java, C++ and
    JavaScript (METHOD decision 20); his pseudocode as printed is the figure's original, behind the toggle,
-   or the <pre> just above the figure in the text. Each trace is the figure's own JS copy of the Python. */
+   or, for FibonacciMultiply, the first language of the panel. Each trace is the figure's own JS copy of the Python. */
 window.OMNISTAX_FIGURES = window.OMNISTAX_FIGURES || {};
 window.OMNISTAX_FIGURES['1.1'] = function (root, F) {
 const { C, PAL, alpha, text, line, dot, arrow, begin, tex, ctl, choice, register, fmt, topline } = F;
@@ -21,6 +21,18 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
 
 /* ================================================================ sim-lattice: FibonacciMultiply */
 (function () {
+  /* Erickson's pseudocode as the PDF prints it (jeffe:0.2), the panel's first language */
+  const PSEUDO = [
+    "FibonacciMultiply(X[0 .. m − 1], Y[0 .. n − 1]):",
+    "  hold ← 0",
+    "  for k ← 0 to n + m − 1",
+    "      for all i and j such that i + j = k",
+    "          hold ← hold + X[i] · Y[j]",
+    "      Z[k] ← hold mod 10",
+    "      hold ← ⌊hold/10⌋",
+    "  return Z[0 .. m + n − 1]",
+  ].join('\n');
+  const PMAP = { 1: 1, 4: 2, 5: 3, 6: 4, 7: 4, 8: 5, 9: 6, 10: 7, 11: 8 };
   const PY = [
     'def fibonacci_multiply(X, Y):',
     '    m, n = len(X), len(Y)',
@@ -79,8 +91,8 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
   const INPUTS = [['934', '314'], ['123', '456'], ['9999', '99']];
   const d = sim('sim-lattice', 980);
   const code = F.code(d, {
-    src: { python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
-    lineMap: { java: MAP, cpp: MAP, javascript: MAP },
+    src: { pseudocode: PSEUDO, python: PY, java: JAVA, cpp: CPP, javascript: JS }, ai: AIS,
+    lineMap: { pseudocode: PMAP, java: MAP, cpp: MAP, javascript: MAP },
     blocks: [
       { id: 'init', lines: [2, 4], label: 'start with no carry', touches: ['hold'] },
       { id: 'column', lines: [5, 10], label: 'settle digit k of the product', touches: ['k', 'Z'] },
@@ -140,7 +152,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
         const hk = g.frame.line === 10 ? K + 1 : Math.max(0, K), hx = zr - (Math.min(hk, m + n - 1) + 0.5) * zc;
         text(ctx, `hold = ${f.hold}`, hx, zy + zc + 66, cH, { size: 30, align: 'center', weight: 600 });
       }
-      text(ctx, `single-digit products ${products} of m · n = ${m * n}`, 700, zy + zc + 116, C('cost'), { size: 28, align: 'center' });
+      F.rich(ctx, [`single-digit products `, [String(products), C('cost')], ` of m · n = ${m * n}`], 700, zy + zc + 116, { size: 28, align: 'center' });
       text(ctx, `Z[0 .. ${settled}) settled`, 700, zy + zc + 154, idx, { size: 26, align: 'center' });
     },
   });
@@ -236,7 +248,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
       const bits = rows.slice(0, shown).map((r) => r.x % 2).reverse().join('');
       const yb = top + 30 + (rows.length + 0.9) * rh;
       text(ctx, `x mod 2, bottom to top: ${bits || '—'}${shown === rows.length ? ` = ${a} in binary` : ''}`, 120, yb, PAL.muted, { size: 26 });
-      text(ctx, `rows ${shown} of ⌊log₂ x⌋ + 1 = ${rows.length}`, 1080, yb + 50, C('cost'), { size: 28, align: 'right' });
+      F.rich(ctx, [`rows `, [String(shown), C('cost')], ` of ⌊log₂ x⌋ + 1 = ${rows.length}`], 1080, yb + 50, { size: 28, align: 'right' });
     },
   });
 })();
@@ -422,7 +434,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
         }
         if (s.kind === 'line' && s.name) { const seg = clipLine(s.p, s.d); if (seg) { const q = seg[1][1] > seg[0][1] || (seg[1][1] === seg[0][1] && seg[1][0] > seg[0][0]) ? seg[1] : seg[0]; text(ctx, s.name, Math.min(box.x1 - 24, Math.max(box.x0 + 24, q[0] + 24)), Math.min(box.y1 - 20, Math.max(box.y0 + 24, q[1] - 6)), PAL.ink, { size: 32, italic: true }); } }
       });
-      text(ctx, `primitive operations ${v.ops ?? 0} of ${total}, the same for every input: O(1)`, 700, H - 34, C('cost'), { size: 26, align: 'center', bg: PAL.panel });
+      F.rich(ctx, [`primitive operations `, [String(v.ops ?? 0), C('cost')], ` of ${total}, the same for every input: O(1)`], 700, H - 34, { size: 26, align: 'center', bg: PAL.panel });
     },
   });
   const rebuild = () => dbg.set(traced());
@@ -608,7 +620,7 @@ const commas = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ','
       });
       if (PQ.length > rows) text(ctx, `… ${PQ.length - rows} more`, qx + 12, qy + 46 + rows * pitch, PAL.muted, { size: 24 });
       const calls = typeof v.i === 'number' ? v.i + (g.frame.line >= 9 ? 1 : 0) : done ? R - n : 0;
-      text(ctx, `ExtractMax calls ${calls} of R − n = ${R - n} · seats ${seats} of ${R}`, 700, AH - 34, C('cost'), { size: 26, align: 'center' });
+      F.rich(ctx, [`ExtractMax calls `, [String(calls), C('cost')], ` of R − n = ${R - n} · seats `, [String(seats), C('cost')], ` of ${R}`], 700, AH - 34, { size: 26, align: 'center' });
     },
   });
 })();

@@ -191,7 +191,7 @@ function morph(prev, cur, k, at, from, to) {
       else if (L === 7) head = n ? `${neg(v.removed_element)} is gone; the entry below already holds the minimum of what is left, ${neg(v.ms[n - 1])}.` : 'The stack is empty again.';
       else head = `The minimum is the top entry's second value, ${neg(v.minimum)}: the smallest of ${list}.`;
       topline(ctx, head);
-      text(ctx, `comparisons ${v.cmp} · at most 1 per add, none to remove or read the minimum`, 1370, 618, C('cost'), { size: 26, align: 'right' });
+      F.rich(ctx, [`comparisons `, [String(v.cmp), C('cost')], ` · at most 1 per add, none to remove or read the minimum`], 1370, 618, { size: 26, align: 'right' });
     },
   });
 })();
@@ -304,7 +304,7 @@ function morph(prev, cur, k, at, from, to) {
       /* the invariant and the count */
       const qs = v.q.map(neg).join(' ≤ ') || 'empty';
       text(ctx, v.i >= 0 ? `q: ${qs}, all inside A[${Math.round(v.lo)}..${v.i}]` : 'q: empty', 40, 592, PAL.ink, { size: 26, align: 'left' });
-      text(ctx, `pushes ${v.pushes} + pops ${v.pops} = ${v.pushes + v.pops} ≤ 2N = ${2 * N}`, 1370, 592, C('cost'), { size: 26, align: 'right' });
+      F.rich(ctx, [`pushes `, [String(v.pushes), C('cost')], ` + pops `, [String(v.pops), C('cost')], ` = `, [String(v.pushes + v.pops), C('cost')], ` ≤ 2N = ${2 * N}`], 1370, 592, { size: 26, align: 'right' });
     },
   });
 })();
@@ -454,7 +454,7 @@ function morph(prev, cur, k, at, from, to) {
       else head = n1 && n2 ? `The minimum is the smaller of the two tops' second values: min(${top(v.s1, 1)}, ${top(v.s2, 1)}) = ${neg(v.minimum)}.`
         : `One stack is empty, so the minimum is the other top's second value: ${neg(v.minimum)}.`;
       topline(ctx, head);
-      text(ctx, `added ${v.added} · moved ${v.moved} · removed ${v.removed}: at most 3 moves per element`, 1370, 662, C('cost'), { size: 26, align: 'right' });
+      F.rich(ctx, [`added `, [String(v.added), C('cost')], ` · moved `, [String(v.moved), C('cost')], ` · removed `, [String(v.removed), C('cost')], `: at most 3 moves per element`], 1370, 662, { size: 26, align: 'right' });
     },
   });
 })();
@@ -559,7 +559,7 @@ function morph(prev, cur, k, at, from, to) {
       topline(ctx, head);
       const sv = v.S.map(neg).join(' < ');
       text(ctx, v.S.length ? `S, bottom to top: ${sv}` : 'S: empty', 40, 560, PAL.ink, { size: 26, align: 'left' });
-      text(ctx, `pops ${v.pops} ≤ pushes ${v.pushes} ≤ n = ${n}`, 1370, 560, C('cost'), { size: 26, align: 'right' });
+      F.rich(ctx, [`pops `, [String(v.pops), C('cost')], ` ≤ pushes `, [String(v.pushes), C('cost')], ` ≤ n = ${n}`], 1370, 560, { size: 26, align: 'right' });
     },
   });
 })();

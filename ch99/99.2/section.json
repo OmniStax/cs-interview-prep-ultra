@@ -1,0 +1,129 @@
+{
+ "id": "99.2",
+ "chapter": "99",
+ "title": "Sandbox: the minimum of every window",
+ "short": "Window minimum",
+ "lead": "A sandbox page, AI-written and not part of the book. The same lesson shape as 99.1 on a harder case, where what the obvious way wastes is less plain to see.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-10",
+ "figures": [
+  {
+   "id": "sim-brute",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ]
+  },
+  {
+   "id": "sim-insight",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ]
+  },
+  {
+   "id": "sim-fast",
+   "kind": "sim",
+   "draws": [
+    "index",
+    "key",
+    "cost",
+    "size"
+   ]
+  }
+ ],
+ "coverage": [],
+ "exercises": [
+  {
+   "id": "k1",
+   "source_id": "sandbox:k1",
+   "kind": "check",
+   "bloom": "Understand",
+   "place": {
+    "at": "end"
+   },
+   "prompt": "The window holds 7, 3, 9, 4, 6, in that order, and slides right. Which of these numbers can never be the minimum of this window or a later one?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "7 and 9",
+     "7, 9 and 6",
+     "Only 9, the largest",
+     "3, since it is the minimum already"
+    ],
+    "correct": 0,
+    "solution": "7 has 3 to its right and 9 has 4: each is beaten by a smaller number that stays in the window longer. 3, 4 and 6 have nothing smaller to their right, so each may be the minimum once the ones before it have left.",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "k2",
+   "source_id": "sandbox:k2",
+   "kind": "check",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "prompt": "The numbers arrive in increasing order, so no number is ever struck out. How many comparisons does the fast way make for $n$ numbers?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "About $n$: one for each number that arrives",
+     "About $nk$: the queue holds $k$ numbers and each arrival is compared with all of them",
+     "About $n^2$",
+     "None"
+    ],
+    "correct": 0,
+    "solution": "An arriving number is compared with the back of the queue only. The comparison fails at once, since the back is smaller, and the number joins. The queue is never scanned.",
+    "generated_by": "ai"
+   }
+  },
+  {
+   "id": "k3",
+   "source_id": "sandbox:k3",
+   "kind": "check",
+   "bloom": "Analyze",
+   "place": {
+    "at": "end"
+   },
+   "prompt": "Which of these problems gives way to the same insight, that a candidate beaten by a newer one can be dropped for good?",
+   "answer": {
+    "type": "choice",
+    "options": [
+     "For each day's temperature, how many days until a warmer one",
+     "Whether a sorted array holds two numbers with a given sum",
+     "The sum of every window of $k$ numbers",
+     "Whether a string of brackets is balanced"
+    ],
+    "correct": 0,
+    "solution": "Keep the days still waiting for a warmer one. A new day settles every waiting day that is colder, and those never need looking at again. The sum of a window needs a different insight (neighbouring windows share most of their numbers), and the other two need neither.",
+    "generated_by": "ai"
+   }
+  }
+ ],
+ "exercise_concepts": [
+  {
+   "exercise": "k1",
+   "concept": "monotonic-queue-minimum"
+  },
+  {
+   "exercise": "k2",
+   "concept": "monotonic-queue-minimum"
+  },
+  {
+   "exercise": "k3",
+   "concept": "monotonic-queue-minimum"
+  }
+ ],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

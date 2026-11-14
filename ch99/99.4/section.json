@@ -1,0 +1,24 @@
+{
+ "id": "99.4",
+ "chapter": "99",
+ "title": "Sandbox: shortest route (a race on one clock, transit map)",
+ "short": "Routes",
+ "lead": "A sandbox page, AI-written and not part of the book. The whole lesson is one clock driving two panels: the obvious way and the fast way race on the same map, then the fast way is replayed with the reader choosing.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "xp-roads",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

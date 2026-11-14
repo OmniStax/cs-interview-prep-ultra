@@ -1,0 +1,24 @@
+{
+ "id": "99.7",
+ "chapter": "99",
+ "title": "Sandbox: four queens, reworked (app style, six phases)",
+ "short": "Queens 2",
+ "lead": "A sandbox page, AI-written and not part of the book. Round three: the lesson in the app's own style and in six named phases, driven by scrolling or by a timeline, with a task on the drawing.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "ls-queens",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

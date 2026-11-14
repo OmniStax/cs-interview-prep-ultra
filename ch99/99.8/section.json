@@ -1,0 +1,24 @@
+{
+ "id": "99.8",
+ "chapter": "99",
+ "title": "Sandbox: fewest coins, reworked (app style, six phases)",
+ "short": "Coins 2",
+ "lead": "A sandbox page, AI-written and not part of the book. Round three: the lesson in the app's own style and in six named phases. It opens on the timeline; the switch at the top changes it to scrolling.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "ls-coins",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

@@ -1,0 +1,24 @@
+{
+ "id": "99.12",
+ "chapter": "99",
+ "title": "Sandbox: the minimum of every window (lesson kit, round four)",
+ "short": "Window 2",
+ "lead": "A sandbox page, AI-written and not part of the book. Round four: the monotonic-queue lesson on the kit, opening on the timeline with the phases down a side rail.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "ls-window",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

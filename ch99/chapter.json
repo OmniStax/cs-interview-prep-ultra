@@ -1,0 +1,64 @@
+{
+  "id": "99",
+  "dir": "ch99",
+  "title": "Sandbox: lesson figures (not part of the book)",
+  "sections": [
+    {
+      "id": "99.1",
+      "title": "Sandbox: a pair with a given sum"
+    },
+    {
+      "id": "99.2",
+      "title": "Sandbox: the minimum of every window"
+    },
+    {
+      "id": "99.3",
+      "title": "Sandbox: fewest coins (one morphing timeline, blackboard)"
+    },
+    {
+      "id": "99.4",
+      "title": "Sandbox: shortest route (a race on one clock, transit map)"
+    },
+    {
+      "id": "99.5",
+      "title": "Sandbox: four queens (scrolling drives the story, print look)"
+    },
+    {
+      "id": "99.6",
+      "title": "Sandbox: the number without a twin (the reader's answers move the story, LED panel)"
+    },
+    {
+      "id": "99.7",
+      "title": "Sandbox: four queens, reworked (app style, six phases)"
+    },
+    {
+      "id": "99.8",
+      "title": "Sandbox: fewest coins, reworked (app style, six phases)"
+    },
+    {
+      "id": "99.9",
+      "title": "Sandbox: shortest route, reworked (app style, six phases)"
+    },
+    {
+      "id": "99.10",
+      "title": "Sandbox: sum of a range in a search tree (app style, six phases)"
+    },
+    {
+      "id": "99.11",
+      "title": "Sandbox: a pair with a given sum (lesson kit, round four)"
+    },
+    {
+      "id": "99.12",
+      "title": "Sandbox: the minimum of every window (lesson kit, round four)"
+    },
+    {
+      "id": "99.13",
+      "title": "Sandbox: trapped rain water (lesson kit, a hard problem)"
+    },
+    {
+      "id": "99.14",
+      "title": "Sandbox: the largest rectangle in a histogram (lesson kit, a hard problem)"
+    }
+  ],
+  "variables": []
+}

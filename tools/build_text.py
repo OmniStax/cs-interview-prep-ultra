@@ -612,13 +612,22 @@ def ods_inline(tex, spec, notes, ctx):
 
 def code_set(variants, ai):
     """A code listing in several languages (root item 19): one <pre data-lang> per language present, in
-    the order Python, Java, C++, JavaScript; a variant the source does not print carries data-ai."""
+    the order Python, Java, C++, JavaScript; a variant the source does not print carries data-ai. Pseudocode
+    the source prints for it goes in first, by pseudo_in_set."""
     pres = []
     for lang in ('python', 'java', 'cpp', 'javascript'):
         if lang in variants:
             mark = f' data-ai="{ai}"' if lang in variants.get('_ai', ()) else ''
             pres.append(f'<pre data-lang="{lang}"{mark}><code>{esc(variants[lang].strip(chr(10)))}</code></pre>')
     return '<div class="code-set">\n' + '\n'.join(pres) + '\n</div>'
+
+
+def pseudo_in_set(set_html, body):
+    """A code set with the source's pseudocode as its first variant, the one a reader who has chosen no
+    language sees; `body` is the pseudocode, escaped."""
+    head = '<div class="code-set">\n'
+    assert set_html.startswith(head), 'a code set opens with <div class="code-set">'
+    return head + f'<pre data-lang="pseudocode"><code>{body}</code></pre>\n' + set_html[len(head):]
 
 
 def opendsa_block(b, spec, fixes, used):
@@ -788,14 +797,24 @@ def build(sec_dir, check=False):
                 if k == 'pre':
                     lines = pre_text(e['lines'])
                     key = lines[0]
+                    # Pseudocode the book also gives code for is one listing with that code (RULES, Figures,
+                    # "Pseudocode and its code are one listing"): the spec's PSEUDO names where it goes,
+                    # ('set', key) the first variant of the code set HTML[key], ('sim', key) the code panel of
+                    # the Sim HTML[key], whose figures.js carries it; neither prints a <pre> of its own.
+                    where = spec.get('PSEUDO', {}).get(key)
                     if key in spec.get('PRE_AS_FIGURE', {}):
                         fid = spec['PRE_AS_FIGURE'][key]
                         hparts.append(f'<pre data-pseudocode="{fid}">' + esc('\n'.join(apply_fixes('\n'.join(lines), fixes, 'pre', used).split('\n'))) + '</pre>')
+                    elif where and where[0] == 'set':
+                        hparts.append(pseudo_in_set(spec['HTML'][where[1]], esc(apply_fixes('\n'.join(lines), fixes, 'pre', used))))
+                    elif where and where[0] == 'sim':
+                        pass
                     else:
                         hparts.append('<pre>' + esc(apply_fixes('\n'.join(lines), fixes, 'pre', used)) + '</pre>')
                     mparts.append('```\n' + apply_fixes('\n'.join(lines), fixes, 'pre', used) + '\n```')
                     for after in spec.get('AFTER_PRE', {}).get(key, []):
-                        hparts.append(spec['HTML'][after])
+                        if not (where and where[0] == 'set' and where[1] == after):
+                            hparts.append(spec['HTML'][after])
                         mparts.append(f'[{after}]')
                     continue
                 if k == 'display':

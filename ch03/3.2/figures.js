@@ -407,11 +407,11 @@ const num = (x) => String(x).replace('-', '−');   /* a minus sign, not a hyphe
         : [['the queue is empty: ', ink], ['n', cn, { weight: 600 }], [` = 0, length(a) = ${len}`, ink]], Y0);
       if (!v.b && v.n < len) seg([['next add writes a[(j + n) mod length(a)] = ', ink], [`a[(${v.j} + ${v.n}) mod ${len}] = a[${(v.j + v.n) % len}]`, idx, { weight: 600 }]], Y0 + 44);
       else if (!v.b) seg([['a is full: the next add calls resize() first', ink]], Y0 + 44);
-      seg([[`calls m = ${v.m}, resizes r = ${v.r}: copies Σnᵢ = ${v.copies} ≤ 2m + 2r = ${2 * v.m + 2 * v.r}`, cost]], Y0 + 88);
+      seg([[`calls m = ${v.m}, resizes r = ${v.r}: copies Σnᵢ = `, PAL.ink], [String(v.copies), cost], [` ≤ 2m + 2r = ${2 * v.m + 2 * v.r}`, PAL.ink]], Y0 + 88);
       const show = v.log.slice(-2);
       show.forEach((e, q) => {
         const i = v.log.length - show.length + q + 1;
-        seg([[`resize ${i}, in ${e.call}: n${sub(i)} = ${e.ni} copied, ${e.since} call${e.since === 1 ? '' : 's'} since the last ≥ n${sub(i)}/2 − 1 = ${num(e.ni / 2 - 1)}`, cost]], Y0 + 132 + q * 44);
+        seg([[`resize ${i}, in ${e.call}: n${sub(i)} = `, PAL.ink], [String(e.ni), cost], [' copied, ', PAL.ink], [String(e.since), cost], [` call${e.since === 1 ? '' : 's'} since the last ≥ n${sub(i)}/2 − 1 = ${num(e.ni / 2 - 1)}`, PAL.ink]], Y0 + 132 + q * 44);
       });
       tip.hits = hits;
     },

@@ -264,8 +264,8 @@ function drawLinks(ctx, N, from, prevTo, curTo, k, color, w, alphaOf, nullLabel)
       const n = chain(S.first, S.next).length;
       const ch = chain(S.first, S.next).join(' → ');
       text(ctx, `from list.firstNode: ${ch ? ch + ' → ' : ''}null`, 70, 470, PAL.muted, { size: 20, align: 'left' });
-      const counts = `links followed ${S.hops} · links written ${S.writes}`;
-      text(ctx, counts, 1330 - 120, 470, cCost, { size: 22, weight: 600, align: 'right' });
+      const counts = `links followed [[${S.hops}]] · links written [[${S.writes}]]`;
+      F.rich(ctx, F.marked(counts, cCost), 1330 - 120, 470, { size: 22, align: 'right' });
       text(ctx, `n = ${n}`, 1330, 470, cSize, { size: 22, weight: 600, align: 'right' });
       tip.hits = hits;
     },
@@ -394,7 +394,7 @@ function drawLinks(ctx, N, from, prevTo, curTo, k, color, w, alphaOf, nullLabel)
       /* the invariant and the count */
       const target = S.next[S.p];
       text(ctx, `*p → ${target === null ? 'NULL' : target === 'item' ? 'item' : target}`, 70, 470, cP, { size: 22, weight: 600, align: 'left' });
-      text(ctx, `links followed ${S.hops} ≤ n`, 1330 - 100, 470, cCost, { size: 22, weight: 600, align: 'right' });
+      F.rich(ctx, [`links followed `, [String(S.hops), cCost], ` ≤ n`], 1330 - 100, 470, { size: 22, align: 'right' });
       text(ctx, `n = ${LIST.length}`, 1330, 470, cSize, { size: 22, weight: 600, align: 'right' });
       tip.hits = hits;
     },

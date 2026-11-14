@@ -1,0 +1,24 @@
+{
+ "id": "99.11",
+ "chapter": "99",
+ "title": "Sandbox: a pair with a given sum (lesson kit, round four)",
+ "short": "Pair sum 2",
+ "lead": "A sandbox page, AI-written and not part of the book. Round four: the two-pointer lesson on the kit, with the wasteful loops boxed in the obvious code and the story held at each task.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "ls-pair",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}
