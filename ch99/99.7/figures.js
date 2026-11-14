@@ -4,41 +4,76 @@ window.OMNISTAX_FIGURES['99.7'] = function (root, F) {
 /* ---- the lesson kit, in the app's own style (ch99/_kit/ls.js; build.py copies it into a lesson's figures.js) ----
    One figure tells one lesson in named phases: Problem, Brute force, Observation, Optimization, Trace, Insight.
    It draws through figlib on the app's palette and faces, so it follows the theme and the reader's colours.
-   What it adds to a Sim: the pane's width; a text and its code beside the drawing for each phase; a bar that
-   names the phases; and tasks, where the reader acts on the drawing itself.
-   Two ways to drive it, switched at the top of the figure:
-     scroll    the drawing stays put and the phase texts scroll past it; where the reader is in a text is how
-               far that phase has run. The bar shows the place and a press on a phase scrolls to it.
-     timeline  the bar is a clock with a play button; the text of the current phase stands beside the drawing.
-   A task poses a question over part of a phase. What can be pressed pulses in the accent colour. The right
-   press moves the story on; a wrong one says what is wrong and moves nothing. Scrolling or playing on past
-   the question shows the answer anyway, so a reader is never stuck. */
+
+   The code is one thread through the phases. Brute force prints the obvious code. Observation prints the same
+   code with the lines that do the wasted work boxed in red. Optimization shows what replaces them, either as
+   the new code with its new lines boxed in green, or as an edit of the old code (red lines struck, green
+   lines put in). Trace runs the new code.
+
+   A task poses a question on the drawing. What can be pressed pulses in the accent colour. The right press
+   moves the story on; a wrong one says what is wrong. Scrolling and the play button both stop at an open
+   task. Only the phase bar goes past one: press a later phase, or drag ahead.
+
+   Three switches at the top of the figure are for the sandbox only: how the figure is driven (scrolling or a
+   timeline), how the phases are shown (steps, a scrubber, or a rail down the side), and how the change to
+   the code is shown (boxes or an edit). */
 const LS = (function () {
   const CSS = `
 article figure.sim.ls{--lw:min(calc(100cqw - 48px),1560px);width:var(--lw);max-width:none;margin-left:calc((100% - var(--lw)) / 2);margin-right:0;overflow:visible}
 .fig-root figure.sim.ls{width:auto;margin-left:0}
 figure.sim.ls>.sim-head>span:not(.eyebrow){max-width:110ch}
-.ls-mode{display:flex;gap:8px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--rule);font:500 .8rem var(--sans);color:var(--muted)}
-.ls-mode button{font:600 .8rem var(--sans);padding:4px 12px;border-radius:14px;border:1px solid var(--rule);background:var(--panel);color:var(--muted);cursor:pointer}
-.ls-mode button.on{border-color:var(--accent);color:var(--ink);background:color-mix(in srgb,var(--accent) 12%,var(--panel))}
+.ls-opts{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;padding:8px 14px;border-bottom:1px solid var(--rule);font:500 .78rem var(--sans);color:var(--muted)}
+.ls-opts span{display:inline-flex;gap:5px;align-items:center}
+.ls-opts button{font:600 .76rem var(--sans);padding:3px 10px;border-radius:12px;border:1px solid var(--rule);background:var(--panel);color:var(--muted);cursor:pointer}
+.ls-opts button.on{border-color:var(--accent);color:var(--ink);background:color-mix(in srgb,var(--accent) 12%,var(--panel))}
 .ls-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);align-items:start}
-.ls-left{position:sticky;top:0;align-self:start;background:var(--panel);border-right:1px solid var(--rule);border-radius:0 0 0 8px}
+.ls-grid.rail{grid-template-columns:132px minmax(0,1.7fr) minmax(0,1fr)}
+.ls-left,.ls-railcol{position:sticky;top:0;align-self:start;background:var(--panel)}
+.ls-left{border-right:1px solid var(--rule)}
+.ls-railcol{border-right:1px solid var(--rule);padding:18px 0 18px 16px;display:none}
+.ls-grid.rail .ls-railcol{display:block}
+.ls-grid.static .ls-left,.ls-grid.static .ls-railcol{position:static}
 .ls-stage{position:relative}
 .ls-stage canvas{display:block;width:100%}
-.ls-bar{display:flex;gap:6px;padding:10px 12px;align-items:center;border-bottom:1px solid var(--rule)}
-.ls-seg{flex:1 1 0;min-width:0;position:relative;height:34px;border:1px solid var(--rule);border-radius:17px;background:var(--panel);overflow:hidden;cursor:pointer;font:600 .78rem var(--sans);color:var(--muted);padding:0 6px;white-space:nowrap;text-overflow:ellipsis}
-.ls-seg .f{position:absolute;inset:0 auto 0 0;width:0;background:color-mix(in srgb,var(--accent) 20%,transparent);pointer-events:none}
-.ls-seg .n{position:relative;pointer-events:none}
-.ls-seg.on{color:var(--ink);border-color:var(--accent)}
-.ls-seg.task .n::after{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:6px;background:var(--accent);vertical-align:1px}
-.ls-seg.task.done .n::after{background:var(--ok)}
-.ls-play{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--accent);background:var(--accent);color:var(--panel);cursor:pointer;font-size:13px}
-.ls-seg:focus-visible,.ls-play:focus-visible,.ls-hot:focus-visible,.ls-mode button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* the phase bar: one structure, three looks */
+.ls-nav{display:flex;gap:12px;align-items:flex-start;padding:14px 18px 10px;border-bottom:1px solid var(--rule);user-select:none}
+.ls-play{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:0;background:var(--accent);color:var(--panel);cursor:pointer;font-size:12px;line-height:30px;padding:0}
+.ls-track{position:relative;flex:1 1 auto;height:52px;cursor:pointer;touch-action:none}
+.ls-line{position:absolute;left:0;right:0;top:13px;height:3px;border-radius:2px;background:var(--rule)}
+.ls-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:2px;background:var(--accent)}
+.ls-node{position:absolute;top:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:0;border:0;background:none;cursor:pointer;font:600 .76rem/1.1 var(--sans);color:var(--muted);text-align:left}
+.ls-dot{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--panel);border:2px solid var(--rule);font:700 .78rem var(--sans);color:var(--muted)}
+.ls-node.done .ls-dot{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.ls-node.on .ls-dot{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 18%,transparent)}
+.ls-node.on,.ls-node.done{color:var(--ink)}
+.ls-lab i{font-style:normal;display:inline-block;margin-left:5px;font-size:.7rem;font-weight:700;color:var(--accent)}
+.ls-node.solved .ls-lab i{color:var(--ok)}
+.ls-node.skipped .ls-lab i{color:var(--muted)}
+.ls-thumb{display:none}
+/* look 2: a scrubber. A thin track with a thumb, the phase names under it */
+.ls-nav.tabs .ls-track{height:40px}
+.ls-nav.tabs .ls-line{top:6px;height:4px}
+.ls-nav.tabs .ls-dot{width:2px;height:16px;border:0;border-radius:0;background:var(--rule);color:transparent;font-size:0;box-shadow:none}
+.ls-nav.tabs .ls-node.done .ls-dot,.ls-nav.tabs .ls-node.on .ls-dot{background:var(--accent);box-shadow:none}
+.ls-nav.tabs .ls-node{gap:4px;font-size:.8rem}
+.ls-nav.tabs .ls-node.on .ls-lab{box-shadow:inset 0 -2px 0 var(--accent)}
+.ls-nav.tabs .ls-thumb{display:block;position:absolute;top:0;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--panel),0 1px 4px rgba(0,0,0,.3)}
+.ls-nav.tabs .ls-lab{padding:0 0 2px 7px}
+/* look 3: a rail down the side */
+.ls-nav.rail{flex-direction:column;padding:0;border:0;gap:14px}
+.ls-nav.rail .ls-track{width:100%;height:340px;flex:0 0 auto}
+.ls-nav.rail .ls-line{left:13px;right:auto;top:0;bottom:0;width:3px;height:auto}
+.ls-nav.rail .ls-fill{right:0;bottom:auto;width:auto;height:0}
+.ls-nav.rail .ls-node{left:0!important;flex-direction:row;align-items:center;gap:9px}
+.ls-play:focus-visible,.ls-node:focus-visible,.ls-hot:focus-visible,.ls-opts button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* the task strip and what can be pressed */
 .ls-turn{display:flex;gap:12px;align-items:baseline;min-height:3.4em;padding:10px 16px 12px;border-top:1px solid var(--rule);font:500 .98rem/1.4 var(--sans);color:var(--muted)}
 .ls-turn.ask{background:color-mix(in srgb,var(--accent) 9%,var(--panel));color:var(--ink)}
 .ls-turn .k{flex:0 0 auto;font:700 .72rem/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding:5px 9px;border:1.5px solid var(--accent);border-radius:12px}
 .ls-turn.bad .m{color:var(--bad)}
 .ls-turn.ok .k{color:var(--ok);border-color:var(--ok)}
+.ls-turn small{display:block;margin-top:3px;font:500 .8rem var(--sans);color:var(--muted)}
+.ls-turn.nudge{animation:ls-shake .3s}
 .ls-hot{position:absolute;transform:translate(-50%,-50%);padding:0;border:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);cursor:pointer;animation:ls-pulse 1.5s ease-out infinite}
 .ls-hot:hover{background:color-mix(in srgb,var(--accent) 34%,transparent)}
 .ls-hot.sel{background:color-mix(in srgb,var(--accent) 40%,transparent);animation:none}
@@ -46,6 +81,7 @@ figure.sim.ls>.sim-head>span:not(.eyebrow){max-width:110ch}
 @keyframes ls-pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
 @keyframes ls-shake{25%{margin-left:-5px}75%{margin-left:5px}}
 @media (prefers-reduced-motion: reduce){.ls-hot{animation:none}}
+/* the texts */
 .ls-steps{padding:0 30px 45vh 30px}
 .ls-step{min-height:600px;padding:44px 0 40px;opacity:.32;transition:opacity .2s}
 .ls-step.on{opacity:1}
@@ -55,92 +91,150 @@ figure.sim.ls>.sim-head>span:not(.eyebrow){max-width:110ch}
 .ls-step h3{font:600 1.4rem/1.2 var(--sans);margin:.45rem 0 .8rem;color:var(--ink)}
 .ls-step p{font:400 1.04rem/1.6 var(--body);margin:0 0 .8rem;max-width:none}
 .ls-step p.obs{padding:10px 14px;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent);font-weight:600}
-.ls-code{font:13px/1.65 var(--mono);background:var(--soft);border-radius:6px;padding:9px 0;margin:.9rem 0 0;overflow-x:auto}
-.ls-code .ln{display:block;white-space:pre-wrap;padding:0 12px 0 4.2em;text-indent:-4.2em;border-left:3px solid transparent}
-.ls-code .ln::before{content:attr(data-n);display:inline-block;width:2.2em;text-align:right;margin-right:1em;color:var(--muted)}
+.ls-lock{margin:8px 0 0;padding:12px 14px;border:1.5px dashed var(--accent);border-radius:8px;font:500 .9rem/1.45 var(--sans);color:var(--muted)}
+.ls-lock b{color:var(--accent)}
+/* the code */
+.ls-code{font:12.5px/1.65 var(--mono);background:var(--soft);border-radius:6px;padding:9px 6px 9px 0;margin:.9rem 0 0;overflow-x:auto}
+.ls-code .ln{display:block;white-space:pre-wrap;padding:0 8px 0 4.2em;text-indent:-4.2em}
+.ls-code .ln::before{content:attr(data-n);display:inline-block;width:2.2em;text-align:right;margin-right:1em;color:var(--muted);text-indent:0}
 .ls-code .ln.on{background:var(--soft2);font-weight:600}
-.ls-code .ln.new{border-left-color:var(--accent)}
-.ls-code .ln.new.on{background:color-mix(in srgb,var(--accent) 24%,transparent)}
-.ls-step p.ls-codenote{font:500 .8rem var(--sans);color:var(--muted);margin:.45rem 0 0}
-.ls-codenote i{display:inline-block;width:0;height:12px;border-left:3px solid var(--accent);margin-right:7px;vertical-align:-2px}
-@media (max-width: 860px){.ls-grid{grid-template-columns:1fr}.ls-left{z-index:2;border-right:0}}
+.ls-code .bx{display:block;position:relative;margin:14px 0 5px 6px;padding-top:8px;border:2px solid var(--bad);border-radius:6px;background:color-mix(in srgb,var(--bad) 7%,transparent)}
+.ls-code .bx.add{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 8%,transparent)}
+.ls-code .bx .ln{padding-left:calc(4.2em - 8px)}
+.ls-code .bx>em{position:absolute;right:8px;top:-11px;font:700 .68rem/1 var(--sans);font-style:normal;letter-spacing:.03em;padding:4px 8px;border-radius:9px;background:var(--bad);color:var(--panel);text-indent:0;white-space:nowrap}
+.ls-code .bx.add>em{background:var(--ok)}
+.ls-code .ln.del{color:var(--bad);text-decoration:line-through;background:color-mix(in srgb,var(--bad) 9%,transparent)}
+.ls-code .ln.ins{background:color-mix(in srgb,var(--ok) 13%,transparent)}
+.ls-code .ln.del::before{content:'−';color:var(--bad);text-decoration:none}
+.ls-code .ln.ins::before{content:'+';color:var(--ok)}
+.ls-step p.ls-codenote{font:500 .8rem/1.4 var(--sans);color:var(--muted);margin:.5rem 0 0}
+.ls-codenote b.r{color:var(--bad)}.ls-codenote b.g{color:var(--ok)}
+@media (max-width: 860px){.ls-grid,.ls-grid.rail{grid-template-columns:1fr}.ls-left{z-index:2;border-right:0}.ls-grid.rail .ls-railcol{display:none}}
 `;
   const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
   const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
   const ease = (k) => { k = clamp(k); return k * k * (3 - 2 * k); };
   const part = (u, a, b) => ease(clamp((u - a) / (b - a)));
-  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  /* a line diff of two listings: [{t: ' ' | '-' | '+', s}] */
+  function diff(a, b) {
+    const n = a.length, m = b.length, L = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+    for (let i = n - 1; i >= 0; i -= 1) for (let j = m - 1; j >= 0; j -= 1) L[i][j] = a[i].trim() === b[j].trim() ? L[i + 1][j + 1] + 1 : Math.max(L[i + 1][j], L[i][j + 1]);
+    const out = []; let i = 0, j = 0;
+    while (i < n || j < m) {
+      if (i < n && j < m && a[i].trim() === b[j].trim()) { out.push({ t: ' ', s: b[j] }); i += 1; j += 1; }
+      else if (i < n && (j >= m || L[i + 1][j] >= L[i][j + 1])) { out.push({ t: '-', s: a[i] }); i += 1; }
+      else { out.push({ t: '+', s: b[j] }); j += 1; }
+    }
+    return out;
+  }
+  /* a level of indentation is drawn two columns wide, so a deep line still fits the text column */
+  const narrow = (s) => s.replace(/^( {4})+/, (m) => ' '.repeat(m.length / 2));
+  const runs = (ls) => { const r = []; ls.slice().sort((x, y) => x - y).forEach((n) => { const q = r[r.length - 1]; if (q && q[1] === n - 1) q[1] = n; else r.push([n, n]); }); return r; };
 
   function lesson(root, F, id, o) {
     const fig = F.byId(root, id); if (!fig) throw new Error('no figure "' + id + '"');
     if (!document.getElementById('ls-css')) { const s = el('style'); s.id = 'ls-css'; s.textContent = CSS; document.head.appendChild(s); }
     fig.classList.add('ls');
-    const P = o.phases, H = o.H;
-    P.forEach((p) => { (p.tasks || []).forEach((t) => { t.solved = false; t.passed = false; }); });
-    let mode = o.mode || 'scroll', ph = 0, u = 0, t = 0, playing = false, msg = null, hot = [];
-    const total = P.reduce((a, p) => a + (p.dur || 8), 0), starts = []; P.reduce((a, p, i) => { starts[i] = a; return a + (p.dur || 8); }, 0);
+    const P = o.phases, H = o.H, NP = P.length, K = o.code;
+    const TASKS = []; P.forEach((p, i) => (p.tasks || []).forEach((t, n) => { t.solved = false; t.passed = false; t.ph = i; t.n = n; TASKS.push(t); }));
+    let mode = o.mode || 'scroll', nav = o.nav || 'stepper', change = o.change || 'boxes';
+    let ph = 0, u = 0, t = 0, playing = false, msg = null, hot = [], held = false;
+    const DUR = (i) => P[i].dur || 8, starts = []; let total = 0; P.forEach((p, i) => { starts[i] = total; total += DUR(i); });
 
-    /* the parts that stay whatever the mode: the switch, the bar, the stage, the task strip */
-    const modeRow = el('div', 'ls-mode', '<span>Sandbox: drive this figure by</span>');
-    const mb = { scroll: el('button', null, 'scrolling'), timeline: el('button', null, 'a timeline') };
-    Object.entries(mb).forEach(([m, b]) => { b.type = 'button'; b.addEventListener('click', () => setMode(m)); modeRow.appendChild(b); });
-    const grid = el('div', 'ls-grid'), left = el('div', 'ls-left'), bar = el('div', 'ls-bar'), stage = el('div', 'ls-stage stage'), turn = el('div', 'ls-turn');
-    const play = el('button', 'ls-play'); play.type = 'button';
-    const segs = P.map((p, i) => {
-      const b = el('button', 'ls-seg' + (p.tasks ? ' task' : ''), '<span class="f"></span><span class="n">' + p.kind + '</span>'); b.type = 'button'; b.title = p.kind + ': ' + p.title;
-      b.addEventListener('click', () => jump(i, 0)); return b;
+    /* the sandbox's switches */
+    const opts = el('div', 'ls-opts');
+    const group = (label, list, get, set) => {
+      const s = el('span', null, label + ' '); const bs = list.map(([v, name]) => { const b = el('button', null, name); b.type = 'button'; b.addEventListener('click', () => { set(v); mark(); }); s.appendChild(b); return [v, b]; });
+      const mark = () => bs.forEach(([v, b]) => b.classList.toggle('on', v === get())); mark(); opts.appendChild(s); return mark;
+    };
+    /* the parts */
+    const grid = el('div', 'ls-grid'), railcol = el('div', 'ls-railcol'), left = el('div', 'ls-left'), stage = el('div', 'ls-stage stage'), turn = el('div', 'ls-turn'), right = el('div');
+    const navEl = el('div', 'ls-nav'), play = el('button', 'ls-play'), track = el('div', 'ls-track', '<span class="ls-line"><span class="ls-fill"></span></span><span class="ls-thumb"></span>');
+    play.type = 'button';
+    const nodes = P.map((p, i) => {
+      const b = el('button', 'ls-node', '<span class="ls-dot">' + (i + 1) + '</span><span class="ls-lab">' + p.kind + (p.tasks ? '<i></i>' : '') + '</span>'); b.type = 'button'; b.title = p.title;
+      b.addEventListener('click', (e) => { e.stopPropagation(); go(i, 0, true); }); track.appendChild(b); return b;
     });
     const c = F.makeCanvas(stage, H);
-    left.append(bar, stage, turn); grid.appendChild(left); fig.append(modeRow, grid);
-    const cards = P.map((p, i) => {
-      const s = el('div', 'ls-step', '<span class="ls-kind">' + (i + 1) + ' · ' + p.kind + '</span><h3>' + p.title + '</h3>' + p.html);
-      if (p.code) {
-        const pre = el('pre', 'ls-code'); p.code.src.split('\n').forEach((ln, k) => { const sp = el('span', 'ln' + ((p.code.added || []).includes(k + 1) ? ' new' : '')); sp.dataset.n = k + 1; sp.textContent = ln || ' '; pre.appendChild(sp); });
-        s.appendChild(pre); p.pre = pre;
-        if (p.code.added) s.appendChild(el('p', 'ls-codenote', '<i></i>the lines the observation adds'));
-      }
-      return s;
-    });
-    const right = el('div'); grid.appendChild(right);
-    /* the element the reader scrolls: looked for when needed, since the page may not be laid out yet */
+    left.append(stage, turn); grid.append(railcol, left, right); fig.append(opts, grid);
+    const lock = el('div', 'ls-lock', '<b>Your turn.</b> The answer goes on the drawing. To leave it unanswered, press a later phase on the bar.');
+    const cards = P.map((p, i) => { const s = el('div', 'ls-step', '<span class="ls-kind">' + (i + 1) + ' · ' + p.kind + '</span><h3>' + p.title + '</h3>' + p.html); if (p.show) { p.codeEl = el('div'); s.appendChild(p.codeEl); } return s; });
     const scrollerOf = () => { for (let q = fig.parentElement; q; q = q.parentElement) { const ov = getComputedStyle(q).overflowY; if (ov === 'auto' || ov === 'scroll') return q; } return document.scrollingElement; };
     const tw = F.tween(fig, 0), redraw = () => tw.set(0);
 
-    function setMode(m) {
-      mode = m; playing = false;
-      Object.entries(mb).forEach(([k, b]) => b.classList.toggle('on', k === m));
-      right.className = m === 'scroll' ? 'ls-steps' : 'ls-side';
-      bar.replaceChildren(...(m === 'timeline' ? [play] : []), ...segs);
-      left.style.position = m === 'scroll' ? 'sticky' : 'static';
-      if (m === 'scroll') right.replaceChildren(...cards); else { t = starts[ph] + u * (P[ph].dur || 8); }
-      sync(true);
+    /* the code of a phase: 'brute', 'bad' (brute with the wasteful lines boxed), 'change', 'fast' */
+    function listing(src, boxes, cls) {
+      const pre = el('pre', 'ls-code'), lines = src.split('\n'); let k = 0;
+      const ln = (n) => { const sp = el('span', 'ln'); sp.dataset.n = n; sp.dataset.line = n; sp.textContent = narrow(lines[n - 1]) || ' '; return sp; };
+      (boxes || []).forEach(([a, b, note]) => { while (k + 1 < a) { k += 1; pre.appendChild(ln(k)); } const bx = el('span', 'bx' + (cls ? ' ' + cls : '')); if (note) bx.appendChild(el('em', null, note)); while (k < b) { k += 1; bx.appendChild(ln(k)); } pre.appendChild(bx); });
+      while (k < lines.length) { k += 1; pre.appendChild(ln(k)); }
+      return pre;
     }
-    const task = () => (P[ph].tasks || []).find((k) => !k.solved && u >= k.a && u < k.b) || null;
-    function jump(i, v) {
-      if (mode === 'timeline') { t = starts[i] + v * (P[i].dur || 8) + 1e-4; playing = false; set(i, v); return; }
-      const r = cards[i].getBoundingClientRect(), line = lineY();
-      const dy = r.top + v * r.height - line + 2;
-      scrollerOf().scrollBy({ top: dy, behavior: 'smooth' });
+    function fillCode() {
+      P.forEach((p) => {
+        if (!p.codeEl) return;
+        let pre, note = '';
+        if (p.show === 'brute') pre = listing(K.brute);
+        else if (p.show === 'bad') { pre = listing(K.brute, [[K.bad[0], K.bad[1], K.badNote]], ''); }
+        else if (p.show === 'fast') pre = listing(K.fast);
+        else if (change === 'boxes') { pre = listing(K.fast, runs(K.added).map((r, i) => [r[0], r[1], i === 0 ? K.addNote || 'new' : null]), 'add'); note = 'The <b class="g">green</b> lines replace the loop boxed in <b class="r">red</b> in the obvious code.'; }
+        else {
+          pre = el('pre', 'ls-code');
+          diff(K.brute.split('\n'), K.fast.split('\n')).forEach((d) => { const sp = el('span', 'ln' + (d.t === '-' ? ' del' : d.t === '+' ? ' ins' : '')); sp.dataset.n = ''; sp.textContent = narrow(d.s) || ' '; pre.appendChild(sp); });
+          note = 'The obvious code, edited: <b class="r">red</b> lines go, <b class="g">green</b> lines come in.';
+        }
+        p.pre = pre; p.codeEl.replaceChildren(pre); if (note) p.codeEl.appendChild(el('p', 'ls-codenote', note));
+      });
     }
+
+    /* tasks: the first one neither answered nor skipped holds the story */
+    const gate = () => TASKS.find((k) => !k.solved && !k.passed) || null;
+    const task = () => { const k = gate(); return k && k.ph === ph && u >= k.a && u < k.b ? k : null; };
+    const passTo = (i, v) => TASKS.forEach((k) => { if (!k.solved && (k.ph < i || (k.ph === i && k.a < v))) k.passed = true; });
     const lineY = () => { const sb = left.getBoundingClientRect(); return sb.top + Math.min(sb.height, window.innerHeight) * 0.5; };
+    /* go to phase i at v. From the bar (skip = true) this goes past any open task on the way. */
+    function go(i, v, skip, smooth = true) {
+      if (skip) passTo(i, v);
+      const g = gate(); if (g && (i > g.ph || (i === g.ph && v > g.a))) { i = g.ph; v = g.a + 5e-4; }
+      if (mode === 'timeline') { t = starts[i] + v * DUR(i) + 1e-4; playing = false; set(i, v); return; }
+      sync();                                                    /* later texts may have just been let in */
+      const r = cards[i].getBoundingClientRect(); scrollerOf().scrollBy({ top: r.top + v * r.height - lineY() + 2, behavior: smooth ? 'smooth' : 'auto' });
+    }
     function set(i, v) { const moved = i !== ph; ph = i; u = v; if (moved) msg = null; sync(moved); }
+    function setNav() {
+      navEl.className = 'ls-nav ' + nav; grid.classList.toggle('rail', nav === 'rail');
+      navEl.replaceChildren(...(mode === 'timeline' ? [play] : []), track);
+      if (nav === 'rail') railcol.replaceChildren(navEl); else { railcol.replaceChildren(); left.insertBefore(navEl, stage); }
+      nodes.forEach((b, i) => { b.style.left = nav === 'rail' ? '0' : (i / NP) * 100 + '%'; b.style.top = nav === 'rail' ? (i / NP) * 100 + '%' : '0'; });
+    }
+    function setMode(m) {
+      mode = m; playing = false; grid.classList.toggle('static', m !== 'scroll');
+      right.className = m === 'scroll' ? 'ls-steps' : 'ls-side';
+      if (m === 'scroll') right.replaceChildren(...cards); else t = starts[ph] + u * DUR(ph);
+      setNav(); sync(true);
+    }
     function sync(force) {
-      segs.forEach((b, i) => {
-        b.querySelector('.f').style.width = (i < ph ? 100 : i > ph ? 0 : u * 100) + '%'; b.classList.toggle('on', i === ph);
-        b.classList.toggle('done', !!P[i].tasks && P[i].tasks.every((k) => k.solved));
+      const pos = (ph + u) / NP, g = gate(), fill = track.querySelector('.ls-fill'), thumb = track.querySelector('.ls-thumb');
+      if (nav === 'rail') { fill.style.height = pos * 100 + '%'; fill.style.width = ''; } else { fill.style.width = pos * 100 + '%'; fill.style.height = ''; thumb.style.left = pos * 100 + '%'; }
+      nodes.forEach((b, i) => {
+        const ts = P[i].tasks || [];
+        b.classList.toggle('on', i === ph); b.classList.toggle('done', i < ph);
+        b.classList.toggle('solved', ts.length > 0 && ts.every((k) => k.solved)); b.classList.toggle('skipped', ts.some((k) => k.passed && !k.solved));
+        const m = b.querySelector('i'); if (m) m.textContent = ts.every((k) => k.solved) ? '✓' : ts.some((k) => k.passed && !k.solved) ? '○' : '●'; if (m) m.title = ts.every((k) => k.solved) ? 'answered' : ts.some((k) => k.passed && !k.solved) ? 'skipped' : 'a question waits here';
       });
       play.textContent = playing ? '❚❚' : '▶'; play.setAttribute('aria-label', playing ? 'Pause' : 'Play');
-      if (mode === 'scroll') cards.forEach((s, i) => s.classList.toggle('on', i === ph));
-      else if (force || right.firstChild !== cards[ph]) right.replaceChildren(cards[ph]);
+      if (mode === 'scroll') {
+        cards.forEach((s, i) => { s.classList.toggle('on', i === ph); s.hidden = !!g && i > g.ph; });
+        if (g) { if (lock.previousSibling !== cards[g.ph]) cards[g.ph].after(lock); } else lock.remove();
+      } else { lock.remove(); cards.forEach((s) => { s.hidden = false; }); if (force || right.firstChild !== cards[ph]) right.replaceChildren(cards[ph]); }
       const p = P[ph];
-      if (p.pre) { const on = p.lines ? p.lines(u, api) || [] : []; Array.from(p.pre.children).forEach((sp, k) => sp.classList.toggle('on', on.includes(k + 1))); }
-      /* the task strip and what can be pressed */
+      if (p.pre && p.lines && (p.show === 'brute' || p.show === 'fast')) { const on = p.lines(u, api) || []; p.pre.querySelectorAll('.ln').forEach((sp) => sp.classList.toggle('on', on.includes(+sp.dataset.line))); }
       const k = task();
       turn.className = 'ls-turn' + (k ? ' ask' : '') + (msg && msg.bad ? ' bad' : '') + (msg && msg.ok ? ' ok' : '');
-      if (k) turn.innerHTML = '<span class="k">Your turn</span><span class="m">' + (msg ? msg.text : k.prompt) + '</span>';
+      if (k) turn.innerHTML = '<span class="k">Your turn</span><span class="m">' + (msg ? msg.text : k.prompt) + (held ? '<small>The story waits here. To skip the question, press a later phase on the bar.</small>' : '') + '</span>';
       else if (msg && msg.ok) turn.innerHTML = '<span class="k">Right</span><span class="m">' + msg.text + '</span>';
       else turn.innerHTML = '<span class="m">' + (p.note ? p.note(u, api) : '') + '</span>';
-      const want = k ? k.targets(api) : [], key = (k ? P.indexOf(p) + ':' + p.tasks.indexOf(k) + ':' : '') + want.map((q) => q.id + (q.sel ? '*' : '')).join(',');
+      const want = k ? k.targets(api) : [], key = (k ? k.ph + ':' + k.n + ':' : '') + want.map((q) => q.id + (q.sel ? '*' : '')).join(',');
       if (key !== hot.key) {
         hot.forEach((b) => b.remove()); hot = want.map((q) => {
           const b = el('button', 'ls-hot' + (q.sel ? ' sel' : '')); b.type = 'button'; b.setAttribute('aria-label', q.label || String(q.id));
@@ -154,22 +248,31 @@ figure.sim.ls>.sim-head>span:not(.eyebrow){max-width:110ch}
     function answer(k, idv, b) {
       const r = k.check(idv, api);
       if (r === true || (r && r.ok)) {
-        k.solved = true; msg = { ok: true, text: (r && r.text) || k.right || '' }; sync();
-        if (mode === 'timeline') { t = starts[ph] + k.b * (P[ph].dur || 8) + 1e-3; playing = true; } else jump(ph, Math.min(0.98, k.b + 0.01));
+        k.solved = true; held = false; msg = { ok: true, text: (r && r.text) || '' }; sync();
+        if (mode === 'timeline') { t = starts[ph] + k.b * DUR(ph) + 1e-3; playing = true; } else go(ph, Math.min(0.98, k.b + 0.01), false);
       } else if (r && r.info) { msg = { text: r.info }; sync(); }
       else { msg = { bad: true, text: r }; b.classList.remove('no'); void b.offsetWidth; b.classList.add('no'); sync(); }
     }
-    play.addEventListener('click', () => {
-      if (!playing && t >= total - 1e-3) t = 0;
-      const k = task(); if (!playing && k) k.passed = true;        /* play on past a question: the story shows the answer */
-      playing = !playing; sync();
-    });
+    const nudge = () => { held = true; sync(); turn.classList.remove('nudge'); void turn.offsetWidth; turn.classList.add('nudge'); };
+    play.addEventListener('click', () => { if (!playing && task()) { nudge(); return; } if (!playing && t >= total - 1e-3) t = 0; playing = !playing; sync(); });
+    /* drag along the bar: this is the one way past an open task */
+    let drag = false;
+    const at = (e) => { const r = track.getBoundingClientRect(), f = clamp(nav === 'rail' ? (e.clientY - r.top) / r.height : (e.clientX - r.left) / r.width, 0, 0.9999), i = Math.floor(f * NP); go(i, f * NP - i, true, false); };
+    track.addEventListener('pointerdown', (e) => { if (e.target.closest('.ls-node')) return; drag = true; track.setPointerCapture(e.pointerId); at(e); });
+    track.addEventListener('pointermove', (e) => { if (drag) at(e); });
+    track.addEventListener('pointerup', () => { drag = false; });
+
     const api = {
       get ph() { return ph; }, get u() { return u; }, get mode() { return mode; },
-      solved: (i, n = 0) => !!(P[i].tasks && P[i].tasks[n] && P[i].tasks[n].solved),
+      /* a question that is behind us, answered or skipped: the drawing shows its answer */
+      solved: (i, n = 0) => !!(P[i].tasks && P[i].tasks[n] && (P[i].tasks[n].solved || P[i].tasks[n].passed)),
       asking: () => task(), redraw, part, ease, clamp,
     };
-    /* the clock: scroll position, or time */
+    group('Drive by', [['scroll', 'scrolling'], ['timeline', 'a timeline']], () => mode, (v) => setMode(v));
+    group('Phases as', [['stepper', 'steps'], ['tabs', 'a scrubber'], ['rail', 'a side rail']], () => nav, (v) => { nav = v; setNav(); sync(true); });
+    if (K) group('Code change as', [['boxes', 'boxes'], ['edit', 'an edit']], () => change, (v) => { change = v; fillCode(); sync(true); });
+
+    /* the clock: scroll position, or time. Both stop at an open task. */
     let last = performance.now(), seen = true;
     new IntersectionObserver((es) => { seen = es[es.length - 1].isIntersecting; }).observe(fig);
     (function loop(now) {
@@ -177,25 +280,33 @@ figure.sim.ls>.sim-head>span:not(.eyebrow){max-width:110ch}
       requestAnimationFrame(loop);
       const dt = Math.min(0.1, (now - last) / 1000); last = now;
       if (!seen) return;
+      const g = gate();
       if (mode === 'scroll') {
         const line = lineY(); let i = 0, v = 0;
-        cards.forEach((s, n) => { const r = s.getBoundingClientRect(); if (r.top <= line) { i = n; v = clamp((line - r.top) / r.height, 0, 0.999); } });
+        cards.forEach((s, n) => { if (s.hidden) return; const r = s.getBoundingClientRect(); if (r.top <= line) { i = n; v = clamp((line - r.top) / r.height, 0, 0.999); } });
+        const stop = !!g && (i > g.ph || (i === g.ph && v > g.a + 5e-4));
+        if (stop) { i = g.ph; v = g.a + 5e-4; }
+        if (stop !== held) { held = stop; sync(); }
         if (i !== ph || Math.abs(v - u) > 0.0015) set(i, v);
       } else if (playing) {
         let nt = t + dt;
-        const p = P[ph], k = (p.tasks || []).find((q) => !q.solved && !q.passed && starts[ph] + q.a * (p.dur || 8) >= t - 1e-6 && starts[ph] + q.a * (p.dur || 8) < nt);
-        if (k) { nt = starts[ph] + k.a * (p.dur || 8) + 1e-3; playing = false; }
+        if (g) { const gt = starts[g.ph] + g.a * DUR(g.ph) + 1e-3; if (nt >= gt) { nt = gt; playing = false; } }
         if (nt >= total) { nt = total - 1e-4; playing = false; }
-        t = nt; let i = P.length - 1; while (i > 0 && t < starts[i]) i -= 1;
-        set(i, clamp((t - starts[i]) / (P[i].dur || 8), 0, 0.999));
+        t = nt; let i = NP - 1; while (i > 0 && t < starts[i]) i -= 1;
+        set(i, clamp((t - starts[i]) / DUR(i), 0, 0.999));
       }
     })(last);
-    F.register(fig, { update: () => {}, draw: () => { const g = F.begin(c); o.draw(Object.assign({ ctx: g.ctx, H }, { ph, u, kind: P[ph].kind, solved: api.solved, asking: task() })); }, arrive: false });
-    (window.__ls = window.__ls || {})[id] = { setMode, jump, seek: (x) => { t = x; playing = false; let i = P.length - 1; while (i > 0 && t < starts[i]) i -= 1; set(i, clamp((t - starts[i]) / (P[i].dur || 8), 0, 0.999)); }, starts, get state() { return { ph, u, mode }; } };
+    F.register(fig, { update: () => {}, draw: () => { const g = F.begin(c); o.draw({ ctx: g.ctx, H, ph, u, kind: P[ph].kind, solved: api.solved, asking: task() }); }, arrive: false });
+    (window.__ls = window.__ls || {})[id] = {
+      setMode, go, setNav: (v) => { nav = v; setNav(); sync(true); }, setChange: (v) => { change = v; fillCode(); sync(true); },
+      seek: (x) => { let i = NP - 1; while (i > 0 && x < starts[i]) i -= 1; go(i, clamp((x - starts[i]) / DUR(i), 0, 0.999), true, false); },
+      starts, get state() { return { ph, u, mode, nav, change, held, gate: gate() && gate().ph }; },
+    };
+    if (K) fillCode();
     setMode(mode);
     return api;
   }
-  return { lesson, clamp, ease, part, esc };
+  return { lesson, clamp, ease, part };
 })();
 
 /* kit: ls */
@@ -225,32 +336,32 @@ figure.sim.ls>.sim-head>span:not(.eyebrow){max-width:110ch}
   let hover = null;
 
   const api = LS.lesson(root, F, 'ls-queens', {
-    H: 1060, mode: 'scroll',
+    H: 1060, mode: 'scroll', nav: 'stepper', change: 'boxes',
+    code: { brute: BRUTE, bad: [3, 4], badNote: 'tests only full boards', fast: FAST, added: [6, 7], addNote: 'a test per queen' },
     phases: [
-      { kind: 'Problem', title: 'Four queens, no two attacking', dur: 8,
-        html: '<p>Put one queen in each row of a 4 × 4 board so that no two share a column or a diagonal. Find every way to do it.</p><p>The wheel holds every way to try. Each ring is a row, from the centre out, and each wedge is a choice of column for that row. The outer ring has 256 wedges, one for each way to fill the board.</p><p>Point at any wedge to see the board it stands for.</p>',
-        note: () => 'A ring is a row; a wedge is a column chosen for it.' },
-      { kind: 'Brute force', title: 'Fill the board, then check it', dur: 10, code: { src: BRUTE },
-        html: '<p>Take all 256 full boards one after another and test each. Every board costs four queens put down, 1,024 in all.</p>',
+      { kind: 'Problem', title: 'Four queens', dur: 8,
+        html: '<p>One queen goes in each row of a 4 × 4 board. No two may share a column or a diagonal. The task is to find every such board.</p><p>In the wheel, each ring is a row, counted from the centre, and each wedge is a column chosen for that row. The outer ring has 256 wedges, one per full board. Pointing at a wedge shows its board.</p>',
+        note: () => 'A ring is a row. A wedge is a column chosen for it.' },
+      { kind: 'Brute force', title: 'Every full board', dur: 10, show: 'brute',
+        html: '<p>All 256 full boards are built one after another, and each is tested once it is complete. That is four queens per board, 1,024 in all.</p>',
         lines: (u) => { const n = nBrute(u); return n === 0 ? [3] : clash(LEAVES[n - 1]) ? [3, 4] : [4, 5]; },
         note: (u) => (nBrute(u) < 7 ? 'The first boards, one at a time.' : 'The rest go the same way, so they run fast.') },
-      { kind: 'Observation', title: 'Where a board goes wrong', dur: 13,
-        html: '<p>Take one failing board and ask when it was lost.</p><p class="obs">A clash between two queens is not undone by the queens placed after them.</p><p>So every board that begins with a clash fails, and for the same reason. The 16 boards that begin like this one differ only in rows 3 and 4.</p>',
-        tasks: [{ a: 0.04, b: 0.5, prompt: 'This board fails. Press the first queen that could never stay, whatever was placed after it.',
+      { kind: 'Observation', title: 'The moment a board is lost', dur: 13, show: 'bad',
+        html: '<p class="obs">A clash between two queens stays a clash, whatever is placed after them.</p><p>The 16 boards that begin with the same two clashing queens all fail. The loop in the red box builds every one of them before it tests any.</p>',
+        tasks: [{ a: 0.04, b: 0.5, prompt: 'This board fails. Press the first queen that could never stay, whatever came after it.',
           targets: () => EX.map((c, r) => ({ id: r, x: BX + (c + 0.5) * CS, y: BY + (r + 0.5) * CS, w: CS - 6, h: CS - 6, label: 'the queen in row ' + (r + 1) })),
-          check: (r) => (r === 1 ? { ok: true, text: 'Rows 1 and 2 already attack each other. Nothing put in rows 3 and 4 can change that.' } : r === 0 ? 'The queen in row 1 went onto an empty board: it attacked nothing when it was placed.' : `By row ${r + 1} the board was already lost. Look higher up.`) }],
+          check: (r) => (r === 1 ? { ok: true, text: 'Rows 1 and 2 attack each other. Nothing in rows 3 and 4 changes that.' } : r === 0 ? 'The queen in row 1 went onto an empty board. It attacked nothing when it was placed.' : `By row ${r + 1} the board was already lost. The cause is higher up.`) }],
         note: (u, a) => (u < 0.5 && !a.solved(2) ? '' : 'All 16 boards that begin this way fail for the same reason.') },
-      { kind: 'Optimization', title: 'Check each queen as it goes down', dur: 10, code: { src: FAST, added: [6, 7] },
-        html: '<p>Apply the observation: put down one queen at a time, check it against the ones above, and on a clash stop and try the next column. Everything outside a clashing wedge is never filled.</p>',
-        lines: () => [6, 7],
-        note: (u) => { const k = Math.min(CUTS.length, Math.floor(u * 1.15 * CUTS.length)); return k ? `${k} clashing wedge${k === 1 ? '' : 's'} cut: ${CUTS.slice(0, k).reduce((s, q) => s + q.spared, 0)} boards never filled.` : 'The same wheel, filled the obvious way.'; } },
-      { kind: 'Trace', title: 'One run, queen by queen', dur: 16, code: { src: FAST, added: [6, 7] },
-        html: '<p>Follow the search. A red wedge is a queen taken back at once; the tinted area outside it was never touched.</p>',
+      { kind: 'Optimization', title: 'A test after every queen', dur: 10, show: 'change',
+        html: '<p>Each queen is tested against the ones above it as soon as it is placed. On a clash it comes off and the next column is tried, so nothing beyond a clashing wedge is ever built.</p>',
+        note: (u) => { const k = Math.min(CUTS.length, Math.floor(u * 1.15 * CUTS.length)); return k ? `${k} clashing wedge${k === 1 ? '' : 's'} cut: ${CUTS.slice(0, k).reduce((s, q) => s + q.spared, 0)} boards never built.` : 'The same wheel, filled the obvious way.'; } },
+      { kind: 'Trace', title: 'One run', dur: 16, show: 'fast',
+        html: '<p>A red wedge is a queen taken back. The tinted area beyond it was never built.</p>',
         lines: (u) => { const n = nTrace(u); if (!n) return [5]; const v = VISITS[n - 1]; return v.bad ? [6, 7] : v.p.length === NQ ? [2, 3] : [8]; },
-        note: (u) => { const n = nTrace(u); if (!n) return ''; const v = VISITS[n - 1]; return v.bad ? `Row ${v.p.length}, column ${v.p[v.p.length - 1] + 1}: clash. Taken back.` : v.p.length === NQ ? 'Four queens and no clash: a solution.' : `Row ${v.p.length}, column ${v.p[v.p.length - 1] + 1}: no clash. Go on to the next row.`; } },
-      { kind: 'Insight', title: 'Drop what cannot be repaired', dur: 6,
-        html: `<p class="obs">A partial answer that already breaks the rule cannot be repaired by adding to it. Drop everything that starts with it.</p><p>${VISITS.length} queens put down, where the obvious way put down 1,024. The same insight prunes Sudoku, subset sums and permutations with constraints: check as early as the rule can be checked.</p>`,
-        note: () => 'The tinted area is the work that was never done.' },
+        note: (u) => { const n = nTrace(u); if (!n) return ''; const v = VISITS[n - 1]; return v.bad ? `Row ${v.p.length}, column ${v.p[v.p.length - 1] + 1}: clash. Taken back.` : v.p.length === NQ ? 'Four queens and no clash: a solution.' : `Row ${v.p.length}, column ${v.p[v.p.length - 1] + 1}: no clash. On to the next row.`; } },
+      { kind: 'Insight', title: 'Early rejection', dur: 6,
+        html: `<p class="obs">A partial answer that already breaks the rule cannot be repaired by adding to it, so everything that starts with it can be dropped.</p><p>${VISITS.length} queens placed, against 1,024. Sudoku and subset-sum searches are pruned the same way: the test runs as soon as the rule can be tested.</p>`,
+        note: () => 'The tinted area is work that was never done.' },
     ],
     draw,
   });

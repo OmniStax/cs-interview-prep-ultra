@@ -36,7 +36,7 @@ PAGES = [
  ("99.7", "Sandbox: four queens, reworked (app style, six phases)", "Queens 2", "ls-queens",
   "Round three: the lesson in the app's own style and in six named phases, driven by scrolling or by a timeline, with a task on the drawing.",
   "Backtracking: four queens",
-  "the app's own look at the pane's width; six named phases (Problem, Brute force, Observation, Optimization, Trace, Insight), each with its text and code beside the drawing; a bar that names the phases; and a task where you act on the drawing. Use the switch at the top of the figure to drive it by scrolling or by a timeline.",
+  "the app's own look at the pane's width; six named phases (Problem, Brute force, Observation, Optimization, Trace, Insight), each with its text and code beside the drawing; a bar that names the phases; and a task where you act on the drawing. The three switches at the top change how the figure is driven, how the phases are shown, and how the code change is shown.",
   "Every way to put four queens on the board, as a wheel.",
   "A partial answer that already breaks the rule cannot be repaired by adding to it: drop everything that starts with it.",
   "two queens that attack each other rule out all 16 boards that begin with them."),
@@ -61,6 +61,26 @@ PAGES = [
   "The sum of the values between 30 and 60 in a binary search tree.",
   "Order lets one comparison rule out a whole subtree.",
   "a node below the range rules out everything to its left, and a node above it everything to its right."),
+ ("99.11", "Sandbox: a pair with a given sum (lesson kit, round four)", "Pair sum 2", "ls-pair",
+  "Round four: the two-pointer lesson on the kit, with the wasteful loops boxed in the obvious code and the story held at each task.",
+  "Two pointers: a pair with a given sum",
+  "the lesson kit after the fourth review. The lines of the obvious code that do the wasted work are boxed in red, and the Optimization phase shows what replaces them. Scrolling and the play button stop at a task; only the phase bar goes past one. The three switches at the top change how the figure is driven, how the phases are shown, and how the code change is shown.",
+  "Every pair of eight sorted numbers, and the two that add up to 21.", "", ""),
+ ("99.12", "Sandbox: the minimum of every window (lesson kit, round four)", "Window 2", "ls-window",
+  "Round four: the monotonic-queue lesson on the kit, opening on the timeline with the phases down a side rail.",
+  "Queues: the minimum of every window",
+  "the same kit as 99.11, opening on the timeline, with the phases down a side rail and the code change shown as an edit.",
+  "A window of five numbers sliding along a row of twelve.", "", ""),
+ ("99.13", "Sandbox: trapped rain water (lesson kit, a hard problem)", "Rain", "ls-rain",
+  "Round four: a hard problem on the kit. Twelve bars, the water they hold, and one pass in place of two scans per bar.",
+  "Two pointers, harder: trapped rain water",
+  "the same kit as 99.11 on a problem of interview-hard level, opening on scrolling with the phases as steps.",
+  "Twelve bars and the rain they hold.", "", ""),
+ ("99.14", "Sandbox: the largest rectangle in a histogram (lesson kit, a hard problem)", "Histogram", "ls-hist",
+  "Round four: a second hard problem on the kit. Every stretch of bars as a table, and the one rectangle per bar that the fast way measures.",
+  "Stacks, harder: the largest rectangle in a histogram",
+  "the same kit as 99.11 on a problem of interview-hard level, opening on the timeline with the phases as a scrubber.",
+  "Six bars, and the largest rectangle that fits under them.", "", ""),
 ]
 ch = json.load(open(here / "chapter.json"))
 have = {s["id"] for s in ch["sections"]}
@@ -78,11 +98,11 @@ for sec, title, short, fig, lead, h2, tries, cap, insight, here_is in PAGES:
 <p>What this page tries: {tries}</p>
 <figure class="sim" id="{fig}"><div class="sim-head"><span class="eyebrow">Sim</span><span>{cap}</span></div></figure>
 </section>
-<section id="recap">
+''' + ("" if fig.startswith("ls-") else f'''<section id="recap">
 <h2>The insight</h2>
 <div class="note"><span class="eyebrow">Insight</span><p><strong>{insight}</strong> Here: {here_is}</p></div>
 </section>
-''')
+'''))
     open(here / sec / "source.md", "w").write(f"# Sandbox {sec}\n\nA trial page, AI-written, with no source of its own.\n")
     if sec not in have:
         ch["sections"].append({"id": sec, "title": title})

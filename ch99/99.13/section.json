@@ -1,0 +1,24 @@
+{
+ "id": "99.13",
+ "chapter": "99",
+ "title": "Sandbox: trapped rain water (lesson kit, a hard problem)",
+ "short": "Rain",
+ "lead": "A sandbox page, AI-written and not part of the book. Round four: a hard problem on the kit. Twelve bars, the water they hold, and one pass in place of two scans per bar.",
+ "objectives": [],
+ "summary_html": "",
+ "notes": "A trial page: nothing here is the book's.",
+ "built": "2026-11-11",
+ "figures": [
+  {
+   "id": "ls-rain",
+   "kind": "sim",
+   "draws": []
+  }
+ ],
+ "coverage": [],
+ "exercises": [],
+ "exercise_concepts": [],
+ "referents": [],
+ "footnotes": [],
+ "derivations": []
+}

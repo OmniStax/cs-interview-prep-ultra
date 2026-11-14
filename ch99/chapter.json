@@ -42,6 +42,22 @@
     {
       "id": "99.10",
       "title": "Sandbox: sum of a range in a search tree (app style, six phases)"
+    },
+    {
+      "id": "99.11",
+      "title": "Sandbox: a pair with a given sum (lesson kit, round four)"
+    },
+    {
+      "id": "99.12",
+      "title": "Sandbox: the minimum of every window (lesson kit, round four)"
+    },
+    {
+      "id": "99.13",
+      "title": "Sandbox: trapped rain water (lesson kit, a hard problem)"
+    },
+    {
+      "id": "99.14",
+      "title": "Sandbox: the largest rectangle in a histogram (lesson kit, a hard problem)"
     }
   ],
   "variables": []

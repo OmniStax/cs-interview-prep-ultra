@@ -30,37 +30,37 @@
   let pick = null;
 
   LS.lesson(root, F, 'ls-coins', {
-    H: 1000, mode: 'timeline',
+    H: 1000, mode: 'timeline', nav: 'tabs', change: 'edit',
+    code: { brute: BRUTE, bad: [4, 4], badNote: 'worked out again on every call', fast: MEMO, added: [1, 5, 6, 7, 8], addNote: 'look in the memo first' },
     phases: [
-      { kind: 'Problem', title: 'The fewest coins that make 6', dur: 8,
-        html: '<p>You have coins worth 1, 3 and 4, as many of each as you like. What is the smallest number of coins that adds up to 6?</p><p>Taking the largest coin first gives 4 + 1 + 1, three coins. But 3 + 3 does it in two, so being greedy is not enough: every choice has to be weighed.</p>',
+      { kind: 'Problem', title: 'The fewest coins for 6', dur: 8,
+        html: '<p>Coins come in 1, 3 and 4, with no limit on how many of each. The task is the smallest number of coins that add up to 6.</p><p>Taking the largest coin first gives 4 + 1 + 1, three coins, while 3 + 3 needs two. So every choice of first coin has to be weighed.</p>',
         note: () => 'Largest first is not always fewest.' },
-      { kind: 'Brute force', title: 'Try every coin, then every coin after it', dur: 10, code: { src: BRUTE },
-        html: '<p>Call <code>dp(a)</code> the fewest coins that make <code>a</code>. Whatever coin goes first, the rest is the same question for a smaller amount. So try each coin and take the best.</p>',
+      { kind: 'Brute force', title: 'The recursion', dur: 10, show: 'brute',
+        html: '<p><code>dp(a)</code> is the fewest coins that make <code>a</code>. Whichever coin goes first, what remains is the same question for a smaller amount, so each coin is tried and the best kept.</p>',
         lines: () => [4],
         note: (u) => (nGrow(u) < 8 ? 'Each box is one call, written as the question it asks.' : 'The rest of the tree grows the same way, so it runs fast.') },
-      { kind: 'Observation', title: 'The same question, again and again', dur: 13,
-        html: '<p>Look at what the calls are asking.</p><p class="obs">dp(a) depends only on a, not on how the call was reached. Asked twice, it gives the same answer twice.</p><p>Yet each time it is asked, the whole tree under it is worked out again.</p>',
+      { kind: 'Observation', title: 'Repeated questions', dur: 13, show: 'bad',
+        html: '<p class="obs">dp(a) depends only on a. However the call was reached, the answer is the same.</p><p>The line in the red box works it out again on every call, along with the whole tree under it.</p>',
         tasks: [{ a: 0.04, b: 0.5, prompt: 'Press two calls that ask the same question.',
           targets: () => nodes.map((n) => ({ id: n.id, x: n.x, y: n.y, w: W, h: HH, label: 'dp(' + n.a + ')', sel: pick === n.id })),
-          check: (id, api) => {
+          check: (id) => {
             const n = nodes[id];
             if (pick == null) { if (asked(n.a) === 1) return `dp(${n.a}) is asked only once. Pick a call that appears more than once.`; pick = id; return { info: `dp(${n.a}). Now press another call that asks the same question.` }; }
             const m = nodes[pick]; pick = null;
             if (m.id === n.id) return { info: 'Press two calls that ask the same question.' };
-            return m.a === n.a ? { ok: true, text: `dp(${n.a}) is asked ${asked(n.a)} times, and the tree under it is worked out again each time.` } : `dp(${m.a}) and dp(${n.a}) are different questions. Find two with the same number.`;
+            return m.a === n.a ? { ok: true, text: `dp(${n.a}) is asked ${asked(n.a)} times, and the tree under it is worked out each time.` } : `dp(${m.a}) and dp(${n.a}) are different questions. Find two with the same number.`;
           } }],
         note: (u, a) => { if (u < 0.5 && !a.solved(2)) return ''; const r = rep(u); return `dp(${r}) is asked ${asked(r)} times.`; } },
-      { kind: 'Optimization', title: 'Keep each answer the first time', dur: 10, code: { src: MEMO, added: [1, 5, 6] },
-        html: '<p>Apply the observation: store each answer in a memo, and look there before working anything out. A question already answered returns at once, and the tree under it is never grown.</p>',
-        lines: () => [5, 6],
+      { kind: 'Optimization', title: 'A memo', dur: 10, show: 'change',
+        html: '<p>Each answer is stored the first time it is worked out. A later call for the same amount returns the stored answer, and the tree under it is never grown.</p>',
         note: (u) => { const k = Math.min(HITS.length, Math.floor(u * 1.15 * HITS.length)); return k ? `${k} repeated question${k === 1 ? '' : 's'} answered from the memo.` : 'The same tree, grown the obvious way.'; } },
-      { kind: 'Trace', title: 'One run with the memo', dur: 16, code: { src: MEMO, added: [1, 5, 6] },
-        html: '<p>Follow the calls. A dashed box is a question answered from the memo; the tinted boxes under it are calls that were never made.</p>',
+      { kind: 'Trace', title: 'One run with the memo', dur: 16, show: 'fast',
+        html: '<p>A dashed box is a call answered from the memo. The tinted boxes under it are calls that were never made.</p>',
         lines: (u) => { const k = nEv(u); if (!k) return [2]; const e = EV[k - 1]; return e.ret ? [7, 8] : e.n.kind === 'base' ? [3, 4] : e.n.kind === 'hit' ? [5, 6] : [7]; },
-        note: (u) => { const k = nEv(u); if (!k) return ''; const e = EV[k - 1], a = e.n.a; return e.ret ? `dp(${a}) = ${best[a]}, stored in the memo.` : e.n.kind === 'base' ? 'dp(0) = 0: no coins make nothing.' : e.n.kind === 'hit' ? `dp(${a}) is in the memo already: ${best[a]}, with no work.` : `dp(${a}) is not in the memo: work it out.`; } },
-      { kind: 'Insight', title: 'Answer each question once', dur: 6,
-        html: `<p class="obs">The same question comes up again and again. Answer it once and keep the answer.</p><p>${MADE} calls where the obvious way makes ${nodes.length}, and the gap widens fast as the amount grows. The memo read left to right is the table of the bottom-up version: fill dp(0), dp(1), … in order, each from the cells one, three and four places back.</p>`,
+        note: (u) => { const k = nEv(u); if (!k) return ''; const e = EV[k - 1], a = e.n.a; return e.ret ? `dp(${a}) = ${best[a]}, stored in the memo.` : e.n.kind === 'base' ? 'dp(0) = 0. No coins make nothing.' : e.n.kind === 'hit' ? `dp(${a}) is in the memo: ${best[a]}, with no work.` : `dp(${a}) is not in the memo yet.`; } },
+      { kind: 'Insight', title: 'One answer per question', dur: 6,
+        html: `<p class="obs">When the same question comes up again and again, answer it once and keep the answer.</p><p>${MADE} calls, against ${nodes.length}, and the gap widens quickly as the amount grows. Read left to right, the memo is the table of the bottom-up version, where each cell is filled from the cells one, three and four places back.</p>`,
         note: () => `6 = 3 + 3: ${best[AMT]} coins.` },
     ],
     draw,
