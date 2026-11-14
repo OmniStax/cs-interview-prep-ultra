@@ -1,10 +1,10 @@
-<section id="problem">
+<section id="problem" data-source="omnistax-sandbox">
 <h2>The problem</h2>
 <p>An array of numbers and a window of $k$ of them that slides one step at a time from the left end to the right. Report the smallest number in the window at every position.</p>
 <p>Take 4, 2, 12, 3, 8, 1, 6, 5, 9, 7, 10, 11 and $k = 5$.</p>
 </section>
 
-<section id="obvious">
+<section id="obvious" data-source="omnistax-sandbox">
 <h2>1. The obvious way</h2>
 <p>Scan each window for its smallest number. Under each number the figure counts how often it has been read.</p>
 <figure class="sim" id="sim-brute">
@@ -13,7 +13,7 @@
 <p>Each window costs $k - 1$ comparisons, and there are $n - k + 1$ windows. Two windows side by side share all but one of their numbers, and the scan of the second uses nothing the first found out.</p>
 </section>
 
-<section id="insight">
+<section id="insight" data-source="omnistax-sandbox">
 <h2>2. What the obvious way wastes</h2>
 <p>Some numbers in a window are read again and again without ever having a chance of being the minimum. You pick them out.</p>
 <figure class="sim" id="sim-insight">
@@ -21,7 +21,7 @@
 </figure>
 </section>
 
-<section id="fast">
+<section id="fast" data-source="omnistax-sandbox">
 <h2>3. The fast way</h2>
 <p>Keep the numbers still standing in a queue, oldest first. A number that arrives strikes out every larger one at the back and joins; the oldest leaves when the window passes it; the minimum is whatever stands first.</p>
 <figure class="sim" id="sim-fast">
@@ -35,7 +35,7 @@
 <p>The key idea is to only store the items in the queue that are needed to determine the minimum.</p>
 </section>
 
-<section id="recap">
+<section id="recap" data-source="omnistax-sandbox">
 <h2>4. The insight</h2>
 <div class="note"><span class="eyebrow">Insight</span><p><strong>A candidate beaten by a newer one can be dropped for good.</strong> Here: a number with a smaller one to its right will leave the window first and loses to it until then.</p></div>
 <p>Where the same insight does the work:</p>

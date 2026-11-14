@@ -93,12 +93,12 @@ for sec, title, short, fig, lead, h2, tries, cap, insight, here_is in PAGES:
                "objectives": [], "summary_html": "", "notes": "A trial page: nothing here is the book's.", "built": "2026-11-11",
                "figures": [{"id": fig, "kind": "sim", "draws": []}], "coverage": [], "exercises": [], "exercise_concepts": [],
                "referents": [], "footnotes": [], "derivations": []}, open(here / sec / "section.json", "w"), ensure_ascii=False, indent=1)
-    open(here / sec / "text.html", "w").write(f'''<section id="story">
+    open(here / sec / "text.html", "w").write(f'''<section id="story" data-source="omnistax-sandbox">
 <h2>{h2}</h2>
 <p>What this page tries: {tries}</p>
 <figure class="sim" id="{fig}"><div class="sim-head"><span class="eyebrow">Sim</span><span>{cap}</span></div></figure>
 </section>
-''' + ("" if fig.startswith("ls-") else f'''<section id="recap">
+''' + ("" if fig.startswith("ls-") else f'''<section id="recap" data-source="omnistax-sandbox">
 <h2>The insight</h2>
 <div class="note"><span class="eyebrow">Insight</span><p><strong>{insight}</strong> Here: {here_is}</p></div>
 </section>

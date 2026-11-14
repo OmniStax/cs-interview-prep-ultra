@@ -1,10 +1,10 @@
-<section id="problem">
+<section id="problem" data-source="omnistax-sandbox">
 <h2>The problem</h2>
 <p>A sorted array of numbers and a target. Is there a pair of numbers in the array that adds up to the target, and if so, where?</p>
 <p>Take 2, 4, 5, 7, 9, 12, 14, 18 and the target 21.</p>
 </section>
 
-<section id="obvious">
+<section id="obvious" data-source="omnistax-sandbox">
 <h2>1. The obvious way</h2>
 <p>Add up every pair and look. Eight numbers make 28 pairs, and the table below has one cell for each: row $\htmlData{ref=pair-l}{i}$, column $\htmlData{ref=pair-r}{j}$. A cell shows its sum only once the code has added it up.</p>
 <figure class="sim" id="sim-brute">
@@ -13,7 +13,7 @@
 <p>This works on any array, sorted or not, and never uses the fact that this one is sorted. For $n$ numbers it adds up as many as $n(n-1)/2$ pairs.</p>
 </section>
 
-<section id="insight">
+<section id="insight" data-source="omnistax-sandbox">
 <h2>2. What the obvious way wastes</h2>
 <p>Now use the order. The first pair to try is the smallest number with the largest. Its sum is one number, but because the array is sorted it says something about other pairs too. You decide which.</p>
 <figure class="sim" id="sim-insight">
@@ -21,7 +21,7 @@
 </figure>
 </section>
 
-<section id="fast">
+<section id="fast" data-source="omnistax-sandbox">
 <h2>3. The fast way</h2>
 <p>What you just did by hand is the whole algorithm. $\htmlData{ref=pair-l}{i}$ starts at the first number and $\htmlData{ref=pair-r}{j}$ at the last; each sum either is the target or throws out a row or a column, and the pointer that moves is the one whose number is finished.</p>
 <figure class="sim" id="sim-fast">
@@ -36,7 +36,7 @@
 <p>Likewise, if we find that $num[1]+num[n]\lt \mathit{target}$, we need to make one of the elements larger, but $\mathit{num}[n]$ cannot get any larger, so we increase the pointer at 1 by one, making the smaller number larger.</p>
 </section>
 
-<section id="recap">
+<section id="recap" data-source="omnistax-sandbox">
 <h2>4. The insight</h2>
 <div class="note"><span class="eyebrow">Insight</span><p><strong>On sorted data, one comparison settles many candidates at once.</strong> Here: a sum that is too small rules out every pair with the smaller number, and a sum that is too big rules out every pair with the larger one.</p></div>
 <p>Where the same insight does the work:</p>
